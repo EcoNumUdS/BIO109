@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction à la programmation scientifique</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction à la programmation scientifique">
+  <meta name="author" content="Dominique Gravel, Kevin Cazelles et Steve Vissault">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="./libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="./libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="./libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="./libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/default.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="./libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="./libraries/frameworks/io2012/js/slides" 
+    src="./libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/UdeS_nouveau_coul72dpi.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introduction à la programmation scientifique</h1>
+    <h2>Cours 1</h2>
+    <p>Dominique Gravel, Kevin Cazelles et Steve Vissault<br/>Laboratoire d'Ecologie Integrative, UdS</p>
+  </hgroup>
+  <article></article>
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="transition" id="slide-1" style="background:;">
+  <!--  <a href="#slide-1"></a> -->
+  <hgroup>
+    <h1>La place de la programmation en écologie</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-2" style="background:;">
+  <!--  <a href="#slide-2"></a> -->
+  <hgroup>
+    <h1>Des modèles mathématiques simples</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Des modèles mathématiques simples:</p>
+
+<ul>
+<li>Skelman 1951,</li>
+<li>Lokta voltera (deux espèces)</li>
+<li>Gausse</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-3" style="background:;">
+  <!--  <a href="#slide-3"></a> -->
+  <hgroup>
+    <h1>Aujourd&#39;hui</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Incorporer d&#39;avantage d&#39;espèces, échelle spatial et temporelle plus large.</li>
+<li>Un exemple d&#39;étude non réalisable sans programmation (Albouy?)</li>
+<li>KeyNote: Dominique</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>Et demain, la modélisation de la biosphère?</h1>
+  </hgroup>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <p><img src="assets/img/intro/PurvesNature.jpg" height="400px"></img></p>
+
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <ul>
+<li>GEM</li>
+<li>Discussion lors de la retraite BOREAS</li>
+</ul>
+
+    </div>
+  </article>
+</slide>
+<slide class="" id="slide-5" style="background:;">
+  <!--  <a href="#slide-5"></a> -->
+  <hgroup>
+    <h1>Progression de la puissance de calcul</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+  <img src="assets/img/intro/calcul.svg" height="525px"></img>
+</div>
+
+<!-- Ces questions sont rendu possible en partie grâce à l'augmentation de la puissance de nos ordinateurs et l'accessibilité aux données -->
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-6" style="background:;">
+  <!--  <a href="#slide-6"></a> -->
+  <hgroup>
+    <h1>Utilisation en science au quotidien</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>La programmation est outil indispensable au biologiste 2.0, elle permet:</p>
+
+<ul>
+<li>Tâches répétitives et/ou complexes (e.g. Nettoyage des données, Simulations stochastiques)</li>
+<li>Visualisation et exploration des données</li>
+<li>Analyses statistiques (e.g. multivariée)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h1>La programmation en science</h1>
+  </hgroup>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <h2>Avantages</h2>
+
+<ul>
+<li>Gain de temps</li>
+<li>Limiter les erreurs</li>
+<li>Formaliser les opérations</li>
+<li>Archiver, reproduire et partager</li>
+<li>Tâches intensives (e.g. en génomique)</li>
+</ul>
+
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <div class="caption">Augmentation du volume de données génomiques</div>
+
+<p><img src="assets/img/intro/data_increase.jpg" width="100%"></img>
+<span style="font-size:small;text-transform:uppercase;text-align:right;">
+<a href="http://www.nature.com/nature/journal/v498/n7453/full/498255a.html">Nature 2013</a>
+</span></p>
+
+    </div>
+  </article>
+</slide>
+<slide class="" id="slide-8" style="background:;">
+  <!--  <a href="#slide-8"></a> -->
+  <hgroup>
+    <h1>Étude de cas: Tableau croisé dynamique</h1>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Ouvrir le fichier <code>cor.txt</code> avec MS Excel ou OpenOffice.</li>
+<li>Réaliser un tableau de corrélation entre les variables.
+\[
+r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
+\]</li>
+</ol>
+
+<h3>Entête du tableau <code>cor.txt</code></h3>
+
+<pre><code>##               x          y           z
+## 1  0.0008916256  0.6647386  1.35004917
+## 2  1.9313547853  1.6639975 -0.39454578
+## 3  0.6727827665  0.2827540  1.00065602
+## 4  1.3225220404  1.3326835 -0.28903695
+## 5 -0.6104732104  0.5607096  0.09424716
+## 6  2.0469373213 -2.0324977 -1.90343978
+</code></pre>
+
+<p>&lt;!-- TODO: Mettre les données de Sutton --&gt;</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-9" style="background:;">
+  <!--  <a href="#slide-9"></a> -->
+  <hgroup>
+    <h1>La programmation en science</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+  <img src="assets/img/intro/geek_mode.webp" height="450px"></img>
+</div>
+
+<!-- L'effort en vaut la peine: Sur le long terme le geek est gagnant -->
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h1>La programmation en science</h1>
+  </hgroup>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <h2>Inconvénients</h2>
+
+<ul>
+<li>L&#39;erreur est avant tout humaine, avant d&#39;être informatique</li>
+<li>La courbe apprentissage peut être difficile</li>
+</ul>
+
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <p><img src="assets/img/intro/FunctionalResp.svg" width="450px"></img></p>
+
+<!-- Différente entre les individus -->
+
+    </div>
+  </article>
+</slide>
+<slide class="transition" id="slide-11" style="background:;">
+  <!--  <a href="#slide-11"></a> -->
+  <hgroup>
+    <h1>Les languages de programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-12" style="background:;">
+  <!--  <a href="#slide-12"></a> -->
+  <hgroup>
+    <h1>Deux grandes familles de language</h1>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Les languages compilés</li>
+<li>Les languages interprétés</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-13" style="background:;">
+  <!--  <a href="#slide-13"></a> -->
+  <hgroup>
+    <h1>1. Les languages compilés</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+  <img src="assets/img/intro/compile.svg"  width="900px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-14" style="background:;">
+  <!--  <a href="#slide-14"></a> -->
+  <hgroup>
+    <h1>2. Les languages interprétés</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+  <img src="assets/img/intro/interprete.svg" width="900px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-15" style="background:;">
+  <!--  <a href="#slide-15"></a> -->
+  <hgroup>
+    <h1>Interprété vs compilé</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">df &lt;- c(&#39; &#39;)
+
+pander::pander()
+</code></pre>
+
+<pre><code>## Error in if (tail(stdout, 1) == &quot;&quot;) {: l&#39;argument est de longueur nulle
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-16" style="background:;">
+  <!--  <a href="#slide-16"></a> -->
+  <hgroup>
+    <h1>Ajouter de l&#39;info sur les languages</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Arbre d&#39;évolution des languages</li>
+<li>Performance/Benchmark des différents languages</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-17" style="background:;">
+  <!--  <a href="#slide-17"></a> -->
+  <hgroup>
+    <h1>Et en science?</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-18" style="background:;">
+  <!--  <a href="#slide-18"></a> -->
+  <hgroup>
+    <h1>Le Pseudo-Code</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-19" style="background:;">
+  <!--  <a href="#slide-19"></a> -->
+  <hgroup>
+    <h1>Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong></h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Définitions</h2>
+
+<ul>
+<li><em>En programmation, le <code>pseudo-code</code> est une façon de formuler un <b>algorithme</b> sans référence à un langage de programmation en particulier.</em></li>
+</ul>
+
+<ul class = "build incremental">
+<li><em>Un <b>algorithme</b> est une suite d&#39;actions qui sont réalisées dans un ordre précis par l&#39;ordinateur. C&#39;est une séquence d&#39;étapes dans la résolution d&#39;un problème.</em></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-20" style="background:;">
+  <!--  <a href="#slide-20"></a> -->
+  <hgroup>
+    <h1>Le <code>Pseudo-Code</code></h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Exemple</h2>
+
+<pre><code>PROGRAM DEMO
+  FOR t IN 1:100
+    n_t = n_t * lambda
+    PRINT n_t
+    IF n_t &lt; 1
+      BREAK
+    ELSE
+      CONTINUE
+    END IF
+  END FOR
+</code></pre>
+
+<p>Le programme <code>DEMO</code> fait croitre une population à un taux \(\lambda\) et affiche à l&#39;utilisateur si la population est éteinte (\(n_t<1\)) ou vivante (\(n_t>1\)).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-21" style="background:;">
+  <!--  <a href="#slide-21"></a> -->
+  <hgroup>
+    <h1>Le <code>Pseudo-Code</code></h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Exemple</h2>
+
+<pre><code>PROGRAM DEMO
+  FOR t IN 1:100 &lt;------------- Opération itérative
+    n_t = n_t * lambda
+    PRINT n_t &lt;---------------- Le programme affiche la valeur à l&#39;écran
+    IF n_t &lt; 1 &lt;--------------- Opération décisionnelle
+      BREAK &lt;------------------ Le programme arrête son éxécution
+    ELSE
+      CONTINUE &lt;--------------- Le programme continue son éxécution
+    END IF
+  END FOR
+</code></pre>
+
+<p>Le programme <code>DEMO</code> fait croitre une population à un taux \(\lambda\) et affiche à l&#39;utilisateur si la population est éteinte (\(n_t<1\)) ou vivante (\(n_t>1\)).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-22" style="background:;">
+  <!--  <a href="#slide-22"></a> -->
+  <hgroup>
+    <h1>Les structures de base d&#39;un algorithme</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>On retrouve 3 familles d&#39;opérations:</p>
+
+<ol>
+<li>Les opérations séquentielles</li>
+<li>Les opérations itératives (<code>FOR</code>, <code>WHILE</code>)</li>
+<li>Les opérations décisionnelles (<code>IF</code>, <code>SWITCH</code>)</li>
+</ol>
+
+<!-- ---
+
+# Avant-propos
+
+Avant de décrire chacune des opérations d'un algorithme, certaines instructions sont communes:
+
+- `READ`: Le programme lit un fichier
+- `WRITE`: Le programme écrit un fichier
+- `PRINT`: Le programme écrit un message à l'écran pour l'utilisateur
+- `BREAK`: Le programme stop son éxécution
+- `CONTINUE`: Le programme continue son éxécution -->
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-23" style="background:;">
+  <!--  <a href="#slide-23"></a> -->
+  <hgroup>
+    <h1>1. Les opérations séquentielles</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Exemple: Calculer l&#39;aire d&#39;un rectangle</h2>
+
+<pre><code>PROGRAM REC_AIRE
+  READ hauteur
+  READ largeur
+  WRITE hauteur * largeur
+</code></pre>
+
+<p>C&#39;est une progression linéaire car chaque opération est effectuée l&#39;une après l&#39;autre dans un ordre déterminé.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-24" style="background:;">
+  <!--  <a href="#slide-24"></a> -->
+  <hgroup>
+    <h1>2. Les opérations itératives</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Exemple avec <code>FOR</code>: Croissance avec capacité de support (K)</h2>
+
+<pre><code>PROGRAM DEMO
+  FOR t IN 1:100
+    n_t = n_t * lambda
+  END FOR
+</code></pre>
+
+<p>La population va croître pendant 100 pas de temps.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-25" style="background:;">
+  <!--  <a href="#slide-25"></a> -->
+  <hgroup>
+    <h1>2. Les opérations itératives</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Exemple avec <code>WHILE</code>: Croissance avec capacité de support (K)</h2>
+
+<pre><code>PROGRAM DEMO
+  WHILE n_t &lt; K
+    n_t = n_t * lambda
+  END WHILE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-26" style="background:;">
+  <!--  <a href="#slide-26"></a> -->
+  <hgroup>
+    <h1>3. Les opérations décisionnelles</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Exemple avec <code>IF</code>: quelques tests sur \(\lambda\)</h2>
+
+<pre><code>PROGRAM DEMO
+  IF lambda &gt; 0
+    PRINT &quot;La population est croissante&quot;
+  ELSE lambda &lt; 0
+    PRINT &quot;La population est décroissante&quot;
+  ENDIF
+</code></pre>
+
+<ul class = "build incremental">
+<li>Et si le taux de croissance est nulle?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
+  <hgroup>
+    <h1>3. Les opérations décisionnelles</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>PROGRAM DEMO
+  IF lambda &gt; 0
+    PRINT &quot;La population est croissante&quot;
+  IF ELSE lambda &lt; 0
+    PRINT &quot;La population est décroissante&quot;
+  ELSE
+    PRINT &quot;Absence de croissance&quot;
+  ENDIF
+</code></pre>
+
+<p>Avec la clause <code>ELSE</code>, l&#39;absence de croissance est assumé (non-testé)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-28" style="background:;">
+  <!--  <a href="#slide-28"></a> -->
+  <hgroup>
+    <h1>Les règles du <code>pseudo-code</code></h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>A garder en mémoire</h2>
+
+<ol>
+<li>N&#39;écrivez qu&#39;une seule instruction par ligne de pseudocode.</li>
+<li>Écrivez en lettres capitales le verbe de chaque opération principale.</li>
+<li>Soyez explicite en nommant les opérations et les variables.</li>
+<li>Soyez le plus détaillé possible (c.a.d les plus petites étapes possibles)</li>
+<li>Utilisez des structures de langages de programmation connus (c.a.d <code>WHILE</code>, <code>FOR</code>, <code>IF</code> etc.)</li>
+<li>Délimitez les étapes en formant des blocs d&#39;instructions par l&#39;utilisation de l&#39;indentation.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
+  <hgroup>
+    <h1>Exercice</h1>
+  </hgroup>
+  <article data-timings="">
+    <h2>Ordonner les lettres de Scrabble</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    
+  </hgroup>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <p>Une situation qui peut arriver tous les jours:</p>
+
+<ol>
+<li>On jette en face de vous 6 lettres d&#39;un scrabble</li>
+<li>Un joueur maniac vous demande d&#39;écrire un programme permettant d&#39;ordonner les 6 lettres</li>
+</ol>
+
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <p><strong>Image de scrabble</strong></p>
+
+    </div>
+  </article>
+</slide>
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='La place de la programmation en écologie'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Des modèles mathématiques simples'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Aujourd&#39;hui'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Et demain, la modélisation de la biosphère?'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Progression de la puissance de calcul'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Utilisation en science au quotidien'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='La programmation en science'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Étude de cas: Tableau croisé dynamique'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='La programmation en science'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='La programmation en science'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Les languages de programmation'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Deux grandes familles de language'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='1. Les languages compilés'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='2. Les languages interprétés'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Interprété vs compilé'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Ajouter de l&#39;info sur les languages'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Et en science?'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Le Pseudo-Code'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong>'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Le <code>Pseudo-Code</code>'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Le <code>Pseudo-Code</code>'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Les structures de base d&#39;un algorithme'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='1. Les opérations séquentielles'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='2. Les opérations itératives'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='2. Les opérations itératives'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='3. Les opérations décisionnelles'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='3. Les opérations décisionnelles'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Les règles du <code>pseudo-code</code>'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Exercice'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='NA'>
+         30
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="./libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="./libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
