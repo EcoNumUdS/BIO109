@@ -12,7 +12,7 @@ git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git s
 
 for dir in */ ; do
     mkdir ./slides/$dir
-    mv ./$dir/pres/* ./slides/$dir/
+    mv ./${dir%%/}/pres/* ./slides/$dir
 done
 
 cd slides
