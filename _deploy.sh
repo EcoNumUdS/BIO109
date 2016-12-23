@@ -9,15 +9,13 @@ git config --global user.email "s.vissault@yahoo.fr"
 git config --global user.name "SteveViss"
 
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
-cd slides
 
 for dir in */ ; do
-    cd $dir
-    cp -r ./pres/* ./
-    rm -rf ./pres/ ./scripts/ *.Rmd
-    git add --all *
-    cd ..
+    mkdir slides/$dir
+    mv $dir/pres/* slides/$dir/
 done
 
+cd slides
+git add --all *
 git commit -m "Update the slides" || true
 git push origin gh-pages
