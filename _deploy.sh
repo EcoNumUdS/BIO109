@@ -8,9 +8,18 @@ set -e
 git config --global user.email "s.vissault@yahoo.fr"
 git config --global user.name "SteveViss"
 
-git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
+git clone https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
+
 cd slides
-cp -r ../pres/* ./
-git add --all *
+git checkout gh-pages
+git rebase master
+
+for dir in */ ; do
+    cd $dir
+    cp -r ../pres/* ./
+    git add assets/ libraries/ index.html
+    cd ..
+done
+
 git commit -m "Update the slides" || true
 git push origin gh-pages
