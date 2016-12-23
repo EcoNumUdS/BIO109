@@ -11,8 +11,8 @@ git config --global user.name "SteveViss"
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
 
 for dir in */ ; do
-    mkdir slides/$dir
-    mv $dir/pres/* slides/$dir/
+    mkdir ./slides/$dir
+    mv ./$dir/pres/* ./slides/$dir/
 done
 
 cd slides
