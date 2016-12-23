@@ -25,3 +25,31 @@ Lien vers la présentation
 ## Séance 4: Algorithmique I
 
 ## Séance 5: Algorithmique II
+
+# Utiliser `slidify`
+
+## Organisation
+
+Un fichier `.Rmd` par section du cours. Le makefile s'occupe de générer le
+diaporama dans le dossier `pres` qu'on ouvre avec un navigateur Internet.
+
+
+## Utilisation du diaporama
+
+## Taille écran:
+
+  - `F` pour basculwer en plein écran,
+  - zoom du navigateur pour ajuster la taille de la présentation (typiquement `cmd +/-`),
+  - `W` pour basculer en mode "large".
+
+## Naviguer entre diapo
+
+  - `G` pour entrer le numéro d'une slide,
+  - `O` pour naviguer facilement dans la présentation,
+  - `T` pour avoir une barre avec le numéro des diapositive.
+
+
+# Exporter en format pdf
+
+- Utiliser l'exportation pdf du navigateur,
+- Utiliser [Decktape](https://github.com/astefanutti/decktape).
