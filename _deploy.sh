@@ -13,7 +13,8 @@ cd slides
 
 for dir in */ ; do
     cd $dir
-    cp -r ./pres/* ./
+    cp -r pres/* ./
+    rm -rf pres/ scripts/ *.Rmd
     git add --all *
     cd ..
 done
