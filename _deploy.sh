@@ -10,12 +10,11 @@ git config --global user.name "SteveViss"
 
 git clone -b gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
 cd slides
-git reset --hard origin/master
 
 for dir in */ ; do
     cd $dir
-    cp -r ./pres/* .
-    git add ./assets/ ./libraries/ ./index.html
+    cp -r ./pres/* ./
+    git add --all *
     cd ..
 done
 
