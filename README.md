@@ -3,6 +3,9 @@
 
 **Professeur:** Dominique Gravel
 
+# Mise en ligne des cours
+[![Build Status](https://travis-ci.org/EcoNumUdS/BIO109.svg?branch=master)](https://travis-ci.org/EcoNumUdS/BIO109)
+
 ## Séance 1: Introduction
 
 Présentation (HTML): [https://econumuds.github.io/BIO109/cours1](https://econumuds.github.io/BIO109/cours1)
@@ -29,23 +32,23 @@ Lien vers la présentation
 
 ## Séance 5: Algorithmique II
 
-# Utiliser `slidify`
+## Utiliser `slidify`
 
-## Organisation
+### Organisation
 
 Un fichier `.Rmd` par section du cours. Le makefile s'occupe de générer le
 diaporama dans le dossier `pres` qu'on ouvre avec un navigateur Internet.
 
 
-## Utilisation du diaporama
+### Utilisation du diaporama
 
-## Taille écran:
+### Taille écran:
 
   - `F` pour basculwer en plein écran,
   - zoom du navigateur pour ajuster la taille de la présentation (typiquement `cmd +/-`),
   - `W` pour basculer en mode "large".
 
-## Naviguer entre diapo
+### Naviguer entre diapo
 
   - `G` pour entrer le numéro d'une slide,
   - `O` pour naviguer facilement dans la présentation,
