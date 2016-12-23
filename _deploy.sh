@@ -11,12 +11,14 @@ git config --global user.name "SteveViss"
 git clone https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
 
 cd slides
-git checkout -B gh-pages master
+git checkout --orphan gh-pages
+git rm -rf .
+git checkout master
 
 for dir in */ ; do
     cd $dir
     cp -r ./pres/* ./
-    git add assets/ libraries/ index.html
+    git checkout gh-pages assets/ libraries/ index.html
     cd ..
 done
 

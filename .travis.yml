@@ -2,7 +2,8 @@ language: r
 
 sudo: false
 
-cache: packages
+cache:
+  packages: yes
 
 before_script:
   - chmod +x ./_build.sh
