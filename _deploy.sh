@@ -16,7 +16,7 @@ git rebase master
 
 for dir in */ ; do
     cd $dir
-    cp -r ../pres/* ./
+    cp -r ./pres/* ./
     git add assets/ libraries/ index.html
     cd ..
 done

@@ -5,7 +5,7 @@
 
 ## Séance 1: Introduction
 
-Lien vers la présentation
+Présentation (HTML): [https://econumuds.github.io/BIO109/cours1](https://econumuds.github.io/BIO109/cours1)
 
 1. Introduction à la programmation scientifique (60 min)
 2. Pseudo-Code (60 min)
@@ -14,7 +14,8 @@ Lien vers la présentation
 
 ## Séance 2: Introduction au language R
 
-Lien vers la présentation
+Présentation (HTML): [https://econumuds.github.io/BIO109/cours2](https://econumuds.github.io/BIO109/cours2)
+
 
 1. Interface et environnement de développement sur R
 2. Manipulation des objets
