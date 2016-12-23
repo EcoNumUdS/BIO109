@@ -17,7 +17,7 @@ git rm -rf .
 
 for dir in */ ; do
     cd $dir
-    git checkout gh-pages -- ./pres/assets/ ./pres/libraries/ ./pres/index.html
+    git checkout master -- ./pres/assets/ ./pres/libraries/ ./pres/index.html
     cd ..
 done
 
