@@ -1,5 +1,7 @@
 # Introduction à la programmation scientifique
-**Professeur:**: Dominique Gravel
+(1 crédit; 15 heures)
+
+**Professeur:** Dominique Gravel
 
 ## Séance 1: Introduction
 
