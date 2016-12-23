@@ -13,12 +13,11 @@ git clone https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
 cd slides
 git checkout --orphan gh-pages
 git rm -rf .
-git checkout master
+
 
 for dir in */ ; do
     cd $dir
-    cp -r ./pres/* ./
-    git checkout gh-pages assets/ libraries/ index.html
+    git checkout gh-pages -- ./pres/assets/ ./pres/libraries/ ./pres/index.html
     cd ..
 done
 
