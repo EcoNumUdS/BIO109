@@ -11,8 +11,7 @@ git config --global user.name "SteveViss"
 git clone https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git slides
 
 cd slides
-git checkout gh-pages
-git merge master
+git checkout -B gh-pages
 
 for dir in */ ; do
     cd $dir
