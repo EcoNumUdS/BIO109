@@ -185,8 +185,8 @@ https://github.com/EcoNumUdS/BIO109.git
 
 # Évaluation
 
-L'évaluation porte sur la participation aux exercices (20\%) et sur un
-travail final (80\%). Un exercice simple sera présenté à la fin des
+L'évaluation porte sur la participation aux exercices (20%) et sur un
+travail final (80%). Un exercice simple sera présenté à la fin des
 séances 1-4 et chaque étudiant devra remettre la solution de l'exercice sous
 forme de script avant le début de la séance suivante. Les exercices
 peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
@@ -195,32 +195,40 @@ participation.
 
 L'évaluation finale portera sur la réalisation d'un projet de
 programmation en équipe de 4 à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le \textbf{21 février 2017 à 16:00}. La
-pénalité sera de 10\% par jour de retard. Le rapport final sera évalué à
+dernier cours, soit au plus tard le **21 février 2017 à 16:00**. La
+pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
 parti de i) le pseudo-code pour le projet de programmation, ii) le respect
 des bonnes pratiques de programmation et iii) la réussite de l'exercice
 demandé. Les étudiants devront remettre le script nécessaire à la
 réalisation du projet.
+
 --- .transition
 
 # La place de la programmation en écologie
 
 ---
 
-# Des modèles mathématiques simples
+# Hier
 
-Des modèles mathématiques simples:
-  - Skelman 1951,
-  - Lokta voltera (deux espèces)
-  - Gausse
+La dynamique d'une population: 
+
+$\frac{dN}{dt} = rN(1-\frac{N}{K})$
+
+Qui donne pour solution à l'équilibre: 
+
+$N^* = K$
 
 ---
 
 # Aujourd'hui
 
-- Incorporer d'avantage d'espèces, échelle spatial et temporelle plus large.
-- Un exemple d'étude non réalisable sans programmation (Albouy?)
-- KeyNote: Dominique
+<img src="assets/img/intro/modeles.jpg" height="400px"></img>
+
+---
+
+# Aujourd'hui
+
+<img src="assets/img/intro/cartes_vissault.jpg" height="400px"></img>
 
 
 --- &twocol
@@ -232,9 +240,6 @@ Des modèles mathématiques simples:
 <img src="assets/img/intro/PurvesNature.jpg" height="400px"></img>
 
 *** =right
-
-- GEM
-- Discussion lors de la retraite BOREAS
 
 ---
 
