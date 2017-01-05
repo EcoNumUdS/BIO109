@@ -39,7 +39,7 @@
   <hgroup class="auto-fadein">
     <h1>Introduction à la programmation scientifique</h1>
     <h2>Cours 1</h2>
-    <p>Dominique Gravel<br/>Laboratoire d'Ecologie Integrative, UdS</p>
+    <p>Dominique Gravel<br/>Laboratoire d'écologie intégrative, UdS</p>
   </hgroup>
   <article></article>
   <footer class = 'license'>
@@ -172,7 +172,7 @@
     <h1>Le type de données</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">arbres = read.table(file = &#39;./données/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
+    <pre><code class="r">arbres = read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
 head(arbres)
 </code></pre>
 
@@ -205,7 +205,7 @@ head(arbres)
     <h1>Exercice 1: solution sur R</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">arbres = read.table(file = &#39;./données/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
+    <pre><code class="r">arbres = read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
 quadrats = table(arbres$id_bor,arbres$esp)
 head(quadrats)
 </code></pre>
@@ -245,7 +245,7 @@ head(quadrats)
     <h1>Exercice 2: solution sur R</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">quadrats = read.table(file = &#39;./données/quadrats.txt&#39;, header = TRUE, sep= &quot;;&quot;)
+    <pre><code class="r">quadrats = read.table(file = &#39;./donnees/quadrats.txt&#39;, header = TRUE, sep= &quot;;&quot;)
 cor(quadrats)
 </code></pre>
 
@@ -608,7 +608,7 @@ N^* = K
 pander::pander()
 </code></pre>
 
-<pre><code>## Error in if (tail(stdout, 1) == &quot;&quot;) {: l&#39;argument est de longueur nulle
+<pre><code>## Error in loadNamespace(name): there is no package called &#39;pander&#39;
 </code></pre>
 
   </article>
@@ -877,37 +877,149 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-50" style="background:;">
+<slide class="" id="slide-50" style="background:;">
   <!--  <a href="#slide-50"></a> -->
   <hgroup>
-    <h1>Exercice</h1>
+    <h1>Les 10 commandements de la programmation</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Ordonner les lettres de Scrabble</h2>
+    <p><em>1. Tu commenteras ton code pour que d&#39;autres puissent le lire, le comprendre et le partager</em></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-51" style="background:;">
+  <!--  <a href="#slide-51"></a> -->
   <hgroup>
-    <h1>Exercice 3</h1>
+    <h1>Les 10 commandements de la programmation</h1>
   </hgroup>
-  <article>
-    
-    <div class='left' style='float:left;width:48%'>
-     <p>Une situation qui peut arriver tous les jours:</p>
+  <article data-timings="">
+    <p><em>2. Il faut prendre soin de l&#39;environnement et nettoyer ses déchets</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-52" style="background:;">
+  <!--  <a href="#slide-52"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>3. Ton script sera dur à avaler. Mieux vaut le découper</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-53" style="background:;">
+  <!--  <a href="#slide-53"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>4. Plusieurs chiens s&#39;appelle Fido, le tiens tu sauras le nommer</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-54" style="background:;">
+  <!--  <a href="#slide-54"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>5. Fido tu éviteras d&#39;écraser</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-55" style="background:;">
+  <!--  <a href="#slide-55"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>6. Un bon programmeur est un programmeur paresseux. Les opérations répétées doivent être définies sous forme de fonctions</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-56" style="background:;">
+  <!--  <a href="#slide-56"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>7. La vie est trop courte, ton code sera optimisé</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-57" style="background:;">
+  <!--  <a href="#slide-57"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>8. Et un jour tu mourras, alors assure toi que ton code soit reproductible</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-58" style="background:;">
+  <!--  <a href="#slide-58"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>9. En tout puissant que tu es, le tirage au sort tu pourras répéter</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-59" style="background:;">
+  <!--  <a href="#slide-59"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>10. Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-60" style="background:;">
+  <!--  <a href="#slide-60"></a> -->
+  <hgroup>
+    <h1>Google R Style Rules</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>File Names : end in .R</li>
+<li>Identifiers : variable.name (or variableName), FunctionName</li>
+<li>Line Length : maximum 80 characters</li>
+<li>Indentation : two spaces, no tabs</li>
+<li>Spacing : Place spaces around all binary operators</li>
+<li>Curly Braces : first on same line, last on own line</li>
+<li>else : Surround else with braces </li>
+<li>Assignment : use &lt;-, not =</li>
+<li>Semicolons : don&#39;t use them</li>
+<li>Commenting : all comments begin with # followed by a space</li>
+<li>Function : should contain a comments section</li>
+</ul>
+
+<hr>
+
+<h1>Exercice</h1>
+
+<p>Une situation qui peut arriver tous les jours:</p>
 
 <ol>
-<li>On jette en face de vous 6 lettres d&#39;un scrabble</li>
-<li>Un joueur maniac vous demande d&#39;écrire un programme permettant d&#39;ordonner les 6 lettres</li>
+<li>On jette en face de vous 5 lettres d&#39;un scrabble</li>
+<li>Un maniac vous demande d&#39;écrire un programme permettant d&#39;ordonner les 5 lettres</li>
 </ol>
 
-    </div>
-    <div class='right' style='float:right;width:48%'>
-     <p><strong>Image de scrabble</strong></p>
-
-    </div>
   </article>
+  <!-- Presenter Notes -->
 </slide>
     <slide class="backdrop"></slide>
   </slides>
@@ -1209,14 +1321,68 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Exercice'>
+        data-slide=50 title='Les 10 commandements de la programmation'>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Exercice 3'>
+        data-slide=51 title='Les 10 commandements de la programmation'>
          51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='Les 10 commandements de la programmation'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='Les 10 commandements de la programmation'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='Les 10 commandements de la programmation'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='Les 10 commandements de la programmation'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='Les 10 commandements de la programmation'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='Les 10 commandements de la programmation'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='Les 10 commandements de la programmation'>
+         58
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=59 title='Les 10 commandements de la programmation'>
+         59
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=60 title='Google R Style Rules'>
+         60
       </a>
     </li>
   </ul>

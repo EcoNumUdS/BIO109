@@ -2,7 +2,7 @@
 title       : "Introduction à la programmation scientifique"
 subtitle    : "Cours 1"
 author      : "Dominique Gravel"
-job         : "Laboratoire d'Ecologie Integrative, UdS"
+job         : "Laboratoire d'écologie intégrative, UdS"
 logo        : "UdeS_nouveau_coul72dpi.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -93,7 +93,7 @@ assets      :
 
 
 ```r
-arbres = read.table(file = './données/arbres.txt', header = TRUE, sep=";")
+arbres = read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
 head(arbres)
 ```
 
@@ -119,7 +119,7 @@ Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de c
 
 
 ```r
-arbres = read.table(file = './données/arbres.txt', header = TRUE, sep=";")
+arbres = read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
 quadrats = table(arbres$id_bor,arbres$esp)
 head(quadrats)
 ```
@@ -154,7 +154,7 @@ Petit truc: sur Excel, la fonction pour calculer une corrélation est:
 
 
 ```r
-quadrats = read.table(file = './données/quadrats.txt', header = TRUE, sep= ";")
+quadrats = read.table(file = './donnees/quadrats.txt', header = TRUE, sep= ";")
 cor(quadrats)
 ```
 
@@ -408,7 +408,7 @@ pander::pander()
 ```
 
 ```
-## Error in if (tail(stdout, 1) == "") {: l'argument est de longueur nulle
+## Error in loadNamespace(name): there is no package called 'pander'
 ```
 
 ---
@@ -602,24 +602,86 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 5. Utilisez des structures de langages de programmation connus (c.a.d `WHILE`, `FOR`, `IF` etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
+--- 
+# Les 10 commandements de la programmation
 
---- .transition
+*1. Tu commenteras ton code pour que d'autres puissent le lire, le comprendre et le partager*
+
+---
+# Les 10 commandements de la programmation
+
+*2. Il faut prendre soin de l'environnement et nettoyer ses déchets*
+
+---
+
+# Les 10 commandements de la programmation
+
+*3. Ton script sera dur à avaler. Mieux vaut le découper*
+
+---
+
+# Les 10 commandements de la programmation
+
+*4. Plusieurs chiens s'appelle Fido, le tiens tu sauras le nommer*
+
+---
+
+# Les 10 commandements de la programmation
+
+*5. Fido tu éviteras d'écraser*
+
+---
+
+# Les 10 commandements de la programmation
+
+*6. Un bon programmeur est un programmeur paresseux. Les opérations répétées doivent être définies sous forme de fonctions*
+
+---
+
+# Les 10 commandements de la programmation
+
+*7. La vie est trop courte, ton code sera optimisé*
+
+---
+
+# Les 10 commandements de la programmation
+
+*8. Et un jour tu mourras, alors assure toi que ton code soit reproductible*
+
+---
+
+# Les 10 commandements de la programmation
+
+*9. En tout puissant que tu es, le tirage au sort tu pourras répéter*
+
+---
+
+# Les 10 commandements de la programmation
+
+*10. Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions*
+
+---
+
+# Google R Style Rules
+
+- File Names : end in .R
+- Identifiers : variable.name (or variableName), FunctionName
+- Line Length : maximum 80 characters
+- Indentation : two spaces, no tabs
+- Spacing : Place spaces around all binary operators
+- Curly Braces : first on same line, last on own line
+- else : Surround else with braces 
+- Assignment : use <-, not =
+- Semicolons : don't use them
+- Commenting : all comments begin with # followed by a space
+- Function : should contain a comments section
+    
+---
 
 # Exercice
-## Ordonner les lettres de Scrabble
-
-
---- &twocol
-
-# Exercice 3
-
-*** =left
 
 Une situation qui peut arriver tous les jours:
 
-1. On jette en face de vous 6 lettres d'un scrabble
-2. Un joueur maniac vous demande d'écrire un programme permettant d'ordonner les 6 lettres
+1. On jette en face de vous 5 lettres d'un scrabble
+2. Un maniac vous demande d'écrire un programme permettant d'ordonner les 5 lettres
 
-*** =right
-
-**Image de scrabble**
