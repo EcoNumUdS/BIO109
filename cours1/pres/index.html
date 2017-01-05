@@ -51,8 +51,302 @@
     
 
     <!-- SLIDES -->
-    <slide class="transition" id="slide-1" style="background:;">
+    <slide class="" id="slide-1" style="background:;">
   <!--  <a href="#slide-1"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/bioclim.png" height="500px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-2" style="background:;">
+  <!--  <a href="#slide-2"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/mont_vertes.png" height="500px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-3" style="background:;">
+  <!--  <a href="#slide-3"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/megantic.jpg" height="400px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-4" style="background:;">
+  <!--  <a href="#slide-4"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/ours.jpg" height="400px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-5" style="background:;">
+  <!--  <a href="#slide-5"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/orignal.jpg" height="400px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-6" style="background:;">
+  <!--  <a href="#slide-6"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/salamandre.jpg" height="400px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-7" style="background:;">
+  <!--  <a href="#slide-7"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/cypripedium.jpg" height="400px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-8" style="background:;">
+  <!--  <a href="#slide-8"></a> -->
+  <hgroup>
+    <h1>Introduction</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/grille.jpg" height="400px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-9" style="background:;">
+  <!--  <a href="#slide-9"></a> -->
+  <hgroup>
+    <h1>Question de recherche</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>À quelle vitesse se réalisera la migration de l&#39;érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-10" style="background:;">
+  <!--  <a href="#slide-10"></a> -->
+  <hgroup>
+    <h1>Le type de données</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">arbres = read.table(file = &#39;./data/arbres_sut_bio109.txt&#39;, header = TRUE, dec = &quot;,&quot;)
+head(arbres)
+</code></pre>
+
+<pre><code>##   borx bory arbre  esp multi mort dhp
+## 1   80    0     1 ACPE  FAUX FAUX  39
+## 2   80    0     2 ACPE  FAUX FAUX  19
+## 3   80    0     3 ACSA  FAUX FAUX 487
+## 4   80    0     4 ACSA  FAUX FAUX 568
+## 5   80    0     5 ACSA  FAUX FAUX 196
+## 6   80    0     6 ACSA  FAUX FAUX 345
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-11" style="background:;">
+  <!--  <a href="#slide-11"></a> -->
+  <hgroup>
+    <h1>Exercice 1</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ouvrir le fichier <code>arbres.txt</code> avec Excel et calculer le nombre d&#39;individus de chaque espèce espèce pour le quadrat 1.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-12" style="background:;">
+  <!--  <a href="#slide-12"></a> -->
+  <hgroup>
+    <h1>Exercice 1: solution sur R</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">arbres = read.table(file = &#39;./data/arbres_sut_bio109.txt&#39;, header = TRUE, dec = &quot;,&quot;)
+quadrats = tapply(arbres$sp, INDEX = arbres$quadrat)
+head(quadrats)
+</code></pre>
+
+<pre><code>## integer(0)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-13" style="background:;">
+  <!--  <a href="#slide-13"></a> -->
+  <hgroup>
+    <h1>Exercice 2</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ouvrir le fichier &#39;quadrats.txt&#39; avec Excel et calculer la corrélation entre toutes les paires d&#39;espèces.</p>
+
+<p>Petit truc: sur Excel, la fonction pour calculer une corrélation est:
+=covariance.pearson(données_1; données_2)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-14" style="background:;">
+  <!--  <a href="#slide-14"></a> -->
+  <hgroup>
+    <h1>Exercice 2: solution sur R</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">quadrats = read.table(file = &#39;quadrats.txt&#39;, header = TRUE, dec = &quot;,&quot;, row.names = 1)
+cor(quadrats)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-15" style="background:;">
+  <!--  <a href="#slide-15"></a> -->
+  <hgroup>
+    <h1>Exercice 2: visualisation sur R</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">quadrats = read.table(file = &#39;quadrats.txt&#39;, header = TRUE, dec = &quot;,&quot;, row.names = 1)
+plot(quadrats)
+</code></pre>
+
+<hr>
+
+<h1>Objectif général</h1>
+
+<p><em>Au terme de ce cours, l&#39;étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.</em></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-16" style="background:;">
+  <!--  <a href="#slide-16"></a> -->
+  <hgroup>
+    <h1>Objectifs spécifiques</h1>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Charger des données et exporter des résultats d&#39;analyses au moyen du
+logiciel R;</li>
+<li>Conceptualiser un problème au moyen de pseudo-code;</li>
+<li>Manipuler des données;</li>
+<li>Rédiger des fonctions;</li>
+<li>Programmer des algorithmes afin de réaliser des tâches complexes,
+incluant des boucles et des énoncés conditionnels;</li>
+<li>Réaliser des simulations de Monte Carlo;</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-17" style="background:;">
+  <!--  <a href="#slide-17"></a> -->
+  <hgroup>
+    <h1>Contenu</h1>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Introduction et bonnes pratiques de programmation</li>
+<li>Démystifier le langage R</li>
+<li>Les fonctions</li>
+<li>Algorithmique I: boucles et conditions</li>
+<li>Alogithmique II: simulations de Monte Carlo</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-18" style="background:;">
+  <!--  <a href="#slide-18"></a> -->
+  <hgroup>
+    <h1>Approche</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Les connaissances requises pour la programmation scientifique sont
+minimales, l&#39;apprentissage porte davantage sur l&#39;acquisition de
+compétences et le développement de capacités à la résolution de problèmes.
+Les séances seront constituées de courtes leçons magistrales sur des
+notions de bases de programmation, entre-coupées d&#39;exercices spécifiques
+destinés à pratiquer les éléments enseignés. Les séances se conclueront
+sur la réalisation d&#39;un exercice intégrateur à compléter à la maison.</p>
+
+<p>L&#39;ensemble du matériel du cours sera disponible sur un dépôt git à l&#39;adresse :
+<a href="https://github.com/EcoNumUdS/BIO109.git">https://github.com/EcoNumUdS/BIO109.git</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-19" style="background:;">
+  <!--  <a href="#slide-19"></a> -->
+  <hgroup>
+    <h1>Évaluation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>L&#39;évaluation porte sur la participation aux exercices (20%) et sur un
+travail final (80%). Un exercice simple sera présenté à la fin des
+séances 1-4 et chaque étudiant devra remettre la solution de l&#39;exercice sous
+forme de script avant le début de la séance suivante. Les exercices
+peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
+propre copie, personnalisée. Les points sont attribués pour la
+participation.</p>
+
+<p>L&#39;évaluation finale portera sur la réalisation d&#39;un projet de
+programmation en équipe de 4 à remettre deux semaines après la fin du
+dernier cours, soit au plus tard le <strong>21 février 2017 à 16:00</strong>. La
+pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
+parti de i) le pseudo-code pour le projet de programmation, ii) le respect
+des bonnes pratiques de programmation et iii) la réussite de l&#39;exercice
+demandé. Les étudiants devront remettre le script nécessaire à la
+réalisation du projet.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-20" style="background:;">
+  <!--  <a href="#slide-20"></a> -->
   <hgroup>
     <h1>La place de la programmation en écologie</h1>
   </hgroup>
@@ -61,59 +355,64 @@
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-2" style="background:;">
-  <!--  <a href="#slide-2"></a> -->
+<slide class="" id="slide-21" style="background:;">
+  <!--  <a href="#slide-21"></a> -->
   <hgroup>
-    <h1>Des modèles mathématiques simples</h1>
+    <h1>Hier</h1>
   </hgroup>
   <article data-timings="">
-    <p>Des modèles mathématiques simples:</p>
+    <p>La dynamique d&#39;une population:</p>
 
-<ul>
-<li>Skelman 1951,</li>
-<li>Lokta voltera (deux espèces)</li>
-<li>Gausse</li>
-</ul>
+<p>\[
+\frac{dN}{dt} = rN(1-\frac{N}{K})
+\]</p>
+
+<p>Qui donne pour solution à l&#39;équilibre:</p>
+
+<p>\[
+N^* = K
+\]</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-3" style="background:;">
-  <!--  <a href="#slide-3"></a> -->
+<slide class="" id="slide-22" style="background:;">
+  <!--  <a href="#slide-22"></a> -->
   <hgroup>
     <h1>Aujourd&#39;hui</h1>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Incorporer d&#39;avantage d&#39;espèces, échelle spatial et temporelle plus large.</li>
-<li>Un exemple d&#39;étude non réalisable sans programmation (Albouy?)</li>
-<li>KeyNote: Dominique</li>
-</ul>
+    <p><img src="assets/img/intro/modele_vissault.jpg" height="400px"></img></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-23" style="background:;">
+  <!--  <a href="#slide-23"></a> -->
+  <hgroup>
+    <h1>Aujourd&#39;hui</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/intro/map_vissault.jpg" height="400px"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-24" style="background:;">
+  <!--  <a href="#slide-24"></a> -->
   <hgroup>
     <h1>Et demain, la modélisation de la biosphère?</h1>
   </hgroup>
-  <article>
-    
-    <div class='left' style='float:left;width:48%'>
-     <p><img src="assets/img/intro/PurvesNature.jpg" height="400px"></img></p>
+  <article data-timings="">
+    <div style='text-align:center;'>
+<img src="assets/img/intro/PurvesNature.jpg" height="400px"></img>
+</div>
 
-    </div>
-    <div class='right' style='float:right;width:48%'>
-     <ul>
-<li>GEM</li>
-<li>Discussion lors de la retraite BOREAS</li>
-</ul>
-
-    </div>
   </article>
+  <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-5" style="background:;">
-  <!--  <a href="#slide-5"></a> -->
+<slide class="" id="slide-25" style="background:;">
+  <!--  <a href="#slide-25"></a> -->
   <hgroup>
     <h1>Progression de la puissance de calcul</h1>
   </hgroup>
@@ -127,8 +426,8 @@
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-6" style="background:;">
-  <!--  <a href="#slide-6"></a> -->
+<slide class="" id="slide-26" style="background:;">
+  <!--  <a href="#slide-26"></a> -->
   <hgroup>
     <h1>Utilisation en science au quotidien</h1>
   </hgroup>
@@ -138,13 +437,13 @@
 <ul>
 <li>Tâches répétitives et/ou complexes (e.g. Nettoyage des données, Simulations stochastiques)</li>
 <li>Visualisation et exploration des données</li>
-<li>Analyses statistiques (e.g. multivariée)</li>
+<li>Analyses statistiques avancées (e.g. tests par permutations, statistiques bayesiennes)</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h1>La programmation en science</h1>
   </hgroup>
@@ -173,38 +472,8 @@
     </div>
   </article>
 </slide>
-<slide class="" id="slide-8" style="background:;">
-  <!--  <a href="#slide-8"></a> -->
-  <hgroup>
-    <h1>Étude de cas: Tableau croisé dynamique</h1>
-  </hgroup>
-  <article data-timings="">
-    <ol>
-<li>Ouvrir le fichier <code>cor.txt</code> avec MS Excel ou OpenOffice.</li>
-<li>Réaliser un tableau de corrélation entre les variables.
-\[
-r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
-\]</li>
-</ol>
-
-<h3>Entête du tableau <code>cor.txt</code></h3>
-
-<pre><code>##             x          y          z
-## 1 -0.45644692  0.0888347 -1.9448750
-## 2 -0.06086238  0.2796119 -0.3706845
-## 3  0.71815254  0.2316153 -0.2345443
-## 4 -0.03953577 -1.3303303  1.9446086
-## 5  0.35397485 -1.0575946  1.0131490
-## 6  0.82226499  1.3129468 -1.9001695
-</code></pre>
-
-<p>&lt;!-- TODO: Mettre les données de Sutton --&gt;</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-9" style="background:;">
-  <!--  <a href="#slide-9"></a> -->
+<slide class="" id="slide-28" style="background:;">
+  <!--  <a href="#slide-28"></a> -->
   <hgroup>
     <h1>La programmation en science</h1>
   </hgroup>
@@ -218,7 +487,7 @@ r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h1>La programmation en science</h1>
   </hgroup>
@@ -241,34 +510,34 @@ r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
     </div>
   </article>
 </slide>
-<slide class="transition" id="slide-11" style="background:;">
-  <!--  <a href="#slide-11"></a> -->
+<slide class="transition" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
   <hgroup>
-    <h1>Les languages de programmation</h1>
+    <h1>Les langages de programmation</h1>
   </hgroup>
   <article data-timings="">
     
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-12" style="background:;">
-  <!--  <a href="#slide-12"></a> -->
+<slide class="" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
   <hgroup>
-    <h1>Deux grandes familles de language</h1>
+    <h1>Deux grandes familles de langage</h1>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Les languages compilés</li>
-<li>Les languages interprétés</li>
+<li>Les langages compilés</li>
+<li>Les langages interprétés</li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-13" style="background:;">
-  <!--  <a href="#slide-13"></a> -->
+<slide class="" id="slide-32" style="background:;">
+  <!--  <a href="#slide-32"></a> -->
   <hgroup>
-    <h1>1. Les languages compilés</h1>
+    <h1>1. Les langages compilés</h1>
   </hgroup>
   <article data-timings="">
     <div style='text-align:center;'>
@@ -278,10 +547,10 @@ r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-14" style="background:;">
-  <!--  <a href="#slide-14"></a> -->
+<slide class="" id="slide-33" style="background:;">
+  <!--  <a href="#slide-33"></a> -->
   <hgroup>
-    <h1>2. Les languages interprétés</h1>
+    <h1>2. Les langages interprétés</h1>
   </hgroup>
   <article data-timings="">
     <div style='text-align:center;'>
@@ -291,8 +560,8 @@ r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-15" style="background:;">
-  <!--  <a href="#slide-15"></a> -->
+<slide class="" id="slide-34" style="background:;">
+  <!--  <a href="#slide-34"></a> -->
   <hgroup>
     <h1>Interprété vs compilé</h1>
   </hgroup>
@@ -308,32 +577,44 @@ pander::pander()
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-16" style="background:;">
-  <!--  <a href="#slide-16"></a> -->
+<slide class="" id="slide-35" style="background:;">
+  <!--  <a href="#slide-35"></a> -->
   <hgroup>
-    <h1>Ajouter de l&#39;info sur les languages</h1>
+    <h1>La performance est un critère pour le choix d&#39;un langage</h1>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Arbre d&#39;évolution des languages</li>
-<li>Performance/Benchmark des différents languages</li>
-</ul>
+    <div style='text-align:center;'>
+  <img src="assets/img/intro/performance.png" width="900px"></img>
+</div>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-17" style="background:;">
-  <!--  <a href="#slide-17"></a> -->
+<slide class="" id="slide-36" style="background:;">
+  <!--  <a href="#slide-36"></a> -->
   <hgroup>
-    <h1>Et en science?</h1>
+    <h1>Un autre critère est le &#39;débugging&#39;</h1>
+  </hgroup>
+  <article data-timings="">
+    <div style='text-align:center;'>
+  <img src="assets/img/intro/bug.png" width="900px"></img>
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-37" style="background:;">
+  <!--  <a href="#slide-37"></a> -->
+  <hgroup>
+    <h1>Et en écologie?</h1>
   </hgroup>
   <article data-timings="">
     
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-18" style="background:;">
-  <!--  <a href="#slide-18"></a> -->
+<slide class="transition" id="slide-38" style="background:;">
+  <!--  <a href="#slide-38"></a> -->
   <hgroup>
     <h1>Le Pseudo-Code</h1>
   </hgroup>
@@ -342,8 +623,8 @@ pander::pander()
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-19" style="background:;">
-  <!--  <a href="#slide-19"></a> -->
+<slide class="" id="slide-39" style="background:;">
+  <!--  <a href="#slide-39"></a> -->
   <hgroup>
     <h1>Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong></h1>
   </hgroup>
@@ -361,8 +642,8 @@ pander::pander()
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-20" style="background:;">
-  <!--  <a href="#slide-20"></a> -->
+<slide class="" id="slide-40" style="background:;">
+  <!--  <a href="#slide-40"></a> -->
   <hgroup>
     <h1>Le <code>Pseudo-Code</code></h1>
   </hgroup>
@@ -386,8 +667,8 @@ pander::pander()
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-21" style="background:;">
-  <!--  <a href="#slide-21"></a> -->
+<slide class="" id="slide-41" style="background:;">
+  <!--  <a href="#slide-41"></a> -->
   <hgroup>
     <h1>Le <code>Pseudo-Code</code></h1>
   </hgroup>
@@ -411,8 +692,8 @@ pander::pander()
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-22" style="background:;">
-  <!--  <a href="#slide-22"></a> -->
+<slide class="" id="slide-42" style="background:;">
+  <!--  <a href="#slide-42"></a> -->
   <hgroup>
     <h1>Les structures de base d&#39;un algorithme</h1>
   </hgroup>
@@ -440,8 +721,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-23" style="background:;">
-  <!--  <a href="#slide-23"></a> -->
+<slide class="" id="slide-43" style="background:;">
+  <!--  <a href="#slide-43"></a> -->
   <hgroup>
     <h1>1. Les opérations séquentielles</h1>
   </hgroup>
@@ -459,8 +740,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-24" style="background:;">
-  <!--  <a href="#slide-24"></a> -->
+<slide class="" id="slide-44" style="background:;">
+  <!--  <a href="#slide-44"></a> -->
   <hgroup>
     <h1>2. Les opérations itératives</h1>
   </hgroup>
@@ -478,8 +759,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-25" style="background:;">
-  <!--  <a href="#slide-25"></a> -->
+<slide class="" id="slide-45" style="background:;">
+  <!--  <a href="#slide-45"></a> -->
   <hgroup>
     <h1>2. Les opérations itératives</h1>
   </hgroup>
@@ -495,8 +776,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-26" style="background:;">
-  <!--  <a href="#slide-26"></a> -->
+<slide class="" id="slide-46" style="background:;">
+  <!--  <a href="#slide-46"></a> -->
   <hgroup>
     <h1>3. Les opérations décisionnelles</h1>
   </hgroup>
@@ -518,8 +799,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-27" style="background:;">
-  <!--  <a href="#slide-27"></a> -->
+<slide class="" id="slide-47" style="background:;">
+  <!--  <a href="#slide-47"></a> -->
   <hgroup>
     <h1>3. Les opérations décisionnelles</h1>
   </hgroup>
@@ -539,8 +820,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-28" style="background:;">
-  <!--  <a href="#slide-28"></a> -->
+<slide class="" id="slide-48" style="background:;">
+  <!--  <a href="#slide-48"></a> -->
   <hgroup>
     <h1>Les règles du <code>pseudo-code</code></h1>
   </hgroup>
@@ -559,8 +840,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-29" style="background:;">
-  <!--  <a href="#slide-29"></a> -->
+<slide class="transition" id="slide-49" style="background:;">
+  <!--  <a href="#slide-49"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -570,7 +851,7 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-30" style="background:;">
+<slide class="" id="slide-50" style="background:;">
   <hgroup>
     
   </hgroup>
@@ -597,182 +878,302 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='La place de la programmation en écologie'>
+        data-slide=1 title='Introduction'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Des modèles mathématiques simples'>
+        data-slide=2 title='Introduction'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Aujourd&#39;hui'>
+        data-slide=3 title='Introduction'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Et demain, la modélisation de la biosphère?'>
+        data-slide=4 title='Introduction'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Progression de la puissance de calcul'>
+        data-slide=5 title='Introduction'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Utilisation en science au quotidien'>
+        data-slide=6 title='Introduction'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='La programmation en science'>
+        data-slide=7 title='Introduction'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Étude de cas: Tableau croisé dynamique'>
+        data-slide=8 title='Introduction'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='La programmation en science'>
+        data-slide=9 title='Question de recherche'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='La programmation en science'>
+        data-slide=10 title='Le type de données'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Les languages de programmation'>
+        data-slide=11 title='Exercice 1'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Deux grandes familles de language'>
+        data-slide=12 title='Exercice 1: solution sur R'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='1. Les languages compilés'>
+        data-slide=13 title='Exercice 2'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='2. Les languages interprétés'>
+        data-slide=14 title='Exercice 2: solution sur R'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Interprété vs compilé'>
+        data-slide=15 title='Exercice 2: visualisation sur R'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Ajouter de l&#39;info sur les languages'>
+        data-slide=16 title='Objectifs spécifiques'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Et en science?'>
+        data-slide=17 title='Contenu'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Le Pseudo-Code'>
+        data-slide=18 title='Approche'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong>'>
+        data-slide=19 title='Évaluation'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Le <code>Pseudo-Code</code>'>
+        data-slide=20 title='La place de la programmation en écologie'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Le <code>Pseudo-Code</code>'>
+        data-slide=21 title='Hier'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Les structures de base d&#39;un algorithme'>
+        data-slide=22 title='Aujourd&#39;hui'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='1. Les opérations séquentielles'>
+        data-slide=23 title='Aujourd&#39;hui'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='2. Les opérations itératives'>
+        data-slide=24 title='Et demain, la modélisation de la biosphère?'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='2. Les opérations itératives'>
+        data-slide=25 title='Progression de la puissance de calcul'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='3. Les opérations décisionnelles'>
+        data-slide=26 title='Utilisation en science au quotidien'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='3. Les opérations décisionnelles'>
+        data-slide=27 title='La programmation en science'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Les règles du <code>pseudo-code</code>'>
+        data-slide=28 title='La programmation en science'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Exercice'>
+        data-slide=29 title='La programmation en science'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='NA'>
+        data-slide=30 title='Les langages de programmation'>
          30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Deux grandes familles de langage'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='1. Les langages compilés'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='2. Les langages interprétés'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Interprété vs compilé'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='La performance est un critère pour le choix d&#39;un langage'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Un autre critère est le &#39;débugging&#39;'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Et en écologie?'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Le Pseudo-Code'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong>'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='Le <code>Pseudo-Code</code>'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Le <code>Pseudo-Code</code>'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Les structures de base d&#39;un algorithme'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='1. Les opérations séquentielles'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='2. Les opérations itératives'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='2. Les opérations itératives'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='3. Les opérations décisionnelles'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='3. Les opérations décisionnelles'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Les règles du <code>pseudo-code</code>'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Exercice'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='NA'>
+         50
       </a>
     </li>
   </ul>

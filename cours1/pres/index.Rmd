@@ -15,128 +15,128 @@ url:
 license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
+  img:
+---
 
---- .transition
+# Introduction
 
-*** =left
-
-<img src="assets/img/intro/bioclim.jpg" height="400px"></img>
-
-*** =right
-
---- 
-
-*** =left
-
-<img src="assets/img/intro/mont_vertes.jpg" height="400px"></img>
-
-*** =right
-
---- 
-
-
-*** =left
-
-<img src="assets/img/intro/megantic.jpg" height="400px"></img>
-
-*** =right
-
---- 
-
-*** =left
-
-<img src="assets/img/intro/ours.jpg" height="400px"></img>
-
-*** =right
-
---- 
-
-*** =left
-
-<img src="assets/img/intro/orignal.jpg" height="400px"></img>
-
-*** =right
+<div style='text-align:center;'>
+<img src="assets/img/intro/bioclim.png" height="500px"></img>
+</div>
 
 ---
 
-*** =left
+# Introduction
 
+<div style='text-align:center;'>
+<img src="assets/img/intro/mont_vertes.png" height="500px"></img>
+</div>
+
+---
+
+# Introduction
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/megantic.jpg" height="400px"></img>
+</div>
+
+---
+
+# Introduction
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/ours.jpg" height="400px"></img>
+</div>
+
+---
+
+# Introduction
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/orignal.jpg" height="400px"></img>
+</div>
+
+---
+
+# Introduction
+
+<div style='text-align:center;'>
 <img src="assets/img/intro/salamandre.jpg" height="400px"></img>
+</div>
 
-*** =right
+---
 
----  
+# Introduction
 
-*** =left
-
+<div style='text-align:center;'>
 <img src="assets/img/intro/cypripedium.jpg" height="400px"></img>
+</div>
 
-*** =right
+---
 
---- 
+# Introduction
 
-*** =left
-
+<div style='text-align:center;'>
 <img src="assets/img/intro/grille.jpg" height="400px"></img>
+</div>
 
-*** =right
-
---- 
+---
 
 # Question de recherche
 
 À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
 
---- 
+---
 
 # Le type de données
 
-'''
-arbres = read.table(file = 'arbres.txt', header = TRUE, dec = ",")
+```{r}
+arbres = read.table(file = './data/arbres_sut_bio109.txt', header = TRUE, dec = ",")
 head(arbres)
-'''
+```
 
---- 
+---
 
 # Exercice 1
 
-Ouvrir le fichier 'arbres.txt' avec Excel et calculer le nombre d'individus de chaque espèce espèce pour le quadrat 1. 
+Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de chaque espèce espèce pour le quadrat 1.
 
-----
+---
 
 # Exercice 1: solution sur R
 
-'''
-arbres = read.table(file = 'arbres.txt', header = TRUE, dec = ",")
+```{r}
+arbres = read.table(file = './data/arbres_sut_bio109.txt', header = TRUE, dec = ",")
 quadrats = tapply(arbres$sp, INDEX = arbres$quadrat)
 head(quadrats)
-'''
-----
+```
+
+---
 
 # Exercice 2
 
-Ouvrir le fichier 'quadrats.txt' avec Excel et calculer la corrélation entre toutes les paires d'espèces. 
+Ouvrir le fichier 'quadrats.txt' avec Excel et calculer la corrélation entre toutes les paires d'espèces.
 
 Petit truc: sur Excel, la fonction pour calculer une corrélation est:
 =covariance.pearson(données_1; données_2)
 
-----
+---
 
 # Exercice 2: solution sur R
 
-'''
+```r
 quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
 cor(quadrats)
-'''
+```
 
-----
+---
 
 # Exercice 2: visualisation sur R
 
-'''
+```r
 quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
 plot(quadrats)
-'''
+```
 ---
 
 # Objectif général
@@ -210,13 +210,13 @@ réalisation du projet.
 
 # Hier
 
-La dynamique d'une population: 
+La dynamique d'une population:
 
 $$
 \frac{dN}{dt} = rN(1-\frac{N}{K})
 $$
 
-Qui donne pour solution à l'équilibre: 
+Qui donne pour solution à l'équilibre:
 
 $$
 N^* = K
@@ -235,15 +235,12 @@ $$
 <img src="assets/img/intro/map_vissault.jpg" height="400px"></img>
 
 
---- &twocol
+---
 
 # Et demain, la modélisation de la biosphère?
-
-*** =left
-
+<div style='text-align:center;'>
 <img src="assets/img/intro/PurvesNature.jpg" height="400px"></img>
-
-*** =right
+</div>
 
 ---
 
