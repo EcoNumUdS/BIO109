@@ -212,23 +212,27 @@ réalisation du projet.
 
 La dynamique d'une population: 
 
-$\frac{dN}{dt} = rN(1-\frac{N}{K})$
+$$
+\frac{dN}{dt} = rN(1-\frac{N}{K})
+$$
 
 Qui donne pour solution à l'équilibre: 
 
-$N^* = K$
+$$
+N^* = K
+$$
 
 ---
 
 # Aujourd'hui
 
-<img src="assets/img/intro/modeles.jpg" height="400px"></img>
+<img src="assets/img/intro/modele_vissault.jpg" height="400px"></img>
 
 ---
 
 # Aujourd'hui
 
-<img src="assets/img/intro/cartes_vissault.jpg" height="400px"></img>
+<img src="assets/img/intro/map_vissault.jpg" height="400px"></img>
 
 
 --- &twocol
@@ -259,7 +263,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 
 - Tâches répétitives et/ou complexes (e.g. Nettoyage des données, Simulations stochastiques)
 - Visualisation et exploration des données
-- Analyses statistiques (e.g. multivariée)
+- Analyses statistiques avancées (e.g. tests par permutations, statistiques bayesiennes)
 
 --- &twocol
 
@@ -283,26 +287,6 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 [Nature 2013](http://www.nature.com/nature/journal/v498/n7453/full/498255a.html)
 </span>
 
-
----
-
-# Étude de cas: Tableau croisé dynamique
-
-
-1. Ouvrir le fichier `cor.txt` avec MS Excel ou OpenOffice.
-2. Réaliser un tableau de corrélation entre les variables.
-$$
-r = \frac{\sum (y_1 - \bar{y}_1)(y_2 - \bar{y}_2)/(n-1)}{S_1 \cdot S_2}
-$$
-
-### Entête du tableau `cor.txt`
-
-```{r echo=FALSE}
-df <- data.frame(x=rnorm(100),y=rnorm(100),z=rnorm(100))
-## Matrice de correlation en espèce
-head(df)
-```
- <!-- TODO: Mettre les données de Sutton -->
 
 ---
 
@@ -336,32 +320,30 @@ head(df)
 
 --- .transition
 
-# Les languages de programmation
+# Les langages de programmation
 
 ---
 
-# Deux grandes familles de language
+# Deux grandes familles de langage
 
-1. Les languages compilés
-2. Les languages interprétés
+1. Les langages compilés
+2. Les langages interprétés
 
 ---
 
-# 1. Les languages compilés
+# 1. Les langages compilés
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/compile.svg"  width="900px"></img>
 </div>
 
-
 ---
 
-# 2. Les languages interprétés
+# 2. Les langages interprétés
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/interprete.svg" width="900px"></img>
 </div>
-
 
 ---
 
@@ -374,20 +356,25 @@ df <- c(' ')
 pander::pander()
 ```
 
+---
+
+# La performance est un critère pour le choix d'un langage
+
+<div style='text-align:center;'>
+  <img src="assets/img/intro/performance.png" width="900px"></img>
+</div>
 
 ---
 
-# Ajouter de l'info sur les languages
+# Un autre critère est le 'débugging'
 
-- Arbre d'évolution des languages
-- Performance/Benchmark des différents languages
+<div style='text-align:center;'>
+  <img src="assets/img/intro/bug.png" width="900px"></img>
+</div>
 
 ---
 
-# Et en science?
-
-
-
+# Et en écologie?
 
 --- .transition
 
