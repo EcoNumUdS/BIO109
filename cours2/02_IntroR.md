@@ -1,20 +1,3 @@
----
-title       : "Scéance # 2: Introduction au language R"
-author      : "Dominique Gravel"
-job         : "Laboratoire d'Ecologie Integrative " #(http://ielab.recherche.usherbrooke.ca)
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      #
-mode        : selfcontained
-knit        : slidify::knit2slides
-widgets     : [mathjax]
-url:
-  lib   : ./libraries
-license     : by-nc-sa
-assets      :
-  css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
----
-
 # Contenu du cours
 
 1. Interagir avec R
@@ -24,6 +7,20 @@ assets      :
 3. Le script R
 
 4. Manipuler des objets
+
+--- 
+
+# 5 raisons pour utiliser R
+
+R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de 'débuggage' (!!)
+
+Les arguments en faveur de R
+
+1. Gratuit et ouvert
+2. Une façon de communiquer avec la communauté scientifique
+3. Diversité d'utilisateurs et de contributions
+4. En phase avec les développements les plus récents en écologie
+5. Intégration du langage de programmation avec les outils de visualisation et de manipulation des données
 
 --- 
 

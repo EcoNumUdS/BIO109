@@ -1,9 +1,7 @@
 ---
-title       : "Introduction à la programmation scientifique"
-subtitle    : "Cours 1"
-author      : "Dominique Gravel, Kevin Cazelles et Steve Vissault"
-job         : "Laboratoire d'Ecologie Integrative, UdS"
-logo        : "UdeS_nouveau_coul72dpi.png"
+title       : "Scéance # 2: Introduction au langage R"
+author      : "Dominique Gravel"
+job         : "Laboratoire d'écologie intégrative " #(http://ielab.recherche.usherbrooke.ca)
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #
@@ -15,5 +13,4 @@ url:
 license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
-  img:
 ---

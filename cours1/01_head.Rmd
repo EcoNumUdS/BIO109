@@ -1,8 +1,8 @@
 ---
 title       : "Introduction à la programmation scientifique"
 subtitle    : "Cours 1"
-author      : "Dominique Gravel, Kevin Cazelles et Steve Vissault"
-job         : "Laboratoire d'Ecologie Integrative, UdS"
+author      : "Dominique Gravel"
+job         : "Laboratoire d'écologie intégrative, UdS"
 logo        : "UdeS_nouveau_coul72dpi.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
