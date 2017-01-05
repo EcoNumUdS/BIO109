@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Introduction à la programmation scientifique</title>
+  <title>Scéance # 2: Introduction au langage R</title>
   <meta charset="utf-8">
-  <meta name="description" content="Introduction à la programmation scientifique">
-  <meta name="author" content="Dominique Gravel, Kevin Cazelles et Steve Vissault">
+  <meta name="description" content="Scéance # 2: Introduction au langage R">
+  <meta name="author" content="Dominique Gravel">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,13 +33,10 @@
     
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
-  <aside class="gdbar">
-    <img src="assets/img/UdeS_nouveau_coul72dpi.png">
-  </aside>
   <hgroup class="auto-fadein">
-    <h1>Introduction à la programmation scientifique</h1>
-    <h2>Cours 1</h2>
-    <p>Dominique Gravel, Kevin Cazelles et Steve Vissault<br/>Laboratoire d'Ecologie Integrative, UdS</p>
+    <h1>Scéance # 2: Introduction au langage R</h1>
+    <h2></h2>
+    <p>Dominique Gravel<br/>Laboratoire d'écologie intégrative </p>
   </hgroup>
   <article></article>
   <footer class = 'license'>
@@ -54,12 +51,14 @@
     <slide class="" id="slide-1" style="background:;">
   <!--  <a href="#slide-1"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Contenu du cours</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/bioclim.png" height="500px"></img>
-</div>
+    <ol>
+<li><p>Interagir avec R</p></li>
+<li><p>Lire et écrire des objets</p></li>
+<li><p>Manipuler des objets</p></li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -67,12 +66,20 @@
 <slide class="" id="slide-2" style="background:;">
   <!--  <a href="#slide-2"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>5 raisons pour utiliser R</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/mont_vertes.png" height="500px"></img>
-</div>
+    <p>R est un langage de programmation en source libre conçu pour l&#39;analyse statistique, l&#39;analyse de données et la visualisation. R n&#39;est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l&#39;apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de &#39;débuggage&#39; (!!)</p>
+
+<p>Les arguments en faveur de R</p>
+
+<ol>
+<li>Gratuit et ouvert</li>
+<li>Une façon de communiquer avec la communauté scientifique</li>
+<li>Diversité d&#39;utilisateurs et de contributions</li>
+<li>En phase avec les développements les plus récents en écologie</li>
+<li>Intégration du langage de programmation avec les outils de visualisation et de manipulation des données</li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -80,11 +87,11 @@
 <slide class="" id="slide-3" style="background:;">
   <!--  <a href="#slide-3"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Interagir avec R sur la console</h1>
   </hgroup>
   <article data-timings="">
     <div style='text-align:center;'>
-<img src="assets/img/intro/megantic.jpg" height="400px"></img>
+<img src="assets/img/intro/Rgui.png" height="500px"></img>
 </div>
 
   </article>
@@ -93,11 +100,11 @@
 <slide class="" id="slide-4" style="background:;">
   <!--  <a href="#slide-4"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Utiliser R Studio</h1>
   </hgroup>
   <article data-timings="">
     <div style='text-align:center;'>
-<img src="assets/img/intro/ours.jpg" height="400px"></img>
+<img src="assets/img/intro/RStudio.png" height="500px"></img>
 </div>
 
   </article>
@@ -106,11 +113,11 @@
 <slide class="" id="slide-5" style="background:;">
   <!--  <a href="#slide-5"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Exercice : installer et lancer R Studio</h1>
   </hgroup>
   <article data-timings="">
     <div style='text-align:center;'>
-<img src="assets/img/intro/orignal.jpg" height="400px"></img>
+<img src="assets/img/intro/RStudio_logo.png" height="100px"></img>
 </div>
 
   </article>
@@ -119,12 +126,14 @@
 <slide class="" id="slide-6" style="background:;">
   <!--  <a href="#slide-6"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Exercice : interaction avec la ligne de commande</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/salamandre.jpg" height="400px"></img>
-</div>
+    <p>Le plus simple est d&#39;utiliser R comme une calculatrice. </p>
+
+<p>Que donne l&#39;opération suivante ?</p>
+
+<p>2 + 16 x 24 - 56</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -132,12 +141,21 @@
 <slide class="" id="slide-7" style="background:;">
   <!--  <a href="#slide-7"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Répertoire de travail</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/cypripedium.jpg" height="400px"></img>
-</div>
+    <p>Savoir où on est</p>
+
+<pre><code class="r">getwd()
+</code></pre>
+
+<pre><code>## [1] &quot;/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/cours2/pres&quot;
+</code></pre>
+
+<p>Changer le répertoire de travail</p>
+
+<pre><code class="r">setwd(&quot;/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees&quot;)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -145,12 +163,25 @@
 <slide class="" id="slide-8" style="background:;">
   <!--  <a href="#slide-8"></a> -->
   <hgroup>
-    <h1>Introduction</h1>
+    <h1>Environnement de travail</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/grille.jpg" height="400px"></img>
-</div>
+    <p>Obtenir le contenu du dossier dans le répertoire de travail</p>
+
+<pre><code class="r">dir()
+</code></pre>
+
+<pre><code>## [1] &quot;assets&quot;     &quot;data&quot;       &quot;index.html&quot; &quot;index.md&quot;   &quot;index.Rmd&quot; 
+## [6] &quot;libraries&quot;  &quot;test.Rdata&quot; &quot;test.xt&quot;
+</code></pre>
+
+<p>Obtenir la liste des objets en mémoire</p>
+
+<pre><code class="r">ls()
+</code></pre>
+
+<pre><code>## character(0)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -158,10 +189,48 @@
 <slide class="" id="slide-9" style="background:;">
   <!--  <a href="#slide-9"></a> -->
   <hgroup>
-    <h1>Question de recherche</h1>
+    <h1>Environnement de travail</h1>
   </hgroup>
   <article data-timings="">
-    <p>À quelle vitesse se réalisera la migration de l&#39;érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?</p>
+    <p>Effacer un objet en mémoire</p>
+
+<pre><code class="r">test &lt;- 1
+test
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<pre><code class="r">ls()
+</code></pre>
+
+<pre><code>## [1] &quot;test&quot;
+</code></pre>
+
+<pre><code class="r">rm(test)
+ls()
+</code></pre>
+
+<pre><code>## character(0)
+</code></pre>
+
+<hr>
+
+<h1>Le concept d&#39;objet</h1>
+
+<p>Un objet peut contenir de l&#39;information de toute nature: un tableau de données, les résultats d&#39;une analyse, une figure, une fonction</p>
+
+<p>La commande pour créer un objet est composé de trois parties:
+i) une valeur d&#39;intérêt
+ii) un identifiant
+iii) l&#39;opérateur d&#39;assignation</p>
+
+<pre><code class="r">a &lt;- c(1,2)
+a
+</code></pre>
+
+<pre><code>## [1] 1 2
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -169,21 +238,21 @@
 <slide class="" id="slide-10" style="background:;">
   <!--  <a href="#slide-10"></a> -->
   <hgroup>
-    <h1>Le type de données</h1>
+    <h1>Types d&#39;objets: scalaires</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">arbres = read.table(file = &#39;./data/arbres_sut_bio109.txt&#39;, header = TRUE, dec = &quot;,&quot;)
-head(arbres)
+    <p>Comprendre les types de données utilisées par R est une notion de base pour réaliser des opérations. R utilise soit des données brutes, ou des collections de données. </p>
+
+<p>Pour assigner une valeur à un objet simple (un scalaire) on utilise l&#39;opération suivante:</p>
+
+<pre><code class="r">objet &lt;- 2
+objet
 </code></pre>
 
-<pre><code>##   borx bory arbre  esp multi mort dhp
-## 1   80    0     1 ACPE  FAUX FAUX  39
-## 2   80    0     2 ACPE  FAUX FAUX  19
-## 3   80    0     3 ACSA  FAUX FAUX 487
-## 4   80    0     4 ACSA  FAUX FAUX 568
-## 5   80    0     5 ACSA  FAUX FAUX 196
-## 6   80    0     6 ACSA  FAUX FAUX 345
+<pre><code>## [1] 2
 </code></pre>
+
+<p>Notons que les opérateurs &#39;&lt;-&#39;&#39; et &#39;=&#39;&#39; sont équivalents pour attribuer une valeur à un objet. L&#39;opérateur &#39;&lt;-&#39; peut être difficile à lire ou confondu avec le signe &#39;-&#39;. Cependant, la recommandation est de limiter le signe &#39;=&#39; à des opérations mathématiques et d&#39;utiliser &#39;&lt;-&#39; pour l&#39;assignation de valeurs.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -191,10 +260,31 @@ head(arbres)
 <slide class="" id="slide-11" style="background:;">
   <!--  <a href="#slide-11"></a> -->
   <hgroup>
-    <h1>Exercice 1</h1>
+    <h1>Types d&#39;objets: scalaires</h1>
   </hgroup>
   <article data-timings="">
-    <p>Ouvrir le fichier <code>arbres.txt</code> avec Excel et calculer le nombre d&#39;individus de chaque espèce espèce pour le quadrat 1.</p>
+    <p>Les données numériques peuvent être déclarées de différentes manières</p>
+
+<pre><code class="r">a &lt;- 1
+a
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<pre><code class="r">b &lt;- 1.1
+b
+</code></pre>
+
+<pre><code>## [1] 1.1
+</code></pre>
+
+<pre><code class="r">c &lt;- 1e-6
+c
+</code></pre>
+
+<pre><code>## [1] 1e-06
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -202,15 +292,25 @@ head(arbres)
 <slide class="" id="slide-12" style="background:;">
   <!--  <a href="#slide-12"></a> -->
   <hgroup>
-    <h1>Exercice 1: solution sur R</h1>
+    <h1>Types d&#39;objets: scalaires</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">arbres = read.table(file = &#39;./data/arbres_sut_bio109.txt&#39;, header = TRUE, dec = &quot;,&quot;)
-quadrats = tapply(arbres$sp, INDEX = arbres$quadrat)
-head(quadrats)
+    <p>On peut également déclarer des séries de caractères</p>
+
+<pre><code class="r">test &lt;- &quot;test&quot;
+test
 </code></pre>
 
-<pre><code>## integer(0)
+<pre><code>## [1] &quot;test&quot;
+</code></pre>
+
+<p>Finalement, des séries de caractères peuvent être collées entre elles</p>
+
+<pre><code class="r">collage &lt;- paste(&quot;a&quot;,&quot;b&quot;, sep=&quot;&quot;)
+collage
+</code></pre>
+
+<pre><code>## [1] &quot;ab&quot;
 </code></pre>
 
   </article>
@@ -219,13 +319,30 @@ head(quadrats)
 <slide class="" id="slide-13" style="background:;">
   <!--  <a href="#slide-13"></a> -->
   <hgroup>
-    <h1>Exercice 2</h1>
+    <h1>Types de données: booléens</h1>
   </hgroup>
   <article data-timings="">
-    <p>Ouvrir le fichier &#39;quadrats.txt&#39; avec Excel et calculer la corrélation entre toutes les paires d&#39;espèces.</p>
+    <p>Le type booléen (logical) permet de représenter les états <em>vrai</em> (TRUE) et <em>faux</em> (FALSE) et de faire des opérations mathématiques sur ces objets</p>
 
-<p>Petit truc: sur Excel, la fonction pour calculer une corrélation est:
-=covariance.pearson(données_1; données_2)</p>
+<pre><code class="r">vrai &lt;- TRUE
+faux &lt;- FALSE
+vrai
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">vrai + faux
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<pre><code class="r">vrai * faux
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -233,11 +350,17 @@ head(quadrats)
 <slide class="" id="slide-14" style="background:;">
   <!--  <a href="#slide-14"></a> -->
   <hgroup>
-    <h1>Exercice 2: solution sur R</h1>
+    <h1>Types de données: facteurs</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">quadrats = read.table(file = &#39;quadrats.txt&#39;, header = TRUE, dec = &quot;,&quot;, row.names = 1)
-cor(quadrats)
+    <p>R est d&#39;abord un language utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui n&#39;est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitemetns expérimentaux. </p>
+
+<pre><code class="r">MesFacteurs &lt;- factor(c(1,2,3,2,3,3,1,2))
+MesFacteurs
+</code></pre>
+
+<pre><code>## [1] 1 2 3 2 3 3 1 2
+## Levels: 1 2 3
 </code></pre>
 
   </article>
@@ -246,18 +369,53 @@ cor(quadrats)
 <slide class="" id="slide-15" style="background:;">
   <!--  <a href="#slide-15"></a> -->
   <hgroup>
-    <h1>Exercice 2: visualisation sur R</h1>
+    <h1>Types de données: conversions</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">quadrats = read.table(file = &#39;quadrats.txt&#39;, header = TRUE, dec = &quot;,&quot;, row.names = 1)
-plot(quadrats)
+    <p>R permet de convertir des objets en différents types de données lorsque le contenu le permet.</p>
+
+<pre><code class="r">as.numeric(c(&quot;4&quot;,&quot;6&quot;))
 </code></pre>
 
-<hr>
+<pre><code>## [1] 4 6
+</code></pre>
 
-<h1>Objectif général</h1>
+<pre><code class="r">as.character(c(4,6))
+</code></pre>
 
-<p><em>Au terme de ce cours, l&#39;étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.</em></p>
+<pre><code>## [1] &quot;4&quot; &quot;6&quot;
+</code></pre>
+
+<pre><code class="r">as.integer(2.6)
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<pre><code class="r">as.logical(0)
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+<pre><code class="r">as.logical(1)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">as.logical(2)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">as.factor(c(&quot;4&quot;,&quot;6&quot;))
+</code></pre>
+
+<pre><code>## [1] 4 6
+## Levels: 4 6
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -265,19 +423,15 @@ plot(quadrats)
 <slide class="" id="slide-16" style="background:;">
   <!--  <a href="#slide-16"></a> -->
   <hgroup>
-    <h1>Objectifs spécifiques</h1>
+    <h1>Types de variables: vecteurs</h1>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Charger des données et exporter des résultats d&#39;analyses au moyen du
-logiciel R;</li>
-<li>Conceptualiser un problème au moyen de pseudo-code;</li>
-<li>Manipuler des données;</li>
-<li>Rédiger des fonctions;</li>
-<li>Programmer des algorithmes afin de réaliser des tâches complexes,
-incluant des boucles et des énoncés conditionnels;</li>
-<li>Réaliser des simulations de Monte Carlo;</li>
-</ol>
+    <p>Le vecteur est l&#39;objet le plus important de R. On dit que le langage R est <em>vectoriel</em>, ce qui lui permet de réaliser des opérations optimisées pour ce type d&#39;objet. </p>
+
+<p>La façon la plus simple de déclarer un vecteur est (d&#39;autres méthodes seront présentées plus loin):</p>
+
+<pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -285,16 +439,10 @@ incluant des boucles et des énoncés conditionnels;</li>
 <slide class="" id="slide-17" style="background:;">
   <!--  <a href="#slide-17"></a> -->
   <hgroup>
-    <h1>Contenu</h1>
+    <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Introduction et bonnes pratiques de programmation</li>
-<li>Démystifier le langage R</li>
-<li>Les fonctions</li>
-<li>Algorithmique I: boucles et conditions</li>
-<li>Alogithmique II: simulations de Monte Carlo</li>
-</ol>
+    <p>Créez un vecteur contenant les valeurs {-1,2,5,9}. Vous pouvez calculer la racine carrée de ces nombres au moyen de la fonction sqrt()</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -302,19 +450,26 @@ incluant des boucles et des énoncés conditionnels;</li>
 <slide class="" id="slide-18" style="background:;">
   <!--  <a href="#slide-18"></a> -->
   <hgroup>
-    <h1>Approche</h1>
+    <h1>Types d&#39;objets: vecteurs</h1>
   </hgroup>
   <article data-timings="">
-    <p>Les connaissances requises pour la programmation scientifique sont
-minimales, l&#39;apprentissage porte davantage sur l&#39;acquisition de
-compétences et le développement de capacités à la résolution de problèmes.
-Les séances seront constituées de courtes leçons magistrales sur des
-notions de bases de programmation, entre-coupées d&#39;exercices spécifiques
-destinés à pratiquer les éléments enseignés. Les séances se conclueront
-sur la réalisation d&#39;un exercice intégrateur à compléter à la maison.</p>
+    <p>On peut accéder à une position sur le vecteur au moyen d&#39;un <em>index</em>, indiqué par les []</p>
 
-<p>L&#39;ensemble du matériel du cours sera disponible sur un dépôt git à l&#39;adresse :
-<a href="https://github.com/EcoNumUdS/BIO109.git">https://github.com/EcoNumUdS/BIO109.git</a></p>
+<pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
+MonPremierVecteur[3]
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+<p>Òn obtient un <em>NA</em> si on tente d&#39;accéder à une position qui n&#39;existe pas:</p>
+
+<pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
+MonPremierVecteur[6]
+</code></pre>
+
+<pre><code>## [1] NA
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -322,56 +477,72 @@ sur la réalisation d&#39;un exercice intégrateur à compléter à la maison.</
 <slide class="" id="slide-19" style="background:;">
   <!--  <a href="#slide-19"></a> -->
   <hgroup>
-    <h1>Évaluation</h1>
+    <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <p>L&#39;évaluation porte sur la participation aux exercices (20%) et sur un
-travail final (80%). Un exercice simple sera présenté à la fin des
-séances 1-4 et chaque étudiant devra remettre la solution de l&#39;exercice sous
-forme de script avant le début de la séance suivante. Les exercices
-peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
-propre copie, personnalisée. Les points sont attribués pour la
-participation.</p>
-
-<p>L&#39;évaluation finale portera sur la réalisation d&#39;un projet de
-programmation en équipe de 4 à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le <strong>21 février 2017 à 16:00</strong>. La
-pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
-parti de i) le pseudo-code pour le projet de programmation, ii) le respect
-des bonnes pratiques de programmation et iii) la réussite de l&#39;exercice
-demandé. Les étudiants devront remettre le script nécessaire à la
-réalisation du projet.</p>
+    <p>Au moyen du vecteur créé précédemment, calculer le produit des valeurs aux positions 2 et 4.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-20" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <!--  <a href="#slide-20"></a> -->
   <hgroup>
-    <h1>La place de la programmation en écologie</h1>
+    <h1>Types d&#39;objets: vecteurs</h1>
   </hgroup>
   <article data-timings="">
-    
+    <p>On obtient la dimension d&#39;un vecteur ainsi:</p>
+
+<pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
+length(MonPremierVecteur)
+</code></pre>
+
+<pre><code>## [1] 5
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-21" style="background:;">
   <!--  <a href="#slide-21"></a> -->
   <hgroup>
-    <h1>Hier</h1>
+    <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p>La dynamique d&#39;une population:</p>
+    <p>L&#39;extension naturelle d&#39;un vecteur est une <em>matrice</em>, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d&#39;objet. </p>
 
-<p>\[
-\frac{dN}{dt} = rN(1-\frac{N}{K})
-\]</p>
+<p>La commande de base pour créer une matrice est <em>matrix</em></p>
 
-<p>Qui donne pour solution à l&#39;équilibre:</p>
+<pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+MaMatrice
+</code></pre>
 
-<p>\[
-N^* = K
-\]</p>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+</code></pre>
+
+<p>Et on accède à la ligne <em>i</em> et la colonne <em>j</em> au moyen de la commande suivante</p>
+
+<pre><code class="r">MaMatrice[1,2] 
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+<p>On peut aussi accéder à des lignes ou des colonnes entières </p>
+
+<pre><code class="r">MaMatrice[1,]
+</code></pre>
+
+<pre><code>## [1] 1 3 5
+</code></pre>
+
+<pre><code class="r">MaMatrice[,1]
+</code></pre>
+
+<pre><code>## [1] 1 2
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -379,10 +550,29 @@ N^* = K
 <slide class="" id="slide-22" style="background:;">
   <!--  <a href="#slide-22"></a> -->
   <hgroup>
-    <h1>Aujourd&#39;hui</h1>
+    <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p><img src="assets/img/intro/modele_vissault.jpg" height="400px"></img></p>
+    <p>On obtient la dimension de la matrice ainsi</p>
+
+<pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+dim(MaMatrice)
+</code></pre>
+
+<pre><code>## [1] 2 3
+</code></pre>
+
+<pre><code class="r">nrow(MaMatrice)
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<pre><code class="r">ncol(MaMatrice)
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -390,10 +580,21 @@ N^* = K
 <slide class="" id="slide-23" style="background:;">
   <!--  <a href="#slide-23"></a> -->
   <hgroup>
-    <h1>Aujourd&#39;hui</h1>
+    <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p><img src="assets/img/intro/map_vissault.jpg" height="400px"></img></p>
+    <p>Les noms de colonnes et de lignes peuvent être modifiées</p>
+
+<pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+colnames(MaMatrice) = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
+rownames(MaMatrice) = c(&quot;X&quot;,&quot;Y&quot;)
+MaMatrice
+</code></pre>
+
+<pre><code>##   A B C
+## X 1 3 5
+## Y 2 4 6
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -401,12 +602,15 @@ N^* = K
 <slide class="" id="slide-24" style="background:;">
   <!--  <a href="#slide-24"></a> -->
   <hgroup>
-    <h1>Et demain, la modélisation de la biosphère?</h1>
+    <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/PurvesNature.jpg" height="400px"></img>
-</div>
+    <p>Créez une matrice de 2 lignes et 5 colonnes remplies de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions <em>runif()</em>. Calculez la somme de la première colonne au moyen de la fonction <em>sum()</em></p>
+
+<p><strong>Astuce</strong> : pour obtenir de l&#39;aide sur une fonction, essayez</p>
+
+<pre><code>?runif()
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -414,14 +618,32 @@ N^* = K
 <slide class="" id="slide-25" style="background:;">
   <!--  <a href="#slide-25"></a> -->
   <hgroup>
-    <h1>Progression de la puissance de calcul</h1>
+    <h1>Type d&#39;objets : listes</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-  <img src="assets/img/intro/calcul.svg" height="525px"></img>
-</div>
+    <p>R peut organiser également des collections de données sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d&#39;analyses statistiques, et même des listes à l&#39;intérieur de listes.</p>
 
-<!-- Ces questions sont rendu possible en partie grâce à l'augmentation de la puissance de nos ordinateurs et l'accessibilité aux données -->
+<p>La création et l&#39;indexation des listes est très similaire à celle des vecteurs et matrices</p>
+
+<pre><code class="r">MaListe = list()
+MaListe[[1]] = c(1,2)
+MaListe[[2]] = matrix(c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;), nrow = 2, ncol = 2)
+</code></pre>
+
+<p>Et de même on peut nommer les items d&#39;une liste</p>
+
+<pre><code class="r">names(MaListe) = c(&quot;Element1&quot;,&quot;Element2&quot;)
+MaListe
+</code></pre>
+
+<pre><code>## $Element1
+## [1] 1 2
+## 
+## $Element2
+##      [,1] [,2]
+## [1,] &quot;A&quot;  &quot;C&quot; 
+## [2,] &quot;B&quot;  &quot;D&quot;
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -429,107 +651,194 @@ N^* = K
 <slide class="" id="slide-26" style="background:;">
   <!--  <a href="#slide-26"></a> -->
   <hgroup>
-    <h1>Utilisation en science au quotidien</h1>
+    <h1>Type d&#39;objets: data.frame</h1>
   </hgroup>
   <article data-timings="">
-    <p>La programmation est outil indispensable au biologiste 2.0, elle permet:</p>
+    <p>Le <em>data.frame</em> est un objet d&#39;une structure particulière à R, un hybdride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées <em>i</em> et les colonnes <em>j</em>, ainsi que des noms de colonnes. Il n&#39;est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.</p>
 
-<ul>
-<li>Tâches répétitives et/ou complexes (e.g. Nettoyage des données, Simulations stochastiques)</li>
-<li>Visualisation et exploration des données</li>
-<li>Analyses statistiques avancées (e.g. tests par permutations, statistiques bayesiennes)</li>
-</ul>
+<pre><code class="r">test &lt;- data.frame(a = c(1:10), b = c(11:20))
+test
+</code></pre>
+
+<pre><code>##     a  b
+## 1   1 11
+## 2   2 12
+## 3   3 13
+## 4   4 14
+## 5   5 15
+## 6   6 16
+## 7   7 17
+## 8   8 18
+## 9   9 19
+## 10 10 20
+</code></pre>
+
+<p>On peut transformer un data.frame en matrice</p>
+
+<pre><code class="r">as.matrix(test)
+</code></pre>
+
+<pre><code>##        a  b
+##  [1,]  1 11
+##  [2,]  2 12
+##  [3,]  3 13
+##  [4,]  4 14
+##  [5,]  5 15
+##  [6,]  6 16
+##  [7,]  7 17
+##  [8,]  8 18
+##  [9,]  9 19
+## [10,] 10 20
+</code></pre>
+
+<p>Ou encore transformer une matrice en data.frame</p>
+
+<pre><code class="r">test2 = matrix(c(1:6), nrow = 3, ncol = 2)
+as.data.frame(test2)
+</code></pre>
+
+<pre><code>##   V1 V2
+## 1  1  4
+## 2  2  5
+## 3  3  6
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-27" style="background:;">
+<slide class="transition" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
   <hgroup>
-    <h1>La programmation en science</h1>
+    <h1>Interactions avec l&#39;extérieur</h1>
   </hgroup>
-  <article>
-    
-    <div class='left' style='float:left;width:48%'>
-     <h2>Avantages</h2>
+  <article data-timings="">
+    <h2>Lecture et écriture de fichiers</h2>
 
-<ul>
-<li>Gain de temps</li>
-<li>Limiter les erreurs</li>
-<li>Formaliser les opérations</li>
-<li>Archiver, reproduire et partager</li>
-<li>Tâches intensives (e.g. en génomique)</li>
-</ul>
-
-    </div>
-    <div class='right' style='float:right;width:48%'>
-     <div class="caption">Augmentation du volume de données génomiques</div>
-
-<p><img src="assets/img/intro/data_increase.jpg" width="100%"></img>
-<span style="font-size:small;text-transform:uppercase;text-align:right;">
-<a href="http://www.nature.com/nature/journal/v498/n7453/full/498255a.html">Nature 2013</a>
-</span></p>
-
-    </div>
   </article>
+  <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-28" style="background:;">
   <!--  <a href="#slide-28"></a> -->
   <hgroup>
-    <h1>La programmation en science</h1>
+    <h1>Lire un fichier txt</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-  <img src="assets/img/intro/geek_mode.webp" height="450px"></img>
-</div>
+    <p>La lecture de fichiers est souvent l&#39;étape la plus frustrante lorsque l&#39;on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d&#39;utiliser un format minimal qui est utilisable sur l&#39;ensemble des plateformes. </p>
 
-<!-- L'effort en vaut la peine: Sur le long terme le geek est gagnant -->
+<p>Nous allons utiliser le fichier &#39;quadrats.txt&#39; pour cet exemple. On peut lire le fichier au moyen de la commande</p>
+
+<pre><code class="r">quadrats &lt;- read.table(file = &quot;./quadrats.txt&quot;, header = T, row.names = 1, dec = &quot;,&quot;, sep = &quot;;&quot;) 
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): impossible d&#39;ouvrir le fichier &#39;./
+## quadrats.txt&#39; : Aucun fichier ou dossier de ce type
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): impossible d&#39;ouvrir la connexion
+</code></pre>
+
+<pre><code class="r">head(quadrats)
+</code></pre>
+
+<pre><code>## Error in head(quadrats): objet &#39;quadrats&#39; introuvable
+</code></pre>
+
+<hr>
+
+<h1>Lire un fichier txt: anatomie des arguments</h1>
+
+<ul>
+<li>&#39;file&#39; : nom du fichier à lire</li>
+<li>&#39;header&#39; : indique s&#39;il y a un entête avec les noms de colonnes</li>
+<li>&#39;row.names&#39; : indique s&#39;il y a une colonne, et le cas échéant laquelle, indiquant le nom des lines</li>
+<li>&#39;dec&#39; : caractère utilisé pour délimiter les décimales</li>
+<li>&#39;sep&#39; : caractère utilisé pour séparer les colonnes</li>
+</ul>
+
+<p>Note : l&#39;objet retourné est par défaut un &#39;data.frame&#39;. Il peut être ensuite converti, au besoin</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
   <hgroup>
-    <h1>La programmation en science</h1>
-  </hgroup>
-  <article>
-    
-    <div class='left' style='float:left;width:48%'>
-     <h2>Inconvénients</h2>
-
-<ul>
-<li>L&#39;erreur est avant tout humaine, avant d&#39;être informatique</li>
-<li>La courbe apprentissage peut être difficile</li>
-</ul>
-
-    </div>
-    <div class='right' style='float:right;width:48%'>
-     <p><img src="assets/img/intro/FunctionalResp.svg" width="450px"></img></p>
-
-<!-- Différente entre les individus -->
-
-    </div>
-  </article>
-</slide>
-<slide class="transition" id="slide-30" style="background:;">
-  <!--  <a href="#slide-30"></a> -->
-  <hgroup>
-    <h1>Les langages de programmation</h1>
+    <h1>Lire un fichier txt: erreurs courantes</h1>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>Mauvais nom de fichier</li>
+<li>Mauvais répertoire de travail </li>
+<li>Guillemets</li>
+<li>Type de séparateur de colonnes</li>
+<li>Présence de points</li>
+<li>Nom des colonnes</li>
+<li>Entrées vides</li>
+<li>Présence de caractères invisibles</li>
+<li>Mauvais encodage des données</li>
+<li>Type de données et d&#39;objets</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
+  <hgroup>
+    <h1>Écrire des fichiers</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Il y a une grande diversité de façons d&#39;enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d&#39;écrire sous format txt. </p>
+
+<p>La syntaxe pour écrire une matrice ou un data.frame est aussi simple que pour lire un fichier txt</p>
+
+<pre><code class="r">test &lt;- matrix(runif(n=10,min=0,max=1),nrow=5,ncol=10)
+test
+</code></pre>
+
+<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
+## [1,] 0.6128743 0.6481061 0.6128743 0.6481061 0.6128743 0.6481061 0.6128743
+## [2,] 0.8504038 0.4235873 0.8504038 0.4235873 0.8504038 0.4235873 0.8504038
+## [3,] 0.4388372 0.8267708 0.4388372 0.8267708 0.4388372 0.8267708 0.4388372
+## [4,] 0.7114510 0.7297897 0.7114510 0.7297897 0.7114510 0.7297897 0.7114510
+## [5,] 0.3572207 0.5175094 0.3572207 0.5175094 0.3572207 0.5175094 0.3572207
+##           [,8]      [,9]     [,10]
+## [1,] 0.6481061 0.6128743 0.6481061
+## [2,] 0.4235873 0.8504038 0.4235873
+## [3,] 0.8267708 0.4388372 0.8267708
+## [4,] 0.7297897 0.7114510 0.7297897
+## [5,] 0.5175094 0.3572207 0.5175094
+</code></pre>
+
+<pre><code class="r">write.table(test, file = &quot;./test.xt&quot;)
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-31" style="background:;">
   <!--  <a href="#slide-31"></a> -->
   <hgroup>
-    <h1>Deux grandes familles de langage</h1>
+    <h1>Écrire des fichiers: save et .Rdata</h1>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Les langages compilés</li>
-<li>Les langages interprétés</li>
-</ol>
+    <p>Parfoit les objets que l&#39;on souhaite enregistrer ont une structure plus complexe qu&#39;un tableau de données. R permet d&#39;enregistrer ces objets dans un format qui lui est unique, le <em>.Rdata</em>. Ces objets sont compressés pour minimiser l&#39;espace disque et ne peuvent être lus que par R. </p>
+
+<pre><code class="r">test &lt;- list()
+test[[1]] &lt;- 1
+test[[2]] &lt;- c(1:10)
+test
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+<pre><code class="r">save(test, file = &quot;./test.Rdata&quot;)
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -537,12 +846,23 @@ N^* = K
 <slide class="" id="slide-32" style="background:;">
   <!--  <a href="#slide-32"></a> -->
   <hgroup>
-    <h1>1. Les langages compilés</h1>
+    <h1>Lire des fichiers: load et .Rdata</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-  <img src="assets/img/intro/compile.svg"  width="900px"></img>
-</div>
+    <p>Puisque le fichier Rdata est spécifique à R, il s&#39;agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l&#39;objet, les noms et les types de données.</p>
+
+<pre><code class="r">load(&quot;./test.Rdata&quot;)
+test
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+<p>Faites attention, si le nom de l&#39;objet contenu dans le fichier .Rdata est le même qu&#39;un objet en mémoire, il va écraser ce premier objet.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -550,12 +870,69 @@ N^* = K
 <slide class="" id="slide-33" style="background:;">
   <!--  <a href="#slide-33"></a> -->
   <hgroup>
-    <h1>2. Les langages interprétés</h1>
+    <h1>Quelques commandes utiles</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-  <img src="assets/img/intro/interprete.svg" width="900px"></img>
-</div>
+    <p><em>head()</em> permet de visualiser une partie d&#39;un jeu de données</p>
+
+<pre><code class="r">head(quadrats, n = 5)
+</code></pre>
+
+<pre><code>## Error in head(quadrats, n = 5): objet &#39;quadrats&#39; introuvable
+</code></pre>
+
+<pre><code class="r">tail(quadrats, n = 5)
+</code></pre>
+
+<pre><code>## Error in tail(quadrats, n = 5): objet &#39;quadrats&#39; introuvable
+</code></pre>
+
+<pre><code class="r">ls()
+</code></pre>
+
+<pre><code>##  [1] &quot;a&quot;                 &quot;b&quot;                 &quot;c&quot;                
+##  [4] &quot;collage&quot;           &quot;faux&quot;              &quot;MaListe&quot;          
+##  [7] &quot;MaMatrice&quot;         &quot;MesFacteurs&quot;       &quot;MonPremierVecteur&quot;
+## [10] &quot;objet&quot;             &quot;test&quot;              &quot;test2&quot;            
+## [13] &quot;vrai&quot;
+</code></pre>
+
+<pre><code class="r">str(quadrats)
+</code></pre>
+
+<pre><code>## Error in str(quadrats): objet &#39;quadrats&#39; introuvable
+</code></pre>
+
+<hr>
+
+<h1>Quelques commandes utiles</h1>
+
+<p><em>summary()</em> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
+
+<pre><code class="r">summary(quadrats)
+</code></pre>
+
+<pre><code>## Error in summary(quadrats): objet &#39;quadrats&#39; introuvable
+</code></pre>
+
+<hr>
+
+<h1>EXERCICE DE MANIPULATION DE DONNÉES</h1>
+
+<ol>
+<li>Ouvrir le fichier sutton.txt au moyen de Excel ou d&#39;un éditeur de texte</li>
+<li>Calculer l&#39;abondance moyenne pour chaque espèce sur l&#39;ensemble des quadrats</li>
+<li>Ouvrir le même fichier au moyen de R</li>
+<li>Vérifier que le fichier a le format approprié</li>
+<li>Créer un vecteur &#39;AbondanceMoyenne&#39; d&#39;une longueur correspondant au nombre d&#39;espèces dans les données sutton</li>
+<li>Calculer l&#39;abondance moyenne de chaque espèce au moyen de la fonction &#39;mean&#39; et l&#39;inscrire dans chaque position de AbondanceMoyenne</li>
+<li>Convertir AbondanceMoyenne en data.frame</li>
+<li>Attribuer les noms des espèces pour chaque entrée de AbondanceMoyenne</li>
+<li>Enregistrer AbondanceMoyenne sous forme de fichier txt</li>
+<li>Ouvrir le fichier txt et le comparer au calcul fait au moyenne de Excel</li>
+</ol>
+
+<p>Note : vous pouvez explorer les données avec &#39;summary&#39; et pour les avancés. Les plus avancés peuvent explorer la commande &#39;apply&#39;...</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -563,29 +940,40 @@ N^* = K
 <slide class="" id="slide-34" style="background:;">
   <!--  <a href="#slide-34"></a> -->
   <hgroup>
-    <h1>Interprété vs compilé</h1>
+    <h1>Compléments: le script</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">df &lt;- c(&#39; &#39;)
+    <p>Un script est un fichier .R contenant une série d&#39;instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l&#39;historique des opérations et les répéter au besoin. </p>
 
-pander::pander()
+<p>On peut exécuter un script dans son ensemble</p>
+
+<pre><code class="r">rm(list = ls())
+source(&quot;./MonScript.R&quot;)
 </code></pre>
 
-<pre><code>## Error in if (tail(stdout, 1) == &quot;&quot;) {: l&#39;argument est de longueur nulle
+<pre><code>## Warning in file(filename, &quot;r&quot;, encoding = encoding): impossible d&#39;ouvrir le
+## fichier &#39;./MonScript.R&#39; : Aucun fichier ou dossier de ce type
+</code></pre>
+
+<pre><code>## Error in file(filename, &quot;r&quot;, encoding = encoding): impossible d&#39;ouvrir la connexion
+</code></pre>
+
+<pre><code class="r">ls()
+</code></pre>
+
+<pre><code>## character(0)
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-35" style="background:;">
+<slide class="transition" id="slide-35" style="background:;">
   <!--  <a href="#slide-35"></a> -->
   <hgroup>
-    <h1>La performance est un critère pour le choix d&#39;un langage</h1>
+    <h1>Manipulation de données</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-  <img src="assets/img/intro/performance.png" width="900px"></img>
-</div>
+    <h2>Fonctions avancées</h2>
 
   </article>
   <!-- Presenter Notes -->
@@ -593,12 +981,21 @@ pander::pander()
 <slide class="" id="slide-36" style="background:;">
   <!--  <a href="#slide-36"></a> -->
   <hgroup>
-    <h1>Un autre critère est le &#39;débugging&#39;</h1>
+    <h1>Différents outils pour générer des données</h1>
   </hgroup>
   <article data-timings="">
-    <div style='text-align:center;'>
-  <img src="assets/img/intro/bug.png" width="900px"></img>
-</div>
+    <pre><code class="r">seq(from = 1, to = 10, by = 0.5)
+</code></pre>
+
+<pre><code>##  [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5
+## [15]  8.0  8.5  9.0  9.5 10.0
+</code></pre>
+
+<pre><code class="r">rep(c(1:3), times = 3)
+</code></pre>
+
+<pre><code>## [1] 1 2 3 1 2 3 1 2 3
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -606,38 +1003,83 @@ pander::pander()
 <slide class="" id="slide-37" style="background:;">
   <!--  <a href="#slide-37"></a> -->
   <hgroup>
-    <h1>Et en écologie?</h1>
+    <h1>Différents outils pour générer des données</h1>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">v1 &lt;- c(1:3)
+v2 &lt;- c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
+expand.grid(v1,v2)
+</code></pre>
+
+<pre><code>##   Var1 Var2
+## 1    1    A
+## 2    2    A
+## 3    3    A
+## 4    1    B
+## 5    2    B
+## 6    3    B
+## 7    1    C
+## 8    2    C
+## 9    3    C
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-38" style="background:;">
+<slide class="" id="slide-38" style="background:;">
   <!--  <a href="#slide-38"></a> -->
   <hgroup>
-    <h1>Le Pseudo-Code</h1>
+    <h1>Combiner des objets</h1>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">v1 &lt;- c(1:3)
+v2 &lt;- c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
+c(v1,v2)
+</code></pre>
+
+<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot;
+</code></pre>
+
+<pre><code class="r">rbind(v1,v2)
+</code></pre>
+
+<pre><code>##    [,1] [,2] [,3]
+## v1 &quot;1&quot;  &quot;2&quot;  &quot;3&quot; 
+## v2 &quot;A&quot;  &quot;B&quot;  &quot;C&quot;
+</code></pre>
+
+<pre><code class="r">cbind(v1,v2)
+</code></pre>
+
+<pre><code>##      v1  v2 
+## [1,] &quot;1&quot; &quot;A&quot;
+## [2,] &quot;2&quot; &quot;B&quot;
+## [3,] &quot;3&quot; &quot;C&quot;
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-39" style="background:;">
   <!--  <a href="#slide-39"></a> -->
   <hgroup>
-    <h1>Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong></h1>
+    <h1>Fonctions utiles: trier des objets</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Définitions</h2>
+    <pre><code class="r">test &lt;- runif(n = 10, min = 0, max = 100)
+test
+</code></pre>
 
-<ul>
-<li><em>En programmation, le <code>pseudo-code</code> est une façon de formuler un <b>algorithme</b> sans référence à un langage de programmation en particulier.</em></li>
-</ul>
+<pre><code>##  [1] 25.50618 70.69104 62.66900 86.11034 56.04268 74.04476 25.40730
+##  [8] 18.52019 73.56952 82.68799
+</code></pre>
 
-<ul class = "build incremental">
-<li><em>Un <b>algorithme</b> est une suite d&#39;actions qui sont réalisées dans un ordre précis par l&#39;ordinateur. C&#39;est une séquence d&#39;étapes dans la résolution d&#39;un problème.</em></li>
-</ul>
+<pre><code class="r">sort(test)
+</code></pre>
+
+<pre><code>##  [1] 18.52019 25.40730 25.50618 56.04268 62.66900 70.69104 73.56952
+##  [8] 74.04476 82.68799 86.11034
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -645,24 +1087,22 @@ pander::pander()
 <slide class="" id="slide-40" style="background:;">
   <!--  <a href="#slide-40"></a> -->
   <hgroup>
-    <h1>Le <code>Pseudo-Code</code></h1>
+    <h1>Fonctions utiles: obtenir des rangs</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Exemple</h2>
-
-<pre><code>PROGRAM DEMO
-  FOR t IN 1:100
-    n_t = n_t * lambda
-    PRINT n_t
-    IF n_t &lt; 1
-      BREAK
-    ELSE
-      CONTINUE
-    END IF
-  END FOR
+    <pre><code class="r">test &lt;- runif(n = 10, min = 0, max = 100)
+test
 </code></pre>
 
-<p>Le programme <code>DEMO</code> fait croitre une population à un taux \(\lambda\) et affiche à l&#39;utilisateur si la population est éteinte (\(n_t<1\)) ou vivante (\(n_t>1\)).</p>
+<pre><code>##  [1] 83.929403 84.332511 75.286771  4.710961 84.938019 79.677364 83.185388
+##  [8] 48.344172  7.737679 89.343103
+</code></pre>
+
+<pre><code class="r">rank(test)
+</code></pre>
+
+<pre><code>##  [1]  7  8  4  1  9  5  6  3  2 10
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -670,24 +1110,21 @@ pander::pander()
 <slide class="" id="slide-41" style="background:;">
   <!--  <a href="#slide-41"></a> -->
   <hgroup>
-    <h1>Le <code>Pseudo-Code</code></h1>
+    <h1>Fonctions utiles: échantillonner les valeurs uniques</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Exemple</h2>
-
-<pre><code>PROGRAM DEMO
-  FOR t IN 1:100 &lt;------------- Opération itérative
-    n_t = n_t * lambda
-    PRINT n_t &lt;---------------- Le programme affiche la valeur à l&#39;écran
-    IF n_t &lt; 1 &lt;--------------- Opération décisionnelle
-      BREAK &lt;------------------ Le programme arrête son éxécution
-    ELSE
-      CONTINUE &lt;--------------- Le programme continue son éxécution
-    END IF
-  END FOR
+    <pre><code class="r">test &lt;- c(1,2,5,7,4,3,2,1,10,5,8)
+test
 </code></pre>
 
-<p>Le programme <code>DEMO</code> fait croitre une population à un taux \(\lambda\) et affiche à l&#39;utilisateur si la population est éteinte (\(n_t<1\)) ou vivante (\(n_t>1\)).</p>
+<pre><code>##  [1]  1  2  5  7  4  3  2  1 10  5  8
+</code></pre>
+
+<pre><code class="r">unique(test)
+</code></pre>
+
+<pre><code>## [1]  1  2  5  7  4  3 10  8
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -695,28 +1132,34 @@ pander::pander()
 <slide class="" id="slide-42" style="background:;">
   <!--  <a href="#slide-42"></a> -->
   <hgroup>
-    <h1>Les structures de base d&#39;un algorithme</h1>
+    <h1>Sous-échantillonner des objets</h1>
   </hgroup>
   <article data-timings="">
-    <p>On retrouve 3 familles d&#39;opérations:</p>
+    <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction &#39;subset&#39; est fort pratique pour réaliser cette opération. </p>
 
-<ol>
-<li>Les opérations séquentielles</li>
-<li>Les opérations itératives (<code>FOR</code>, <code>WHILE</code>)</li>
-<li>Les opérations décisionnelles (<code>IF</code>, <code>SWITCH</code>)</li>
-</ol>
+<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadrats qui contiennent de l&#39;érable à sucre</p>
 
-<!-- ---
+<pre><code class="r">quadrats &lt;- read.table(file = &quot;./quadrats.txt&quot;, header = T, row.names = 1, dec = &quot;,&quot;, sep = &quot;;&quot;) 
+</code></pre>
 
-# Avant-propos
+<pre><code>## Warning in file(file, &quot;rt&quot;): impossible d&#39;ouvrir le fichier &#39;./
+## quadrats.txt&#39; : Aucun fichier ou dossier de ce type
+</code></pre>
 
-Avant de décrire chacune des opérations d'un algorithme, certaines instructions sont communes:
+<pre><code>## Error in file(file, &quot;rt&quot;): impossible d&#39;ouvrir la connexion
+</code></pre>
 
-- `READ`: Le programme lit un fichier
-- `WRITE`: Le programme écrit un fichier
-- `PRINT`: Le programme écrit un message à l'écran pour l'utilisateur
-- `BREAK`: Le programme stop son éxécution
-- `CONTINUE`: Le programme continue son éxécution -->
+<pre><code class="r">sub_quadrats = subset(x = quadrats, quadrat$ers &gt; 0)
+</code></pre>
+
+<pre><code>## Error in subset(x = quadrats, quadrat$ers &gt; 0): objet &#39;quadrats&#39; introuvable
+</code></pre>
+
+<pre><code class="r">summary(sub_quadrat)
+</code></pre>
+
+<pre><code>## Error in summary(sub_quadrat): objet &#39;sub_quadrat&#39; introuvable
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -724,18 +1167,10 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 <slide class="" id="slide-43" style="background:;">
   <!--  <a href="#slide-43"></a> -->
   <hgroup>
-    <h1>1. Les opérations séquentielles</h1>
+    <h1>Faire des tableaux sommaires (enfin !)</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Exemple: Calculer l&#39;aire d&#39;un rectangle</h2>
-
-<pre><code>PROGRAM REC_AIRE
-  READ hauteur
-  READ largeur
-  WRITE hauteur * largeur
-</code></pre>
-
-<p>C&#39;est une progression linéaire car chaque opération est effectuée l&#39;une après l&#39;autre dans un ordre déterminé.</p>
+    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <em>summary</em> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction <em>table</em> est fort puissante: </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -743,134 +1178,22 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 <slide class="" id="slide-44" style="background:;">
   <!--  <a href="#slide-44"></a> -->
   <hgroup>
-    <h1>2. Les opérations itératives</h1>
+    <h1>EXERCICE DE FIN DE SÉANCE</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Exemple avec <code>FOR</code>: Croissance avec capacité de support (K)</h2>
-
-<pre><code>PROGRAM DEMO
-  FOR t IN 1:100
-    n_t = n_t * lambda
-  END FOR
-</code></pre>
-
-<p>La population va croître pendant 100 pas de temps.</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-45" style="background:;">
-  <!--  <a href="#slide-45"></a> -->
-  <hgroup>
-    <h1>2. Les opérations itératives</h1>
-  </hgroup>
-  <article data-timings="">
-    <h2>Exemple avec <code>WHILE</code>: Croissance avec capacité de support (K)</h2>
-
-<pre><code>PROGRAM DEMO
-  WHILE n_t &lt; K
-    n_t = n_t * lambda
-  END WHILE
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-46" style="background:;">
-  <!--  <a href="#slide-46"></a> -->
-  <hgroup>
-    <h1>3. Les opérations décisionnelles</h1>
-  </hgroup>
-  <article data-timings="">
-    <h2>Exemple avec <code>IF</code>: quelques tests sur \(\lambda\)</h2>
-
-<pre><code>PROGRAM DEMO
-  IF lambda &gt; 0
-    PRINT &quot;La population est croissante&quot;
-  ELSE lambda &lt; 0
-    PRINT &quot;La population est décroissante&quot;
-  ENDIF
-</code></pre>
-
-<ul class = "build incremental">
-<li>Et si le taux de croissance est nulle?</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-47" style="background:;">
-  <!--  <a href="#slide-47"></a> -->
-  <hgroup>
-    <h1>3. Les opérations décisionnelles</h1>
-  </hgroup>
-  <article data-timings="">
-    <pre><code>PROGRAM DEMO
-  IF lambda &gt; 0
-    PRINT &quot;La population est croissante&quot;
-  IF ELSE lambda &lt; 0
-    PRINT &quot;La population est décroissante&quot;
-  ELSE
-    PRINT &quot;Absence de croissance&quot;
-  ENDIF
-</code></pre>
-
-<p>Avec la clause <code>ELSE</code>, l&#39;absence de croissance est assumé (non-testé)</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-48" style="background:;">
-  <!--  <a href="#slide-48"></a> -->
-  <hgroup>
-    <h1>Les règles du <code>pseudo-code</code></h1>
-  </hgroup>
-  <article data-timings="">
-    <h2>A garder en mémoire</h2>
+    <p>Le fichier quadrats.txt est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans &quot;arbres.txt&quot;. Dans le cadre de ce projet, on s&#39;intéresse à la distribution de l&#39;érable à sucre et des autres espèces tout au long du gradient d&#39;élévation de la parcelle. Pour cet exercice, on vous demande de:</p>
 
 <ol>
-<li>N&#39;écrivez qu&#39;une seule instruction par ligne de pseudocode.</li>
-<li>Écrivez en lettres capitales le verbe de chaque opération principale.</li>
-<li>Soyez explicite en nommant les opérations et les variables.</li>
-<li>Soyez le plus détaillé possible (c.a.d les plus petites étapes possibles)</li>
-<li>Utilisez des structures de langages de programmation connus (c.a.d <code>WHILE</code>, <code>FOR</code>, <code>IF</code> etc.)</li>
-<li>Délimitez les étapes en formant des blocs d&#39;instructions par l&#39;utilisation de l&#39;indentation.</li>
+<li>Charger les données d&#39;arbres</li>
+<li>Délimiter cinq zones au sein du gradient d&#39;élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m</li>
+<li>Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce</li>
+<li>Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes</li>
 </ol>
+
+<p>On vous demande de rédiger un script qui réalisera l&#39;ensemble de ces étapes, de la lecture des données à l&#39;enregistrement du tableau final. </p>
 
   </article>
   <!-- Presenter Notes -->
-</slide>
-<slide class="transition" id="slide-49" style="background:;">
-  <!--  <a href="#slide-49"></a> -->
-  <hgroup>
-    <h1>Exercice</h1>
-  </hgroup>
-  <article data-timings="">
-    <h2>Ordonner les lettres de Scrabble</h2>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-50" style="background:;">
-  <hgroup>
-    
-  </hgroup>
-  <article>
-    
-    <div class='left' style='float:left;width:48%'>
-     <p>Une situation qui peut arriver tous les jours:</p>
-
-<ol>
-<li>On jette en face de vous 6 lettres d&#39;un scrabble</li>
-<li>Un joueur maniac vous demande d&#39;écrire un programme permettant d&#39;ordonner les 6 lettres</li>
-</ol>
-
-    </div>
-    <div class='right' style='float:right;width:48%'>
-     <p><strong>Image de scrabble</strong></p>
-
-    </div>
-  </article>
 </slide>
     <slide class="backdrop"></slide>
   </slides>
@@ -878,302 +1201,266 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Introduction'>
+        data-slide=1 title='Contenu du cours'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Introduction'>
+        data-slide=2 title='5 raisons pour utiliser R'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Introduction'>
+        data-slide=3 title='Interagir avec R sur la console'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Introduction'>
+        data-slide=4 title='Utiliser R Studio'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Introduction'>
+        data-slide=5 title='Exercice : installer et lancer R Studio'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Introduction'>
+        data-slide=6 title='Exercice : interaction avec la ligne de commande'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Introduction'>
+        data-slide=7 title='Répertoire de travail'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Introduction'>
+        data-slide=8 title='Environnement de travail'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Question de recherche'>
+        data-slide=9 title='Environnement de travail'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Le type de données'>
+        data-slide=10 title='Types d&#39;objets: scalaires'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Exercice 1'>
+        data-slide=11 title='Types d&#39;objets: scalaires'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Exercice 1: solution sur R'>
+        data-slide=12 title='Types d&#39;objets: scalaires'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Exercice 2'>
+        data-slide=13 title='Types de données: booléens'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Exercice 2: solution sur R'>
+        data-slide=14 title='Types de données: facteurs'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Exercice 2: visualisation sur R'>
+        data-slide=15 title='Types de données: conversions'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Objectifs spécifiques'>
+        data-slide=16 title='Types de variables: vecteurs'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Contenu'>
+        data-slide=17 title='Exercice'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Approche'>
+        data-slide=18 title='Types d&#39;objets: vecteurs'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Évaluation'>
+        data-slide=19 title='Exercice'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='La place de la programmation en écologie'>
+        data-slide=20 title='Types d&#39;objets: vecteurs'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Hier'>
+        data-slide=21 title='Types d&#39;objets: matrices'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Aujourd&#39;hui'>
+        data-slide=22 title='Types d&#39;objets: matrices'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Aujourd&#39;hui'>
+        data-slide=23 title='Types d&#39;objets: matrices'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Et demain, la modélisation de la biosphère?'>
+        data-slide=24 title='Exercice'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Progression de la puissance de calcul'>
+        data-slide=25 title='Type d&#39;objets : listes'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Utilisation en science au quotidien'>
+        data-slide=26 title='Type d&#39;objets: data.frame'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='La programmation en science'>
+        data-slide=27 title='Interactions avec l&#39;extérieur'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='La programmation en science'>
+        data-slide=28 title='Lire un fichier txt'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='La programmation en science'>
+        data-slide=29 title='Lire un fichier txt: erreurs courantes'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Les langages de programmation'>
+        data-slide=30 title='Écrire des fichiers'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Deux grandes familles de langage'>
+        data-slide=31 title='Écrire des fichiers: save et .Rdata'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='1. Les langages compilés'>
+        data-slide=32 title='Lire des fichiers: load et .Rdata'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='2. Les langages interprétés'>
+        data-slide=33 title='Quelques commandes utiles'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Interprété vs compilé'>
+        data-slide=34 title='Compléments: le script'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='La performance est un critère pour le choix d&#39;un langage'>
+        data-slide=35 title='Manipulation de données'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Un autre critère est le &#39;débugging&#39;'>
+        data-slide=36 title='Différents outils pour générer des données'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Et en écologie?'>
+        data-slide=37 title='Différents outils pour générer des données'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Le Pseudo-Code'>
+        data-slide=38 title='Combiner des objets'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Le <code>Pseudo-Code</code> et ses <strong>algorithmes</strong>'>
+        data-slide=39 title='Fonctions utiles: trier des objets'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Le <code>Pseudo-Code</code>'>
+        data-slide=40 title='Fonctions utiles: obtenir des rangs'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Le <code>Pseudo-Code</code>'>
+        data-slide=41 title='Fonctions utiles: échantillonner les valeurs uniques'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Les structures de base d&#39;un algorithme'>
+        data-slide=42 title='Sous-échantillonner des objets'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='1. Les opérations séquentielles'>
+        data-slide=43 title='Faire des tableaux sommaires (enfin !)'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='2. Les opérations itératives'>
+        data-slide=44 title='EXERCICE DE FIN DE SÉANCE'>
          44
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=45 title='2. Les opérations itératives'>
-         45
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=46 title='3. Les opérations décisionnelles'>
-         46
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=47 title='3. Les opérations décisionnelles'>
-         47
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=48 title='Les règles du <code>pseudo-code</code>'>
-         48
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Exercice'>
-         49
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='NA'>
-         50
       </a>
     </li>
   </ul>
