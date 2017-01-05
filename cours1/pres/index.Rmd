@@ -18,6 +18,191 @@ assets      :
 
 --- .transition
 
+*** =left
+
+<img src="assets/img/intro/bioclim.jpg" height="400px"></img>
+
+*** =right
+
+--- 
+
+*** =left
+
+<img src="assets/img/intro/mont_vertes.jpg" height="400px"></img>
+
+*** =right
+
+--- 
+
+
+*** =left
+
+<img src="assets/img/intro/megantic.jpg" height="400px"></img>
+
+*** =right
+
+--- 
+
+*** =left
+
+<img src="assets/img/intro/ours.jpg" height="400px"></img>
+
+*** =right
+
+--- 
+
+*** =left
+
+<img src="assets/img/intro/orignal.jpg" height="400px"></img>
+
+*** =right
+
+---
+
+*** =left
+
+<img src="assets/img/intro/salamandre.jpg" height="400px"></img>
+
+*** =right
+
+---  
+
+*** =left
+
+<img src="assets/img/intro/cypripedium.jpg" height="400px"></img>
+
+*** =right
+
+--- 
+
+*** =left
+
+<img src="assets/img/intro/grille.jpg" height="400px"></img>
+
+*** =right
+
+--- 
+
+# Question de recherche
+
+À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
+
+--- 
+
+# Le type de données
+
+'''
+arbres = read.table(file = 'arbres.txt', header = TRUE, dec = ",")
+head(arbres)
+'''
+
+--- 
+
+# Exercice 1
+
+Ouvrir le fichier 'arbres.txt' avec Excel et calculer le nombre d'individus de chaque espèce espèce pour le quadrat 1. 
+
+----
+
+# Exercice 1: solution sur R
+
+'''
+arbres = read.table(file = 'arbres.txt', header = TRUE, dec = ",")
+quadrats = tapply(arbres$sp, INDEX = arbres$quadrat)
+head(quadrats)
+'''
+----
+
+# Exercice 2
+
+Ouvrir le fichier 'quadrats.txt' avec Excel et calculer la corrélation entre toutes les paires d'espèces. 
+
+Petit truc: sur Excel, la fonction pour calculer une corrélation est:
+=covariance.pearson(données_1; données_2)
+
+----
+
+# Exercice 2: solution sur R
+
+'''
+quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
+cor(quadrats)
+'''
+
+----
+
+# Exercice 2: visualisation sur R
+
+'''
+quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
+plot(quadrats)
+'''
+---
+
+# Objectif général
+
+*Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.*
+
+---
+
+# Objectifs spécifiques
+
+1. Charger des données et exporter des résultats d'analyses au moyen du
+    logiciel R;
+2. Conceptualiser un problème au moyen de pseudo-code;
+3. Manipuler des données;
+4. Rédiger des fonctions;
+5. Programmer des algorithmes afin de réaliser des tâches complexes,
+    incluant des boucles et des énoncés conditionnels;
+6. Réaliser des simulations de Monte Carlo;
+
+---
+
+# Contenu
+
+1. Introduction et bonnes pratiques de programmation
+2. Démystifier le langage R
+3. Les fonctions
+4. Algorithmique I: boucles et conditions
+5. Alogithmique II: simulations de Monte Carlo
+
+---
+
+# Approche
+
+Les connaissances requises pour la programmation scientifique sont
+minimales, l'apprentissage porte davantage sur l'acquisition de
+compétences et le développement de capacités à la résolution de problèmes.
+Les séances seront constituées de courtes leçons magistrales sur des
+notions de bases de programmation, entre-coupées d'exercices spécifiques
+destinés à pratiquer les éléments enseignés. Les séances se conclueront
+sur la réalisation d'un exercice intégrateur à compléter à la maison.
+
+L'ensemble du matériel du cours sera disponible sur un dépôt git à l'adresse :
+https://github.com/EcoNumUdS/BIO109.git
+
+---
+
+# Évaluation
+
+L'évaluation porte sur la participation aux exercices (20\%) et sur un
+travail final (80\%). Un exercice simple sera présenté à la fin des
+séances 1-4 et chaque étudiant devra remettre la solution de l'exercice sous
+forme de script avant le début de la séance suivante. Les exercices
+peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
+propre copie, personnalisée. Les points sont attribués pour la
+participation.
+
+L'évaluation finale portera sur la réalisation d'un projet de
+programmation en équipe de 4 à remettre deux semaines après la fin du
+dernier cours, soit au plus tard le \textbf{21 février 2017 à 16:00}. La
+pénalité sera de 10\% par jour de retard. Le rapport final sera évalué à
+parti de i) le pseudo-code pour le projet de programmation, ii) le respect
+des bonnes pratiques de programmation et iii) la réussite de l'exercice
+demandé. Les étudiants devront remettre le script nécessaire à la
+réalisation du projet.
+--- .transition
+
 # La place de la programmation en écologie
 
 ---
