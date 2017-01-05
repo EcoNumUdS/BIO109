@@ -32,3 +32,6 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 .cache/
+
+# MAC Junk
+.DS_Store

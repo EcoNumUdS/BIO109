@@ -61,7 +61,7 @@
 <img src="assets/img/intro/grille.jpg" height="400px"></img>
 </div>
 
----
+--- .transition
 
 # Question de recherche
 
@@ -72,7 +72,7 @@
 # Le type de données
 
 ```{r}
-arbres = read.table(file = './data/arbres_sut_bio109.txt', header = TRUE, dec = ",")
+arbres = read.table(file = './données/arbres.txt', header = TRUE, sep=";")
 head(arbres)
 ```
 
@@ -80,33 +80,39 @@ head(arbres)
 
 # Exercice 1
 
-Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de chaque espèce espèce pour le quadrat 1.
+Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de chaque espèce pour le quadrat 1.
 
 ---
 
 # Exercice 1: solution sur R
 
 ```{r}
-arbres = read.table(file = './data/arbres_sut_bio109.txt', header = TRUE, dec = ",")
-quadrats = tapply(arbres$sp, INDEX = arbres$quadrat)
+arbres = read.table(file = './données/arbres.txt', header = TRUE, sep=";")
+quadrats = table(arbres$id_bor,arbres$esp)
 head(quadrats)
 ```
 
+```{r echo=FALSE}
+write.table(quadrats, file="./données/quadrats.txt",sep=";",quote=TRUE)
+```
 ---
 
 # Exercice 2
 
-Ouvrir le fichier 'quadrats.txt' avec Excel et calculer la corrélation entre toutes les paires d'espèces.
+Ouvrir le fichier `quadrats.txt` avec Excel et calculer la corrélation entre toutes les paires d'espèces.
 
 Petit truc: sur Excel, la fonction pour calculer une corrélation est:
+
+```bash
 =covariance.pearson(données_1; données_2)
+```
 
 ---
 
 # Exercice 2: solution sur R
 
-```r
-quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
+```{r}
+quadrats = read.table(file = './données/quadrats.txt', header = TRUE, sep= ";")
 cor(quadrats)
 ```
 
@@ -114,10 +120,10 @@ cor(quadrats)
 
 # Exercice 2: visualisation sur R
 
-```r
-quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
+```{r, fig.width= 6, fig.height= 6, fig.align='center'}
 plot(quadrats)
 ```
+
 ---
 
 # Objectif général
@@ -207,14 +213,17 @@ $$
 
 # Aujourd'hui
 
-<img src="assets/img/intro/modele_vissault.jpg" height="400px"></img>
+<div style='text-align:center;'>
+<img src="assets/img/intro/modele_vissault.png" height="500px"></img>
+</div>
 
 ---
 
 # Aujourd'hui
 
-<img src="assets/img/intro/map_vissault.jpg" height="400px"></img>
-
+<div style='text-align:center;'>
+<img src="assets/img/intro/map_vissault.png" height="550px"></img>
+</div>
 
 ---
 
@@ -533,6 +542,8 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 
 
 --- &twocol
+
+# Exercice 3
 
 *** =left
 

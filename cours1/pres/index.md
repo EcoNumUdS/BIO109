@@ -1,7 +1,7 @@
 ---
 title       : "Introduction à la programmation scientifique"
 subtitle    : "Cours 1"
-author      : "Dominique Gravel, Kevin Cazelles et Steve Vissault"
+author      : "Dominique Gravel"
 job         : "Laboratoire d'Ecologie Integrative, UdS"
 logo        : "UdeS_nouveau_coul72dpi.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -15,7 +15,8 @@ url:
 license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
-  img:
+  data: ../../données/
+  img: ../img/
 ---
 
 # Introduction
@@ -80,7 +81,7 @@ assets      :
 <img src="assets/img/intro/grille.jpg" height="400px"></img>
 </div>
 
----
+--- .transition
 
 # Question de recherche
 
@@ -92,25 +93,25 @@ assets      :
 
 
 ```r
-arbres = read.table(file = './data/arbres_sut_bio109.txt', header = TRUE, dec = ",")
+arbres = read.table(file = './données/arbres.txt', header = TRUE, sep=";")
 head(arbres)
 ```
 
 ```
-##   borx bory arbre  esp multi mort dhp
-## 1   80    0     1 ACPE  FAUX FAUX  39
-## 2   80    0     2 ACPE  FAUX FAUX  19
-## 3   80    0     3 ACSA  FAUX FAUX 487
-## 4   80    0     4 ACSA  FAUX FAUX 568
-## 5   80    0     5 ACSA  FAUX FAUX 196
-## 6   80    0     6 ACSA  FAUX FAUX 345
+##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+## 4    0-0    0    0 34503 acpe  FAUX FAUX  73
+## 5    0-0    0    0 34504 acpe  FAUX VRAI  28
+## 6    0-0    0    0 34506 fagr  FAUX FAUX  26
 ```
 
 ---
 
 # Exercice 1
 
-Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de chaque espèce espèce pour le quadrat 1.
+Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de chaque espèce pour le quadrat 1.
 
 ---
 
@@ -118,41 +119,75 @@ Ouvrir le fichier `arbres.txt` avec Excel et calculer le nombre d'individus de c
 
 
 ```r
-arbres = read.table(file = './data/arbres_sut_bio109.txt', header = TRUE, dec = ",")
-quadrats = tapply(arbres$sp, INDEX = arbres$quadrat)
+arbres = read.table(file = './données/arbres.txt', header = TRUE, sep=";")
+quadrats = table(arbres$id_bor,arbres$esp)
 head(quadrats)
 ```
 
 ```
-## integer(0)
+##        
+##         abba acpe acsa beal bepa fagr piru
+##   0-0      1   55   11    7    0   92    0
+##   0-100    0    5    4    3    0    6    0
+##   0-120    2    7   12    4    1    7    0
+##   0-140    4    5    4    8    1    2    1
+##   0-160    2    2   11    8    1    6    1
+##   0-180    5    3    9    7    0    3    1
 ```
+
 
 ---
 
 # Exercice 2
 
-Ouvrir le fichier 'quadrats.txt' avec Excel et calculer la corrélation entre toutes les paires d'espèces.
+Ouvrir le fichier `quadrats.txt` avec Excel et calculer la corrélation entre toutes les paires d'espèces.
 
 Petit truc: sur Excel, la fonction pour calculer une corrélation est:
+
+```bash
 =covariance.pearson(données_1; données_2)
+```
 
 ---
 
 # Exercice 2: solution sur R
 
+
 ```r
-quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
+quadrats = read.table(file = './données/quadrats.txt', header = TRUE, sep= ";")
 cor(quadrats)
+```
+
+```
+##             abba        acpe       acsa        beal        bepa       fagr
+## abba  1.00000000 -0.06189199 -0.4873081  0.18266806  0.66577551 -0.1807264
+## acpe -0.06189199  1.00000000  0.2231896  0.26639705 -0.11178181  0.4497004
+## acsa -0.48730810  0.22318962  1.0000000 -0.37074281 -0.32902435  0.3335518
+## beal  0.18266806  0.26639705 -0.3707428  1.00000000 -0.03018735 -0.1099725
+## bepa  0.66577551 -0.11178181 -0.3290244 -0.03018735  1.00000000 -0.1535915
+## fagr -0.18072638  0.44970044  0.3335518 -0.10997247 -0.15359149  1.0000000
+## piru  0.27465133  0.55061981 -0.1440152  0.50423458  0.13387469  0.1929323
+##            piru
+## abba  0.2746513
+## acpe  0.5506198
+## acsa -0.1440152
+## beal  0.5042346
+## bepa  0.1338747
+## fagr  0.1929323
+## piru  1.0000000
 ```
 
 ---
 
 # Exercice 2: visualisation sur R
 
+
 ```r
-quadrats = read.table(file = 'quadrats.txt', header = TRUE, dec = ",", row.names = 1)
 plot(quadrats)
 ```
+
+<img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+
 ---
 
 # Objectif général
@@ -242,14 +277,17 @@ $$
 
 # Aujourd'hui
 
-<img src="assets/img/intro/modele_vissault.jpg" height="400px"></img>
+<div style='text-align:center;'>
+<img src="assets/img/intro/modele_vissault.png" height="500px"></img>
+</div>
 
 ---
 
 # Aujourd'hui
 
-<img src="assets/img/intro/map_vissault.jpg" height="400px"></img>
-
+<div style='text-align:center;'>
+<img src="assets/img/intro/map_vissault.png" height="550px"></img>
+</div>
 
 ---
 
@@ -572,6 +610,8 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 
 
 --- &twocol
+
+# Exercice 3
 
 *** =left
 

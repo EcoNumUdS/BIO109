@@ -2,7 +2,11 @@
 title       : "Introduction à la programmation scientifique"
 subtitle    : "Cours 1"
 author      : "Dominique Gravel"
+<<<<<<< Updated upstream
 job         : "Laboratoire d'écologie intégrative, UdS"
+=======
+job         : "Laboratoire d'Ecologie Integrative, UdS"
+>>>>>>> Stashed changes
 logo        : "UdeS_nouveau_coul72dpi.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -15,5 +19,6 @@ url:
 license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
-  img:
+  data: ../../données/
+  img: ../img/
 ---
