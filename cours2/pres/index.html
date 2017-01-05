@@ -171,8 +171,9 @@
 <pre><code class="r">dir()
 </code></pre>
 
-<pre><code>## [1] &quot;assets&quot;     &quot;data&quot;       &quot;index.html&quot; &quot;index.md&quot;   &quot;index.Rmd&quot; 
-## [6] &quot;libraries&quot;  &quot;test.Rdata&quot; &quot;test.xt&quot;
+<pre><code>## [1] &quot;assets&quot;           &quot;donnees&quot;          &quot;index.html&quot;      
+## [4] &quot;index.md&quot;         &quot;index.Rmd&quot;        &quot;libraries&quot;       
+## [7] &quot;test_liste.Rdata&quot; &quot;test.Rdata&quot;       &quot;test.xt&quot;
 </code></pre>
 
 <p>Obtenir la liste des objets en mémoire</p>
@@ -195,13 +196,7 @@
     <p>Effacer un objet en mémoire</p>
 
 <pre><code class="r">test &lt;- 1
-test
-</code></pre>
-
-<pre><code>## [1] 1
-</code></pre>
-
-<pre><code class="r">ls()
+ls()
 </code></pre>
 
 <pre><code>## [1] &quot;test&quot;
@@ -214,11 +209,16 @@ ls()
 <pre><code>## character(0)
 </code></pre>
 
-<hr>
-
-<h1>Le concept d&#39;objet</h1>
-
-<p>Un objet peut contenir de l&#39;information de toute nature: un tableau de données, les résultats d&#39;une analyse, une figure, une fonction</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-10" style="background:;">
+  <!--  <a href="#slide-10"></a> -->
+  <hgroup>
+    <h1>Le concept d&#39;objet</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Un objet peut contenir de l&#39;information de toute nature: un tableau de données, les résultats d&#39;une analyse, une figure, une fonction</p>
 
 <p>La commande pour créer un objet est composé de trois parties:
 i) une valeur d&#39;intérêt
@@ -235,30 +235,19 @@ a
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-10" style="background:;">
-  <!--  <a href="#slide-10"></a> -->
+<slide class="" id="slide-11" style="background:;">
+  <!--  <a href="#slide-11"></a> -->
   <hgroup>
-    <h1>Types d&#39;objets: scalaires</h1>
+    <h1>Le concept d&#39;objet</h1>
   </hgroup>
   <article data-timings="">
-    <p>Comprendre les types de données utilisées par R est une notion de base pour réaliser des opérations. R utilise soit des données brutes, ou des collections de données. </p>
-
-<p>Pour assigner une valeur à un objet simple (un scalaire) on utilise l&#39;opération suivante:</p>
-
-<pre><code class="r">objet &lt;- 2
-objet
-</code></pre>
-
-<pre><code>## [1] 2
-</code></pre>
-
-<p>Notons que les opérateurs &#39;&lt;-&#39;&#39; et &#39;=&#39;&#39; sont équivalents pour attribuer une valeur à un objet. L&#39;opérateur &#39;&lt;-&#39; peut être difficile à lire ou confondu avec le signe &#39;-&#39;. Cependant, la recommandation est de limiter le signe &#39;=&#39; à des opérations mathématiques et d&#39;utiliser &#39;&lt;-&#39; pour l&#39;assignation de valeurs.</p>
+    <p>Notons que les opérateurs &#39;&lt;-&#39;&#39; et &#39;=&#39;&#39; sont équivalents pour attribuer une valeur à un objet. L&#39;opérateur &#39;&lt;-&#39; peut être difficile à lire ou confondu avec le signe &#39;-&#39;. Cependant, la recommandation est de limiter le signe &#39;=&#39; à des opérations mathématiques et d&#39;utiliser &#39;&lt;-&#39; pour l&#39;assignation de valeurs.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-11" style="background:;">
-  <!--  <a href="#slide-11"></a> -->
+<slide class="" id="slide-12" style="background:;">
+  <!--  <a href="#slide-12"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: scalaires</h1>
   </hgroup>
@@ -289,8 +278,8 @@ c
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-12" style="background:;">
-  <!--  <a href="#slide-12"></a> -->
+<slide class="" id="slide-13" style="background:;">
+  <!--  <a href="#slide-13"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: scalaires</h1>
   </hgroup>
@@ -316,13 +305,13 @@ collage
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-13" style="background:;">
-  <!--  <a href="#slide-13"></a> -->
+<slide class="" id="slide-14" style="background:;">
+  <!--  <a href="#slide-14"></a> -->
   <hgroup>
     <h1>Types de données: booléens</h1>
   </hgroup>
   <article data-timings="">
-    <p>Le type booléen (logical) permet de représenter les états <em>vrai</em> (TRUE) et <em>faux</em> (FALSE) et de faire des opérations mathématiques sur ces objets</p>
+    <p>Le type booléen (logical) permet de représenter les états <em>TRUE</em> (1) et <em>FALSE</em> (0) et de faire des opérations mathématiques sur ces objets</p>
 
 <pre><code class="r">vrai &lt;- TRUE
 faux &lt;- FALSE
@@ -338,22 +327,16 @@ vrai
 <pre><code>## [1] 1
 </code></pre>
 
-<pre><code class="r">vrai * faux
-</code></pre>
-
-<pre><code>## [1] 0
-</code></pre>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-14" style="background:;">
-  <!--  <a href="#slide-14"></a> -->
+<slide class="" id="slide-15" style="background:;">
+  <!--  <a href="#slide-15"></a> -->
   <hgroup>
     <h1>Types de données: facteurs</h1>
   </hgroup>
   <article data-timings="">
-    <p>R est d&#39;abord un language utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui n&#39;est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitemetns expérimentaux. </p>
+    <p>R est d&#39;abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui n&#39;est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux. </p>
 
 <pre><code class="r">MesFacteurs &lt;- factor(c(1,2,3,2,3,3,1,2))
 MesFacteurs
@@ -366,8 +349,8 @@ MesFacteurs
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-15" style="background:;">
-  <!--  <a href="#slide-15"></a> -->
+<slide class="" id="slide-16" style="background:;">
+  <!--  <a href="#slide-16"></a> -->
   <hgroup>
     <h1>Types de données: conversions</h1>
   </hgroup>
@@ -386,13 +369,38 @@ MesFacteurs
 <pre><code>## [1] &quot;4&quot; &quot;6&quot;
 </code></pre>
 
-<pre><code class="r">as.integer(2.6)
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-17" style="background:;">
+  <!--  <a href="#slide-17"></a> -->
+  <hgroup>
+    <h1>Types de données: conversions</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">as.integer(2.6)
 </code></pre>
 
 <pre><code>## [1] 2
 </code></pre>
 
-<pre><code class="r">as.logical(0)
+<pre><code class="r">as.factor(c(&quot;4&quot;,&quot;6&quot;))
+</code></pre>
+
+<pre><code>## [1] 4 6
+## Levels: 4 6
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-18" style="background:;">
+  <!--  <a href="#slide-18"></a> -->
+  <hgroup>
+    <h1>Types de données: conversions</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">as.logical(0)
 </code></pre>
 
 <pre><code>## [1] FALSE
@@ -410,18 +418,11 @@ MesFacteurs
 <pre><code>## [1] TRUE
 </code></pre>
 
-<pre><code class="r">as.factor(c(&quot;4&quot;,&quot;6&quot;))
-</code></pre>
-
-<pre><code>## [1] 4 6
-## Levels: 4 6
-</code></pre>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-16" style="background:;">
-  <!--  <a href="#slide-16"></a> -->
+<slide class="" id="slide-19" style="background:;">
+  <!--  <a href="#slide-19"></a> -->
   <hgroup>
     <h1>Types de variables: vecteurs</h1>
   </hgroup>
@@ -431,13 +432,17 @@ MesFacteurs
 <p>La façon la plus simple de déclarer un vecteur est (d&#39;autres méthodes seront présentées plus loin):</p>
 
 <pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
+MonPremierVecteur
+</code></pre>
+
+<pre><code>## [1] 1 2 3 4 5
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-17" style="background:;">
-  <!--  <a href="#slide-17"></a> -->
+<slide class="" id="slide-20" style="background:;">
+  <!--  <a href="#slide-20"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -447,8 +452,8 @@ MesFacteurs
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-18" style="background:;">
-  <!--  <a href="#slide-18"></a> -->
+<slide class="" id="slide-21" style="background:;">
+  <!--  <a href="#slide-21"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: vecteurs</h1>
   </hgroup>
@@ -462,7 +467,7 @@ MonPremierVecteur[3]
 <pre><code>## [1] 3
 </code></pre>
 
-<p>Òn obtient un <em>NA</em> si on tente d&#39;accéder à une position qui n&#39;existe pas:</p>
+<p>On obtient un <em>NA</em> si on tente d&#39;accéder à une position qui n&#39;existe pas:</p>
 
 <pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
 MonPremierVecteur[6]
@@ -474,8 +479,8 @@ MonPremierVecteur[6]
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-19" style="background:;">
-  <!--  <a href="#slide-19"></a> -->
+<slide class="" id="slide-22" style="background:;">
+  <!--  <a href="#slide-22"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -485,16 +490,15 @@ MonPremierVecteur[6]
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-20" style="background:;">
-  <!--  <a href="#slide-20"></a> -->
+<slide class="" id="slide-23" style="background:;">
+  <!--  <a href="#slide-23"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: vecteurs</h1>
   </hgroup>
   <article data-timings="">
     <p>On obtient la dimension d&#39;un vecteur ainsi:</p>
 
-<pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
-length(MonPremierVecteur)
+<pre><code class="r">length(MonPremierVecteur)
 </code></pre>
 
 <pre><code>## [1] 5
@@ -503,15 +507,15 @@ length(MonPremierVecteur)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-21" style="background:;">
-  <!--  <a href="#slide-21"></a> -->
+<slide class="" id="slide-24" style="background:;">
+  <!--  <a href="#slide-24"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
     <p>L&#39;extension naturelle d&#39;un vecteur est une <em>matrice</em>, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d&#39;objet. </p>
 
-<p>La commande de base pour créer une matrice est <em>matrix</em></p>
+<p>La commande de base pour créer une matrice est <em>matrix()</em></p>
 
 <pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
 MaMatrice
@@ -522,7 +526,16 @@ MaMatrice
 ## [2,]    2    4    6
 </code></pre>
 
-<p>Et on accède à la ligne <em>i</em> et la colonne <em>j</em> au moyen de la commande suivante</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-25" style="background:;">
+  <!--  <a href="#slide-25"></a> -->
+  <hgroup>
+    <h1>Types d&#39;objets: matrices</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>On accède à la ligne <em>i</em> et la colonne <em>j</em> au moyen de la commande suivante</p>
 
 <pre><code class="r">MaMatrice[1,2] 
 </code></pre>
@@ -530,7 +543,16 @@ MaMatrice
 <pre><code>## [1] 3
 </code></pre>
 
-<p>On peut aussi accéder à des lignes ou des colonnes entières </p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-26" style="background:;">
+  <!--  <a href="#slide-26"></a> -->
+  <hgroup>
+    <h1>Types d&#39;objets: matrices</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>On peut aussi accéder à des lignes ou des colonnes entières </p>
 
 <pre><code class="r">MaMatrice[1,]
 </code></pre>
@@ -547,20 +569,30 @@ MaMatrice
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-22" style="background:;">
-  <!--  <a href="#slide-22"></a> -->
+<slide class="" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
     <p>On obtient la dimension de la matrice ainsi</p>
 
-<pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
-dim(MaMatrice)
+<pre><code class="r">dim(MaMatrice)
 </code></pre>
 
 <pre><code>## [1] 2 3
 </code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-28" style="background:;">
+  <!--  <a href="#slide-28"></a> -->
+  <hgroup>
+    <h1>Types d&#39;objets: matrices</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ou encore </p>
 
 <pre><code class="r">nrow(MaMatrice)
 </code></pre>
@@ -577,16 +609,15 @@ dim(MaMatrice)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-23" style="background:;">
-  <!--  <a href="#slide-23"></a> -->
+<slide class="" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
   <hgroup>
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
     <p>Les noms de colonnes et de lignes peuvent être modifiées</p>
 
-<pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
-colnames(MaMatrice) = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
+<pre><code class="r">colnames(MaMatrice) = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
 rownames(MaMatrice) = c(&quot;X&quot;,&quot;Y&quot;)
 MaMatrice
 </code></pre>
@@ -599,13 +630,13 @@ MaMatrice
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-24" style="background:;">
-  <!--  <a href="#slide-24"></a> -->
+<slide class="" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <p>Créez une matrice de 2 lignes et 5 colonnes remplies de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions <em>runif()</em>. Calculez la somme de la première colonne au moyen de la fonction <em>sum()</em></p>
+    <p>Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions <em>runif()</em>. Calculez la somme de la première colonne au moyen de la fonction <em>sum()</em></p>
 
 <p><strong>Astuce</strong> : pour obtenir de l&#39;aide sur une fonction, essayez</p>
 
@@ -615,8 +646,8 @@ MaMatrice
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-25" style="background:;">
-  <!--  <a href="#slide-25"></a> -->
+<slide class="" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
   <hgroup>
     <h1>Type d&#39;objets : listes</h1>
   </hgroup>
@@ -630,9 +661,18 @@ MaListe[[1]] = c(1,2)
 MaListe[[2]] = matrix(c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;), nrow = 2, ncol = 2)
 </code></pre>
 
-<p>Et de même on peut nommer les items d&#39;une liste</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-32" style="background:;">
+  <!--  <a href="#slide-32"></a> -->
+  <hgroup>
+    <h1>Type d&#39;objets : listes</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Et de même on peut nommer les items d&#39;une liste</p>
 
-<pre><code class="r">names(MaListe) = c(&quot;Element1&quot;,&quot;Element2&quot;)
+<pre><code class="r">names(MaListe) &lt;- c(&quot;Element1&quot;,&quot;Element2&quot;)
 MaListe
 </code></pre>
 
@@ -648,52 +688,60 @@ MaListe
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-26" style="background:;">
-  <!--  <a href="#slide-26"></a> -->
+<slide class="" id="slide-33" style="background:;">
+  <!--  <a href="#slide-33"></a> -->
   <hgroup>
     <h1>Type d&#39;objets: data.frame</h1>
   </hgroup>
   <article data-timings="">
     <p>Le <em>data.frame</em> est un objet d&#39;une structure particulière à R, un hybdride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées <em>i</em> et les colonnes <em>j</em>, ainsi que des noms de colonnes. Il n&#39;est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.</p>
 
-<pre><code class="r">test &lt;- data.frame(a = c(1:10), b = c(11:20))
+<pre><code class="r">test &lt;- data.frame(a = c(1:5), b = c(11:15))
 test
 </code></pre>
 
-<pre><code>##     a  b
-## 1   1 11
-## 2   2 12
-## 3   3 13
-## 4   4 14
-## 5   5 15
-## 6   6 16
-## 7   7 17
-## 8   8 18
-## 9   9 19
-## 10 10 20
+<pre><code>##   a  b
+## 1 1 11
+## 2 2 12
+## 3 3 13
+## 4 4 14
+## 5 5 15
 </code></pre>
 
-<p>On peut transformer un data.frame en matrice</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-34" style="background:;">
+  <!--  <a href="#slide-34"></a> -->
+  <hgroup>
+    <h1>Type d&#39;objets: data.frame</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>On peut néanmoins transformer un data.frame en matrice</p>
 
 <pre><code class="r">as.matrix(test)
 </code></pre>
 
-<pre><code>##        a  b
-##  [1,]  1 11
-##  [2,]  2 12
-##  [3,]  3 13
-##  [4,]  4 14
-##  [5,]  5 15
-##  [6,]  6 16
-##  [7,]  7 17
-##  [8,]  8 18
-##  [9,]  9 19
-## [10,] 10 20
+<pre><code>##      a  b
+## [1,] 1 11
+## [2,] 2 12
+## [3,] 3 13
+## [4,] 4 14
+## [5,] 5 15
 </code></pre>
 
-<p>Ou encore transformer une matrice en data.frame</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-35" style="background:;">
+  <!--  <a href="#slide-35"></a> -->
+  <hgroup>
+    <h1>Type d&#39;objets: data.frame</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ou inversement transformer une matrice en data.frame</p>
 
-<pre><code class="r">test2 = matrix(c(1:6), nrow = 3, ncol = 2)
+<pre><code class="r">test2 &lt;- matrix(c(1:6), nrow = 3, ncol = 2)
 as.data.frame(test2)
 </code></pre>
 
@@ -706,8 +754,8 @@ as.data.frame(test2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-27" style="background:;">
-  <!--  <a href="#slide-27"></a> -->
+<slide class="transition" id="slide-36" style="background:;">
+  <!--  <a href="#slide-36"></a> -->
   <hgroup>
     <h1>Interactions avec l&#39;extérieur</h1>
   </hgroup>
@@ -717,24 +765,29 @@ as.data.frame(test2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-28" style="background:;">
-  <!--  <a href="#slide-28"></a> -->
+<slide class="" id="slide-37" style="background:;">
+  <!--  <a href="#slide-37"></a> -->
   <hgroup>
     <h1>Lire un fichier txt</h1>
   </hgroup>
   <article data-timings="">
     <p>La lecture de fichiers est souvent l&#39;étape la plus frustrante lorsque l&#39;on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d&#39;utiliser un format minimal qui est utilisable sur l&#39;ensemble des plateformes. </p>
 
-<p>Nous allons utiliser le fichier &#39;quadrats.txt&#39; pour cet exemple. On peut lire le fichier au moyen de la commande</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-38" style="background:;">
+  <!--  <a href="#slide-38"></a> -->
+  <hgroup>
+    <h1>Lire un fichier txt</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Nous allons utiliser le fichier &#39;quadrats.txt&#39; pour cet exemple. On peut lire le fichier au moyen de la commande</p>
 
-<pre><code class="r">quadrats &lt;- read.table(file = &quot;./quadrats.txt&quot;, header = T, row.names = 1, dec = &quot;,&quot;, sep = &quot;;&quot;) 
+<pre><code class="r">quadrats &lt;- read.table(file = &#39;./donnees/quadrats.txt&#39;, header = T, dec = &quot;.&quot;, sep = &quot;;&quot;, quote = TRUE) 
 </code></pre>
 
-<pre><code>## Warning in file(file, &quot;rt&quot;): impossible d&#39;ouvrir le fichier &#39;./
-## quadrats.txt&#39; : Aucun fichier ou dossier de ce type
-</code></pre>
-
-<pre><code>## Error in file(file, &quot;rt&quot;): impossible d&#39;ouvrir la connexion
+<pre><code>## Error in read.table(file = &quot;./donnees/quadrats.txt&quot;, header = T, dec = &quot;.&quot;, : invalid quote symbol set
 </code></pre>
 
 <pre><code class="r">head(quadrats)
@@ -743,16 +796,21 @@ as.data.frame(test2)
 <pre><code>## Error in head(quadrats): objet &#39;quadrats&#39; introuvable
 </code></pre>
 
-<hr>
-
-<h1>Lire un fichier txt: anatomie des arguments</h1>
-
-<ul>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-39" style="background:;">
+  <!--  <a href="#slide-39"></a> -->
+  <hgroup>
+    <h1>Lire un fichier txt: anatomie des arguments</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
 <li>&#39;file&#39; : nom du fichier à lire</li>
 <li>&#39;header&#39; : indique s&#39;il y a un entête avec les noms de colonnes</li>
-<li>&#39;row.names&#39; : indique s&#39;il y a une colonne, et le cas échéant laquelle, indiquant le nom des lines</li>
 <li>&#39;dec&#39; : caractère utilisé pour délimiter les décimales</li>
 <li>&#39;sep&#39; : caractère utilisé pour séparer les colonnes</li>
+<li>&#39;quote&#39; : spécifie comment interpréter les chaînes de caractères</li>
 </ul>
 
 <p>Note : l&#39;objet retourné est par défaut un &#39;data.frame&#39;. Il peut être ensuite converti, au besoin</p>
@@ -760,8 +818,8 @@ as.data.frame(test2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-29" style="background:;">
-  <!--  <a href="#slide-29"></a> -->
+<slide class="" id="slide-40" style="background:;">
+  <!--  <a href="#slide-40"></a> -->
   <hgroup>
     <h1>Lire un fichier txt: erreurs courantes</h1>
   </hgroup>
@@ -782,8 +840,8 @@ as.data.frame(test2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-30" style="background:;">
-  <!--  <a href="#slide-30"></a> -->
+<slide class="" id="slide-41" style="background:;">
+  <!--  <a href="#slide-41"></a> -->
   <hgroup>
     <h1>Écrire des fichiers</h1>
   </hgroup>
@@ -792,64 +850,37 @@ as.data.frame(test2)
 
 <p>La syntaxe pour écrire une matrice ou un data.frame est aussi simple que pour lire un fichier txt</p>
 
-<pre><code class="r">test &lt;- matrix(runif(n=10,min=0,max=1),nrow=5,ncol=10)
-test
-</code></pre>
-
-<pre><code>##           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]
-## [1,] 0.6128743 0.6481061 0.6128743 0.6481061 0.6128743 0.6481061 0.6128743
-## [2,] 0.8504038 0.4235873 0.8504038 0.4235873 0.8504038 0.4235873 0.8504038
-## [3,] 0.4388372 0.8267708 0.4388372 0.8267708 0.4388372 0.8267708 0.4388372
-## [4,] 0.7114510 0.7297897 0.7114510 0.7297897 0.7114510 0.7297897 0.7114510
-## [5,] 0.3572207 0.5175094 0.3572207 0.5175094 0.3572207 0.5175094 0.3572207
-##           [,8]      [,9]     [,10]
-## [1,] 0.6481061 0.6128743 0.6481061
-## [2,] 0.4235873 0.8504038 0.4235873
-## [3,] 0.8267708 0.4388372 0.8267708
-## [4,] 0.7297897 0.7114510 0.7297897
-## [5,] 0.5175094 0.3572207 0.5175094
-</code></pre>
-
-<pre><code class="r">write.table(test, file = &quot;./test.xt&quot;)
+<pre><code>test &lt;- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
+write.table(test, file = &quot;test.xt&quot;)
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-31" style="background:;">
-  <!--  <a href="#slide-31"></a> -->
+<slide class="" id="slide-42" style="background:;">
+  <!--  <a href="#slide-42"></a> -->
   <hgroup>
     <h1>Écrire des fichiers: save et .Rdata</h1>
   </hgroup>
   <article data-timings="">
-    <p>Parfoit les objets que l&#39;on souhaite enregistrer ont une structure plus complexe qu&#39;un tableau de données. R permet d&#39;enregistrer ces objets dans un format qui lui est unique, le <em>.Rdata</em>. Ces objets sont compressés pour minimiser l&#39;espace disque et ne peuvent être lus que par R. </p>
+    <p>Parfois les objets que l&#39;on souhaite enregistrer ont une structure plus complexe qu&#39;un tableau de données. R permet d&#39;enregistrer ces objets dans un format qui lui est unique, le <em>.Rdata</em>. Ces objets sont compressés pour minimiser l&#39;espace disque et ne peuvent être lus que par R. </p>
 
 <pre><code class="r">test &lt;- list()
 test[[1]] &lt;- 1
 test[[2]] &lt;- c(1:10)
-test
-</code></pre>
-
-<pre><code>## [[1]]
-## [1] 1
-## 
-## [[2]]
-##  [1]  1  2  3  4  5  6  7  8  9 10
-</code></pre>
-
-<pre><code class="r">save(test, file = &quot;./test.Rdata&quot;)
+save(test, file = &quot;test_liste.Rdata&quot;)
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-32" style="background:;">
-  <!--  <a href="#slide-32"></a> -->
+<slide class="" id="slide-43" style="background:;">
+  <!--  <a href="#slide-43"></a> -->
   <hgroup>
     <h1>Lire des fichiers: load et .Rdata</h1>
   </hgroup>
   <article data-timings="">
-    <p>Puisque le fichier Rdata est spécifique à R, il s&#39;agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l&#39;objet, les noms et les types de données.</p>
+    <p>Puisque le fichier Rdata est spécifique à R, il s&#39;agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l&#39;objet, les noms et les types de données</p>
 
 <pre><code class="r">load(&quot;./test.Rdata&quot;)
 test
@@ -867,13 +898,13 @@ test
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-33" style="background:;">
-  <!--  <a href="#slide-33"></a> -->
+<slide class="" id="slide-44" style="background:;">
+  <!--  <a href="#slide-44"></a> -->
   <hgroup>
     <h1>Quelques commandes utiles</h1>
   </hgroup>
   <article data-timings="">
-    <p><em>head()</em> permet de visualiser une partie d&#39;un jeu de données</p>
+    <p>head() et tail() permettent de visualiser une partie d&#39;un jeu de données</p>
 
 <pre><code class="r">head(quadrats, n = 5)
 </code></pre>
@@ -887,27 +918,16 @@ test
 <pre><code>## Error in tail(quadrats, n = 5): objet &#39;quadrats&#39; introuvable
 </code></pre>
 
-<pre><code class="r">ls()
-</code></pre>
-
-<pre><code>##  [1] &quot;a&quot;                 &quot;b&quot;                 &quot;c&quot;                
-##  [4] &quot;collage&quot;           &quot;faux&quot;              &quot;MaListe&quot;          
-##  [7] &quot;MaMatrice&quot;         &quot;MesFacteurs&quot;       &quot;MonPremierVecteur&quot;
-## [10] &quot;objet&quot;             &quot;test&quot;              &quot;test2&quot;            
-## [13] &quot;vrai&quot;
-</code></pre>
-
-<pre><code class="r">str(quadrats)
-</code></pre>
-
-<pre><code>## Error in str(quadrats): objet &#39;quadrats&#39; introuvable
-</code></pre>
-
-<hr>
-
-<h1>Quelques commandes utiles</h1>
-
-<p><em>summary()</em> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-45" style="background:;">
+  <!--  <a href="#slide-45"></a> -->
+  <hgroup>
+    <h1>Quelques commandes utiles</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><em>summary()</em> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
 
 <pre><code class="r">summary(quadrats)
 </code></pre>
@@ -915,30 +935,47 @@ test
 <pre><code>## Error in summary(quadrats): objet &#39;quadrats&#39; introuvable
 </code></pre>
 
-<hr>
-
-<h1>EXERCICE DE MANIPULATION DE DONNÉES</h1>
-
-<ol>
-<li>Ouvrir le fichier sutton.txt au moyen de Excel ou d&#39;un éditeur de texte</li>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-46" style="background:;">
+  <!--  <a href="#slide-46"></a> -->
+  <hgroup>
+    <h1>EXERCICE DE MANIPULATION DE DONNÉES</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Ouvrir le fichier quadrats.txt au moyen de Excel ou d&#39;un éditeur de texte</li>
 <li>Calculer l&#39;abondance moyenne pour chaque espèce sur l&#39;ensemble des quadrats</li>
 <li>Ouvrir le même fichier au moyen de R</li>
 <li>Vérifier que le fichier a le format approprié</li>
-<li>Créer un vecteur &#39;AbondanceMoyenne&#39; d&#39;une longueur correspondant au nombre d&#39;espèces dans les données sutton</li>
+<li>Créer un vecteur &#39;AbondanceMoyenne&#39; d&#39;une longueur correspondant au nombre d&#39;espèces dans les données quadrats</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-47" style="background:;">
+  <!--  <a href="#slide-47"></a> -->
+  <hgroup>
+    <h1>EXERCICE DE MANIPULATION DE DONNÉES (suite)</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
 <li>Calculer l&#39;abondance moyenne de chaque espèce au moyen de la fonction &#39;mean&#39; et l&#39;inscrire dans chaque position de AbondanceMoyenne</li>
 <li>Convertir AbondanceMoyenne en data.frame</li>
 <li>Attribuer les noms des espèces pour chaque entrée de AbondanceMoyenne</li>
 <li>Enregistrer AbondanceMoyenne sous forme de fichier txt</li>
 <li>Ouvrir le fichier txt et le comparer au calcul fait au moyenne de Excel</li>
-</ol>
+</ul>
 
 <p>Note : vous pouvez explorer les données avec &#39;summary&#39; et pour les avancés. Les plus avancés peuvent explorer la commande &#39;apply&#39;...</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-34" style="background:;">
-  <!--  <a href="#slide-34"></a> -->
+<slide class="" id="slide-48" style="background:;">
+  <!--  <a href="#slide-48"></a> -->
   <hgroup>
     <h1>Compléments: le script</h1>
   </hgroup>
@@ -967,8 +1004,8 @@ source(&quot;./MonScript.R&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-35" style="background:;">
-  <!--  <a href="#slide-35"></a> -->
+<slide class="transition" id="slide-49" style="background:;">
+  <!--  <a href="#slide-49"></a> -->
   <hgroup>
     <h1>Manipulation de données</h1>
   </hgroup>
@@ -978,8 +1015,8 @@ source(&quot;./MonScript.R&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-36" style="background:;">
-  <!--  <a href="#slide-36"></a> -->
+<slide class="" id="slide-50" style="background:;">
+  <!--  <a href="#slide-50"></a> -->
   <hgroup>
     <h1>Différents outils pour générer des données</h1>
   </hgroup>
@@ -1000,8 +1037,8 @@ source(&quot;./MonScript.R&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-37" style="background:;">
-  <!--  <a href="#slide-37"></a> -->
+<slide class="" id="slide-51" style="background:;">
+  <!--  <a href="#slide-51"></a> -->
   <hgroup>
     <h1>Différents outils pour générer des données</h1>
   </hgroup>
@@ -1026,8 +1063,8 @@ expand.grid(v1,v2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-38" style="background:;">
-  <!--  <a href="#slide-38"></a> -->
+<slide class="" id="slide-52" style="background:;">
+  <!--  <a href="#slide-52"></a> -->
   <hgroup>
     <h1>Combiner des objets</h1>
   </hgroup>
@@ -1060,8 +1097,8 @@ c(v1,v2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-39" style="background:;">
-  <!--  <a href="#slide-39"></a> -->
+<slide class="" id="slide-53" style="background:;">
+  <!--  <a href="#slide-53"></a> -->
   <hgroup>
     <h1>Fonctions utiles: trier des objets</h1>
   </hgroup>
@@ -1070,22 +1107,22 @@ c(v1,v2)
 test
 </code></pre>
 
-<pre><code>##  [1] 25.50618 70.69104 62.66900 86.11034 56.04268 74.04476 25.40730
-##  [8] 18.52019 73.56952 82.68799
+<pre><code>##  [1] 49.4754237 99.0238900 84.8201456 76.1045588 41.5336537  0.1933319
+##  [7] 53.3244439  8.5677316 41.4970377 94.6370647
 </code></pre>
 
 <pre><code class="r">sort(test)
 </code></pre>
 
-<pre><code>##  [1] 18.52019 25.40730 25.50618 56.04268 62.66900 70.69104 73.56952
-##  [8] 74.04476 82.68799 86.11034
+<pre><code>##  [1]  0.1933319  8.5677316 41.4970377 41.5336537 49.4754237 53.3244439
+##  [7] 76.1045588 84.8201456 94.6370647 99.0238900
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-40" style="background:;">
-  <!--  <a href="#slide-40"></a> -->
+<slide class="" id="slide-54" style="background:;">
+  <!--  <a href="#slide-54"></a> -->
   <hgroup>
     <h1>Fonctions utiles: obtenir des rangs</h1>
   </hgroup>
@@ -1094,21 +1131,21 @@ test
 test
 </code></pre>
 
-<pre><code>##  [1] 83.929403 84.332511 75.286771  4.710961 84.938019 79.677364 83.185388
-##  [8] 48.344172  7.737679 89.343103
+<pre><code>##  [1] 42.344884 57.915992 38.198551 80.016138 75.122784 93.606464 91.559717
+##  [8] 14.773728 66.158696  6.350222
 </code></pre>
 
 <pre><code class="r">rank(test)
 </code></pre>
 
-<pre><code>##  [1]  7  8  4  1  9  5  6  3  2 10
+<pre><code>##  [1]  4  5  3  8  7 10  9  2  6  1
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-41" style="background:;">
-  <!--  <a href="#slide-41"></a> -->
+<slide class="" id="slide-55" style="background:;">
+  <!--  <a href="#slide-55"></a> -->
   <hgroup>
     <h1>Fonctions utiles: échantillonner les valeurs uniques</h1>
   </hgroup>
@@ -1129,8 +1166,8 @@ test
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-42" style="background:;">
-  <!--  <a href="#slide-42"></a> -->
+<slide class="" id="slide-56" style="background:;">
+  <!--  <a href="#slide-56"></a> -->
   <hgroup>
     <h1>Sous-échantillonner des objets</h1>
   </hgroup>
@@ -1164,8 +1201,8 @@ test
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-43" style="background:;">
-  <!--  <a href="#slide-43"></a> -->
+<slide class="" id="slide-57" style="background:;">
+  <!--  <a href="#slide-57"></a> -->
   <hgroup>
     <h1>Faire des tableaux sommaires (enfin !)</h1>
   </hgroup>
@@ -1175,8 +1212,8 @@ test
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-44" style="background:;">
-  <!--  <a href="#slide-44"></a> -->
+<slide class="" id="slide-58" style="background:;">
+  <!--  <a href="#slide-58"></a> -->
   <hgroup>
     <h1>EXERCICE DE FIN DE SÉANCE</h1>
   </hgroup>
@@ -1255,13 +1292,13 @@ test
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Types d&#39;objets: scalaires'>
+        data-slide=10 title='Le concept d&#39;objet'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Types d&#39;objets: scalaires'>
+        data-slide=11 title='Le concept d&#39;objet'>
          11
       </a>
     </li>
@@ -1273,194 +1310,278 @@ test
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Types de données: booléens'>
+        data-slide=13 title='Types d&#39;objets: scalaires'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Types de données: facteurs'>
+        data-slide=14 title='Types de données: booléens'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Types de données: conversions'>
+        data-slide=15 title='Types de données: facteurs'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Types de variables: vecteurs'>
+        data-slide=16 title='Types de données: conversions'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Exercice'>
+        data-slide=17 title='Types de données: conversions'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Types d&#39;objets: vecteurs'>
+        data-slide=18 title='Types de données: conversions'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Exercice'>
+        data-slide=19 title='Types de variables: vecteurs'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Types d&#39;objets: vecteurs'>
+        data-slide=20 title='Exercice'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Types d&#39;objets: matrices'>
+        data-slide=21 title='Types d&#39;objets: vecteurs'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Types d&#39;objets: matrices'>
+        data-slide=22 title='Exercice'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Types d&#39;objets: matrices'>
+        data-slide=23 title='Types d&#39;objets: vecteurs'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Exercice'>
+        data-slide=24 title='Types d&#39;objets: matrices'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Type d&#39;objets : listes'>
+        data-slide=25 title='Types d&#39;objets: matrices'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Type d&#39;objets: data.frame'>
+        data-slide=26 title='Types d&#39;objets: matrices'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Interactions avec l&#39;extérieur'>
+        data-slide=27 title='Types d&#39;objets: matrices'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Lire un fichier txt'>
+        data-slide=28 title='Types d&#39;objets: matrices'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Lire un fichier txt: erreurs courantes'>
+        data-slide=29 title='Types d&#39;objets: matrices'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Écrire des fichiers'>
+        data-slide=30 title='Exercice'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Écrire des fichiers: save et .Rdata'>
+        data-slide=31 title='Type d&#39;objets : listes'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Lire des fichiers: load et .Rdata'>
+        data-slide=32 title='Type d&#39;objets : listes'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Quelques commandes utiles'>
+        data-slide=33 title='Type d&#39;objets: data.frame'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Compléments: le script'>
+        data-slide=34 title='Type d&#39;objets: data.frame'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Manipulation de données'>
+        data-slide=35 title='Type d&#39;objets: data.frame'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Différents outils pour générer des données'>
+        data-slide=36 title='Interactions avec l&#39;extérieur'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Différents outils pour générer des données'>
+        data-slide=37 title='Lire un fichier txt'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Combiner des objets'>
+        data-slide=38 title='Lire un fichier txt'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Fonctions utiles: trier des objets'>
+        data-slide=39 title='Lire un fichier txt: anatomie des arguments'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Fonctions utiles: obtenir des rangs'>
+        data-slide=40 title='Lire un fichier txt: erreurs courantes'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Fonctions utiles: échantillonner les valeurs uniques'>
+        data-slide=41 title='Écrire des fichiers'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Sous-échantillonner des objets'>
+        data-slide=42 title='Écrire des fichiers: save et .Rdata'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Faire des tableaux sommaires (enfin !)'>
+        data-slide=43 title='Lire des fichiers: load et .Rdata'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='EXERCICE DE FIN DE SÉANCE'>
+        data-slide=44 title='Quelques commandes utiles'>
          44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Quelques commandes utiles'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='EXERCICE DE MANIPULATION DE DONNÉES'>
+         46
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=47 title='EXERCICE DE MANIPULATION DE DONNÉES (suite)'>
+         47
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=48 title='Compléments: le script'>
+         48
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=49 title='Manipulation de données'>
+         49
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=50 title='Différents outils pour générer des données'>
+         50
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=51 title='Différents outils pour générer des données'>
+         51
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=52 title='Combiner des objets'>
+         52
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=53 title='Fonctions utiles: trier des objets'>
+         53
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=54 title='Fonctions utiles: obtenir des rangs'>
+         54
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=55 title='Fonctions utiles: échantillonner les valeurs uniques'>
+         55
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=56 title='Sous-échantillonner des objets'>
+         56
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=57 title='Faire des tableaux sommaires (enfin !)'>
+         57
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=58 title='EXERCICE DE FIN DE SÉANCE'>
+         58
       </a>
     </li>
   </ul>
