@@ -22,7 +22,7 @@ assets      :
 
 3. Manipuler des objets
 
---- 
+---
 
 # 5 raisons pour utiliser R
 
@@ -36,7 +36,7 @@ Les arguments en faveur de R
 4. En phase avec les développements les plus récents en écologie
 5. Intégration du langage de programmation avec les outils de visualisation et de manipulation des données
 
---- 
+---
 
 # Interagir avec R sur la console
 
@@ -44,7 +44,7 @@ Les arguments en faveur de R
 <img src="assets/img/intro/Rgui.png" height="500px"></img>
 </div>
 
---- 
+---
 
 # Utiliser R Studio
 
@@ -52,7 +52,7 @@ Les arguments en faveur de R
 <img src="assets/img/intro/RStudio.png" height="500px"></img>
 </div>
 
---- 
+---
 
 # Exercice : installer et lancer R Studio
 
@@ -60,17 +60,17 @@ Les arguments en faveur de R
 <img src="assets/img/intro/RStudio_logo.png" height="100px"></img>
 </div>
 
---- 
+---
 
 # Exercice : interaction avec la ligne de commande
 
-Le plus simple est d'utiliser R comme une calculatrice. 
+Le plus simple est d'utiliser R comme une calculatrice.
 
 Que donne l'opération suivante ?
 
 2 + 16 x 24 - 56
 
---- 
+---
 
 # Répertoire de travail
 
@@ -82,7 +82,7 @@ getwd()
 ```
 
 ```
-## [1] "/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/cours2/pres"
+## [1] "/Users/SteveVissault/Documents/Git/BIO109/cours2/pres"
 ```
 
 Changer le répertoire de travail
@@ -90,6 +90,10 @@ Changer le répertoire de travail
 
 ```r
 setwd("/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees")
+```
+
+```
+## Error in setwd("/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees"): impossible de changer de répertoire de travail
 ```
 
 ---
@@ -145,7 +149,7 @@ ls()
 ## character(0)
 ```
 
---- 
+---
 
 # Le concept d'objet
 
@@ -166,13 +170,13 @@ a
 ## [1] 1 2
 ```
 
---- 
+---
 
 # Le concept d'objet
 
-Notons que les opérateurs '<-'' et '='' sont équivalents pour attribuer une valeur à un objet. L'opérateur '<-' peut être difficile à lire ou confondu avec le signe '-'. Cependant, la recommandation est de limiter le signe '=' à des opérations mathématiques et d'utiliser '<-' pour l'assignation de valeurs.
+Notons que les opérateurs `<-` et `=` sont équivalents pour attribuer une valeur à un objet. L'opérateur `<-` peut être difficile à lire ou confondu avec le signe `-`. Cependant, la recommandation est de limiter le signe `=` à des opérations mathématiques et d'utiliser `<-` pour l'assignation de valeurs.
 
---- 
+---
 # Types d'objets: scalaires
 
 Les données numériques peuvent être déclarées de différentes manières
@@ -205,7 +209,7 @@ c
 ## [1] 1e-06
 ```
 
---- 
+---
 # Types d'objets: scalaires
 
 On peut également déclarer des séries de caractères
@@ -232,11 +236,11 @@ collage
 ## [1] "ab"
 ```
 
---- 
+---
 
 # Types de données: booléens
 
-Le type booléen (logical) permet de représenter les états *TRUE* (1) et *FALSE* (0) et de faire des opérations mathématiques sur ces objets
+Le type booléen (logical) permet de représenter les états `TRUE` (1) et `FALSE` (0) et de faire des opérations mathématiques sur ces objets
 
 
 ```r
@@ -257,11 +261,11 @@ vrai + faux
 ## [1] 1
 ```
 
---- 
+---
 
 # Types de données: facteurs
 
-R est d'abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d'hypothèse, qui n'est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux. 
+R est d'abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d'hypothèse, qui n'est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.
 
 
 ```r
@@ -274,7 +278,7 @@ MesFacteurs
 ## Levels: 1 2 3
 ```
 
---- 
+---
 
 # Types de données: conversions
 
@@ -297,7 +301,7 @@ as.character(c(4,6))
 ## [1] "4" "6"
 ```
 
---- 
+---
 
 # Types de données: conversions
 
@@ -319,7 +323,7 @@ as.factor(c("4","6"))
 ## Levels: 4 6
 ```
 
---- 
+---
 
 # Types de données: conversions
 
@@ -348,11 +352,11 @@ as.logical(2)
 ## [1] TRUE
 ```
 
---- 
+---
 
 # Types de variables: vecteurs
 
-Le vecteur est l'objet le plus important de R. On dit que le langage R est *vectoriel*, ce qui lui permet de réaliser des opérations optimisées pour ce type d'objet. 
+Le vecteur est l'objet le plus important de R. On dit que le langage R est `vectoriel`, ce qui lui permet de réaliser des opérations optimisées pour ce type d'objet.
 
 La façon la plus simple de déclarer un vecteur est (d'autres méthodes seront présentées plus loin):
 
@@ -366,17 +370,17 @@ MonPremierVecteur
 ## [1] 1 2 3 4 5
 ```
 
---- 
+---
 
 # Exercice  
 
-Créez un vecteur contenant les valeurs {-1,2,5,9}. Vous pouvez calculer la racine carrée de ces nombres au moyen de la fonction sqrt()
+Créez un vecteur contenant les valeurs ``[-1,2,5,9]``. Vous pouvez calculer la racine carrée de ces nombres au moyen de la fonction `sqrt()`
 
---- 
+---
 
 # Types d'objets: vecteurs
 
-On peut accéder à une position sur le vecteur au moyen d'un *index*, indiqué par les []
+On peut accéder à une position sur le vecteur au moyen d'un `index`, indiqué par les `[]`
 
 
 ```r
@@ -388,7 +392,7 @@ MonPremierVecteur[3]
 ## [1] 3
 ```
 
-On obtient un *NA* si on tente d'accéder à une position qui n'existe pas:
+On obtient un `NA` si on tente d'accéder à une position qui n'existe pas:
 
 
 ```r
@@ -400,13 +404,13 @@ MonPremierVecteur[6]
 ## [1] NA
 ```
 
---- 
+---
 
 # Exercice  
 
 Au moyen du vecteur créé précédemment, calculer le produit des valeurs aux positions 2 et 4.
 
---- 
+---
 
 # Types d'objets: vecteurs
 
@@ -421,13 +425,13 @@ length(MonPremierVecteur)
 ## [1] 5
 ```
 
---- 
+---
 
 # Types d'objets: matrices
 
-L'extension naturelle d'un vecteur est une *matrice*, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objet. 
+L'extension naturelle d'un vecteur est une `matrice`, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objet.
 
-La commande de base pour créer une matrice est *matrix()*
+La commande de base pour créer une matrice est `matrix()`
 
 
 ```r
@@ -441,26 +445,26 @@ MaMatrice
 ## [2,]    2    4    6
 ```
 
---- 
+---
 
 # Types d'objets: matrices
 
-On accède à la ligne *i* et la colonne *j* au moyen de la commande suivante
+On accède à la ligne `i` et la colonne `j` au moyen de la commande suivante
 
 
 ```r
-MaMatrice[1,2] 
+MaMatrice[1,2]
 ```
 
 ```
 ## [1] 3
 ```
 
---- 
+---
 
 # Types d'objets: matrices
 
-On peut aussi accéder à des lignes ou des colonnes entières 
+On peut aussi accéder à des lignes ou des colonnes entières
 
 
 ```r
@@ -479,7 +483,7 @@ MaMatrice[,1]
 ## [1] 1 2
 ```
 
---- 
+---
 
 # Types d'objets: matrices
 
@@ -494,11 +498,11 @@ dim(MaMatrice)
 ## [1] 2 3
 ```
 
---- 
+---
 
 # Types d'objets: matrices
 
-Ou encore 
+Ou encore
 
 
 ```r
@@ -517,7 +521,7 @@ ncol(MaMatrice)
 ## [1] 3
 ```
 
---- 
+---
 
 # Types d'objets: matrices
 
@@ -540,17 +544,17 @@ MaMatrice
 
 # Exercice  
 
-Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions *runif()*. Calculez la somme de la première colonne au moyen de la fonction *sum()*
+Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions `runif()`. Calculez la somme de la première colonne au moyen de la fonction `sum()`
 
-**Astuce** : pour obtenir de l'aide sur une fonction, essayez
+``Astuce`` : pour obtenir de l'aide sur une fonction, essayez
 
 ```
 ?runif()
-``` 
+```
 
---- 
+---
 
-# Type d'objets : listes 
+# Type d'objets : listes
 
 R peut organiser également des collections de données sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques, et même des listes à l'intérieur de listes.
 
@@ -563,9 +567,9 @@ MaListe[[1]] = c(1,2)
 MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
 ```
 
---- 
+---
 
-# Type d'objets : listes 
+# Type d'objets : listes
 
 Et de même on peut nommer les items d'une liste
 
@@ -588,7 +592,7 @@ MaListe
 ---
 # Type d'objets: data.frame
 
-Le *data.frame* est un objet d'une structure particulière à R, un hybdride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées *i* et les colonnes *j*, ainsi que des noms de colonnes. Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
+Le `data.frame` est un objet d'une structure particulière à R, un hybride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées `i` et les colonnes `j`, ainsi que des noms de colonnes. Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
 
 
 ```r
@@ -650,18 +654,20 @@ as.data.frame(test2)
 ## Lecture et écriture de fichiers
 
 ---
+
 # Lire un fichier txt
 
-La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d'utiliser un format minimal qui est utilisable sur l'ensemble des plateformes. 
+La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d'utiliser un format minimal qui est utilisable sur l'ensemble des plateformes.
 
 ---
+
 # Lire un fichier txt
 
 Nous allons utiliser le fichier 'quadrats.txt' pour cet exemple. On peut lire le fichier au moyen de la commande
 
 
 ```r
-quadrats <- read.table(file = './donnees/quadrats.txt', header = T, dec = ".", sep = ";", quote = TRUE) 
+quadrats <- read.table(file = './donnees/quadrats.txt', header = T, dec = ".", sep = ";", quote = TRUE)
 ```
 
 ```
@@ -677,6 +683,7 @@ head(quadrats)
 ```
 
 ---
+
 # Lire un fichier txt: anatomie des arguments
 
 - 'file' : nom du fichier à lire
@@ -688,10 +695,11 @@ head(quadrats)
 Note : l'objet retourné est par défaut un 'data.frame'. Il peut être ensuite converti, au besoin
 
 ---
+
 # Lire un fichier txt: erreurs courantes
 
 - Mauvais nom de fichier
-- Mauvais répertoire de travail 
+- Mauvais répertoire de travail
 - Guillemets
 - Type de séparateur de colonnes
 - Présence de points
@@ -705,20 +713,20 @@ Note : l'objet retourné est par défaut un 'data.frame'. Il peut être ensuite 
 
 # Écrire des fichiers
 
-Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d'écrire sous format txt. 
+Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d'écrire sous format txt.
 
 La syntaxe pour écrire une matrice ou un data.frame est aussi simple que pour lire un fichier txt
 
 ```
 test <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
 write.table(test, file = "test.xt")
-``` 
+```
 
---- 
+---
 
 # Écrire des fichiers: save et .Rdata
 
-Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le *.Rdata*. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus que par R. 
+Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le `.Rdata`. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus que par R.
 
 
 ```r
@@ -728,7 +736,8 @@ test[[2]] <- c(1:10)
 save(test, file = "test_liste.Rdata")
 ```
 
---- 
+---
+
 # Lire des fichiers: load et .Rdata
 
 Puisque le fichier Rdata est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
@@ -750,6 +759,7 @@ test
 Faites attention, si le nom de l'objet contenu dans le fichier .Rdata est le même qu'un objet en mémoire, il va écraser ce premier objet.
 
 ---
+
 # Quelques commandes utiles
 
 head() et tail() permettent de visualiser une partie d'un jeu de données
@@ -772,9 +782,10 @@ tail(quadrats, n = 5)
 ```
 
 ---
+
 # Quelques commandes utiles
 
-*summary()* permet d'obtenir un résumé du contenu de chaque colonne
+`summary()` permet d'obtenir un résumé du contenu de chaque colonne
 
 
 ```r
@@ -785,7 +796,7 @@ summary(quadrats)
 ## Error in summary(quadrats): objet 'quadrats' introuvable
 ```
 
---- 
+---
 
 # EXERCICE DE MANIPULATION DE DONNÉES
 
@@ -795,7 +806,7 @@ summary(quadrats)
 - Vérifier que le fichier a le format approprié
 - Créer un vecteur 'AbondanceMoyenne' d'une longueur correspondant au nombre d'espèces dans les données quadrats
 
---- 
+---
 
 # EXERCICE DE MANIPULATION DE DONNÉES (suite)
 
@@ -811,7 +822,7 @@ Note : vous pouvez explorer les données avec 'summary' et pour les avancés. Le
 
 # Compléments: le script
 
-Un script est un fichier .R contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin. 
+Un script est un fichier .R contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
 
 On peut exécuter un script dans son ensemble
 
@@ -896,7 +907,7 @@ cbind(v1,v2)
 ## [3,] "3" "C"
 ```
 
---- 
+---
 # Fonctions utiles: trier des objets
 
 
@@ -907,8 +918,8 @@ test
 ```
 
 ```
-##  [1] 72.83858 42.25351 24.81527 68.87290 49.29842 14.32305 79.91591
-##  [8] 18.83997 90.61225 27.25117
+##  [1] 74.72685 40.86553 54.23002 76.71221 37.99319 15.49419 41.51848
+##  [8] 58.65297 49.16002 21.42578
 ```
 
 ```r
@@ -916,8 +927,8 @@ sort(test)
 ```
 
 ```
-##  [1] 14.32305 18.83997 24.81527 27.25117 42.25351 49.29842 68.87290
-##  [8] 72.83858 79.91591 90.61225
+##  [1] 15.49419 21.42578 37.99319 40.86553 41.51848 49.16002 54.23002
+##  [8] 58.65297 74.72685 76.71221
 ```
 
 ---
@@ -930,8 +941,8 @@ test
 ```
 
 ```
-##  [1] 33.71497 21.99657 96.07511 85.87298 61.63820 18.04431 67.38310
-##  [8] 75.67303 33.43083 56.45288
+##  [1] 27.99628 98.96928 86.91036 92.10736 34.65989 94.55087 12.34397
+##  [8] 84.19495 24.17414 58.20982
 ```
 
 ```r
@@ -939,7 +950,7 @@ rank(test)
 ```
 
 ```
-##  [1]  4  2 10  9  6  1  7  8  3  5
+##  [1]  3 10  7  8  4  9  1  6  2  5
 ```
 
 ---
@@ -966,7 +977,7 @@ unique(test)
 ---
 # Sous-échantillonner des objets
 
-Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction subset() est fort pratique pour réaliser cette opération. 
+Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction subset() est fort pratique pour réaliser cette opération.
 
 Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats qui contiennent de l'érable à sucre
 
@@ -993,4 +1004,37 @@ summary(sub_quadrat)
 Très souvent, on souhaite réaliser un sommaire de nos données. La fonction summary() est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction table() est fort puissante
 
 
+```r
+arbres = read.table(file = './donnees/arbres.txt', header = TRUE)
+```
 
+```
+## Warning in file(file, "rt"): impossible d'ouvrir le fichier './donnees/
+## arbres.txt' : No such file or directory
+```
+
+```
+## Error in file(file, "rt"): impossible d'ouvrir la connexion
+```
+
+```r
+#quadrats = table(arbres[,c(8,4))
+head(quadrats)
+```
+
+```
+## Error in head(quadrats): objet 'quadrats' introuvable
+```
+
+
+---
+# EXERCICE DE FIN DE SÉANCE
+
+Le fichier quadrats.txt est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans "arbres.txt". Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+
+1. Charger les données "arbres"
+2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
+3. Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce
+4. Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes
+
+On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.

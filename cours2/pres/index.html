@@ -129,7 +129,7 @@
     <h1>Exercice : interaction avec la ligne de commande</h1>
   </hgroup>
   <article data-timings="">
-    <p>Le plus simple est d&#39;utiliser R comme une calculatrice. </p>
+    <p>Le plus simple est d&#39;utiliser R comme une calculatrice.</p>
 
 <p>Que donne l&#39;opération suivante ?</p>
 
@@ -149,12 +149,15 @@
 <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/cours2/pres&quot;
+<pre><code>## [1] &quot;/Users/SteveVissault/Documents/Git/BIO109/cours2/pres&quot;
 </code></pre>
 
 <p>Changer le répertoire de travail</p>
 
 <pre><code class="r">setwd(&quot;/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees&quot;)
+</code></pre>
+
+<pre><code>## Error in setwd(&quot;/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees&quot;): impossible de changer de répertoire de travail
 </code></pre>
 
   </article>
@@ -241,7 +244,7 @@ a
     <h1>Le concept d&#39;objet</h1>
   </hgroup>
   <article data-timings="">
-    <p>Notons que les opérateurs &#39;&lt;-&#39;&#39; et &#39;=&#39;&#39; sont équivalents pour attribuer une valeur à un objet. L&#39;opérateur &#39;&lt;-&#39; peut être difficile à lire ou confondu avec le signe &#39;-&#39;. Cependant, la recommandation est de limiter le signe &#39;=&#39; à des opérations mathématiques et d&#39;utiliser &#39;&lt;-&#39; pour l&#39;assignation de valeurs.</p>
+    <p>Notons que les opérateurs <code>&lt;-</code> et <code>=</code> sont équivalents pour attribuer une valeur à un objet. L&#39;opérateur <code>&lt;-</code> peut être difficile à lire ou confondu avec le signe <code>-</code>. Cependant, la recommandation est de limiter le signe <code>=</code> à des opérations mathématiques et d&#39;utiliser <code>&lt;-</code> pour l&#39;assignation de valeurs.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -311,7 +314,7 @@ collage
     <h1>Types de données: booléens</h1>
   </hgroup>
   <article data-timings="">
-    <p>Le type booléen (logical) permet de représenter les états <em>TRUE</em> (1) et <em>FALSE</em> (0) et de faire des opérations mathématiques sur ces objets</p>
+    <p>Le type booléen (logical) permet de représenter les états <code>TRUE</code> (1) et <code>FALSE</code> (0) et de faire des opérations mathématiques sur ces objets</p>
 
 <pre><code class="r">vrai &lt;- TRUE
 faux &lt;- FALSE
@@ -336,7 +339,7 @@ vrai
     <h1>Types de données: facteurs</h1>
   </hgroup>
   <article data-timings="">
-    <p>R est d&#39;abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui n&#39;est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux. </p>
+    <p>R est d&#39;abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui n&#39;est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.</p>
 
 <pre><code class="r">MesFacteurs &lt;- factor(c(1,2,3,2,3,3,1,2))
 MesFacteurs
@@ -427,7 +430,7 @@ MesFacteurs
     <h1>Types de variables: vecteurs</h1>
   </hgroup>
   <article data-timings="">
-    <p>Le vecteur est l&#39;objet le plus important de R. On dit que le langage R est <em>vectoriel</em>, ce qui lui permet de réaliser des opérations optimisées pour ce type d&#39;objet. </p>
+    <p>Le vecteur est l&#39;objet le plus important de R. On dit que le langage R est <code>vectoriel</code>, ce qui lui permet de réaliser des opérations optimisées pour ce type d&#39;objet.</p>
 
 <p>La façon la plus simple de déclarer un vecteur est (d&#39;autres méthodes seront présentées plus loin):</p>
 
@@ -447,7 +450,7 @@ MonPremierVecteur
     <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <p>Créez un vecteur contenant les valeurs {-1,2,5,9}. Vous pouvez calculer la racine carrée de ces nombres au moyen de la fonction sqrt()</p>
+    <p>Créez un vecteur contenant les valeurs <code>[-1,2,5,9]</code>. Vous pouvez calculer la racine carrée de ces nombres au moyen de la fonction <code>sqrt()</code></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -458,7 +461,7 @@ MonPremierVecteur
     <h1>Types d&#39;objets: vecteurs</h1>
   </hgroup>
   <article data-timings="">
-    <p>On peut accéder à une position sur le vecteur au moyen d&#39;un <em>index</em>, indiqué par les []</p>
+    <p>On peut accéder à une position sur le vecteur au moyen d&#39;un <code>index</code>, indiqué par les <code>[]</code></p>
 
 <pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
 MonPremierVecteur[3]
@@ -467,7 +470,7 @@ MonPremierVecteur[3]
 <pre><code>## [1] 3
 </code></pre>
 
-<p>On obtient un <em>NA</em> si on tente d&#39;accéder à une position qui n&#39;existe pas:</p>
+<p>On obtient un <code>NA</code> si on tente d&#39;accéder à une position qui n&#39;existe pas:</p>
 
 <pre><code class="r">MonPremierVecteur &lt;- c(1,2,3,4,5)
 MonPremierVecteur[6]
@@ -513,9 +516,9 @@ MonPremierVecteur[6]
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p>L&#39;extension naturelle d&#39;un vecteur est une <em>matrice</em>, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d&#39;objet. </p>
+    <p>L&#39;extension naturelle d&#39;un vecteur est une <code>matrice</code>, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d&#39;objet.</p>
 
-<p>La commande de base pour créer une matrice est <em>matrix()</em></p>
+<p>La commande de base pour créer une matrice est <code>matrix()</code></p>
 
 <pre><code class="r">MaMatrice &lt;- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
 MaMatrice
@@ -535,9 +538,9 @@ MaMatrice
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p>On accède à la ligne <em>i</em> et la colonne <em>j</em> au moyen de la commande suivante</p>
+    <p>On accède à la ligne <code>i</code> et la colonne <code>j</code> au moyen de la commande suivante</p>
 
-<pre><code class="r">MaMatrice[1,2] 
+<pre><code class="r">MaMatrice[1,2]
 </code></pre>
 
 <pre><code>## [1] 3
@@ -552,7 +555,7 @@ MaMatrice
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p>On peut aussi accéder à des lignes ou des colonnes entières </p>
+    <p>On peut aussi accéder à des lignes ou des colonnes entières</p>
 
 <pre><code class="r">MaMatrice[1,]
 </code></pre>
@@ -592,7 +595,7 @@ MaMatrice
     <h1>Types d&#39;objets: matrices</h1>
   </hgroup>
   <article data-timings="">
-    <p>Ou encore </p>
+    <p>Ou encore</p>
 
 <pre><code class="r">nrow(MaMatrice)
 </code></pre>
@@ -636,9 +639,9 @@ MaMatrice
     <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <p>Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions <em>runif()</em>. Calculez la somme de la première colonne au moyen de la fonction <em>sum()</em></p>
+    <p>Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions <code>runif()</code>. Calculez la somme de la première colonne au moyen de la fonction <code>sum()</code></p>
 
-<p><strong>Astuce</strong> : pour obtenir de l&#39;aide sur une fonction, essayez</p>
+<p><code>Astuce</code> : pour obtenir de l&#39;aide sur une fonction, essayez</p>
 
 <pre><code>?runif()
 </code></pre>
@@ -694,7 +697,7 @@ MaListe
     <h1>Type d&#39;objets: data.frame</h1>
   </hgroup>
   <article data-timings="">
-    <p>Le <em>data.frame</em> est un objet d&#39;une structure particulière à R, un hybdride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées <em>i</em> et les colonnes <em>j</em>, ainsi que des noms de colonnes. Il n&#39;est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.</p>
+    <p>Le <code>data.frame</code> est un objet d&#39;une structure particulière à R, un hybride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées <code>i</code> et les colonnes <code>j</code>, ainsi que des noms de colonnes. Il n&#39;est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.</p>
 
 <pre><code class="r">test &lt;- data.frame(a = c(1:5), b = c(11:15))
 test
@@ -771,7 +774,7 @@ as.data.frame(test2)
     <h1>Lire un fichier txt</h1>
   </hgroup>
   <article data-timings="">
-    <p>La lecture de fichiers est souvent l&#39;étape la plus frustrante lorsque l&#39;on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d&#39;utiliser un format minimal qui est utilisable sur l&#39;ensemble des plateformes. </p>
+    <p>La lecture de fichiers est souvent l&#39;étape la plus frustrante lorsque l&#39;on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d&#39;utiliser un format minimal qui est utilisable sur l&#39;ensemble des plateformes.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -784,7 +787,7 @@ as.data.frame(test2)
   <article data-timings="">
     <p>Nous allons utiliser le fichier &#39;quadrats.txt&#39; pour cet exemple. On peut lire le fichier au moyen de la commande</p>
 
-<pre><code class="r">quadrats &lt;- read.table(file = &#39;./donnees/quadrats.txt&#39;, header = T, dec = &quot;.&quot;, sep = &quot;;&quot;, quote = TRUE) 
+<pre><code class="r">quadrats &lt;- read.table(file = &#39;./donnees/quadrats.txt&#39;, header = T, dec = &quot;.&quot;, sep = &quot;;&quot;, quote = TRUE)
 </code></pre>
 
 <pre><code>## Error in read.table(file = &quot;./donnees/quadrats.txt&quot;, header = T, dec = &quot;.&quot;, : invalid quote symbol set
@@ -826,7 +829,7 @@ as.data.frame(test2)
   <article data-timings="">
     <ul>
 <li>Mauvais nom de fichier</li>
-<li>Mauvais répertoire de travail </li>
+<li>Mauvais répertoire de travail</li>
 <li>Guillemets</li>
 <li>Type de séparateur de colonnes</li>
 <li>Présence de points</li>
@@ -846,7 +849,7 @@ as.data.frame(test2)
     <h1>Écrire des fichiers</h1>
   </hgroup>
   <article data-timings="">
-    <p>Il y a une grande diversité de façons d&#39;enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d&#39;écrire sous format txt. </p>
+    <p>Il y a une grande diversité de façons d&#39;enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d&#39;écrire sous format txt.</p>
 
 <p>La syntaxe pour écrire une matrice ou un data.frame est aussi simple que pour lire un fichier txt</p>
 
@@ -863,7 +866,7 @@ write.table(test, file = &quot;test.xt&quot;)
     <h1>Écrire des fichiers: save et .Rdata</h1>
   </hgroup>
   <article data-timings="">
-    <p>Parfois les objets que l&#39;on souhaite enregistrer ont une structure plus complexe qu&#39;un tableau de données. R permet d&#39;enregistrer ces objets dans un format qui lui est unique, le <em>.Rdata</em>. Ces objets sont compressés pour minimiser l&#39;espace disque et ne peuvent être lus que par R. </p>
+    <p>Parfois les objets que l&#39;on souhaite enregistrer ont une structure plus complexe qu&#39;un tableau de données. R permet d&#39;enregistrer ces objets dans un format qui lui est unique, le <code>.Rdata</code>. Ces objets sont compressés pour minimiser l&#39;espace disque et ne peuvent être lus que par R.</p>
 
 <pre><code class="r">test &lt;- list()
 test[[1]] &lt;- 1
@@ -927,7 +930,7 @@ test
     <h1>Quelques commandes utiles</h1>
   </hgroup>
   <article data-timings="">
-    <p><em>summary()</em> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
+    <p><code>summary()</code> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
 
 <pre><code class="r">summary(quadrats)
 </code></pre>
@@ -980,25 +983,12 @@ test
     <h1>Compléments: le script</h1>
   </hgroup>
   <article data-timings="">
-    <p>Un script est un fichier .R contenant une série d&#39;instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l&#39;historique des opérations et les répéter au besoin. </p>
+    <p>Un script est un fichier .R contenant une série d&#39;instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l&#39;historique des opérations et les répéter au besoin.</p>
 
 <p>On peut exécuter un script dans son ensemble</p>
 
-<pre><code class="r">rm(list = ls())
+<pre><code>rm(list = ls())
 source(&quot;./MonScript.R&quot;)
-</code></pre>
-
-<pre><code>## Warning in file(filename, &quot;r&quot;, encoding = encoding): impossible d&#39;ouvrir le
-## fichier &#39;./MonScript.R&#39; : Aucun fichier ou dossier de ce type
-</code></pre>
-
-<pre><code>## Error in file(filename, &quot;r&quot;, encoding = encoding): impossible d&#39;ouvrir la connexion
-</code></pre>
-
-<pre><code class="r">ls()
-</code></pre>
-
-<pre><code>## character(0)
 </code></pre>
 
   </article>
@@ -1069,15 +1059,7 @@ expand.grid(v1,v2)
     <h1>Combiner des objets</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">v1 &lt;- c(1:3)
-v2 &lt;- c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
-c(v1,v2)
-</code></pre>
-
-<pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;A&quot; &quot;B&quot; &quot;C&quot;
-</code></pre>
-
-<pre><code class="r">rbind(v1,v2)
+    <pre><code class="r">rbind(v1,v2)
 </code></pre>
 
 <pre><code>##    [,1] [,2] [,3]
@@ -1107,15 +1089,15 @@ c(v1,v2)
 test
 </code></pre>
 
-<pre><code>##  [1] 49.4754237 99.0238900 84.8201456 76.1045588 41.5336537  0.1933319
-##  [7] 53.3244439  8.5677316 41.4970377 94.6370647
+<pre><code>##  [1] 74.72685 40.86553 54.23002 76.71221 37.99319 15.49419 41.51848
+##  [8] 58.65297 49.16002 21.42578
 </code></pre>
 
 <pre><code class="r">sort(test)
 </code></pre>
 
-<pre><code>##  [1]  0.1933319  8.5677316 41.4970377 41.5336537 49.4754237 53.3244439
-##  [7] 76.1045588 84.8201456 94.6370647 99.0238900
+<pre><code>##  [1] 15.49419 21.42578 37.99319 40.86553 41.51848 49.16002 54.23002
+##  [8] 58.65297 74.72685 76.71221
 </code></pre>
 
   </article>
@@ -1131,14 +1113,14 @@ test
 test
 </code></pre>
 
-<pre><code>##  [1] 42.344884 57.915992 38.198551 80.016138 75.122784 93.606464 91.559717
-##  [8] 14.773728 66.158696  6.350222
+<pre><code>##  [1] 27.99628 98.96928 86.91036 92.10736 34.65989 94.55087 12.34397
+##  [8] 84.19495 24.17414 58.20982
 </code></pre>
 
 <pre><code class="r">rank(test)
 </code></pre>
 
-<pre><code>##  [1]  4  5  3  8  7 10  9  2  6  1
+<pre><code>##  [1]  3 10  7  8  4  9  1  6  2  5
 </code></pre>
 
   </article>
@@ -1172,19 +1154,9 @@ test
     <h1>Sous-échantillonner des objets</h1>
   </hgroup>
   <article data-timings="">
-    <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction &#39;subset&#39; est fort pratique pour réaliser cette opération. </p>
+    <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction subset() est fort pratique pour réaliser cette opération.</p>
 
 <p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadrats qui contiennent de l&#39;érable à sucre</p>
-
-<pre><code class="r">quadrats &lt;- read.table(file = &quot;./quadrats.txt&quot;, header = T, row.names = 1, dec = &quot;,&quot;, sep = &quot;;&quot;) 
-</code></pre>
-
-<pre><code>## Warning in file(file, &quot;rt&quot;): impossible d&#39;ouvrir le fichier &#39;./
-## quadrats.txt&#39; : Aucun fichier ou dossier de ce type
-</code></pre>
-
-<pre><code>## Error in file(file, &quot;rt&quot;): impossible d&#39;ouvrir la connexion
-</code></pre>
 
 <pre><code class="r">sub_quadrats = subset(x = quadrats, quadrat$ers &gt; 0)
 </code></pre>
@@ -1207,7 +1179,24 @@ test
     <h1>Faire des tableaux sommaires (enfin !)</h1>
   </hgroup>
   <article data-timings="">
-    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <em>summary</em> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction <em>table</em> est fort puissante: </p>
+    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction summary() est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction table() est fort puissante</p>
+
+<pre><code class="r">arbres = read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): impossible d&#39;ouvrir le fichier &#39;./donnees/
+## arbres.txt&#39; : No such file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): impossible d&#39;ouvrir la connexion
+</code></pre>
+
+<pre><code class="r">#quadrats = table(arbres[,c(8,4))
+head(quadrats)
+</code></pre>
+
+<pre><code>## Error in head(quadrats): objet &#39;quadrats&#39; introuvable
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -1221,13 +1210,13 @@ test
     <p>Le fichier quadrats.txt est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans &quot;arbres.txt&quot;. Dans le cadre de ce projet, on s&#39;intéresse à la distribution de l&#39;érable à sucre et des autres espèces tout au long du gradient d&#39;élévation de la parcelle. Pour cet exercice, on vous demande de:</p>
 
 <ol>
-<li>Charger les données d&#39;arbres</li>
+<li>Charger les données &quot;arbres&quot;</li>
 <li>Délimiter cinq zones au sein du gradient d&#39;élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m</li>
 <li>Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce</li>
 <li>Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes</li>
 </ol>
 
-<p>On vous demande de rédiger un script qui réalisera l&#39;ensemble de ces étapes, de la lecture des données à l&#39;enregistrement du tableau final. </p>
+<p>On vous demande de rédiger un script qui réalisera l&#39;ensemble de ces étapes, de la lecture des données à l&#39;enregistrement du tableau final.</p>
 
   </article>
   <!-- Presenter Notes -->

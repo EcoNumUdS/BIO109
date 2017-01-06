@@ -15,8 +15,6 @@ url:
 license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
-  data: ../../données/
-  img: ../img/
 ---
 
 # Introduction
@@ -81,7 +79,7 @@ assets      :
 <img src="assets/img/intro/grille.jpg" height="250px"></img>
 </div>
 
---- 
+---
 
 # Question de recherche
 
@@ -392,7 +390,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 # 1. Les langages compilés
 
 <div style='text-align:center;'>
-  <img src="assets/img/intro/compile.svg"  width="900px"></img>
+  <img src="assets/img/intro/compile.png"  width="900px"></img>
 </div>
 
 ---
@@ -400,28 +398,12 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 # 2. Les langages interprétés
 
 <div style='text-align:center;'>
-  <img src="assets/img/intro/interprete.svg" width="900px"></img>
+  <img src="assets/img/intro/interprete.png" width="900px"></img>
 </div>
 
 ---
-<!--
-# Interprété vs compilé
 
-
-```r
-df <- c(' ')
-
-pander::pander()
-```
-
-```
-## Error in loadNamespace(name): there is no package called 'pander'
-```
--->
-
----
-
-# La performance est un critère pour le choix d'un langage
+# La performance, un critère pour le choix d'un langage
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/performance.png" width="900px"></img>
@@ -518,7 +500,7 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 - `WRITE`: Le programme écrit un fichier
 - `PRINT`: Le programme écrit un message à l'écran pour l'utilisateur
 - `BREAK`: Le programme stop son éxécution
-- `CONTINUE`: Le programme continue son éxécution 
+- `CONTINUE`: Le programme continue son éxécution
 
 ---
 
@@ -616,63 +598,65 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 
 # Les bonnes pratiques en programmation scientifique
 
---- 
-# Les 10 commandements de la programmation
-
-*1. Tu commenteras ton code pour que d'autres puissent le lire, le comprendre et le partager*
-
 ---
+
 # Les 10 commandements de la programmation
 
-*2. Il faut prendre soin de l'environnement et nettoyer ses déchets*
+> <b>1.</b> Tu commenteras ton code pour que d'autres puissent le lire, le comprendre et le partager
 
 ---
 
 # Les 10 commandements de la programmation
 
-*3. Ton script sera dur à avaler. Mieux vaut le découper*
+> <b>2.</b> Il faut prendre soin de l'environnement et nettoyer ses déchets
 
 ---
 
 # Les 10 commandements de la programmation
 
-*4. Plusieurs chiens s'appelle Fido, le tiens tu sauras le nommer*
+> <b>3.</b> Ton script sera dur à avaler. Mieux vaut le découper
 
 ---
 
 # Les 10 commandements de la programmation
 
-*5. Fido tu éviteras d'écraser*
+> <b>4.</b> Plusieurs chiens s'appelle Fido, le tiens tu sauras le nommer
 
 ---
 
 # Les 10 commandements de la programmation
 
-*6. Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions*
+> <b>5.</b> Fido tu éviteras d'écraser
 
 ---
 
 # Les 10 commandements de la programmation
 
-*7. La vie est trop courte, ton code sera optimisé*
+> <b>6.</b> Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
 
 ---
 
 # Les 10 commandements de la programmation
 
-*8. Et un jour tu disparaîtras, alors assure toi que ton code soit reproductible*
+> <b>7.</b> La vie est trop courte, ton code sera optimisé
 
 ---
 
 # Les 10 commandements de la programmation
 
-*9. En tout puissant que tu es, le tirage au sort tu pourras répéter*
+> <b>8.</b> Et un jour tu disparaîtras, alors assure toi que ton code soit reproductible
 
 ---
 
 # Les 10 commandements de la programmation
 
-*10. Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions*
+> <b>9.</b> En tout puissant que tu es, le tirage au sort tu pourras répéter
+
+---
+
+# Les 10 commandements de la programmation
+
+> <b>10.</b>  Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions
 
 ---
 
@@ -684,7 +668,7 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 - Indentation : two spaces, no tabs
 - Spacing : Place spaces around all binary operators
 - Curly Braces : first on same line, last on own line
-- else : Surround else with braces 
+- else : Surround else with braces
 - Assignment : use <-, not =
 - Commenting : all comments begin with # followed by a space
 - Function : should contain a comments section
@@ -700,6 +684,6 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 1. On jette en face de vous 5 lettres d'un scrabble
 2. Un maniac vous demande d'écrire un programme permettant d'ordonner les 5 lettres
 
-Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code. 
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code.
 
-Note : cet exercice reviendra au cours 4, où vous programmerez cette fonction. 
+Note : cet exercice reviendra au cours 4, où vous programmerez cette fonction.

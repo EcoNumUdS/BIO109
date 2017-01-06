@@ -57,3 +57,7 @@ article p, article li, article li.build, section p, section li {
     text-align: center;
     margin-bottom: 15px;
 }
+
+pre {
+  margin-bottom: 0px;
+}
