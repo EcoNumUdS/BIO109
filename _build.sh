@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for dir in */ ; do
+for dir in $(ls -d cours*); do
     cd $dir
     rm -rf ./pres/.cache
     cat *.Rmd > ./pres/index.Rmd
