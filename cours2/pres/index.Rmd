@@ -1,7 +1,9 @@
 ---
-title       : "Scéance # 2: Introduction au langage R"
+title       : "Séance 2: Introduction au langage R"
+subtitle    : "https://econumuds.github.io/BIO109/cours2/"
 author      : "Dominique Gravel"
-job         : "Laboratoire d'écologie intégrative " #(http://ielab.recherche.usherbrooke.ca)
+job         : "Laboratoire d'écologie intégrative "
+logo        : "logo.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #

@@ -1,7 +1,9 @@
 ---
-title       : "Scéance # 2: Introduction au langage R"
+title       : "Séance 2: Introduction au langage R"
+subtitle    : "https://econumuds.github.io/BIO109/cours2/"
 author      : "Dominique Gravel"
-job         : "Laboratoire d'écologie intégrative " #(http://ielab.recherche.usherbrooke.ca)
+job         : "Laboratoire d'écologie intégrative "
+logo        : "logo.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #
@@ -918,8 +920,8 @@ test
 ```
 
 ```
-##  [1] 74.72685 40.86553 54.23002 76.71221 37.99319 15.49419 41.51848
-##  [8] 58.65297 49.16002 21.42578
+##  [1] 17.295078 53.362873 60.698656 49.873047 65.634878 56.196406  5.101044
+##  [8] 54.246011 39.287286 50.248585
 ```
 
 ```r
@@ -927,8 +929,8 @@ sort(test)
 ```
 
 ```
-##  [1] 15.49419 21.42578 37.99319 40.86553 41.51848 49.16002 54.23002
-##  [8] 58.65297 74.72685 76.71221
+##  [1]  5.101044 17.295078 39.287286 49.873047 50.248585 53.362873 54.246011
+##  [8] 56.196406 60.698656 65.634878
 ```
 
 ---
@@ -941,8 +943,8 @@ test
 ```
 
 ```
-##  [1] 27.99628 98.96928 86.91036 92.10736 34.65989 94.55087 12.34397
-##  [8] 84.19495 24.17414 58.20982
+##  [1]  4.87339 97.70350 37.05118 35.98930 39.99371 59.75515 51.61999
+##  [8] 11.44276 40.15488 14.36381
 ```
 
 ```r
@@ -950,7 +952,7 @@ rank(test)
 ```
 
 ```
-##  [1]  3 10  7  8  4  9  1  6  2  5
+##  [1]  1 10  5  4  6  9  8  2  7  3
 ```
 
 ---

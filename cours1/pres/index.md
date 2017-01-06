@@ -1,9 +1,9 @@
 ---
-title       : "Introduction à la programmation scientifique"
-subtitle    : "Cours 1"
+title       : "Séance 1: Introduction à la programmation scientifique"
+subtitle    : "https://econumuds.github.io/BIO109/cours1/"
 author      : "Dominique Gravel"
 job         : "Laboratoire d'écologie intégrative"
-logo        : "UdeS_nouveau_coul72dpi.png"
+logo        : "logo.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #
@@ -403,7 +403,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 
 ---
 
-# La performance, un critère pour le choix d'un langage
+# La performance: un critère pour le choix d'un langage
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/performance.png" width="900px"></img>
