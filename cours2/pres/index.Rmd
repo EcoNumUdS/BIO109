@@ -28,9 +28,9 @@ assets      :
 
 # 5 raisons pour utiliser R
 
-R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de 'débuggage' (!!)
+R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de `débuggage` (!!)
 
-Les arguments en faveur de R
+### Les arguments en faveur de R:
 
 1. Gratuit et ouvert
 2. Une façon de communiquer avec la communauté scientifique
@@ -70,7 +70,9 @@ Le plus simple est d'utiliser R comme une calculatrice.
 
 Que donne l'opération suivante ?
 
+```
 2 + 16 x 24 - 56
+```
 
 ---
 

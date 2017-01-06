@@ -28,9 +28,9 @@ assets      :
 
 # 5 raisons pour utiliser R
 
-R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de 'débuggage' (!!)
+R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de `débuggage` (!!)
 
-Les arguments en faveur de R
+### Les arguments en faveur de R:
 
 1. Gratuit et ouvert
 2. Une façon de communiquer avec la communauté scientifique
@@ -70,7 +70,9 @@ Le plus simple est d'utiliser R comme une calculatrice.
 
 Que donne l'opération suivante ?
 
+```
 2 + 16 x 24 - 56
+```
 
 ---
 
@@ -920,8 +922,8 @@ test
 ```
 
 ```
-##  [1] 17.295078 53.362873 60.698656 49.873047 65.634878 56.196406  5.101044
-##  [8] 54.246011 39.287286 50.248585
+##  [1] 16.558133 13.981167 67.497203  7.907312 52.768828 13.087948 23.373913
+##  [8] 67.407469 54.951610 98.728057
 ```
 
 ```r
@@ -929,8 +931,8 @@ sort(test)
 ```
 
 ```
-##  [1]  5.101044 17.295078 39.287286 49.873047 50.248585 53.362873 54.246011
-##  [8] 56.196406 60.698656 65.634878
+##  [1]  7.907312 13.087948 13.981167 16.558133 23.373913 52.768828 54.951610
+##  [8] 67.407469 67.497203 98.728057
 ```
 
 ---
@@ -943,8 +945,8 @@ test
 ```
 
 ```
-##  [1]  4.87339 97.70350 37.05118 35.98930 39.99371 59.75515 51.61999
-##  [8] 11.44276 40.15488 14.36381
+##  [1] 94.097418 57.447964 36.158513 55.107622 20.476222 57.414217  8.901519
+##  [8] 31.895752 36.510442 64.034695
 ```
 
 ```r
@@ -952,7 +954,7 @@ rank(test)
 ```
 
 ```
-##  [1]  1 10  5  4  6  9  8  2  7  3
+##  [1] 10  8  4  6  2  7  1  3  5  9
 ```
 
 ---
