@@ -2,7 +2,7 @@
 title       : "Introduction à la programmation scientifique"
 subtitle    : "Cours 1"
 author      : "Dominique Gravel"
-job         : "Laboratoire d'écologie intégrative, UdS"
+job         : "Laboratoire d'écologie intégrative"
 logo        : "UdeS_nouveau_coul72dpi.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}

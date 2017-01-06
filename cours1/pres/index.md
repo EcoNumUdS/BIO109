@@ -2,7 +2,7 @@
 title       : "Introduction à la programmation scientifique"
 subtitle    : "Cours 1"
 author      : "Dominique Gravel"
-job         : "Laboratoire d'écologie intégrative, UdS"
+job         : "Laboratoire d'écologie intégrative"
 logo        : "UdeS_nouveau_coul72dpi.png"
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -38,7 +38,7 @@ assets      :
 # Introduction
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/megantic.jpg" height="400px"></img>
+<img src="assets/img/intro/megantic.jpg" height="500px"></img>
 </div>
 
 ---
@@ -46,7 +46,7 @@ assets      :
 # Introduction
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/ours.jpg" height="400px"></img>
+<img src="assets/img/intro/ours.jpg" height="500px"></img>
 </div>
 
 ---
@@ -78,10 +78,10 @@ assets      :
 # Introduction
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/grille.jpg" height="400px"></img>
+<img src="assets/img/intro/grille.jpg" height="250px"></img>
 </div>
 
---- .transition
+--- 
 
 # Question de recherche
 
@@ -192,7 +192,7 @@ plot(quadrats)
 
 # Objectif général
 
-*Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.*
+Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.
 
 ---
 
@@ -208,14 +208,21 @@ plot(quadrats)
 6. Réaliser des simulations de Monte Carlo;
 
 ---
-
 # Contenu
 
 1. Introduction et bonnes pratiques de programmation
-2. Démystifier le langage R
+2. Interagir avec R
 3. Les fonctions
 4. Algorithmique I: boucles et conditions
 5. Alogithmique II: simulations de Monte Carlo
+
+---
+
+# Ce que le cours n'est pas ...
+
+1. Des recettes
+2. Un catalogue de fonctions R
+3. Un cours de statistiques
 
 ---
 
@@ -301,7 +308,7 @@ $$
 # Progression de la puissance de calcul
 
 <div style='text-align:center;'>
-  <img src="assets/img/intro/calcul.svg" height="525px"></img>
+  <img src="assets/img/intro/moores.png" height="525px"></img>
 </div>
 
 <!-- Ces questions sont rendu possible en partie grâce à l'augmentation de la puissance de nos ordinateurs et l'accessibilité aux données -->
@@ -345,7 +352,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 
 
 <div style='text-align:center;'>
-  <img src="assets/img/intro/geek_mode.webp" height="450px"></img>
+  <img src="assets/img/intro/geek_mode.jpg" height="450px"></img>
 </div>
 
 <!-- L'effort en vaut la peine: Sur le long terme le geek est gagnant -->
@@ -397,7 +404,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 </div>
 
 ---
-
+<!--
 # Interprété vs compilé
 
 
@@ -410,6 +417,7 @@ pander::pander()
 ```
 ## Error in loadNamespace(name): there is no package called 'pander'
 ```
+-->
 
 ---
 
@@ -424,7 +432,7 @@ pander::pander()
 # Un autre critère est le 'débugging'
 
 <div style='text-align:center;'>
-  <img src="assets/img/intro/bug.png" width="900px"></img>
+  <img src="assets/img/intro/bug.jpg" width="600px"></img>
 </div>
 
 ---
@@ -500,7 +508,7 @@ On retrouve 3 familles d'opérations:
 2. Les opérations itératives (`FOR`, `WHILE`)
 3. Les opérations décisionnelles (`IF`, `SWITCH`)
 
-<!-- ---
+---
 
 # Avant-propos
 
@@ -510,7 +518,7 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 - `WRITE`: Le programme écrit un fichier
 - `PRINT`: Le programme écrit un message à l'écran pour l'utilisateur
 - `BREAK`: Le programme stop son éxécution
-- `CONTINUE`: Le programme continue son éxécution -->
+- `CONTINUE`: Le programme continue son éxécution 
 
 ---
 
@@ -570,7 +578,7 @@ PROGRAM DEMO
   ENDIF
 ```
 
-> - Et si le taux de croissance est nulle?
+> - Et si le taux de croissance est nul?
 
 ---
 
@@ -587,7 +595,7 @@ PROGRAM DEMO
   ENDIF
 ```
 
-Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
+Avec la clause `ELSE`, la croissance est nulle
 
 ---
 
@@ -595,12 +603,18 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 
 ## A garder en mémoire
 
-1. N'écrivez qu'une seule instruction par ligne de pseudocode.
+1. N'écrivez qu'une seule instruction par ligne de pseudo-code.
 2. Écrivez en lettres capitales le verbe de chaque opération principale.
 3. Soyez explicite en nommant les opérations et les variables.
 4. Soyez le plus détaillé possible (c.a.d les plus petites étapes possibles)
-5. Utilisez des structures de langages de programmation connus (c.a.d `WHILE`, `FOR`, `IF` etc.)
+5. Utilisez des structures de langages de programmation connues (c.a.d `WHILE`, `FOR`, `IF` etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
+
+Ces règles sont générales, peu importe le langage de programmation utilisé.
+
+--- .transition
+
+# Les bonnes pratiques en programmation scientifique
 
 --- 
 # Les 10 commandements de la programmation
@@ -634,7 +648,7 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 
 # Les 10 commandements de la programmation
 
-*6. Un bon programmeur est un programmeur paresseux. Les opérations répétées doivent être définies sous forme de fonctions*
+*6. Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions*
 
 ---
 
@@ -646,7 +660,7 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 
 # Les 10 commandements de la programmation
 
-*8. Et un jour tu mourras, alors assure toi que ton code soit reproductible*
+*8. Et un jour tu disparaîtras, alors assure toi que ton code soit reproductible*
 
 ---
 
@@ -672,16 +686,20 @@ Avec la clause `ELSE`, l'absence de croissance est assumé (non-testé)
 - Curly Braces : first on same line, last on own line
 - else : Surround else with braces 
 - Assignment : use <-, not =
-- Semicolons : don't use them
 - Commenting : all comments begin with # followed by a space
 - Function : should contain a comments section
-    
+
+--- .transition
+
+# Exercice de la semaine
+
 ---
 
-# Exercice
-
-Une situation qui peut arriver tous les jours:
+# Une situation qui peut arriver tous les jours
 
 1. On jette en face de vous 5 lettres d'un scrabble
 2. Un maniac vous demande d'écrire un programme permettant d'ordonner les 5 lettres
 
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code. 
+
+Note : cet exercice reviendra au cours 4, où vous programmerez cette fonction. 
