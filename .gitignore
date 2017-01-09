@@ -34,7 +34,7 @@ vignettes/*.pdf
 .cache/
 
 # MAC Junk
-.DS_Store
+*.DS_Store
 
 #Data
 *.zip

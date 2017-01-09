@@ -4,7 +4,7 @@ subtitle    : "https://econumuds.github.io/BIO109/cours1/"
 author      : "Dominique Gravel"
 job         : "Laboratoire d'écologie intégrative"
 logo        : "logo.png"
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : io2012       # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      #
 mode        : selfcontained
@@ -18,8 +18,8 @@ assets      :
 ---
 # Séance 1
 
-- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./pres/assets/pdf/S1-BIO109.pdf).
-- L'ensemble des hyperliens sont écrit sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
+- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./assets/pdf/S1-BIO109.pdf).
+- L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
 
 ---
 
