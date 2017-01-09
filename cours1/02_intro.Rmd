@@ -1,3 +1,9 @@
+# Séance 1
+
+- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./pres/assets/pdf/S1-BIO109.pdf).
+- L'ensemble des hyperliens sont écrit sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
+
+---
 
 # Introduction
 
@@ -426,7 +432,7 @@ On retrouve 3 familles d'opérations:
 
 1. Les opérations séquentielles
 2. Les opérations itératives (`FOR`, `WHILE`)
-3. Les opérations décisionnelles (`IF`, `SWITCH`)
+3. Les opérations décisionnelles (`IF`, `IFELSE`)
 
 ---
 
@@ -530,7 +536,7 @@ Avec la clause `ELSE`, la croissance est nulle
 5. Utilisez des structures de langages de programmation connues (c.a.d `WHILE`, `FOR`, `IF` etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
-Ces règles sont générales, peu importe le langage de programmation utilisé.
+<b> Ces règles sont générales, peu importe le langage de programmation utilisé. </b>
 
 --- .transition
 

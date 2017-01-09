@@ -35,3 +35,6 @@ vignettes/*.pdf
 
 # MAC Junk
 .DS_Store
+
+#Data
+*.zip

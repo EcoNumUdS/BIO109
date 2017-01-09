@@ -16,6 +16,12 @@ license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
 ---
+# Séance 1
+
+- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./pres/assets/pdf/S1-BIO109.pdf).
+- L'ensemble des hyperliens sont écrit sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
+
+---
 
 # Introduction
 
@@ -488,7 +494,7 @@ On retrouve 3 familles d'opérations:
 
 1. Les opérations séquentielles
 2. Les opérations itératives (`FOR`, `WHILE`)
-3. Les opérations décisionnelles (`IF`, `SWITCH`)
+3. Les opérations décisionnelles (`IF`, `IFELSE`)
 
 ---
 
@@ -592,7 +598,7 @@ Avec la clause `ELSE`, la croissance est nulle
 5. Utilisez des structures de langages de programmation connues (c.a.d `WHILE`, `FOR`, `IF` etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
-Ces règles sont générales, peu importe le langage de programmation utilisé.
+<b> Ces règles sont générales, peu importe le langage de programmation utilisé. </b>
 
 --- .transition
 
@@ -662,16 +668,16 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 
 # Google R Style Rules
 
-- File Names : end in .R
-- Identifiers : variable.name (or variableName), FunctionName
-- Line Length : maximum 80 characters
-- Indentation : two spaces, no tabs
-- Spacing : Place spaces around all binary operators
-- Curly Braces : first on same line, last on own line
-- else : Surround else with braces
-- Assignment : use <-, not =
-- Commenting : all comments begin with # followed by a space
-- Function : should contain a comments section
+- `File` Names : end in .R
+- `Identifiers` : variable.name (or variableName), FunctionName
+- `Line` Length : maximum 80 characters
+- `Indentation` : two spaces, no tabs
+- `Spacing` : Place spaces around all binary operators
+- `Curly` Braces : first on same line, last on own line
+- `else` : Surround else with braces
+- `Assignment` : use <-, not =
+- `Commenting` : all comments begin with # followed by a space
+- `Function` : should contain a comments section
 
 --- .transition
 
@@ -686,4 +692,4 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 
 Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code.
 
-Note : cet exercice reviendra au cours 4, où vous programmerez cette fonction.
+<b>Note</b>: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
