@@ -13,9 +13,9 @@ Présentation (PDF):
 
 **Fichiers pour les exercices:**
 
-  - [arbres.xlsx](https://econumuds.github.io/BIO109/cours1/pres/donnes/arbres.xlsx)
-  - [code_esp.xlsx](https://econumuds.github.io/BIO109/cours1/pres/donnes/code_esp.xlsx)
-  - [quadrats.xlsx](https://econumuds.github.io/BIO109/cours1/pres/donnes/quadrats.xlsx)
+  - [arbres.xlsx](https://econumuds.github.io/BIO109/cours1/donnees/arbres.xlsx)
+  - [code_esp.xlsx](https://econumuds.github.io/BIO109/cours1/donnees/code_esp.xlsx)
+  - [quadrats.xlsx](https://econumuds.github.io/BIO109/cours1/donnees/quadrats.xlsx)
 
 
 ## Séance 2: Introduction au language R

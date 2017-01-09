@@ -600,16 +600,16 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 
 # Google R Style Rules
 
-- File Names : end in .R
-- Identifiers : variable.name (or variableName), FunctionName
-- Line Length : maximum 80 characters
-- Indentation : two spaces, no tabs
-- Spacing : Place spaces around all binary operators
-- Curly Braces : first on same line, last on own line
-- else : Surround else with braces
-- Assignment : use <-, not =
-- Commenting : all comments begin with # followed by a space
-- Function : should contain a comments section
+- `File` Names : end in .R
+- `Identifiers` : variable.name (or variableName), FunctionName
+- `Line` Length : maximum 80 characters
+- `Indentation` : two spaces, no tabs
+- `Spacing` : Place spaces around all binary operators
+- `Curly` Braces : first on same line, last on own line
+- `else` : Surround else with braces
+- `Assignment` : use <-, not =
+- `Commenting` : all comments begin with # followed by a space
+- `Function` : should contain a comments section
 
 --- .transition
 
@@ -624,4 +624,4 @@ Ces règles sont générales, peu importe le langage de programmation utilisé.
 
 Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code.
 
-Note : cet exercice reviendra au cours 4, où vous programmerez cette fonction.
+<b>Note</b>: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
