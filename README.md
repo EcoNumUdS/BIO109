@@ -8,8 +8,8 @@
 
 ## Séance 1: Introduction
 
-Présentation (HTML): [https://econumuds.github.io/BIO109/cours1](https://econumuds.github.io/BIO109/cours1)
-Présentation (PDF):
+- Présentation (HTML): [https://econumuds.github.io/BIO109/cours1](https://econumuds.github.io/BIO109/cours1)
+- Présentation (PDF):
 
 **Fichiers pour les exercices:**
 
