@@ -19,7 +19,7 @@ h1, h2, h3 {
 }
 
 aside.gdbar {
-    width: 450px;
+    width: 250px;
 }
 
 .title-slide hgroup>h1 {
@@ -42,6 +42,17 @@ slide:not(.segue) h1 {
 slide:not(.segue) p {
     font-family: 'PT Sans', sans-serif;
 }
+
+slide:not(.segue) a:link {
+  font-weight: bold;
+  color: darkred;
+}
+
+slide:not(.segue) a:visited {
+    text-decoration: none;
+    color: darkred;
+}
+
 
 article p, article li, article li.build, section p, section li {
     font-family: 'PT Sans', sans-serif;    text-align: left;

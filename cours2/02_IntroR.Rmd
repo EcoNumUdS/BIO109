@@ -69,7 +69,7 @@ getwd()
 Changer le répertoire de travail
 
 ```{r}
-setwd("/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees")
+setwd("~/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees")
 ```
 
 ---
@@ -108,9 +108,10 @@ ls()
 Un objet peut contenir de l'information de toute nature: un tableau de données, les résultats d'une analyse, une figure, une fonction
 
 La commande pour créer un objet est composé de trois parties:
-i) une valeur d'intérêt
-ii) un identifiant
-iii) l'opérateur d'assignation
+
+1. une valeur d'intérêt
+2. un identifiant
+3. l'opérateur d'assignation
 
 ```{r}
 a <- c(1,2)
@@ -342,7 +343,7 @@ Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasar
 
 ---
 
-# Type d'objets : listes
+# Type d'objets : `list`
 
 R peut organiser également des collections de données sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques, et même des listes à l'intérieur de listes.
 
@@ -356,7 +357,7 @@ MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
 
 ---
 
-# Type d'objets : listes
+# Type d'objets : `list`
 
 Et de même on peut nommer les items d'une liste
 
@@ -366,7 +367,7 @@ MaListe
 ```
 
 ---
-# Type d'objets: data.frame
+# Type d'objets: `data.frame`
 
 Le `data.frame` est un objet d'une structure particulière à R, un hybride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées `i` et les colonnes `j`, ainsi que des noms de colonnes. Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
 
@@ -377,7 +378,7 @@ test
 
 ---
 
-# Type d'objets: data.frame
+# Type d'objets: `data.frame`
 
 On peut néanmoins transformer un data.frame en matrice
 
@@ -387,7 +388,7 @@ as.matrix(test)
 
 ---
 
-# Type d'objets: data.frame
+# Type d'objets: `data.frame`
 
 Ou inversement transformer une matrice en data.frame
 
@@ -411,7 +412,7 @@ La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on trav
 
 # Lire un fichier txt
 
-Nous allons utiliser le fichier 'quadrats.txt' pour cet exemple. On peut lire le fichier au moyen de la commande
+Nous allons utiliser le fichier `quadrats.txt` pour cet exemple. On peut lire le fichier au moyen de la commande
 
 ```{r}
 quadrats <- read.table(file = './donnees/quadrats.txt', header = T, dec = ".", sep = ";", quote = "\"")
@@ -422,13 +423,13 @@ head(quadrats)
 
 # Lire un fichier txt: anatomie des arguments
 
-- 'file' : nom du fichier à lire
-- 'header' : indique s'il y a un entête avec les noms de colonnes
-- 'dec' : caractère utilisé pour délimiter les décimales
-- 'sep' : caractère utilisé pour séparer les colonnes
-- 'quote' : spécifie comment interpréter les chaînes de caractères
+- `file` : nom du fichier à lire
+- `header` : indique s'il y a un entête avec les noms de colonnes
+- `dec` : caractère utilisé pour délimiter les décimales
+- `sep` : caractère utilisé pour séparer les colonnes
+- `quote` : spécifie comment interpréter les chaînes de caractères
 
-Note : l'objet retourné est par défaut un 'data.frame'. Il peut être ensuite converti, au besoin
+Note : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin
 
 ---
 
