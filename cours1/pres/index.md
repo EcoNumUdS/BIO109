@@ -83,7 +83,7 @@ assets      :
 
 # Question de recherche
 
-> À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
+À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
 
 ---
 
@@ -109,7 +109,7 @@ head(arbres)
 
 # Exercice 1
 
-Ouvrir le fichier [arbres.txt](./donnees/arbres.txt) avec Excel et calculer le nombre d'individus de chaque espèce pour le quadrat 1.
+Ouvrir le fichier [arbres](./donnees/arbres.xlsx) avec Excel et calculer le nombre d'individus de chaque espèce pour le quadrat 1.
 
 ---
 
@@ -138,7 +138,7 @@ head(quadrats)
 
 # Exercice 2
 
-Ouvrir le fichier [quadrats.txt](./donnees/quadrats.txt) avec Excel et calculer la corrélation entre toutes les paires d'espèces.
+Ouvrir le fichier [quadrats](./donnees/quadrats.xlsx) avec Excel et calculer la corrélation entre toutes les paires d'espèces.
 
 Petit truc: sur Excel, la fonction pour calculer une corrélation est:
 
