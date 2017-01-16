@@ -424,7 +424,7 @@ Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasar
 
 ---
 
-# Type d'objets : les `listes`
+# Type d'objets: les `listes`
 
 R peut organiser également des collections d'objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques.
 
@@ -440,7 +440,7 @@ MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
 
 ---
 
-# Type d'objets : les `listes`
+# Type d'objets: les `listes`
 
 ## Et de même on peut nommer les items d'une liste
 
@@ -549,7 +549,7 @@ head(arbres)
 
 ---
 
-# Lire un fichier txt: anatomie des arguments
+# Lire un fichier `.csv`: anatomie des arguments
 
 - `file` : nom du fichier à lire
 - `header` : indique s'il y a un entête avec les noms de colonnes
@@ -557,7 +557,7 @@ head(arbres)
 - `sep` : caractère utilisé pour séparer les colonnes
 - `quote` : spécifie si les chaines de caractère sont entouré par des guillemets.
 
-**Note** : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin
+**Note** : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin.
 
 ---
 
@@ -576,52 +576,79 @@ head(arbres)
 
 ---
 
-# Écrire des fichiers
+# Écrire des fichiers `CSV`
 
-Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d'écrire sous format txt.
+Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et système d'exploitation est d'écrire sous format `CSV`.
 
-La syntaxe pour écrire une matrice ou un data.frame est aussi simple que pour lire un fichier txt
+La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que pour lire un fichier `CSV`.
 
+```{r eval=FALSE}
+mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
+write.csv2(test, file = "mat.csv")
 ```
-test <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
-write.table(test, file = "test.xt")
-```
+On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule par défault (`write.csv()`, la virgule).
 
 ---
 
-# Écrire des fichiers: save et .Rdata
+# Écrire des fichiers `.Rdata` avec `save()`
 
-Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le `.Rdata`. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus que par R.
+Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le `.Rdata`. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus uniquement par R.
 
-```{r}
-test <- list()
-test[[1]] <- 1
-test[[2]] <- c(1:10)
-save(test, file = "test_liste.Rdata")
+```{r eval=FALSE}
+MaListe <- list()
+MaListe[[1]] <- 1
+MaListe[[2]] <- c(1:10)
+save(MaListe, file = "MaListe.Rdata")
 ```
+**NOTE** - `save()` permet également de sauvegarder plusieurs objets.
 
 ---
 
-# Lire des fichiers: load et .Rdata
+# Lire des fichiers `.Rdata` avec `load()`
 
-Puisque le fichier Rdata est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
+Puisque le fichier `.Rdata` est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
 
-```{r}
-load("./test.Rdata")
-test
+```{r echo=FALSE}
+rm(list=ls())
 ```
 
-Faites attention, si le nom de l'objet contenu dans le fichier .Rdata est le même qu'un objet en mémoire, il va écraser ce premier objet.
+```{r}
+load("./MaListe.Rdata")
+ls()
+```
+---
+
+# Lire des fichiers: `load()` et `.Rdata`
+
+Faites attention, si le nom de l'objet contenu dans le fichier `.Rdata` est le même qu'un objet en mémoire, il va écraser ce premier objet.
+
+```{r}
+MaListe <- 1
+load("./MaListe.Rdata")
+MaListe
+```
+
+## Pour éviter cette erreur, il faut utiliser les fonctions `saveRDS()` et `readRDS()`.
 
 ---
 
 # Quelques commandes utiles
 
-head() et tail() permettent de visualiser une partie d'un jeu de données
+Il est important de vérifier la structure de l'objet après son importation dans l'environnement R.
 
 ```{r}
-head(quadrats, n = 5)
-tail(quadrats, n = 5)
+head(arbres, n = 5)
+tail(arbres, n = 5)
+```
+
+---
+
+# Quelques commandes utiles
+
+Il est important de vérifier la structure de l'objet après son importation dans l'environnement R.
+
+```{r}
+str(arbres)
 ```
 
 ---
@@ -631,47 +658,47 @@ tail(quadrats, n = 5)
 `summary()` permet d'obtenir un résumé du contenu de chaque colonne
 
 ```{r}
-summary(quadrats)
+summary(arbres)
 ```
 
 ---
 
-# EXERCICE DE MANIPULATION DE DONNÉES
+# Exercice de manipulation des données
 
-- Ouvrir le fichier quadrats.txt au moyen de Excel ou d'un éditeur de texte
+- Ouvrir le fichier [arbres.csv](./donnees/arbres.csv) au moyen de Excel ou d'un éditeur de texte
 - Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadrats
 - Ouvrir le même fichier au moyen de R
 - Vérifier que le fichier a le format approprié
-- Créer un vecteur 'AbondanceMoyenne' d'une longueur correspondant au nombre d'espèces dans les données quadrats
+- Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadrats
 
 ---
 
-# EXERCICE DE MANIPULATION DE DONNÉES (suite)
+# Exercice de manipulation des données (suite)
 
-- Calculer l'abondance moyenne de chaque espèce au moyen de la fonction 'mean' et l'inscrire dans chaque position de AbondanceMoyenne
-- Convertir AbondanceMoyenne en data.frame
-- Attribuer les noms des espèces pour chaque entrée de AbondanceMoyenne
-- Enregistrer AbondanceMoyenne sous forme de fichier txt
-- Ouvrir le fichier txt et le comparer au calcul fait au moyenne de Excel
+- Calculer l'abondance moyenne de chaque espèce au moyen de la fonction 'mean' et l'inscrire dans chaque position de `AbondanceMoyenne`
+- Convertir AbondanceMoyenne en `data.frame`
+- Attribuer les noms des espèces pour chaque entrée de `AbondanceMoyenne`
+- Enregistrer `AbondanceMoyenne` sous forme de fichier `CSV` (séparateur point-virgule)
+- Ouvrir le fichier `CSV` et le comparer au calcul fait au moyenne de Excel
 
-**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande 'apply'...
+**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
 
 ---
 
-# Compléments: le script
+# Complément: le script
 
-Un script est un fichier .R contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
+Un script est un fichier `.R` contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
 
-On peut exécuter un script dans son ensemble
+## On peut exécuter un script avec `source()`:
 
-```
+```{r}
 rm(list = ls())
 source("./MonScript.R")
 ```
 
 --- .transition
 
-# Manipulation de données
+# Manipulation des données
 
 ---
 
@@ -701,8 +728,8 @@ cbind(v1,v2)
 ```
 
 ---
-# Fonctions utiles: trier des objets
 
+# Fonctions utiles: trier des objets
 
 ```{r}
 test <- runif(n = 10, min = 0, max = 100)
@@ -720,6 +747,7 @@ rank(test)
 ```
 
 ---
+
 # Fonctions utiles: échantillonner les valeurs uniques
 
 ```{r}
@@ -731,11 +759,12 @@ unique(test)
 ---
 # Sous-échantillonner des objets
 
-Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction subset() est fort pratique pour réaliser cette opération.
+Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction `subset()` est fort pratique pour réaliser cette opération.
 
-Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats qui contiennent de l'érable à sucre
+Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:
 
 ```{r}
+quadrats <- read.table(file="./donnees/quadrats.csv", sep=";", header=TRUE)
 sub_quadrats = subset(x = quadrats, quadrat$ers > 0)
 summary(sub_quadrat)
 ```
@@ -743,19 +772,18 @@ summary(sub_quadrat)
 ---
 # Faire des tableaux sommaires (enfin !)
 
-Très souvent, on souhaite réaliser un sommaire de nos données. La fonction summary() est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction table() est fort puissante
+Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
 ```{r}
-arbres = read.table(file = './donnees/arbres.txt', header = TRUE)
-#quadrats = table(arbres[,c(8,4))
+arbres = read.table(file = './donnees/arbres.csv', header = TRUE, sep=";")
 head(quadrats)
 ```
 
 
 ---
-# EXERCICE DE FIN DE SÉANCE
+# Exercice de fin de séance
 
-Le fichier quadrats.txt est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans "arbres.txt". Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
 
 1. Charger les données "arbres"
 2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m

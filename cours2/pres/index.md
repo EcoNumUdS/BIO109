@@ -648,7 +648,7 @@ Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasar
 
 ---
 
-# Type d'objets : les `listes`
+# Type d'objets: les `listes`
 
 R peut organiser également des collections d'objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques.
 
@@ -665,7 +665,7 @@ MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
 
 ---
 
-# Type d'objets : les `listes`
+# Type d'objets: les `listes`
 
 ## Et de même on peut nommer les items d'une liste
 
@@ -838,7 +838,7 @@ head(arbres)
 
 ---
 
-# Lire un fichier txt: anatomie des arguments
+# Lire un fichier `.csv`: anatomie des arguments
 
 - `file` : nom du fichier à lire
 - `header` : indique s'il y a un entête avec les noms de colonnes
@@ -846,7 +846,7 @@ head(arbres)
 - `sep` : caractère utilisé pour séparer les colonnes
 - `quote` : spécifie si les chaines de caractère sont entouré par des guillemets.
 
-**Note** : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin
+**Note** : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin.
 
 ---
 
@@ -865,74 +865,132 @@ head(arbres)
 
 ---
 
-# Écrire des fichiers
+# Écrire des fichiers `CSV`
 
-Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels est d'écrire sous format txt.
+Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et système d'exploitation est d'écrire sous format `CSV`.
 
-La syntaxe pour écrire une matrice ou un data.frame est aussi simple que pour lire un fichier txt
-
-```
-test <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
-write.table(test, file = "test.xt")
-```
-
----
-
-# Écrire des fichiers: save et .Rdata
-
-Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le `.Rdata`. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus que par R.
+La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que pour lire un fichier `CSV`.
 
 
 ```r
-test <- list()
-test[[1]] <- 1
-test[[2]] <- c(1:10)
-save(test, file = "test_liste.Rdata")
+mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
+write.csv2(test, file = "mat.csv")
 ```
+On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule par défault (`write.csv()`, la virgule).
 
 ---
 
-# Lire des fichiers: load et .Rdata
+# Écrire des fichiers `.Rdata` avec `save()`
 
-Puisque le fichier Rdata est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
+Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le `.Rdata`. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus uniquement par R.
 
 
 ```r
-load("./test.Rdata")
-test
+MaListe <- list()
+MaListe[[1]] <- 1
+MaListe[[2]] <- c(1:10)
+save(MaListe, file = "MaListe.Rdata")
+```
+**NOTE** - `save()` permet également de sauvegarder plusieurs objets.
+
+---
+
+# Lire des fichiers `.Rdata` avec `load()`
+
+Puisque le fichier `.Rdata` est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
+
+
+
+
+```r
+load("./MaListe.Rdata")
 ```
 
 ```
-## [[1]]
+## Warning in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir le
+## fichier compressé './MaListe.Rdata', cause probable : 'No such file or
+## directory'
+```
+
+```
+## Error in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir la connexion
+```
+
+```r
+ls()
+```
+
+```
+## character(0)
+```
+---
+
+# Lire des fichiers: `load()` et `.Rdata`
+
+Faites attention, si le nom de l'objet contenu dans le fichier `.Rdata` est le même qu'un objet en mémoire, il va écraser ce premier objet.
+
+
+```r
+MaListe <- 1
+load("./MaListe.Rdata")
+```
+
+```
+## Warning in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir le
+## fichier compressé './MaListe.Rdata', cause probable : 'No such file or
+## directory'
+```
+
+```
+## Error in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir la connexion
+```
+
+```r
+MaListe
+```
+
+```
 ## [1] 1
-## 
-## [[2]]
-##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-Faites attention, si le nom de l'objet contenu dans le fichier .Rdata est le même qu'un objet en mémoire, il va écraser ce premier objet.
+## Pour éviter cette erreur, il faut utiliser les fonctions `saveRDS()` et `readRDS()`.
 
 ---
 
 # Quelques commandes utiles
 
-head() et tail() permettent de visualiser une partie d'un jeu de données
+Il est important de vérifier la structure de l'objet après son importation dans l'environnement R.
 
 
 ```r
-head(quadrats, n = 5)
+head(arbres, n = 5)
 ```
 
 ```
-## Error in head(quadrats, n = 5): objet 'quadrats' introuvable
+## Error in head(arbres, n = 5): objet 'arbres' introuvable
 ```
 
 ```r
-tail(quadrats, n = 5)
+tail(arbres, n = 5)
 ```
 
 ```
-## Error in tail(quadrats, n = 5): objet 'quadrats' introuvable
+## Error in tail(arbres, n = 5): objet 'arbres' introuvable
+```
+
+---
+
+# Quelques commandes utiles
+
+Il est important de vérifier la structure de l'objet après son importation dans l'environnement R.
+
+
+```r
+str(arbres)
+```
+
+```
+## Error in str(arbres): objet 'arbres' introuvable
 ```
 
 ---
@@ -943,51 +1001,61 @@ tail(quadrats, n = 5)
 
 
 ```r
-summary(quadrats)
+summary(arbres)
 ```
 
 ```
-## Error in summary(quadrats): objet 'quadrats' introuvable
+## Error in summary(arbres): objet 'arbres' introuvable
 ```
 
 ---
 
-# EXERCICE DE MANIPULATION DE DONNÉES
+# Exercice de manipulation des données
 
-- Ouvrir le fichier quadrats.txt au moyen de Excel ou d'un éditeur de texte
+- Ouvrir le fichier [arbres.csv](./donnees/arbres.csv) au moyen de Excel ou d'un éditeur de texte
 - Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadrats
 - Ouvrir le même fichier au moyen de R
 - Vérifier que le fichier a le format approprié
-- Créer un vecteur 'AbondanceMoyenne' d'une longueur correspondant au nombre d'espèces dans les données quadrats
+- Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadrats
 
 ---
 
-# EXERCICE DE MANIPULATION DE DONNÉES (suite)
+# Exercice de manipulation des données (suite)
 
-- Calculer l'abondance moyenne de chaque espèce au moyen de la fonction 'mean' et l'inscrire dans chaque position de AbondanceMoyenne
-- Convertir AbondanceMoyenne en data.frame
-- Attribuer les noms des espèces pour chaque entrée de AbondanceMoyenne
-- Enregistrer AbondanceMoyenne sous forme de fichier txt
-- Ouvrir le fichier txt et le comparer au calcul fait au moyenne de Excel
+- Calculer l'abondance moyenne de chaque espèce au moyen de la fonction 'mean' et l'inscrire dans chaque position de `AbondanceMoyenne`
+- Convertir AbondanceMoyenne en `data.frame`
+- Attribuer les noms des espèces pour chaque entrée de `AbondanceMoyenne`
+- Enregistrer `AbondanceMoyenne` sous forme de fichier `CSV` (séparateur point-virgule)
+- Ouvrir le fichier `CSV` et le comparer au calcul fait au moyenne de Excel
 
-**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande 'apply'...
+**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
 
 ---
 
-# Compléments: le script
+# Complément: le script
 
-Un script est un fichier .R contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
+Un script est un fichier `.R` contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
 
-On peut exécuter un script dans son ensemble
+## On peut exécuter un script avec `source()`:
 
-```
+
+```r
 rm(list = ls())
 source("./MonScript.R")
 ```
 
+```
+## Warning in file(filename, "r", encoding = encoding): impossible d'ouvrir le
+## fichier './MonScript.R' : No such file or directory
+```
+
+```
+## Error in file(filename, "r", encoding = encoding): impossible d'ouvrir la connexion
+```
+
 --- .transition
 
-# Manipulation de données
+# Manipulation des données
 
 ---
 
@@ -1061,8 +1129,8 @@ cbind(v1,v2)
 ```
 
 ---
-# Fonctions utiles: trier des objets
 
+# Fonctions utiles: trier des objets
 
 
 ```r
@@ -1071,8 +1139,8 @@ test
 ```
 
 ```
-##  [1]  4.00613 98.66670 81.70184 26.89768 57.54381 12.96346 15.78496
-##  [8] 50.63549 92.70754 30.94437
+##  [1] 68.161257 28.303170 14.108902 11.217473 25.878583 67.561748 42.636422
+##  [8] 89.520219 79.119910  4.689934
 ```
 
 ```r
@@ -1080,8 +1148,8 @@ sort(test)
 ```
 
 ```
-##  [1]  4.00613 12.96346 15.78496 26.89768 30.94437 50.63549 57.54381
-##  [8] 81.70184 92.70754 98.66670
+##  [1]  4.689934 11.217473 14.108902 25.878583 28.303170 42.636422 67.561748
+##  [8] 68.161257 79.119910 89.520219
 ```
 
 ---
@@ -1094,8 +1162,8 @@ test
 ```
 
 ```
-##  [1] 52.75645 89.06780 95.31564 87.25951 84.73795 45.12854 44.55489
-##  [8] 49.03515 82.28384 20.07736
+##  [1] 31.884994 19.122211 22.046551 60.190618 45.164561 97.940066 38.497308
+##  [8]  4.716055  7.812424 92.354815
 ```
 
 ```r
@@ -1103,10 +1171,11 @@ rank(test)
 ```
 
 ```
-##  [1]  5  9 10  8  7  3  2  4  6  1
+##  [1]  5  3  4  8  7 10  6  1  2  9
 ```
 
 ---
+
 # Fonctions utiles: échantillonner les valeurs uniques
 
 
@@ -1130,17 +1199,18 @@ unique(test)
 ---
 # Sous-échantillonner des objets
 
-Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction subset() est fort pratique pour réaliser cette opération.
+Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction `subset()` est fort pratique pour réaliser cette opération.
 
-Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats qui contiennent de l'érable à sucre
+Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:
 
 
 ```r
+quadrats <- read.table(file="./donnees/quadrats.csv", sep=";", header=TRUE)
 sub_quadrats = subset(x = quadrats, quadrat$ers > 0)
 ```
 
 ```
-## Error in subset(x = quadrats, quadrat$ers > 0): objet 'quadrats' introuvable
+## Error in eval(expr, envir, enclos): objet 'quadrat' introuvable
 ```
 
 ```r
@@ -1154,36 +1224,29 @@ summary(sub_quadrat)
 ---
 # Faire des tableaux sommaires (enfin !)
 
-Très souvent, on souhaite réaliser un sommaire de nos données. La fonction summary() est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction table() est fort puissante
+Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
 
 ```r
-arbres = read.table(file = './donnees/arbres.txt', header = TRUE)
-```
-
-```
-## Warning in file(file, "rt"): impossible d'ouvrir le fichier './donnees/
-## arbres.txt' : No such file or directory
-```
-
-```
-## Error in file(file, "rt"): impossible d'ouvrir la connexion
-```
-
-```r
-#quadrats = table(arbres[,c(8,4))
+arbres = read.table(file = './donnees/arbres.csv', header = TRUE, sep=";")
 head(quadrats)
 ```
 
 ```
-## Error in head(quadrats): objet 'quadrats' introuvable
+##       X abba acpe acsa beal bepa fagr piru
+## 1   0-0    1   55   11    7    0   92    0
+## 2 0-100    0    5    4    3    0    6    0
+## 3 0-120    2    7   12    4    1    7    0
+## 4 0-140    4    5    4    8    1    2    1
+## 5 0-160    2    2   11    8    1    6    1
+## 6 0-180    5    3    9    7    0    3    1
 ```
 
 
 ---
-# EXERCICE DE FIN DE SÉANCE
+# Exercice de fin de séance
 
-Le fichier quadrats.txt est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans "arbres.txt". Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
 
 1. Charger les données "arbres"
 2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
