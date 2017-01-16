@@ -275,7 +275,7 @@ Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera défini a
 
 ---
 
-# Type d'objet: les `vecteurs`
+# type d'objets: les `vecteurs`
 
 Le vecteur est un des objets les plus importants de R.
 
@@ -290,7 +290,7 @@ MonPremierVecteur
 
 ---
 
-# Type d'objet: les `vecteurs`
+# type d'objets: les `vecteurs`
 
 La force de R repose dans sa capacité à réaliser des opérations `vectorielles`.
 
@@ -347,7 +347,7 @@ length(MonPremierVecteur)
 # Types d'objets: les `matrices`
 
 L'extension naturelle d'un vecteur est une `matrice`, soit une collection de vecteurs.
-R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objet.
+R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objets.
 
 ## La commande de base pour créer une matrice est `matrix()`
 
