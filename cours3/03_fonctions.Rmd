@@ -13,13 +13,13 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 
 # Un simple exemple
 
-```{r,eval=FALSE}
+```{r eval=FALSE}
 ma_fonction <- function(argument1, argument2) {
 
-  # Ce que l'on veut que la fonction fasse
+  # Ce que l'on veut que la fonction exécute
   resultat <- argument1 * argument2 
 
-  # Optionnel. Si l'on veut acceder au resultat de la fonction 
+  # Optionnel. Si l'on veut accéder au résultat de la fonction 
   return(resultat) 
 }
 ```
@@ -62,6 +62,10 @@ tableau <- data.frame(x=rnorm(5),y=rnorm(5))
 tableau
 ```
 
+---
+
+# La construction d'une fonction
+
 À noter qu'en ayant différents chiffres, la formule vue dans la diapositive précédente devient un peu plus générale :
 
 $$
@@ -78,9 +82,8 @@ $$
 (tableau[1,1]*tableau[1,2])/(tableau[1,1]+tableau[1,2])
 (tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
 (tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
-(tableau[4,1]*tableau[4,2])/(tableau[4,1]+tableau[4,2])
-(tableau[5,1]*tableau[5,2])/(tableau[5,1]+tableau[5,2])
 ```
+... 
 
 Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
 
@@ -200,7 +203,6 @@ Autre charactéristique importante des arguments d'une fonction: les objets pass
 a <- 1
 b <- 2
 prodsum(x = a, y = b)
-}
 ```
 
 ---
@@ -230,9 +232,9 @@ Le language de programmation R permet de faire aussi le calcul sur des vecteurs 
 ```{r}
 vecA <- tableau[,1]
 vecB <- tableau[,2]
-prodsum(vecA,vecB)
+prodsum(vecA, vecB)
 
-prodsum(tableau[,1],tableau[,2])
+prodsum(tableau[,1], tableau[,2])
 ```
 
 ---
@@ -248,8 +250,8 @@ vec2 <- tableau[1:2,1]
 vec3 <- tableau[1:3,1]
 vec4 <- tableau[1:4,2]
 
-prodsum(vec2,vec4)
-prodsum(vec3,vec4)
+prodsum(vec2, vec4)
+prodsum(vec3, vec4)
 ```
 
 Avec ces deux exemples ont découvre une propriété particulière du langage R, le **recyclage**. 
@@ -271,9 +273,9 @@ Comment faire pour régler ce problème ?
 Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des trappes dans la fonction qui envoit un message d'erreur. Voici un exemple de l'ajout qu'on peut faire. 
 
 ```{r}
-prodsum <- function(x,y){
+prodsum <- function(x, y){
   if(length(x) != length(y)){
-    stop("'x' a plus (ou moins) de chiffre que 'y'")
+    stop("'x' est de taille différente de 'y'")
   }
   res <- (x*y)/(x+y)
   return(res)
@@ -288,7 +290,7 @@ Les lignes de codes ajoutées mesure la longeur de `x` et `y` et lorsqu'ils sont
 
 Cette trappe permet de corriger le problème mentionné dans la diapositive précédente :
  
-```{r,error=TRUE}
+```{r}
 prodsum(vec2,vec4)
 prodsum(vec3,vec4)
 ```
@@ -305,7 +307,7 @@ Le language de programmation R permet de faire aussi le calcul sur des matrices
  
 ```{r}
 tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
-prodsum(tableau,tableau2)
+prodsum(tableau, tableau2)
 ```
 
 ---
@@ -318,7 +320,7 @@ Le language de programmation R permet de faire aussi le calcul sur des matrices
  
 ```{r}
 tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
-prodsum(tableau,tableau2)
+prodsum(tableau, tableau2)
 ```
 
 ---
@@ -348,7 +350,20 @@ test
   - Commentez les étapes du code ;
   - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
 
+--- .transition
+
+# Exercice de fin de séance
+
 ---
 
+# Abondances relatives
 
+Toujours à partir du fichier [quadrats.csv](./donnees/quadrats.csv), calculer une fonction qui vous retournera les statistiques descriptives suivantes pour une série de données (une espèce en l'occurrence) : 
 
+1. L'abondance moyenne
+2. L'abondance totale
+3. Le coefficent de variation de l'abondance
+4. La densité maximale dans un quadrat
+5. La densité minimale dans un quadrat
+
+Ensuite, appliquez cette fonction sur l'ensemble des espèces au moyen de la fonction *apply()*

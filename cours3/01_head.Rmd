@@ -1,6 +1,6 @@
 ---
-title       : "Séance 2: Introduction au langage R"
-subtitle    : "https://econumuds.github.io/BIO109/cours2/"
+title       : "Séance 3: Fonctions"
+subtitle    : "https://econumuds.github.io/BIO109/cours3/"
 author      : "Dominique Gravel"
 job         : "Laboratoire d'écologie intégrative "
 logo        : "logo.png"
