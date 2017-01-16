@@ -216,9 +216,8 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
 <pre><code class="r">dir()
 </code></pre>
 
-<pre><code>## [1] &quot;assets&quot;           &quot;donnees&quot;          &quot;index.html&quot;      
-## [4] &quot;index.md&quot;         &quot;index.Rmd&quot;        &quot;libraries&quot;       
-## [7] &quot;test_liste.Rdata&quot; &quot;test.Rdata&quot;       &quot;test.xt&quot;
+<pre><code>## [1] &quot;assets&quot;        &quot;donnees&quot;       &quot;index.html&quot;    &quot;index.md&quot;     
+## [5] &quot;index.Rmd&quot;     &quot;libraries&quot;     &quot;MaListe.Rdata&quot;
 </code></pre>
 
 <h2>Obtenir la liste des objets en mémoire</h2>
@@ -1059,15 +1058,15 @@ head(arbres)
     <h1>Écrire des fichiers <code>CSV</code></h1>
   </hgroup>
   <article data-timings="">
-    <p>Il y a une grande diversité de façons d&#39;enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et système d&#39;exploitation est d&#39;écrire sous format <code>CSV</code>.</p>
+    <p>Il y a une grande diversité de façons d&#39;enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et systèmes d&#39;exploitation est d&#39;écrire sous format <code>CSV</code>.</p>
 
 <p>La syntaxe pour écrire une <code>matrice</code> ou un <code>data.frame</code> est aussi simple que pour lire un fichier <code>CSV</code>.</p>
 
 <pre><code class="r">mat2 &lt;- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
-write.csv2(test, file = &quot;mat.csv&quot;)
+write.csv2(mat2, file = &quot;mat.csv&quot;)
 </code></pre>
 
-<p>On priviligie l&#39;utilisation de la fonction <code>write.csv2()</code> qui utilise le point-virgule par défault (<code>write.csv()</code>, la virgule).</p>
+<p>On priviligie l&#39;utilisation de la fonction <code>write.csv2()</code> qui utilise le point-virgule comme spéparateur par défault (<code>write.csv()</code>, la virgule).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1088,6 +1087,9 @@ save(MaListe, file = &quot;MaListe.Rdata&quot;)
 
 <p><strong>NOTE</strong> - <code>save()</code> permet également de sauvegarder plusieurs objets.</p>
 
+<pre><code class="r">save(MaListe,MonDataFrame, file = &quot;MaListe.Rdata&quot;)
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -1100,47 +1102,16 @@ save(MaListe, file = &quot;MaListe.Rdata&quot;)
     <p>Puisque le fichier <code>.Rdata</code> est spécifique à R, il s&#39;agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l&#39;objet, les noms et les types de données</p>
 
 <pre><code class="r">load(&quot;./MaListe.Rdata&quot;)
+ls()
 </code></pre>
 
-<pre><code>## Warning in readChar(con, 5L, useBytes = TRUE): impossible d&#39;ouvrir le
-## fichier compressé &#39;./MaListe.Rdata&#39;, cause probable : &#39;No such file or
-## directory&#39;
+<pre><code>##  [1] &quot;a&quot;                  &quot;arbres&quot;             &quot;b&quot;                 
+##  [4] &quot;c&quot;                  &quot;collage&quot;            &quot;df&quot;                
+##  [7] &quot;df2&quot;                &quot;faux&quot;               &quot;MaListe&quot;           
+## [10] &quot;MaMatrice&quot;          &quot;mat&quot;                &quot;MesFacteurs&quot;       
+## [13] &quot;MonDeuxiemeVecteur&quot; &quot;MonPremierVecteur&quot;  &quot;test&quot;              
+## [16] &quot;vrai&quot;
 </code></pre>
-
-<pre><code>## Error in readChar(con, 5L, useBytes = TRUE): impossible d&#39;ouvrir la connexion
-</code></pre>
-
-<pre><code class="r">ls()
-</code></pre>
-
-<pre><code>## character(0)
-</code></pre>
-
-<hr>
-
-<h1>Lire des fichiers: <code>load()</code> et <code>.Rdata</code></h1>
-
-<p>Faites attention, si le nom de l&#39;objet contenu dans le fichier <code>.Rdata</code> est le même qu&#39;un objet en mémoire, il va écraser ce premier objet.</p>
-
-<pre><code class="r">MaListe &lt;- 1
-load(&quot;./MaListe.Rdata&quot;)
-</code></pre>
-
-<pre><code>## Warning in readChar(con, 5L, useBytes = TRUE): impossible d&#39;ouvrir le
-## fichier compressé &#39;./MaListe.Rdata&#39;, cause probable : &#39;No such file or
-## directory&#39;
-</code></pre>
-
-<pre><code>## Error in readChar(con, 5L, useBytes = TRUE): impossible d&#39;ouvrir la connexion
-</code></pre>
-
-<pre><code class="r">MaListe
-</code></pre>
-
-<pre><code>## [1] 1
-</code></pre>
-
-<h2>Pour éviter cette erreur, il faut utiliser les fonctions <code>saveRDS()</code> et <code>readRDS()</code>.</h2>
 
   </article>
   <!-- Presenter Notes -->
@@ -1148,22 +1119,24 @@ load(&quot;./MaListe.Rdata&quot;)
 <slide class="" id="slide-55" style="background:;">
   <!--  <a href="#slide-55"></a> -->
   <hgroup>
-    <h1>Quelques commandes utiles</h1>
+    <h1>Lire des fichiers: <code>load()</code> et <code>.Rdata</code></h1>
   </hgroup>
   <article data-timings="">
-    <p>Il est important de vérifier la structure de l&#39;objet après son importation dans l&#39;environnement R.</p>
+    <p>Faites attention, si le nom de l&#39;objet contenu dans le fichier <code>.Rdata</code> est le même qu&#39;un objet en mémoire, il va écraser ce premier objet.</p>
 
-<pre><code class="r">head(arbres, n = 5)
+<pre><code class="r">MaListe &lt;- list(&quot;Hello&quot;,&quot;World&quot;)
+load(&quot;./MaListe.Rdata&quot;)
+MaListe
 </code></pre>
 
-<pre><code>## Error in head(arbres, n = 5): objet &#39;arbres&#39; introuvable
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
 </code></pre>
 
-<pre><code class="r">tail(arbres, n = 5)
-</code></pre>
-
-<pre><code>## Error in tail(arbres, n = 5): objet &#39;arbres&#39; introuvable
-</code></pre>
+<h2>Pour éviter cette erreur, il faut utiliser les fonctions <code>saveRDS()</code> et <code>readRDS()</code>.</h2>
 
   </article>
   <!-- Presenter Notes -->
@@ -1176,10 +1149,22 @@ load(&quot;./MaListe.Rdata&quot;)
   <article data-timings="">
     <p>Il est important de vérifier la structure de l&#39;objet après son importation dans l&#39;environnement R.</p>
 
-<pre><code class="r">str(arbres)
+<pre><code class="r">head(arbres, n = 3)
 </code></pre>
 
-<pre><code>## Error in str(arbres): objet &#39;arbres&#39; introuvable
+<pre><code>##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+</code></pre>
+
+<pre><code class="r">tail(arbres, n = 3)
+</code></pre>
+
+<pre><code>##        id_bor borx bory arbre  esp multi mort dhp
+## 17633 180-980  180  980 17271 piru  FAUX FAUX 125
+## 17634 180-980  180  980 17272 piru  FAUX FAUX 190
+## 17635 180-980  180  980 17273 beal  FAUX FAUX 210
 </code></pre>
 
   </article>
@@ -1191,12 +1176,20 @@ load(&quot;./MaListe.Rdata&quot;)
     <h1>Quelques commandes utiles</h1>
   </hgroup>
   <article data-timings="">
-    <p><code>summary()</code> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
+    <p>Il est important de vérifier la structure de l&#39;objet après son importation dans l&#39;environnement R.</p>
 
-<pre><code class="r">summary(arbres)
+<pre><code class="r">str(arbres)
 </code></pre>
 
-<pre><code>## Error in summary(arbres): objet &#39;arbres&#39; introuvable
+<pre><code>## &#39;data.frame&#39;:    17635 obs. of  8 variables:
+##  $ id_bor: Factor w/ 499 levels &quot;0-0&quot;,&quot;0-100&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ borx  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ bory  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ arbre : int  34501 34502 34502 34503 34504 34506 34507 34509 34510 34511 ...
+##  $ esp   : Factor w/ 7 levels &quot;abba&quot;,&quot;acpe&quot;,..: 2 2 2 2 2 6 2 2 2 2 ...
+##  $ multi : Factor w/ 2 levels &quot;FAUX&quot;,&quot;VRAI&quot;: 1 2 2 1 1 1 1 1 1 1 ...
+##  $ mort  : Factor w/ 2 levels &quot;FAUX&quot;,&quot;VRAI&quot;: 1 1 1 1 2 1 1 1 1 1 ...
+##  $ dhp   : int  82 26 98 73 28 26 29 18 24 34 ...
 </code></pre>
 
   </article>
@@ -1204,6 +1197,38 @@ load(&quot;./MaListe.Rdata&quot;)
 </slide>
 <slide class="" id="slide-58" style="background:;">
   <!--  <a href="#slide-58"></a> -->
+  <hgroup>
+    <h1>Quelques commandes utiles</h1>
+  </hgroup>
+  <article data-timings="">
+    <p><code>summary()</code> permet d&#39;obtenir un résumé du contenu de chaque colonne</p>
+
+<pre><code class="r">summary(arbres)
+</code></pre>
+
+<pre><code>##      id_bor           borx             bory           arbre      
+##  80-80  :  227   Min.   :  0.00   Min.   :  0.0   Min.   :    1  
+##  100-20 :  224   1st Qu.: 60.00   1st Qu.:160.0   1st Qu.: 4358  
+##  100-60 :  204   Median : 80.00   Median :400.0   Median : 8777  
+##  80-260 :  196   Mean   : 88.99   Mean   :437.9   Mean   : 9074  
+##  80-240 :  189   3rd Qu.:120.00   3rd Qu.:700.0   3rd Qu.:13186  
+##  80-20  :  184   Max.   :180.00   Max.   :980.0   Max.   :64508  
+##  (Other):16411                                                   
+##    esp        multi         mort            dhp        
+##  abba:2596   FAUX:16920   FAUX:15564   Min.   :   0.0  
+##  acpe:1864   VRAI:  715   VRAI: 2071   1st Qu.: 105.0  
+##  acsa:3326                             Median : 165.0  
+##  beal:3995                             Mean   : 183.7  
+##  bepa:2080                             3rd Qu.: 254.0  
+##  fagr:2785                             Max.   :3015.0  
+##  piru: 989
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-59" style="background:;">
+  <!--  <a href="#slide-59"></a> -->
   <hgroup>
     <h1>Exercice de manipulation des données</h1>
   </hgroup>
@@ -1219,8 +1244,8 @@ load(&quot;./MaListe.Rdata&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-59" style="background:;">
-  <!--  <a href="#slide-59"></a> -->
+<slide class="" id="slide-60" style="background:;">
+  <!--  <a href="#slide-60"></a> -->
   <hgroup>
     <h1>Exercice de manipulation des données (suite)</h1>
   </hgroup>
@@ -1233,13 +1258,13 @@ load(&quot;./MaListe.Rdata&quot;)
 <li>Ouvrir le fichier <code>CSV</code> et le comparer au calcul fait au moyenne de Excel</li>
 </ul>
 
-<p><strong>Note:</strong> vous pouvez explorer les données avec &#39;summary&#39; et pour les avancés. Les plus avancés peuvent explorer la commande <code>apply</code>...</p>
+<p><strong>Note:</strong> vous pouvez explorer les données avec <code>summary</code> et pour les avancés. Les plus avancés peuvent explorer la commande <code>apply</code>...</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-60" style="background:;">
-  <!--  <a href="#slide-60"></a> -->
+<slide class="" id="slide-61" style="background:;">
+  <!--  <a href="#slide-61"></a> -->
   <hgroup>
     <h1>Complément: le script</h1>
   </hgroup>
@@ -1252,18 +1277,11 @@ load(&quot;./MaListe.Rdata&quot;)
 source(&quot;./MonScript.R&quot;)
 </code></pre>
 
-<pre><code>## Warning in file(filename, &quot;r&quot;, encoding = encoding): impossible d&#39;ouvrir le
-## fichier &#39;./MonScript.R&#39; : No such file or directory
-</code></pre>
-
-<pre><code>## Error in file(filename, &quot;r&quot;, encoding = encoding): impossible d&#39;ouvrir la connexion
-</code></pre>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-61" style="background:;">
-  <!--  <a href="#slide-61"></a> -->
+<slide class="transition" id="slide-62" style="background:;">
+  <!--  <a href="#slide-62"></a> -->
   <hgroup>
     <h1>Manipulation des données</h1>
   </hgroup>
@@ -1272,8 +1290,8 @@ source(&quot;./MonScript.R&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-62" style="background:;">
-  <!--  <a href="#slide-62"></a> -->
+<slide class="" id="slide-63" style="background:;">
+  <!--  <a href="#slide-63"></a> -->
   <hgroup>
     <h1>Différents outils pour générer des données</h1>
   </hgroup>
@@ -1294,8 +1312,8 @@ source(&quot;./MonScript.R&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-63" style="background:;">
-  <!--  <a href="#slide-63"></a> -->
+<slide class="" id="slide-64" style="background:;">
+  <!--  <a href="#slide-64"></a> -->
   <hgroup>
     <h1>Différents outils pour générer des données</h1>
   </hgroup>
@@ -1320,8 +1338,8 @@ expand.grid(v1,v2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-64" style="background:;">
-  <!--  <a href="#slide-64"></a> -->
+<slide class="" id="slide-65" style="background:;">
+  <!--  <a href="#slide-65"></a> -->
   <hgroup>
     <h1>Combiner des objets</h1>
   </hgroup>
@@ -1346,48 +1364,25 @@ expand.grid(v1,v2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-65" style="background:;">
-  <!--  <a href="#slide-65"></a> -->
+<slide class="" id="slide-66" style="background:;">
+  <!--  <a href="#slide-66"></a> -->
   <hgroup>
     <h1>Fonctions utiles: trier des objets</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">test &lt;- runif(n = 10, min = 0, max = 100)
-test
+    <pre><code class="r">tri &lt;- runif(n = 10, min = 0, max = 100)
+tri
 </code></pre>
 
-<pre><code>##  [1] 68.161257 28.303170 14.108902 11.217473 25.878583 67.561748 42.636422
-##  [8] 89.520219 79.119910  4.689934
+<pre><code>##  [1] 48.52697 78.75877 93.96197 89.33506 83.52468 22.82650 55.80610
+##  [8] 71.62585 87.45704 34.92941
 </code></pre>
 
-<pre><code class="r">sort(test)
+<pre><code class="r">sort(tri)
 </code></pre>
 
-<pre><code>##  [1]  4.689934 11.217473 14.108902 25.878583 28.303170 42.636422 67.561748
-##  [8] 68.161257 79.119910 89.520219
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-66" style="background:;">
-  <!--  <a href="#slide-66"></a> -->
-  <hgroup>
-    <h1>Fonctions utiles: obtenir des rangs</h1>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">test &lt;- runif(n = 10, min = 0, max = 100)
-test
-</code></pre>
-
-<pre><code>##  [1] 31.884994 19.122211 22.046551 60.190618 45.164561 97.940066 38.497308
-##  [8]  4.716055  7.812424 92.354815
-</code></pre>
-
-<pre><code class="r">rank(test)
-</code></pre>
-
-<pre><code>##  [1]  5  3  4  8  7 10  6  1  2  9
+<pre><code>##  [1] 22.82650 34.92941 48.52697 55.80610 71.62585 78.75877 83.52468
+##  [8] 87.45704 89.33506 93.96197
 </code></pre>
 
   </article>
@@ -1396,20 +1391,21 @@ test
 <slide class="" id="slide-67" style="background:;">
   <!--  <a href="#slide-67"></a> -->
   <hgroup>
-    <h1>Fonctions utiles: échantillonner les valeurs uniques</h1>
+    <h1>Fonctions utiles: obtenir des rangs</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">test &lt;- c(1,2,5,7,4,3,2,1,10,5,8)
-test
+    <pre><code class="r">rang &lt;- runif(n = 10, min = 0, max = 100)
+rang
 </code></pre>
 
-<pre><code>##  [1]  1  2  5  7  4  3  2  1 10  5  8
+<pre><code>##  [1] 74.8870835 46.4749101 74.4229886 91.1670190 61.6912239 17.0348118
+##  [7] 67.8081483 33.1892844  0.6241306 37.1237869
 </code></pre>
 
-<pre><code class="r">unique(test)
+<pre><code class="r">rank(rang)
 </code></pre>
 
-<pre><code>## [1]  1  2  5  7  4  3 10  8
+<pre><code>##  [1]  9  5  8 10  6  2  7  3  1  4
 </code></pre>
 
   </article>
@@ -1418,24 +1414,20 @@ test
 <slide class="" id="slide-68" style="background:;">
   <!--  <a href="#slide-68"></a> -->
   <hgroup>
-    <h1>Sous-échantillonner des objets</h1>
+    <h1>Fonctions utiles: échantillonner les valeurs uniques</h1>
   </hgroup>
   <article data-timings="">
-    <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction <code>subset()</code> est fort pratique pour réaliser cette opération.</p>
-
-<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:</p>
-
-<pre><code class="r">quadrats &lt;- read.table(file=&quot;./donnees/quadrats.csv&quot;, sep=&quot;;&quot;, header=TRUE)
-sub_quadrats = subset(x = quadrats, quadrat$ers &gt; 0)
+    <pre><code class="r">uq &lt;- c(1,2,5,7,4,3,2,1,10,5,8)
+uq
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): objet &#39;quadrat&#39; introuvable
+<pre><code>##  [1]  1  2  5  7  4  3  2  1 10  5  8
 </code></pre>
 
-<pre><code class="r">summary(sub_quadrat)
+<pre><code class="r">unique(uq)
 </code></pre>
 
-<pre><code>## Error in summary(sub_quadrat): objet &#39;sub_quadrat&#39; introuvable
+<pre><code>## [1]  1  2  5  7  4  3 10  8
 </code></pre>
 
   </article>
@@ -1444,13 +1436,16 @@ sub_quadrats = subset(x = quadrats, quadrat$ers &gt; 0)
 <slide class="" id="slide-69" style="background:;">
   <!--  <a href="#slide-69"></a> -->
   <hgroup>
-    <h1>Faire des tableaux sommaires (enfin !)</h1>
+    <h1>Sous-échantillonner des objets</h1>
   </hgroup>
   <article data-timings="">
-    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <code>summary()</code> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction <code>table()</code> est recommandée.</p>
+    <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction <code>subset()</code> est fort pratique pour réaliser cette opération.</p>
 
-<pre><code class="r">arbres = read.table(file = &#39;./donnees/arbres.csv&#39;, header = TRUE, sep=&quot;;&quot;)
-head(quadrats)
+<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:</p>
+
+<pre><code class="r">quadrats &lt;- read.csv2(file=&quot;./donnees/quadrats.csv&quot;, header=TRUE, stringsAsFactors=FALSE)
+sub_quadrats &lt;- subset(quadrats, quadrats$acsa &gt; 0)
+head(sub_quadrats, n=5)
 </code></pre>
 
 <pre><code>##       X abba acpe acsa beal bepa fagr piru
@@ -1459,7 +1454,6 @@ head(quadrats)
 ## 3 0-120    2    7   12    4    1    7    0
 ## 4 0-140    4    5    4    8    1    2    1
 ## 5 0-160    2    2   11    8    1    6    1
-## 6 0-180    5    3    9    7    0    3    1
 </code></pre>
 
   </article>
@@ -1467,6 +1461,17 @@ head(quadrats)
 </slide>
 <slide class="" id="slide-70" style="background:;">
   <!--  <a href="#slide-70"></a> -->
+  <hgroup>
+    <h1>Faire des tableaux sommaires (enfin !)</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <code>summary()</code> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction <code>table()</code> est recommandée.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-71" style="background:;">
+  <!--  <a href="#slide-71"></a> -->
   <hgroup>
     <h1>Exercice de fin de séance</h1>
   </hgroup>
@@ -1815,7 +1820,7 @@ head(quadrats)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Quelques commandes utiles'>
+        data-slide=55 title='Lire des fichiers: <code>load()</code> et <code>.Rdata</code>'>
          55
       </a>
     </li>
@@ -1833,31 +1838,31 @@ head(quadrats)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=58 title='Exercice de manipulation des données'>
+        data-slide=58 title='Quelques commandes utiles'>
          58
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=59 title='Exercice de manipulation des données (suite)'>
+        data-slide=59 title='Exercice de manipulation des données'>
          59
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=60 title='Complément: le script'>
+        data-slide=60 title='Exercice de manipulation des données (suite)'>
          60
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=61 title='Manipulation des données'>
+        data-slide=61 title='Complément: le script'>
          61
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=62 title='Différents outils pour générer des données'>
+        data-slide=62 title='Manipulation des données'>
          62
       </a>
     </li>
@@ -1869,44 +1874,50 @@ head(quadrats)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='Combiner des objets'>
+        data-slide=64 title='Différents outils pour générer des données'>
          64
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=65 title='Fonctions utiles: trier des objets'>
+        data-slide=65 title='Combiner des objets'>
          65
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=66 title='Fonctions utiles: obtenir des rangs'>
+        data-slide=66 title='Fonctions utiles: trier des objets'>
          66
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=67 title='Fonctions utiles: échantillonner les valeurs uniques'>
+        data-slide=67 title='Fonctions utiles: obtenir des rangs'>
          67
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=68 title='Sous-échantillonner des objets'>
+        data-slide=68 title='Fonctions utiles: échantillonner les valeurs uniques'>
          68
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=69 title='Faire des tableaux sommaires (enfin !)'>
+        data-slide=69 title='Sous-échantillonner des objets'>
          69
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=70 title='Exercice de fin de séance'>
+        data-slide=70 title='Faire des tableaux sommaires (enfin !)'>
          70
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=71 title='Exercice de fin de séance'>
+         71
       </a>
     </li>
   </ul>

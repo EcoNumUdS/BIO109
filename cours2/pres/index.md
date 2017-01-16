@@ -134,9 +134,8 @@ dir()
 ```
 
 ```
-## [1] "assets"           "donnees"          "index.html"      
-## [4] "index.md"         "index.Rmd"        "libraries"       
-## [7] "test_liste.Rdata" "test.Rdata"       "test.xt"
+## [1] "assets"        "donnees"       "index.html"    "index.md"     
+## [5] "index.Rmd"     "libraries"     "MaListe.Rdata"
 ```
 
 ## Obtenir la liste des objets en mémoire
@@ -867,16 +866,16 @@ head(arbres)
 
 # Écrire des fichiers `CSV`
 
-Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et système d'exploitation est d'écrire sous format `CSV`.
+Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et systèmes d'exploitation est d'écrire sous format `CSV`.
 
 La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que pour lire un fichier `CSV`.
 
 
 ```r
 mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
-write.csv2(test, file = "mat.csv")
+write.csv2(mat2, file = "mat.csv")
 ```
-On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule par défault (`write.csv()`, la virgule).
+On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme spéparateur par défault (`write.csv()`, la virgule).
 
 ---
 
@@ -891,7 +890,13 @@ MaListe[[1]] <- 1
 MaListe[[2]] <- c(1:10)
 save(MaListe, file = "MaListe.Rdata")
 ```
+
 **NOTE** - `save()` permet également de sauvegarder plusieurs objets.
+
+
+```r
+save(MaListe,MonDataFrame, file = "MaListe.Rdata")
+```
 
 ---
 
@@ -900,29 +905,20 @@ save(MaListe, file = "MaListe.Rdata")
 Puisque le fichier `.Rdata` est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
 
 
-
-
 ```r
 load("./MaListe.Rdata")
-```
-
-```
-## Warning in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir le
-## fichier compressé './MaListe.Rdata', cause probable : 'No such file or
-## directory'
-```
-
-```
-## Error in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir la connexion
-```
-
-```r
 ls()
 ```
 
 ```
-## character(0)
+##  [1] "a"                  "arbres"             "b"                 
+##  [4] "c"                  "collage"            "df"                
+##  [7] "df2"                "faux"               "MaListe"           
+## [10] "MaMatrice"          "mat"                "MesFacteurs"       
+## [13] "MonDeuxiemeVecteur" "MonPremierVecteur"  "test"              
+## [16] "vrai"
 ```
+
 ---
 
 # Lire des fichiers: `load()` et `.Rdata`
@@ -931,26 +927,17 @@ Faites attention, si le nom de l'objet contenu dans le fichier `.Rdata` est le m
 
 
 ```r
-MaListe <- 1
+MaListe <- list("Hello","World")
 load("./MaListe.Rdata")
-```
-
-```
-## Warning in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir le
-## fichier compressé './MaListe.Rdata', cause probable : 'No such file or
-## directory'
-```
-
-```
-## Error in readChar(con, 5L, useBytes = TRUE): impossible d'ouvrir la connexion
-```
-
-```r
 MaListe
 ```
 
 ```
+## [[1]]
 ## [1] 1
+## 
+## [[2]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 ## Pour éviter cette erreur, il faut utiliser les fonctions `saveRDS()` et `readRDS()`.
@@ -963,19 +950,25 @@ Il est important de vérifier la structure de l'objet après son importation dan
 
 
 ```r
-head(arbres, n = 5)
+head(arbres, n = 3)
 ```
 
 ```
-## Error in head(arbres, n = 5): objet 'arbres' introuvable
+##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
 ```
 
 ```r
-tail(arbres, n = 5)
+tail(arbres, n = 3)
 ```
 
 ```
-## Error in tail(arbres, n = 5): objet 'arbres' introuvable
+##        id_bor borx bory arbre  esp multi mort dhp
+## 17633 180-980  180  980 17271 piru  FAUX FAUX 125
+## 17634 180-980  180  980 17272 piru  FAUX FAUX 190
+## 17635 180-980  180  980 17273 beal  FAUX FAUX 210
 ```
 
 ---
@@ -990,7 +983,15 @@ str(arbres)
 ```
 
 ```
-## Error in str(arbres): objet 'arbres' introuvable
+## 'data.frame':	17635 obs. of  8 variables:
+##  $ id_bor: Factor w/ 499 levels "0-0","0-100",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ borx  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ bory  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ arbre : int  34501 34502 34502 34503 34504 34506 34507 34509 34510 34511 ...
+##  $ esp   : Factor w/ 7 levels "abba","acpe",..: 2 2 2 2 2 6 2 2 2 2 ...
+##  $ multi : Factor w/ 2 levels "FAUX","VRAI": 1 2 2 1 1 1 1 1 1 1 ...
+##  $ mort  : Factor w/ 2 levels "FAUX","VRAI": 1 1 1 1 2 1 1 1 1 1 ...
+##  $ dhp   : int  82 26 98 73 28 26 29 18 24 34 ...
 ```
 
 ---
@@ -1005,7 +1006,22 @@ summary(arbres)
 ```
 
 ```
-## Error in summary(arbres): objet 'arbres' introuvable
+##      id_bor           borx             bory           arbre      
+##  80-80  :  227   Min.   :  0.00   Min.   :  0.0   Min.   :    1  
+##  100-20 :  224   1st Qu.: 60.00   1st Qu.:160.0   1st Qu.: 4358  
+##  100-60 :  204   Median : 80.00   Median :400.0   Median : 8777  
+##  80-260 :  196   Mean   : 88.99   Mean   :437.9   Mean   : 9074  
+##  80-240 :  189   3rd Qu.:120.00   3rd Qu.:700.0   3rd Qu.:13186  
+##  80-20  :  184   Max.   :180.00   Max.   :980.0   Max.   :64508  
+##  (Other):16411                                                   
+##    esp        multi         mort            dhp        
+##  abba:2596   FAUX:16920   FAUX:15564   Min.   :   0.0  
+##  acpe:1864   VRAI:  715   VRAI: 2071   1st Qu.: 105.0  
+##  acsa:3326                             Median : 165.0  
+##  beal:3995                             Mean   : 183.7  
+##  bepa:2080                             3rd Qu.: 254.0  
+##  fagr:2785                             Max.   :3015.0  
+##  piru: 989
 ```
 
 ---
@@ -1028,7 +1044,7 @@ summary(arbres)
 - Enregistrer `AbondanceMoyenne` sous forme de fichier `CSV` (séparateur point-virgule)
 - Ouvrir le fichier `CSV` et le comparer au calcul fait au moyenne de Excel
 
-**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
+**Note:** vous pouvez explorer les données avec `summary` et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
 
 ---
 
@@ -1042,15 +1058,6 @@ Un script est un fichier `.R` contenant une série d'instructions et de commenta
 ```r
 rm(list = ls())
 source("./MonScript.R")
-```
-
-```
-## Warning in file(filename, "r", encoding = encoding): impossible d'ouvrir le
-## fichier './MonScript.R' : No such file or directory
-```
-
-```
-## Error in file(filename, "r", encoding = encoding): impossible d'ouvrir la connexion
 ```
 
 --- .transition
@@ -1134,22 +1141,22 @@ cbind(v1,v2)
 
 
 ```r
-test <- runif(n = 10, min = 0, max = 100)
-test
+tri <- runif(n = 10, min = 0, max = 100)
+tri
 ```
 
 ```
-##  [1] 68.161257 28.303170 14.108902 11.217473 25.878583 67.561748 42.636422
-##  [8] 89.520219 79.119910  4.689934
+##  [1] 48.52697 78.75877 93.96197 89.33506 83.52468 22.82650 55.80610
+##  [8] 71.62585 87.45704 34.92941
 ```
 
 ```r
-sort(test)
+sort(tri)
 ```
 
 ```
-##  [1]  4.689934 11.217473 14.108902 25.878583 28.303170 42.636422 67.561748
-##  [8] 68.161257 79.119910 89.520219
+##  [1] 22.82650 34.92941 48.52697 55.80610 71.62585 78.75877 83.52468
+##  [8] 87.45704 89.33506 93.96197
 ```
 
 ---
@@ -1157,21 +1164,21 @@ sort(test)
 
 
 ```r
-test <- runif(n = 10, min = 0, max = 100)
-test
+rang <- runif(n = 10, min = 0, max = 100)
+rang
 ```
 
 ```
-##  [1] 31.884994 19.122211 22.046551 60.190618 45.164561 97.940066 38.497308
-##  [8]  4.716055  7.812424 92.354815
+##  [1] 74.8870835 46.4749101 74.4229886 91.1670190 61.6912239 17.0348118
+##  [7] 67.8081483 33.1892844  0.6241306 37.1237869
 ```
 
 ```r
-rank(test)
+rank(rang)
 ```
 
 ```
-##  [1]  5  3  4  8  7 10  6  1  2  9
+##  [1]  9  5  8 10  6  2  7  3  1  4
 ```
 
 ---
@@ -1180,8 +1187,8 @@ rank(test)
 
 
 ```r
-test <- c(1,2,5,7,4,3,2,1,10,5,8)
-test
+uq <- c(1,2,5,7,4,3,2,1,10,5,8)
+uq
 ```
 
 ```
@@ -1189,7 +1196,7 @@ test
 ```
 
 ```r
-unique(test)
+unique(uq)
 ```
 
 ```
@@ -1205,31 +1212,9 @@ Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les qu
 
 
 ```r
-quadrats <- read.table(file="./donnees/quadrats.csv", sep=";", header=TRUE)
-sub_quadrats = subset(x = quadrats, quadrat$ers > 0)
-```
-
-```
-## Error in eval(expr, envir, enclos): objet 'quadrat' introuvable
-```
-
-```r
-summary(sub_quadrat)
-```
-
-```
-## Error in summary(sub_quadrat): objet 'sub_quadrat' introuvable
-```
-
----
-# Faire des tableaux sommaires (enfin !)
-
-Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction `table()` est recommandée.
-
-
-```r
-arbres = read.table(file = './donnees/arbres.csv', header = TRUE, sep=";")
-head(quadrats)
+quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE)
+sub_quadrats <- subset(quadrats, quadrats$acsa > 0)
+head(sub_quadrats, n=5)
 ```
 
 ```
@@ -1239,8 +1224,12 @@ head(quadrats)
 ## 3 0-120    2    7   12    4    1    7    0
 ## 4 0-140    4    5    4    8    1    2    1
 ## 5 0-160    2    2   11    8    1    6    1
-## 6 0-180    5    3    9    7    0    3    1
 ```
+
+---
+# Faire des tableaux sommaires (enfin !)
+
+Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
 
 ---

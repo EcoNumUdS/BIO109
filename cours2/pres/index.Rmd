@@ -596,15 +596,15 @@ head(arbres)
 
 # Écrire des fichiers `CSV`
 
-Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et système d'exploitation est d'écrire sous format `CSV`.
+Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et systèmes d'exploitation est d'écrire sous format `CSV`.
 
 La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que pour lire un fichier `CSV`.
 
 ```{r eval=FALSE}
 mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
-write.csv2(test, file = "mat.csv")
+write.csv2(mat2, file = "mat.csv")
 ```
-On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule par défault (`write.csv()`, la virgule).
+On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme spéparateur par défault (`write.csv()`, la virgule).
 
 ---
 
@@ -612,13 +612,18 @@ On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-v
 
 Parfois les objets que l'on souhaite enregistrer ont une structure plus complexe qu'un tableau de données. R permet d'enregistrer ces objets dans un format qui lui est unique, le `.Rdata`. Ces objets sont compressés pour minimiser l'espace disque et ne peuvent être lus uniquement par R.
 
-```{r eval=FALSE}
+```{r}
 MaListe <- list()
 MaListe[[1]] <- 1
 MaListe[[2]] <- c(1:10)
 save(MaListe, file = "MaListe.Rdata")
 ```
+
 **NOTE** - `save()` permet également de sauvegarder plusieurs objets.
+
+```{r eval=FALSE}
+save(MaListe,MonDataFrame, file = "MaListe.Rdata")
+```
 
 ---
 
@@ -626,14 +631,11 @@ save(MaListe, file = "MaListe.Rdata")
 
 Puisque le fichier `.Rdata` est spécifique à R, il s'agit peut-être du format le plus facile à lire puisque R prend en charge la mise en forme de l'objet, les noms et les types de données
 
-```{r echo=FALSE}
-rm(list=ls())
-```
-
 ```{r}
 load("./MaListe.Rdata")
 ls()
 ```
+
 ---
 
 # Lire des fichiers: `load()` et `.Rdata`
@@ -641,7 +643,7 @@ ls()
 Faites attention, si le nom de l'objet contenu dans le fichier `.Rdata` est le même qu'un objet en mémoire, il va écraser ce premier objet.
 
 ```{r}
-MaListe <- 1
+MaListe <- list("Hello","World")
 load("./MaListe.Rdata")
 MaListe
 ```
@@ -655,8 +657,8 @@ MaListe
 Il est important de vérifier la structure de l'objet après son importation dans l'environnement R.
 
 ```{r}
-head(arbres, n = 5)
-tail(arbres, n = 5)
+head(arbres, n = 3)
+tail(arbres, n = 3)
 ```
 
 ---
@@ -699,7 +701,7 @@ summary(arbres)
 - Enregistrer `AbondanceMoyenne` sous forme de fichier `CSV` (séparateur point-virgule)
 - Ouvrir le fichier `CSV` et le comparer au calcul fait au moyenne de Excel
 
-**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
+**Note:** vous pouvez explorer les données avec `summary` et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
 
 ---
 
@@ -709,7 +711,7 @@ Un script est un fichier `.R` contenant une série d'instructions et de commenta
 
 ## On peut exécuter un script avec `source()`:
 
-```{r}
+```{r eval=FALSE}
 rm(list = ls())
 source("./MonScript.R")
 ```
@@ -750,18 +752,18 @@ cbind(v1,v2)
 # Fonctions utiles: trier des objets
 
 ```{r}
-test <- runif(n = 10, min = 0, max = 100)
-test
-sort(test)
+tri <- runif(n = 10, min = 0, max = 100)
+tri
+sort(tri)
 ```
 
 ---
 # Fonctions utiles: obtenir des rangs
 
 ```{r}
-test <- runif(n = 10, min = 0, max = 100)
-test
-rank(test)
+rang <- runif(n = 10, min = 0, max = 100)
+rang
+rank(rang)
 ```
 
 ---
@@ -769,9 +771,9 @@ rank(test)
 # Fonctions utiles: échantillonner les valeurs uniques
 
 ```{r}
-test <- c(1,2,5,7,4,3,2,1,10,5,8)
-test
-unique(test)
+uq <- c(1,2,5,7,4,3,2,1,10,5,8)
+uq
+unique(uq)
 ```
 
 ---
@@ -782,20 +784,15 @@ Parfois, on souhaite avoir seulement une partie des données contenues dans un o
 Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:
 
 ```{r}
-quadrats <- read.table(file="./donnees/quadrats.csv", sep=";", header=TRUE)
-sub_quadrats = subset(x = quadrats, quadrat$ers > 0)
-summary(sub_quadrat)
+quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE)
+sub_quadrats <- subset(quadrats, quadrats$acsa > 0)
+head(sub_quadrats, n=5)
 ```
 
 ---
 # Faire des tableaux sommaires (enfin !)
 
 Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction `table()` est recommandée.
-
-```{r}
-arbres = read.table(file = './donnees/arbres.csv', header = TRUE, sep=";")
-head(quadrats)
-```
 
 
 ---
