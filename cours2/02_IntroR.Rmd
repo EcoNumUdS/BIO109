@@ -1,6 +1,6 @@
 # Séance 2
 
-- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./assets/pdf/S1-BIO109.pdf).
+- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./assets/pdf/S2-BIO109.pdf).
 - L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
 
 **Note**: Il est préférable d'ouvrir le document HTML (Web) avec Firefox ou Google Chrome.
