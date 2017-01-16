@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700|PT+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,400i,600,600i,700|PT+Sans:400,400i,700,700i');
+
+em {
+    font-style: italic
+}
+strong {
+    font-weight: bold;
+}
+
 aside.gdbar img {
     width: auto;
     height: 85px;
@@ -19,7 +27,7 @@ h1, h2, h3 {
 }
 
 aside.gdbar {
-    width: 450px;
+    width: 250px;
 }
 
 .title-slide hgroup>h1 {
@@ -39,9 +47,30 @@ slide:not(.segue) h1 {
     font-size: 40px;
 }
 
+slide:not(.segue) h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 25px;
+    color: #3c3c3c;
+    font-weight: 600;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
 slide:not(.segue) p {
     font-family: 'PT Sans', sans-serif;
 }
+
+slide:not(.segue) a:link {
+  font-weight: bold;
+  color: darkred;
+}
+
+slide:not(.segue) a:visited {
+    text-decoration: none;
+    color: darkred;
+    font-weight: bold;
+}
+
 
 article p, article li, article li.build, section p, section li {
     font-family: 'PT Sans', sans-serif;    text-align: left;

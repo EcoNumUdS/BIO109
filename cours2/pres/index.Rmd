@@ -16,12 +16,19 @@ license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
 ---
+# Séance 2
+
+- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./assets/pdf/S1-BIO109.pdf).
+- L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
+
+**Note**: Il est préférable d'ouvrir le document HTML (Web) avec Firefox ou Google Chrome.
+
+---
+
 # Contenu du cours
 
 1. Interagir avec R
-
 2. Lire et écrire des objets
-
 3. Manipuler des objets
 
 ---
@@ -30,7 +37,7 @@ assets      :
 
 R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de `débuggage` (!!)
 
-### Les arguments en faveur de R:
+## Les arguments en faveur de R:
 
 1. Gratuit et ouvert
 2. Une façon de communiquer avec la communauté scientifique
@@ -68,39 +75,56 @@ R est un langage de programmation en source libre conçu pour l'analyse statisti
 
 Le plus simple est d'utiliser R comme une calculatrice.
 
-Que donne l'opération suivante ?
+## Que donne l'opération suivante ?
 
-```
-2 + 16 x 24 - 56
+```{r eval=FALSE}
+2 + 16 * 24 - 56
 ```
 
 ---
 
 # Répertoire de travail
 
-Savoir où on est
+## Savoir où on est
 
 ```{r}
 getwd()
 ```
 
-Changer le répertoire de travail
+---
 
-```{r}
-setwd("/home/local/USHERBROOKE/grad3002/Bureau/BIO109/depot/donnees")
+# Répertoire de travail
+
+## Changer le répertoire de travail
+
+- Pour les utilisateurs Mac et Linux:
+
+```{r eval=FALSE}
+setwd("/home/DominiqueGravel/BIO109/cours2/donnees/")
 ```
+
+- Pour les utilisateurs Windows:
+
+```{r eval=FALSE}
+setwd("c:/DominiqueGravel/BIO109/cours2/donnees/")
+```
+
+Le `c:` correspond à la partition du disque.
+
+<!-- Les chemins d'accès ressemble généralement à ca: `c:\Documents\BIO109\cours2`
+Le problème étant que le backslash est utilisé pour marquer un espace dans le nom d'un répertoire sous Linux -->
 
 ---
 
 # Environnement de travail
 
-Obtenir le contenu du dossier dans le répertoire de travail
+## Obtenir le contenu du dossier dans le répertoire de travail
 
 ```{r}
 dir()
 ```
 
-Obtenir la liste des objets en mémoire
+## Obtenir la liste des objets en mémoire
 
 ```{r}
 ls()
@@ -110,7 +134,7 @@ ls()
 
 # Environnement de travail
 
-Effacer un objet en mémoire
+## Effacer un objet en mémoire:
 
 ```{r}
 test <- 1
@@ -125,10 +149,11 @@ ls()
 
 Un objet peut contenir de l'information de toute nature: un tableau de données, les résultats d'une analyse, une figure, une fonction
 
-La commande pour créer un objet est composé de trois parties:
-i) une valeur d'intérêt
-ii) un identifiant
-iii) l'opérateur d'assignation
+## La commande pour créer un objet `a` est composé de trois parties:
+
+1. une valeur d'intérêt
+2. un identifiant (soit un nom d'objet)
+3. l'opérateur d'assignation
 
 ```{r}
 a <- c(1,2)
@@ -139,12 +164,19 @@ a
 
 # Le concept d'objet
 
-Notons que les opérateurs `<-` et `=` sont équivalents pour attribuer une valeur à un objet. L'opérateur `<-` peut être difficile à lire ou confondu avec le signe `-`. Cependant, la recommandation est de limiter le signe `=` à des opérations mathématiques et d'utiliser `<-` pour l'assignation de valeurs.
+- Notons que les opérateurs `<-` et `=` sont équivalents pour attribuer une valeur à un objet.
+- L'opérateur `<-` peut être difficile à lire ou confondu avec le signe `-`.
+
+## La recommandation est donc de limiter le signe `=` à des opérations mathématiques et d'utiliser `<-` pour l'assignation de valeurs.
+
+--- .transition
+
+# Les types de valeurs assignable à un objet
 
 ---
-# Types d'objets: scalaires
+# Assigner une valeur de type `numérique`
 
-Les données numériques peuvent être déclarées de différentes manières
+## Les données numériques peuvent être déclarées de différentes manières
 
 ```{r}
 a <- 1
@@ -156,16 +188,22 @@ c
 ```
 
 ---
-# Types d'objets: scalaires
+# Assigner une valeur de type `caractère`
 
-On peut également déclarer des séries de caractères
+## On peut également déclarer des séries de caractères
 
 ```{r}
 test <- "test"
 test
 ```
 
-Finalement, des séries de caractères peuvent être collées entre elles
+**Important** - Les valeurs de type `caractère` doivent être placé entre guillemets. Cette nomenclature permet de différencier une valeur du nom d'un objet.
+
+
+---
+# Assigner une valeur de type `caractère`
+
+## Finalement, des séries de caractères peuvent être collées entre elles pour créer des chaines de caratères.
 
 ```{r}
 collage <- paste("a","b", sep="")
@@ -174,9 +212,9 @@ collage
 
 ---
 
-# Types de données: booléens
+# Assigner une valeur de type `booléen`
 
-Le type booléen (logical) permet de représenter les états `TRUE` (1) et `FALSE` (0) et de faire des opérations mathématiques sur ces objets
+Le type `booléen` (logical) permet de représenter les états `TRUE` (1) et `FALSE` (0) et de faire des opérations mathématiques sur ces objets.
 
 ```{r}
 vrai <- TRUE
@@ -187,20 +225,26 @@ vrai + faux
 
 ---
 
-# Types de données: facteurs
+# Assigner une valeur de type `facteur`
 
 R est d'abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d'hypothèse, qui n'est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.
 
 ```{r}
-MesFacteurs <- factor(c(1,2,3,2,3,3,1,2))
+MesFacteurs <- factor(c("trait1","trait2","trait3","trait2","trait3","trait3","trait1","trait2"))
 MesFacteurs
 ```
 
+--- .transition
+
+# Conversion entre type de valeur
+
 ---
 
-# Types de données: conversions
+# Conversion entre type de valeur
 
 R permet de convertir des objets en différents types de données lorsque le contenu le permet.
+
+## Conversion vers les types `numérique` et `caractère`:
 
 ```{r}
 as.numeric(c("4","6"))
@@ -209,7 +253,9 @@ as.character(c(4,6))
 
 ---
 
-# Types de données: conversions
+# Conversion entre type de valeur
+
+## Conversion vers les types `facteurs` et nombre `entier`:
 
 ```{r}
 as.integer(2.6)
@@ -218,7 +264,9 @@ as.factor(c("4","6"))
 
 ---
 
-# Types de données: conversions
+# Conversion entre type de valeur
+
+## Conversion vers le type `boléen`:
 
 ```{r}
 as.logical(0)
@@ -226,17 +274,50 @@ as.logical(1)
 as.logical(2)
 ```
 
+--- .transition
+
+# Les types d'objet
+
 ---
 
-# Types de variables: vecteurs
+# Les types d'objet
 
-Le vecteur est l'objet le plus important de R. On dit que le langage R est `vectoriel`, ce qui lui permet de réaliser des opérations optimisées pour ce type d'objet.
+Depuis le début du cours, nous avons assigné une seule valeur à un objet. Lorsqu'un objet contient une seule valeur, on dit que c'est un objet `scalaire`.
 
-La façon la plus simple de déclarer un vecteur est (d'autres méthodes seront présentées plus loin):
+```{r}
+a <- 1
+a
+```
+
+Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera définit alors comme un `vecteur`.
+
+---
+
+# Type d'objet: les `vecteurs`
+
+Le vecteur est un des objets les plus importants de R.
+
+## La façon la plus simple de déclarer un vecteur est:
 
 ```{r}
 MonPremierVecteur <- c(1,2,3,4,5)
 MonPremierVecteur
+```
+
+**Note** - D'autres méthodes seront présentées plus loin.
+
+---
+
+# Type d'objet: les `vecteurs`
+
+La force de R repose dans sa capacité à réaliser des opérations `vectoriel`.
+
+Il est ainsi possible d'additionner simplement deux vecteurs d'une même dimension de la façon suivante:
+
+```{r}
+MonPremierVecteur <- c(1,2,3,4,5)
+MonDeuxiemeVecteur <- c(11,12,13,15,16)
+MonPremierVecteur + MonDeuxiemeVecteur
 ```
 
 ---
@@ -247,16 +328,16 @@ Créez un vecteur contenant les valeurs ``[-1,2,5,9]``. Vous pouvez calculer la 
 
 ---
 
-# Types d'objets: vecteurs
+# Types d'objets: les `vecteurs`
 
-On peut accéder à une position sur le vecteur au moyen d'un `index`, indiqué par les `[]`
+## On peut accéder à une position sur le vecteur au moyen d'un `index`, indiqué par les `[]`
 
 ```{r}
 MonPremierVecteur <- c(1,2,3,4,5)
 MonPremierVecteur[3]
 ```
 
-On obtient un `NA` si on tente d'accéder à une position qui n'existe pas:
+## On obtient un `NA` si on tente d'accéder à une position qui n'existe pas:
 
 ```{r}
 MonPremierVecteur <- c(1,2,3,4,5)
@@ -267,13 +348,13 @@ MonPremierVecteur[6]
 
 # Exercice  
 
-Au moyen du vecteur créé précédemment, calculer le produit des valeurs aux positions 2 et 4.
+Au moyen du vecteur créé précédemment, calculer le produit des valeurs aux positions `2` et `4`.
 
 ---
 
-# Types d'objets: vecteurs
+# Types d'objets: les `vecteurs`
 
-On obtient la dimension d'un vecteur ainsi:
+## On obtient la dimension d'un vecteur ainsi:
 
 ```{r}
 length(MonPremierVecteur)
@@ -281,11 +362,12 @@ length(MonPremierVecteur)
 
 ---
 
-# Types d'objets: matrices
+# Types d'objets: les `matrices`
 
-L'extension naturelle d'un vecteur est une `matrice`, soit une collection de vecteurs. R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objet.
+L'extension naturelle d'un vecteur est une `matrice`, soit une collection de vecteurs.
+R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objet.
 
-La commande de base pour créer une matrice est `matrix()`
+## La commande de base pour créer une matrice est `matrix()`
 
 ```{r}
 MaMatrice <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
@@ -294,9 +376,9 @@ MaMatrice
 
 ---
 
-# Types d'objets: matrices
+# Types d'objets: les `matrices`
 
-On accède à la ligne `i` et la colonne `j` au moyen de la commande suivante
+## On accède à la ligne `i` et la colonne `j` au moyen de la commande suivante
 
 ```{r}
 MaMatrice[1,2]
@@ -304,9 +386,9 @@ MaMatrice[1,2]
 
 ---
 
-# Types d'objets: matrices
+# Types d'objets: les `matrices`
 
-On peut aussi accéder à des lignes ou des colonnes entières
+## On peut aussi accéder à des lignes ou des colonnes entières
 
 ```{r}
 MaMatrice[1,]
@@ -315,9 +397,9 @@ MaMatrice[,1]
 
 ---
 
-# Types d'objets: matrices
+# Types d'objets: les `matrices`
 
-On obtient la dimension de la matrice ainsi
+## On obtient la dimension de la matrice ainsi
 
 ```{r}
 dim(MaMatrice)
@@ -325,9 +407,9 @@ dim(MaMatrice)
 
 ---
 
-# Types d'objets: matrices
+# Types d'objets: les `matrices`
 
-Ou encore
+## Ou encore
 
 ```{r}
 nrow(MaMatrice)
@@ -336,9 +418,9 @@ ncol(MaMatrice)
 
 ---
 
-# Types d'objets: matrices
+# Types d'objets: les `matrices`
 
-Les noms de colonnes et de lignes peuvent être modifiées
+## Les noms de colonnes et de lignes peuvent être modifiées
 
 ```{r}
 colnames(MaMatrice) = c("A","B","C")
@@ -352,7 +434,7 @@ MaMatrice
 
 Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions `runif()`. Calculez la somme de la première colonne au moyen de la fonction `sum()`
 
-``Astuce`` : pour obtenir de l'aide sur une fonction, essayez
+**Astuce** : pour obtenir de l'aide sur une fonction, essayez
 
 ```
 ?runif()
@@ -360,11 +442,11 @@ Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasar
 
 ---
 
-# Type d'objets : listes
+# Type d'objets : les `listes`
 
-R peut organiser également des collections de données sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques, et même des listes à l'intérieur de listes.
+R peut organiser également des collections d'objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques.
 
-La création et l'indexation des listes est très similaire à celle des vecteurs et matrices
+## La création et l'indexation des listes est très similaire à celle des vecteurs et matrices
 
 ```{r}
 MaListe = list()
@@ -372,11 +454,13 @@ MaListe[[1]] = c(1,2)
 MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
 ```
 
+`MaListe[[1]]` permet d'obtenir l'objet contenu par le premier niveau de la liste.
+
 ---
 
-# Type d'objets : listes
+# Type d'objets : les `listes`
 
-Et de même on peut nommer les items d'une liste
+## Et de même on peut nommer les items d'une liste
 
 ```{r}
 names(MaListe) <- c("Element1","Element2")
@@ -384,73 +468,118 @@ MaListe
 ```
 
 ---
-# Type d'objets: data.frame
 
-Le `data.frame` est un objet d'une structure particulière à R, un hybride entre une matrice et une liste. Le data.frame se décrit comme un tableau de données, avec les rangées `i` et les colonnes `j`, ainsi que des noms de colonnes. Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
+# Type d'objets: les `data.frame`
+
+## Le `data.frame` se décrit comme un tableau de données, avec les rangées `i` et les colonnes `j`, ainsi que des noms de colonnes.
 
 ```{r}
-test <- data.frame(a = c(1:5), b = c(11:15))
-test
+df <- data.frame(a = c(1:3), b = c(11:13))
+df
+```
+
+Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
+
+
+---
+
+# Type d'objets: les `data.frame`
+
+## Un `data.frame` peut avoir différents types de valeur pour chaque colonne
+
+```{r}
+df2 <- data.frame(a = c(1:3), traitement = factor(c("trait1","trait2","trait3")))
+df2
+```
+
+Cette capacité à entreposer plusieurs types de valeur est ce qui distingue un `data.frame` d'une matrice.
+
+---
+
+# Type d'objets: les `data.frame`
+
+## On peut néanmoins transformer un `data.frame` en matrice
+
+```{r}
+as.matrix(df)
+as.matrix(df2)
 ```
 
 ---
 
-# Type d'objets: data.frame
+# Type d'objets: `data.frame`
 
-On peut néanmoins transformer un data.frame en matrice
-
-```{r}
-as.matrix(test)
-```
-
----
-
-# Type d'objets: data.frame
-
-Ou inversement transformer une matrice en data.frame
+## Ou inversement transformer une matrice en `data.frame`
 
 ```{r}
-test2 <- matrix(c(1:6), nrow = 3, ncol = 2)
-as.data.frame(test2)
+mat <- matrix(c(1:6), nrow = 3, ncol = 2)
+as.data.frame(mat)
 ```
 
 --- .transition
 
-# Interactions avec l'extérieur
-## Lecture et écriture de fichiers
+# Interagir avec ses fichiers
 
 ---
 
-# Lire un fichier txt
+# Lire un fichier
 
-La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travail avec R. Pour ce faire, nous utiliserons les fichiers sous format .txt, qui sont des fichiers de texte brut. Les fichiers .xls ou .xlsx peuvent être lus au moyen de librairies spécialisées, mais les convention sont d'utiliser un format minimal qui est utilisable sur l'ensemble des plateformes.
+La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travail avec R.
+
+Pour ce faire, nous utiliserons les fichiers sous format `CSV` (*Comma Separated values*) qui sont des fichiers de texte brut dont chaque ligne dispose d'un séparateur de colonne.
 
 ---
 
-# Lire un fichier txt
+# Lire un fichier
 
-Nous allons utiliser le fichier 'quadrats.txt' pour cet exemple. On peut lire le fichier au moyen de la commande
+Si j'ouvre le fichier [arbres.csv](./donnees/arbres.csv) avec un bloc note, j'obtiens les 5 premières lignes suivantes:
+
+```
+id_bor;borx;bory;arbre;esp;multi;mort;dhp
+0-0;0;0;34501;acpe;FAUX;FAUX;82
+0-0;0;0;34502;acpe;VRAI;FAUX;26
+0-0;0;0;34502;acpe;VRAI;FAUX;98
+0-0;0;0;34503;acpe;FAUX;FAUX;73
+```
+
+On voit ici le point virgule comme séparateur de colonne. La première ligne corresponds au nom des colonnes.
+
+**Note:** Garder à l'esprit que connaitre la structure du fichier facilite grandement l'importation des données dans R.
+
+---
+
+# Lire un fichier Excel
+
+Les fichiers `.xlsx` peuvent être lus au moyen de librairies spécialisées, mais il est préférrable sour R d'utiliser un format multi-plateforme ouvrable sans logiciels propriétaires.
+
+---
+
+# Ouvrir un fichier `.csv` dans R
+
+Nous allons utiliser le fichier [arbres.csv](./donnees/arbres.csv) pour cet exemple.
+
+## On peut lire le fichier au moyen de la commande
 
 ```{r}
-quadrats <- read.table(file = './donnees/quadrats.txt', header = T, dec = ".", sep = ";", quote = TRUE)
-head(quadrats)
+arbres <- read.table(file = './donnees/arbres.csv', header = T, dec = ".", sep = ";")
+head(arbres)
 ```
 
 ---
 
 # Lire un fichier txt: anatomie des arguments
 
-- 'file' : nom du fichier à lire
-- 'header' : indique s'il y a un entête avec les noms de colonnes
-- 'dec' : caractère utilisé pour délimiter les décimales
-- 'sep' : caractère utilisé pour séparer les colonnes
-- 'quote' : spécifie comment interpréter les chaînes de caractères
+- `file` : nom du fichier à lire
+- `header` : indique s'il y a un entête avec les noms de colonnes
+- `dec` : caractère utilisé pour délimiter les décimales
+- `sep` : caractère utilisé pour séparer les colonnes
+- `quote` : spécifie si les chaines de caractère sont entouré par des guillemets.
 
-Note : l'objet retourné est par défaut un 'data.frame'. Il peut être ensuite converti, au besoin
+**Note** : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin
 
 ---
 
-# Lire un fichier txt: erreurs courantes
+# Lire un fichier: les erreurs courantes
 
 - Mauvais nom de fichier
 - Mauvais répertoire de travail
@@ -543,7 +672,7 @@ summary(quadrats)
 - Enregistrer AbondanceMoyenne sous forme de fichier txt
 - Ouvrir le fichier txt et le comparer au calcul fait au moyenne de Excel
 
-Note : vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande 'apply'...
+**Note:** vous pouvez explorer les données avec 'summary' et pour les avancés. Les plus avancés peuvent explorer la commande 'apply'...
 
 ---
 
@@ -561,7 +690,6 @@ source("./MonScript.R")
 --- .transition
 
 # Manipulation de données
-## Fonctions avancées
 
 ---
 
