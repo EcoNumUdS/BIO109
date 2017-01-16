@@ -33,8 +33,8 @@ alea
 ```
 
 ```
-##  [1] 0.25759758 0.92142907 0.07926559 0.28224699 0.46014869 0.60214846
-##  [7] 0.84664646 0.96979014 0.04311669 0.07557513
+##  [1] 0.4117047 0.4630194 0.2891859 0.5491750 0.6044720 0.4267765 0.8056156
+##  [8] 0.7329082 0.3285725 0.7033833
 ```
 Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées. 
 
@@ -120,8 +120,8 @@ vec1
 ```
 
 ```
-##  [1] 0.7522490 0.7910118 0.8551970 0.7511891 0.4124666 0.2668057 0.7968759
-##  [8] 0.1400255 0.7968379 0.1724552
+##  [1] 0.4268482 0.1218157 0.1518030 0.3570744 0.5828849 0.9713607 0.8851110
+##  [8] 0.8361815 0.3701579 0.8209280
 ```
 
 ```r
@@ -129,8 +129,8 @@ vec1
 ```
 
 ```
-##  [1] 2.2567470 2.3730354 2.5655909 2.2535672 1.2373997 0.8004171 2.3906278
-##  [8] 0.4200765 2.3905137 0.5173655
+##  [1] 1.2805446 0.3654471 0.4554090 1.0712232 1.7486547 2.9140820 2.6553330
+##  [8] 2.5085444 1.1104738 2.4627841
 ```
 
 ---
@@ -226,8 +226,8 @@ alea
 ```
 
 ```
-##  [1] 0.4559915 0.8849520 0.6115124 0.6284354 0.9921609 0.2064184 0.2173085
-##  [8] 0.3890982 0.6873320 0.2193706
+##  [1] 0.10642507 0.70747217 0.82837847 0.62941960 0.13560792 0.33757582
+##  [7] 0.95429717 0.01835642 0.24215448 0.40805915
 ```
 
 ```r
@@ -235,7 +235,7 @@ min(alea)
 ```
 
 ```
-## [1] 0.2064184
+## [1] 0.01835642
 ```
 
 ```r
@@ -243,7 +243,7 @@ max(alea)
 ```
 
 ```
-## [1] 0.9921609
+## [1] 0.9542972
 ```
 
 ---
@@ -297,9 +297,9 @@ mat
 
 ```
 ##           [,1]      [,2]
-## [1,] 0.2768074 0.6148224
-## [2,] 0.4596425 0.9445593
-## [3,] 0.3795278 0.1271147
+## [1,] 0.3062993 0.2525528
+## [2,] 0.3001564 0.8966061
+## [3,] 0.9210205 0.3311946
 ```
 
 ```r
@@ -307,7 +307,7 @@ rowSums(mat)
 ```
 
 ```
-## [1] 0.8916298 1.4042018 0.5066425
+## [1] 0.558852 1.196763 1.252215
 ```
 
 ```r
@@ -315,7 +315,7 @@ colSums(mat)
 ```
 
 ```
-## [1] 1.115978 1.686496
+## [1] 1.527476 1.480353
 ```
 
 ---
@@ -330,7 +330,7 @@ apply(X = mat, MARGIN = 2, FUN = sum)
 ```
 
 ```
-## [1] 1.115978 1.686496
+## [1] 1.527476 1.480353
 ```
 
 ```r
@@ -338,7 +338,7 @@ apply(X = mat, MARGIN = 1, FUN = sum)
 ```
 
 ```
-## [1] 0.8916298 1.4042018 0.5066425
+## [1] 0.558852 1.196763 1.252215
 ```
 
 ---
@@ -512,11 +512,11 @@ tableau
 
 ```
 ##             x          y
-## 1  0.07352584  1.0813838
-## 2 -0.97595149  2.0699926
-## 3  0.65429831  0.8559593
-## 4 -0.87004072  0.4680357
-## 5 -0.64637009 -0.1661012
+## 1  0.68870937  0.2610257
+## 2 -0.09078666  0.5121457
+## 3  0.38357330  0.6844517
+## 4  2.58457224 -0.1997923
+## 5 -0.17819327 -0.2026118
 ```
 
 ---
@@ -541,7 +541,7 @@ $$
 ```
 
 ```
-## [1] 0.06884491
+## [1] 0.1892853
 ```
 
 ```r
@@ -549,7 +549,7 @@ $$
 ```
 
 ```
-## [1] -1.84656
+## [1] -0.1103477
 ```
 
 ```r
@@ -557,23 +557,7 @@ $$
 ```
 
 ```
-## [1] 0.3708326
-```
-
-```r
-(tableau[4,1]*tableau[4,2])/(tableau[4,1]+tableau[4,2])
-```
-
-```
-## [1] 1.012948
-```
-
-```r
-(tableau[5,1]*tableau[5,2])/(tableau[5,1]+tableau[5,2])
-```
-
-```
-## [1] -0.1321436
+## [1] 0.2458158
 ```
 
 Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
@@ -593,11 +577,11 @@ for(i in 1:nrow(tableau)){
 ```
 
 ```
-## [1] 0.06884491
-## [1] -1.84656
-## [1] 0.3708326
-## [1] 1.012948
-## [1] -0.1321436
+## [1] 0.1892853
+## [1] -0.1103477
+## [1] 0.2458158
+## [1] -0.2165306
+## [1] -0.09480983
 ```
 
 Problème: Qu'est-ce qu'on fait si on veut appliquer ce calcul sur plusieurs tableaux ???
@@ -610,7 +594,7 @@ C'est possible, mais ça peut être un peu plus compliqué !
 
 ## Et si on faisait une fonction...
 
-La fonction peut permettre de résoudre certain problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques. 
+La fonction peut permettre de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques. 
 
 ---
 
@@ -624,6 +608,7 @@ On commence par écrire une version spécifique du code que l'on souhaite géné
 ```r
 (3*7)/(3+7)
 ```
+
 ---
 
 # La construction d'une fonction
@@ -642,11 +627,24 @@ prodsum <- function(){
 
 Yééé, on a écrit notre première fonction !! :-)
 
+
+```r
+prodsum()
+```
+
+```
+## [1] 2.1
+```
+
 ---
 
-# La construction d'une fonction
+# Petit problème
 
-## Comment construit-on une fonction ?
+Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. :-(
+
+---
+
+# Comment construit-on une fonction ?
 
 À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
 
@@ -656,17 +654,7 @@ Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il a
  
 ---
 
-# La construction d'une fonction
-
-## Petit problème
-
-Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. :-(
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
+# Comment rendre la fonction plus générale ?
 
 On peut généraliser cette fonction, en implémentant directement la formule générale présentée précédemment :
 
@@ -678,9 +666,7 @@ Pour ce faire, il faut ajouter des **arguments** à notre fonction.
 
 ---
 
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
+# Comment rendre la fonction plus générale ?
 
 Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. Il faut donc s'assurer que les mêmes opérations soient réalisées sur ces arguments. 
 
@@ -696,9 +682,7 @@ Avec cette fonction on peut faire le calcul qui nous intéresse avec différente
 
 ---
 
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
+# Comment rendre la fonction plus générale ?
 
 Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est en général rarement le cas : 
 
@@ -715,18 +699,8 @@ prodsum(x = a, y = b)
 
 ---
 
-# La construction d'une fonction
+# Utilisons notre fonction avec des chiffres
 
-## Utilisons notre fonction avec des chiffres
-
-
-```r
-prodsum(3, 7)
-```
-
-```
-## [1] 2.1
-```
 
 ```r
 prodsum(x = 3, y = 7)
@@ -750,9 +724,7 @@ Comme on le constate, dans le language R, les arguments des peuvent être défin
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des vecteurs
+# Utilisons notre fonction avec des vecteurs
 
 Le language de programmation R permet de faire aussi le calcul sur des vecteurs :
  
@@ -764,7 +736,7 @@ prodsum(vecA, vecB)
 ```
 
 ```
-## [1]  0.06884491 -1.84655983  0.37083259  1.01294774 -0.13214357
+## [1]  0.18928528 -0.11034769  0.24581577 -0.21653056 -0.09480983
 ```
 
 ```r
@@ -772,14 +744,12 @@ prodsum(tableau[,1], tableau[,2])
 ```
 
 ```
-## [1]  0.06884491 -1.84655983  0.37083259  1.01294774 -0.13214357
+## [1]  0.18928528 -0.11034769  0.24581577 -0.21653056 -0.09480983
 ```
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des vecteurs
+# Utilisons notre fonction avec des vecteurs
 
 L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même nombre de chiffres, ils ont la même longueur. Que ce passe-t-il si les vecteurs n'ont pas la même longueur ?
  
@@ -788,15 +758,6 @@ L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même 
 vec2 <- tableau[1:2,1]
 vec3 <- tableau[1:3,1]
 vec4 <- tableau[1:4,2]
-
-prodsum(vec2, vec4)
-```
-
-```
-## [1]  0.06884491 -1.84655983  0.06770967  0.89932250
-```
-
-```r
 prodsum(vec3, vec4)
 ```
 
@@ -811,10 +772,8 @@ prodsum(vec3, vec4)
 ```
 
 ```
-## [1]  0.06884491 -1.84655983  0.37083259  0.06354351
+## [1]  0.1892853 -0.1103477  0.2458158 -0.2814360
 ```
-
-Avec ces deux exemples ont découvre une propriété particulière du langage R, le **recyclage**. 
 
 ---
 
@@ -830,7 +789,7 @@ Comment faire pour régler ce problème ?
 
 # Ajouter des trappes dans une fonction 
 
-Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des trappes dans la fonction qui envoit un message d'erreur. Voici un exemple de l'ajout qu'on peut faire. 
+Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des trappes dans la fonction qui retournent un message d'erreur. Voici un exemple :
 
 
 ```r
@@ -872,9 +831,7 @@ Notez que le message d'erreur envoyé est composé par le programmeur. Par contr
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des tableaux
+# Utilisons notre fonction avec des tableaux
 
 Le language de programmation R permet de faire aussi le calcul sur des matrices
  
@@ -885,19 +842,17 @@ prodsum(tableau, tableau2)
 ```
 
 ```
-##              x            y
-## 1  0.066475488 2.818210e-01
-## 2  0.005128657 6.267344e-02
-## 3  0.187381214 6.266546e-01
-## 4  0.007020300 8.209071e-02
-## 5 -1.041098777 8.353242e-09
+##             x           y
+## 1  0.32198166 0.235073600
+## 2 -0.11886556 0.018229391
+## 3  0.26817462 0.410121945
+## 4  0.15372930 0.047783547
+## 5  0.04926741 0.005466112
 ```
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des tableaux
+# Utilisons notre fonction avec des tableaux
 
 Le language de programmation R permet de faire aussi le calcul sur des matrices
  
@@ -909,11 +864,11 @@ prodsum(tableau, tableau2)
 
 ```
 ##             x          y
-## 1 0.071928292  0.1494369
-## 2 0.797734374  0.5968562
-## 3 0.002325313  0.3876055
-## 4 0.005063145  0.3938828
-## 5 0.093314894 -0.1924349
+## 1  0.38647341  0.1755865
+## 2 -0.80034482  0.3796770
+## 3  0.01647881  0.1020211
+## 4  1.29286853 -0.2149701
+## 5  0.55647570 -0.2713502
 ```
 
 ---
@@ -925,32 +880,53 @@ Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'e
 
 ```r
 ma_fonction <- function(x) {
+
+  # Calcul de la moyenne
   res1 <- mean(x)
+
+  # Calcul de l'écart-type
   res2 <- sd(x)
+
+  # Calcul du coefficient de variation
   res3 <- res2/res1
-  return(list(moyenne = res1, ecart_type = res2, CV = res3))
+
+  # On regroupe les résultats dans une liste
+  final = list(moyenne = res1, ecart_type = res2, CV = res3)
+
+  # Et on retourne le tout hors de la fonction
+  return(final)
 }
+```
+
+---
+
+# La sortie
+
+Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
+
+
+```r
 test <- ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
 test
 ```
 
 ```
 ## $moyenne
-## [1] 0.947505
+## [1] 1.052235
 ## 
 ## $ecart_type
-## [1] 0.4766888
+## [1] 0.5070926
 ## 
 ## $CV
-## [1] 0.5030989
+## [1] 0.4819196
 ```
 
 ---
 
 # Quelques règles utiles lorsqu'on construit une fonction
   - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent dans ce qui se trouve à l'extérieur d'une fonction ;
-  - Donner une nom représentatif à la fonction. Un nom qui résume ce que la fonction fait ;
-  - Tous les arguments de la fonction doivent être utilisé en quelques part dans la fonction ;
+  - Donner une nom représentatif à la fonction, qui résume ce que la fonction fait ;
+  - Tous les arguments de la fonction doivent être utilisés;
   - Les arguments doivent avoir des noms représentatifs ;
   - Commentez les étapes du code ;
   - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;

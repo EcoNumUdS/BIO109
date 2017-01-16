@@ -83,7 +83,6 @@ $$
 (tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
 (tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
 ```
-... 
 
 Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
 
@@ -110,7 +109,7 @@ C'est possible, mais ça peut être un peu plus compliqué !
 
 ## Et si on faisait une fonction...
 
-La fonction peut permettre de résoudre certain problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques. 
+La fonction peut permettre de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques. 
 
 ---
 
@@ -123,6 +122,7 @@ On commence par écrire une version spécifique du code que l'on souhaite géné
 ```{r,eval=FALSE}
 (3*7)/(3+7)
 ```
+
 ---
 
 # La construction d'une fonction
@@ -140,11 +140,19 @@ prodsum <- function(){
 
 Yééé, on a écrit notre première fonction !! :-)
 
+```{r}
+prodsum()
+```
+
 ---
 
-# La construction d'une fonction
+# Petit problème
 
-## Comment construit-on une fonction ?
+Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. :-(
+
+---
+
+# Comment construit-on une fonction ?
 
 À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
 
@@ -154,17 +162,7 @@ Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il a
  
 ---
 
-# La construction d'une fonction
-
-## Petit problème
-
-Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. :-(
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
+# Comment rendre la fonction plus générale ?
 
 On peut généraliser cette fonction, en implémentant directement la formule générale présentée précédemment :
 
@@ -176,9 +174,7 @@ Pour ce faire, il faut ajouter des **arguments** à notre fonction.
 
 ---
 
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
+# Comment rendre la fonction plus générale ?
 
 Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. Il faut donc s'assurer que les mêmes opérations soient réalisées sur ces arguments. 
 
@@ -193,9 +189,7 @@ Avec cette fonction on peut faire le calcul qui nous intéresse avec différente
 
 ---
 
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
+# Comment rendre la fonction plus générale ?
 
 Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est en général rarement le cas : 
 
@@ -207,12 +201,9 @@ prodsum(x = a, y = b)
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des chiffres
+# Utilisons notre fonction avec des chiffres
 
 ```{r}
-prodsum(3, 7)
 prodsum(x = 3, y = 7)
 prodsum(y = 7, x = 3)
 ```
@@ -223,9 +214,7 @@ Comme on le constate, dans le language R, les arguments des peuvent être défin
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des vecteurs
+# Utilisons notre fonction avec des vecteurs
 
 Le language de programmation R permet de faire aussi le calcul sur des vecteurs :
  
@@ -239,9 +228,7 @@ prodsum(tableau[,1], tableau[,2])
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des vecteurs
+# Utilisons notre fonction avec des vecteurs
 
 L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même nombre de chiffres, ils ont la même longueur. Que ce passe-t-il si les vecteurs n'ont pas la même longueur ?
  
@@ -249,12 +236,8 @@ L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même 
 vec2 <- tableau[1:2,1]
 vec3 <- tableau[1:3,1]
 vec4 <- tableau[1:4,2]
-
-prodsum(vec2, vec4)
 prodsum(vec3, vec4)
 ```
-
-Avec ces deux exemples ont découvre une propriété particulière du langage R, le **recyclage**. 
 
 ---
 
@@ -270,7 +253,7 @@ Comment faire pour régler ce problème ?
 
 # Ajouter des trappes dans une fonction 
 
-Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des trappes dans la fonction qui envoit un message d'erreur. Voici un exemple de l'ajout qu'on peut faire. 
+Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des trappes dans la fonction qui retournent un message d'erreur. Voici un exemple :
 
 ```{r}
 prodsum <- function(x, y){
@@ -299,9 +282,7 @@ Notez que le message d'erreur envoyé est composé par le programmeur. Par contr
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des tableaux
+# Utilisons notre fonction avec des tableaux
 
 Le language de programmation R permet de faire aussi le calcul sur des matrices
  
@@ -312,9 +293,7 @@ prodsum(tableau, tableau2)
 
 ---
 
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des tableaux
+# Utilisons notre fonction avec des tableaux
 
 Le language de programmation R permet de faire aussi le calcul sur des matrices
  
@@ -331,11 +310,31 @@ Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'e
 
 ```{r}
 ma_fonction <- function(x) {
+
+  # Calcul de la moyenne
   res1 <- mean(x)
+
+  # Calcul de l'écart-type
   res2 <- sd(x)
+
+  # Calcul du coefficient de variation
   res3 <- res2/res1
-  return(list(moyenne = res1, ecart_type = res2, CV = res3))
+
+  # On regroupe les résultats dans une liste
+  final = list(moyenne = res1, ecart_type = res2, CV = res3)
+
+  # Et on retourne le tout hors de la fonction
+  return(final)
 }
+```
+
+---
+
+# La sortie
+
+Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
+
+```{r}
 test <- ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
 test
 ```
@@ -344,8 +343,8 @@ test
 
 # Quelques règles utiles lorsqu'on construit une fonction
   - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent dans ce qui se trouve à l'extérieur d'une fonction ;
-  - Donner une nom représentatif à la fonction. Un nom qui résume ce que la fonction fait ;
-  - Tous les arguments de la fonction doivent être utilisé en quelques part dans la fonction ;
+  - Donner une nom représentatif à la fonction, qui résume ce que la fonction fait ;
+  - Tous les arguments de la fonction doivent être utilisés;
   - Les arguments doivent avoir des noms représentatifs ;
   - Commentez les étapes du code ;
   - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
