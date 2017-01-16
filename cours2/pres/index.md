@@ -119,7 +119,7 @@ setwd("c:/DominiqueGravel/BIO109/cours2/donnees/")
 
 Le `c:` correspond à la partition du disque.
 
-<!-- Les chemins d'accès ressemble généralement à ca: `c:\Documents\BIO109\cours2`
+<!-- Les chemins d'accès ressemblent généralement à ça: `c:\Documents\BIO109\cours2`
 Le problème étant que le backslash est utilisé pour marquer un espace dans le nom d'un répertoire sous Linux -->
 
 ---
@@ -201,7 +201,7 @@ a
 # Le concept d'objet
 
 - Notons que les opérateurs `<-` et `=` sont équivalents pour attribuer une valeur à un objet.
-- L'opérateur `<-` peut être difficile à lire ou confondu avec le signe `-`.
+- L'opérateur `<-` peut-être difficile à lire ou confondu avec le signe `-`.
 
 ## La recommandation est donc de limiter le signe `=` à des opérations mathématiques et d'utiliser `<-` pour l'assignation de valeurs.
 
@@ -257,13 +257,13 @@ test
 ## [1] "test"
 ```
 
-**Important** - Les valeurs de type `caractère` doivent être placé entre guillemets. Cette nomenclature permet de différencier une valeur du nom d'un objet.
+**Important** - Les valeurs de type `caractère` doivent être placées entre guillemets. Cette nomenclature permet de différencier une valeur du nom d'un objet.
 
 
 ---
 # Assigner une valeur de type `caractère`
 
-## Finalement, des séries de caractères peuvent être collées entre elles pour créer des chaines de caratères.
+## Finalement, des séries de caractères peuvent être collées entre elles pour créer des chaines de caractères.
 
 
 ```r
@@ -304,7 +304,7 @@ vrai + faux
 
 # Assigner une valeur de type `facteur`
 
-R est d'abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d'hypothèse, qui n'est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.
+R est d'abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d'hypothèse, qui ne sont pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.
 
 
 ```r
@@ -319,11 +319,11 @@ MesFacteurs
 
 --- .transition
 
-# Conversion entre type de valeur
+# Conversion entre types de valeur
 
 ---
 
-# Conversion entre type de valeur
+# Conversion entre types de valeur
 
 R permet de convertir des objets en différents types de données lorsque le contenu le permet.
 
@@ -348,7 +348,7 @@ as.character(c(4,6))
 
 ---
 
-# Conversion entre type de valeur
+# Conversion entre types de valeur
 
 ## Conversion vers les types `facteurs` et nombre `entier`:
 
@@ -372,9 +372,9 @@ as.factor(c("4","6"))
 
 ---
 
-# Conversion entre type de valeur
+# Conversion entre types de valeur
 
-## Conversion vers le type `boléen`:
+## Conversion vers le type `booléen`:
 
 
 ```r
@@ -403,11 +403,11 @@ as.logical(2)
 
 --- .transition
 
-# Les types d'objet
+# Les types d'objets
 
 ---
 
-# Les types d'objet
+# Les types d'objets
 
 Depuis le début du cours, nous avons assigné une seule valeur à un objet. Lorsqu'un objet contient une seule valeur, on dit que c'est un objet `scalaire`.
 
@@ -421,7 +421,7 @@ a
 ## [1] 1
 ```
 
-Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera définit alors comme un `vecteur`.
+Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera défini alors comme un `vecteur`.
 
 ---
 
@@ -447,7 +447,7 @@ MonPremierVecteur
 
 # Type d'objet: les `vecteurs`
 
-La force de R repose dans sa capacité à réaliser des opérations `vectoriel`.
+La force de R repose dans sa capacité à réaliser des opérations `vectorielles`.
 
 Il est ainsi possible d'additionner simplement deux vecteurs d'une même dimension de la façon suivante:
 
@@ -618,7 +618,7 @@ ncol(MaMatrice)
 
 # Types d'objets: les `matrices`
 
-## Les noms de colonnes et de lignes peuvent être modifiées
+## Les noms de colonnes et de lignes peuvent être modifiés
 
 
 ```r
@@ -637,7 +637,7 @@ MaMatrice
 
 # Exercice  
 
-Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions `runif()`. Calculez la somme de la première colonne au moyen de la fonction `sum()`
+Créez une matrice de 2 lignes et 5 colonnes remplies de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonction `runif()`. Calculez la somme de la première colonne au moyen de la fonction `sum()`
 
 **Astuce** : pour obtenir de l'aide sur une fonction, essayez
 
@@ -651,7 +651,7 @@ Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasar
 
 R peut organiser également des collections d'objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques.
 
-## La création et l'indexation des listes est très similaire à celle des vecteurs et matrices
+## La création et l'indexation des listes sont très similaires à celle des vecteurs et matrices
 
 
 ```r
@@ -760,7 +760,7 @@ as.matrix(df2)
 
 # Type d'objets: `data.frame`
 
-## Ou inversement transformer une matrice en `data.frame`
+## Ou inversement, transformer une matrice en `data.frame`
 
 
 ```r
@@ -783,7 +783,7 @@ as.data.frame(mat)
 
 # Lire un fichier
 
-La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travail avec R.
+La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travaille avec R.
 
 Pour ce faire, nous utiliserons les fichiers sous format `CSV` (*Comma Separated values*) qui sont des fichiers de texte brut dont chaque ligne dispose d'un séparateur de colonne.
 
@@ -801,7 +801,7 @@ id_bor;borx;bory;arbre;esp;multi;mort;dhp
 0-0;0;0;34503;acpe;FAUX;FAUX;73
 ```
 
-On voit ici le point virgule comme séparateur de colonne. La première ligne corresponds au nom des colonnes.
+On voit ici le point virgule comme séparateur de colonne. La première ligne correspond au nom des colonnes.
 
 **Note:** Garder à l'esprit que connaitre la structure du fichier facilite grandement l'importation des données dans R.
 
@@ -809,7 +809,7 @@ On voit ici le point virgule comme séparateur de colonne. La première ligne co
 
 # Lire un fichier Excel
 
-Les fichiers `.xlsx` peuvent être lus au moyen de librairies spécialisées, mais il est préférrable sour R d'utiliser un format multi-plateforme ouvrable sans logiciels propriétaires.
+Les fichiers `.xlsx` peuvent être lus au moyen de librairies spécialisées, mais il est préférable sous R d'utiliser un format multi-plateforme ouvrable sans logiciels propriétaires.
 
 ---
 
@@ -843,7 +843,7 @@ head(arbres)
 - `header` : indique s'il y a un entête avec les noms de colonnes
 - `dec` : caractère utilisé pour délimiter les décimales
 - `sep` : caractère utilisé pour séparer les colonnes
-- `quote` : spécifie si les chaines de caractère sont entouré par des guillemets.
+- `quote` : spécifie si les chaines de caractère sont entourées par des guillemets.
 
 **Note** : l'objet retourné est par défaut un `data.frame`. Il peut être ensuite converti, au besoin.
 
@@ -875,7 +875,7 @@ La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que po
 mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
 write.csv2(mat2, file = "mat.csv")
 ```
-On priviligie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme spéparateur par défault (`write.csv()`, la virgule).
+On privilégie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme séparateur par défaut (`write.csv()`, la virgule).
 
 ---
 
@@ -1029,10 +1029,10 @@ summary(arbres)
 # Exercice de manipulation des données
 
 - Ouvrir le fichier [arbres.csv](./donnees/arbres.csv) au moyen de Excel ou d'un éditeur de texte
-- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadrats
+- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadras
 - Ouvrir le même fichier au moyen de R
 - Vérifier que le fichier a le format approprié
-- Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadrats
+- Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadras
 
 ---
 
@@ -1042,7 +1042,7 @@ summary(arbres)
 - Convertir AbondanceMoyenne en `data.frame`
 - Attribuer les noms des espèces pour chaque entrée de `AbondanceMoyenne`
 - Enregistrer `AbondanceMoyenne` sous forme de fichier `CSV` (séparateur point-virgule)
-- Ouvrir le fichier `CSV` et le comparer au calcul fait au moyenne de Excel
+- Ouvrir le fichier `CSV` et le comparer au calcul fait aux moyennes d’Excel
 
 **Note:** vous pouvez explorer les données avec `summary` et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
 
@@ -1146,8 +1146,8 @@ tri
 ```
 
 ```
-##  [1] 48.52697 78.75877 93.96197 89.33506 83.52468 22.82650 55.80610
-##  [8] 71.62585 87.45704 34.92941
+##  [1] 24.4498442  9.8263829 76.4157688  2.0665916 51.9537383 56.3386162
+##  [7]  0.5506304 52.9391945 44.5479368 33.7138038
 ```
 
 ```r
@@ -1155,8 +1155,8 @@ sort(tri)
 ```
 
 ```
-##  [1] 22.82650 34.92941 48.52697 55.80610 71.62585 78.75877 83.52468
-##  [8] 87.45704 89.33506 93.96197
+##  [1]  0.5506304  2.0665916  9.8263829 24.4498442 33.7138038 44.5479368
+##  [7] 51.9537383 52.9391945 56.3386162 76.4157688
 ```
 
 ---
@@ -1169,8 +1169,8 @@ rang
 ```
 
 ```
-##  [1] 74.8870835 46.4749101 74.4229886 91.1670190 61.6912239 17.0348118
-##  [7] 67.8081483 33.1892844  0.6241306 37.1237869
+##  [1] 70.49996 10.25158 21.20708 85.06269 46.20296 53.34354 80.91022
+##  [8] 70.43186 28.90591 83.84807
 ```
 
 ```r
@@ -1178,7 +1178,7 @@ rank(rang)
 ```
 
 ```
-##  [1]  9  5  8 10  6  2  7  3  1  4
+##  [1]  7  1  2 10  4  5  8  6  3  9
 ```
 
 ---
@@ -1208,7 +1208,7 @@ unique(uq)
 
 Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction `subset()` est fort pratique pour réaliser cette opération.
 
-Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:
+Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre:
 
 
 ```r
@@ -1229,7 +1229,7 @@ head(sub_quadrats, n=5)
 ---
 # Faire des tableaux sommaires (enfin !)
 
-Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction `table()` est recommandée.
+Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
 
 ---

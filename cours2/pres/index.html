@@ -199,7 +199,7 @@
 
 <p>Le <code>c:</code> correspond à la partition du disque.</p>
 
-<!-- Les chemins d'accès ressemble généralement à ca: `c:\Documents\BIO109\cours2`
+<!-- Les chemins d'accès ressemblent généralement à ça: `c:\Documents\BIO109\cours2`
 Le problème étant que le backslash est utilisé pour marquer un espace dans le nom d'un répertoire sous Linux -->
 
   </article>
@@ -290,7 +290,7 @@ a
   <article data-timings="">
     <ul>
 <li>Notons que les opérateurs <code>&lt;-</code> et <code>=</code> sont équivalents pour attribuer une valeur à un objet.</li>
-<li>L&#39;opérateur <code>&lt;-</code> peut être difficile à lire ou confondu avec le signe <code>-</code>.</li>
+<li>L&#39;opérateur <code>&lt;-</code> peut-être difficile à lire ou confondu avec le signe <code>-</code>.</li>
 </ul>
 
 <h2>La recommandation est donc de limiter le signe <code>=</code> à des opérations mathématiques et d&#39;utiliser <code>&lt;-</code> pour l&#39;assignation de valeurs.</h2>
@@ -355,7 +355,7 @@ test
 <pre><code>## [1] &quot;test&quot;
 </code></pre>
 
-<p><strong>Important</strong> - Les valeurs de type <code>caractère</code> doivent être placé entre guillemets. Cette nomenclature permet de différencier une valeur du nom d&#39;un objet.</p>
+<p><strong>Important</strong> - Les valeurs de type <code>caractère</code> doivent être placées entre guillemets. Cette nomenclature permet de différencier une valeur du nom d&#39;un objet.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -366,7 +366,7 @@ test
     <h1>Assigner une valeur de type <code>caractère</code></h1>
   </hgroup>
   <article data-timings="">
-    <h2>Finalement, des séries de caractères peuvent être collées entre elles pour créer des chaines de caratères.</h2>
+    <h2>Finalement, des séries de caractères peuvent être collées entre elles pour créer des chaines de caractères.</h2>
 
 <pre><code class="r">collage &lt;- paste(&quot;a&quot;,&quot;b&quot;, sep=&quot;&quot;)
 collage
@@ -409,7 +409,7 @@ vrai
     <h1>Assigner une valeur de type <code>facteur</code></h1>
   </hgroup>
   <article data-timings="">
-    <p>R est d&#39;abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui n&#39;est pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.</p>
+    <p>R est d&#39;abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d&#39;hypothèse, qui ne sont pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.</p>
 
 <pre><code class="r">MesFacteurs &lt;- factor(c(&quot;trait1&quot;,&quot;trait2&quot;,&quot;trait3&quot;,&quot;trait2&quot;,&quot;trait3&quot;,&quot;trait3&quot;,&quot;trait1&quot;,&quot;trait2&quot;))
 MesFacteurs
@@ -425,7 +425,7 @@ MesFacteurs
 <slide class="transition" id="slide-20" style="background:;">
   <!--  <a href="#slide-20"></a> -->
   <hgroup>
-    <h1>Conversion entre type de valeur</h1>
+    <h1>Conversion entre types de valeur</h1>
   </hgroup>
   <article data-timings="">
     
@@ -435,7 +435,7 @@ MesFacteurs
 <slide class="" id="slide-21" style="background:;">
   <!--  <a href="#slide-21"></a> -->
   <hgroup>
-    <h1>Conversion entre type de valeur</h1>
+    <h1>Conversion entre types de valeur</h1>
   </hgroup>
   <article data-timings="">
     <p>R permet de convertir des objets en différents types de données lorsque le contenu le permet.</p>
@@ -460,7 +460,7 @@ MesFacteurs
 <slide class="" id="slide-22" style="background:;">
   <!--  <a href="#slide-22"></a> -->
   <hgroup>
-    <h1>Conversion entre type de valeur</h1>
+    <h1>Conversion entre types de valeur</h1>
   </hgroup>
   <article data-timings="">
     <h2>Conversion vers les types <code>facteurs</code> et nombre <code>entier</code>:</h2>
@@ -484,10 +484,10 @@ MesFacteurs
 <slide class="" id="slide-23" style="background:;">
   <!--  <a href="#slide-23"></a> -->
   <hgroup>
-    <h1>Conversion entre type de valeur</h1>
+    <h1>Conversion entre types de valeur</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Conversion vers le type <code>boléen</code>:</h2>
+    <h2>Conversion vers le type <code>booléen</code>:</h2>
 
 <pre><code class="r">as.logical(0)
 </code></pre>
@@ -513,7 +513,7 @@ MesFacteurs
 <slide class="transition" id="slide-24" style="background:;">
   <!--  <a href="#slide-24"></a> -->
   <hgroup>
-    <h1>Les types d&#39;objet</h1>
+    <h1>Les types d&#39;objets</h1>
   </hgroup>
   <article data-timings="">
     
@@ -523,7 +523,7 @@ MesFacteurs
 <slide class="" id="slide-25" style="background:;">
   <!--  <a href="#slide-25"></a> -->
   <hgroup>
-    <h1>Les types d&#39;objet</h1>
+    <h1>Les types d&#39;objets</h1>
   </hgroup>
   <article data-timings="">
     <p>Depuis le début du cours, nous avons assigné une seule valeur à un objet. Lorsqu&#39;un objet contient une seule valeur, on dit que c&#39;est un objet <code>scalaire</code>.</p>
@@ -535,7 +535,7 @@ a
 <pre><code>## [1] 1
 </code></pre>
 
-<p>Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera définit alors comme un <code>vecteur</code>.</p>
+<p>Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera défini alors comme un <code>vecteur</code>.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -568,7 +568,7 @@ MonPremierVecteur
     <h1>Type d&#39;objet: les <code>vecteurs</code></h1>
   </hgroup>
   <article data-timings="">
-    <p>La force de R repose dans sa capacité à réaliser des opérations <code>vectoriel</code>.</p>
+    <p>La force de R repose dans sa capacité à réaliser des opérations <code>vectorielles</code>.</p>
 
 <p>Il est ainsi possible d&#39;additionner simplement deux vecteurs d&#39;une même dimension de la façon suivante:</p>
 
@@ -758,7 +758,7 @@ MaMatrice
     <h1>Types d&#39;objets: les <code>matrices</code></h1>
   </hgroup>
   <article data-timings="">
-    <h2>Les noms de colonnes et de lignes peuvent être modifiées</h2>
+    <h2>Les noms de colonnes et de lignes peuvent être modifiés</h2>
 
 <pre><code class="r">colnames(MaMatrice) = c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;)
 rownames(MaMatrice) = c(&quot;X&quot;,&quot;Y&quot;)
@@ -779,7 +779,7 @@ MaMatrice
     <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <p>Créez une matrice de 2 lignes et 5 colonnes remplie de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonctions <code>runif()</code>. Calculez la somme de la première colonne au moyen de la fonction <code>sum()</code></p>
+    <p>Créez une matrice de 2 lignes et 5 colonnes remplies de chiffres tirés au hasard. Pour ce faire, vous pouvez utiliser la fonction <code>runif()</code>. Calculez la somme de la première colonne au moyen de la fonction <code>sum()</code></p>
 
 <p><strong>Astuce</strong> : pour obtenir de l&#39;aide sur une fonction, essayez</p>
 
@@ -797,7 +797,7 @@ MaMatrice
   <article data-timings="">
     <p>R peut organiser également des collections d&#39;objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d&#39;analyses statistiques.</p>
 
-<h2>La création et l&#39;indexation des listes est très similaire à celle des vecteurs et matrices</h2>
+<h2>La création et l&#39;indexation des listes sont très similaires à celle des vecteurs et matrices</h2>
 
 <pre><code class="r">MaListe = list()
 MaListe[[1]] = c(1,2)
@@ -914,7 +914,7 @@ df2
     <h1>Type d&#39;objets: <code>data.frame</code></h1>
   </hgroup>
   <article data-timings="">
-    <h2>Ou inversement transformer une matrice en <code>data.frame</code></h2>
+    <h2>Ou inversement, transformer une matrice en <code>data.frame</code></h2>
 
 <pre><code class="r">mat &lt;- matrix(c(1:6), nrow = 3, ncol = 2)
 as.data.frame(mat)
@@ -945,7 +945,7 @@ as.data.frame(mat)
     <h1>Lire un fichier</h1>
   </hgroup>
   <article data-timings="">
-    <p>La lecture de fichiers est souvent l&#39;étape la plus frustrante lorsque l&#39;on travail avec R.</p>
+    <p>La lecture de fichiers est souvent l&#39;étape la plus frustrante lorsque l&#39;on travaille avec R.</p>
 
 <p>Pour ce faire, nous utiliserons les fichiers sous format <code>CSV</code> (<em>Comma Separated values</em>) qui sont des fichiers de texte brut dont chaque ligne dispose d&#39;un séparateur de colonne.</p>
 
@@ -967,7 +967,7 @@ as.data.frame(mat)
 0-0;0;0;34503;acpe;FAUX;FAUX;73
 </code></pre>
 
-<p>On voit ici le point virgule comme séparateur de colonne. La première ligne corresponds au nom des colonnes.</p>
+<p>On voit ici le point virgule comme séparateur de colonne. La première ligne correspond au nom des colonnes.</p>
 
 <p><strong>Note:</strong> Garder à l&#39;esprit que connaitre la structure du fichier facilite grandement l&#39;importation des données dans R.</p>
 
@@ -980,7 +980,7 @@ as.data.frame(mat)
     <h1>Lire un fichier Excel</h1>
   </hgroup>
   <article data-timings="">
-    <p>Les fichiers <code>.xlsx</code> peuvent être lus au moyen de librairies spécialisées, mais il est préférrable sour R d&#39;utiliser un format multi-plateforme ouvrable sans logiciels propriétaires.</p>
+    <p>Les fichiers <code>.xlsx</code> peuvent être lus au moyen de librairies spécialisées, mais il est préférable sous R d&#39;utiliser un format multi-plateforme ouvrable sans logiciels propriétaires.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1022,7 +1022,7 @@ head(arbres)
 <li><code>header</code> : indique s&#39;il y a un entête avec les noms de colonnes</li>
 <li><code>dec</code> : caractère utilisé pour délimiter les décimales</li>
 <li><code>sep</code> : caractère utilisé pour séparer les colonnes</li>
-<li><code>quote</code> : spécifie si les chaines de caractère sont entouré par des guillemets.</li>
+<li><code>quote</code> : spécifie si les chaines de caractère sont entourées par des guillemets.</li>
 </ul>
 
 <p><strong>Note</strong> : l&#39;objet retourné est par défaut un <code>data.frame</code>. Il peut être ensuite converti, au besoin.</p>
@@ -1066,7 +1066,7 @@ head(arbres)
 write.csv2(mat2, file = &quot;mat.csv&quot;)
 </code></pre>
 
-<p>On priviligie l&#39;utilisation de la fonction <code>write.csv2()</code> qui utilise le point-virgule comme spéparateur par défault (<code>write.csv()</code>, la virgule).</p>
+<p>On privilégie l&#39;utilisation de la fonction <code>write.csv2()</code> qui utilise le point-virgule comme séparateur par défaut (<code>write.csv()</code>, la virgule).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1235,10 +1235,10 @@ MaListe
   <article data-timings="">
     <ul>
 <li>Ouvrir le fichier <a href="./donnees/arbres.csv">arbres.csv</a> au moyen de Excel ou d&#39;un éditeur de texte</li>
-<li>Calculer l&#39;abondance moyenne pour chaque espèce sur l&#39;ensemble des quadrats</li>
+<li>Calculer l&#39;abondance moyenne pour chaque espèce sur l&#39;ensemble des quadras</li>
 <li>Ouvrir le même fichier au moyen de R</li>
 <li>Vérifier que le fichier a le format approprié</li>
-<li>Créer un vecteur <code>AbondanceMoyenne</code> d&#39;une longueur correspondant au nombre d&#39;espèces dans les données quadrats</li>
+<li>Créer un vecteur <code>AbondanceMoyenne</code> d&#39;une longueur correspondant au nombre d&#39;espèces dans les données quadras</li>
 </ul>
 
   </article>
@@ -1255,7 +1255,7 @@ MaListe
 <li>Convertir AbondanceMoyenne en <code>data.frame</code></li>
 <li>Attribuer les noms des espèces pour chaque entrée de <code>AbondanceMoyenne</code></li>
 <li>Enregistrer <code>AbondanceMoyenne</code> sous forme de fichier <code>CSV</code> (séparateur point-virgule)</li>
-<li>Ouvrir le fichier <code>CSV</code> et le comparer au calcul fait au moyenne de Excel</li>
+<li>Ouvrir le fichier <code>CSV</code> et le comparer au calcul fait aux moyennes d’Excel</li>
 </ul>
 
 <p><strong>Note:</strong> vous pouvez explorer les données avec <code>summary</code> et pour les avancés. Les plus avancés peuvent explorer la commande <code>apply</code>...</p>
@@ -1374,15 +1374,15 @@ expand.grid(v1,v2)
 tri
 </code></pre>
 
-<pre><code>##  [1] 48.52697 78.75877 93.96197 89.33506 83.52468 22.82650 55.80610
-##  [8] 71.62585 87.45704 34.92941
+<pre><code>##  [1] 24.4498442  9.8263829 76.4157688  2.0665916 51.9537383 56.3386162
+##  [7]  0.5506304 52.9391945 44.5479368 33.7138038
 </code></pre>
 
 <pre><code class="r">sort(tri)
 </code></pre>
 
-<pre><code>##  [1] 22.82650 34.92941 48.52697 55.80610 71.62585 78.75877 83.52468
-##  [8] 87.45704 89.33506 93.96197
+<pre><code>##  [1]  0.5506304  2.0665916  9.8263829 24.4498442 33.7138038 44.5479368
+##  [7] 51.9537383 52.9391945 56.3386162 76.4157688
 </code></pre>
 
   </article>
@@ -1398,14 +1398,14 @@ tri
 rang
 </code></pre>
 
-<pre><code>##  [1] 74.8870835 46.4749101 74.4229886 91.1670190 61.6912239 17.0348118
-##  [7] 67.8081483 33.1892844  0.6241306 37.1237869
+<pre><code>##  [1] 70.49996 10.25158 21.20708 85.06269 46.20296 53.34354 80.91022
+##  [8] 70.43186 28.90591 83.84807
 </code></pre>
 
 <pre><code class="r">rank(rang)
 </code></pre>
 
-<pre><code>##  [1]  9  5  8 10  6  2  7  3  1  4
+<pre><code>##  [1]  7  1  2 10  4  5  8  6  3  9
 </code></pre>
 
   </article>
@@ -1441,7 +1441,7 @@ uq
   <article data-timings="">
     <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction <code>subset()</code> est fort pratique pour réaliser cette opération.</p>
 
-<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadrats possédants des érables à sucre:</p>
+<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre:</p>
 
 <pre><code class="r">quadrats &lt;- read.csv2(file=&quot;./donnees/quadrats.csv&quot;, header=TRUE, stringsAsFactors=FALSE)
 sub_quadrats &lt;- subset(quadrats, quadrats$acsa &gt; 0)
@@ -1465,7 +1465,7 @@ head(sub_quadrats, n=5)
     <h1>Faire des tableaux sommaires (enfin !)</h1>
   </hgroup>
   <article data-timings="">
-    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <code>summary()</code> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (e.g. la variance). Dans ce cas, la fonction <code>table()</code> est recommandée.</p>
+    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <code>summary()</code> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction <code>table()</code> est recommandée.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1610,37 +1610,37 @@ head(sub_quadrats, n=5)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Conversion entre type de valeur'>
+        data-slide=20 title='Conversion entre types de valeur'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Conversion entre type de valeur'>
+        data-slide=21 title='Conversion entre types de valeur'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Conversion entre type de valeur'>
+        data-slide=22 title='Conversion entre types de valeur'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Conversion entre type de valeur'>
+        data-slide=23 title='Conversion entre types de valeur'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Les types d&#39;objet'>
+        data-slide=24 title='Les types d&#39;objets'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Les types d&#39;objet'>
+        data-slide=25 title='Les types d&#39;objets'>
          25
       </a>
     </li>
