@@ -1,0 +1,204 @@
+--- .transition
+
+# Opérations mathématiques de base
+
+---
+
+# Astuce: générer des nombres aléatoires
+
+Il peut souvent être pratique de générer des chiffres au hasard, sur lesquels on souhaite faire des tests. Nous verrons plusieurs exemples au cours 5, mais pour l'instant, prenez note de la fonction suivante:
+
+```{r}
+alea <- runif(n = 10, min = 0, max = 1)
+alea
+```
+Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées. 
+
+---
+
+# Opérateurs de base
+
+R peut faire toutes les opérations mathématiques de base d'une calculatrice :
+
+```{r}
+3 + 7
+3 - 7
+```
+
+---
+
+# Opérateurs de base
+
+R peut faire toutes les opérations mathématiques de base d'une calculatrice :
+
+```{r}
+3 * 7
+3 / 7
+```
+
+---
+
+# Opérateurs de base
+
+R respecte la séquence des opérations, tel que démontré par l'exemple suivant :
+
+```{r}
+3 + 7 / 2 * 5
+3 + (7 / 2) * 5
+```
+
+---
+
+# Opérations sur des vecteurs et matrices
+
+Par défaut, le produit de vecteurs et de matrices est *scalaire* : 
+
+```{r}
+vec1 <- runif(10,0,1)
+vec1
+3*vec1
+```
+
+---
+
+# Opérations sur des vecteurs et matrices
+
+La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices : 
+
+```{r}
+vec1 <- c(10,20,30)
+mat1 <- matrix(c(1:6),nr = 3, nc = 2)
+mat1
+vec1 * mat1
+
+```
+
+---
+
+# Opérations avancées
+
+```{r}
+log(100)
+log10(100)
+exp(10)
+```
+
+
+---
+
+# Opérations avancées
+
+```{r}
+10^2
+sqrt(100)
+```
+
+---
+
+# Opérations avancées
+
+```{r}
+alea = runif(10,0,1)
+alea
+min(alea)
+max(alea)
+```
+
+---
+
+# Arrondir
+
+```{r}
+pi
+floor(pi)
+ceiling(pi)
+round(pi,4)
+```
+
+---
+
+# Opérations sur des matrices
+
+Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées, Certaines commandes permettent de prendre des raccourcis :
+
+```{r}
+mat <- matrix(runif(6,0,1), nr = 3, nc = 2)
+mat
+rowSums(mat)
+colSums(mat)
+```
+
+---
+
+# Opérations sur des matrices
+
+Et de façon plus générale, on peut utiliser la fonction *apply()* qui est très pratique : 
+
+```{r}
+apply(X = mat, MARGIN = 2, FUN = sum)
+apply(X = mat, MARGIN = 1, FUN = sum)
+```
+
+---
+
+# Opérations sur des matrices
+
+Et finalement, bien que vous l'utiliserez peu dans le cours, il est toujours pratique de savoir que la particularité de R d'être un langage vectoriel permet de facilement faire des opérations sur les matrices :
+
+```{r}
+vec1 <- c(10,20,30)
+mat1 <- matrix(c(1:6),nr = 3, nc = 2)
+vec1 * mat1
+vec1 %*% mat1
+```
+
+--- .transition
+
+# Exercice
+
+---
+
+# Abondances relatives
+
+Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes: 
+
+1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
+2. Calculer le nombre total de tiges pour chaque quadrat ;
+3. Transformer l'abondance absolue en abondance relative ;
+
+---
+
+# Abondances relatives
+
+```{r}
+quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
+N_total <- apply(quadrats, 2, sum)
+N_moy <- apply(quadrats, 2, mean)
+N_sd <- apply(quadrats, 2, sd)
+N_CV <- N_sd / N_moy
+```
+
+---
+
+# Abondances relatives
+
+```{r}
+N_quadrats <- apply(quadrats, 1, sum)
+quadrats_rel = quadrats / N_quadrats
+head(quadrats_rel)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

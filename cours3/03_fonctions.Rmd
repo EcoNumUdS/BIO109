@@ -1,225 +1,3 @@
----
-title       : "Séance 3: Fonctions"
-subtitle    : "https://econumuds.github.io/BIO109/cours3/"
-author      : "Dominique Gravel"
-job         : "Laboratoire d'écologie intégrative "
-logo        : "logo.png"
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
-highlighter : highlight.js  # {highlight.js, prettify, highlight}
-hitheme     : tomorrow      #
-mode        : selfcontained
-knit        : slidify::knit2slides
-widgets     : [mathjax]
-url:
-  lib   : ./libraries
-license     : by-nc-sa
-assets      :
-  css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
----
---- .transition
-
-# Opérations mathématiques de base
-
----
-
-# Astuce: générer des nombres aléatoires
-
-Il peut souvent être pratique de générer des chiffres au hasard, sur lesquels on souhaite faire des tests. Nous verrons plusieurs exemples au cours 5, mais pour l'instant, prenez note de la fonction suivante:
-
-```{r}
-alea <- runif(n = 10, min = 0, max = 1)
-alea
-```
-Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées. 
-
----
-
-# Opérateurs de base
-
-R peut faire toutes les opérations mathématiques de base d'une calculatrice :
-
-```{r}
-3 + 7
-3 - 7
-```
-
----
-
-# Opérateurs de base
-
-R peut faire toutes les opérations mathématiques de base d'une calculatrice :
-
-```{r}
-3 * 7
-3 / 7
-```
-
----
-
-# Opérateurs de base
-
-R respecte la séquence des opérations, tel que démontré par l'exemple suivant :
-
-```{r}
-3 + 7 / 2 * 5
-3 + (7 / 2) * 5
-```
-
----
-
-# Opérations sur des vecteurs et matrices
-
-Par défaut, le produit de vecteurs et de matrices est *scalaire* : 
-
-```{r}
-vec1 <- runif(10,0,1)
-vec1
-3*vec1
-```
-
----
-
-# Opérations sur des vecteurs et matrices
-
-La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices : 
-
-```{r}
-vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6),nr = 3, nc = 2)
-mat1
-vec1 * mat1
-
-```
-
----
-
-# Opérations avancées
-
-```{r}
-log(100)
-log10(100)
-exp(10)
-```
-
-
----
-
-# Opérations avancées
-
-```{r}
-10^2
-sqrt(100)
-```
-
----
-
-# Opérations avancées
-
-```{r}
-alea = runif(10,0,1)
-alea
-min(alea)
-max(alea)
-```
-
----
-
-# Arrondir
-
-```{r}
-pi
-floor(pi)
-ceiling(pi)
-round(pi,4)
-```
-
----
-
-# Opérations sur des matrices
-
-Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées, Certaines commandes permettent de prendre des raccourcis :
-
-```{r}
-mat <- matrix(runif(6,0,1), nr = 3, nc = 2)
-mat
-rowSums(mat)
-colSums(mat)
-```
-
----
-
-# Opérations sur des matrices
-
-Et de façon plus générale, on peut utiliser la fonction *apply()* qui est très pratique : 
-
-```{r}
-apply(X = mat, MARGIN = 2, FUN = sum)
-apply(X = mat, MARGIN = 1, FUN = sum)
-```
-
----
-
-# Opérations sur des matrices
-
-Et finalement, bien que vous l'utiliserez peu dans le cours, il est toujours pratique de savoir que la particularité de R d'être un langage vectoriel permet de facilement faire des opérations sur les matrices :
-
-```{r}
-vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6),nr = 3, nc = 2)
-vec1 * mat1
-vec1 %*% mat1
-```
-
---- .transition
-
-# Exercice
-
----
-
-# Abondances relatives
-
-Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes: 
-
-1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
-2. Calculer le nombre total de tiges pour chaque quadrat ;
-3. Transformer l'abondance absolue en abondance relative ;
-
----
-
-# Abondances relatives
-
-```{r}
-quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
-N_total <- apply(quadrats, 2, sum)
-N_moy <- apply(quadrats, 2, mean)
-N_sd <- apply(quadrats, 2, sd)
-N_CV <- N_sd / N_moy
-```
-
----
-
-# Abondances relatives
-
-```{r}
-N_quadrats <- apply(quadrats, 1, sum)
-quadrats_rel = quadrats / N_quadrats
-head(quadrats_rel)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 --- .transition
 
@@ -227,7 +5,7 @@ head(quadrats_rel)
 
 ---
 
-# Qu'est-ce qu'une fonction ?
+# Qu'est-ce qu'une fonction ? 
 
 Une fonction contient une série de commandes (i.e. lignes de code) qui sont exécutées lorsque la fonction est appelée.
 
@@ -238,25 +16,17 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 ```{r eval=FALSE}
 ma_fonction <- function(argument1, argument2) {
 
-<<<<<<< HEAD
-  # Ce que l'on veut que la fonction fasse
-  resultat <- argument1 * argument2
-
-  # Optionnel. Si l'on veut acceder au resultat de la fonction
-  return(resultat)
-=======
   # Ce que l'on veut que la fonction exécute
   resultat <- argument1 * argument2 
 
   # Optionnel. Si l'on veut accéder au résultat de la fonction 
   return(resultat) 
->>>>>>> 6ba90a57a0a1168a474f8b897de82120e72176be
 }
 ```
 
 ---
 
-# Pourquoi utiliser des fonctions ?
+# Pourquoi utiliser des fonctions ? 
 
 1. Répéter une même tâche mais en changeant ses paramètres
 2. Rendre votre code plus lisible
@@ -269,7 +39,7 @@ ma_fonction <- function(argument1, argument2) {
 
 # La construction d'une fonction
 
-Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme.
+Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme. 
 
 $$
 \dfrac{3\times7}{3+7}
@@ -306,23 +76,15 @@ $$
 
 # La construction d'une fonction
 
-## L'approche longue, pas efficace, mais qui marche...
+## L'approche longue, pas efficace, mais qui marche... 
 
-```{r echo = F, cache = F}
-knitr::knit_hooks$set(document = function(x){
-  gsub("```\n*```r*\n*", "", x)
-})
-```
-
-```{r, results='hold'}
+```{r}
 (tableau[1,1]*tableau[1,2])/(tableau[1,1]+tableau[1,2])
 (tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
 (tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
 ```
 
 Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
-<<<<<<< HEAD
-=======
 
 ---
 
@@ -604,4 +366,3 @@ Toujours à partir du fichier [quadrats.csv](./donnees/quadrats.csv), calculer u
 5. La densité minimale dans un quadrat
 
 Ensuite, appliquez cette fonction sur l'ensemble des espèces au moyen de la fonction *apply()*
->>>>>>> 6ba90a57a0a1168a474f8b897de82120e72176be
