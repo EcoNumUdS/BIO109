@@ -5,7 +5,7 @@
 
 ---
 
-# Qu'est-ce qu'une fonction ? 
+# Qu'est-ce qu'une fonction ?
 
 Une fonction contient une série de commandes (i.e. lignes de code) qui sont exécutées lorsque la fonction est appelée.
 
@@ -17,16 +17,16 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 ma_fonction <- function(argument1, argument2) {
 
   # Ce que l'on veut que la fonction fasse
-  resultat <- argument1 * argument2 
+  resultat <- argument1 * argument2
 
-  # Optionnel. Si l'on veut acceder au resultat de la fonction 
-  return(resultat) 
+  # Optionnel. Si l'on veut acceder au resultat de la fonction
+  return(resultat)
 }
 ```
 
 ---
 
-# Pourquoi utiliser des fonctions ? 
+# Pourquoi utiliser des fonctions ?
 
 1. Répéter une même tâche mais en changeant ses paramètres
 2. Rendre votre code plus lisible
@@ -39,7 +39,7 @@ ma_fonction <- function(argument1, argument2) {
 
 # La construction d'une fonction
 
-Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme. 
+Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme.
 
 $$
 \dfrac{3\times7}{3+7}
@@ -72,9 +72,15 @@ $$
 
 # La construction d'une fonction
 
-## L'approche longue, pas efficace, mais qui marche... 
+## L'approche longue, pas efficace, mais qui marche...
 
-```{r}
+```{r echo = F, cache = F}
+knitr::knit_hooks$set(document = function(x){
+  gsub("```\n*```r*\n*", "", x)
+})
+```
+
+```{r, results='hold'}
 (tableau[1,1]*tableau[1,2])/(tableau[1,1]+tableau[1,2])
 (tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
 (tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
@@ -83,273 +89,3 @@ $$
 ```
 
 Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
-
----
-
-# La construction d'une fonction
-
-## Une boucle peut sauver du temps... 
-
-```{r}
-for(i in 1:nrow(tableau)){
-  res <- (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
-  print(res)
-}
-```
-
-Problème: Qu'est-ce qu'on fait si on veut appliquer ce calcul sur plusieurs tableaux ???
-
-C'est possible, mais ça peut être un peu plus compliqué ! 
-
----
-
-# La construction d'une fonction
-
-## Et si on faisait une fonction...
-
-La fonction peut permettre de résoudre certain problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques. 
-
----
-
-# La construction d'une fonction
-
-## Comment construit-on une fonction ?
-
-On commence par écrire une version spécifique du code que l'on souhaite généraliser.
-
-```{r,eval=FALSE}
-(3*7)/(3+7)
-```
----
-
-# La construction d'une fonction
-
-## Comment construit-on une fonction ?
-
-Ensuite, on définit ce code comme faisant parti d'une fonction.
-
-```{r}
-prodsum <- function(){
-  res <- (3*7)/(3+7)
-  return(res)
-}
-```
-
-Yééé, on a écrit notre première fonction !! :-)
-
----
-
-# La construction d'une fonction
-
-## Comment construit-on une fonction ?
-
-À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
-
-Une notion importante à avoir lorsqu'on construit une fonction est que tout ce qui se trouve à l'**intérieur** d'une fonction est *entièrement* indépendent de ce qui se trouve à l'**extérieur** d'une fonction.
-
-Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il a un sense uniquement à l'intérieur de la fonction.
- 
----
-
-# La construction d'une fonction
-
-## Petit problème
-
-Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. :-(
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
-
-On peut généraliser cette fonction, en implémentant directement la formule générale présentée précédemment :
-
-$$
-\dfrac{x\times y}{x+y}
-$$
-
-Pour ce faire, il faut ajouter des **arguments** à notre fonction.
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
-
-Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. Il faut donc s'assurer que les mêmes opérations soient réalisées sur ces arguments. 
-
-```{r}
-prodsum <- function(x,y){
-  res <- (x*y)/(x+y)
-  return(res)
-}
-```
-
-Avec cette fonction on peut faire le calcul qui nous intéresse avec différentes séries de chiffres.
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
-
-Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est en général rarement le cas : 
-
-```{r}
-a <- 1
-b <- 2
-prodsum(x = a, y = b)
-}
-```
-
----
-
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des chiffres
-
-```{r}
-prodsum(3, 7)
-prodsum(x = 3, y = 7)
-prodsum(y = 7, x = 3)
-```
-
-Comme on le constate, dans le language R, les arguments des peuvent être définis de deux façons.
-- En suivant l'ordre des arguments
-- En utilisant le noms des arguments
-
----
-
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des vecteurs
-
-Le language de programmation R permet de faire aussi le calcul sur des vecteurs :
- 
-```{r}
-vecA <- tableau[,1]
-vecB <- tableau[,2]
-prodsum(vecA,vecB)
-
-prodsum(tableau[,1],tableau[,2])
-```
-
----
-
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des vecteurs
-
-L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même nombre de chiffres, ils ont la même longueur. Que ce passe-t-il si les vecteurs n'ont pas la même longueur ?
- 
-```{r}
-vec2 <- tableau[1:2,1]
-vec3 <- tableau[1:3,1]
-vec4 <- tableau[1:4,2]
-
-prodsum(vec2,vec4)
-prodsum(vec3,vec4)
-```
-
-Avec ces deux exemples ont découvre une propriété particulière du langage R, le **recyclage**. 
-
----
-
-# La construction d'une fonction
-
-Le **recyclage** est une propriété des fonctions mathematiques de base du language R (e.g. `+`, `-`, `*` et `/`). Lorsque deux vecteurs sont de longueurs différentes, les valeurs du vecteur le plus court sont réutilisées, dans l'ordre, pour combler le nombre de valeurs manquantes entre les deux vecteurs. Cette propriété du langage R peut être très pratique mais aussi **générer beaucoup de problèmes**.
-
-Comme on le voit dans l'exemple, un message d'avertissement est envoyé si la longueur du plus petit vecteur n'est pas un multiple du vecteur le plus long. Par contre, si le vecteur le plus court est un multiple du vecteur le plus long, aucun message d'avertissement est envoyé et ce même si le résultat n'a pas de sense. 
-
-Comment faire pour régler ce problème ?
-
----
-
-# Ajouter des trappes dans une fonction 
-
-Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des trappes dans la fonction qui envoit un message d'erreur. Voici un exemple de l'ajout qu'on peut faire. 
-
-```{r}
-prodsum <- function(x,y){
-  if(length(x) != length(y)){
-    stop("'x' a plus (ou moins) de chiffre que 'y'")
-  }
-  res <- (x*y)/(x+y)
-  return(res)
-}
-```
-
-Les lignes de codes ajoutées mesure la longeur de `x` et `y` et lorsqu'ils sont d'une longueur différente, un message d'erreur est envoyé et le reste du code dans la fonction n'est pas évalué. 
-
----
-
-# Ajouter des trappes dans une fonction 
-
-Cette trappe permet de corriger le problème mentionné dans la diapositive précédente :
- 
-```{r,error=TRUE}
-prodsum(vec2,vec4)
-prodsum(vec3,vec4)
-```
-
-Notez que le message d'erreur envoyé est composé par le programmeur. Par contre, il est important que le message d'erreur soit court et précis.
-
----
-
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des tableaux
-
-Le language de programmation R permet de faire aussi le calcul sur des matrices
- 
-```{r}
-tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
-prodsum(tableau,tableau2)
-```
-
----
-
-# La construction d'une fonction
-
-## Utilisons notre fonction avec des tableaux
-
-Le language de programmation R permet de faire aussi le calcul sur des matrices
- 
-```{r}
-tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
-prodsum(tableau,tableau2)
-```
-
----
-
-# La sortie
-
-Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
-
-```{r}
-ma_fonction <- function(x) {
-  res1 <- mean(x)
-  res2 <- sd(x)
-  res3 <- res2/res1
-  return(list(moyenne = res1, ecart_type = res2, CV = res3))
-}
-test <- ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
-test
-```
-
-
----
-
-# Quelques règles utiles lorsqu'on construit une fonction
-  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent dans ce qui se trouve à l'extérieur d'une fonction ;
-  - Donner une nom représentatif à la fonction. Un nom qui résume ce que la fonction fait ;
-  - Tous les arguments de la fonction doivent être utilisé en quelques part dans la fonction ;
-  - Les arguments doivent avoir des noms représentatifs ;
-  - Commentez les étapes du code ;
-  - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
-
----
-
-
-

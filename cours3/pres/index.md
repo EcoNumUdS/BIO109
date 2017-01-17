@@ -23,7 +23,7 @@ assets      :
 
 ---
 
-# Qu'est-ce qu'une fonction ? 
+# Qu'est-ce qu'une fonction ?
 
 Une fonction contient une série de commandes (i.e. lignes de code) qui sont exécutées lorsque la fonction est appelée.
 
@@ -36,16 +36,16 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 ma_fonction <- function(argument1, argument2) {
 
   # Ce que l'on veut que la fonction fasse
-  resultat <- argument1 * argument2 
+  resultat <- argument1 * argument2
 
-  # Optionnel. Si l'on veut acceder au resultat de la fonction 
-  return(resultat) 
+  # Optionnel. Si l'on veut acceder au resultat de la fonction
+  return(resultat)
 }
 ```
 
 ---
 
-# Pourquoi utiliser des fonctions ? 
+# Pourquoi utiliser des fonctions ?
 
 1. Répéter une même tâche mais en changeant ses paramètres
 2. Rendre votre code plus lisible
@@ -58,7 +58,7 @@ ma_fonction <- function(argument1, argument2) {
 
 # La construction d'une fonction
 
-Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme. 
+Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme.
 
 $$
 \dfrac{3\times7}{3+7}
@@ -69,9 +69,6 @@ On peut écrire ce calcul directement dans la console comme suit
 
 ```r
 (3*7)/(3+7)
-```
-
-```
 ## [1] 2.1
 ```
 
@@ -85,15 +82,12 @@ Si on souhaite faire la même opération pour toutes les pairs de chiffres dans 
 ```r
 tableau <- data.frame(x=rnorm(5),y=rnorm(5))
 tableau
-```
-
-```
-##            x          y
-## 1  0.2788066  1.2207868
-## 2 -0.6520282 -0.8011503
-## 3  0.7789184  1.4883745
-## 4  0.5125288  0.4943772
-## 5  0.6442849  1.2178655
+##            x            y
+## 1 -0.9031970 -0.016655535
+## 2  0.5244600  0.075919314
+## 3 -1.1451098  0.545564607
+## 4  0.7385754 -0.007128769
+## 5 -1.0672939  1.091048358
 ```
 
 À noter qu'en ayant différents chiffres, la formule vue dans la diapositive précédente devient un peu plus générale :
@@ -106,190 +100,22 @@ $$
 
 # La construction d'une fonction
 
-## L'approche longue, pas efficace, mais qui marche... 
+## L'approche longue, pas efficace, mais qui marche...
+
+
 
 
 ```r
 (tableau[1,1]*tableau[1,2])/(tableau[1,1]+tableau[1,2])
-```
-
-```
-## [1] 0.2269705
-```
-
-```r
 (tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
-```
-
-```
-## [1] -0.359469
-```
-
-```r
 (tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
-```
-
-```
-## [1] 0.5113244
-```
-
-```r
 (tableau[4,1]*tableau[4,2])/(tableau[4,1]+tableau[4,2])
-```
-
-```
-## [1] 0.2516447
-```
-
-```r
 (tableau[5,1]*tableau[5,2])/(tableau[5,1]+tableau[5,2])
-```
-
-```
-## [1] 0.421369
+## [1] -0.01635396
+## [1] 0.06631915
+## [1] 1.042009
+## [1] -0.007198247
+## [1] -49.02114
 ```
 
 Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
-
----
-
-# La construction d'une fonction
-
-## Une boucle peut sauver du temps... 
-
-
-```r
-for(i in 1:nrow(tableau)){
-  res <- (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
-  print(res)
-}
-```
-
-```
-## [1] 0.2269705
-## [1] -0.359469
-## [1] 0.5113244
-## [1] 0.2516447
-## [1] 0.421369
-```
-
-Problème: Qu'est-ce qu'on fait si on veut appliquer ce calcul sur plusieurs tableaux ???
-
-C'est possible, mais ça peut être un peu plus compliqué ! 
-
----
-
-# La construction d'une fonction
-
-## Et si on faisait une fonction...
-
-La fonction peut permettre de résoudre certain problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques. 
-
----
-
-# La construction d'une fonction
-
-## Comment construit-on une fonction ?
-
-On commence par écrire une version spécifique du code que l'on souhaite généraliser.
-
-
-```r
-(3*7)/(3+7)
-```
----
-
-# La construction d'une fonction
-
-## Comment construit-on une fonction ?
-
-Ensuite, on définit ce code comme faisant parti d'une fonction.
-
-
-```r
-prodsum <- function(){
-  res <- (3*7)/(3+7)
-  return(res)
-}
-```
-
-Yééé, on a écrit notre première fonction !! :-)
-
----
-
-# La construction d'une fonction
-
-## Comment construit-on une fonction ?
-
-À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
-
-Une notion importante à avoir lorsqu'on construit une fonction est que tout ce qui se trouve à l'**intérieur** d'une fonction est *entièrement* indépendent de ce qui se trouve à l'**extérieur** d'une fonction.
-
-Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il a un sense uniquement à l'intérieur de la fonction.
- 
----
-
-# La construction d'une fonction
-
-## Petit problème
-
-Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. :-(
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
-
-On peut généraliser cette fonction, en implémentant directement la formule générale présentée précédemment :
-
-$$
-\dfrac{x\times y}{x+y}
-$$
-
-Pour ce faire, il faut ajouter des **arguments** à notre fonction.
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
-
-Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. Il faut donc s'assurer que les mêmes opérations soient réalisées sur ces arguments. 
-
-
-```r
-prodsum <- function(x,y){
-  res <- (x*y)/(x+y)
-  return(res)
-}
-```
-
-Avec cette fonction on peut faire le calcul qui nous intéresse avec différentes séries de chiffres.
-
----
-
-# La construction d'une fonction
-
-## Comment faire pour rendre la fonction plus générale ?
-
-Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est en général rarement le cas : 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

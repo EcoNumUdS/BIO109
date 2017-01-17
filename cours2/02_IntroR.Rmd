@@ -5,6 +5,44 @@
 
 **Note**: Il est préférable d'ouvrir le document HTML (Web) avec Firefox ou Google Chrome.
 
+--- &twocol
+
+# Solutions de l'exercice de la séance 1
+
+Ordonner un vecteur `X` composé de 5 lettres de Scrabble
+
+*** =left
+
+## Solution 1: Bubble sorting
+
+```
+WHILE is.sort = FALSE; DO
+  is.sort = TRUE
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      FLIP
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
+```
+
+*** =right
+
+## Solution 2: Stupid ranking
+
+```
+WHILE is.sort = FALSE; DO
+  is.sort = TRUE
+  mélange X
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
+```
+
 ---
 
 # Contenu du cours
