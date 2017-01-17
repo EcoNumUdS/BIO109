@@ -16,6 +16,97 @@ license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
 ---
+
+--- .transition
+
+# Les fonctions
+
+---
+
+# Qu'est-ce qu'une fonction ?
+
+Une fonction contient une série de commandes (i.e. lignes de code) qui sont exécutées lorsque la fonction est appelée.
+
+---
+
+# Un simple exemple
+
+```{r,eval=FALSE}
+ma_fonction <- function(argument1, argument2) {
+
+  # Ce que l'on veut que la fonction fasse
+  resultat <- argument1 * argument2
+
+  # Optionnel. Si l'on veut acceder au resultat de la fonction
+  return(resultat)
+}
+```
+
+---
+
+# Pourquoi utiliser des fonctions ?
+
+1. Répéter une même tâche mais en changeant ses paramètres
+2. Rendre votre code plus lisible
+3. Rendre votre code plus facile à modifier et à maintenir
+4. Partager du code entre différentes analyses
+5. Partager votre code avec d'autres personnes
+6. Modifier les fonctionalités par défaut de R
+
+---
+
+# La construction d'une fonction
+
+Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme.
+
+$$
+\dfrac{3\times7}{3+7}
+$$
+
+On peut écrire ce calcul directement dans la console comme suit
+
+```{r}
+(3*7)/(3+7)
+```
+
+---
+
+# La construction d'une fonction
+
+Si on souhaite faire la même opération pour toutes les pairs de chiffres dans le tableau suivant, comment fait-on ?
+
+```{r}
+tableau <- data.frame(x=rnorm(5),y=rnorm(5))
+tableau
+```
+
+À noter qu'en ayant différents chiffres, la formule vue dans la diapositive précédente devient un peu plus générale :
+
+$$
+\dfrac{x\times y}{x+y}
+$$
+
+---
+
+# La construction d'une fonction
+
+## L'approche longue, pas efficace, mais qui marche...
+
+```{r echo = F, cache = F}
+knitr::knit_hooks$set(document = function(x){
+  gsub("```\n*```r*\n*", "", x)
+})
+```
+
+```{r, results='hold'}
+(tableau[1,1]*tableau[1,2])/(tableau[1,1]+tableau[1,2])
+(tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
+(tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
+(tableau[4,1]*tableau[4,2])/(tableau[4,1]+tableau[4,2])
+(tableau[5,1]*tableau[5,2])/(tableau[5,1]+tableau[5,2])
+```
+
+Problème: Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
 --- .transition
 
 # Opérations mathématiques de base

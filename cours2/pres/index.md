@@ -18,10 +18,48 @@ assets      :
 ---
 # Séance 2
 
-- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./assets/pdf/S1-BIO109.pdf).
+- Ces diapositives sont disponibles en version HTML (Web) et en [PDF](./assets/pdf/S2-BIO109.pdf).
 - L'ensemble du matériel de cours est disponible sur la page du portail [moodle](https://www.usherbrooke.ca/moodle2-cours/course/view.php?id=12188).
 
 **Note**: Il est préférable d'ouvrir le document HTML (Web) avec Firefox ou Google Chrome.
+
+--- &twocol
+
+# Solutions de l'exercice de la séance 1
+
+Ordonner un vecteur `X` composé de 5 lettres de Scrabble
+
+*** =left
+
+## Solution 1: Bubble sorting
+
+```
+WHILE is.sort = FALSE DO
+  is.sort = TRUE
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      FLIP
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
+```
+
+*** =right
+
+## Solution 2: Stupid ranking
+
+```
+WHILE is.sort = FALSE DO
+  is.sort = TRUE
+  mélange X
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
+```
 
 ---
 
@@ -425,7 +463,7 @@ Cependant, un objet peut cependant contenir plusieurs valeurs. Il sera défini a
 
 ---
 
-# Type d'objet: les `vecteurs`
+# type d'objets: les `vecteurs`
 
 Le vecteur est un des objets les plus importants de R.
 
@@ -445,7 +483,7 @@ MonPremierVecteur
 
 ---
 
-# Type d'objet: les `vecteurs`
+# type d'objets: les `vecteurs`
 
 La force de R repose dans sa capacité à réaliser des opérations `vectorielles`.
 
@@ -522,7 +560,7 @@ length(MonPremierVecteur)
 # Types d'objets: les `matrices`
 
 L'extension naturelle d'un vecteur est une `matrice`, soit une collection de vecteurs.
-R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objet.
+R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objets.
 
 ## La commande de base pour créer une matrice est `matrix()`
 
@@ -1146,8 +1184,8 @@ tri
 ```
 
 ```
-##  [1] 24.4498442  9.8263829 76.4157688  2.0665916 51.9537383 56.3386162
-##  [7]  0.5506304 52.9391945 44.5479368 33.7138038
+##  [1] 83.880321 42.763177 97.080909 47.156397 27.265942 91.142188  2.598174
+##  [8] 24.306379 10.980467 80.035040
 ```
 
 ```r
@@ -1155,8 +1193,8 @@ sort(tri)
 ```
 
 ```
-##  [1]  0.5506304  2.0665916  9.8263829 24.4498442 33.7138038 44.5479368
-##  [7] 51.9537383 52.9391945 56.3386162 76.4157688
+##  [1]  2.598174 10.980467 24.306379 27.265942 42.763177 47.156397 80.035040
+##  [8] 83.880321 91.142188 97.080909
 ```
 
 ---
@@ -1169,8 +1207,8 @@ rang
 ```
 
 ```
-##  [1] 70.49996 10.25158 21.20708 85.06269 46.20296 53.34354 80.91022
-##  [8] 70.43186 28.90591 83.84807
+##  [1] 59.30661 10.45965 74.17625 83.18965 81.98847 51.21548 60.01135
+##  [8] 32.35684 26.81602 19.59390
 ```
 
 ```r
@@ -1178,7 +1216,7 @@ rank(rang)
 ```
 
 ```
-##  [1]  7  1  2 10  4  5  8  6  3  9
+##  [1]  6  1  8 10  9  5  7  4  3  2
 ```
 
 ---
