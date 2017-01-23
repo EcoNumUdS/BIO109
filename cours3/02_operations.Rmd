@@ -12,7 +12,7 @@ Il peut souvent être pratique de générer des chiffres au hasard, sur lesquels
 alea <- runif(n = 10, min = 0, max = 1)
 alea
 ```
-Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées. 
+Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées.
 
 ---
 
@@ -51,7 +51,7 @@ R respecte la séquence des opérations, tel que démontré par l'exemple suivan
 
 # Opérations sur des vecteurs et matrices
 
-Par défaut, le produit de vecteurs et de matrices est *scalaire* : 
+Par défaut, le produit de vecteurs et de matrices est *scalaire* :
 
 ```{r}
 vec1 <- runif(10,0,1)
@@ -63,7 +63,7 @@ vec1
 
 # Opérations sur des vecteurs et matrices
 
-La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices : 
+La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices :
 
 ```{r}
 vec1 <- c(10,20,30)
@@ -119,10 +119,10 @@ round(pi,4)
 
 # Opérations sur des matrices
 
-Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées, Certaines commandes permettent de prendre des raccourcis :
+Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées:
 
 ```{r}
-mat <- matrix(runif(6,0,1), nr = 3, nc = 2)
+mat <- matrix(runif(4,0,1), nr = 2, nc = 2)
 mat
 rowSums(mat)
 colSums(mat)
@@ -132,7 +132,7 @@ colSums(mat)
 
 # Opérations sur des matrices
 
-Et de façon plus générale, on peut utiliser la fonction *apply()* qui est très pratique : 
+Et de façon plus générale, on peut utiliser la fonction `apply()` qui est très pratique :
 
 ```{r}
 apply(X = mat, MARGIN = 2, FUN = sum)
@@ -160,7 +160,7 @@ vec1 %*% mat1
 
 # Abondances relatives
 
-Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes: 
+Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
 
 1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
 2. Calculer le nombre total de tiges pour chaque quadrat ;
@@ -187,18 +187,3 @@ N_quadrats <- apply(quadrats, 1, sum)
 quadrats_rel = quadrats / N_quadrats
 head(quadrats_rel)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
