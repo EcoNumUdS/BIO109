@@ -17,6 +17,53 @@ assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
 --- .transition
 
+# Retour sur l'exercice
+
+---
+# Exercice de fin de séance
+
+Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+
+1. Charger les données "arbres"
+2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
+3. Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce
+4. Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes
+
+On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
+
+---
+# Solution
+
+
+
+```r
+# Créer un tableau où on enregistre les résultats
+resultats = matrix(nr = 5, nc = 7)
+
+# Lire le fichier (en assumant que vous êtes dans le bon dossier)
+arbres = read.table(file="./donnees/arbres.csv", header=TRUE,sep = ";")
+
+# Délimiter une première zone
+sub_zoneA = subset(arbres, arbres$bory < 201)
+
+# Calculer le nombre de tiges
+table(arbres$esp)
+```
+
+```
+## 
+## abba acpe acsa beal bepa fagr piru 
+## 2596 1864 3326 3995 2080 2785  989
+```
+
+```r
+# Enregistrer le résultat dans le tableau
+resultats[1,] = table(arbres$esp)
+```
+
+
+--- .transition
+
 # Opérations mathématiques de base
 
 ---
@@ -32,8 +79,8 @@ alea
 ```
 
 ```
-##  [1] 0.7655284 0.9824227 0.8213591 0.5761550 0.7504119 0.6453104 0.2558287
-##  [8] 0.5866185 0.1815478 0.1397439
+##  [1] 0.41446685 0.33166872 0.41890259 0.09039504 0.92444486 0.22587303
+##  [7] 0.80060564 0.33684441 0.40720905 0.25438234
 ```
 Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées.
 
@@ -119,8 +166,8 @@ vec1
 ```
 
 ```
-##  [1] 0.1589997 0.8140434 0.9594735 0.6317068 0.4832882 0.1089443 0.9473578
-##  [8] 0.8521539 0.7908833 0.6684058
+##  [1] 0.75185474 0.49067464 0.77985264 0.05062303 0.49053552 0.48371253
+##  [7] 0.63543673 0.30530427 0.73041120 0.83300360
 ```
 
 ```r
@@ -128,8 +175,8 @@ vec1
 ```
 
 ```
-##  [1] 0.4769990 2.4421303 2.8784204 1.8951204 1.4498647 0.3268328 2.8420733
-##  [8] 2.5564618 2.3726499 2.0052175
+##  [1] 2.2555642 1.4720239 2.3395579 0.1518691 1.4716065 1.4511376 1.9063102
+##  [8] 0.9159128 2.1912336 2.4990108
 ```
 
 ---
@@ -225,8 +272,8 @@ alea
 ```
 
 ```
-##  [1] 0.44304671 0.14784042 0.47192228 0.18501223 0.65917437 0.03743179
-##  [7] 0.32944698 0.85305366 0.45829520 0.29192487
+##  [1] 0.48581313 0.51709980 0.03844907 0.54166263 0.03931506 0.86098247
+##  [7] 0.49435463 0.20861038 0.97177835 0.56403416
 ```
 
 ```r
@@ -234,7 +281,7 @@ min(alea)
 ```
 
 ```
-## [1] 0.03743179
+## [1] 0.03844907
 ```
 
 ```r
@@ -242,7 +289,7 @@ max(alea)
 ```
 
 ```
-## [1] 0.8530537
+## [1] 0.9717783
 ```
 
 ---
@@ -295,9 +342,9 @@ mat
 ```
 
 ```
-##           [,1]       [,2]
-## [1,] 0.8232894 0.38868570
-## [2,] 0.2258351 0.06585538
+##           [,1]      [,2]
+## [1,] 0.6042398 0.3081153
+## [2,] 0.4237488 0.6328651
 ```
 
 ```r
@@ -305,7 +352,7 @@ rowSums(mat)
 ```
 
 ```
-## [1] 1.2119751 0.2916904
+## [1] 0.9123551 1.0566139
 ```
 
 ```r
@@ -313,7 +360,7 @@ colSums(mat)
 ```
 
 ```
-## [1] 1.0491244 0.4545411
+## [1] 1.0279886 0.9409804
 ```
 
 ---
@@ -328,7 +375,7 @@ apply(X = mat, MARGIN = 2, FUN = sum)
 ```
 
 ```
-## [1] 1.0491244 0.4545411
+## [1] 1.0279886 0.9409804
 ```
 
 ```r
@@ -336,7 +383,7 @@ apply(X = mat, MARGIN = 1, FUN = sum)
 ```
 
 ```
-## [1] 1.2119751 0.2916904
+## [1] 0.9123551 1.0566139
 ```
 
 ---
@@ -494,12 +541,12 @@ tableau
 ```
 
 ```
-##            x          y
-## 1 -0.3623795  1.9391516
-## 2 -0.5556283 -0.6849931
-## 3  1.7018265  1.8639141
-## 4 -0.9938876  1.2708028
-## 5  0.2489981  1.2867026
+##             x          y
+## 1 -0.82231220  0.2428302
+## 2  1.48423014  0.1785455
+## 3  0.04697369  0.8564047
+## 4 -1.19851721 -1.0303588
+## 5  0.48172936 -1.6822227
 ```
 
 ---
@@ -526,9 +573,9 @@ $$
 ```
 
 ```
-## [1] -0.4456628
-## [1] -0.306783
-## [1] 0.8895932
+## [1] 0.3445874
+## [1] 0.1593737
+## [1] 0.04453116
 ```
 
 **Problème** - Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
@@ -548,11 +595,11 @@ for(i in 1:nrow(tableau)){
 ```
 
 ```
-## [1] -0.4456628
-## [1] -0.306783
-## [1] 0.8895932
-## [1] -4.561089
-## [1] 0.2086256
+## [1] 0.3445874
+## [1] 0.1593737
+## [1] 0.04453116
+## [1] -0.5540473
+## [1] 0.6750359
 ```
 
 **Problème** - Qu'est-ce qu'on fait si on veut appliquer ce calcul sur plusieurs tableaux ???
@@ -689,7 +736,7 @@ prodsum(y = 7, x = 3)
 ## [1] 2.1
 ```
 
-Comme on le constate, dans le language R, les arguments des peuvent être définis de deux façons.
+Comme on le constate, dans le language R, les arguments peuvent être définis de deux façons.
 - En suivant l'ordre des arguments
 - En utilisant le noms des arguments
 
@@ -707,7 +754,7 @@ prodsum(vecA, vecB)
 ```
 
 ```
-## [1] -0.4456628 -0.3067830  0.8895932 -4.5610890  0.2086256
+## [1]  0.34458743  0.15937365  0.04453116 -0.55404730  0.67503586
 ```
 
 ```r
@@ -715,7 +762,7 @@ prodsum(tableau[,1], tableau[,2])
 ```
 
 ```
-## [1] -0.4456628 -0.3067830  0.8895932 -4.5610890  0.2086256
+## [1]  0.34458743  0.15937365  0.04453116 -0.55404730  0.67503586
 ```
 
 ---
@@ -743,7 +790,7 @@ prodsum(vec3, vec4)
 ```
 
 ```
-## [1] -0.4456628 -0.3067830  0.8895932 -0.5069364
+## [1]  0.34458743  0.15937365  0.04453116 -0.45732707
 ```
 
 ---
@@ -813,12 +860,12 @@ prodsum(tableau, tableau2)
 ```
 
 ```
-##            x          y
-## 1 -0.3971092 0.03109168
-## 2 -0.8374301 0.13564807
-## 3  0.7019905 0.07203651
-## 4  0.6962152 0.49201815
-## 5  0.1468133 0.59812330
+##            x             y
+## 1 -7.7541010  0.1595639225
+## 2  0.2321193  0.1648235636
+## 3  0.0358265  0.4868368726
+## 4  1.4559708 -2.6130562315
+## 5  0.3166899  0.0003725766
 ```
 
 ---
@@ -834,12 +881,12 @@ prodsum(tableau, tableau2)
 ```
 
 ```
-##              x           y
-## 1  0.094424984 0.001608257
-## 2 -0.672305631 0.522373836
-## 3  0.003581208 0.069186371
-## 4  0.002655496 0.005878083
-## 5  0.140440713 0.062166156
+##             x           y
+## 1 0.592440875  0.16258489
+## 2 0.093398067  0.15252006
+## 3 0.004653277  0.01437158
+## 4 0.627402170 -1.82241399
+## 5 0.352014485  0.04068224
 ```
 
 ---
@@ -883,22 +930,22 @@ test
 
 ```
 ## $moyenne
-## [1] 1.040085
+## [1] 0.9794657
 ## 
 ## $ecart_type
-## [1] 0.558077
+## [1] 0.458112
 ## 
 ## $CV
-## [1] 0.5365684
+## [1] 0.4677162
 ```
 
 ---
 
 # Quelques règles utiles lorsqu'on construit une fonction
-  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent dans ce qui se trouve à l'extérieur d'une fonction ;
-  - Donner une nom représentatif à la fonction, qui résume ce que la fonction fait ;
+  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent de ce qui se trouve à l'extérieur de cette fonction ;
+  - Donner une nom représentatif à la fonction, qui résume ce qu'elle fait ;
   - Tous les arguments de la fonction doivent être utilisés;
-  - Les arguments doivent avoir des noms représentatifs ;
+  - Les arguments doivent aussi avoir des noms représentatifs ;
   - Commentez les étapes du code ;
   - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
 

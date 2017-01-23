@@ -17,6 +17,44 @@ assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
 --- .transition
 
+# Retour sur l'exercice
+
+---
+# Exercice de fin de séance
+
+Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+
+1. Charger les données "arbres"
+2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
+3. Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce
+4. Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes
+
+On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
+
+---
+# Solution
+
+
+```{r}
+# Créer un tableau où on enregistre les résultats
+resultats = matrix(nr = 5, nc = 7)
+
+# Lire le fichier (en assumant que vous êtes dans le bon dossier)
+arbres = read.table(file="./donnees/arbres.csv", header=TRUE,sep = ";")
+
+# Délimiter une première zone
+sub_zoneA = subset(arbres, arbres$bory < 201)
+
+# Calculer le nombre de tiges
+table(arbres$esp)
+
+# Enregistrer le résultat dans le tableau
+resultats[1,] = table(arbres$esp)
+```
+
+
+--- .transition
+
 # Opérations mathématiques de base
 
 ---
@@ -414,7 +452,7 @@ prodsum(x = 3, y = 7)
 prodsum(y = 7, x = 3)
 ```
 
-Comme on le constate, dans le language R, les arguments des peuvent être définis de deux façons.
+Comme on le constate, dans le language R, les arguments peuvent être définis de deux façons.
 - En suivant l'ordre des arguments
 - En utilisant le noms des arguments
 
@@ -548,10 +586,10 @@ test
 ---
 
 # Quelques règles utiles lorsqu'on construit une fonction
-  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent dans ce qui se trouve à l'extérieur d'une fonction ;
-  - Donner une nom représentatif à la fonction, qui résume ce que la fonction fait ;
+  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent de ce qui se trouve à l'extérieur de cette fonction ;
+  - Donner une nom représentatif à la fonction, qui résume ce qu'elle fait ;
   - Tous les arguments de la fonction doivent être utilisés;
-  - Les arguments doivent avoir des noms représentatifs ;
+  - Les arguments doivent aussi avoir des noms représentatifs ;
   - Commentez les étapes du code ;
   - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
 

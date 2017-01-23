@@ -208,7 +208,7 @@ prodsum(x = 3, y = 7)
 prodsum(y = 7, x = 3)
 ```
 
-Comme on le constate, dans le language R, les arguments des peuvent être définis de deux façons.
+Comme on le constate, dans le language R, les arguments peuvent être définis de deux façons.
 - En suivant l'ordre des arguments
 - En utilisant le noms des arguments
 
@@ -342,10 +342,10 @@ test
 ---
 
 # Quelques règles utiles lorsqu'on construit une fonction
-  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent dans ce qui se trouve à l'extérieur d'une fonction ;
-  - Donner une nom représentatif à la fonction, qui résume ce que la fonction fait ;
+  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent de ce qui se trouve à l'extérieur de cette fonction ;
+  - Donner une nom représentatif à la fonction, qui résume ce qu'elle fait ;
   - Tous les arguments de la fonction doivent être utilisés;
-  - Les arguments doivent avoir des noms représentatifs ;
+  - Les arguments doivent aussi avoir des noms représentatifs ;
   - Commentez les étapes du code ;
   - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
 
