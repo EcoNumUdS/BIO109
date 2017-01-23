@@ -1,0 +1,150 @@
+--- .transition
+# Expressions conditionnelles
+
+---
+# Principe
+
+Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours. 
+
+La structure de base d'une expression conditionelle est la suivante:
+
+```{r eval = FALSE}
+if(condition) {
+    instruction(1)
+    }
+else {
+    instruction(2)
+}
+```
+
+---
+# Arbre décisionnel
+
+Un exemple, 
+
+```{r eval = FALSE}
+test = function(jour) {
+    if(jour == "mardi") {
+        print("Je dois aller au cours BIO109")
+    }
+    else {
+        if(jour == "lundi") {
+        print("Ai-je fais mon travail pour le cours BIO109 ?")
+        }
+        else { 
+            if(jour == "samedi") {
+                print("Je peux encore dormir un peu")
+            }
+            else {
+                print("Bof, j'ai encore du temps !")
+            } 
+        }
+    }  
+}
+```
+
+---
+# Astuce
+
+L'indentation (l'utilisation d'espaces dans le code) est fort utile pour s'y retrouver lorsque les conditions deviennent nombreuses. Reprenons l'exemple précédent. 
+
+---
+# Arbre décisionnel
+
+```{r}
+alea = runif() eval = FALSE}
+test = function(jour) {
+if(jour == "mardi") {
+print("Je dois aller au cours BIO109")
+}
+else {
+if(jour == "lundi") {
+print("Ai-je fais mon travail pour le cours BIO109 ?")
+}
+else { 
+if(jour == "samedi") {
+print("Je peux encore dormir un peu")
+}
+else {
+print("Bof, j'ai encore du temps !")
+} 
+}
+}  
+} 
+```
+
+---
+# Opérateurs logiques
+
+Les classiques : 
+
+- X est égal à Y : X == Y
+- X est supérieur à Y : X > Y
+- X est inférieur à Y : X < Y
+- X est supérieur ou égal à Y : X >= Y
+- X est inférieur ou égal à Y : X <= Y
+
+--- 
+# Exercice
+
+Tirez au hasard 10 chiffres en 0 et 1. Pour chacun de ces chiffres, déterminez s'il est plus petit ou plus grand que la valeur seuil de 0.3. Inscrivez votre résultat dans un autre objet. 
+
+--- 
+# Solution
+
+```{r}
+X <- runif(n = 10)
+res <- numeric(10)
+for(i in 1:10) {
+    if(X[i] < 0.3) {
+        res[i] <- "plus petit"
+    }
+    else {
+        res[i] <- "plus grand"
+    } 
+}
+cbind(X,res)
+```
+
+---
+# Opérateurs logiques
+
+On peut aussi combiner plusieurs conditions : 
+
+- La condition A et la condition B : A & B
+- La condition A ou la condition B : A|B
+
+---
+# Exercice
+
+Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6. 
+
+--- 
+# Solution
+
+```{r}
+res2 <- numeric(10)
+for(i in 1:10) {
+    if(X[i > 0.2 & X[i] < 0.6) {
+        res2[i] <- "oui"
+    }
+    else {
+        res2[i] <- "non"
+    } 
+}
+cbind(X,res2)
+```
+
+---
+# Conditions sur des vecteurs
+
+R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteurs. Ainsi, vous pouvez réaliser des conditions sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
+
+```{r}
+res2 <- numeric(10)
+res2[X > 0.2 & X < 0.6] <- "oui"
+res2[X < 0.2 | X > 0.6] <- "non"
+cbind(X,res2)
+```
+
+
