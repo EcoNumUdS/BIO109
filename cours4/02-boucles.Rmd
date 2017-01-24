@@ -151,7 +151,7 @@ for(etape in 1:5) {
     print(test[index * 5])
 }
 ```
- 
+
 ---
 # Compteur
 
@@ -285,32 +285,4 @@ for(i in 2:(n_steps+1)) {
     N[i] = N[i-1] + lambda * N[i-1] * (1 - N[i-1]/K)
 }
 plot(c(1900:2015),N,type = "l",xlab = "Année", ylab = "Population")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```

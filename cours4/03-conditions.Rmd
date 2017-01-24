@@ -51,8 +51,7 @@ L'indentation (l'utilisation d'espaces dans le code) est fort utile pour s'y ret
 ---
 # Arbre décisionnel
 
-```{r}
-alea = runif() eval = FALSE}
+```{r eval = FALSE}
 test = function(jour) {
 if(jour == "mardi") {
 print("Je dois aller au cours BIO109")
@@ -83,6 +82,7 @@ Les classiques :
 - X est inférieur à Y : X < Y
 - X est supérieur ou égal à Y : X >= Y
 - X est inférieur ou égal à Y : X <= Y
+- X est différent de Y : X != Y
 
 --- 
 # Exercice
@@ -125,7 +125,7 @@ Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le ch
 ```{r}
 res2 <- numeric(10)
 for(i in 1:10) {
-    if(X[i > 0.2 & X[i] < 0.6) {
+    if(X[i] > 0.2 & X[i] < 0.6) {
         res2[i] <- "oui"
     }
     else {
