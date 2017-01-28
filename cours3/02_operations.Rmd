@@ -18,7 +18,7 @@ On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, 
 # Solution
 
 
-<!-- ```{r}
+```{r}
 # Créer un tableau où on enregistre les résultats
 resultats = matrix(nr = 5, nc = 7)
 
@@ -33,7 +33,7 @@ table(arbres$esp)
 
 # Enregistrer le résultat dans le tableau
 resultats[1,] = table(arbres$esp)
-``` -->
+```
 
 
 --- .transition
