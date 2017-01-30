@@ -265,7 +265,7 @@ $$
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 $$
 
-Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on en compte aujourd'hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($lambda$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on en compte aujourd'hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($\lambda$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1

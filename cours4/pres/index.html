@@ -464,11 +464,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.02331369
-## [1] 0.3327549
-## [1] 0.07717755
-## [1] 0.7786474
-## [1] 0.2726084
+<pre><code>## [1] 0.9772747
+## [1] 0.3760439
+## [1] 0.3528628
+## [1] 0.6572887
+## [1] 0.9535225
 </code></pre>
 
   </article>
@@ -488,11 +488,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.4008903
-## [1] 0.2637898
-## [1] 0.881541
-## [1] 0.9209875
-## [1] 0.9077825
+<pre><code>## [1] 0.04018742
+## [1] 0.8189345
+## [1] 0.06251663
+## [1] 0.8077711
+## [1] 0.5274296
 </code></pre>
 
   </article>
@@ -630,8 +630,8 @@ while(combinaison != &quot;pile-pile&quot;) {
 }
 </code></pre>
 
-<pre><code>## [1] &quot;face-pile&quot;
-## [1] &quot;face-face&quot;
+<pre><code>## [1] &quot;pile-face&quot;
+## [1] &quot;pile-face&quot;
 ## [1] &quot;pile-pile&quot;
 </code></pre>
 
@@ -671,7 +671,7 @@ while(combinaison != &quot;pile-pile&quot;) {
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 \]</p>
 
-<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on en compte aujourd&#39;hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(lambda\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
+<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on en compte aujourd&#39;hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(\lambda\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -893,16 +893,16 @@ cbind(X,res)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res         
-##  [1,] &quot;0.174428719794378&quot;  &quot;plus petit&quot;
-##  [2,] &quot;0.766226450679824&quot;  &quot;plus grand&quot;
-##  [3,] &quot;0.744366807164624&quot;  &quot;plus grand&quot;
-##  [4,] &quot;0.0158158370759338&quot; &quot;plus petit&quot;
-##  [5,] &quot;0.118239835603163&quot;  &quot;plus petit&quot;
-##  [6,] &quot;0.540905090747401&quot;  &quot;plus grand&quot;
-##  [7,] &quot;0.524461495922878&quot;  &quot;plus grand&quot;
-##  [8,] &quot;0.0970251078251749&quot; &quot;plus petit&quot;
-##  [9,] &quot;0.450602065771818&quot;  &quot;plus grand&quot;
-## [10,] &quot;0.593258157605305&quot;  &quot;plus grand&quot;
+##  [1,] &quot;0.987270170357078&quot;  &quot;plus grand&quot;
+##  [2,] &quot;0.558654652442783&quot;  &quot;plus grand&quot;
+##  [3,] &quot;0.117569774156436&quot;  &quot;plus petit&quot;
+##  [4,] &quot;0.342050822451711&quot;  &quot;plus grand&quot;
+##  [5,] &quot;0.0569879144895822&quot; &quot;plus petit&quot;
+##  [6,] &quot;0.535196492215618&quot;  &quot;plus grand&quot;
+##  [7,] &quot;0.80805543041788&quot;   &quot;plus grand&quot;
+##  [8,] &quot;0.0506757805123925&quot; &quot;plus petit&quot;
+##  [9,] &quot;0.0391316290479153&quot; &quot;plus petit&quot;
+## [10,] &quot;0.398634851211682&quot;  &quot;plus grand&quot;
 </code></pre>
 
     </div>
@@ -957,16 +957,16 @@ cbind(X,res2)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res2 
-##  [1,] &quot;0.174428719794378&quot;  &quot;non&quot;
-##  [2,] &quot;0.766226450679824&quot;  &quot;non&quot;
-##  [3,] &quot;0.744366807164624&quot;  &quot;non&quot;
-##  [4,] &quot;0.0158158370759338&quot; &quot;non&quot;
-##  [5,] &quot;0.118239835603163&quot;  &quot;non&quot;
-##  [6,] &quot;0.540905090747401&quot;  &quot;oui&quot;
-##  [7,] &quot;0.524461495922878&quot;  &quot;oui&quot;
-##  [8,] &quot;0.0970251078251749&quot; &quot;non&quot;
-##  [9,] &quot;0.450602065771818&quot;  &quot;oui&quot;
-## [10,] &quot;0.593258157605305&quot;  &quot;oui&quot;
+##  [1,] &quot;0.987270170357078&quot;  &quot;non&quot;
+##  [2,] &quot;0.558654652442783&quot;  &quot;oui&quot;
+##  [3,] &quot;0.117569774156436&quot;  &quot;non&quot;
+##  [4,] &quot;0.342050822451711&quot;  &quot;oui&quot;
+##  [5,] &quot;0.0569879144895822&quot; &quot;non&quot;
+##  [6,] &quot;0.535196492215618&quot;  &quot;oui&quot;
+##  [7,] &quot;0.80805543041788&quot;   &quot;non&quot;
+##  [8,] &quot;0.0506757805123925&quot; &quot;non&quot;
+##  [9,] &quot;0.0391316290479153&quot; &quot;non&quot;
+## [10,] &quot;0.398634851211682&quot;  &quot;oui&quot;
 </code></pre>
 
     </div>
@@ -989,16 +989,16 @@ cbind(X,res2)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res2 
-##  [1,] &quot;0.174428719794378&quot;  &quot;non&quot;
-##  [2,] &quot;0.766226450679824&quot;  &quot;non&quot;
-##  [3,] &quot;0.744366807164624&quot;  &quot;non&quot;
-##  [4,] &quot;0.0158158370759338&quot; &quot;non&quot;
-##  [5,] &quot;0.118239835603163&quot;  &quot;non&quot;
-##  [6,] &quot;0.540905090747401&quot;  &quot;oui&quot;
-##  [7,] &quot;0.524461495922878&quot;  &quot;oui&quot;
-##  [8,] &quot;0.0970251078251749&quot; &quot;non&quot;
-##  [9,] &quot;0.450602065771818&quot;  &quot;oui&quot;
-## [10,] &quot;0.593258157605305&quot;  &quot;oui&quot;
+##  [1,] &quot;0.987270170357078&quot;  &quot;non&quot;
+##  [2,] &quot;0.558654652442783&quot;  &quot;oui&quot;
+##  [3,] &quot;0.117569774156436&quot;  &quot;non&quot;
+##  [4,] &quot;0.342050822451711&quot;  &quot;oui&quot;
+##  [5,] &quot;0.0569879144895822&quot; &quot;non&quot;
+##  [6,] &quot;0.535196492215618&quot;  &quot;oui&quot;
+##  [7,] &quot;0.80805543041788&quot;   &quot;non&quot;
+##  [8,] &quot;0.0506757805123925&quot; &quot;non&quot;
+##  [9,] &quot;0.0391316290479153&quot; &quot;non&quot;
+## [10,] &quot;0.398634851211682&quot;  &quot;oui&quot;
 </code></pre>
 
     </div>
