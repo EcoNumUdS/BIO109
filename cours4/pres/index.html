@@ -67,7 +67,7 @@
     <h1>Mise en situation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d&#39;abondance à deux points d&#39;échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans. Le taux de croissance est donné par l&#39;équation suivante : </p>
+    <p>Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d&#39;abondance à deux points d&#39;échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans. Le taux de croissance est donné par l&#39;équation suivante :</p>
 
 <p>\[
 \dfrac{N_{t+1} - N_t}{N_t}
@@ -82,17 +82,22 @@
     <h1>Mise en situation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Les données ressemblent à ce qui suit: </p>
+    <p>Les données ressemblent à ce qui suit:</p>
 
 <pre><code class="r">donnees &lt;- matrix(nr = 5, nc = 2)
 donnees[,1] &lt;- c(34,35,32,34,36)
 donnees[,2] &lt;- c(32,36,38,36,40)
 an &lt;- c(2010:2014)
-plot(an,donnees[,1],type = &quot;l&quot;, xlab = &quot;Année&quot;,ylab = &quot;Nombre d&#39;individus&quot;)
-lines(an,donnees[,2], lty = 3)
+head(donnees)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+<pre><code>##      [,1] [,2]
+## [1,]   34   32
+## [2,]   35   36
+## [3,]   32   38
+## [4,]   34   36
+## [5,]   36   40
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -103,16 +108,13 @@ lines(an,donnees[,2], lty = 3)
     <h1>Mise en situation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Maintenant, on doit calculer le taux de croissance annuel pour chaque population. Commençons pour l&#39;intervalle entre l&#39;an 1 et l&#39;an 2, sur le site 1 : </p>
+    <p>Les données ressemblent à ce qui suit:</p>
 
-<pre><code class="r">lambda &lt;- matrix(nr = 4, nc = 2)
-lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
+<pre><code class="r">plot(an,donnees[,1],type = &quot;l&quot;, xlab = &quot;Année&quot;,ylab = &quot;Nombre d&#39;individus&quot;, ylim=c(32,40),cex=2)
+lines(an,donnees[,2], lty = 3)
 </code></pre>
 
-<p>Ensuite, on fait l&#39;an 2 : </p>
-
-<pre><code class="r">lambda[2,1] &lt;- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
-</code></pre>
+<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="42%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -123,9 +125,16 @@ lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
     <h1>Mise en situation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Très rapidement, on réalise que c&#39;est assez fastidieux de refaire cet exercice à la main, mais c&#39;est faisable. </p>
+    <p>Maintenant, on doit calculer le taux de croissance annuel pour chaque population. Commençons pour l&#39;intervalle entre l&#39;an 1 et l&#39;an 2, sur le site 1 :</p>
 
-<p>Imaginez cependant que vous découvrez un jour qu&#39;un passionné des salamadres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d&#39;échantillonnage. Il faudra changer de technique....</p>
+<pre><code class="r">lambda &lt;- matrix(nr = 4, nc = 2)
+lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
+</code></pre>
+
+<p>Ensuite, on fait l&#39;an 2 :</p>
+
+<pre><code class="r">lambda[2,1] &lt;- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -136,7 +145,9 @@ lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
     <h1>Mise en situation</h1>
   </hgroup>
   <article data-timings="">
-    <p>La semaine dernière, nous avons vu comment généraliser une séquence d&#39;opérations au moyen d&#39;une fonction. Comment est-ce qu&#39;on peut généraliser des opérations qui sont répétées très souvent ? C&#39;est le principe de la boucle. </p>
+    <p>Très rapidement, on réalise que c&#39;est assez fastidieux de refaire cet exercice à la main, mais c&#39;est faisable.</p>
+
+<p>Imaginez cependant que vous découvrez un jour qu&#39;un passionné des salamadres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d&#39;échantillonnage. Il faudra changer de technique....</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -147,7 +158,18 @@ lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
     <h1>Mise en situation</h1>
   </hgroup>
   <article data-timings="">
-    <p>La solution ressemblerait à </p>
+    <p>La semaine dernière, nous avons vu comment généraliser une séquence d&#39;opérations au moyen d&#39;une fonction. Comment est-ce qu&#39;on peut généraliser des opérations qui sont répétées très souvent ? C&#39;est le principe de la boucle.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-8" style="background:;">
+  <!--  <a href="#slide-8"></a> -->
+  <hgroup>
+    <h1>Mise en situation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>La solution ressemblerait à</p>
 
 <pre><code class="r">n_sites &lt;- ncol(donnees)
 n_annees &lt;- nrow(donnees)
@@ -162,19 +184,19 @@ for(i in 2:n_annees) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-8" style="background:;">
-  <!--  <a href="#slide-8"></a> -->
+<slide class="" id="slide-9" style="background:;">
+  <!--  <a href="#slide-9"></a> -->
   <hgroup>
     <h1>Définition</h1>
   </hgroup>
   <article data-timings="">
-    <p>Une boucle est une commande qui permet de répéter une série d&#39;instructions sous des conditions définies de départ et de fin. C&#39;est une commande de base de l&#39;algorithmique. </p>
+    <p>Une boucle est une commande qui permet de répéter une série d&#39;instructions sous des conditions définies de départ et de fin. C&#39;est une commande de base de l&#39;algorithmique.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-9" style="background:;">
-  <!--  <a href="#slide-9"></a> -->
+<slide class="" id="slide-10" style="background:;">
+  <!--  <a href="#slide-10"></a> -->
   <hgroup>
     <h1>Anatomie de la boucle</h1>
   </hgroup>
@@ -193,13 +215,13 @@ for(etape in depart:fin) {
 ## [1] 5
 </code></pre>
 
-<p>L&#39;exécution une fois d&#39;un groupe de commandes dans un boucle s&#39;appelle une itération. </p>
+<p>L&#39;exécution une fois d&#39;un groupe de commandes dans un boucle s&#39;appelle une itération.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-10" style="background:;">
-  <!--  <a href="#slide-10"></a> -->
+<slide class="" id="slide-11" style="background:;">
+  <!--  <a href="#slide-11"></a> -->
   <hgroup>
     <h1>Quelques exemples simples</h1>
   </hgroup>
@@ -216,13 +238,13 @@ for(etape in depart:fin) {
 ## [1] &quot;en R&quot;
 </code></pre>
 
-<p>Dans cet exemple, notre séquence contient 3 éléments &quot;Bonjour&quot;, &quot;programmeurs&quot;, &quot;en R&quot;. R va évaluer l&#39;expression 3 fois. La variable index prendra successivement les valeurs de 1 à 3 pendant l&#39;exécution de la boucle. </p>
+<p>Dans cet exemple, notre séquence contient 3 éléments &quot;Bonjour&quot;, &quot;programmeurs&quot;, &quot;en R&quot;. R va évaluer l&#39;expression 3 fois. La variable index prendra successivement les valeurs de 1 à 3 pendant l&#39;exécution de la boucle.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-11" style="background:;">
-  <!--  <a href="#slide-11"></a> -->
+<slide class="" id="slide-12" style="background:;">
+  <!--  <a href="#slide-12"></a> -->
   <hgroup>
     <h1>Quelques exemples simples</h1>
   </hgroup>
@@ -244,8 +266,8 @@ for(etape in depart:fin) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-12" style="background:;">
-  <!--  <a href="#slide-12"></a> -->
+<slide class="" id="slide-13" style="background:;">
+  <!--  <a href="#slide-13"></a> -->
   <hgroup>
     <h1>Un premier exercice simple</h1>
   </hgroup>
@@ -255,14 +277,14 @@ for(etape in depart:fin) {
 <ul>
 <li>Déterminez le point de départ de la séquence</li>
 <li>Déterminez le point de fin de la séquence</li>
-<li>Faites le calcul approprié </li>
+<li>Faites le calcul approprié</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-13" style="background:;">
-  <!--  <a href="#slide-13"></a> -->
+<slide class="" id="slide-14" style="background:;">
+  <!--  <a href="#slide-14"></a> -->
   <hgroup>
     <h1>Un premier exercice simple</h1>
   </hgroup>
@@ -428,13 +450,13 @@ for(etape in depart:fin) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-14" style="background:;">
-  <!--  <a href="#slide-14"></a> -->
+<slide class="" id="slide-15" style="background:;">
+  <!--  <a href="#slide-15"></a> -->
   <hgroup>
     <h1>Boucles et indexation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L&#39;index de la boucle peut alors être utilisé directement comme index pour accéder à l&#39;objet. Par exemple : </p>
+    <p>Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L&#39;index de la boucle peut alors être utilisé directement comme index pour accéder à l&#39;objet. Par exemple :</p>
 
 <pre><code class="r">test = runif(5, 0,1)
 for(etape in 1:5) {
@@ -442,31 +464,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.8454765
-## [1] 0.7820218
-## [1] 0.603634
-## [1] 0.09874861
-## [1] 0.8657599
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-15" style="background:;">
-  <!--  <a href="#slide-15"></a> -->
-  <hgroup>
-    <h1>Boucles et indexation</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>De même, on peut réaliser des opérations mathématiques sur l&#39;index</p>
-
-<pre><code class="r">test = runif(500, 0,1)
-for(etape in 1:5) {
-    print(test[index * 5])
-}
-</code></pre>
-
-<pre><code>## Error in print(test[index * 5]): objet &#39;index&#39; introuvable
+<pre><code>## [1] 0.02331369
+## [1] 0.3327549
+## [1] 0.07717755
+## [1] 0.7786474
+## [1] 0.2726084
 </code></pre>
 
   </article>
@@ -475,10 +477,34 @@ for(etape in 1:5) {
 <slide class="" id="slide-16" style="background:;">
   <!--  <a href="#slide-16"></a> -->
   <hgroup>
+    <h1>Boucles et indexation</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>De même, on peut réaliser des opérations mathématiques sur l&#39;index</p>
+
+<pre><code class="r">test = runif(500, 0,1)
+for(etape in 1:5) {
+    print(test[etape * 5])
+}
+</code></pre>
+
+<pre><code>## [1] 0.4008903
+## [1] 0.2637898
+## [1] 0.881541
+## [1] 0.9209875
+## [1] 0.9077825
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-17" style="background:;">
+  <!--  <a href="#slide-17"></a> -->
+  <hgroup>
     <h1>Compteur</h1>
   </hgroup>
   <article data-timings="">
-    <p>La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendent pour l&#39;indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle. </p>
+    <p>La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendent pour l&#39;indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle.</p>
 
 <pre><code class="r">n = 1
 for(etape in -2:5) {
@@ -500,8 +526,8 @@ for(etape in -2:5) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-17" style="background:;">
-  <!--  <a href="#slide-17"></a> -->
+<slide class="" id="slide-18" style="background:;">
+  <!--  <a href="#slide-18"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -511,8 +537,8 @@ for(etape in -2:5) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-18" style="background:;">
-  <!--  <a href="#slide-18"></a> -->
+<slide class="" id="slide-19" style="background:;">
+  <!--  <a href="#slide-19"></a> -->
   <hgroup>
     <h1>Solution</h1>
   </hgroup>
@@ -530,8 +556,8 @@ head(resultat)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-19" style="background:;">
-  <!--  <a href="#slide-19"></a> -->
+<slide class="" id="slide-20" style="background:;">
+  <!--  <a href="#slide-20"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -547,8 +573,8 @@ n! = 1 \times 2 \times 3 \times 4 \times .... n
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-20" style="background:;">
-  <!--  <a href="#slide-20"></a> -->
+<slide class="" id="slide-21" style="background:;">
+  <!--  <a href="#slide-21"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -564,13 +590,13 @@ n
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-21" style="background:;">
-  <!--  <a href="#slide-21"></a> -->
+<slide class="" id="slide-22" style="background:;">
+  <!--  <a href="#slide-22"></a> -->
   <hgroup>
     <h1>On complexifie le problème ....</h1>
   </hgroup>
   <article data-timings="">
-    <p>Il est possible d&#39;incruster une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes .....</p>
+    <p>Il est possible d&#39;incruster une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes...</p>
 
 <pre><code class="r">ma_matrice &lt;- matrix(nr = 5, nc = 3)
 n &lt;- 1
@@ -586,32 +612,34 @@ ma_matrice
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-22" style="background:;">
-  <!--  <a href="#slide-22"></a> -->
+<slide class="" id="slide-23" style="background:;">
+  <!--  <a href="#slide-23"></a> -->
   <hgroup>
     <h1>La boucle while</h1>
   </hgroup>
   <article data-timings="">
-    <p>La boucle de type <em>while</em>, pour &#39;pendant&#39;, répète une série d&#39;intructions tant qu&#39;une condition n&#39;a pas été atteinte. C&#39;est une version générale de la boucle <em>for</em>. Par exemple, on peut tirer deux pièces de monnaie jusqu&#39;à ce que l&#39;on obtienne la combinaison pile-pile</p>
+    <p>La boucle de type <em>while</em>, pour &#39;pendant&#39;, répète une série d&#39;intructions tant qu&#39;une condition n&#39;a pas été atteinte. C&#39;est une version générale de la boucle <em>for</em>. Par exemple, on peut tirer deux pièces de monnaie jusqu&#39;à ce que l&#39;on obtienne la combinaison pile-pile.</p>
 
 <pre><code class="r">piece &lt;- c(&quot;pile&quot;,&quot;face&quot;)
 combinaison = &quot;face-face&quot;
 while(combinaison != &quot;pile-pile&quot;) {
-    essai1 &lt;- sample(piece, n = 1)
-    essai2 &lt;- sample(piece, n = 1)
+    essai1 &lt;- sample(piece, 1)
+    essai2 &lt;- sample(piece, 1)
     combinaison = paste(essai1, &quot;-&quot; , essai2, sep = &quot;&quot;)
     print(combinaison)
 }
 </code></pre>
 
-<pre><code>## Error in sample(piece, n = 1): argument inutilisé (n = 1)
+<pre><code>## [1] &quot;face-pile&quot;
+## [1] &quot;face-face&quot;
+## [1] &quot;pile-pile&quot;
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-23" style="background:;">
-  <!--  <a href="#slide-23"></a> -->
+<slide class="" id="slide-24" style="background:;">
+  <!--  <a href="#slide-24"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -621,8 +649,8 @@ while(combinaison != &quot;pile-pile&quot;) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-24" style="background:;">
-  <!--  <a href="#slide-24"></a> -->
+<slide class="transition" id="slide-25" style="background:;">
+  <!--  <a href="#slide-25"></a> -->
   <hgroup>
     <h1>Exercice intermédiaire</h1>
   </hgroup>
@@ -631,25 +659,25 @@ while(combinaison != &quot;pile-pile&quot;) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-25" style="background:;">
-  <!--  <a href="#slide-25"></a> -->
+<slide class="" id="slide-26" style="background:;">
+  <!--  <a href="#slide-26"></a> -->
   <hgroup>
     <h1>Croissance logistique</h1>
   </hgroup>
   <article data-timings="">
-    <p>La croissance d&#39;une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d&#39;une boucle. La densité au temps \(t+1\) se calcul ainsi : </p>
+    <p>La croissance d&#39;une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d&#39;une boucle. La densité au temps \(t+1\) se calcul ainsi :</p>
 
 <p>\[
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 \]</p>
 
-<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on en compte aujourd&#39;hui environ à 200 000 bêtes. Si on fixe le taux de croissance à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
+<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on en compte aujourd&#39;hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(lambda\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-26" style="background:;">
-  <!--  <a href="#slide-26"></a> -->
+<slide class="" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
   <hgroup>
     <h1>Solution 1</h1>
   </hgroup>
@@ -671,8 +699,8 @@ step
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-27" style="background:;">
-  <!--  <a href="#slide-27"></a> -->
+<slide class="" id="slide-28" style="background:;">
+  <!--  <a href="#slide-28"></a> -->
   <hgroup>
     <h1>Solution 2</h1>
   </hgroup>
@@ -686,24 +714,42 @@ N[1] = 220
 for(i in 2:(n_steps+1)) {
     N[i] = N[i-1] + lambda * N[i-1] * (1 - N[i-1]/K)
 }
-plot(c(1900:2015),N,type = &quot;l&quot;,xlab = &quot;Année&quot;, ylab = &quot;Population&quot;)
 </code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-17-1.png" alt="plot of chunk unnamed-chunk-17">
---- .transition</p>
-
-<h1>Expressions conditionnelles</h1>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-28" style="background:;">
-  <!--  <a href="#slide-28"></a> -->
+<slide class="" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
+  <hgroup>
+    <h1>Solution 2</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(c(1900:2015),N,type = &quot;l&quot;,xlab = &quot;Année&quot;, ylab = &quot;Population&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
+  <hgroup>
+    <h1>Expressions conditionnelles</h1>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
   <hgroup>
     <h1>Principe</h1>
   </hgroup>
   <article data-timings="">
-    <p>Très souvent en programmation on a à prendre des décisions du type <strong>si la condition X est remplie, alors faire Y, sinon faire Z</strong>. Nous avons déjà vu certains exemples depuis le début du cours. </p>
+    <p>Très souvent en programmation on a à prendre des décisions du type <strong>si la condition X est remplie, alors faire Y, sinon faire Z</strong>. Nous avons déjà vu certains exemples depuis le début du cours.</p>
 
 <p>La structure de base d&#39;une expression conditionelle est la suivante:</p>
 
@@ -718,13 +764,13 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-29" style="background:;">
-  <!--  <a href="#slide-29"></a> -->
+<slide class="" id="slide-32" style="background:;">
+  <!--  <a href="#slide-32"></a> -->
   <hgroup>
     <h1>Arbre décisionnel</h1>
   </hgroup>
   <article data-timings="">
-    <p>Un exemple, </p>
+    <p>Un exemple,</p>
 
 <pre><code class="r">test = function(jour) {
     if(jour == &quot;mardi&quot;) {
@@ -734,13 +780,13 @@ else {
         if(jour == &quot;lundi&quot;) {
         print(&quot;Ai-je fais mon travail pour le cours BIO109 ?&quot;)
         }
-        else { 
+        else {
             if(jour == &quot;samedi&quot;) {
                 print(&quot;Je peux encore dormir un peu&quot;)
             }
             else {
                 print(&quot;Bof, j&#39;ai encore du temps !&quot;)
-            } 
+            }
         }
     }  
 }
@@ -749,19 +795,19 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-30" style="background:;">
-  <!--  <a href="#slide-30"></a> -->
+<slide class="" id="slide-33" style="background:;">
+  <!--  <a href="#slide-33"></a> -->
   <hgroup>
     <h1>Astuce</h1>
   </hgroup>
   <article data-timings="">
-    <p>L&#39;indentation (l&#39;utilisation d&#39;espaces dans le code) est fort utile pour s&#39;y retrouver lorsque les conditions deviennent nombreuses. Reprenons l&#39;exemple précédent. </p>
+    <p>L&#39;indentation (l&#39;utilisation d&#39;espaces dans le code) est fort utile pour s&#39;y retrouver lorsque les conditions deviennent nombreuses. Reprenons l&#39;exemple précédent.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-31" style="background:;">
-  <!--  <a href="#slide-31"></a> -->
+<slide class="" id="slide-34" style="background:;">
+  <!--  <a href="#slide-34"></a> -->
   <hgroup>
     <h1>Arbre décisionnel</h1>
   </hgroup>
@@ -774,82 +820,16 @@ else {
 if(jour == &quot;lundi&quot;) {
 print(&quot;Ai-je fais mon travail pour le cours BIO109 ?&quot;)
 }
-else { 
+else {
 if(jour == &quot;samedi&quot;) {
 print(&quot;Je peux encore dormir un peu&quot;)
 }
 else {
 print(&quot;Bof, j&#39;ai encore du temps !&quot;)
-} 
+}
 }
 }  
-} 
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-32" style="background:;">
-  <!--  <a href="#slide-32"></a> -->
-  <hgroup>
-    <h1>Opérateurs logiques</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Les classiques : </p>
-
-<ul>
-<li>X est égal à Y : X == Y</li>
-<li>X est supérieur à Y : X &gt; Y</li>
-<li>X est inférieur à Y : X &lt; Y</li>
-<li>X est supérieur ou égal à Y : X &gt;= Y</li>
-<li>X est inférieur ou égal à Y : X &lt;= Y</li>
-<li>X est différent de Y : X != Y</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-33" style="background:;">
-  <!--  <a href="#slide-33"></a> -->
-  <hgroup>
-    <h1>Exercice</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Tirez au hasard 10 chiffres en 0 et 1. Pour chacun de ces chiffres, déterminez s&#39;il est plus petit ou plus grand que la valeur seuil de 0.3. Inscrivez votre résultat dans un autre objet. </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-34" style="background:;">
-  <!--  <a href="#slide-34"></a> -->
-  <hgroup>
-    <h1>Solution</h1>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">X &lt;- runif(n = 10)
-res &lt;- numeric(10)
-for(i in 1:10) {
-    if(X[i] &lt; 0.3) {
-        res[i] &lt;- &quot;plus petit&quot;
-    }
-    else {
-        res[i] &lt;- &quot;plus grand&quot;
-    } 
 }
-cbind(X,res)
-</code></pre>
-
-<pre><code>##       X                   res         
-##  [1,] &quot;0.462138664210215&quot; &quot;plus grand&quot;
-##  [2,] &quot;0.315780477365479&quot; &quot;plus grand&quot;
-##  [3,] &quot;0.54927207599394&quot;  &quot;plus grand&quot;
-##  [4,] &quot;0.424599886871874&quot; &quot;plus grand&quot;
-##  [5,] &quot;0.73330848896876&quot;  &quot;plus grand&quot;
-##  [6,] &quot;0.152866058982909&quot; &quot;plus petit&quot;
-##  [7,] &quot;0.832978803897277&quot; &quot;plus grand&quot;
-##  [8,] &quot;0.531691518379375&quot; &quot;plus grand&quot;
-##  [9,] &quot;0.984459759434685&quot; &quot;plus grand&quot;
-## [10,] &quot;0.541938369860873&quot; &quot;plus grand&quot;
 </code></pre>
 
   </article>
@@ -861,11 +841,15 @@ cbind(X,res)
     <h1>Opérateurs logiques</h1>
   </hgroup>
   <article data-timings="">
-    <p>On peut aussi combiner plusieurs conditions : </p>
+    <p>Les classiques :</p>
 
 <ul>
-<li>La condition A et la condition B : A &amp; B</li>
-<li>La condition A ou la condition B : A|B</li>
+<li>X est égal à Y : <code>X == Y</code></li>
+<li>X est supérieur à Y : <code>X &gt; Y</code></li>
+<li>X est inférieur à Y : <code>X &lt; Y</code></li>
+<li>X est supérieur ou égal à Y : <code>X &gt;= Y</code></li>
+<li>X est inférieur ou égal à Y : <code>X &lt;= Y</code></li>
+<li>X est différent de Y : <code>X != Y</code></li>
 </ul>
 
   </article>
@@ -877,77 +861,151 @@ cbind(X,res)
     <h1>Exercice</h1>
   </hgroup>
   <article data-timings="">
-    <p>Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6. </p>
+    <ol>
+<li>Tirez au hasard 10 chiffres entre 0 et 1.</li>
+<li>Pour chacun de ces chiffres, déterminez s&#39;il est plus petit ou plus grand que la valeur seuil de 0.3.</li>
+<li>Inscrivez votre résultat dans un autre objet.</li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-37" style="background:;">
-  <!--  <a href="#slide-37"></a> -->
   <hgroup>
     <h1>Solution</h1>
   </hgroup>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <pre><code class="r">X &lt;- runif(n = 10)
+res &lt;- numeric(10)
+for(i in 1:10) {
+    if(X[i] &lt; 0.3) {
+        res[i] &lt;- &quot;plus petit&quot;
+    }
+    else {
+        res[i] &lt;- &quot;plus grand&quot;
+    }
+}
+cbind(X,res)
+</code></pre>
+
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <pre><code>##       X                    res         
+##  [1,] &quot;0.174428719794378&quot;  &quot;plus petit&quot;
+##  [2,] &quot;0.766226450679824&quot;  &quot;plus grand&quot;
+##  [3,] &quot;0.744366807164624&quot;  &quot;plus grand&quot;
+##  [4,] &quot;0.0158158370759338&quot; &quot;plus petit&quot;
+##  [5,] &quot;0.118239835603163&quot;  &quot;plus petit&quot;
+##  [6,] &quot;0.540905090747401&quot;  &quot;plus grand&quot;
+##  [7,] &quot;0.524461495922878&quot;  &quot;plus grand&quot;
+##  [8,] &quot;0.0970251078251749&quot; &quot;plus petit&quot;
+##  [9,] &quot;0.450602065771818&quot;  &quot;plus grand&quot;
+## [10,] &quot;0.593258157605305&quot;  &quot;plus grand&quot;
+</code></pre>
+
+    </div>
+  </article>
+</slide>
+<slide class="" id="slide-38" style="background:;">
+  <!--  <a href="#slide-38"></a> -->
+  <hgroup>
+    <h1>Opérateurs logiques</h1>
+  </hgroup>
   <article data-timings="">
-    <pre><code class="r">res2 &lt;- numeric(10)
+    <p>On peut aussi combiner plusieurs conditions :</p>
+
+<ul>
+<li>La condition A et la condition B : <code>A &amp; B</code></li>
+<li>La condition A ou la condition B : <code>A | B</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-39" style="background:;">
+  <!--  <a href="#slide-39"></a> -->
+  <hgroup>
+    <h1>Exercice</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h1>Solution</h1>
+  </hgroup>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <pre><code class="r">res2 &lt;- numeric(10)
 for(i in 1:10) {
     if(X[i] &gt; 0.2 &amp; X[i] &lt; 0.6) {
         res2[i] &lt;- &quot;oui&quot;
     }
     else {
         res2[i] &lt;- &quot;non&quot;
-    } 
+    }
 }
 cbind(X,res2)
 </code></pre>
 
-<pre><code>##       X                   res2 
-##  [1,] &quot;0.462138664210215&quot; &quot;oui&quot;
-##  [2,] &quot;0.315780477365479&quot; &quot;oui&quot;
-##  [3,] &quot;0.54927207599394&quot;  &quot;oui&quot;
-##  [4,] &quot;0.424599886871874&quot; &quot;oui&quot;
-##  [5,] &quot;0.73330848896876&quot;  &quot;non&quot;
-##  [6,] &quot;0.152866058982909&quot; &quot;non&quot;
-##  [7,] &quot;0.832978803897277&quot; &quot;non&quot;
-##  [8,] &quot;0.531691518379375&quot; &quot;oui&quot;
-##  [9,] &quot;0.984459759434685&quot; &quot;non&quot;
-## [10,] &quot;0.541938369860873&quot; &quot;oui&quot;
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <pre><code>##       X                    res2 
+##  [1,] &quot;0.174428719794378&quot;  &quot;non&quot;
+##  [2,] &quot;0.766226450679824&quot;  &quot;non&quot;
+##  [3,] &quot;0.744366807164624&quot;  &quot;non&quot;
+##  [4,] &quot;0.0158158370759338&quot; &quot;non&quot;
+##  [5,] &quot;0.118239835603163&quot;  &quot;non&quot;
+##  [6,] &quot;0.540905090747401&quot;  &quot;oui&quot;
+##  [7,] &quot;0.524461495922878&quot;  &quot;oui&quot;
+##  [8,] &quot;0.0970251078251749&quot; &quot;non&quot;
+##  [9,] &quot;0.450602065771818&quot;  &quot;oui&quot;
+## [10,] &quot;0.593258157605305&quot;  &quot;oui&quot;
 </code></pre>
 
+    </div>
   </article>
-  <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-38" style="background:;">
-  <!--  <a href="#slide-38"></a> -->
+<slide class="" id="slide-41" style="background:;">
   <hgroup>
     <h1>Conditions sur des vecteurs</h1>
   </hgroup>
-  <article data-timings="">
+  <article>
     <p>R a la particularité d&#39;être optimisé pour les objets sous forme de matrice ou de vecteurs. Ainsi, vous pouvez réaliser des conditions sur un vecteur sans avoir à passer par une boucle. On peut reprendre l&#39;exemple précédent, d&#39;une façon beaucoup plus rapide :</p>
 
-<pre><code class="r">res2 &lt;- numeric(10)
+    <div class='left' style='float:left;width:48%'>
+     <pre><code class="r">res2 &lt;- numeric(10)
 res2[X &gt; 0.2 &amp; X &lt; 0.6] &lt;- &quot;oui&quot;
 res2[X &lt; 0.2 | X &gt; 0.6] &lt;- &quot;non&quot;
 cbind(X,res2)
 </code></pre>
 
-<pre><code>##       X                   res2 
-##  [1,] &quot;0.462138664210215&quot; &quot;oui&quot;
-##  [2,] &quot;0.315780477365479&quot; &quot;oui&quot;
-##  [3,] &quot;0.54927207599394&quot;  &quot;oui&quot;
-##  [4,] &quot;0.424599886871874&quot; &quot;oui&quot;
-##  [5,] &quot;0.73330848896876&quot;  &quot;non&quot;
-##  [6,] &quot;0.152866058982909&quot; &quot;non&quot;
-##  [7,] &quot;0.832978803897277&quot; &quot;non&quot;
-##  [8,] &quot;0.531691518379375&quot; &quot;oui&quot;
-##  [9,] &quot;0.984459759434685&quot; &quot;non&quot;
-## [10,] &quot;0.541938369860873&quot; &quot;oui&quot;
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <pre><code>##       X                    res2 
+##  [1,] &quot;0.174428719794378&quot;  &quot;non&quot;
+##  [2,] &quot;0.766226450679824&quot;  &quot;non&quot;
+##  [3,] &quot;0.744366807164624&quot;  &quot;non&quot;
+##  [4,] &quot;0.0158158370759338&quot; &quot;non&quot;
+##  [5,] &quot;0.118239835603163&quot;  &quot;non&quot;
+##  [6,] &quot;0.540905090747401&quot;  &quot;oui&quot;
+##  [7,] &quot;0.524461495922878&quot;  &quot;oui&quot;
+##  [8,] &quot;0.0970251078251749&quot; &quot;non&quot;
+##  [9,] &quot;0.450602065771818&quot;  &quot;oui&quot;
+## [10,] &quot;0.593258157605305&quot;  &quot;oui&quot;
 </code></pre>
 
+    </div>
   </article>
-  <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-39" style="background:;">
-  <!--  <a href="#slide-39"></a> -->
+<slide class="transition" id="slide-42" style="background:;">
+  <!--  <a href="#slide-42"></a> -->
   <hgroup>
     <h1>Exercice final</h1>
   </hgroup>
@@ -956,13 +1014,13 @@ cbind(X,res2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-40" style="background:;">
-  <!--  <a href="#slide-40"></a> -->
+<slide class="" id="slide-43" style="background:;">
+  <!--  <a href="#slide-43"></a> -->
   <hgroup>
     <h1>Le retour du scrabble ...</h1>
   </hgroup>
   <article data-timings="">
-    <p>Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser la fonction <em>sort()</em> de R. </p>
+    <p>Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser les fonctions <code>sort()</code> et <code>order()</code> de R. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1015,19 +1073,19 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Définition'>
+        data-slide=8 title='Mise en situation'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Anatomie de la boucle'>
+        data-slide=9 title='Définition'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Quelques exemples simples'>
+        data-slide=10 title='Anatomie de la boucle'>
          10
       </a>
     </li>
@@ -1039,7 +1097,7 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Un premier exercice simple'>
+        data-slide=12 title='Quelques exemples simples'>
          12
       </a>
     </li>
@@ -1051,7 +1109,7 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Boucles et indexation'>
+        data-slide=14 title='Un premier exercice simple'>
          14
       </a>
     </li>
@@ -1063,25 +1121,25 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Compteur'>
+        data-slide=16 title='Boucles et indexation'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Exercice'>
+        data-slide=17 title='Compteur'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Solution'>
+        data-slide=18 title='Exercice'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Exercice'>
+        data-slide=19 title='Solution'>
          19
       </a>
     </li>
@@ -1093,85 +1151,85 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='On complexifie le problème ....'>
+        data-slide=21 title='Exercice'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='La boucle while'>
+        data-slide=22 title='On complexifie le problème ....'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Exercice'>
+        data-slide=23 title='La boucle while'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Exercice intermédiaire'>
+        data-slide=24 title='Exercice'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Croissance logistique'>
+        data-slide=25 title='Exercice intermédiaire'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Solution 1'>
+        data-slide=26 title='Croissance logistique'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Solution 2'>
+        data-slide=27 title='Solution 1'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Principe'>
+        data-slide=28 title='Solution 2'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Arbre décisionnel'>
+        data-slide=29 title='Solution 2'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Astuce'>
+        data-slide=30 title='Expressions conditionnelles'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Arbre décisionnel'>
+        data-slide=31 title='Principe'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Opérateurs logiques'>
+        data-slide=32 title='Arbre décisionnel'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Exercice'>
+        data-slide=33 title='Astuce'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Solution'>
+        data-slide=34 title='Arbre décisionnel'>
          34
       </a>
     </li>
@@ -1195,20 +1253,38 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Conditions sur des vecteurs'>
+        data-slide=38 title='Opérateurs logiques'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Exercice final'>
+        data-slide=39 title='Exercice'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Le retour du scrabble ...'>
+        data-slide=40 title='Solution'>
          40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Conditions sur des vecteurs'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='Exercice final'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Le retour du scrabble ...'>
+         43
       </a>
     </li>
   </ul>

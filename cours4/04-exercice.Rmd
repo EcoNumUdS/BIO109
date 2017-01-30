@@ -1,9 +1,10 @@
+
 --- .transition
+
 # Exercice final
 
 ---
+
 # Le retour du scrabble ...
 
-Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser la fonction *sort()* de R. 
-
-
+Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser les fonctions `sort()` et `order()` de R. 

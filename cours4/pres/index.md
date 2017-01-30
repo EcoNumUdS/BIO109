@@ -21,16 +21,17 @@ assets      :
 ---
 # Mise en situation
 
-Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d'abondance à deux points d'échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans. Le taux de croissance est donné par l'équation suivante : 
+Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d'abondance à deux points d'échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans. Le taux de croissance est donné par l'équation suivante :
 
 $$
 \dfrac{N_{t+1} - N_t}{N_t}
 $$
 
 ---
+
 # Mise en situation
 
-Les données ressemblent à ce qui suit: 
+Les données ressemblent à ce qui suit:
 
 
 ```r
@@ -38,16 +39,36 @@ donnees <- matrix(nr = 5, nc = 2)
 donnees[,1] <- c(34,35,32,34,36)
 donnees[,2] <- c(32,36,38,36,40)
 an <- c(2010:2014)
-plot(an,donnees[,1],type = "l", xlab = "Année",ylab = "Nombre d'individus")
+head(donnees)
+```
+
+```
+##      [,1] [,2]
+## [1,]   34   32
+## [2,]   35   36
+## [3,]   32   38
+## [4,]   34   36
+## [5,]   36   40
+```
+
+---
+
+# Mise en situation
+
+Les données ressemblent à ce qui suit:
+
+
+```r
+plot(an,donnees[,1],type = "l", xlab = "Année",ylab = "Nombre d'individus", ylim=c(32,40),cex=2)
 lines(an,donnees[,2], lty = 3)
 ```
 
-![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
+<img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="42%" style="display: block; margin: auto;" />
 
 ---
 # Mise en situation
 
-Maintenant, on doit calculer le taux de croissance annuel pour chaque population. Commençons pour l'intervalle entre l'an 1 et l'an 2, sur le site 1 : 
+Maintenant, on doit calculer le taux de croissance annuel pour chaque population. Commençons pour l'intervalle entre l'an 1 et l'an 2, sur le site 1 :
 
 
 ```r
@@ -55,7 +76,7 @@ lambda <- matrix(nr = 4, nc = 2)
 lambda[1,1] <- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
 ```
 
-Ensuite, on fait l'an 2 : 
+Ensuite, on fait l'an 2 :
 
 
 ```r
@@ -65,19 +86,19 @@ lambda[2,1] <- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
 ---
 # Mise en situation
 
-Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable. 
+Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable.
 
 Imaginez cependant que vous découvrez un jour qu'un passionné des salamadres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
 
 ---
 # Mise en situation
 
-La semaine dernière, nous avons vu comment généraliser une séquence d'opérations au moyen d'une fonction. Comment est-ce qu'on peut généraliser des opérations qui sont répétées très souvent ? C'est le principe de la boucle. 
+La semaine dernière, nous avons vu comment généraliser une séquence d'opérations au moyen d'une fonction. Comment est-ce qu'on peut généraliser des opérations qui sont répétées très souvent ? C'est le principe de la boucle.
 
 ---
 # Mise en situation
 
-La solution ressemblerait à 
+La solution ressemblerait à
 
 
 ```r
@@ -94,7 +115,7 @@ for(i in 2:n_annees) {
 ---
 # Définition
 
-Une boucle est une commande qui permet de répéter une série d'instructions sous des conditions définies de départ et de fin. C'est une commande de base de l'algorithmique. 
+Une boucle est une commande qui permet de répéter une série d'instructions sous des conditions définies de départ et de fin. C'est une commande de base de l'algorithmique.
 
 ---
 # Anatomie de la boucle
@@ -116,7 +137,7 @@ for(etape in depart:fin) {
 ## [1] 5
 ```
 
-L'exécution une fois d'un groupe de commandes dans un boucle s'appelle une itération. 
+L'exécution une fois d'un groupe de commandes dans un boucle s'appelle une itération.
 
 ---
 # Quelques exemples simples
@@ -136,7 +157,7 @@ for(etape in c("Bonjour", "programmeurs", "en R")) {
 ## [1] "en R"
 ```
 
-Dans cet exemple, notre séquence contient 3 éléments "Bonjour", "programmeurs", "en R". R va évaluer l'expression 3 fois. La variable index prendra successivement les valeurs de 1 à 3 pendant l'exécution de la boucle. 
+Dans cet exemple, notre séquence contient 3 éléments "Bonjour", "programmeurs", "en R". R va évaluer l'expression 3 fois. La variable index prendra successivement les valeurs de 1 à 3 pendant l'exécution de la boucle.
 
 ---
 # Quelques exemples simples
@@ -165,7 +186,7 @@ Transformez en celcius une séquence de température en fahrenheit qui va de -50
 
 - Déterminez le point de départ de la séquence
 - Déterminez le point de fin de la séquence
-- Faites le calcul approprié 
+- Faites le calcul approprié
 
 ---
 # Un premier exercice simple
@@ -331,10 +352,10 @@ for(F in -50:100) {
 ## Pour F =  100  on obtient C =  37.77778
 ```
 
---- 
+---
 # Boucles et indexation
 
-Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L'index de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple : 
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L'index de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
 
 
 ```r
@@ -345,14 +366,14 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.8454765
-## [1] 0.7820218
-## [1] 0.603634
-## [1] 0.09874861
-## [1] 0.8657599
+## [1] 0.02331369
+## [1] 0.3327549
+## [1] 0.07717755
+## [1] 0.7786474
+## [1] 0.2726084
 ```
 
---- 
+---
 # Boucles et indexation
 
 De même, on peut réaliser des opérations mathématiques sur l'index
@@ -361,18 +382,22 @@ De même, on peut réaliser des opérations mathématiques sur l'index
 ```r
 test = runif(500, 0,1)
 for(etape in 1:5) {
-    print(test[index * 5])
+    print(test[etape * 5])
 }
 ```
 
 ```
-## Error in print(test[index * 5]): objet 'index' introuvable
+## [1] 0.4008903
+## [1] 0.2637898
+## [1] 0.881541
+## [1] 0.9209875
+## [1] 0.9077825
 ```
 
 ---
 # Compteur
 
-La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendent pour l'indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle. 
+La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendent pour l'indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle.
 
 
 ```r
@@ -442,7 +467,7 @@ n
 ---
 # On complexifie le problème ....
 
-Il est possible d'incruster une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes .....
+Il est possible d'incruster une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes...
 
 
 ```r
@@ -460,22 +485,24 @@ ma_matrice
 ---
 # La boucle while
 
-La boucle de type *while*, pour 'pendant', répète une série d'intructions tant qu'une condition n'a pas été atteinte. C'est une version générale de la boucle *for*. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile
+La boucle de type *while*, pour 'pendant', répète une série d'intructions tant qu'une condition n'a pas été atteinte. C'est une version générale de la boucle *for*. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile.
 
 
 ```r
 piece <- c("pile","face")
 combinaison = "face-face"
 while(combinaison != "pile-pile") {
-    essai1 <- sample(piece, n = 1)
-    essai2 <- sample(piece, n = 1)
+    essai1 <- sample(piece, 1)
+    essai2 <- sample(piece, 1)
     combinaison = paste(essai1, "-" , essai2, sep = "")
     print(combinaison)
 }
 ```
 
 ```
-## Error in sample(piece, n = 1): argument inutilisé (n = 1)
+## [1] "face-pile"
+## [1] "face-face"
+## [1] "pile-pile"
 ```
 
 ---
@@ -489,13 +516,13 @@ Calculez en moyenne combien de fois vous avez à tirer un dé à 6 faces pour ob
 ---
 # Croissance logistique
 
-La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcul ainsi : 
+La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcul ainsi :
 
 $$
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 $$
 
-Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on en compte aujourd'hui environ à 200 000 bêtes. Si on fixe le taux de croissance à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on en compte aujourd'hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($lambda$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1
@@ -531,17 +558,27 @@ N[1] = 220
 for(i in 2:(n_steps+1)) {
     N[i] = N[i-1] + lambda * N[i-1] * (1 - N[i-1]/K)
 }
+```
+
+---
+
+# Solution 2
+
+
+```r
 plot(c(1900:2015),N,type = "l",xlab = "Année", ylab = "Population")
 ```
 
-![plot of chunk unnamed-chunk-17](assets/fig/unnamed-chunk-17-1.png)
+<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" />
+
 --- .transition
+
 # Expressions conditionnelles
 
 ---
 # Principe
 
-Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours. 
+Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours.
 
 La structure de base d'une expression conditionelle est la suivante:
 
@@ -558,7 +595,7 @@ else {
 ---
 # Arbre décisionnel
 
-Un exemple, 
+Un exemple,
 
 
 ```r
@@ -570,13 +607,13 @@ test = function(jour) {
         if(jour == "lundi") {
         print("Ai-je fais mon travail pour le cours BIO109 ?")
         }
-        else { 
+        else {
             if(jour == "samedi") {
                 print("Je peux encore dormir un peu")
             }
             else {
                 print("Bof, j'ai encore du temps !")
-            } 
+            }
         }
     }  
 }
@@ -585,7 +622,7 @@ test = function(jour) {
 ---
 # Astuce
 
-L'indentation (l'utilisation d'espaces dans le code) est fort utile pour s'y retrouver lorsque les conditions deviennent nombreuses. Reprenons l'exemple précédent. 
+L'indentation (l'utilisation d'espaces dans le code) est fort utile pour s'y retrouver lorsque les conditions deviennent nombreuses. Reprenons l'exemple précédent.
 
 ---
 # Arbre décisionnel
@@ -600,37 +637,42 @@ else {
 if(jour == "lundi") {
 print("Ai-je fais mon travail pour le cours BIO109 ?")
 }
-else { 
+else {
 if(jour == "samedi") {
 print("Je peux encore dormir un peu")
 }
 else {
 print("Bof, j'ai encore du temps !")
-} 
+}
 }
 }  
-} 
+}
 ```
 
 ---
 # Opérateurs logiques
 
-Les classiques : 
+Les classiques :
 
-- X est égal à Y : X == Y
-- X est supérieur à Y : X > Y
-- X est inférieur à Y : X < Y
-- X est supérieur ou égal à Y : X >= Y
-- X est inférieur ou égal à Y : X <= Y
-- X est différent de Y : X != Y
+- X est égal à Y : `X == Y`
+- X est supérieur à Y : `X > Y`
+- X est inférieur à Y : `X < Y`
+- X est supérieur ou égal à Y : `X >= Y`
+- X est inférieur ou égal à Y : `X <= Y`
+- X est différent de Y : `X != Y`
 
---- 
+---
 # Exercice
 
-Tirez au hasard 10 chiffres en 0 et 1. Pour chacun de ces chiffres, déterminez s'il est plus petit ou plus grand que la valeur seuil de 0.3. Inscrivez votre résultat dans un autre objet. 
+1. Tirez au hasard 10 chiffres entre 0 et 1.
+2. Pour chacun de ces chiffres, déterminez s'il est plus petit ou plus grand que la valeur seuil de 0.3.
+3. Inscrivez votre résultat dans un autre objet.
 
---- 
+--- &twocol
+
 # Solution
+
+*** =left
 
 
 ```r
@@ -642,40 +684,46 @@ for(i in 1:10) {
     }
     else {
         res[i] <- "plus grand"
-    } 
+    }
 }
 cbind(X,res)
 ```
 
+*** =right
+
+
 ```
-##       X                   res         
-##  [1,] "0.462138664210215" "plus grand"
-##  [2,] "0.315780477365479" "plus grand"
-##  [3,] "0.54927207599394"  "plus grand"
-##  [4,] "0.424599886871874" "plus grand"
-##  [5,] "0.73330848896876"  "plus grand"
-##  [6,] "0.152866058982909" "plus petit"
-##  [7,] "0.832978803897277" "plus grand"
-##  [8,] "0.531691518379375" "plus grand"
-##  [9,] "0.984459759434685" "plus grand"
-## [10,] "0.541938369860873" "plus grand"
+##       X                    res         
+##  [1,] "0.174428719794378"  "plus petit"
+##  [2,] "0.766226450679824"  "plus grand"
+##  [3,] "0.744366807164624"  "plus grand"
+##  [4,] "0.0158158370759338" "plus petit"
+##  [5,] "0.118239835603163"  "plus petit"
+##  [6,] "0.540905090747401"  "plus grand"
+##  [7,] "0.524461495922878"  "plus grand"
+##  [8,] "0.0970251078251749" "plus petit"
+##  [9,] "0.450602065771818"  "plus grand"
+## [10,] "0.593258157605305"  "plus grand"
 ```
 
 ---
 # Opérateurs logiques
 
-On peut aussi combiner plusieurs conditions : 
+On peut aussi combiner plusieurs conditions :
 
-- La condition A et la condition B : A & B
-- La condition A ou la condition B : A|B
+- La condition A et la condition B : `A & B`
+- La condition A ou la condition B : `A | B`
 
 ---
 # Exercice
 
-Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6. 
+Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6.
 
---- 
+--- &twocol
+
 # Solution
+
+*** =left
 
 
 ```r
@@ -686,29 +734,35 @@ for(i in 1:10) {
     }
     else {
         res2[i] <- "non"
-    } 
+    }
 }
 cbind(X,res2)
 ```
 
+*** =right
+
+
 ```
-##       X                   res2 
-##  [1,] "0.462138664210215" "oui"
-##  [2,] "0.315780477365479" "oui"
-##  [3,] "0.54927207599394"  "oui"
-##  [4,] "0.424599886871874" "oui"
-##  [5,] "0.73330848896876"  "non"
-##  [6,] "0.152866058982909" "non"
-##  [7,] "0.832978803897277" "non"
-##  [8,] "0.531691518379375" "oui"
-##  [9,] "0.984459759434685" "non"
-## [10,] "0.541938369860873" "oui"
+##       X                    res2 
+##  [1,] "0.174428719794378"  "non"
+##  [2,] "0.766226450679824"  "non"
+##  [3,] "0.744366807164624"  "non"
+##  [4,] "0.0158158370759338" "non"
+##  [5,] "0.118239835603163"  "non"
+##  [6,] "0.540905090747401"  "oui"
+##  [7,] "0.524461495922878"  "oui"
+##  [8,] "0.0970251078251749" "non"
+##  [9,] "0.450602065771818"  "oui"
+## [10,] "0.593258157605305"  "oui"
 ```
 
----
+--- &twocol
+
 # Conditions sur des vecteurs
 
 R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteurs. Ainsi, vous pouvez réaliser des conditions sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
+
+*** =left
 
 
 ```r
@@ -718,27 +772,29 @@ res2[X < 0.2 | X > 0.6] <- "non"
 cbind(X,res2)
 ```
 
-```
-##       X                   res2 
-##  [1,] "0.462138664210215" "oui"
-##  [2,] "0.315780477365479" "oui"
-##  [3,] "0.54927207599394"  "oui"
-##  [4,] "0.424599886871874" "oui"
-##  [5,] "0.73330848896876"  "non"
-##  [6,] "0.152866058982909" "non"
-##  [7,] "0.832978803897277" "non"
-##  [8,] "0.531691518379375" "oui"
-##  [9,] "0.984459759434685" "non"
-## [10,] "0.541938369860873" "oui"
-```
+*** =right
 
+
+```
+##       X                    res2 
+##  [1,] "0.174428719794378"  "non"
+##  [2,] "0.766226450679824"  "non"
+##  [3,] "0.744366807164624"  "non"
+##  [4,] "0.0158158370759338" "non"
+##  [5,] "0.118239835603163"  "non"
+##  [6,] "0.540905090747401"  "oui"
+##  [7,] "0.524461495922878"  "oui"
+##  [8,] "0.0970251078251749" "non"
+##  [9,] "0.450602065771818"  "oui"
+## [10,] "0.593258157605305"  "oui"
+```
 
 --- .transition
+
 # Exercice final
 
 ---
+
 # Le retour du scrabble ...
 
-Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser la fonction *sort()* de R. 
-
-
+Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser les fonctions `sort()` et `order()` de R. 

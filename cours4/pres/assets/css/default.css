@@ -79,6 +79,10 @@ article p, article li, article li.build, section p, section li {
     color: #404040;
 }
 
+slides > slide > hgroup + article p {
+    margin-bottom: 0.2em;
+}
+
 .caption {
     font-weight: bold;
     font-size: 0.75em;
