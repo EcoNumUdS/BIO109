@@ -464,11 +464,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.4730017
-## [1] 0.4869159
-## [1] 0.8103152
-## [1] 0.1109015
-## [1] 0.8322343
+<pre><code>## [1] 0.8905522
+## [1] 0.4032419
+## [1] 0.2444495
+## [1] 0.5167824
+## [1] 0.1628666
 </code></pre>
 
   </article>
@@ -488,11 +488,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.3281348
-## [1] 0.07178208
-## [1] 0.1458002
-## [1] 0.6949791
-## [1] 0.6538653
+<pre><code>## [1] 0.8790404
+## [1] 0.09989371
+## [1] 0.8205114
+## [1] 0.9374149
+## [1] 0.01011985
 </code></pre>
 
   </article>
@@ -630,10 +630,10 @@ while(combinaison != &quot;pile-pile&quot;) {
 }
 </code></pre>
 
-<pre><code>## [1] &quot;face-face&quot;
-## [1] &quot;pile-face&quot;
+<pre><code>## [1] &quot;pile-face&quot;
 ## [1] &quot;face-face&quot;
-## [1] &quot;face-face&quot;
+## [1] &quot;face-pile&quot;
+## [1] &quot;face-pile&quot;
 ## [1] &quot;pile-pile&quot;
 </code></pre>
 
@@ -672,19 +672,28 @@ for(i in 1:n_test) {
 mean(res)
 </code></pre>
 
-<pre><code>## [1] 6.86
+<pre><code>## [1] 6.928
 </code></pre>
-
-<pre><code class="r">hist(res)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-17-1.png" alt="plot of chunk unnamed-chunk-17"></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-26" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <!--  <a href="#slide-26"></a> -->
+  <hgroup>
+    <h1>Solution</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">hist(res)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="50%" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
   <hgroup>
     <h1>Exercice intermédiaire</h1>
   </hgroup>
@@ -693,8 +702,8 @@ mean(res)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-27" style="background:;">
-  <!--  <a href="#slide-27"></a> -->
+<slide class="" id="slide-28" style="background:;">
+  <!--  <a href="#slide-28"></a> -->
   <hgroup>
     <h1>Croissance logistique</h1>
   </hgroup>
@@ -710,8 +719,8 @@ N_{t+1} = N_t + r \times N_t \times (1 - N/K)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-28" style="background:;">
-  <!--  <a href="#slide-28"></a> -->
+<slide class="" id="slide-29" style="background:;">
+  <!--  <a href="#slide-29"></a> -->
   <hgroup>
     <h1>Solution 1</h1>
   </hgroup>
@@ -733,8 +742,8 @@ step
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-29" style="background:;">
-  <!--  <a href="#slide-29"></a> -->
+<slide class="" id="slide-30" style="background:;">
+  <!--  <a href="#slide-30"></a> -->
   <hgroup>
     <h1>Solution 2</h1>
   </hgroup>
@@ -753,8 +762,8 @@ for(i in 2:(n_steps+1)) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-30" style="background:;">
-  <!--  <a href="#slide-30"></a> -->
+<slide class="" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
   <hgroup>
     <h1>Solution 2</h1>
   </hgroup>
@@ -762,13 +771,13 @@ for(i in 2:(n_steps+1)) {
     <pre><code class="r">plot(c(1900:2015), N, type = &quot;l&quot;, xlab = &quot;Année&quot;, ylab = &quot;Population&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="50%" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-31" style="background:;">
-  <!--  <a href="#slide-31"></a> -->
+<slide class="transition" id="slide-32" style="background:;">
+  <!--  <a href="#slide-32"></a> -->
   <hgroup>
     <h1>Expressions conditionnelles</h1>
   </hgroup>
@@ -777,8 +786,8 @@ for(i in 2:(n_steps+1)) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-32" style="background:;">
-  <!--  <a href="#slide-32"></a> -->
+<slide class="" id="slide-33" style="background:;">
+  <!--  <a href="#slide-33"></a> -->
   <hgroup>
     <h1>Principe</h1>
   </hgroup>
@@ -798,8 +807,8 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-33" style="background:;">
-  <!--  <a href="#slide-33"></a> -->
+<slide class="" id="slide-34" style="background:;">
+  <!--  <a href="#slide-34"></a> -->
   <hgroup>
     <h1>Arbre décisionnel</h1>
   </hgroup>
@@ -829,8 +838,8 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-34" style="background:;">
-  <!--  <a href="#slide-34"></a> -->
+<slide class="" id="slide-35" style="background:;">
+  <!--  <a href="#slide-35"></a> -->
   <hgroup>
     <h1>Astuce</h1>
   </hgroup>
@@ -840,8 +849,8 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-35" style="background:;">
-  <!--  <a href="#slide-35"></a> -->
+<slide class="" id="slide-36" style="background:;">
+  <!--  <a href="#slide-36"></a> -->
   <hgroup>
     <h1>Arbre décisionnel</h1>
   </hgroup>
@@ -869,8 +878,8 @@ print(&quot;Bof, j&#39;ai encore du temps !&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-36" style="background:;">
-  <!--  <a href="#slide-36"></a> -->
+<slide class="" id="slide-37" style="background:;">
+  <!--  <a href="#slide-37"></a> -->
   <hgroup>
     <h1>Opérateurs logiques</h1>
   </hgroup>
@@ -889,8 +898,8 @@ print(&quot;Bof, j&#39;ai encore du temps !&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-37" style="background:;">
-  <!--  <a href="#slide-37"></a> -->
+<slide class="" id="slide-38" style="background:;">
+  <!--  <a href="#slide-38"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -904,7 +913,7 @@ print(&quot;Bof, j&#39;ai encore du temps !&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-39" style="background:;">
   <hgroup>
     <h1>Solution</h1>
   </hgroup>
@@ -926,24 +935,24 @@ cbind(X,res)
 
     </div>
     <div class='right' style='float:right;width:48%'>
-     <pre><code>##       X                    res         
-##  [1,] &quot;0.780484250281006&quot;  &quot;plus grand&quot;
-##  [2,] &quot;0.0614221321884543&quot; &quot;plus petit&quot;
-##  [3,] &quot;0.830606476636603&quot;  &quot;plus grand&quot;
-##  [4,] &quot;0.753855953924358&quot;  &quot;plus grand&quot;
-##  [5,] &quot;0.662876249291003&quot;  &quot;plus grand&quot;
-##  [6,] &quot;0.992962346645072&quot;  &quot;plus grand&quot;
-##  [7,] &quot;0.621755686355755&quot;  &quot;plus grand&quot;
-##  [8,] &quot;0.360712851397693&quot;  &quot;plus grand&quot;
-##  [9,] &quot;0.0660606366582215&quot; &quot;plus petit&quot;
-## [10,] &quot;0.858501206384972&quot;  &quot;plus grand&quot;
+     <pre><code>##       X                   res         
+##  [1,] &quot;0.543885956052691&quot; &quot;plus grand&quot;
+##  [2,] &quot;0.782982586417347&quot; &quot;plus grand&quot;
+##  [3,] &quot;0.346669606398791&quot; &quot;plus grand&quot;
+##  [4,] &quot;0.94697148934938&quot;  &quot;plus grand&quot;
+##  [5,] &quot;0.334874059306458&quot; &quot;plus grand&quot;
+##  [6,] &quot;0.778998677385971&quot; &quot;plus grand&quot;
+##  [7,] &quot;0.473091000923887&quot; &quot;plus grand&quot;
+##  [8,] &quot;0.903525959700346&quot; &quot;plus grand&quot;
+##  [9,] &quot;0.440975532168522&quot; &quot;plus grand&quot;
+## [10,] &quot;0.750465973746032&quot; &quot;plus grand&quot;
 </code></pre>
 
     </div>
   </article>
 </slide>
-<slide class="" id="slide-39" style="background:;">
-  <!--  <a href="#slide-39"></a> -->
+<slide class="" id="slide-40" style="background:;">
+  <!--  <a href="#slide-40"></a> -->
   <hgroup>
     <h1>Opérateurs logiques</h1>
   </hgroup>
@@ -958,8 +967,8 @@ cbind(X,res)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-40" style="background:;">
-  <!--  <a href="#slide-40"></a> -->
+<slide class="" id="slide-41" style="background:;">
+  <!--  <a href="#slide-41"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -969,7 +978,7 @@ cbind(X,res)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h1>Solution</h1>
   </hgroup>
@@ -990,23 +999,23 @@ cbind(X,res2)
 
     </div>
     <div class='right' style='float:right;width:48%'>
-     <pre><code>##       X                    res2 
-##  [1,] &quot;0.780484250281006&quot;  &quot;non&quot;
-##  [2,] &quot;0.0614221321884543&quot; &quot;non&quot;
-##  [3,] &quot;0.830606476636603&quot;  &quot;non&quot;
-##  [4,] &quot;0.753855953924358&quot;  &quot;non&quot;
-##  [5,] &quot;0.662876249291003&quot;  &quot;non&quot;
-##  [6,] &quot;0.992962346645072&quot;  &quot;non&quot;
-##  [7,] &quot;0.621755686355755&quot;  &quot;non&quot;
-##  [8,] &quot;0.360712851397693&quot;  &quot;oui&quot;
-##  [9,] &quot;0.0660606366582215&quot; &quot;non&quot;
-## [10,] &quot;0.858501206384972&quot;  &quot;non&quot;
+     <pre><code>##       X                   res2 
+##  [1,] &quot;0.543885956052691&quot; &quot;oui&quot;
+##  [2,] &quot;0.782982586417347&quot; &quot;non&quot;
+##  [3,] &quot;0.346669606398791&quot; &quot;oui&quot;
+##  [4,] &quot;0.94697148934938&quot;  &quot;non&quot;
+##  [5,] &quot;0.334874059306458&quot; &quot;oui&quot;
+##  [6,] &quot;0.778998677385971&quot; &quot;non&quot;
+##  [7,] &quot;0.473091000923887&quot; &quot;oui&quot;
+##  [8,] &quot;0.903525959700346&quot; &quot;non&quot;
+##  [9,] &quot;0.440975532168522&quot; &quot;oui&quot;
+## [10,] &quot;0.750465973746032&quot; &quot;non&quot;
 </code></pre>
 
     </div>
   </article>
 </slide>
-<slide class="" id="slide-42" style="background:;">
+<slide class="" id="slide-43" style="background:;">
   <hgroup>
     <h1>Conditions sur des vecteurs</h1>
   </hgroup>
@@ -1022,24 +1031,24 @@ cbind(X,res2)
 
     </div>
     <div class='right' style='float:right;width:48%'>
-     <pre><code>##       X                    res2 
-##  [1,] &quot;0.780484250281006&quot;  &quot;non&quot;
-##  [2,] &quot;0.0614221321884543&quot; &quot;non&quot;
-##  [3,] &quot;0.830606476636603&quot;  &quot;non&quot;
-##  [4,] &quot;0.753855953924358&quot;  &quot;non&quot;
-##  [5,] &quot;0.662876249291003&quot;  &quot;non&quot;
-##  [6,] &quot;0.992962346645072&quot;  &quot;non&quot;
-##  [7,] &quot;0.621755686355755&quot;  &quot;non&quot;
-##  [8,] &quot;0.360712851397693&quot;  &quot;oui&quot;
-##  [9,] &quot;0.0660606366582215&quot; &quot;non&quot;
-## [10,] &quot;0.858501206384972&quot;  &quot;non&quot;
+     <pre><code>##       X                   res2 
+##  [1,] &quot;0.543885956052691&quot; &quot;oui&quot;
+##  [2,] &quot;0.782982586417347&quot; &quot;non&quot;
+##  [3,] &quot;0.346669606398791&quot; &quot;oui&quot;
+##  [4,] &quot;0.94697148934938&quot;  &quot;non&quot;
+##  [5,] &quot;0.334874059306458&quot; &quot;oui&quot;
+##  [6,] &quot;0.778998677385971&quot; &quot;non&quot;
+##  [7,] &quot;0.473091000923887&quot; &quot;oui&quot;
+##  [8,] &quot;0.903525959700346&quot; &quot;non&quot;
+##  [9,] &quot;0.440975532168522&quot; &quot;oui&quot;
+## [10,] &quot;0.750465973746032&quot; &quot;non&quot;
 </code></pre>
 
     </div>
   </article>
 </slide>
-<slide class="transition" id="slide-43" style="background:;">
-  <!--  <a href="#slide-43"></a> -->
+<slide class="transition" id="slide-44" style="background:;">
+  <!--  <a href="#slide-44"></a> -->
   <hgroup>
     <h1>Exercice final</h1>
   </hgroup>
@@ -1048,8 +1057,8 @@ cbind(X,res2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-44" style="background:;">
-  <!--  <a href="#slide-44"></a> -->
+<slide class="" id="slide-45" style="background:;">
+  <!--  <a href="#slide-45"></a> -->
   <hgroup>
     <h1>Le retour du scrabble ...</h1>
   </hgroup>
@@ -1215,25 +1224,25 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Exercice intermédiaire'>
+        data-slide=26 title='Solution'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Croissance logistique'>
+        data-slide=27 title='Exercice intermédiaire'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Solution 1'>
+        data-slide=28 title='Croissance logistique'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Solution 2'>
+        data-slide=29 title='Solution 1'>
          29
       </a>
     </li>
@@ -1245,86 +1254,92 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Expressions conditionnelles'>
+        data-slide=31 title='Solution 2'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Principe'>
+        data-slide=32 title='Expressions conditionnelles'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Arbre décisionnel'>
+        data-slide=33 title='Principe'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Astuce'>
+        data-slide=34 title='Arbre décisionnel'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Arbre décisionnel'>
+        data-slide=35 title='Astuce'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Opérateurs logiques'>
+        data-slide=36 title='Arbre décisionnel'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Exercice'>
+        data-slide=37 title='Opérateurs logiques'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Solution'>
+        data-slide=38 title='Exercice'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Opérateurs logiques'>
+        data-slide=39 title='Solution'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Exercice'>
+        data-slide=40 title='Opérateurs logiques'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Solution'>
+        data-slide=41 title='Exercice'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Conditions sur des vecteurs'>
+        data-slide=42 title='Solution'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Exercice final'>
+        data-slide=43 title='Conditions sur des vecteurs'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Le retour du scrabble ...'>
+        data-slide=44 title='Exercice final'>
          44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Le retour du scrabble ...'>
+         45
       </a>
     </li>
   </ul>

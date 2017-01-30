@@ -287,6 +287,12 @@ for(i in 1:n_test) {
 	res[i] <- n
 }
 mean(res)
+```
+
+---
+# Solution
+
+```{r , out.width = '50%', dpi=300, fig.align="center"}
 hist(res)
 ```
 
