@@ -201,8 +201,8 @@ for(i in 2:n_annees) {
     <h1>Anatomie de la boucle</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">depart = 1
-fin = 5
+    <pre><code class="r">depart &lt;- 1
+fin &lt;- 5
 for(etape in depart:fin) {
     print(etape)
 }
@@ -456,7 +456,7 @@ for(etape in depart:fin) {
     <h1>Boucles et indexation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L&#39;index de la boucle peut alors être utilisé directement comme index pour accéder à l&#39;objet. Par exemple :</p>
+    <p>Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisé directement comme index pour accéder à l&#39;objet. Par exemple :</p>
 
 <pre><code class="r">test = runif(5, 0,1)
 for(etape in 1:5) {
@@ -464,11 +464,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.9772747
-## [1] 0.3760439
-## [1] 0.3528628
-## [1] 0.6572887
-## [1] 0.9535225
+<pre><code>## [1] 0.4730017
+## [1] 0.4869159
+## [1] 0.8103152
+## [1] 0.1109015
+## [1] 0.8322343
 </code></pre>
 
   </article>
@@ -480,7 +480,7 @@ for(etape in 1:5) {
     <h1>Boucles et indexation</h1>
   </hgroup>
   <article data-timings="">
-    <p>De même, on peut réaliser des opérations mathématiques sur l&#39;index</p>
+    <p>De même, on peut réaliser des opérations mathématiques sur cette variable</p>
 
 <pre><code class="r">test = runif(500, 0,1)
 for(etape in 1:5) {
@@ -488,11 +488,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.04018742
-## [1] 0.8189345
-## [1] 0.06251663
-## [1] 0.8077711
-## [1] 0.5274296
+<pre><code>## [1] 0.3281348
+## [1] 0.07178208
+## [1] 0.1458002
+## [1] 0.6949791
+## [1] 0.6538653
 </code></pre>
 
   </article>
@@ -576,11 +576,11 @@ n! = 1 \times 2 \times 3 \times 4 \times .... n
 <slide class="" id="slide-21" style="background:;">
   <!--  <a href="#slide-21"></a> -->
   <hgroup>
-    <h1>Exercice</h1>
+    <h1>Solution</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">n = 1
-for(etape in 1:10) n = n*etape
+    <pre><code class="r">n &lt;- 1
+for(etape in 1:10) n &lt;- n*etape
 n
 </code></pre>
 
@@ -625,13 +625,15 @@ combinaison = &quot;face-face&quot;
 while(combinaison != &quot;pile-pile&quot;) {
     essai1 &lt;- sample(piece, 1)
     essai2 &lt;- sample(piece, 1)
-    combinaison = paste(essai1, &quot;-&quot; , essai2, sep = &quot;&quot;)
+    combinaison &lt;- paste(essai1, &quot;-&quot; , essai2, sep = &quot;&quot;)
     print(combinaison)
 }
 </code></pre>
 
-<pre><code>## [1] &quot;pile-face&quot;
+<pre><code>## [1] &quot;face-face&quot;
 ## [1] &quot;pile-face&quot;
+## [1] &quot;face-face&quot;
+## [1] &quot;face-face&quot;
 ## [1] &quot;pile-pile&quot;
 </code></pre>
 
@@ -649,8 +651,40 @@ while(combinaison != &quot;pile-pile&quot;) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-25" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <!--  <a href="#slide-25"></a> -->
+  <hgroup>
+    <h1>Solution</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">de &lt;- c(1:6)
+n_test &lt;- 1000
+res &lt;- numeric(n_test)
+for(i in 1:n_test) {
+    n &lt;- 1
+    face &lt;- 0
+    while(face != 6) {
+        face &lt;- sample(de,1)
+        n &lt;- n + 1
+    }
+    res[i] &lt;- n
+}
+mean(res)
+</code></pre>
+
+<pre><code>## [1] 6.86
+</code></pre>
+
+<pre><code class="r">hist(res)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-17-1.png" alt="plot of chunk unnamed-chunk-17"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-26" style="background:;">
+  <!--  <a href="#slide-26"></a> -->
   <hgroup>
     <h1>Exercice intermédiaire</h1>
   </hgroup>
@@ -659,42 +693,19 @@ while(combinaison != &quot;pile-pile&quot;) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-26" style="background:;">
-  <!--  <a href="#slide-26"></a> -->
+<slide class="" id="slide-27" style="background:;">
+  <!--  <a href="#slide-27"></a> -->
   <hgroup>
     <h1>Croissance logistique</h1>
   </hgroup>
   <article data-timings="">
-    <p>La croissance d&#39;une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d&#39;une boucle. La densité au temps \(t+1\) se calcul ainsi :</p>
+    <p>La croissance d&#39;une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d&#39;une boucle. La densité au temps \(t+1\) se calcule ainsi :</p>
 
 <p>\[
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 \]</p>
 
-<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on en compte aujourd&#39;hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(\lambda\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-27" style="background:;">
-  <!--  <a href="#slide-27"></a> -->
-  <hgroup>
-    <h1>Solution 1</h1>
-  </hgroup>
-  <article data-timings="">
-    <pre><code class="r">lambda = 0.3
-N = 220
-K = 200000
-step = 1
-while(N &lt; K/2) {
-    N = N + lambda * N * (1 - N/K)
-    step = step + 1
-}
-step
-</code></pre>
-
-<pre><code>## [1] 27
-</code></pre>
+<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on compte aujourd&#39;hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(r\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -702,18 +713,21 @@ step
 <slide class="" id="slide-28" style="background:;">
   <!--  <a href="#slide-28"></a> -->
   <hgroup>
-    <h1>Solution 2</h1>
+    <h1>Solution 1</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">lambda = 0.3
-K = 200000
-n_steps = 115
-N = numeric(n_steps+1)
-N[1] = 220
-
-for(i in 2:(n_steps+1)) {
-    N[i] = N[i-1] + lambda * N[i-1] * (1 - N[i-1]/K)
+    <pre><code class="r">r &lt;- 0.3
+N &lt;- 220
+K &lt;- 200000
+step &lt;- 1
+while(N &lt; K/2) {
+    N &lt;- N + r * N * (1 - N/K)
+    step &lt;- step + 1
 }
+step
+</code></pre>
+
+<pre><code>## [1] 27
 </code></pre>
 
   </article>
@@ -725,16 +739,36 @@ for(i in 2:(n_steps+1)) {
     <h1>Solution 2</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">plot(c(1900:2015),N,type = &quot;l&quot;,xlab = &quot;Année&quot;, ylab = &quot;Population&quot;)
-</code></pre>
+    <pre><code class="r">r &lt;- 0.3
+K &lt;- 200000
+n_steps &lt;- 115
+N &lt;- numeric(n_steps+1)
+N[1] &lt;- 220
 
-<p><img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" /></p>
+for(i in 2:(n_steps+1)) {
+    N[i] &lt;- N[i-1] + r * N[i-1] * (1 - N[i-1]/K)
+}
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-30" style="background:;">
+<slide class="" id="slide-30" style="background:;">
   <!--  <a href="#slide-30"></a> -->
+  <hgroup>
+    <h1>Solution 2</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(c(1900:2015), N, type = &quot;l&quot;, xlab = &quot;Année&quot;, ylab = &quot;Population&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="transition" id="slide-31" style="background:;">
+  <!--  <a href="#slide-31"></a> -->
   <hgroup>
     <h1>Expressions conditionnelles</h1>
   </hgroup>
@@ -743,8 +777,8 @@ for(i in 2:(n_steps+1)) {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-31" style="background:;">
-  <!--  <a href="#slide-31"></a> -->
+<slide class="" id="slide-32" style="background:;">
+  <!--  <a href="#slide-32"></a> -->
   <hgroup>
     <h1>Principe</h1>
   </hgroup>
@@ -764,8 +798,8 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-32" style="background:;">
-  <!--  <a href="#slide-32"></a> -->
+<slide class="" id="slide-33" style="background:;">
+  <!--  <a href="#slide-33"></a> -->
   <hgroup>
     <h1>Arbre décisionnel</h1>
   </hgroup>
@@ -795,8 +829,8 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-33" style="background:;">
-  <!--  <a href="#slide-33"></a> -->
+<slide class="" id="slide-34" style="background:;">
+  <!--  <a href="#slide-34"></a> -->
   <hgroup>
     <h1>Astuce</h1>
   </hgroup>
@@ -806,8 +840,8 @@ else {
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-34" style="background:;">
-  <!--  <a href="#slide-34"></a> -->
+<slide class="" id="slide-35" style="background:;">
+  <!--  <a href="#slide-35"></a> -->
   <hgroup>
     <h1>Arbre décisionnel</h1>
   </hgroup>
@@ -835,8 +869,8 @@ print(&quot;Bof, j&#39;ai encore du temps !&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-35" style="background:;">
-  <!--  <a href="#slide-35"></a> -->
+<slide class="" id="slide-36" style="background:;">
+  <!--  <a href="#slide-36"></a> -->
   <hgroup>
     <h1>Opérateurs logiques</h1>
   </hgroup>
@@ -855,8 +889,8 @@ print(&quot;Bof, j&#39;ai encore du temps !&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-36" style="background:;">
-  <!--  <a href="#slide-36"></a> -->
+<slide class="" id="slide-37" style="background:;">
+  <!--  <a href="#slide-37"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -870,7 +904,7 @@ print(&quot;Bof, j&#39;ai encore du temps !&quot;)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-37" style="background:;">
+<slide class="" id="slide-38" style="background:;">
   <hgroup>
     <h1>Solution</h1>
   </hgroup>
@@ -893,23 +927,23 @@ cbind(X,res)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res         
-##  [1,] &quot;0.987270170357078&quot;  &quot;plus grand&quot;
-##  [2,] &quot;0.558654652442783&quot;  &quot;plus grand&quot;
-##  [3,] &quot;0.117569774156436&quot;  &quot;plus petit&quot;
-##  [4,] &quot;0.342050822451711&quot;  &quot;plus grand&quot;
-##  [5,] &quot;0.0569879144895822&quot; &quot;plus petit&quot;
-##  [6,] &quot;0.535196492215618&quot;  &quot;plus grand&quot;
-##  [7,] &quot;0.80805543041788&quot;   &quot;plus grand&quot;
-##  [8,] &quot;0.0506757805123925&quot; &quot;plus petit&quot;
-##  [9,] &quot;0.0391316290479153&quot; &quot;plus petit&quot;
-## [10,] &quot;0.398634851211682&quot;  &quot;plus grand&quot;
+##  [1,] &quot;0.780484250281006&quot;  &quot;plus grand&quot;
+##  [2,] &quot;0.0614221321884543&quot; &quot;plus petit&quot;
+##  [3,] &quot;0.830606476636603&quot;  &quot;plus grand&quot;
+##  [4,] &quot;0.753855953924358&quot;  &quot;plus grand&quot;
+##  [5,] &quot;0.662876249291003&quot;  &quot;plus grand&quot;
+##  [6,] &quot;0.992962346645072&quot;  &quot;plus grand&quot;
+##  [7,] &quot;0.621755686355755&quot;  &quot;plus grand&quot;
+##  [8,] &quot;0.360712851397693&quot;  &quot;plus grand&quot;
+##  [9,] &quot;0.0660606366582215&quot; &quot;plus petit&quot;
+## [10,] &quot;0.858501206384972&quot;  &quot;plus grand&quot;
 </code></pre>
 
     </div>
   </article>
 </slide>
-<slide class="" id="slide-38" style="background:;">
-  <!--  <a href="#slide-38"></a> -->
+<slide class="" id="slide-39" style="background:;">
+  <!--  <a href="#slide-39"></a> -->
   <hgroup>
     <h1>Opérateurs logiques</h1>
   </hgroup>
@@ -924,8 +958,8 @@ cbind(X,res)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-39" style="background:;">
-  <!--  <a href="#slide-39"></a> -->
+<slide class="" id="slide-40" style="background:;">
+  <!--  <a href="#slide-40"></a> -->
   <hgroup>
     <h1>Exercice</h1>
   </hgroup>
@@ -935,7 +969,7 @@ cbind(X,res)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-41" style="background:;">
   <hgroup>
     <h1>Solution</h1>
   </hgroup>
@@ -957,27 +991,27 @@ cbind(X,res2)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res2 
-##  [1,] &quot;0.987270170357078&quot;  &quot;non&quot;
-##  [2,] &quot;0.558654652442783&quot;  &quot;oui&quot;
-##  [3,] &quot;0.117569774156436&quot;  &quot;non&quot;
-##  [4,] &quot;0.342050822451711&quot;  &quot;oui&quot;
-##  [5,] &quot;0.0569879144895822&quot; &quot;non&quot;
-##  [6,] &quot;0.535196492215618&quot;  &quot;oui&quot;
-##  [7,] &quot;0.80805543041788&quot;   &quot;non&quot;
-##  [8,] &quot;0.0506757805123925&quot; &quot;non&quot;
-##  [9,] &quot;0.0391316290479153&quot; &quot;non&quot;
-## [10,] &quot;0.398634851211682&quot;  &quot;oui&quot;
+##  [1,] &quot;0.780484250281006&quot;  &quot;non&quot;
+##  [2,] &quot;0.0614221321884543&quot; &quot;non&quot;
+##  [3,] &quot;0.830606476636603&quot;  &quot;non&quot;
+##  [4,] &quot;0.753855953924358&quot;  &quot;non&quot;
+##  [5,] &quot;0.662876249291003&quot;  &quot;non&quot;
+##  [6,] &quot;0.992962346645072&quot;  &quot;non&quot;
+##  [7,] &quot;0.621755686355755&quot;  &quot;non&quot;
+##  [8,] &quot;0.360712851397693&quot;  &quot;oui&quot;
+##  [9,] &quot;0.0660606366582215&quot; &quot;non&quot;
+## [10,] &quot;0.858501206384972&quot;  &quot;non&quot;
 </code></pre>
 
     </div>
   </article>
 </slide>
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h1>Conditions sur des vecteurs</h1>
   </hgroup>
   <article>
-    <p>R a la particularité d&#39;être optimisé pour les objets sous forme de matrice ou de vecteurs. Ainsi, vous pouvez réaliser des conditions sur un vecteur sans avoir à passer par une boucle. On peut reprendre l&#39;exemple précédent, d&#39;une façon beaucoup plus rapide :</p>
+    <p>R a la particularité d&#39;être optimisé pour les objets sous forme de matrice ou de vecteur. Ainsi, vous pouvez évaluer des expressions conditionnelles sur un vecteur sans avoir à passer par une boucle. On peut reprendre l&#39;exemple précédent, d&#39;une façon beaucoup plus rapide :</p>
 
     <div class='left' style='float:left;width:48%'>
      <pre><code class="r">res2 &lt;- numeric(10)
@@ -989,23 +1023,23 @@ cbind(X,res2)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res2 
-##  [1,] &quot;0.987270170357078&quot;  &quot;non&quot;
-##  [2,] &quot;0.558654652442783&quot;  &quot;oui&quot;
-##  [3,] &quot;0.117569774156436&quot;  &quot;non&quot;
-##  [4,] &quot;0.342050822451711&quot;  &quot;oui&quot;
-##  [5,] &quot;0.0569879144895822&quot; &quot;non&quot;
-##  [6,] &quot;0.535196492215618&quot;  &quot;oui&quot;
-##  [7,] &quot;0.80805543041788&quot;   &quot;non&quot;
-##  [8,] &quot;0.0506757805123925&quot; &quot;non&quot;
-##  [9,] &quot;0.0391316290479153&quot; &quot;non&quot;
-## [10,] &quot;0.398634851211682&quot;  &quot;oui&quot;
+##  [1,] &quot;0.780484250281006&quot;  &quot;non&quot;
+##  [2,] &quot;0.0614221321884543&quot; &quot;non&quot;
+##  [3,] &quot;0.830606476636603&quot;  &quot;non&quot;
+##  [4,] &quot;0.753855953924358&quot;  &quot;non&quot;
+##  [5,] &quot;0.662876249291003&quot;  &quot;non&quot;
+##  [6,] &quot;0.992962346645072&quot;  &quot;non&quot;
+##  [7,] &quot;0.621755686355755&quot;  &quot;non&quot;
+##  [8,] &quot;0.360712851397693&quot;  &quot;oui&quot;
+##  [9,] &quot;0.0660606366582215&quot; &quot;non&quot;
+## [10,] &quot;0.858501206384972&quot;  &quot;non&quot;
 </code></pre>
 
     </div>
   </article>
 </slide>
-<slide class="transition" id="slide-42" style="background:;">
-  <!--  <a href="#slide-42"></a> -->
+<slide class="transition" id="slide-43" style="background:;">
+  <!--  <a href="#slide-43"></a> -->
   <hgroup>
     <h1>Exercice final</h1>
   </hgroup>
@@ -1014,8 +1048,8 @@ cbind(X,res2)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-43" style="background:;">
-  <!--  <a href="#slide-43"></a> -->
+<slide class="" id="slide-44" style="background:;">
+  <!--  <a href="#slide-44"></a> -->
   <hgroup>
     <h1>Le retour du scrabble ...</h1>
   </hgroup>
@@ -1151,7 +1185,7 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Exercice'>
+        data-slide=21 title='Solution'>
          21
       </a>
     </li>
@@ -1175,25 +1209,25 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Exercice intermédiaire'>
+        data-slide=25 title='Solution'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Croissance logistique'>
+        data-slide=26 title='Exercice intermédiaire'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Solution 1'>
+        data-slide=27 title='Croissance logistique'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Solution 2'>
+        data-slide=28 title='Solution 1'>
          28
       </a>
     </li>
@@ -1205,86 +1239,92 @@ cbind(X,res2)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Expressions conditionnelles'>
+        data-slide=30 title='Solution 2'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='Principe'>
+        data-slide=31 title='Expressions conditionnelles'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='Arbre décisionnel'>
+        data-slide=32 title='Principe'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='Astuce'>
+        data-slide=33 title='Arbre décisionnel'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Arbre décisionnel'>
+        data-slide=34 title='Astuce'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Opérateurs logiques'>
+        data-slide=35 title='Arbre décisionnel'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Exercice'>
+        data-slide=36 title='Opérateurs logiques'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Solution'>
+        data-slide=37 title='Exercice'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Opérateurs logiques'>
+        data-slide=38 title='Solution'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Exercice'>
+        data-slide=39 title='Opérateurs logiques'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Solution'>
+        data-slide=40 title='Exercice'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Conditions sur des vecteurs'>
+        data-slide=41 title='Solution'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='Exercice final'>
+        data-slide=42 title='Conditions sur des vecteurs'>
          42
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='Le retour du scrabble ...'>
+        data-slide=43 title='Exercice final'>
          43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Le retour du scrabble ...'>
+         44
       </a>
     </li>
   </ul>

@@ -105,8 +105,8 @@ Une boucle est une commande qui permet de répéter une série d'instructions so
 # Anatomie de la boucle
 
 ```{r}
-depart = 1
-fin = 5
+depart <- 1
+fin <- 5
 for(etape in depart:fin) {
     print(etape)
 }
@@ -159,7 +159,7 @@ for(F in -50:100) {
 ---
 # Boucles et indexation
 
-Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L'index de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
 
 ```{r}
 test = runif(5, 0,1)
@@ -171,7 +171,7 @@ for(etape in 1:5) {
 ---
 # Boucles et indexation
 
-De même, on peut réaliser des opérations mathématiques sur l'index
+De même, on peut réaliser des opérations mathématiques sur cette variable
 
 ```{r}
 test = runif(500, 0,1)
@@ -224,11 +224,11 @@ $$
 Calculez la factorielle 10 au moyen d'une boucle.
 
 ---
-# Exercice
+# Solution
 
 ```{r}
-n = 1
-for(etape in 1:10) n = n*etape
+n <- 1
+for(etape in 1:10) n <- n*etape
 n
 ```
 
@@ -260,7 +260,7 @@ combinaison = "face-face"
 while(combinaison != "pile-pile") {
     essai1 <- sample(piece, 1)
     essai2 <- sample(piece, 1)
-    combinaison = paste(essai1, "-" , essai2, sep = "")
+    combinaison <- paste(essai1, "-" , essai2, sep = "")
     print(combinaison)
 }
 ```
@@ -270,31 +270,51 @@ while(combinaison != "pile-pile") {
 
 Calculez en moyenne combien de fois vous avez à tirer un dé à 6 faces pour obtenir la valeur 1.
 
+---
+# Solution
+
+```{r}
+de <- c(1:6)
+n_test <- 1000
+res <- numeric(n_test)
+for(i in 1:n_test) {
+	n <- 1
+	face <- 0
+	while(face != 6) {
+		face <- sample(de,1)
+		n <- n + 1
+	}
+	res[i] <- n
+}
+mean(res)
+hist(res)
+```
+
 --- .transition
 # Exercice intermédiaire
 
 ---
 # Croissance logistique
 
-La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcul ainsi :
+La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcule ainsi :
 
 $$
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 $$
 
-Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on en compte aujourd'hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($\lambda$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1
 
 ```{r}
-lambda = 0.3
-N = 220
-K = 200000
-step = 1
+r <- 0.3
+N <- 220
+K <- 200000
+step <- 1
 while(N < K/2) {
-    N = N + lambda * N * (1 - N/K)
-    step = step + 1
+    N <- N + r * N * (1 - N/K)
+    step <- step + 1
 }
 step
 ```
@@ -303,23 +323,22 @@ step
 # Solution 2
 
 ```{r}
-lambda = 0.3
-K = 200000
-n_steps = 115
-N = numeric(n_steps+1)
-N[1] = 220
+r <- 0.3
+K <- 200000
+n_steps <- 115
+N <- numeric(n_steps+1)
+N[1] <- 220
 
 for(i in 2:(n_steps+1)) {
-    N[i] = N[i-1] + lambda * N[i-1] * (1 - N[i-1]/K)
+    N[i] <- N[i-1] + r * N[i-1] * (1 - N[i-1]/K)
 }
 ```
 
 ---
-
 # Solution 2
 
 ```{r, out.width = '50%', dpi=300, fig.align="center"}
-plot(c(1900:2015),N,type = "l",xlab = "Année", ylab = "Population")
+plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
 ```
 
 --- .transition
@@ -503,7 +522,7 @@ cbind(X,res2)
 
 # Conditions sur des vecteurs
 
-R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteurs. Ainsi, vous pouvez réaliser des conditions sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
+R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteur. Ainsi, vous pouvez évaluer des expressions conditionnelles sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
 
 *** =left
 

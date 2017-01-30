@@ -122,8 +122,8 @@ Une boucle est une commande qui permet de répéter une série d'instructions so
 
 
 ```r
-depart = 1
-fin = 5
+depart <- 1
+fin <- 5
 for(etape in depart:fin) {
     print(etape)
 }
@@ -355,7 +355,7 @@ for(F in -50:100) {
 ---
 # Boucles et indexation
 
-Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. L'index de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
 
 
 ```r
@@ -366,17 +366,17 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.9772747
-## [1] 0.3760439
-## [1] 0.3528628
-## [1] 0.6572887
-## [1] 0.9535225
+## [1] 0.4730017
+## [1] 0.4869159
+## [1] 0.8103152
+## [1] 0.1109015
+## [1] 0.8322343
 ```
 
 ---
 # Boucles et indexation
 
-De même, on peut réaliser des opérations mathématiques sur l'index
+De même, on peut réaliser des opérations mathématiques sur cette variable
 
 
 ```r
@@ -387,11 +387,11 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.04018742
-## [1] 0.8189345
-## [1] 0.06251663
-## [1] 0.8077711
-## [1] 0.5274296
+## [1] 0.3281348
+## [1] 0.07178208
+## [1] 0.1458002
+## [1] 0.6949791
+## [1] 0.6538653
 ```
 
 ---
@@ -451,12 +451,12 @@ $$
 Calculez la factorielle 10 au moyen d'une boucle.
 
 ---
-# Exercice
+# Solution
 
 
 ```r
-n = 1
-for(etape in 1:10) n = n*etape
+n <- 1
+for(etape in 1:10) n <- n*etape
 n
 ```
 
@@ -494,14 +494,16 @@ combinaison = "face-face"
 while(combinaison != "pile-pile") {
     essai1 <- sample(piece, 1)
     essai2 <- sample(piece, 1)
-    combinaison = paste(essai1, "-" , essai2, sep = "")
+    combinaison <- paste(essai1, "-" , essai2, sep = "")
     print(combinaison)
 }
 ```
 
 ```
+## [1] "face-face"
 ## [1] "pile-face"
-## [1] "pile-face"
+## [1] "face-face"
+## [1] "face-face"
 ## [1] "pile-pile"
 ```
 
@@ -510,32 +512,62 @@ while(combinaison != "pile-pile") {
 
 Calculez en moyenne combien de fois vous avez à tirer un dé à 6 faces pour obtenir la valeur 1.
 
+---
+# Solution
+
+
+```r
+de <- c(1:6)
+n_test <- 1000
+res <- numeric(n_test)
+for(i in 1:n_test) {
+	n <- 1
+	face <- 0
+	while(face != 6) {
+		face <- sample(de,1)
+		n <- n + 1
+	}
+	res[i] <- n
+}
+mean(res)
+```
+
+```
+## [1] 6.86
+```
+
+```r
+hist(res)
+```
+
+![plot of chunk unnamed-chunk-17](assets/fig/unnamed-chunk-17-1.png)
+
 --- .transition
 # Exercice intermédiaire
 
 ---
 # Croissance logistique
 
-La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcul ainsi :
+La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcule ainsi :
 
 $$
 N_{t+1} = N_t + r \times N_t \times (1 - N/K)
 $$
 
-Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on en compte aujourd'hui environ à 200 000 bêtes qui corresponds à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($\lambda$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1
 
 
 ```r
-lambda = 0.3
-N = 220
-K = 200000
-step = 1
+r <- 0.3
+N <- 220
+K <- 200000
+step <- 1
 while(N < K/2) {
-    N = N + lambda * N * (1 - N/K)
-    step = step + 1
+    N <- N + r * N * (1 - N/K)
+    step <- step + 1
 }
 step
 ```
@@ -549,27 +581,26 @@ step
 
 
 ```r
-lambda = 0.3
-K = 200000
-n_steps = 115
-N = numeric(n_steps+1)
-N[1] = 220
+r <- 0.3
+K <- 200000
+n_steps <- 115
+N <- numeric(n_steps+1)
+N[1] <- 220
 
 for(i in 2:(n_steps+1)) {
-    N[i] = N[i-1] + lambda * N[i-1] * (1 - N[i-1]/K)
+    N[i] <- N[i-1] + r * N[i-1] * (1 - N[i-1]/K)
 }
 ```
 
 ---
-
 # Solution 2
 
 
 ```r
-plot(c(1900:2015),N,type = "l",xlab = "Année", ylab = "Population")
+plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
 ```
 
-<img src="assets/fig/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" />
 
 --- .transition
 
@@ -694,16 +725,16 @@ cbind(X,res)
 
 ```
 ##       X                    res         
-##  [1,] "0.987270170357078"  "plus grand"
-##  [2,] "0.558654652442783"  "plus grand"
-##  [3,] "0.117569774156436"  "plus petit"
-##  [4,] "0.342050822451711"  "plus grand"
-##  [5,] "0.0569879144895822" "plus petit"
-##  [6,] "0.535196492215618"  "plus grand"
-##  [7,] "0.80805543041788"   "plus grand"
-##  [8,] "0.0506757805123925" "plus petit"
-##  [9,] "0.0391316290479153" "plus petit"
-## [10,] "0.398634851211682"  "plus grand"
+##  [1,] "0.780484250281006"  "plus grand"
+##  [2,] "0.0614221321884543" "plus petit"
+##  [3,] "0.830606476636603"  "plus grand"
+##  [4,] "0.753855953924358"  "plus grand"
+##  [5,] "0.662876249291003"  "plus grand"
+##  [6,] "0.992962346645072"  "plus grand"
+##  [7,] "0.621755686355755"  "plus grand"
+##  [8,] "0.360712851397693"  "plus grand"
+##  [9,] "0.0660606366582215" "plus petit"
+## [10,] "0.858501206384972"  "plus grand"
 ```
 
 ---
@@ -744,23 +775,23 @@ cbind(X,res2)
 
 ```
 ##       X                    res2 
-##  [1,] "0.987270170357078"  "non"
-##  [2,] "0.558654652442783"  "oui"
-##  [3,] "0.117569774156436"  "non"
-##  [4,] "0.342050822451711"  "oui"
-##  [5,] "0.0569879144895822" "non"
-##  [6,] "0.535196492215618"  "oui"
-##  [7,] "0.80805543041788"   "non"
-##  [8,] "0.0506757805123925" "non"
-##  [9,] "0.0391316290479153" "non"
-## [10,] "0.398634851211682"  "oui"
+##  [1,] "0.780484250281006"  "non"
+##  [2,] "0.0614221321884543" "non"
+##  [3,] "0.830606476636603"  "non"
+##  [4,] "0.753855953924358"  "non"
+##  [5,] "0.662876249291003"  "non"
+##  [6,] "0.992962346645072"  "non"
+##  [7,] "0.621755686355755"  "non"
+##  [8,] "0.360712851397693"  "oui"
+##  [9,] "0.0660606366582215" "non"
+## [10,] "0.858501206384972"  "non"
 ```
 
 --- &twocol
 
 # Conditions sur des vecteurs
 
-R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteurs. Ainsi, vous pouvez réaliser des conditions sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
+R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteur. Ainsi, vous pouvez évaluer des expressions conditionnelles sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
 
 *** =left
 
@@ -777,16 +808,16 @@ cbind(X,res2)
 
 ```
 ##       X                    res2 
-##  [1,] "0.987270170357078"  "non"
-##  [2,] "0.558654652442783"  "oui"
-##  [3,] "0.117569774156436"  "non"
-##  [4,] "0.342050822451711"  "oui"
-##  [5,] "0.0569879144895822" "non"
-##  [6,] "0.535196492215618"  "oui"
-##  [7,] "0.80805543041788"   "non"
-##  [8,] "0.0506757805123925" "non"
-##  [9,] "0.0391316290479153" "non"
-## [10,] "0.398634851211682"  "oui"
+##  [1,] "0.780484250281006"  "non"
+##  [2,] "0.0614221321884543" "non"
+##  [3,] "0.830606476636603"  "non"
+##  [4,] "0.753855953924358"  "non"
+##  [5,] "0.662876249291003"  "non"
+##  [6,] "0.992962346645072"  "non"
+##  [7,] "0.621755686355755"  "non"
+##  [8,] "0.360712851397693"  "oui"
+##  [9,] "0.0660606366582215" "non"
+## [10,] "0.858501206384972"  "non"
 ```
 
 --- .transition
