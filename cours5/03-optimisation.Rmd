@@ -1,9 +1,0 @@
----
-
-- Optimisation des scripts
-- Utilité : lorsque le temps de calcul devient long, peut être utile d'évaluer la performance de certaines sections de code
-- Calculer le temps pour réaliser une fonction
-- Exemple : comparaison de l'efficacité d'une boucle versus de la structure vectorielle
-	- fonction1: avec boucle
-	- fonction2: avec vecteur
-- Exercice : comparer l'efficacité de la fonction sort() vs la fonction sort_scrabble() du cours précédent
