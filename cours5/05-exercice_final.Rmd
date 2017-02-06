@@ -1,31 +1,34 @@
+
 ---.transition
+
 # Exercice final
 
 ---
 # Répartition des domaines bioclimatiques
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/bioclim.png" height="500px"></img>
+<img src="assets/img/bioclim.png" height="500px"></img>
 </div>
 
 ---
 # La distribution des arbres à Sutton
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/grille.jpg" height="250px"></img>
+<img src="assets/img/grille.jpg" height="250px"></img>
 </div>
 
 ---
 # Un modèle de communauté
 <div style='text-align:center;'>
-<img src="assets/img/intro/modele_vissault.png" height="500px"></img>
+<img src="assets/img/modele_vissault.png" height="500px"></img>
 </div>
 
 ---
+
 # Répartition des états
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/etats_sutton.png" height="500px"></img>
+<img src="assets/img/parcelle_SUT.png" height="500px"></img>
 </div>
 
 ---
@@ -36,51 +39,64 @@
 'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
 'R' si aucun de ces critères n'est rempli
 
----
+---&twocol
+
 # Le code pour générer la figure
 
+*** =left
+
 ```{r eval = FALSE}
-etats <- read.table(file = './pres/donnees/etats.csv', header = TRUE, sep=";",row.names=1)
 X = c(0:9)*20
 Y = c(0:49)*20
 image(X, Y, z=etats)
 ```
+
+*** =right
+
+<div style='text-align:center;'>
+<img src="assets/img/parcelle_SUT.png" height="500px"></img>
+</div>
+
 ---
 # La matrice de transition entre les différents états
 
-$\begin{bmatrix} 
-P(B_{t+1}|B_t) & P(M_{t+1}|B_t) & P(T_{t+1}|B_t) & P(R_{t+1}|B_t) \\ 
-P(B_{t+1}|M_t) & P(M_{t+1}|M_t) & P(T_{t+1}|M_t) & P(R_{t+1}|M_t) \\ 
+$$
+\begin{bmatrix}
+P(B_{t+1}|B_t) & P(M_{t+1}|B_t) & P(T_{t+1}|B_t) & P(R_{t+1}|B_t) \\
+P(B_{t+1}|M_t) & P(M_{t+1}|M_t) & P(T_{t+1}|M_t) & P(R_{t+1}|M_t) \\
 P(B_{t+1}|T_t) & P(M_{t+1}|T_t) & P(T_{t+1}|T_t) & P(R_{t+1}|T_t) \\  
-P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\ 
-\end{bmatrix}$
+P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
+\end{bmatrix}
+$$
 
-Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspond à l'état au temps t+1. Une ligne de ce tableau correspond à un vecteur de probabilités d'une distribution multinomiale. Donc, la somme d'une rangée doit être égale à 1. 
+Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspond à l'état au temps t+1. Une ligne de ce tableau correspond à un vecteur de probabilités d'une distribution multinomiale. Donc, la somme d'une rangée doit être égale à 1.
 
 ---
 # La matrice de transition entre les différents états
 
-$\begin{bmatrix} 
+$$
+\begin{bmatrix}
 0.9059 & 0.0932 & 0.0000 & 0.0009 \\  
 0.0004 & 0.8454 & 0.1452 & 0.0090 \\
 0.0000 & 0.0350 & 0.9594 & 0.0056 \\
 0.0001 & 0.0020 & 0.0011 & 0.9968 \\
-\end{bmatrix}$
+\end{bmatrix}
+$$
 
-Notez que l'intervalle de temps entre deux épisodes est 5 ans. 
+Notez que l'intervalle de temps entre deux épisodes est 5 ans.
 
 
-Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1". 
+Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
 
 ---
 # ATTENTION !
 
-Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s'agit pas du même modèle. Ainsi, les étapes de mortalité et de recrutement sont combinées dans une seule étape où sont remplacés automatiquement les états d'un pas de temps à l'autre et où les probabilités sont toujours les mêmes (elles ne changent pas avec l'abondance relative). 
+Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s'agit pas du même modèle. Ainsi, les étapes de mortalité et de recrutement sont combinées dans une seule étape où sont remplacés automatiquement les états d'un pas de temps à l'autre et où les probabilités sont toujours les mêmes (elles ne changent pas avec l'abondance relative).
 
 ---
 # Question de recherche
 
-Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologie des Montagnes vertes dasn 100 ans ?
+Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologie des Montagnes vertes dans 100 ans ?
 
 ---
 # Données
@@ -102,7 +118,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 21 février 16:00
+- Le travail doit être remis **électroniquement** au plus tard le 21 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
 	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale
@@ -116,4 +132,4 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 	+ Programmation de la simulation sous forme d'une fonction ré-utilisable
 	+ Réalisation de la simulation stochastique (tirage des transitions)
 	+ Réalisation des figures
-- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'aux deux figures finales (20 %). 
+- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'aux deux figures finales (20 %).

@@ -38,3 +38,5 @@ vignettes/*.pdf
 
 #Data
 *.zip
+
+cours5/plot_SUT.R
