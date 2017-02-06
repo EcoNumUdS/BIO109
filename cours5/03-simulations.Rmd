@@ -1,11 +1,13 @@
----.transition
+
+--- .transition
+
 # Les jeux de hasard
 
 ---
 # Les jeux de hasard
 
 <div style='text-align:center;'>
-<img src="assets/img/hasard.jpg" height="500px"></img>
+<img src="assets/img/hasard.jpg" height="450px"></img>
 </div>
 
 ---
@@ -13,7 +15,7 @@
 ## La dynamique de populations
 
 <div style='text-align:center;'>
-<img src="assets/img/series.png" height="500px"></img>
+<img src="assets/img/series.png" height="450px"></img>
 </div>
 
 ---
@@ -21,7 +23,7 @@
 ## Les populations structurées par la taille
 
 <div style='text-align:center;'>
-<img src="assets/img/leslie.GIF" height="500px"></img>
+<img src="assets/img/leslie.GIF" height="450px"></img>
 </div>
 
 ---
@@ -29,21 +31,21 @@
 ## Écologie du paysage
 
 <div style='text-align:center;'>
-<img src="assets/img/feu.jpg" height="500px"></img>
+<img src="assets/img/feu.jpg" height="450px"></img>
 </div>
 
 ---
 # Le hasard et l'écologie
 ## Mouvement des individus
 <div style='text-align:center;'>
-<img src="assets/img/movement.jpg" height="500px"></img>
+<img src="assets/img/movement.jpg" height="450px"></img>
 </div>
 
 ---
 # Le hasard et l'écologie
 ## Statistiques
 <div style='text-align:center;'>
-<img src="assets/img/gotelli.jpg" height="500px"></img>
+<img src="assets/img/gotelli.jpg" height="450px"></img>
 </div>
 
 --- .transition
@@ -53,12 +55,12 @@
 # Exemple : tirer une carte au hasard
 
 <div style='text-align:center;'>
-<img src="assets/img/cartes.png" height="500px"></img>
+<img src="assets/img/cartes.jpg" height="450px"></img>
 </div>
 
 ---
 # Exemple : votre jeu de cartes sur R
-## La fonction 'sample()'
+## La fonction `sample()`
 
 ```{r}
 valeurs = c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
@@ -73,7 +75,7 @@ tirage(3, cartes)
 ---
 # Exercice
 
-Vous trouverez les lettres du scrabble dans le fichier 'lettres.txt'. Vous pouvez les charger et programmer votre fonction qui vous pigera au hasard les 7 lettres pour ce jeux. 
+Vous trouverez les lettres du scrabble dans le fichier [lettres.txt](./donnees/lettres.txt). Vous pouvez les charger et programmer votre fonction qui vous pigera au hasard les 7 lettres pour ce jeux.
 
 --- .transition
 # Application 2: échantillonner une loi de probabilité
@@ -81,7 +83,7 @@ Vous trouverez les lettres du scrabble dans le fichier 'lettres.txt'. Vous pouve
 ---
 # Principe
 
-Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on peut échantillonner une loi de probabilité dont les propriétés sont connues. Fort heureusement, la plupart de ces lois de probabilité sont déjà programmées. Certaines sont intuitives et déjà utilisées dans des jeux de hasard. 
+Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on peut échantillonner une loi de probabilité dont les propriétés sont connues. Fort heureusement, la plupart de ces lois de probabilité sont déjà programmées. Certaines sont intuitives et déjà utilisées dans des jeux de hasard.
 
 --- &twocol
 # La lotto 6/49
@@ -90,12 +92,12 @@ Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on
 *** =left
 
 <div style='text-align:center;'>
-<img src="assets/img/649.jpg" height="500px"></img>
+<img src="assets/img/649.jpg" width="50%"></img>
 </div>
 
 *** =right
 
-```{r}
+```{r , out.width = '80%', dpi=300, fig.align="center"}
 hist(floor(runif(n = 10000, min = 1, max = 50)))
 ```
 
@@ -106,13 +108,13 @@ hist(floor(runif(n = 10000, min = 1, max = 50)))
 *** =left
 
 <div style='text-align:center;'>
-<img src="assets/img/paille.jpg" height="500px"></img>
+<img src="assets/img/paille.jpg" height="450px"></img>
 </div>
 
 *** =right
 
-```{r}
-hist(rnorm(n = 15, mean = 10, sd = 1))
+```{r, out.width = '80%', dpi=300, fig.align="center"}
+hist(rnorm(n = 30, mean = 10, sd = 1))
 ```
 
 --- &twocol
@@ -122,23 +124,24 @@ hist(rnorm(n = 15, mean = 10, sd = 1))
 *** =left
 
 <div style='text-align:center;'>
-<img src="assets/img/piece.png" height="500px"></img>
+<img src="assets/img/piece.jpg" width="100%"></img>
 </div>
 
 *** =right
 
-```{r}
+```{r, out.width = '80%', dpi=300, fig.align="center"}
 rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 --- &twocol
+
 # Les dés
 ## La loi multinomiale
 
 *** =left
 
 <div style='text-align:center;'>
-<img src="assets/img/des.png" height="500px"></img>
+<img src="assets/img/des.png" width="100%"></img>
 </div>
 
 *** =right
@@ -147,45 +150,48 @@ rbinom(n = 10, size = 1, prob = 0.5)
 rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 ```
 
---- &twocol
+--- &twocolw w1:40% w2:60%
+
 # La roulette russe
 ## La loi exponentielle
+
 *** =left
 
 <div style='text-align:center;'>
-<img src="assets/img/roulette.jpg" height="500px"></img>
+<img src="assets/img/roulette.jpg" width="80%"></img>
 </div>
 
 *** =right
 
-```{r}
-hist(rexp(n = 1000, rate = 1/6), xlab = "Nombre d'essais avant de perdre")
+```{r ,out.width = '60%', dpi=300, fig.align="center"}
+hist(rexp(n = 1000, rate = 1/6),
+xlab = "Nombre d'essais avant de perdre")
 ```
 
---- 
+---
 # Critères de classification des lois de probabilité
 
 - Type de variable : continue ou discrète
-- Valeurs extrêmes : bornées ou non ? 
+- Valeurs extrêmes : bornées ou non ?
 - Forme de la distribution : centrée, biaisée
 - Moments: moyenne, variance, kurtosis, skewness
 
 ---
-# Exercice 
+# Exercice
 
 Une étude vous indique que la relation entre le nombre d'espèces de plantes et l'aire sur la placette de Sutton suit la relation suivante :
 
 $$
-S ~ N(\mu, \sigma)
+S \sim N(\mu, \sigma)
 $$
 
-Où 
+Où
 
 $$
 \mu = cA^z
 $$
 
-Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20, 20 000]$ correspondant à la dimension de la placette. 
+Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20, 20 000]$ correspondant à la dimension de la placette.
 
 --- &twocol
 # Solution
@@ -200,30 +206,33 @@ S = rnorm(15, mean = c*A^z, sd = 1.5)
 ```
 *** =right
 
-```{r}
-plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",log = "xy")
+```{r,out.width = '80%', dpi=300, fig.align="center"}
+plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
+  log = "xy")
 ```
 
 --- .transition
+
 # Application 3: prise de décision
 
 ---
 # Principe
 ## L'épreuve de Bernoulli
 
-- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec; 
-- Les épreuves sont indépendantes: l'issue d'une seconde épreuve ne dépend pas de la première; 
-- La probabilité de succès est représentée par le paramètre 'p', alors que la probabilité d'un échec est représentée par '1-p'; 
+- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec;
+- Les épreuves sont indépendantes: l'issue d'une seconde épreuve ne dépend pas de la première;
+- La probabilité de succès est représentée par le paramètre `p`, alors que la probabilité d'un échec est représentée par `1-p`;
 
 ---
 # Principe
 ## L'épreuve de Bernoulli
 
-Exemple des jeux de hasard : la pièce de monnaie
+**Exemple des jeux de hasard:** la pièce de monnaie
 
-Exemples en écologie :
-- la mortalité; 
-- la détermination du sexe; 
+**Exemples en écologie:**
+
+- la mortalité;
+- la détermination du sexe;
 - l'occurrence d'un incendie forestier;
 - la contamination par un virus après le contact entre une personne infectée et une personne susceptible;
 
@@ -236,37 +245,37 @@ Lorsque $p = 0.5$, on tire une pièce de monnaie. Mais qu'en est-il si la pièce
 set.seed(1)
 p <- 0.55
 alea <- runif(n = 1, min = 0, max = 1)
-if(alea < p) res = "pile" else res = "face" 
+if(alea < p) res = "pile" else res = "face"
 res
 ```
 
 ---
 # En d'autres mots...
 
-Si $U$ est une variable aléatoire distribuée selon la loi uniforme entre 0 et 1, alors la chance que $U < p/$ est exactement de valeur $p$. Si on réalise $n$ tirage, alors l'espérance du nombre de succès est exactement $np$. 
+Si $U$ est une variable aléatoire distribuée selon la loi uniforme entre 0 et 1, alors la chance que $U < p$ est exactement de valeur $p$. Si on réalise $n$ tirage, alors l'espérance du nombre de succès est exactement $np$.
 
 ---
+
 # Un exemple vaut mille mots
 
 - Tirez au hasard 1000 chiffres de la loi uniforme bornée entre 0 et 1
 - Créez un vecteur 'res' rempli de 0 et de 1000 unités de longueur
 - Pour chaque valeur de la séquence, évaluez si le chiffre est plus petit que la valeur seuil de $p = 0.2$. Si la valeur est plus petite, inscrivez 1 dans le vecteur 'res' à la position correspondante
 - Combien de fois est-ce que la valeur est inférieure à $p$ ?
-- Essayez à nouveau et comparez. 
+- Essayez à nouveau et comparez.
 
 ---
 # Un exercice est encore plus efficace...
 
 Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
+
 - Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
 - À chaque intersection, votre conducteur ivre avance ou recule en X et en Y avec une probabilité de 0.5;
-- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts. 
+- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
 
-Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d'oiseau). 
+Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d'oiseau).
 
----
-# Solution
-
+---&twocol
 # Solution
 
 *** =left
@@ -278,18 +287,23 @@ xy[1,] = c(0,0)
 direction = 90
 for(step in 2:(nsteps+1)) {
     # Son chemin en X
-    if(runif(1,0,1) < 0.5) xy[step,1] = xy[step-1,1] + 250
-    else xy[step,1] = xy[step-1,1] - 250
+    if(runif(1,0,1) < 0.5){
+      xy[step,1] = xy[step-1,1] + 250
+    } else {
+      xy[step,1] = xy[step-1,1] - 250}
 
     # Son chemin en Y
-    if(runif(1,0,1) < 0.5) xy[step,2] = xy[step-1,2] + 250
-    else xy[step,2] = xy[step-1,2] - 250
+    if(runif(1,0,1) < 0.5){
+      xy[step,2] = xy[step-1,2] + 250
+    } else {
+      xy[step,2] = xy[step-1,2] - 250
+    }
 }
 ```
 
 *** =right
 
-```{r}
+```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
 plot(xy[,1],xy[,2], type = "l", xlim = c(-2000,2000),ylim = c(-2000,2000),
     xlab = "X", ylab = "Y")
 points(xy[,1],xy[,2],pch = 19)
@@ -298,20 +312,21 @@ points(xy[,1],xy[,2],pch = 19)
 ---
 # La loi multinomiale
 
-La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25. 
+La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
 
 La loi multinomiale est une généralisation de la loi binomiale qui permet d'avoir plus de 2 résultats possibles
 
 ---
 # La loi multinomiale
 
-La somme des probabilités d'observer chacun des événements doit être obligatoirement de 1. 
+- La somme des probabilités d'observer chacun des événements doit être obligatoirement de 1.
 
-Dans ce contexte, la décision est prise en comparant la valeur aléatoire à la distribution cumulative, pour chacun des événements possibles. 
+- Dans ce contexte, la décision est prise en comparant la valeur aléatoire à la distribution cumulative, pour chacun des événements possibles.
 
-Prenons la séquence de probabilités $p = {0.25, 0.5, 0.25}$. 
+**Prenons la séquence de probabilités $p = \{0.25, 0.5, 0.25 \}$.**
 
-La distribution cumulative des événements est de ${0.25, 0.75, 1}$. La décision est prise en tirant un chiffre au hasard et en trouvant où il se situe dans cet intervalle. 
+- La distribution cumulative des événements est de $\{0.25, 0.75, 1\}$.
+- La décision est prise en tirant un chiffre au hasard et en trouvant où il se situe dans cet intervalle.
 
 ---
 # Exemple
@@ -332,9 +347,7 @@ cump
 ```{r}
 alea <- runif(1,0,1)
 alea
-n_etats <- 5
-i = 1
-plus_petit = FALSE
+n_etats <- 5; i = 1; plus_petit = FALSE
 while(plus_petit == FALSE) {
     if(alea < cump[i]) {
         decision = etats[i]
@@ -349,7 +362,7 @@ decision
 
 ---
 # Une façon plus rapide d'y arriver ....
-## Profitons de la fonction rmultinom qui simplifie les opérations
+## Profitons de la fonction `rmultinom()` qui simplifie les opérations
 
 ```{r}
 tirage <- function(p) {
@@ -364,25 +377,30 @@ tirage(p)
 # Exemple intégrateur
 ## Le modèle de lotterie
 
-Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré. 
+Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré.
 
-Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l'arbre qui est mort. 
-
-Le nom de 'lotterie' vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à son abondance relative dans la forêt avoisinante, soit $N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt. 
+Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l'arbre qui est mort.
 
 ---
 # Exemple intégrateur
 ## Le modèle de lotterie
 
-Le vecteur N représente le nombre d'individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :
+Le nom de "lotterie" vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à son abondance relative dans la forêt avoisinante, soit $N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt.
 
-- identification de quel arbre meurt (on en pige un seul au hasard parmi les K arbres)
-- retrait d'un individu de cette espèce de N
-- calcul de l'abondance relative de chaque espèce.
-- identification de l'espèce recrutée
-- ajout d'un individu de cette espèce à N
 
-Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale. 
+---
+# Exemple intégrateur
+## Le modèle de lotterie
+
+Le vecteur $N$ représente le nombre d'individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :
+
+- Identification de quel arbre meurt (on en pige un seul au hasard parmi les $K$ arbres)
+- Retrait d'un individu de cette espèce ($N_i-1$)
+- Calcul de l'abondance relative de chaque espèce ($N_i /K$).
+- Identification de l'espèce recrutée
+- Ajout d'un individu de cette espèce ($N_i+1$)
+
+Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale.
 
 ---
 # Solution
@@ -408,9 +426,9 @@ tirage  <- function(p) {
 # On démarre la simulation avec 20 individus par espèce
 N[1,] =rep(K/S, S)
 
-# La boucle principale 
+# La boucle principale
 for(step in 2:nsteps) {
-    
+
     # Calcul de l'abondance relative
     p = N[step-1,] / K
 
@@ -426,12 +444,13 @@ for(step in 2:nsteps) {
     N[step,ID_recrue] = N[step,ID_recrue] + 1
 }
 ```
+
 ---
 # Solution
 
-```{r}
+```{r, echo=FALSE,out.width = '55%', dpi=300, fig.align="center"}
 # Illustration des résultats
-plot(c(1:nsteps), N[,1], type = "l", ylim = c(0,K), 
+plot(c(1:nsteps), N[,1], type = "l", ylim = c(0,K),
     xlab = "Temps", ylab = "Densité")
 for(i in 2:S) lines(c(1:nsteps), N[,i])
 ```

@@ -1,3 +1,4 @@
+<!--
 Exercice final
 
 	Contexte :
@@ -5,11 +6,11 @@ Exercice final
 		- répartition des états sur la parcelle de sutton
 		- code pour générer la figure de la répartition des états sur la parcelle de sutton
 		- modèle de 4 états : schéma
-		- modèle de transition : définition des probabilités 
+		- modèle de transition : définition des probabilités
 
-	Question : 
-		- on vous demande quelle sera l'abondance de la forêt tempérée dans 100 ans. 
-		
+	Question :
+		- on vous demande quelle sera l'abondance de la forêt tempérée dans 100 ans.
+
 	Critères de classification sous 4 états
 
 	Données :
@@ -25,20 +26,19 @@ Exercice final
 			ii) la distribution des états après 100 pas de temps
 
 	Astuce : représentez votre résultat au moyen de la fonction 'image'
-		exemple 
+		exemple
 
-	Modalités : 
+	Modalités :
 		- équipe de 4
-		- remise le 
+		- remise le
 		- doit remettre :
 			pseudo code
 			script
 				- fonction pour le modèle
 				- représentation sous forme de carte
-				- 
+				-
 
 	Critères d'évaluation 	
 		- pseudo-code
 		- est-ce que le script fonctionne et réalise ce qu'il devrait exécuter
-		- respect des conventions et bonnes pratiques, tel que présenté lors du cours
-
+		- respect des conventions et bonnes pratiques, tel que présenté lors du cours -->
