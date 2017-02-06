@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---.transition
 # Exercice final
 
@@ -115,49 +114,3 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 	+ Réalisation de la simulation stochastique (tirage des transitions)
 	+ Réalisation des figures
 - Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'aux deux figures finales (20 %). 
-=======
-<!--
-Exercice final
-
-	Contexte :
-		- carte des domaines bioclimatiques
-		- répartition des états sur la parcelle de sutton
-		- code pour générer la figure de la répartition des états sur la parcelle de sutton
-		- modèle de 4 états : schéma
-		- modèle de transition : définition des probabilités
-
-	Question :
-		- on vous demande quelle sera l'abondance de la forêt tempérée dans 100 ans.
-
-	Critères de classification sous 4 états
-
-	Données :
-		- distribution initiale dans le fichier 'quadrats'
-		- matrice de transition entre les 4 états
-
-	Étapes du travail
-		- classifier les états au temps de départ
-		- préparer une fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t
-		- préparer une fonction qui fait une simulation sur N pas de temps
-		- utiliser la sortie de la fonction pour illustrer :
-			i) l'abondance relative des 4 états sur l'ensemble de la parcelle au cours du temps
-			ii) la distribution des états après 100 pas de temps
-
-	Astuce : représentez votre résultat au moyen de la fonction 'image'
-		exemple
-
-	Modalités :
-		- équipe de 4
-		- remise le
-		- doit remettre :
-			pseudo code
-			script
-				- fonction pour le modèle
-				- représentation sous forme de carte
-				-
-
-	Critères d'évaluation 	
-		- pseudo-code
-		- est-ce que le script fonctionne et réalise ce qu'il devrait exécuter
-		- respect des conventions et bonnes pratiques, tel que présenté lors du cours -->
->>>>>>> eac75e8c15691e4eac7f8c5340be5a5125189c04
