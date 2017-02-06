@@ -1,4 +1,4 @@
----.transition
+--- .transition
 # Solution du tri
 
 ---
@@ -18,7 +18,7 @@ tri <- function(x){
 			if(x[i+1] < x[i]) {
 				# Inversion des deux lettres
 				x[c(i,i+1)] = x[c(i+1,i)]
-				# Comme un changement a été fait, l'ordre 
+				# Comme un changement a été fait, l'ordre
 				# n'est pas encore garanti
 				ordre = FALSE
 			}
