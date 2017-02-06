@@ -7,22 +7,19 @@
 
 ```{r}
 tri <- function(x){
-
 	# Calcul de la dimension du vecteur
 	taille = length(x)
-
+	ordre = FALSE
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
 	while(ordre == FALSE) {
 		ordre = TRUE
-
 		# Boucle qui passe tous les éléments en paire
 		for(i in 1:(taille-1)) {
-			if(x[i] < x[i+1]) {
-
-				#Inversion des deux lettres
+			if(x[i+1] < x[i]) {
+				# Inversion des deux lettres
 				x[c(i,i+1)] = x[c(i+1,i)]
-
-				
+				# Comme un changement a été fait, l'ordre 
+				# n'est pas encore garanti
 				ordre = FALSE
 			}
 		}
