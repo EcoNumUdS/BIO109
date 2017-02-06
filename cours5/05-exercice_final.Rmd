@@ -67,12 +67,15 @@ $\begin{bmatrix}
 0.0001 & 0.0020 & 0.0011 & 0.9968 \\
 \end{bmatrix}$
 
----
-# La matrice de transition entre les différents états
+Notez que l'intervalle de temps entre deux épisodes est 5 ans. 
+
 
 Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1". 
 
-ATTENTION: bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s'agit pas du même modèle. Ainsi, les étapes de mortalité et de recrutement sont combinées dans une seule étape où sont remplacés automatiquement les états d'un pas de temps à l'autre et où les probabilités sont toujours les mêmes (elles ne changent pas avec l'abondance relative). 
+---
+# ATTENTION !
+
+Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s'agit pas du même modèle. Ainsi, les étapes de mortalité et de recrutement sont combinées dans une seule étape où sont remplacés automatiquement les états d'un pas de temps à l'autre et où les probabilités sont toujours les mêmes (elles ne changent pas avec l'abondance relative). 
 
 ---
 # Question de recherche
