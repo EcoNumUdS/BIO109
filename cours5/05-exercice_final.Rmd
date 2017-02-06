@@ -46,9 +46,14 @@
 *** =left
 
 ```{r eval = FALSE}
-X = c(0:9)*20
-Y = c(0:49)*20
-image(X, Y, z=etats)
+coordx <- seq(0,180,20)
+coordy <- seq(0,980,20)
+
+paysage <- tapply(etats,INDEX = quadrats[,c(1:2)],sum)
+image(coordx, coordy,Z)
+
+par(mar = c(4,4,3,0.5))
+image(x=coordx,y=coordy,z=paysage,xlab=NULL,ylab=NULL,col=c("black","orange","darkcyan","palegreen3"))
 ```
 
 *** =right
