@@ -1,3 +1,23 @@
+---
+title       : "Séance 5: Algorithmique II"
+subtitle    : "https://econumuds.github.io/BIO109/cours5/"
+author      : "Dominique Gravel"
+job         : "Laboratoire d'écologie intégrative "
+logo        : "logo.png"
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      #
+mode        : selfcontained
+knit        : slidify::knit2slides
+widgets     : [mathjax]
+url:
+  lib   : ./libraries
+license     : by-nc-sa
+assets      :
+  css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
+
+---
+
 # Les jeux de hasard
 
 <div style='text-align:center;'>
@@ -56,7 +76,8 @@
 # Exemple : votre jeu de cartes sur R
 ## La fonction 'sample()'
 
-```{r}
+
+```r
 valeurs = c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
 couleurs = rep(c("pique", "trèfle", "carreau", "coeur"),each = 13)
 cartes = paste(valeurs,"-",couleurs)
@@ -66,10 +87,14 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 ```
 
+```
+## [1] "valet - carreau" "4 - carreau"     "10 - pique"
+```
+
 ---
 # Exercice
 
-Vous trouverez les lettres du scrabble dans le fichier 'lettres.txt'. Vous pouvez les charger et programmer votre fonction qui vous pigera au hasrad les 7 lettres pour ce jeux. 
+Vous trouverez les lettres du scrabble dans le fichier 'lettres.txt'. Vous pouvez les charger et programmer votre fonction qui vous pigera au hasrad les 7 lettres pour ce jeux.
 
 --- .transition
 # Application 2: échantillonner une loi de probabilité
@@ -77,23 +102,27 @@ Vous trouverez les lettres du scrabble dans le fichier 'lettres.txt'. Vous pouve
 ---
 # Principe
 
-Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on peut échantillonner une loi de probabilité dont les propriétés sont connues. Fort heureusement, la plupart de ces lois de probabilité sont connues. Certaines sont intuitives et déjà utilisées dans des jeux de hasard. 
+Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on peut échantillonner une loi de probabilité dont les propriétés sont connues. Fort heureusement, la plupart de ces lois de probabilité sont connues. Certaines sont intuitives et déjà utilisées dans des jeux de hasard.
 
---- &twocol
+--- &twocolw w1:40% w2:60%
+
 # La lotto 6/49
 ## La loi uniforme
 
 *** =left
 
 <div style='text-align:center;'>
-<img src="assets/img/649.jpg" height="500px"></img>
+<img src="assets/img/649.jpg" width="100%"></img>
 </div>
 
 *** =right
 
-```{r}
+
+```r
 hist(runif(n = 10000, min = 1, max = 50))
 ```
+
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
 
 --- &twocol
 # Le jeu de la courte paille
@@ -107,9 +136,12 @@ hist(runif(n = 10000, min = 1, max = 50))
 
 *** =right
 
-```{r}
+
+```r
 hist(rnorm(n = 10000, mean = 0, sd = 1))
 ```
+
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)
 
 --- &twocol
 # Une pièce de monnaie
@@ -123,8 +155,13 @@ hist(rnorm(n = 10000, mean = 0, sd = 1))
 
 *** =right
 
-```{r}
+
+```r
 rbinom(n = 10, size = 1, prob = 0.5)
+```
+
+```
+##  [1] 0 1 1 1 0 1 1 0 1 0
 ```
 
 --- &twocol
@@ -139,13 +176,25 @@ rbinom(n = 10, size = 1, prob = 0.5)
 
 *** =right
 
-```{r}
+
+```r
 rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    0    0    0
+## [2,]    1    1    0
+## [3,]    0    0    0
+## [4,]    0    0    1
+## [5,]    0    0    0
+## [6,]    0    0    0
 ```
 
 --- &twocol
 # La roulette russe
 ## La loi exponentielle
+
 *** =left
 
 <div style='text-align:center;'>
@@ -154,20 +203,23 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 
 *** =right
 
-```{r}
+
+```r
 hist(rexp(n = 1000, rate = 1/6), xlab = "Espérance du nombre d'essais")
 ```
 
---- 
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png)
+
+---
 # Critères de classification des lois de probabilité
 
 - Type de variable : continue ou discrète
-- Valeurs extrêmes : bornées ou non ? 
+- Valeurs extrêmes : bornées ou non ?
 - Forme de la distribution : centrée, biaisée
 - Moments: moyenne, variance, kurtosis, skewness
 
 ---
-# Exercice 
+# Exercice
 
 Une étude vous indique que la relation entre le nombre d'espèces de plantes et l'aire sur la placette de Sutton suit la relation suivante :
 
@@ -175,13 +227,13 @@ $$
 S ~ N(\mu, \sigma)
 $$
 
-Où 
+Où
 
 $$
 \mu = cA^z
 $$
 
-Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20,20 000]$ correspondant à la dimension de la placette. 
+Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20,20 000]$ correspondant à la dimension de la placette.
 
 --- .transition
 # Application 3: prise de décision
@@ -190,9 +242,9 @@ Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.
 # Principe
 ## L'épreuve de Bernoulli
 
-- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec. 
-- Les épreuves sont indépendantes; l'issue d'une seconde épreuve ne dépend pas de la première ; 
-- La probabilité de succès est représentée par le paramètre 'p', alors que la probabilité d'un échec est représentée par '1-p' 
+- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec.
+- Les épreuves sont indépendantes; l'issue d'une seconde épreuve ne dépend pas de la première ;
+- La probabilité de succès est représentée par le paramètre 'p', alors que la probabilité d'un échec est représentée par '1-p'
 
 ---
 # Principe
@@ -201,8 +253,8 @@ Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.
 Exemple des jeux de hasard : la pièce de monnaie
 
 Exemples en écologie :
-- la mortalité 
-- la détermination du sexe 
+- la mortalité
+- la détermination du sexe
 - l'occurrence d'un incendie forestier
 - la contamination par un virus après le contact entre une personne infectée et une personne susceptible
 
@@ -211,18 +263,23 @@ Exemples en écologie :
 
 Lorsque $p = 0.5$, on tire une pièce de monnaie. Mais qu'en est-il si la pièce est biasée, par exemple si la face est plus lourde et donc la probabilité d'obtenir pile est de $p = 0.55$ ?
 
-```{r}
+
+```r
 set.seed(1)
 p <- 0.55
 alea <- runif(n = 1, min = 0, max = 1)
-if(alea < p) res = "pile" else res = "face" 
+if(alea < p) res = "pile" else res = "face"
 res
+```
+
+```
+## [1] "pile"
 ```
 
 ---
 # En d'autres mots...
 
-Si 'U' est une variable aléatoire distribuée selon la loi uniforme entre 0 et 1, alors la chance que $U < p/$ est exactement de valeur $p$. Si on réalise $n$ tirage, alors l'espérance du nombre de succès est exactement $np$. 
+Si 'U' est une variable aléatoire distribuée selon la loi uniforme entre 0 et 1, alors la chance que $U < p/$ est exactement de valeur $p$. Si on réalise $n$ tirage, alors l'espérance du nombre de succès est exactement $np$.
 
 ---
 # Un exemple vaut mille mots
@@ -231,7 +288,7 @@ Si 'U' est une variable aléatoire distribuée selon la loi uniforme entre 0 et 
 - Créez un vecteur 'res' rempli de 0 de 1000 unités de longueur
 - Pour chaque valeur de la séquence, évaluez si le chiffre est plus petit que la valeur seuil de $p = 0.2$. Si la valeur est plus petite, inscrivez 1 dans le vecteur 'res' à la position correspondante
 - Combien de fois est-ce que la valeur est inférieure à $p$ ?
-- Essayez à nouveau et comparez. 
+- Essayez à nouveau et comparez.
 
 ---
 # Un exercice est encore plus efficace...
@@ -239,47 +296,66 @@ Si 'U' est une variable aléatoire distribuée selon la loi uniforme entre 0 et 
 Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
 - Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
 - À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5 puis avance jusqu'à la prochaine intersection;
-- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts. 
+- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
 
-Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d'oiseau). 
-
----
-# La loi multinomiale
-
-La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25. 
-
-Prenez le temps d'imaginer comment vous pourriez simuler ce phénomène. 
+Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d'oiseau).
 
 ---
 # La loi multinomiale
 
-La loi multinomiale est une généralisation de la loi binomiale. La somme des probabilités d'observer chacun des événements doit être obligatoirement de 1. 
+La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
 
-Dans ce contexte, la décision est prise en comparant la valeur aléatoire à la distribution cumulative, pour chacun des événements possibles. 
+Prenez le temps d'imaginer comment vous pourriez simuler ce phénomène.
 
-Prenons la séquence de probabilités $p = {0.25, 0.5, 0.25}$. 
+---
+# La loi multinomiale
 
-La distribution cumulative des événements est de ${0.25, 0.75, 1}$. La décision est prise en tirant un chiffre au hasard et en trouvant où il se situe dans cet intervalle. 
+La loi multinomiale est une généralisation de la loi binomiale. La somme des probabilités d'observer chacun des événements doit être obligatoirement de 1.
+
+Dans ce contexte, la décision est prise en comparant la valeur aléatoire à la distribution cumulative, pour chacun des événements possibles.
+
+Prenons la séquence de probabilités $p = {0.25, 0.5, 0.25}$.
+
+La distribution cumulative des événements est de ${0.25, 0.75, 1}$. La décision est prise en tirant un chiffre au hasard et en trouvant où il se situe dans cet intervalle.
 
 ---
 # Exemple
 
-```{r}
+
+```r
 etats <- c("A", "B", "C", "D", "E")
 p = c(0.1, 0.5, 0.2, 0.05, 0.15)
 sum(p)
+```
 
+```
+## [1] 1
+```
+
+```r
 # On utilise cumsum pour calculer la probabilité cumulative
 cump <- cumsum(p)
 cump
 ```
 
+```
+## [1] 0.10 0.60 0.80 0.85 1.00
+```
+
 ---
 # Exemple
 
-```{r}
+
+```r
 alea <- runif(1,0,1)
 alea
+```
+
+```
+## [1] 0.3721239
+```
+
+```r
 n_etats <- 5
 i = 1
 plus_petit = FALSE
@@ -295,11 +371,16 @@ while(plus_petit == FALSE) {
 decision
 ```
 
+```
+## [1] "B"
+```
+
 ---
 # Une façon plus rapide d'y arriver ....
 ## Profitons de la fonction rmultinom qui simplifie les opérations
 
-```{r}
+
+```r
 tirage <- function(p) {
     etats <- c("A", "B", "C", "D", "E")
     tirage <- rmultinom(n=1,size=1,prob=p)
@@ -308,15 +389,19 @@ tirage <- function(p) {
 tirage(p)
 ```
 
+```
+## [1] "D"
+```
+
 ---
 # Exercice intégrateur
 ## Le modèle de lotterie
 
-Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré. 
+Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré.
 
-Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l'arbre qui est mort. 
+Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l'arbre qui est mort.
 
-Le nom de 'lotterie' vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à sont abondance relative dans la forêt avoisinage, soit $P_i = N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt. 
+Le nom de 'lotterie' vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à sont abondance relative dans la forêt avoisinage, soit $P_i = N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt.
 
 ---
 # Exercice intégrateur
@@ -330,4 +415,13 @@ Le vecteur N représente le nombre d'individu de chaque espèce. Les étapes de 
 - identification de l'espèce recrutée
 - ajout d'un individu de cette espèce à N
 
-Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale. 
+Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale.
+---
+
+- Optimisation des scripts
+- Utilité : lorsque le temps de calcul devient long, peut être utile d'évaluer la performance de certaines sections de code
+- Calculer le temps pour réaliser une fonction
+- Exemple : comparaison de l'efficacité d'une boucle versus de la structure vectorielle
+	- fonction1: avec boucle
+	- fonction2: avec vecteur
+- Exercice : comparer l'efficacité de la fonction sort() vs la fonction sort_scrabble() du cours précédent
