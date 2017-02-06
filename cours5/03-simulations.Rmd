@@ -198,15 +198,22 @@ Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.
 
 *** =left
 
-```{r}
+```{r, eval=FALSE}
 A = 2*10^seq(1, 4, length.out = 15)
 c = 3
 z = 0.15
 S = rnorm(15, mean = c*A^z, sd = 1.5)
+
+plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
+  log = "xy")
 ```
 *** =right
 
-```{r,out.width = '80%', dpi=300, fig.align="center"}
+```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
+A = 2*10^seq(1, 4, length.out = 15)
+c = 3
+z = 0.15
+S = rnorm(15, mean = c*A^z, sd = 1.5)
 plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
   log = "xy")
 ```
@@ -375,7 +382,6 @@ tirage(p)
 
 ---
 # Exemple intégrateur
-## Le modèle de lotterie
 
 Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré.
 
@@ -383,14 +389,12 @@ Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée
 
 ---
 # Exemple intégrateur
-## Le modèle de lotterie
 
 Le nom de "lotterie" vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à son abondance relative dans la forêt avoisinante, soit $N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt.
 
 
 ---
 # Exemple intégrateur
-## Le modèle de lotterie
 
 Le vecteur $N$ représente le nombre d'individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :
 
@@ -399,8 +403,6 @@ Le vecteur $N$ représente le nombre d'individu de chaque espèce. Les étapes d
 - Calcul de l'abondance relative de chaque espèce ($N_i /K$).
 - Identification de l'espèce recrutée
 - Ajout d'un individu de cette espèce ($N_i+1$)
-
-Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale.
 
 ---
 # Solution

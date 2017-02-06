@@ -34,10 +34,10 @@
 ---
 # Les différents états
 
-'B' si présence de abba ou piru
-'T' si présence de acsa ou beal ou fagr
-'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
-'R' si aucun de ces critères n'est rempli
+- 'B' si présence de abba ou piru
+- 'T' si présence de acsa ou beal ou fagr
+- 'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
+- 'R' si aucun de ces critères n'est rempli
 
 ---&twocol
 
@@ -96,13 +96,13 @@ Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s
 ---
 # Question de recherche
 
-Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologie des Montagnes vertes dans 100 ans ?
+Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 100 ans ?
 
 ---
 # Données
 
-- Distribution initiale de la végétation dans le fichier 'quadrats'
-- Matrice de transition entre les 4 états (dans les diapos)
+- Distribution initiale de la végétation dans le fichier [quadrats.csv](./donnees/quadrats.csv)
+- Matrice de transition entre les 4 états dans le fichier [matrice_transitions.txt](./donnees/matrice_transitions.txt)
 
 ---
 # Étapes du travail
@@ -112,7 +112,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Préparer une fonction qui fait une simulation sur N pas de temps
 - Utiliser la sortie de la fonction pour illustrer (2 figures):
 	i) l'abondance relative des 4 états sur l'ensemble de la parcelle au cours du temps
-	ii) la distribution des états après 100 pas de temps
+	ii) la distribution des états après 100 ans (20 pas de temps)
 
 ---
 # Modalités
@@ -121,7 +121,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Le travail doit être remis **électroniquement** au plus tard le 21 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
-	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale
+	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures
 
 ---
 # Critères d'évaluation

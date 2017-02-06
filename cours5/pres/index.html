@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;7 - carreau&quot; &quot;3 - pique&quot;   &quot;5 - pique&quot;
+<pre><code>## [1] &quot;as - carreau&quot; &quot;7 - pique&quot;    &quot;4 - pique&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 0 0 1 0 0 0 0 1 0 1
+<pre><code>##  [1] 0 0 1 0 0 0 0 0 1 0
 </code></pre>
 
     </div>
@@ -353,12 +353,12 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    0    0
-## [2,]    0    0    0
-## [3,]    0    0    1
+## [1,]    0    0    0
+## [2,]    1    0    0
+## [3,]    0    0    0
 ## [4,]    0    1    0
 ## [5,]    0    0    0
-## [6,]    0    0    0
+## [6,]    0    0    1
 </code></pre>
 
     </div>
@@ -437,15 +437,14 @@ S \sim N(\mu, \sigma)
 c = 3
 z = 0.15
 S = rnorm(15, mean = c*A^z, sd = 1.5)
+
+plot(A, S, xlab = &quot;Aire (m2)&quot;, ylab = &quot;Richesse&quot;,
+  log = &quot;xy&quot;)
 </code></pre>
 
     </div>
     <div class='right' style='float:right;width:48%'>
-     <pre><code class="r">plot(A, S, xlab = &quot;Aire (m2)&quot;, ylab = &quot;Richesse&quot;,
-  log = &quot;xy&quot;)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="80%" style="display: block; margin: auto;" /></p>
+     <p><img src="assets/fig/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="100%" style="display: block; margin: auto;" /></p>
 
     </div>
   </article>
@@ -720,9 +719,7 @@ tirage(p)
     <h1>Exemple intégrateur</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Le modèle de lotterie</h2>
-
-<p>Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d&#39;ailleurs fortement inspiré.</p>
+    <p>Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d&#39;ailleurs fortement inspiré.</p>
 
 <p>Imaginez une forêt où un nombre limité d&#39;arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l&#39;arbre qui est mort.</p>
 
@@ -735,9 +732,7 @@ tirage(p)
     <h1>Exemple intégrateur</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Le modèle de lotterie</h2>
-
-<p>Le nom de &quot;lotterie&quot; vient de la façon dont s&#39;effectue le recrutement. Imaginez que l&#39;on place une trappe à graines au centre de l&#39;ouverture et que l&#39;on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d&#39;une espèce, \(p_i\), est tout simplement égale à son abondance relative dans la forêt avoisinante, soit \(N_i /K\), où \(N_i\) est le nombre d&#39;individus de l&#39;espèce \(i\) et \(K\) est le nombre total d&#39;individus dans la forêt.</p>
+    <p>Le nom de &quot;lotterie&quot; vient de la façon dont s&#39;effectue le recrutement. Imaginez que l&#39;on place une trappe à graines au centre de l&#39;ouverture et que l&#39;on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d&#39;une espèce, \(p_i\), est tout simplement égale à son abondance relative dans la forêt avoisinante, soit \(N_i /K\), où \(N_i\) est le nombre d&#39;individus de l&#39;espèce \(i\) et \(K\) est le nombre total d&#39;individus dans la forêt.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -748,9 +743,7 @@ tirage(p)
     <h1>Exemple intégrateur</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Le modèle de lotterie</h2>
-
-<p>Le vecteur \(N\) représente le nombre d&#39;individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :</p>
+    <p>Le vecteur \(N\) représente le nombre d&#39;individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :</p>
 
 <ul>
 <li>Identification de quel arbre meurt (on en pige un seul au hasard parmi les \(K\) arbres)</li>
@@ -759,8 +752,6 @@ tirage(p)
 <li>Identification de l&#39;espèce recrutée</li>
 <li>Ajout d&#39;un individu de cette espèce (\(N_i+1\))</li>
 </ul>
-
-<p>Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -886,14 +877,14 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001
+##       0       0       0
 </code></pre>
 
 <pre><code class="r">system.time(tri(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.941   0.005   0.946
+##   1.192   0.016   1.268
 </code></pre>
 
   </article>
@@ -950,14 +941,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.551   0.006   0.560
+##   0.551   0.009   0.565
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.010   0.001   0.011
+##   0.009   0.001   0.010
 </code></pre>
 
     </div>
@@ -990,11 +981,11 @@ system.time(f1(X))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##       0       0       0 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   0.528   0.000   0.529
+##   0.511   0.000   0.511
 </code></pre>
 
     </div>
@@ -1068,10 +1059,12 @@ system.time(f1(X))
     <h1>Les différents états</h1>
   </hgroup>
   <article data-timings="">
-    <p>&#39;B&#39; si présence de abba ou piru
-&#39;T&#39; si présence de acsa ou beal ou fagr
-&#39;M&#39; si présence de (abba ou piru) et (acsa ou beal ou fagr)
-&#39;R&#39; si aucun de ces critères n&#39;est rempli</p>
+    <ul>
+<li>&#39;B&#39; si présence de abba ou piru</li>
+<li>&#39;T&#39; si présence de acsa ou beal ou fagr</li>
+<li>&#39;M&#39; si présence de (abba ou piru) et (acsa ou beal ou fagr)</li>
+<li>&#39;R&#39; si aucun de ces critères n&#39;est rempli</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -1156,7 +1149,7 @@ P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
     <h1>Question de recherche</h1>
   </hgroup>
   <article data-timings="">
-    <p>Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologie des Montagnes vertes dans 100 ans ?</p>
+    <p>Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 100 ans ?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1168,8 +1161,8 @@ P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Distribution initiale de la végétation dans le fichier &#39;quadrats&#39;</li>
-<li>Matrice de transition entre les 4 états (dans les diapos)</li>
+<li>Distribution initiale de la végétation dans le fichier <a href="./donnees/quadrats.csv">quadrats.csv</a></li>
+<li>Matrice de transition entre les 4 états dans le fichier <a href="./donnees/matrice_transitions.txt">matrice_transitions.txt</a></li>
 </ul>
 
   </article>
@@ -1187,7 +1180,7 @@ P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
 <li>Préparer une fonction qui fait une simulation sur N pas de temps</li>
 <li>Utiliser la sortie de la fonction pour illustrer (2 figures):
 i) l&#39;abondance relative des 4 états sur l&#39;ensemble de la parcelle au cours du temps
-ii) la distribution des états après 100 pas de temps</li>
+ii) la distribution des états après 100 ans (20 pas de temps)</li>
 </ul>
 
   </article>
@@ -1206,7 +1199,7 @@ ii) la distribution des états après 100 pas de temps</li>
 
 <ul>
 <li>Le pseudo-code pour la fonction principale qui réalise votre simulation</li>
-<li>Le script qui exécute votre code, de la lecture du fichier de départ jusqu&#39;à la production de la figure finale</li>
+<li>Le script qui exécute votre code, de la lecture du fichier de départ jusqu&#39;à la production des figures</li>
 </ul></li>
 </ul>
 

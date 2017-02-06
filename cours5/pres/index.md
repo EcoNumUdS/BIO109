@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "7 - carreau" "3 - pique"   "5 - pique"
+## [1] "as - carreau" "7 - pique"    "4 - pique"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 0 0 1 0 0 0 0 1 0 1
+##  [1] 0 0 1 0 0 0 0 0 1 0
 ```
 
 --- &twocol
@@ -216,12 +216,12 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 
 ```
 ##      [,1] [,2] [,3]
-## [1,]    1    0    0
-## [2,]    0    0    0
-## [3,]    0    0    1
+## [1,]    0    0    0
+## [2,]    1    0    0
+## [3,]    0    0    0
 ## [4,]    0    1    0
 ## [5,]    0    0    0
-## [6,]    0    0    0
+## [6,]    0    0    1
 ```
 
 --- &twocolw w1:40% w2:60%
@@ -281,16 +281,13 @@ A = 2*10^seq(1, 4, length.out = 15)
 c = 3
 z = 0.15
 S = rnorm(15, mean = c*A^z, sd = 1.5)
-```
-*** =right
 
-
-```r
 plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
   log = "xy")
 ```
+*** =right
 
-<img src="assets/fig/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="80%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="100%" style="display: block; margin: auto;" />
 
 --- .transition
 
@@ -486,7 +483,6 @@ tirage(p)
 
 ---
 # Exemple intégrateur
-## Le modèle de lotterie
 
 Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré.
 
@@ -494,14 +490,12 @@ Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée
 
 ---
 # Exemple intégrateur
-## Le modèle de lotterie
 
 Le nom de "lotterie" vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à son abondance relative dans la forêt avoisinante, soit $N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt.
 
 
 ---
 # Exemple intégrateur
-## Le modèle de lotterie
 
 Le vecteur $N$ représente le nombre d'individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :
 
@@ -510,8 +504,6 @@ Le vecteur $N$ représente le nombre d'individu de chaque espèce. Les étapes d
 - Calcul de l'abondance relative de chaque espèce ($N_i /K$).
 - Identification de l'espèce recrutée
 - Ajout d'un individu de cette espèce ($N_i+1$)
-
-Commencez par tester un seul pas de temps. Si ça marche, continuez sur 1000 pas de temps, et enregistrer le changement des abondances relatives au fil du temps. On commence la simulation avec 5 espèces et 100 individus, toutes à abondance égale.
 
 ---
 # Solution
@@ -599,7 +591,7 @@ system.time(sort(x))
 
 ```
 ##    user  system elapsed 
-##   0.000   0.000   0.001
+##       0       0       0
 ```
 
 ```r
@@ -608,7 +600,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   0.941   0.005   0.946
+##   1.192   0.016   1.268
 ```
 
 ---&twocol
@@ -665,7 +657,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.551   0.006   0.560
+##   0.551   0.009   0.565
 ```
 
 ```r
@@ -674,7 +666,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.010   0.001   0.011
+##   0.009   0.001   0.010
 ```
 
 ---&twocol
@@ -708,11 +700,11 @@ system.time(f1(X))
 
 ```
 ##    user  system elapsed 
-##       0       0       0 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   0.528   0.000   0.529
+##   0.511   0.000   0.511
 ```
 
 ---.transition
@@ -750,10 +742,10 @@ system.time(f1(X))
 ---
 # Les différents états
 
-'B' si présence de abba ou piru
-'T' si présence de acsa ou beal ou fagr
-'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
-'R' si aucun de ces critères n'est rempli
+- 'B' si présence de abba ou piru
+- 'T' si présence de acsa ou beal ou fagr
+- 'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
+- 'R' si aucun de ces critères n'est rempli
 
 ---&twocol
 
@@ -813,13 +805,13 @@ Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s
 ---
 # Question de recherche
 
-Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologie des Montagnes vertes dans 100 ans ?
+Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 100 ans ?
 
 ---
 # Données
 
-- Distribution initiale de la végétation dans le fichier 'quadrats'
-- Matrice de transition entre les 4 états (dans les diapos)
+- Distribution initiale de la végétation dans le fichier [quadrats.csv](./donnees/quadrats.csv)
+- Matrice de transition entre les 4 états dans le fichier [matrice_transitions.txt](./donnees/matrice_transitions.txt)
 
 ---
 # Étapes du travail
@@ -829,7 +821,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Préparer une fonction qui fait une simulation sur N pas de temps
 - Utiliser la sortie de la fonction pour illustrer (2 figures):
 	i) l'abondance relative des 4 états sur l'ensemble de la parcelle au cours du temps
-	ii) la distribution des états après 100 pas de temps
+	ii) la distribution des états après 100 ans (20 pas de temps)
 
 ---
 # Modalités
@@ -838,7 +830,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Le travail doit être remis **électroniquement** au plus tard le 21 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
-	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale
+	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures
 
 ---
 # Critères d'évaluation
