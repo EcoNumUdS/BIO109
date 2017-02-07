@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "as - carreau" "7 - pique"    "4 - pique"
+## [1] "4 - trèfle" "7 - pique"  "3 - pique"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 0 0 1 0 0 0 0 0 1 0
+##  [1] 0 1 1 0 0 1 0 1 1 1
 ```
 
 --- &twocol
@@ -217,10 +217,10 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 ```
 ##      [,1] [,2] [,3]
 ## [1,]    0    0    0
-## [2,]    1    0    0
-## [3,]    0    0    0
-## [4,]    0    1    0
-## [5,]    0    0    0
+## [2,]    0    0    0
+## [3,]    1    0    0
+## [4,]    0    0    0
+## [5,]    0    1    0
 ## [6,]    0    0    1
 ```
 
@@ -600,7 +600,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   1.192   0.016   1.268
+##   4.225   0.054   5.014
 ```
 
 ---&twocol
@@ -657,7 +657,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.551   0.009   0.565
+##   1.985   0.015   2.005
 ```
 
 ```r
@@ -666,7 +666,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.009   0.001   0.010
+##   0.036   0.004   0.040
 ```
 
 ---&twocol
@@ -700,11 +700,11 @@ system.time(f1(X))
 
 ```
 ##    user  system elapsed 
-##   0.000   0.000   0.001 
+##   0.001   0.001   0.000 
 ##    user  system elapsed 
-##       0       0       0 
+##   0.001   0.000   0.001 
 ##    user  system elapsed 
-##   0.511   0.000   0.511
+##   2.269   0.009   2.287
 ```
 
 ---.transition
@@ -755,9 +755,16 @@ system.time(f1(X))
 
 
 ```r
-X = c(0:9)*20
-Y = c(0:49)*20
-image(X, Y, z=etats)
+coordx <- seq(0,180,20)
+coordy <- seq(0,980,20)
+
+paysage <- tapply(etats,
+	INDEX = quadrats[,c(1:2)],sum)
+image(coordx, coordy,Z)
+
+par(mar = c(4,4,3,0.5))
+image(x=coordx,y=coordy,z=paysage,xlab=NULL,
+	ylab=NULL,col=c("black","orange","darkcyan","palegreen3"))
 ```
 
 *** =right
