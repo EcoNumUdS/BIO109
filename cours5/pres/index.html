@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;as - carreau&quot; &quot;7 - pique&quot;    &quot;4 - pique&quot;
+<pre><code>## [1] &quot;4 - trèfle&quot; &quot;7 - pique&quot;  &quot;3 - pique&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 0 0 1 0 0 0 0 0 1 0
+<pre><code>##  [1] 0 1 1 0 0 1 0 1 1 1
 </code></pre>
 
     </div>
@@ -354,10 +354,10 @@ tirage(3, cartes)
 
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0    0
-## [2,]    1    0    0
-## [3,]    0    0    0
-## [4,]    0    1    0
-## [5,]    0    0    0
+## [2,]    0    0    0
+## [3,]    1    0    0
+## [4,]    0    0    0
+## [5,]    0    1    0
 ## [6,]    0    0    1
 </code></pre>
 
@@ -884,7 +884,7 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   1.192   0.016   1.268
+##   4.225   0.054   5.014
 </code></pre>
 
   </article>
@@ -941,14 +941,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.551   0.009   0.565
+##   1.985   0.015   2.005
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.009   0.001   0.010
+##   0.036   0.004   0.040
 </code></pre>
 
     </div>
@@ -981,11 +981,11 @@ system.time(f1(X))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001 
+##   0.001   0.001   0.000 
 ##    user  system elapsed 
-##       0       0       0 
+##   0.001   0.000   0.001 
 ##    user  system elapsed 
-##   0.511   0.000   0.511
+##   2.269   0.009   2.287
 </code></pre>
 
     </div>
@@ -1076,9 +1076,16 @@ system.time(f1(X))
   <article>
     
     <div class='left' style='float:left;width:48%'>
-     <pre><code class="r">X = c(0:9)*20
-Y = c(0:49)*20
-image(X, Y, z=etats)
+     <pre><code class="r">coordx &lt;- seq(0,180,20)
+coordy &lt;- seq(0,980,20)
+
+paysage &lt;- tapply(etats,
+    INDEX = quadrats[,c(1:2)],sum)
+image(coordx, coordy,Z)
+
+par(mar = c(4,4,3,0.5))
+image(x=coordx,y=coordy,z=paysage,xlab=NULL,
+    ylab=NULL,col=c(&quot;black&quot;,&quot;orange&quot;,&quot;darkcyan&quot;,&quot;palegreen3&quot;))
 </code></pre>
 
     </div>
