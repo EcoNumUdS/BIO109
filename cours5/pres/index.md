@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "4 - trèfle" "7 - pique"  "3 - pique"
+## [1] "6 - carreau" "5 - carreau" "as - pique"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 0 1 1 0 0 1 0 1 1 1
+##  [1] 1 0 1 0 1 0 0 0 1 0
 ```
 
 --- &twocol
@@ -218,10 +218,10 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 ##      [,1] [,2] [,3]
 ## [1,]    0    0    0
 ## [2,]    0    0    0
-## [3,]    1    0    0
+## [3,]    0    0    1
 ## [4,]    0    0    0
-## [5,]    0    1    0
-## [6,]    0    0    1
+## [5,]    0    0    0
+## [6,]    1    1    0
 ```
 
 --- &twocolw w1:40% w2:60%
@@ -368,20 +368,21 @@ Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une cent
 nsteps = 20
 xy = matrix(0,nr = 21, nc = 2)
 xy[1,] = c(0,0)
-direction = 90
+direction = 0
+set.seed(2)
 for(step in 2:(nsteps+1)) {
-    # Son chemin en X
-    if(runif(1,0,1) < 0.5){
-      xy[step,1] = xy[step-1,1] + 250
-    } else {
-      xy[step,1] = xy[step-1,1] - 250}
-
-    # Son chemin en Y
-    if(runif(1,0,1) < 0.5){
-      xy[step,2] = xy[step-1,2] + 250
-    } else {
-      xy[step,2] = xy[step-1,2] - 250
+    # Ḑe quel côté tourner ?
+    if(runif(1,0,1) < 0.5) {
+      # Tourne à droite
+      direction = direction + pi/2 
     }
+    else {
+      # Tourne à gauche  
+      direction = direction - pi/2
+    }
+    # Calcul des nouvelles coordonnées
+    xy[step,1] = xy[step-1,1] + sin(direction)*250 
+    xy[step,2] = xy[step-1,2] + cos(direction)*250 
 }
 ```
 
@@ -442,7 +443,7 @@ alea
 ```
 
 ```
-## [1] 0.6470602
+## [1] 0.6618988
 ```
 
 ```r
@@ -478,7 +479,7 @@ tirage(p)
 ```
 
 ```
-## [1] "B"
+## [1] "E"
 ```
 
 ---
@@ -591,7 +592,7 @@ system.time(sort(x))
 
 ```
 ##    user  system elapsed 
-##       0       0       0
+##   0.000   0.000   0.001
 ```
 
 ```r
@@ -600,7 +601,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   4.225   0.054   5.014
+##   1.208   0.000   1.208
 ```
 
 ---&twocol
@@ -657,7 +658,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   1.985   0.015   2.005
+##   0.732   0.000   0.739
 ```
 
 ```r
@@ -666,7 +667,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.036   0.004   0.040
+##   0.020   0.000   0.021
 ```
 
 ---&twocol
@@ -700,11 +701,11 @@ system.time(f1(X))
 
 ```
 ##    user  system elapsed 
-##   0.001   0.001   0.000 
+##       0       0       0 
 ##    user  system elapsed 
-##   0.001   0.000   0.001 
+##       0       0       0 
 ##    user  system elapsed 
-##   2.269   0.009   2.287
+##   1.112   0.004   1.115
 ```
 
 ---.transition
@@ -757,14 +758,10 @@ system.time(f1(X))
 ```r
 coordx <- seq(0,180,20)
 coordy <- seq(0,980,20)
-
-paysage <- tapply(etats,
-	INDEX = quadrats[,c(1:2)],sum)
-image(coordx, coordy,Z)
-
+paysage <- tapply(etats,INDEX = quadrats[,c(1:2)],sum)
 par(mar = c(4,4,3,0.5))
-image(x=coordx,y=coordy,z=paysage,xlab=NULL,
-	ylab=NULL,col=c("black","orange","darkcyan","palegreen3"))
+image(x=coordx,y=coordy,z=paysage,xlab=NULL,ylab=NULL,
+	col=c("black","orange","darkcyan","palegreen3"))
 ```
 
 *** =right

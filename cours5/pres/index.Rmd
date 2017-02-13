@@ -337,20 +337,21 @@ Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une cent
 nsteps = 20
 xy = matrix(0,nr = 21, nc = 2)
 xy[1,] = c(0,0)
-direction = 90
+direction = 0
+set.seed(2)
 for(step in 2:(nsteps+1)) {
-    # Son chemin en X
-    if(runif(1,0,1) < 0.5){
-      xy[step,1] = xy[step-1,1] + 250
-    } else {
-      xy[step,1] = xy[step-1,1] - 250}
-
-    # Son chemin en Y
-    if(runif(1,0,1) < 0.5){
-      xy[step,2] = xy[step-1,2] + 250
-    } else {
-      xy[step,2] = xy[step-1,2] - 250
+    # Ḑe quel côté tourner ?
+    if(runif(1,0,1) < 0.5) {
+      # Tourne à droite
+      direction = direction + pi/2 
     }
+    else {
+      # Tourne à gauche  
+      direction = direction - pi/2
+    }
+    # Calcul des nouvelles coordonnées
+    xy[step,1] = xy[step-1,1] + sin(direction)*250 
+    xy[step,2] = xy[step-1,2] + cos(direction)*250 
 }
 ```
 
@@ -672,14 +673,10 @@ system.time(f1(X))
 ```{r eval = FALSE}
 coordx <- seq(0,180,20)
 coordy <- seq(0,980,20)
-
-paysage <- tapply(etats,
-	INDEX = quadrats[,c(1:2)],sum)
-image(coordx, coordy,Z)
-
+paysage <- tapply(etats,INDEX = quadrats[,c(1:2)],sum)
 par(mar = c(4,4,3,0.5))
-image(x=coordx,y=coordy,z=paysage,xlab=NULL,
-	ylab=NULL,col=c("black","orange","darkcyan","palegreen3"))
+image(x=coordx,y=coordy,z=paysage,xlab=NULL,ylab=NULL,
+	col=c("black","orange","darkcyan","palegreen3"))
 ```
 
 *** =right

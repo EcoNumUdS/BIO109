@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;4 - trèfle&quot; &quot;7 - pique&quot;  &quot;3 - pique&quot;
+<pre><code>## [1] &quot;6 - carreau&quot; &quot;5 - carreau&quot; &quot;as - pique&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 0 1 1 0 0 1 0 1 1 1
+<pre><code>##  [1] 1 0 1 0 1 0 0 0 1 0
 </code></pre>
 
     </div>
@@ -355,10 +355,10 @@ tirage(3, cartes)
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0    0
 ## [2,]    0    0    0
-## [3,]    1    0    0
+## [3,]    0    0    1
 ## [4,]    0    0    0
-## [5,]    0    1    0
-## [6,]    0    0    1
+## [5,]    0    0    0
+## [6,]    1    1    0
 </code></pre>
 
     </div>
@@ -576,20 +576,21 @@ res
      <pre><code class="r">nsteps = 20
 xy = matrix(0,nr = 21, nc = 2)
 xy[1,] = c(0,0)
-direction = 90
+direction = 0
+set.seed(2)
 for(step in 2:(nsteps+1)) {
-    # Son chemin en X
-    if(runif(1,0,1) &lt; 0.5){
-      xy[step,1] = xy[step-1,1] + 250
-    } else {
-      xy[step,1] = xy[step-1,1] - 250}
-
-    # Son chemin en Y
-    if(runif(1,0,1) &lt; 0.5){
-      xy[step,2] = xy[step-1,2] + 250
-    } else {
-      xy[step,2] = xy[step-1,2] - 250
+    # Ḑe quel côté tourner ?
+    if(runif(1,0,1) &lt; 0.5) {
+      # Tourne à droite
+      direction = direction + pi/2 
     }
+    else {
+      # Tourne à gauche  
+      direction = direction - pi/2
+    }
+    # Calcul des nouvelles coordonnées
+    xy[step,1] = xy[step-1,1] + sin(direction)*250 
+    xy[step,2] = xy[step-1,2] + cos(direction)*250 
 }
 </code></pre>
 
@@ -669,7 +670,7 @@ cump
 alea
 </code></pre>
 
-<pre><code>## [1] 0.6470602
+<pre><code>## [1] 0.6618988
 </code></pre>
 
 <pre><code class="r">n_etats &lt;- 5; i = 1; plus_petit = FALSE
@@ -707,7 +708,7 @@ decision
 tirage(p)
 </code></pre>
 
-<pre><code>## [1] &quot;B&quot;
+<pre><code>## [1] &quot;E&quot;
 </code></pre>
 
   </article>
@@ -877,14 +878,14 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##       0       0       0
+##   0.000   0.000   0.001
 </code></pre>
 
 <pre><code class="r">system.time(tri(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   4.225   0.054   5.014
+##   1.208   0.000   1.208
 </code></pre>
 
   </article>
@@ -941,14 +942,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   1.985   0.015   2.005
+##   0.732   0.000   0.739
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.036   0.004   0.040
+##   0.020   0.000   0.021
 </code></pre>
 
     </div>
@@ -981,11 +982,11 @@ system.time(f1(X))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.001   0.001   0.000 
+##       0       0       0 
 ##    user  system elapsed 
-##   0.001   0.000   0.001 
+##       0       0       0 
 ##    user  system elapsed 
-##   2.269   0.009   2.287
+##   1.112   0.004   1.115
 </code></pre>
 
     </div>
@@ -1078,14 +1079,10 @@ system.time(f1(X))
     <div class='left' style='float:left;width:48%'>
      <pre><code class="r">coordx &lt;- seq(0,180,20)
 coordy &lt;- seq(0,980,20)
-
-paysage &lt;- tapply(etats,
-    INDEX = quadrats[,c(1:2)],sum)
-image(coordx, coordy,Z)
-
+paysage &lt;- tapply(etats,INDEX = quadrats[,c(1:2)],sum)
 par(mar = c(4,4,3,0.5))
-image(x=coordx,y=coordy,z=paysage,xlab=NULL,
-    ylab=NULL,col=c(&quot;black&quot;,&quot;orange&quot;,&quot;darkcyan&quot;,&quot;palegreen3&quot;))
+image(x=coordx,y=coordy,z=paysage,xlab=NULL,ylab=NULL,
+    col=c(&quot;black&quot;,&quot;orange&quot;,&quot;darkcyan&quot;,&quot;palegreen3&quot;))
 </code></pre>
 
     </div>
