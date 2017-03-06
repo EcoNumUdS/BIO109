@@ -6,7 +6,7 @@
 ---
 # Optimisation
 
-R est un langage de programmation et peut donc faire à peu près tout ce que l'on fera avec d'autres langages de programmation. Mais il a d'abord et surtout été développé pour l'analyse statistiques de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.
+R est un langage de programmation et peut donc faire à peu près tout ce que l'on fera avec d'autres langages de programmation. Mais il a d'abord et surtout été développé pour l'analyse statistique de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.
 
 **L'optimisation de code peut être réalisée de différentes façons:**
 

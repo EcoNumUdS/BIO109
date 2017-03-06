@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;6 - carreau&quot; &quot;5 - carreau&quot; &quot;as - pique&quot;
+<pre><code>## [1] &quot;reine - coeur&quot; &quot;valet - coeur&quot; &quot;2 - trèfle&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 1 0 1 0 1 0 0 0 1 0
+<pre><code>##  [1] 0 0 0 1 1 0 1 1 1 1
 </code></pre>
 
     </div>
@@ -353,12 +353,12 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    0    0    0
+## [1,]    1    1    0
 ## [2,]    0    0    0
-## [3,]    0    0    1
+## [3,]    0    0    0
 ## [4,]    0    0    0
-## [5,]    0    0    0
-## [6,]    1    1    0
+## [5,]    0    0    1
+## [6,]    0    0    0
 </code></pre>
 
     </div>
@@ -722,7 +722,7 @@ tirage(p)
   <article data-timings="">
     <p>Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d&#39;ailleurs fortement inspiré.</p>
 
-<p>Imaginez une forêt où un nombre limité d&#39;arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l&#39;arbre qui est mort.</p>
+<p>Imaginez une forêt où un nombre limité d&#39;arbres peuvent atteindre la canopée. Ce nombre est constant dans le temps puisque, lorsque survient une petite perturbation qui crée une ouverture, un seul individu viendra remplacer l&#39;arbre qui est mort.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -837,7 +837,7 @@ for(step in 2:nsteps) {
     <h1>Optimisation</h1>
   </hgroup>
   <article data-timings="">
-    <p>R est un langage de programmation et peut donc faire à peu près tout ce que l&#39;on fera avec d&#39;autres langages de programmation. Mais il a d&#39;abord et surtout été développé pour l&#39;analyse statistiques de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.</p>
+    <p>R est un langage de programmation et peut donc faire à peu près tout ce que l&#39;on fera avec d&#39;autres langages de programmation. Mais il a d&#39;abord et surtout été développé pour l&#39;analyse statistique de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.</p>
 
 <p><strong>L&#39;optimisation de code peut être réalisée de différentes façons:</strong></p>
 
@@ -878,14 +878,14 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001
+##       0       0       0
 </code></pre>
 
 <pre><code class="r">system.time(tri(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   1.208   0.000   1.208
+##   1.548   0.000   1.548
 </code></pre>
 
   </article>
@@ -942,7 +942,7 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.732   0.000   0.739
+##   0.664   0.000   0.662
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
@@ -986,7 +986,7 @@ system.time(f1(X))
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   1.112   0.004   1.115
+##   1.264   0.000   1.265
 </code></pre>
 
     </div>
@@ -1198,7 +1198,7 @@ ii) la distribution des états après 100 ans (20 pas de temps)</li>
   <article data-timings="">
     <ul>
 <li>Le travail se réalisera en équipe de 4</li>
-<li>Le travail doit être remis <strong>électroniquement</strong> au plus tard le 21 février 16:00 sur Moodle</li>
+<li>Le travail doit être remis <strong>électroniquement</strong> au plus tard le 21 mars 16:00 sur Moodle</li>
 <li>Vous devez remettre:
 
 <ul>

@@ -432,7 +432,7 @@ tirage(p)
 
 Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré.
 
-Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. ce nombre est constant dans le temps puisque lorsque survient une petite perturbation qui crée une ouverture, un individu vient remplacer l'arbre qui est mort.
+Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. Ce nombre est constant dans le temps puisque, lorsque survient une petite perturbation qui crée une ouverture, un seul individu viendra remplacer l'arbre qui est mort.
 
 ---
 # Exemple intégrateur
@@ -511,7 +511,7 @@ for(i in 2:S) lines(c(1:nsteps), N[,i])
 ---
 # Optimisation
 
-R est un langage de programmation et peut donc faire à peu près tout ce que l'on fera avec d'autres langages de programmation. Mais il a d'abord et surtout été développé pour l'analyse statistiques de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.
+R est un langage de programmation et peut donc faire à peu près tout ce que l'on fera avec d'autres langages de programmation. Mais il a d'abord et surtout été développé pour l'analyse statistique de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.
 
 **L'optimisation de code peut être réalisée de différentes façons:**
 
@@ -746,7 +746,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 21 février 16:00 sur Moodle
+- Le travail doit être remis **électroniquement** au plus tard le 21 mars 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
 	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures
