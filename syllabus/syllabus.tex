@@ -1,11 +1,12 @@
 \documentclass[12]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{authblk} 
+\usepackage{authblk}
 \usepackage{geometry}
-\usepackage{amsmath} 
+\usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage[french]{babel}
 \usepackage{url}
+\usepackage[french]{isodate}
 
 \geometry{letterpaper,margin=2.5cm}
 
@@ -18,12 +19,12 @@
 
 
 \title{BIO-109 \\ Introduction à la programmation scientifique}
-\date {\today}
+\date {\printdate{2018-1-8}}
 \author {Dominique Gravel}
 
 \affil {Département de biologie \\
-Université de Sherbrooke \\ 
-Local D8-3066 \\ 
+Université de Sherbrooke \\
+Local D8-3066 \\
 819-821-8000 \#66589}
 \affil {\url{dominique.gravel@usherbrooke.ca}}
 
@@ -50,7 +51,7 @@ Local D8-3066 \\
 	%-----------------------------
 	\section*{Objectifs spécifiques}
 
-	Au terme de ce cours, l'étudiant sera en mesure de: 
+	Au terme de ce cours, l'étudiant sera en mesure de:
 
 	\begin{itemize}
 	\renewcommand{\labelitemi}{$\bullet$}
@@ -93,14 +94,14 @@ Local D8-3066 \\
 	sur la réalisation d'un exercice intégrateur à compléter à la maison.
 
 	L'ensemble du matériel du cours sera disponible sur un dépôt git à l'adresse :\\
-	https://github.com/EcoNumUdS/BIO109.git
+	\url{https://github.com/EcoNumUdS/BIO109.git}
 
 	%-----------------------------
 	\section*{Contenu}
 
 	\subsection*{Cours 1: Introduction à la programmation scientifique}
 	\begin{itemize}
-	\renewcommand{\labelitemi}{$\bullet$}	
+	\renewcommand{\labelitemi}{$\bullet$}
 		\item Présentation du plan de cours
 		\item Historique et motivation au calcul scientifique
 		\item Le pseudo-code
@@ -109,7 +110,7 @@ Local D8-3066 \\
 	\end{itemize}
 
 	\subsection*{Cours 2: Les bases du langage R}
-	\renewcommand{\labelitemi}{$\bullet$}	
+	\renewcommand{\labelitemi}{$\bullet$}
 	\begin{itemize}
 		\item Interagir avec R
 		\item Lire et écrire des fichiers
@@ -118,22 +119,22 @@ Local D8-3066 \\
 	\end{itemize}
 
 	\subsection*{Cours 3: Opérations et fonctions}
-	\renewcommand{\labelitemi}{$\bullet$}	
+	\renewcommand{\labelitemi}{$\bullet$}
 	\begin{itemize}
 		\item Opérations mathématiques
 		\item L'anatomie d'une fonction
-		\item Automatisation d'une série d'opérations		
+		\item Automatisation d'une série d'opérations
 	\end{itemize}
 
 	\subsection*{Cours 4: Algorithmique I}
-	\renewcommand{\labelitemi}{$\bullet$}	
+	\renewcommand{\labelitemi}{$\bullet$}
 	\begin{itemize}
 		\item Boucles
 		\item Opérateurs logiques
 	\end{itemize}
 
 	\subsection*{Cours 5: Algorithmique II}
-	\renewcommand{\labelitemi}{$\bullet$}	
+	\renewcommand{\labelitemi}{$\bullet$}
 	\begin{itemize}
 		\item Simulations de Monte Carlo
 		\item Optimisation des scripts
@@ -152,7 +153,7 @@ Local D8-3066 \\
 
 	L'évaluation finale portera sur la réalisation d'un projet de
 	programmation en équipe de 4 à remettre deux semaines après la fin du
-	dernier cours, soit au plus tard le \textbf{21 février 2017 à 16:00}. La
+	dernier cours, soit au plus tard le \textcolor{red}{\textbf{20 février 2018 à 16:00}}. La
 	pénalité sera de 10\% par jour de retard. Le rapport final sera évalué à
 	parti de i) le pseudo-code pour le projet de programmation, ii) le respect
 	des bonnes pratiques de programmation et iii) la réussite de l'exercice
@@ -163,15 +164,15 @@ Local D8-3066 \\
 	\section*{Références}
 
 	\begin{itemize}
-	\renewcommand{\labelitemi}{$\bullet$}	
+	\renewcommand{\labelitemi}{$\bullet$}
 
-		\item Paradis, E. 2005. R pour les débutants. 
+		\item Paradis, E. 2005. R pour les débutants.
 		\\ ftp://cran.r-project.org/pub/R/doc/contrib/Paradis-rdebuts\_fr.pdf
 
-		\item Venables et al. 2016. An Introduction to R. 
+		\item Venables et al. 2016. An Introduction to R.
 		\\ https://cran.r-project.org/
 
-		\item Wickham, H and Grolemund, G. 2017. R for Data Science. O'Reilly Media Inc, Sebastopol.  
+		\item Wickham, H and Grolemund, G. 2017. R for Data Science. O'Reilly Media Inc, Sebastopol.
 
 		\item Centre de la Science de la Biodiversité du Québec. Ateliers R du CSBQ. \\ http://qcbs.ca/wiki/r
 
