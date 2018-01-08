@@ -2,8 +2,7 @@ language: r
 
 sudo: false
 
-cache:
-  packages: yes
+cache: packages
 
 cran: https://cloud.r-project.org
 
