@@ -204,13 +204,13 @@ L'évaluation finale portera sur la réalisation d'un projet de
 programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
 dernier cours, soit au plus tard le <b>20 février 2018 à 16:00</b>. La
 pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
-parti de 
+parti de
 
-   1. le pseudo-code pour le projet de programmation, 
-   2. le respect des bonnes pratiques de programmation 
-   3. la réussite de l'exercice demandé. 
+   1. le pseudo-code pour le projet de programmation,
+   2. le respect des bonnes pratiques de programmation
+   3. la réussite de l'exercice demandé.
 
-Les étudiants devront remettre le script nécessaire à la 
+Les étudiants devront remettre le script nécessaire à la
 réalisation du projet.
 
 --- .transition
@@ -490,13 +490,13 @@ PROGRAM REC_AIRE
   WRITE hauteur * largeur
 ```
 
-C'est une progression linéaire car chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
+Chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
 
 ---
 
 # 2. Les opérations itératives
 
-## Exemple avec `FOR`: Croissance avec capacité de support (K)
+## Exemple avec `FOR`: Croissance exponentielle
 
 ```
 PROGRAM DEMO
@@ -553,6 +553,73 @@ PROGRAM DEMO
 ```
 
 Avec la clause `ELSE`, la croissance est nulle
+
+---
+
+# Les types d'objets
+
+Les objets en programmation sont définit en fonction de leur dimensionalité.
+
+## Dimensionalité
+
+<b>Dimension 0</b> : Valeur unique
+
+<b>Dimension 1</b> : Vecteur
+
+<b>Dimension 2</b> : Matrice
+
+<b>Dimension 3</b> : ...
+
+Malgré qu'il n'y ait pas de limit à la dimension d'un objet en programmation,
+pour le cours nous nous limiterons à des objets en deux dimension
+(c.à.d Matrice)
+
+---
+
+# Dimension 0
+
+Ces objets ne contiennent qu'une seule information
+
+## Exemple
+
+```
+bobo = "toi"
+coco = 2
+dodo = -3
+fofo = 456457.678
+```
+
+---
+
+# Dimension 1
+
+Ces objets contiennent un série d'information. Chaque valeur
+a une position dans le vecteur, laquelle peut être accédée.
+
+## Exemple
+
+```
+lettre = ["A" "R" "C" "D" "A"]
+lettre[3]
+# "C"
+```
+
+---
+
+# Dimension 2
+
+Ayant deux dimensions, ces objets présentent les données sous forme de matrices et ont des lignes et des colonnes. Pour accéder à une valeur dans une matrice il faut donner la position de la <b>ligne</b> en premier suivit de la position de la <b>colonne</b>.
+
+## Exemple
+
+```
+lettreTab = ["A" "R" "C"
+             "D" "A" "T"
+             "R" "A" "Q"]
+
+lettreTab[2, 1]
+# "D"
+```
 
 ---
 
@@ -635,19 +702,19 @@ Avec la clause `ELSE`, la croissance est nulle
 
 ---
 
-# Trois règles supplémentaires 
+# Trois règles supplémentaires
 
 > <b>A.</b> Des pas de bébés permettent aussi d'avancer
 
 ---
 
-# Trois règles supplémentaires 
+# Trois règles supplémentaires
 
 > <b>B.</b> Il ne faut pas réinventer la roue
 
 ---
 
-# Trois règles supplémentaires 
+# Trois règles supplémentaires
 
 > <b>C.</b> C'est en forgeant qu'on devient forgeron
 
