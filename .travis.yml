@@ -1,9 +1,6 @@
 language: r
 
 sudo: false
-
-cache: packages
-
 cran: https://cloud.r-project.org
 
 r_github_packages:
