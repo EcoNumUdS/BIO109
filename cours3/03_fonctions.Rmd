@@ -293,17 +293,6 @@ prodsum(tableau, tableau2)
 
 ---
 
-# Utilisons notre fonction avec des tableaux
-
-Le language de programmation R permet de faire aussi le calcul sur des matrices
-
-```{r}
-tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
-prodsum(tableau, tableau2)
-```
-
----
-
 # La sortie
 
 Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
