@@ -87,7 +87,7 @@ assets      :
 
 ---
 
-# Question de recherche
+# Question de recherche (et projet de session)
 
 À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
 
@@ -97,7 +97,7 @@ assets      :
 
 
 ```r
-arbres = read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
+arbres <- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
 head(arbres)
 ```
 
@@ -123,8 +123,8 @@ Ouvrir le fichier [arbres](./donnees/arbres.xlsx) avec Excel et calculer le nomb
 
 
 ```r
-arbres = read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
-quadrats = table(arbres$id_bor,arbres$esp)
+arbres <- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
+quadrats <- table(arbres$id_bor,arbres$esp)
 head(quadrats)
 ```
 
@@ -149,7 +149,7 @@ Ouvrir le fichier [quadrats](./donnees/quadrats.xlsx) avec Excel et calculer la 
 Petit truc: sur Excel, la fonction pour calculer une corrélation est:
 
 ```bash
-=covariance.pearson(données_1; données_2)
+=COEFFICIENT.CORRELATION(données_1; données_2)
 ```
 
 ---
@@ -158,27 +158,20 @@ Petit truc: sur Excel, la fonction pour calculer une corrélation est:
 
 
 ```r
-quadrats = read.table(file = './donnees/quadrats.txt', header = TRUE, sep= ";")
+quadrats <- read.table(file = './donnees/quadrats.txt', header = TRUE, sep= ";")
 cor(quadrats)
 ```
 
+
 ```
-##             abba        acpe       acsa        beal        bepa       fagr
-## abba  1.00000000 -0.06189199 -0.4873081  0.18266806  0.66577551 -0.1807264
-## acpe -0.06189199  1.00000000  0.2231896  0.26639705 -0.11178181  0.4497004
-## acsa -0.48730810  0.22318962  1.0000000 -0.37074281 -0.32902435  0.3335518
-## beal  0.18266806  0.26639705 -0.3707428  1.00000000 -0.03018735 -0.1099725
-## bepa  0.66577551 -0.11178181 -0.3290244 -0.03018735  1.00000000 -0.1535915
-## fagr -0.18072638  0.44970044  0.3335518 -0.10997247 -0.15359149  1.0000000
-## piru  0.27465133  0.55061981 -0.1440152  0.50423458  0.13387469  0.1929323
-##            piru
-## abba  0.2746513
-## acpe  0.5506198
-## acsa -0.1440152
-## beal  0.5042346
-## bepa  0.1338747
-## fagr  0.1929323
-## piru  1.0000000
+##           abba      acpe      acsa      beal      bepa      fagr      piru
+## abba  1.000000 -0.061892 -0.487308  0.182668  0.665776 -0.180726  0.274651
+## acpe -0.061892  1.000000  0.223190  0.266397 -0.111782  0.449700  0.550620
+## acsa -0.487308  0.223190  1.000000 -0.370743 -0.329024  0.333552 -0.144015
+## beal  0.182668  0.266397 -0.370743  1.000000 -0.030187 -0.109972  0.504235
+## bepa  0.665776 -0.111782 -0.329024 -0.030187  1.000000 -0.153591  0.133875
+## fagr -0.180726  0.449700  0.333552 -0.109972 -0.153591  1.000000  0.192932
+## piru  0.274651  0.550620 -0.144015  0.504235  0.133875  0.192932  1.000000
 ```
 
 ---
@@ -190,7 +183,7 @@ cor(quadrats)
 plot(quadrats)
 ```
 
-<img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" />
 
 ---
 
@@ -235,12 +228,14 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 Les connaissances requises pour la programmation scientifique sont
 minimales, l'apprentissage porte davantage sur l'acquisition de
 compétences et le développement de capacités à la résolution de problèmes.
+
+
 Les séances seront constituées de courtes leçons magistrales sur des
 notions de bases de programmation, entre-coupées d'exercices spécifiques
 destinés à pratiquer les éléments enseignés. Les séances se conclueront
 sur la réalisation d'un exercice intégrateur à compléter à la maison.
 
-L'ensemble du matériel du cours sera disponible sur un dépôt git à l'adresse :
+L'ensemble du matériel du cours sera disponible sur un dépôt Git à l'adresse :
 https://github.com/EcoNumUdS/BIO109.git
 
 ---
@@ -248,20 +243,24 @@ https://github.com/EcoNumUdS/BIO109.git
 # Évaluation
 
 L'évaluation porte sur la participation aux exercices (20%) et sur un
-travail final (80%). Un exercice simple sera présenté à la fin des
-séances 1-4 et chaque étudiant devra remettre la solution de l'exercice sous
-forme de script avant le début de la séance suivante. Les exercices
-peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
-propre copie, personnalisée. Les points sont attribués pour la
-participation.
+travail de session (80%). Un exercice simple sera présenté à la fin des
+séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sous
+forme de script <i>avant le début</i> de la séance suivante. Les exercices
+peuvent être réalisés en groupe, mais <b>chaque étudiant</b> devra remettre sa
+propre copie, personnalisée. <b>Les points sont attribués pour la
+participation.</b>
 
 L'évaluation finale portera sur la réalisation d'un projet de
-programmation en équipe de 4 à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le **21 février 2017 à 16:00**. La
+programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
+dernier cours, soit au plus tard le <b>20 février 2018 à 16:00</b>. La
 pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
-parti de i) le pseudo-code pour le projet de programmation, ii) le respect
-des bonnes pratiques de programmation et iii) la réussite de l'exercice
-demandé. Les étudiants devront remettre le script nécessaire à la
+parti de
+
+   1. le pseudo-code pour le projet de programmation,
+   2. le respect des bonnes pratiques de programmation
+   3. la réussite de l'exercice demandé.
+
+Les étudiants devront remettre le script nécessaire à la
 réalisation du projet.
 
 --- .transition
@@ -284,13 +283,33 @@ $$
 N^* = K
 $$
 
----
+$N =$ Taille d'une population
+
+$t =$ temps
+
+$r =$ taux de croissance
+
+$K =$ capacité de support de l'environnement
+
+---&twocol
 
 # Aujourd'hui
 
+*** =left
+
 <div style='text-align:center;'>
-<img src="assets/img/intro/modele_vissault.png" height="500px"></img>
+<img src="assets/img/intro/modele_vissault.png" height="450px"></img>
 </div>
+
+*** =right
+
+R: Regénération
+
+T: Forêts tempérées
+
+M: Forêts mixes
+
+B: Forêts boréale
 
 ---
 
@@ -323,9 +342,9 @@ $$
 
 La programmation est outil indispensable au biologiste 2.0, elle permet:
 
-- Tâches répétitives et/ou complexes (e.g. Nettoyage des données, Simulations stochastiques)
+- Tâches répétitives et/ou complexes (p.ex. Nettoyage des données, Simulations stochastiques)
 - Visualisation et exploration des données
-- Analyses statistiques avancées (e.g. tests par permutations, statistiques bayesiennes)
+- Analyses statistiques avancées (p. ex. tests par permutations, statistiques bayésiennes)
 
 --- &twocol
 
@@ -386,7 +405,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 
 ---
 
-# Deux grandes familles de langage
+# Deux grandes familles de langages
 
 1. Les langages compilés
 2. Les langages interprétés
@@ -521,13 +540,13 @@ PROGRAM REC_AIRE
   WRITE hauteur * largeur
 ```
 
-C'est une progression linéaire car chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
+Chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
 
 ---
 
 # 2. Les opérations itératives
 
-## Exemple avec `FOR`: Croissance avec capacité de support (K)
+## Exemple avec `FOR`: Croissance exponentielle
 
 ```
 PROGRAM DEMO
@@ -587,15 +606,82 @@ Avec la clause `ELSE`, la croissance est nulle
 
 ---
 
+# Les types d'objets
+
+Les objets en programmation sont définit en fonction de leur dimensionalité.
+
+## Dimensionalité
+
+<b>Dimension 0</b> : Valeur unique
+
+<b>Dimension 1</b> : Vecteur
+
+<b>Dimension 2</b> : Matrice
+
+<b>Dimension 3</b> : ...
+
+Malgré qu'il n'y ait pas de limit à la dimension d'un objet en programmation,
+pour le cours nous nous limiterons à des objets en deux dimension
+(c.à.d Matrice)
+
+---
+
+# Dimension 0
+
+Ces objets ne contiennent qu'une seule information
+
+## Exemple
+
+```
+bobo = "toi"
+coco = 2
+dodo = -3
+fofo = 456457.678
+```
+
+---
+
+# Dimension 1
+
+Ces objets contiennent un série d'information. Chaque valeur
+a une position dans le vecteur, laquelle peut être accédée.
+
+## Exemple
+
+```
+lettre = ["A" "R" "C" "D" "A"]
+lettre[3]
+# "C"
+```
+
+---
+
+# Dimension 2
+
+Ayant deux dimensions, ces objets présentent les données sous forme de matrices et ont des lignes et des colonnes. Pour accéder à une valeur dans une matrice il faut donner la position de la <b>ligne</b> en premier suivit de la position de la <b>colonne</b>.
+
+## Exemple
+
+```
+lettreTab = ["A" "R" "C"
+             "D" "A" "T"
+             "R" "A" "Q"]
+
+lettreTab[2, 1]
+# "D"
+```
+
+---
+
 # Les règles du `pseudo-code`
 
 ## A garder en mémoire
 
 1. N'écrivez qu'une seule instruction par ligne de pseudo-code.
-2. Écrivez en lettres capitales le verbe de chaque opération principale.
+2. Écrivez en lettres majuscules le verbe de chaque opération principale.
 3. Soyez explicite en nommant les opérations et les variables.
-4. Soyez le plus détaillé possible (c.a.d les plus petites étapes possibles)
-5. Utilisez des structures de langages de programmation connues (c.a.d `WHILE`, `FOR`, `IF` etc.)
+4. Soyez le plus détaillé possible (c.à.d les plus petites étapes possibles)
+5. Utilisez des structures de langages de programmation connues (c.à.d `WHILE`, `FOR`, `IF` etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
 <b> Ces règles sont générales, peu importe le langage de programmation utilisé. </b>
@@ -662,22 +748,40 @@ Avec la clause `ELSE`, la croissance est nulle
 
 # Les 10 commandements de la programmation
 
-> <b>10.</b>  Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions
+> <b>10.</b> Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions
+
+---
+
+# Trois règles supplémentaires
+
+> <b>A.</b> Des pas de bébés permettent aussi d'avancer
+
+---
+
+# Trois règles supplémentaires
+
+> <b>B.</b> Il ne faut pas réinventer la roue
+
+---
+
+# Trois règles supplémentaires
+
+> <b>C.</b> C'est en forgeant qu'on devient forgeron
 
 ---
 
 # Google R Style Rules
 
-- `File` Names : end in .R
-- `Identifiers` : variable.name (or variableName), FunctionName
-- `Line` Length : maximum 80 characters
-- `Indentation` : two spaces, no tabs
-- `Spacing` : Place spaces around all binary operators
-- `Curly` Braces : first on same line, last on own line
-- `else` : Surround else with braces
-- `Assignment` : use <-, not =
-- `Commenting` : all comments begin with # followed by a space
-- `Function` : should contain a comments section
+- Noms de `fichier`: se termine par .R
+- `Identifiants`: variable.nom (or VariableNom), FonctionNom
+- Longueur de `ligne`: maximum 80 caractères
+- `Indentation`: deux espaces, pas de tabulations
+- `Espacement`: placer des espaces au tour de tous les opérateurs binaires
+- `Accolades { }`: s'ouvre sur la même ligne, se ferme sur une ligne indépendente (sauf pour `else`)
+- `else` : Entourer `else` avec des accolades (`}else{`)
+- `Affectation`: utiliser `<-`, pas `=`
+- `Commentaire`: tous les commentaires sont précédés par `#` et suivit d'un espace
+- `Fonction`: doivent avoir une section de commentaires
 
 --- .transition
 

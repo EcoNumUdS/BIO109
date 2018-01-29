@@ -9,7 +9,7 @@ all: $(html)
 $(html): $(inpu) $(inpr)
 	rm -rf ./pres/.cache
 	 cat *.Rmd > ./pres/index.Rmd
-	Rscript --no-site-file --no-init-file scripts/get_slidify.R
+	Rscript -e "slidify::slidify('./pres/index.Rmd')"
 
 $(pdf): $(html)
 	$(deckpath)/phantomjs $(deckpath)/decktape.js -s 1280x720 --loadPause=5000 $(html) $(pdf)

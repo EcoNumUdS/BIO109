@@ -172,7 +172,7 @@
 <slide class="" id="slide-10" style="background:;">
   <!--  <a href="#slide-10"></a> -->
   <hgroup>
-    <h1>Question de recherche</h1>
+    <h1>Question de recherche (et projet de session)</h1>
   </hgroup>
   <article data-timings="">
     <p>À quelle vitesse se réalisera la migration de l&#39;érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?</p>
@@ -186,7 +186,7 @@
     <h1>Le type de données</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">arbres = read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
+    <pre><code class="r">arbres &lt;- read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
 head(arbres)
 </code></pre>
 
@@ -219,8 +219,8 @@ head(arbres)
     <h1>Exercice 1: solution sur R</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">arbres = read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
-quadrats = table(arbres$id_bor,arbres$esp)
+    <pre><code class="r">arbres &lt;- read.table(file = &#39;./donnees/arbres.txt&#39;, header = TRUE, sep=&quot;;&quot;)
+quadrats &lt;- table(arbres$id_bor,arbres$esp)
 head(quadrats)
 </code></pre>
 
@@ -247,7 +247,7 @@ head(quadrats)
 
 <p>Petit truc: sur Excel, la fonction pour calculer une corrélation est:</p>
 
-<pre><code class="bash">=covariance.pearson(données_1; données_2)
+<pre><code class="bash">=COEFFICIENT.CORRELATION(données_1; données_2)
 </code></pre>
 
   </article>
@@ -259,26 +259,18 @@ head(quadrats)
     <h1>Exercice 2: solution sur R</h1>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">quadrats = read.table(file = &#39;./donnees/quadrats.txt&#39;, header = TRUE, sep= &quot;;&quot;)
+    <pre><code class="r">quadrats &lt;- read.table(file = &#39;./donnees/quadrats.txt&#39;, header = TRUE, sep= &quot;;&quot;)
 cor(quadrats)
 </code></pre>
 
-<pre><code>##             abba        acpe       acsa        beal        bepa       fagr
-## abba  1.00000000 -0.06189199 -0.4873081  0.18266806  0.66577551 -0.1807264
-## acpe -0.06189199  1.00000000  0.2231896  0.26639705 -0.11178181  0.4497004
-## acsa -0.48730810  0.22318962  1.0000000 -0.37074281 -0.32902435  0.3335518
-## beal  0.18266806  0.26639705 -0.3707428  1.00000000 -0.03018735 -0.1099725
-## bepa  0.66577551 -0.11178181 -0.3290244 -0.03018735  1.00000000 -0.1535915
-## fagr -0.18072638  0.44970044  0.3335518 -0.10997247 -0.15359149  1.0000000
-## piru  0.27465133  0.55061981 -0.1440152  0.50423458  0.13387469  0.1929323
-##            piru
-## abba  0.2746513
-## acpe  0.5506198
-## acsa -0.1440152
-## beal  0.5042346
-## bepa  0.1338747
-## fagr  0.1929323
-## piru  1.0000000
+<pre><code>##           abba      acpe      acsa      beal      bepa      fagr      piru
+## abba  1.000000 -0.061892 -0.487308  0.182668  0.665776 -0.180726  0.274651
+## acpe -0.061892  1.000000  0.223190  0.266397 -0.111782  0.449700  0.550620
+## acsa -0.487308  0.223190  1.000000 -0.370743 -0.329024  0.333552 -0.144015
+## beal  0.182668  0.266397 -0.370743  1.000000 -0.030187 -0.109972  0.504235
+## bepa  0.665776 -0.111782 -0.329024 -0.030187  1.000000 -0.153591  0.133875
+## fagr -0.180726  0.449700  0.333552 -0.109972 -0.153591  1.000000  0.192932
+## piru  0.274651  0.550620 -0.144015  0.504235  0.133875  0.192932  1.000000
 </code></pre>
 
   </article>
@@ -293,7 +285,7 @@ cor(quadrats)
     <pre><code class="r">plot(quadrats)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -369,13 +361,14 @@ incluant des boucles et des énoncés conditionnels;</li>
   <article data-timings="">
     <p>Les connaissances requises pour la programmation scientifique sont
 minimales, l&#39;apprentissage porte davantage sur l&#39;acquisition de
-compétences et le développement de capacités à la résolution de problèmes.
-Les séances seront constituées de courtes leçons magistrales sur des
+compétences et le développement de capacités à la résolution de problèmes.</p>
+
+<p>Les séances seront constituées de courtes leçons magistrales sur des
 notions de bases de programmation, entre-coupées d&#39;exercices spécifiques
 destinés à pratiquer les éléments enseignés. Les séances se conclueront
 sur la réalisation d&#39;un exercice intégrateur à compléter à la maison.</p>
 
-<p>L&#39;ensemble du matériel du cours sera disponible sur un dépôt git à l&#39;adresse :
+<p>L&#39;ensemble du matériel du cours sera disponible sur un dépôt Git à l&#39;adresse :
 <a href="https://github.com/EcoNumUdS/BIO109.git">https://github.com/EcoNumUdS/BIO109.git</a></p>
 
   </article>
@@ -388,20 +381,26 @@ sur la réalisation d&#39;un exercice intégrateur à compléter à la maison.</
   </hgroup>
   <article data-timings="">
     <p>L&#39;évaluation porte sur la participation aux exercices (20%) et sur un
-travail final (80%). Un exercice simple sera présenté à la fin des
-séances 1-4 et chaque étudiant devra remettre la solution de l&#39;exercice sous
-forme de script avant le début de la séance suivante. Les exercices
-peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
-propre copie, personnalisée. Les points sont attribués pour la
-participation.</p>
+travail de session (80%). Un exercice simple sera présenté à la fin des
+séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l&#39;exercice sous
+forme de script <i>avant le début</i> de la séance suivante. Les exercices
+peuvent être réalisés en groupe, mais <b>chaque étudiant</b> devra remettre sa
+propre copie, personnalisée. <b>Les points sont attribués pour la
+participation.</b></p>
 
 <p>L&#39;évaluation finale portera sur la réalisation d&#39;un projet de
-programmation en équipe de 4 à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le <strong>21 février 2017 à 16:00</strong>. La
+programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
+dernier cours, soit au plus tard le <b>20 février 2018 à 16:00</b>. La
 pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
-parti de i) le pseudo-code pour le projet de programmation, ii) le respect
-des bonnes pratiques de programmation et iii) la réussite de l&#39;exercice
-demandé. Les étudiants devront remettre le script nécessaire à la
+parti de</p>
+
+<ol>
+<li>le pseudo-code pour le projet de programmation,</li>
+<li>le respect des bonnes pratiques de programmation</li>
+<li>la réussite de l&#39;exercice demandé.</li>
+</ol>
+
+<p>Les étudiants devront remettre le script nécessaire à la
 réalisation du projet.</p>
 
   </article>
@@ -435,21 +434,40 @@ réalisation du projet.</p>
 N^* = K
 \]</p>
 
+<p>\(N =\) Taille d&#39;une population</p>
+
+<p>\(t =\) temps</p>
+
+<p>\(r =\) taux de croissance</p>
+
+<p>\(K =\) capacité de support de l&#39;environnement</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-25" style="background:;">
-  <!--  <a href="#slide-25"></a> -->
   <hgroup>
     <h1>Aujourd&#39;hui</h1>
   </hgroup>
-  <article data-timings="">
-    <div style='text-align:center;'>
-<img src="assets/img/intro/modele_vissault.png" height="500px"></img>
+  <article>
+    
+    <div class='left' style='float:left;width:48%'>
+     <div style='text-align:center;'>
+<img src="assets/img/intro/modele_vissault.png" height="450px"></img>
 </div>
 
+    </div>
+    <div class='right' style='float:right;width:48%'>
+     <p>R: Regénération</p>
+
+<p>T: Forêts tempérées</p>
+
+<p>M: Forêts mixes</p>
+
+<p>B: Forêts boréale</p>
+
+    </div>
   </article>
-  <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-26" style="background:;">
   <!--  <a href="#slide-26"></a> -->
@@ -501,9 +519,9 @@ N^* = K
     <p>La programmation est outil indispensable au biologiste 2.0, elle permet:</p>
 
 <ul>
-<li>Tâches répétitives et/ou complexes (e.g. Nettoyage des données, Simulations stochastiques)</li>
+<li>Tâches répétitives et/ou complexes (p.ex. Nettoyage des données, Simulations stochastiques)</li>
 <li>Visualisation et exploration des données</li>
-<li>Analyses statistiques avancées (e.g. tests par permutations, statistiques bayesiennes)</li>
+<li>Analyses statistiques avancées (p. ex. tests par permutations, statistiques bayésiennes)</li>
 </ul>
 
   </article>
@@ -589,7 +607,7 @@ N^* = K
 <slide class="" id="slide-34" style="background:;">
   <!--  <a href="#slide-34"></a> -->
   <hgroup>
-    <h1>Deux grandes familles de langage</h1>
+    <h1>Deux grandes familles de langages</h1>
   </hgroup>
   <article data-timings="">
     <ol>
@@ -791,7 +809,7 @@ N^* = K
   WRITE hauteur * largeur
 </code></pre>
 
-<p>C&#39;est une progression linéaire car chaque opération est effectuée l&#39;une après l&#39;autre dans un ordre déterminé.</p>
+<p>Chaque opération est effectuée l&#39;une après l&#39;autre dans un ordre déterminé.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -802,7 +820,7 @@ N^* = K
     <h1>2. Les opérations itératives</h1>
   </hgroup>
   <article data-timings="">
-    <h2>Exemple avec <code>FOR</code>: Croissance avec capacité de support (K)</h2>
+    <h2>Exemple avec <code>FOR</code>: Croissance exponentielle</h2>
 
 <pre><code>PROGRAM DEMO
   FOR t IN 1:100
@@ -879,6 +897,90 @@ N^* = K
 <slide class="" id="slide-51" style="background:;">
   <!--  <a href="#slide-51"></a> -->
   <hgroup>
+    <h1>Les types d&#39;objets</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Les objets en programmation sont définit en fonction de leur dimensionalité.</p>
+
+<h2>Dimensionalité</h2>
+
+<p><b>Dimension 0</b> : Valeur unique</p>
+
+<p><b>Dimension 1</b> : Vecteur</p>
+
+<p><b>Dimension 2</b> : Matrice</p>
+
+<p><b>Dimension 3</b> : ...</p>
+
+<p>Malgré qu&#39;il n&#39;y ait pas de limit à la dimension d&#39;un objet en programmation,
+pour le cours nous nous limiterons à des objets en deux dimension
+(c.à.d Matrice)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-52" style="background:;">
+  <!--  <a href="#slide-52"></a> -->
+  <hgroup>
+    <h1>Dimension 0</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ces objets ne contiennent qu&#39;une seule information</p>
+
+<h2>Exemple</h2>
+
+<pre><code>bobo = &quot;toi&quot;
+coco = 2
+dodo = -3
+fofo = 456457.678
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-53" style="background:;">
+  <!--  <a href="#slide-53"></a> -->
+  <hgroup>
+    <h1>Dimension 1</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ces objets contiennent un série d&#39;information. Chaque valeur
+a une position dans le vecteur, laquelle peut être accédée.</p>
+
+<h2>Exemple</h2>
+
+<pre><code>lettre = [&quot;A&quot; &quot;R&quot; &quot;C&quot; &quot;D&quot; &quot;A&quot;]
+lettre[3]
+# &quot;C&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-54" style="background:;">
+  <!--  <a href="#slide-54"></a> -->
+  <hgroup>
+    <h1>Dimension 2</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Ayant deux dimensions, ces objets présentent les données sous forme de matrices et ont des lignes et des colonnes. Pour accéder à une valeur dans une matrice il faut donner la position de la <b>ligne</b> en premier suivit de la position de la <b>colonne</b>.</p>
+
+<h2>Exemple</h2>
+
+<pre><code>lettreTab = [&quot;A&quot; &quot;R&quot; &quot;C&quot;
+             &quot;D&quot; &quot;A&quot; &quot;T&quot;
+             &quot;R&quot; &quot;A&quot; &quot;Q&quot;]
+
+lettreTab[2, 1]
+# &quot;D&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-55" style="background:;">
+  <!--  <a href="#slide-55"></a> -->
+  <hgroup>
     <h1>Les règles du <code>pseudo-code</code></h1>
   </hgroup>
   <article data-timings="">
@@ -886,10 +988,10 @@ N^* = K
 
 <ol>
 <li>N&#39;écrivez qu&#39;une seule instruction par ligne de pseudo-code.</li>
-<li>Écrivez en lettres capitales le verbe de chaque opération principale.</li>
+<li>Écrivez en lettres majuscules le verbe de chaque opération principale.</li>
 <li>Soyez explicite en nommant les opérations et les variables.</li>
-<li>Soyez le plus détaillé possible (c.a.d les plus petites étapes possibles)</li>
-<li>Utilisez des structures de langages de programmation connues (c.a.d <code>WHILE</code>, <code>FOR</code>, <code>IF</code> etc.)</li>
+<li>Soyez le plus détaillé possible (c.à.d les plus petites étapes possibles)</li>
+<li>Utilisez des structures de langages de programmation connues (c.à.d <code>WHILE</code>, <code>FOR</code>, <code>IF</code> etc.)</li>
 <li>Délimitez les étapes en formant des blocs d&#39;instructions par l&#39;utilisation de l&#39;indentation.</li>
 </ol>
 
@@ -898,65 +1000,13 @@ N^* = K
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-52" style="background:;">
-  <!--  <a href="#slide-52"></a> -->
+<slide class="transition" id="slide-56" style="background:;">
+  <!--  <a href="#slide-56"></a> -->
   <hgroup>
     <h1>Les bonnes pratiques en programmation scientifique</h1>
   </hgroup>
   <article data-timings="">
     
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-53" style="background:;">
-  <!--  <a href="#slide-53"></a> -->
-  <hgroup>
-    <h1>Les 10 commandements de la programmation</h1>
-  </hgroup>
-  <article data-timings="">
-    <blockquote>
-<p><b>1.</b> Tu commenteras ton code pour que d&#39;autres puissent le lire, le comprendre et le partager</p>
-</blockquote>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-54" style="background:;">
-  <!--  <a href="#slide-54"></a> -->
-  <hgroup>
-    <h1>Les 10 commandements de la programmation</h1>
-  </hgroup>
-  <article data-timings="">
-    <blockquote>
-<p><b>2.</b> Il faut prendre soin de l&#39;environnement et nettoyer ses déchets</p>
-</blockquote>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-55" style="background:;">
-  <!--  <a href="#slide-55"></a> -->
-  <hgroup>
-    <h1>Les 10 commandements de la programmation</h1>
-  </hgroup>
-  <article data-timings="">
-    <blockquote>
-<p><b>3.</b> Ton script sera dur à avaler. Mieux vaut le découper</p>
-</blockquote>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-56" style="background:;">
-  <!--  <a href="#slide-56"></a> -->
-  <hgroup>
-    <h1>Les 10 commandements de la programmation</h1>
-  </hgroup>
-  <article data-timings="">
-    <blockquote>
-<p><b>4.</b> Plusieurs chiens s&#39;appelle Fido, le tiens tu sauras le nommer</p>
-</blockquote>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -967,7 +1017,7 @@ N^* = K
   </hgroup>
   <article data-timings="">
     <blockquote>
-<p><b>5.</b> Fido tu éviteras d&#39;écraser</p>
+<p><b>1.</b> Tu commenteras ton code pour que d&#39;autres puissent le lire, le comprendre et le partager</p>
 </blockquote>
 
   </article>
@@ -980,7 +1030,7 @@ N^* = K
   </hgroup>
   <article data-timings="">
     <blockquote>
-<p><b>6.</b> Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions</p>
+<p><b>2.</b> Il faut prendre soin de l&#39;environnement et nettoyer ses déchets</p>
 </blockquote>
 
   </article>
@@ -993,7 +1043,7 @@ N^* = K
   </hgroup>
   <article data-timings="">
     <blockquote>
-<p><b>7.</b> La vie est trop courte, ton code sera optimisé</p>
+<p><b>3.</b> Ton script sera dur à avaler. Mieux vaut le découper</p>
 </blockquote>
 
   </article>
@@ -1006,7 +1056,7 @@ N^* = K
   </hgroup>
   <article data-timings="">
     <blockquote>
-<p><b>8.</b> Et un jour tu disparaîtras, alors assure toi que ton code soit reproductible</p>
+<p><b>4.</b> Plusieurs chiens s&#39;appelle Fido, le tiens tu sauras le nommer</p>
 </blockquote>
 
   </article>
@@ -1019,7 +1069,7 @@ N^* = K
   </hgroup>
   <article data-timings="">
     <blockquote>
-<p><b>9.</b> En tout puissant que tu es, le tirage au sort tu pourras répéter</p>
+<p><b>5.</b> Fido tu éviteras d&#39;écraser</p>
 </blockquote>
 
   </article>
@@ -1032,7 +1082,7 @@ N^* = K
   </hgroup>
   <article data-timings="">
     <blockquote>
-<p><b>10.</b>  Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions</p>
+<p><b>6.</b> Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions</p>
 </blockquote>
 
   </article>
@@ -1041,27 +1091,118 @@ N^* = K
 <slide class="" id="slide-63" style="background:;">
   <!--  <a href="#slide-63"></a> -->
   <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>7.</b> La vie est trop courte, ton code sera optimisé</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-64" style="background:;">
+  <!--  <a href="#slide-64"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>8.</b> Et un jour tu disparaîtras, alors assure toi que ton code soit reproductible</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-65" style="background:;">
+  <!--  <a href="#slide-65"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>9.</b> En tout puissant que tu es, le tirage au sort tu pourras répéter</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-66" style="background:;">
+  <!--  <a href="#slide-66"></a> -->
+  <hgroup>
+    <h1>Les 10 commandements de la programmation</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>10.</b> Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-67" style="background:;">
+  <!--  <a href="#slide-67"></a> -->
+  <hgroup>
+    <h1>Trois règles supplémentaires</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>A.</b> Des pas de bébés permettent aussi d&#39;avancer</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-68" style="background:;">
+  <!--  <a href="#slide-68"></a> -->
+  <hgroup>
+    <h1>Trois règles supplémentaires</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>B.</b> Il ne faut pas réinventer la roue</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-69" style="background:;">
+  <!--  <a href="#slide-69"></a> -->
+  <hgroup>
+    <h1>Trois règles supplémentaires</h1>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><b>C.</b> C&#39;est en forgeant qu&#39;on devient forgeron</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-70" style="background:;">
+  <!--  <a href="#slide-70"></a> -->
+  <hgroup>
     <h1>Google R Style Rules</h1>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><code>File</code> Names : end in .R</li>
-<li><code>Identifiers</code> : variable.name (or variableName), FunctionName</li>
-<li><code>Line</code> Length : maximum 80 characters</li>
-<li><code>Indentation</code> : two spaces, no tabs</li>
-<li><code>Spacing</code> : Place spaces around all binary operators</li>
-<li><code>Curly</code> Braces : first on same line, last on own line</li>
-<li><code>else</code> : Surround else with braces</li>
-<li><code>Assignment</code> : use &lt;-, not =</li>
-<li><code>Commenting</code> : all comments begin with # followed by a space</li>
-<li><code>Function</code> : should contain a comments section</li>
+<li>Noms de <code>fichier</code>: se termine par .R</li>
+<li><code>Identifiants</code>: variable.nom (or VariableNom), FonctionNom</li>
+<li>Longueur de <code>ligne</code>: maximum 80 caractères</li>
+<li><code>Indentation</code>: deux espaces, pas de tabulations</li>
+<li><code>Espacement</code>: placer des espaces au tour de tous les opérateurs binaires</li>
+<li><code>Accolades { }</code>: s&#39;ouvre sur la même ligne, se ferme sur une ligne indépendente (sauf pour <code>else</code>)</li>
+<li><code>else</code> : Entourer <code>else</code> avec des accolades (<code>}else{</code>)</li>
+<li><code>Affectation</code>: utiliser <code>&lt;-</code>, pas <code>=</code></li>
+<li><code>Commentaire</code>: tous les commentaires sont précédés par <code>#</code> et suivit d&#39;un espace</li>
+<li><code>Fonction</code>: doivent avoir une section de commentaires</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="transition" id="slide-64" style="background:;">
-  <!--  <a href="#slide-64"></a> -->
+<slide class="transition" id="slide-71" style="background:;">
+  <!--  <a href="#slide-71"></a> -->
   <hgroup>
     <h1>Exercice de la semaine</h1>
   </hgroup>
@@ -1070,8 +1211,8 @@ N^* = K
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-65" style="background:;">
-  <!--  <a href="#slide-65"></a> -->
+<slide class="" id="slide-72" style="background:;">
+  <!--  <a href="#slide-72"></a> -->
   <hgroup>
     <h1>Une situation qui peut arriver tous les jours</h1>
   </hgroup>
@@ -1148,7 +1289,7 @@ N^* = K
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Question de recherche'>
+        data-slide=10 title='Question de recherche (et projet de session)'>
          10
       </a>
     </li>
@@ -1292,7 +1433,7 @@ N^* = K
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Deux grandes familles de langage'>
+        data-slide=34 title='Deux grandes familles de langages'>
          34
       </a>
     </li>
@@ -1394,37 +1535,37 @@ N^* = K
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Les règles du <code>pseudo-code</code>'>
+        data-slide=51 title='Les types d&#39;objets'>
          51
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=52 title='Les bonnes pratiques en programmation scientifique'>
+        data-slide=52 title='Dimension 0'>
          52
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Les 10 commandements de la programmation'>
+        data-slide=53 title='Dimension 1'>
          53
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=54 title='Les 10 commandements de la programmation'>
+        data-slide=54 title='Dimension 2'>
          54
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=55 title='Les 10 commandements de la programmation'>
+        data-slide=55 title='Les règles du <code>pseudo-code</code>'>
          55
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='Les 10 commandements de la programmation'>
+        data-slide=56 title='Les bonnes pratiques en programmation scientifique'>
          56
       </a>
     </li>
@@ -1466,20 +1607,62 @@ N^* = K
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=63 title='Google R Style Rules'>
+        data-slide=63 title='Les 10 commandements de la programmation'>
          63
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=64 title='Exercice de la semaine'>
+        data-slide=64 title='Les 10 commandements de la programmation'>
          64
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=65 title='Une situation qui peut arriver tous les jours'>
+        data-slide=65 title='Les 10 commandements de la programmation'>
          65
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=66 title='Les 10 commandements de la programmation'>
+         66
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=67 title='Trois règles supplémentaires'>
+         67
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=68 title='Trois règles supplémentaires'>
+         68
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=69 title='Trois règles supplémentaires'>
+         69
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=70 title='Google R Style Rules'>
+         70
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=71 title='Exercice de la semaine'>
+         71
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=72 title='Une situation qui peut arriver tous les jours'>
+         72
       </a>
     </li>
   </ul>
