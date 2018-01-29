@@ -147,7 +147,7 @@ lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
   <article data-timings="">
     <p>Très rapidement, on réalise que c&#39;est assez fastidieux de refaire cet exercice à la main, mais c&#39;est faisable.</p>
 
-<p>Imaginez cependant que vous découvrez un jour qu&#39;un passionné des salamadres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d&#39;échantillonnage. Il faudra changer de technique....</p>
+<p>Imaginez cependant que vous découvrez un jour qu&#39;un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d&#39;échantillonnage. Il faudra changer de technique....</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -176,7 +176,7 @@ n_annees &lt;- nrow(donnees)
 lambda &lt;- matrix(nr = n_annees-1, nc = sites)
 for(i in 2:n_annees) {
     for(j in 1:n_sites) {
-        lambda &lt;- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
+        lambda[i-1,j] &lt;- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
     }   
 }
 </code></pre>
@@ -456,7 +456,7 @@ for(etape in depart:fin) {
     <h1>Boucles et indexation</h1>
   </hgroup>
   <article data-timings="">
-    <p>Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisé directement comme index pour accéder à l&#39;objet. Par exemple :</p>
+    <p>Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisée directement comme index pour accéder à l&#39;objet. Par exemple :</p>
 
 <pre><code class="r">test = runif(5, 0,1)
 for(etape in 1:5) {
@@ -464,11 +464,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.9189536
-## [1] 0.9281913
-## [1] 0.207182
-## [1] 0.6214706
-## [1] 0.9113898
+<pre><code>## [1] 0.6443833
+## [1] 0.1475081
+## [1] 0.4194033
+## [1] 0.8542872
+## [1] 0.1922626
 </code></pre>
 
   </article>
@@ -488,11 +488,11 @@ for(etape in 1:5) {
 }
 </code></pre>
 
-<pre><code>## [1] 0.7762813
-## [1] 0.9548667
-## [1] 0.3514199
-## [1] 0.7627487
-## [1] 0.2979291
+<pre><code>## [1] 0.08651754
+## [1] 0.4383135
+## [1] 0.6458184
+## [1] 0.727037
+## [1] 0.9074013
 </code></pre>
 
   </article>
@@ -630,7 +630,11 @@ while(combinaison != &quot;pile-pile&quot;) {
 }
 </code></pre>
 
-<pre><code>## [1] &quot;pile-pile&quot;
+<pre><code>## [1] &quot;face-pile&quot;
+## [1] &quot;face-face&quot;
+## [1] &quot;face-pile&quot;
+## [1] &quot;face-face&quot;
+## [1] &quot;pile-pile&quot;
 </code></pre>
 
   </article>
@@ -668,7 +672,7 @@ for(i in 1:n_test) {
 mean(res)
 </code></pre>
 
-<pre><code>## [1] 7.139
+<pre><code>## [1] 6.595
 </code></pre>
 
   </article>
@@ -707,10 +711,10 @@ mean(res)
     <p>La croissance d&#39;une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d&#39;une boucle. La densité au temps \(t+1\) se calcule ainsi :</p>
 
 <p>\[
-N_{t+1} = N_t + r \times N_t \times (1 - N/K)
+N_{t+1} = N_t + r \times N_t \times (1 - N_t/K)
 \]</p>
 
-<p>Henri Menier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on compte aujourd&#39;hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(r\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
+<p>Henri Meunier a importé environ 220 cerfs sur l&#39;île d&#39;Anticosti au début du 20ème siècle et on compte aujourd&#39;hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu (\(K\)). Si on fixe le taux de croissance (\(r\)) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -790,7 +794,7 @@ for(i in 2:(n_steps+1)) {
   <article data-timings="">
     <p>Très souvent en programmation on a à prendre des décisions du type <strong>si la condition X est remplie, alors faire Y, sinon faire Z</strong>. Nous avons déjà vu certains exemples depuis le début du cours.</p>
 
-<p>La structure de base d&#39;une expression conditionelle est la suivante:</p>
+<p>La structure de base d&#39;une expression conditionnelle est la suivante:</p>
 
 <pre><code class="r">if(condition) {
     instruction(1)
@@ -932,16 +936,16 @@ cbind(X,res)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res         
-##  [1,] &quot;0.357250817585737&quot;  &quot;plus grand&quot;
-##  [2,] &quot;0.651739744003862&quot;  &quot;plus grand&quot;
-##  [3,] &quot;0.208312676753849&quot;  &quot;plus petit&quot;
-##  [4,] &quot;0.127277176361531&quot;  &quot;plus petit&quot;
-##  [5,] &quot;0.0704060615971684&quot; &quot;plus petit&quot;
-##  [6,] &quot;0.299550296040252&quot;  &quot;plus petit&quot;
-##  [7,] &quot;0.547153719002381&quot;  &quot;plus grand&quot;
-##  [8,] &quot;0.0876875231042504&quot; &quot;plus petit&quot;
-##  [9,] &quot;0.281001262366772&quot;  &quot;plus petit&quot;
-## [10,] &quot;0.543835281161591&quot;  &quot;plus grand&quot;
+##  [1,] &quot;0.0516675903927535&quot; &quot;plus petit&quot;
+##  [2,] &quot;0.444330098805949&quot;  &quot;plus grand&quot;
+##  [3,] &quot;0.281230132794008&quot;  &quot;plus petit&quot;
+##  [4,] &quot;0.781961031490937&quot;  &quot;plus grand&quot;
+##  [5,] &quot;0.0396641648840159&quot; &quot;plus petit&quot;
+##  [6,] &quot;0.0265654777176678&quot; &quot;plus petit&quot;
+##  [7,] &quot;0.618367671500891&quot;  &quot;plus grand&quot;
+##  [8,] &quot;0.0446461925748736&quot; &quot;plus petit&quot;
+##  [9,] &quot;0.0822725580073893&quot; &quot;plus petit&quot;
+## [10,] &quot;0.0846023659687489&quot; &quot;plus petit&quot;
 </code></pre>
 
     </div>
@@ -996,16 +1000,16 @@ cbind(X,res2)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res2 
-##  [1,] &quot;0.357250817585737&quot;  &quot;oui&quot;
-##  [2,] &quot;0.651739744003862&quot;  &quot;non&quot;
-##  [3,] &quot;0.208312676753849&quot;  &quot;oui&quot;
-##  [4,] &quot;0.127277176361531&quot;  &quot;non&quot;
-##  [5,] &quot;0.0704060615971684&quot; &quot;non&quot;
-##  [6,] &quot;0.299550296040252&quot;  &quot;oui&quot;
-##  [7,] &quot;0.547153719002381&quot;  &quot;oui&quot;
-##  [8,] &quot;0.0876875231042504&quot; &quot;non&quot;
-##  [9,] &quot;0.281001262366772&quot;  &quot;oui&quot;
-## [10,] &quot;0.543835281161591&quot;  &quot;oui&quot;
+##  [1,] &quot;0.0516675903927535&quot; &quot;non&quot;
+##  [2,] &quot;0.444330098805949&quot;  &quot;oui&quot;
+##  [3,] &quot;0.281230132794008&quot;  &quot;oui&quot;
+##  [4,] &quot;0.781961031490937&quot;  &quot;non&quot;
+##  [5,] &quot;0.0396641648840159&quot; &quot;non&quot;
+##  [6,] &quot;0.0265654777176678&quot; &quot;non&quot;
+##  [7,] &quot;0.618367671500891&quot;  &quot;non&quot;
+##  [8,] &quot;0.0446461925748736&quot; &quot;non&quot;
+##  [9,] &quot;0.0822725580073893&quot; &quot;non&quot;
+## [10,] &quot;0.0846023659687489&quot; &quot;non&quot;
 </code></pre>
 
     </div>
@@ -1028,16 +1032,16 @@ cbind(X,res2)
     </div>
     <div class='right' style='float:right;width:48%'>
      <pre><code>##       X                    res2 
-##  [1,] &quot;0.357250817585737&quot;  &quot;oui&quot;
-##  [2,] &quot;0.651739744003862&quot;  &quot;non&quot;
-##  [3,] &quot;0.208312676753849&quot;  &quot;oui&quot;
-##  [4,] &quot;0.127277176361531&quot;  &quot;non&quot;
-##  [5,] &quot;0.0704060615971684&quot; &quot;non&quot;
-##  [6,] &quot;0.299550296040252&quot;  &quot;oui&quot;
-##  [7,] &quot;0.547153719002381&quot;  &quot;oui&quot;
-##  [8,] &quot;0.0876875231042504&quot; &quot;non&quot;
-##  [9,] &quot;0.281001262366772&quot;  &quot;oui&quot;
-## [10,] &quot;0.543835281161591&quot;  &quot;oui&quot;
+##  [1,] &quot;0.0516675903927535&quot; &quot;non&quot;
+##  [2,] &quot;0.444330098805949&quot;  &quot;oui&quot;
+##  [3,] &quot;0.281230132794008&quot;  &quot;oui&quot;
+##  [4,] &quot;0.781961031490937&quot;  &quot;non&quot;
+##  [5,] &quot;0.0396641648840159&quot; &quot;non&quot;
+##  [6,] &quot;0.0265654777176678&quot; &quot;non&quot;
+##  [7,] &quot;0.618367671500891&quot;  &quot;non&quot;
+##  [8,] &quot;0.0446461925748736&quot; &quot;non&quot;
+##  [9,] &quot;0.0822725580073893&quot; &quot;non&quot;
+## [10,] &quot;0.0846023659687489&quot; &quot;non&quot;
 </code></pre>
 
     </div>

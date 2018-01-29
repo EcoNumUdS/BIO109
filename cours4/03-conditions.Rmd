@@ -8,7 +8,7 @@
 
 Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours.
 
-La structure de base d'une expression conditionelle est la suivante:
+La structure de base d'une expression conditionnelle est la suivante:
 
 ```{r eval = FALSE}
 if(condition) {
