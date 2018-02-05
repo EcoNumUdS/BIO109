@@ -272,7 +272,7 @@ plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
 # Principe
 ## L'épreuve de Bernoulli
 
-- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec;
+- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issues : succès ou échec;
 - Les épreuves sont indépendantes: l'issue d'une seconde épreuve ne dépend pas de la première;
 - La probabilité de succès est représentée par le paramètre `p`, alors que la probabilité d'un échec est représentée par `1-p`;
 
@@ -746,7 +746,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 21 mars 16:00 sur Moodle
+- Le travail doit être remis **électroniquement** au plus tard le 20 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
 	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures

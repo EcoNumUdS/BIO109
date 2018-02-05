@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "reine - coeur" "valet - coeur" "2 - trèfle"
+## [1] "4 - pique"  "3 - pique"  "7 - trèfle"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 0 0 0 1 1 0 1 1 1 1
+##  [1] 1 1 1 1 0 1 0 1 0 1
 ```
 
 --- &twocol
@@ -216,11 +216,11 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 
 ```
 ##      [,1] [,2] [,3]
-## [1,]    1    1    0
-## [2,]    0    0    0
+## [1,]    1    0    0
+## [2,]    0    1    0
 ## [3,]    0    0    0
-## [4,]    0    0    0
-## [5,]    0    0    1
+## [4,]    0    0    1
+## [5,]    0    0    0
 ## [6,]    0    0    0
 ```
 
@@ -297,7 +297,7 @@ plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
 # Principe
 ## L'épreuve de Bernoulli
 
-- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec;
+- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issues : succès ou échec;
 - Les épreuves sont indépendantes: l'issue d'une seconde épreuve ne dépend pas de la première;
 - La probabilité de succès est représentée par le paramètre `p`, alors que la probabilité d'un échec est représentée par `1-p`;
 
@@ -601,7 +601,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   1.548   0.000   1.548
+##   0.396   0.000   0.399
 ```
 
 ---&twocol
@@ -658,7 +658,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.664   0.000   0.662
+##   0.080   0.004   0.082
 ```
 
 ```r
@@ -667,7 +667,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.020   0.000   0.021
+##   0.052   0.000   0.052
 ```
 
 ---&twocol
@@ -701,11 +701,11 @@ system.time(f1(X))
 
 ```
 ##    user  system elapsed 
-##       0       0       0 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   1.264   0.000   1.265
+##   0.528   0.000   0.528
 ```
 
 ---.transition
@@ -831,7 +831,7 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 21 mars 16:00 sur Moodle
+- Le travail doit être remis **électroniquement** au plus tard le 20 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
 	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures

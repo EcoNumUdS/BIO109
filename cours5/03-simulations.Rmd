@@ -226,7 +226,7 @@ plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
 # Principe
 ## L'épreuve de Bernoulli
 
-- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec;
+- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issues : succès ou échec;
 - Les épreuves sont indépendantes: l'issue d'une seconde épreuve ne dépend pas de la première;
 - La probabilité de succès est représentée par le paramètre `p`, alors que la probabilité d'un échec est représentée par `1-p`;
 
