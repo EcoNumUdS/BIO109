@@ -70,10 +70,10 @@
     <pre><code class="r">tri &lt;- function(x){
     # Calcul de la dimension du vecteur
     taille = length(x)
-    ordre = FALSE
+    ordre = &quot;OUI&quot;
     # Boucle qui tourne jusqu&#39;à ce que tout soit en ordre
-    while(ordre == FALSE) {
-        ordre = TRUE
+    while(ordre == &quot;OUI&quot;) {
+        ordre = &quot;NON&quot;
         # Boucle qui passe tous les éléments en paire
         for(i in 1:(taille-1)) {
             if(x[i+1] &lt; x[i]) {
@@ -81,7 +81,7 @@
                 x[c(i,i+1)] = x[c(i+1,i)]
                 # Comme un changement a été fait, l&#39;ordre
                 # n&#39;est pas encore garanti
-                ordre = FALSE
+                ordre = &quot;NON&quot;
             }
         }
     }
@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;4 - pique&quot;  &quot;3 - pique&quot;  &quot;7 - trèfle&quot;
+<pre><code>## [1] &quot;4 - coeur&quot;   &quot;4 - pique&quot;   &quot;roi - pique&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 1 1 1 1 0 1 0 1 0 1
+<pre><code>##  [1] 1 0 1 1 1 1 1 1 0 0
 </code></pre>
 
     </div>
@@ -353,12 +353,12 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    0    0
-## [2,]    0    1    0
-## [3,]    0    0    0
-## [4,]    0    0    1
+## [1,]    0    0    0
+## [2,]    0    0    0
+## [3,]    1    0    1
+## [4,]    0    0    0
 ## [5,]    0    0    0
-## [6,]    0    0    0
+## [6,]    0    1    0
 </code></pre>
 
     </div>
@@ -557,7 +557,7 @@ res
 
 <ul>
 <li>Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;</li>
-<li>À chaque intersection, votre conducteur ivre avance ou recule en X et en Y avec une probabilité de 0.5;</li>
+<li>À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;</li>
 <li>Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.</li>
 </ul>
 
@@ -885,7 +885,7 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.396   0.000   0.399
+##   0.008   0.000   0.008
 </code></pre>
 
   </article>
@@ -942,14 +942,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.080   0.004   0.082
+##   0.072   0.004   0.073
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.052   0.000   0.052
+##   0.048   0.000   0.050
 </code></pre>
 
     </div>
@@ -982,11 +982,11 @@ system.time(f1(X))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001 
+##       0       0       0 
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   0.528   0.000   0.528
+##   0.492   0.000   0.494
 </code></pre>
 
     </div>

@@ -27,10 +27,10 @@ assets      :
 tri <- function(x){
 	# Calcul de la dimension du vecteur
 	taille = length(x)
-	ordre = FALSE
+	ordre = "OUI"
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
-	while(ordre == FALSE) {
-		ordre = TRUE
+	while(ordre == "OUI") {
+		ordre = "NON"
 		# Boucle qui passe tous les éléments en paire
 		for(i in 1:(taille-1)) {
 			if(x[i+1] < x[i]) {
@@ -38,7 +38,7 @@ tri <- function(x){
 				x[c(i,i+1)] = x[c(i+1,i)]
 				# Comme un changement a été fait, l'ordre
 				# n'est pas encore garanti
-				ordre = FALSE
+				ordre = "NON"
 			}
 		}
 	}
@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "4 - pique"  "3 - pique"  "7 - trèfle"
+## [1] "4 - coeur"   "4 - pique"   "roi - pique"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 1 1 1 1 0 1 0 1 0 1
+##  [1] 1 0 1 1 1 1 1 1 0 0
 ```
 
 --- &twocol
@@ -216,12 +216,12 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 
 ```
 ##      [,1] [,2] [,3]
-## [1,]    1    0    0
-## [2,]    0    1    0
-## [3,]    0    0    0
-## [4,]    0    0    1
+## [1,]    0    0    0
+## [2,]    0    0    0
+## [3,]    1    0    1
+## [4,]    0    0    0
 ## [5,]    0    0    0
-## [6,]    0    0    0
+## [6,]    0    1    0
 ```
 
 --- &twocolw w1:40% w2:60%
@@ -353,7 +353,7 @@ Si $U$ est une variable aléatoire distribuée selon la loi uniforme entre 0 et 
 Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
 
 - Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
-- À chaque intersection, votre conducteur ivre avance ou recule en X et en Y avec une probabilité de 0.5;
+- À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;
 - Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
 
 Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d'oiseau).
@@ -601,7 +601,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   0.396   0.000   0.399
+##   0.008   0.000   0.008
 ```
 
 ---&twocol
@@ -658,7 +658,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.080   0.004   0.082
+##   0.072   0.004   0.073
 ```
 
 ```r
@@ -667,7 +667,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.052   0.000   0.052
+##   0.048   0.000   0.050
 ```
 
 ---&twocol
@@ -701,11 +701,11 @@ system.time(f1(X))
 
 ```
 ##    user  system elapsed 
-##   0.000   0.000   0.001 
+##       0       0       0 
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   0.528   0.000   0.528
+##   0.492   0.000   0.494
 ```
 
 ---.transition
