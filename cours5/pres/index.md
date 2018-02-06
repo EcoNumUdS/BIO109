@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "4 - coeur"   "4 - pique"   "roi - pique"
+## [1] "3 - pique" "4 - coeur" "6 - coeur"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 1 0 1 1 1 1 1 1 0 0
+##  [1] 0 1 0 1 0 1 1 0 1 0
 ```
 
 --- &twocol
@@ -216,12 +216,12 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 
 ```
 ##      [,1] [,2] [,3]
-## [1,]    0    0    0
-## [2,]    0    0    0
-## [3,]    1    0    1
+## [1,]    1    0    0
+## [2,]    0    0    1
+## [3,]    0    0    0
 ## [4,]    0    0    0
-## [5,]    0    0    0
-## [6,]    0    1    0
+## [5,]    0    1    0
+## [6,]    0    0    0
 ```
 
 --- &twocolw w1:40% w2:60%
@@ -356,7 +356,7 @@ Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous a
 - À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;
 - Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
 
-Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d'oiseau).
+Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d'oiseau).
 
 ---&twocol
 # Solution
@@ -601,7 +601,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   0.008   0.000   0.008
+##   0.012   0.000   0.011
 ```
 
 ---&twocol
@@ -658,7 +658,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.072   0.004   0.073
+##   0.072   0.000   0.072
 ```
 
 ```r
@@ -667,7 +667,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.048   0.000   0.050
+##   0.052   0.000   0.052
 ```
 
 ---&twocol
@@ -703,9 +703,9 @@ system.time(f1(X))
 ##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##       0       0       0 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
-##   0.492   0.000   0.494
+##   0.456   0.000   0.454
 ```
 
 ---.transition

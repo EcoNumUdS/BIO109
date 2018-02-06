@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;4 - coeur&quot;   &quot;4 - pique&quot;   &quot;roi - pique&quot;
+<pre><code>## [1] &quot;3 - pique&quot; &quot;4 - coeur&quot; &quot;6 - coeur&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 1 0 1 1 1 1 1 1 0 0
+<pre><code>##  [1] 0 1 0 1 0 1 1 0 1 0
 </code></pre>
 
     </div>
@@ -353,12 +353,12 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    0    0    0
-## [2,]    0    0    0
-## [3,]    1    0    1
+## [1,]    1    0    0
+## [2,]    0    0    1
+## [3,]    0    0    0
 ## [4,]    0    0    0
-## [5,]    0    0    0
-## [6,]    0    1    0
+## [5,]    0    1    0
+## [6,]    0    0    0
 </code></pre>
 
     </div>
@@ -561,7 +561,7 @@ res
 <li>Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.</li>
 </ul>
 
-<p>Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d&#39;oiseau).</p>
+<p>Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d&#39;oiseau).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -885,7 +885,7 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.008   0.000   0.008
+##   0.012   0.000   0.011
 </code></pre>
 
   </article>
@@ -942,14 +942,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.072   0.004   0.073
+##   0.072   0.000   0.072
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.048   0.000   0.050
+##   0.052   0.000   0.052
 </code></pre>
 
     </div>
@@ -984,9 +984,9 @@ system.time(f1(X))
 <pre><code>##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##       0       0       0 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
-##   0.492   0.000   0.494
+##   0.456   0.000   0.454
 </code></pre>
 
     </div>
