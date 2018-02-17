@@ -673,10 +673,13 @@ system.time(f1(X))
 ```{r eval = FALSE}
 coordx <- seq(0,180,20)
 coordy <- seq(0,980,20)
-paysage <- tapply(etats,INDEX = quadrats[,c(1:2)],sum)
+# transformer l'état des lettres en chiffres
+etats[which(etats == "M")] <- 1 # répétez pour les autres états
+paysage <- matrix(etats, ncol = length(coordx),
+		nrow = length(coordy), byrow = TRUE)
 par(mar = c(4,4,3,0.5))
 image(x=coordx,y=coordy,z=paysage,xlab=NULL,ylab=NULL,
-	col=c("black","orange","darkcyan","palegreen3"))
+		col=c("black","orange","darkcyan","palegreen3"))
 ```
 
 *** =right
