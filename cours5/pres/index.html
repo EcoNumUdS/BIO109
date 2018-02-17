@@ -70,10 +70,10 @@
     <pre><code class="r">tri &lt;- function(x){
     # Calcul de la dimension du vecteur
     taille = length(x)
-    ordre = FALSE
+    ordre = &quot;OUI&quot;
     # Boucle qui tourne jusqu&#39;à ce que tout soit en ordre
-    while(ordre == FALSE) {
-        ordre = TRUE
+    while(ordre == &quot;OUI&quot;) {
+        ordre = &quot;NON&quot;
         # Boucle qui passe tous les éléments en paire
         for(i in 1:(taille-1)) {
             if(x[i+1] &lt; x[i]) {
@@ -81,7 +81,7 @@
                 x[c(i,i+1)] = x[c(i+1,i)]
                 # Comme un changement a été fait, l&#39;ordre
                 # n&#39;est pas encore garanti
-                ordre = FALSE
+                ordre = &quot;NON&quot;
             }
         }
     }
@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;reine - coeur&quot; &quot;valet - coeur&quot; &quot;2 - trèfle&quot;
+<pre><code>## [1] &quot;3 - pique&quot; &quot;4 - coeur&quot; &quot;6 - coeur&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 0 0 0 1 1 0 1 1 1 1
+<pre><code>##  [1] 0 1 0 1 0 1 1 0 1 0
 </code></pre>
 
     </div>
@@ -353,11 +353,11 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    1    0
-## [2,]    0    0    0
+## [1,]    1    0    0
+## [2,]    0    0    1
 ## [3,]    0    0    0
 ## [4,]    0    0    0
-## [5,]    0    0    1
+## [5,]    0    1    0
 ## [6,]    0    0    0
 </code></pre>
 
@@ -468,7 +468,7 @@ plot(A, S, xlab = &quot;Aire (m2)&quot;, ylab = &quot;Richesse&quot;,
     <h2>L&#39;épreuve de Bernoulli</h2>
 
 <ul>
-<li>Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issus : succès ou échec;</li>
+<li>Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issues : succès ou échec;</li>
 <li>Les épreuves sont indépendantes: l&#39;issue d&#39;une seconde épreuve ne dépend pas de la première;</li>
 <li>La probabilité de succès est représentée par le paramètre <code>p</code>, alors que la probabilité d&#39;un échec est représentée par <code>1-p</code>;</li>
 </ul>
@@ -557,11 +557,11 @@ res
 
 <ul>
 <li>Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;</li>
-<li>À chaque intersection, votre conducteur ivre avance ou recule en X et en Y avec une probabilité de 0.5;</li>
+<li>À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;</li>
 <li>Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.</li>
 </ul>
 
-<p>Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimée la distance moyenne parcourue (à vol d&#39;oiseau).</p>
+<p>Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d&#39;oiseau).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -885,7 +885,7 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   1.548   0.000   1.548
+##   0.012   0.000   0.011
 </code></pre>
 
   </article>
@@ -942,14 +942,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.664   0.000   0.662
+##   0.072   0.000   0.072
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.020   0.000   0.021
+##   0.052   0.000   0.052
 </code></pre>
 
     </div>
@@ -984,9 +984,9 @@ system.time(f1(X))
 <pre><code>##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##       0       0       0 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
-##   1.264   0.000   1.265
+##   0.456   0.000   0.454
 </code></pre>
 
     </div>
@@ -1198,7 +1198,7 @@ ii) la distribution des états après 100 ans (20 pas de temps)</li>
   <article data-timings="">
     <ul>
 <li>Le travail se réalisera en équipe de 4</li>
-<li>Le travail doit être remis <strong>électroniquement</strong> au plus tard le 21 mars 16:00 sur Moodle</li>
+<li>Le travail doit être remis <strong>électroniquement</strong> au plus tard le 20 février 16:00 sur Moodle</li>
 <li>Vous devez remettre:
 
 <ul>

@@ -34,7 +34,7 @@ Ordonner un vecteur `X` composé de 5 lettres de Scrabble
 ## Solution 1: Bubble sorting
 
 ```
-WHILE is.sort = FALSE DO
+WHILE is.sort = FALSE; DO
   is.sort = TRUE
   FOR pos IN 1:4
     IF X[pos] > X[pos+1]
@@ -50,7 +50,7 @@ END WHILE
 ## Solution 2: Stupid ranking
 
 ```
-WHILE is.sort = FALSE DO
+WHILE is.sort = FALSE; DO
   is.sort = TRUE
   mélange X
   FOR pos IN 1:4
@@ -132,7 +132,7 @@ getwd()
 ```
 
 ```
-## [1] "/Users/SteveVissault/Documents/Git/BIO109/cours2/pres"
+## [1] "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/cours2/pres"
 ```
 
 ---
@@ -245,7 +245,7 @@ a
 
 --- .transition
 
-# Les types de valeurs assignable à un objet
+# Les types de valeurs assignables à un objet
 
 ---
 # Assigner une valeur de type `numérique`
@@ -1184,8 +1184,8 @@ tri
 ```
 
 ```
-##  [1] 83.880321 42.763177 97.080909 47.156397 27.265942 91.142188  2.598174
-##  [8] 24.306379 10.980467 80.035040
+##  [1] 89.280291  4.225745 99.980227 82.651516 91.638099 73.051350 22.661037
+##  [8] 18.291401 66.986896 84.631697
 ```
 
 ```r
@@ -1193,8 +1193,8 @@ sort(tri)
 ```
 
 ```
-##  [1]  2.598174 10.980467 24.306379 27.265942 42.763177 47.156397 80.035040
-##  [8] 83.880321 91.142188 97.080909
+##  [1]  4.225745 18.291401 22.661037 66.986896 73.051350 82.651516 84.631697
+##  [8] 89.280291 91.638099 99.980227
 ```
 
 ---
@@ -1207,8 +1207,8 @@ rang
 ```
 
 ```
-##  [1] 59.30661 10.45965 74.17625 83.18965 81.98847 51.21548 60.01135
-##  [8] 32.35684 26.81602 19.59390
+##  [1] 67.615803 81.794686  4.487874 58.071235 52.770108  1.630872 21.705966
+##  [8] 78.723987 86.841775  6.773825
 ```
 
 ```r
@@ -1216,7 +1216,7 @@ rank(rang)
 ```
 
 ```
-##  [1]  6  1  8 10  9  5  7  4  3  2
+##  [1]  7  9  2  6  5  1  4  8 10  3
 ```
 
 ---

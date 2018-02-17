@@ -9,10 +9,10 @@
 tri <- function(x){
 	# Calcul de la dimension du vecteur
 	taille = length(x)
-	ordre = FALSE
+	ordre = "OUI"
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
-	while(ordre == FALSE) {
-		ordre = TRUE
+	while(ordre == "OUI") {
+		ordre = "NON"
 		# Boucle qui passe tous les éléments en paire
 		for(i in 1:(taille-1)) {
 			if(x[i+1] < x[i]) {
@@ -20,7 +20,7 @@ tri <- function(x){
 				x[c(i,i+1)] = x[c(i+1,i)]
 				# Comme un changement a été fait, l'ordre
 				# n'est pas encore garanti
-				ordre = FALSE
+				ordre = "NON"
 			}
 		}
 	}

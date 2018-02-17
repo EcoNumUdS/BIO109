@@ -77,7 +77,7 @@
     <div class='left' style='float:left;width:48%'>
      <h2>Solution 1: Bubble sorting</h2>
 
-<pre><code>WHILE is.sort = FALSE DO
+<pre><code>WHILE is.sort = FALSE; DO
   is.sort = TRUE
   FOR pos IN 1:4
     IF X[pos] &gt; X[pos+1]
@@ -92,7 +92,7 @@ END WHILE
     <div class='right' style='float:right;width:48%'>
      <h2>Solution 2: Stupid ranking</h2>
 
-<pre><code>WHILE is.sort = FALSE DO
+<pre><code>WHILE is.sort = FALSE; DO
   is.sort = TRUE
   mélange X
   FOR pos IN 1:4
@@ -208,7 +208,7 @@ END WHILE
 <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;/Users/SteveVissault/Documents/Git/BIO109/cours2/pres&quot;
+<pre><code>## [1] &quot;/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/cours2/pres&quot;
 </code></pre>
 
   </article>
@@ -340,7 +340,7 @@ a
 <slide class="transition" id="slide-15" style="background:;">
   <!--  <a href="#slide-15"></a> -->
   <hgroup>
-    <h1>Les types de valeurs assignable à un objet</h1>
+    <h1>Les types de valeurs assignables à un objet</h1>
   </hgroup>
   <article data-timings="">
     
@@ -1413,15 +1413,15 @@ expand.grid(v1,v2)
 tri
 </code></pre>
 
-<pre><code>##  [1] 83.880321 42.763177 97.080909 47.156397 27.265942 91.142188  2.598174
-##  [8] 24.306379 10.980467 80.035040
+<pre><code>##  [1] 89.280291  4.225745 99.980227 82.651516 91.638099 73.051350 22.661037
+##  [8] 18.291401 66.986896 84.631697
 </code></pre>
 
 <pre><code class="r">sort(tri)
 </code></pre>
 
-<pre><code>##  [1]  2.598174 10.980467 24.306379 27.265942 42.763177 47.156397 80.035040
-##  [8] 83.880321 91.142188 97.080909
+<pre><code>##  [1]  4.225745 18.291401 22.661037 66.986896 73.051350 82.651516 84.631697
+##  [8] 89.280291 91.638099 99.980227
 </code></pre>
 
   </article>
@@ -1437,14 +1437,14 @@ tri
 rang
 </code></pre>
 
-<pre><code>##  [1] 59.30661 10.45965 74.17625 83.18965 81.98847 51.21548 60.01135
-##  [8] 32.35684 26.81602 19.59390
+<pre><code>##  [1] 67.615803 81.794686  4.487874 58.071235 52.770108  1.630872 21.705966
+##  [8] 78.723987 86.841775  6.773825
 </code></pre>
 
 <pre><code class="r">rank(rang)
 </code></pre>
 
-<pre><code>##  [1]  6  1  8 10  9  5  7  4  3  2
+<pre><code>##  [1]  7  9  2  6  5  1  4  8 10  3
 </code></pre>
 
   </article>
@@ -1619,7 +1619,7 @@ head(sub_quadrats, n=5)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Les types de valeurs assignable à un objet'>
+        data-slide=15 title='Les types de valeurs assignables à un objet'>
          15
       </a>
     </li>

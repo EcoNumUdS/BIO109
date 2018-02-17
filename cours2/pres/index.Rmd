@@ -34,7 +34,7 @@ Ordonner un vecteur `X` composé de 5 lettres de Scrabble
 ## Solution 1: Bubble sorting
 
 ```
-WHILE is.sort = FALSE DO
+WHILE is.sort = FALSE; DO
   is.sort = TRUE
   FOR pos IN 1:4
     IF X[pos] > X[pos+1]
@@ -50,7 +50,7 @@ END WHILE
 ## Solution 2: Stupid ranking
 
 ```
-WHILE is.sort = FALSE DO
+WHILE is.sort = FALSE; DO
   is.sort = TRUE
   mélange X
   FOR pos IN 1:4
@@ -209,7 +209,7 @@ a
 
 --- .transition
 
-# Les types de valeurs assignable à un objet
+# Les types de valeurs assignables à un objet
 
 ---
 # Assigner une valeur de type `numérique`

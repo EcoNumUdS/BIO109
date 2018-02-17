@@ -191,7 +191,7 @@ a
 
 --- .transition
 
-# Les types de valeurs assignable à un objet
+# Les types de valeurs assignables à un objet
 
 ---
 # Assigner une valeur de type `numérique`

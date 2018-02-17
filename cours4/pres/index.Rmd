@@ -73,7 +73,7 @@ lambda[2,1] <- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
 
 Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable.
 
-Imaginez cependant que vous découvrez un jour qu'un passionné des salamadres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
+Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
 
 ---
 # Mise en situation
@@ -91,7 +91,7 @@ n_annees <- nrow(donnees)
 lambda <- matrix(nr = n_annees-1, nc = sites)
 for(i in 2:n_annees) {
     for(j in 1:n_sites) {
-        lambda <- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
+        lambda[i-1,j] <- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
     }   
 }
 ```
@@ -159,7 +159,7 @@ for(F in -50:100) {
 ---
 # Boucles et indexation
 
-Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisée directement comme index pour accéder à l'objet. Par exemple :
 
 ```{r}
 test = runif(5, 0,1)
@@ -305,10 +305,10 @@ hist(res)
 La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcule ainsi :
 
 $$
-N_{t+1} = N_t + r \times N_t \times (1 - N/K)
+N_{t+1} = N_t + r \times N_t \times (1 - N_t/K)
 $$
 
-Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1
@@ -356,7 +356,7 @@ plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
 
 Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours.
 
-La structure de base d'une expression conditionelle est la suivante:
+La structure de base d'une expression conditionnelle est la suivante:
 
 ```{r eval = FALSE}
 if(condition) {

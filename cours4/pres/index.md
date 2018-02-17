@@ -88,7 +88,7 @@ lambda[2,1] <- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
 
 Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable.
 
-Imaginez cependant que vous découvrez un jour qu'un passionné des salamadres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
+Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
 
 ---
 # Mise en situation
@@ -107,7 +107,7 @@ n_annees <- nrow(donnees)
 lambda <- matrix(nr = n_annees-1, nc = sites)
 for(i in 2:n_annees) {
     for(j in 1:n_sites) {
-        lambda <- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
+        lambda[i-1,j] <- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
     }   
 }
 ```
@@ -355,7 +355,7 @@ for(F in -50:100) {
 ---
 # Boucles et indexation
 
-Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisé directement comme index pour accéder à l'objet. Par exemple :
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisée directement comme index pour accéder à l'objet. Par exemple :
 
 
 ```r
@@ -366,11 +366,11 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.9189536
-## [1] 0.9281913
-## [1] 0.207182
-## [1] 0.6214706
-## [1] 0.9113898
+## [1] 0.6443833
+## [1] 0.1475081
+## [1] 0.4194033
+## [1] 0.8542872
+## [1] 0.1922626
 ```
 
 ---
@@ -387,11 +387,11 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.7762813
-## [1] 0.9548667
-## [1] 0.3514199
-## [1] 0.7627487
-## [1] 0.2979291
+## [1] 0.08651754
+## [1] 0.4383135
+## [1] 0.6458184
+## [1] 0.727037
+## [1] 0.9074013
 ```
 
 ---
@@ -500,6 +500,10 @@ while(combinaison != "pile-pile") {
 ```
 
 ```
+## [1] "face-pile"
+## [1] "face-face"
+## [1] "face-pile"
+## [1] "face-face"
 ## [1] "pile-pile"
 ```
 
@@ -529,7 +533,7 @@ mean(res)
 ```
 
 ```
-## [1] 7.139
+## [1] 6.595
 ```
 
 ---
@@ -551,10 +555,10 @@ hist(res)
 La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcule ainsi :
 
 $$
-N_{t+1} = N_t + r \times N_t \times (1 - N/K)
+N_{t+1} = N_t + r \times N_t \times (1 - N_t/K)
 $$
 
-Henri Menier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1
@@ -611,7 +615,7 @@ plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
 
 Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours.
 
-La structure de base d'une expression conditionelle est la suivante:
+La structure de base d'une expression conditionnelle est la suivante:
 
 
 ```r
@@ -725,16 +729,16 @@ cbind(X,res)
 
 ```
 ##       X                    res         
-##  [1,] "0.357250817585737"  "plus grand"
-##  [2,] "0.651739744003862"  "plus grand"
-##  [3,] "0.208312676753849"  "plus petit"
-##  [4,] "0.127277176361531"  "plus petit"
-##  [5,] "0.0704060615971684" "plus petit"
-##  [6,] "0.299550296040252"  "plus petit"
-##  [7,] "0.547153719002381"  "plus grand"
-##  [8,] "0.0876875231042504" "plus petit"
-##  [9,] "0.281001262366772"  "plus petit"
-## [10,] "0.543835281161591"  "plus grand"
+##  [1,] "0.0516675903927535" "plus petit"
+##  [2,] "0.444330098805949"  "plus grand"
+##  [3,] "0.281230132794008"  "plus petit"
+##  [4,] "0.781961031490937"  "plus grand"
+##  [5,] "0.0396641648840159" "plus petit"
+##  [6,] "0.0265654777176678" "plus petit"
+##  [7,] "0.618367671500891"  "plus grand"
+##  [8,] "0.0446461925748736" "plus petit"
+##  [9,] "0.0822725580073893" "plus petit"
+## [10,] "0.0846023659687489" "plus petit"
 ```
 
 ---
@@ -775,16 +779,16 @@ cbind(X,res2)
 
 ```
 ##       X                    res2 
-##  [1,] "0.357250817585737"  "oui"
-##  [2,] "0.651739744003862"  "non"
-##  [3,] "0.208312676753849"  "oui"
-##  [4,] "0.127277176361531"  "non"
-##  [5,] "0.0704060615971684" "non"
-##  [6,] "0.299550296040252"  "oui"
-##  [7,] "0.547153719002381"  "oui"
-##  [8,] "0.0876875231042504" "non"
-##  [9,] "0.281001262366772"  "oui"
-## [10,] "0.543835281161591"  "oui"
+##  [1,] "0.0516675903927535" "non"
+##  [2,] "0.444330098805949"  "oui"
+##  [3,] "0.281230132794008"  "oui"
+##  [4,] "0.781961031490937"  "non"
+##  [5,] "0.0396641648840159" "non"
+##  [6,] "0.0265654777176678" "non"
+##  [7,] "0.618367671500891"  "non"
+##  [8,] "0.0446461925748736" "non"
+##  [9,] "0.0822725580073893" "non"
+## [10,] "0.0846023659687489" "non"
 ```
 
 --- &twocol
@@ -808,16 +812,16 @@ cbind(X,res2)
 
 ```
 ##       X                    res2 
-##  [1,] "0.357250817585737"  "oui"
-##  [2,] "0.651739744003862"  "non"
-##  [3,] "0.208312676753849"  "oui"
-##  [4,] "0.127277176361531"  "non"
-##  [5,] "0.0704060615971684" "non"
-##  [6,] "0.299550296040252"  "oui"
-##  [7,] "0.547153719002381"  "oui"
-##  [8,] "0.0876875231042504" "non"
-##  [9,] "0.281001262366772"  "oui"
-## [10,] "0.543835281161591"  "oui"
+##  [1,] "0.0516675903927535" "non"
+##  [2,] "0.444330098805949"  "oui"
+##  [3,] "0.281230132794008"  "oui"
+##  [4,] "0.781961031490937"  "non"
+##  [5,] "0.0396641648840159" "non"
+##  [6,] "0.0265654777176678" "non"
+##  [7,] "0.618367671500891"  "non"
+##  [8,] "0.0446461925748736" "non"
+##  [9,] "0.0822725580073893" "non"
+## [10,] "0.0846023659687489" "non"
 ```
 
 --- .transition
