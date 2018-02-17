@@ -730,6 +730,13 @@ Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s
 Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 100 ans ?
 
 ---
+# Changement de distribution au fil du temps
+
+<div style='text-align:center;'>
+<img src="assets/img/animation.gif" height="520px"></img>
+</div>
+
+---
 # Données
 
 - Distribution initiale de la végétation dans le fichier [quadrats.csv](./donnees/quadrats.csv)
