@@ -242,7 +242,7 @@ https://github.com/EcoNumUdS/BIO109.git
 
 # Évaluation
 
-L'évaluation porte sur la participation aux exercices (20%) et sur un
+L'évaluation porte sur la participation (20%) et sur un
 travail de session (80%). Un exercice simple sera présenté à la fin des
 séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sous
 forme de script <i>avant le début</i> de la séance suivante. Les exercices
@@ -252,9 +252,9 @@ participation.</b>
 
 L'évaluation finale portera sur la réalisation d'un projet de
 programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le <b>20 février 2018 à 16:00</b>. La
+dernier cours, soit au plus tard le <b>19 février 2019 à 16:00</b>. La
 pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
-parti de
+partir de
 
    1. le pseudo-code pour le projet de programmation,
    2. le respect des bonnes pratiques de programmation
@@ -608,7 +608,7 @@ Avec la clause `ELSE`, la croissance est nulle
 
 # Les types d'objets
 
-Les objets en programmation sont définit en fonction de leur dimensionalité.
+Les objets en programmation sont définis en fonction de leur dimensionalité.
 
 ## Dimensionalité
 
@@ -620,8 +620,8 @@ Les objets en programmation sont définit en fonction de leur dimensionalité.
 
 <b>Dimension 3</b> : ...
 
-Malgré qu'il n'y ait pas de limit à la dimension d'un objet en programmation,
-pour le cours nous nous limiterons à des objets en deux dimension
+Bien qu'il n'y ai pas de limite à la dimension d'un objet en programmation,
+pour le cours nous nous limiterons à des objets en deux dimensions
 (c.à.d Matrice)
 
 ---
@@ -712,13 +712,13 @@ lettreTab[2, 1]
 
 # Les 10 commandements de la programmation
 
-> <b>4.</b> Plusieurs chiens s'appelle Fido, le tiens tu sauras le nommer
+> <b>4.</b> Plusieurs chiens s'appellent Fido, le tiens tu sauras le nommer
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>5.</b> Fido tu éviteras d'écraser
+> <b>5.</b> Des pas de bébés permettent aussi d'avancer
 
 ---
 
@@ -752,31 +752,13 @@ lettreTab[2, 1]
 
 ---
 
-# Trois règles supplémentaires
-
-> <b>A.</b> Des pas de bébés permettent aussi d'avancer
-
----
-
-# Trois règles supplémentaires
-
-> <b>B.</b> Il ne faut pas réinventer la roue
-
----
-
-# Trois règles supplémentaires
-
-> <b>C.</b> C'est en forgeant qu'on devient forgeron
-
----
-
 # Google R Style Rules
 
 - Noms de `fichier`: se termine par .R
 - `Identifiants`: variable.nom (or VariableNom), FonctionNom
 - Longueur de `ligne`: maximum 80 caractères
 - `Indentation`: deux espaces, pas de tabulations
-- `Espacement`: placer des espaces au tour de tous les opérateurs binaires
+- `Espacement`: placer des espaces autour des opérateurs binaires
 - `Accolades { }`: s'ouvre sur la même ligne, se ferme sur une ligne indépendente (sauf pour `else`)
 - `else` : Entourer `else` avec des accolades (`}else{`)
 - `Affectation`: utiliser `<-`, pas `=`
@@ -791,7 +773,7 @@ lettreTab[2, 1]
 
 # Une situation qui peut arriver tous les jours
 
-1. On jette en face de vous 5 lettres d'un scrabble
+1. On jette en face de vous 5 lettres d'un jeu de scrabble
 2. Un maniac vous demande d'écrire un programme permettant d'ordonner les 5 lettres
 
 Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code.
