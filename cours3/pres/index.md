@@ -38,13 +38,13 @@ On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, 
 
 ```r
 # Créer un tableau où on enregistre les résultats
-resultats = matrix(nr = 5, nc = 7)
+resultats <- matrix(nr = 5, nc = 7)
 
 # Lire le fichier (en assumant que vous êtes dans le bon dossier)
-arbres = read.table(file="./donnees/arbres.csv", header=TRUE,sep = ";")
+arbres <- read.table(file="donnees/arbres.csv", header=TRUE,sep = ";")
 
 # Délimiter une première zone
-sub_zoneA = subset(arbres, arbres$bory < 201)
+sub_zoneA <- subset(arbres, arbres$bory < 201)
 
 # Calculer le nombre de tiges
 table(arbres$esp)
@@ -58,7 +58,7 @@ table(arbres$esp)
 
 ```r
 # Enregistrer le résultat dans le tableau
-resultats[1,] = table(arbres$esp)
+resultats[1,] <- table(arbres$esp)
 ```
 
 
@@ -79,8 +79,8 @@ alea
 ```
 
 ```
-##  [1] 0.41446685 0.33166872 0.41890259 0.09039504 0.92444486 0.22587303
-##  [7] 0.80060564 0.33684441 0.40720905 0.25438234
+##  [1] 0.4535941 0.3331902 0.9048683 0.4931375 0.1552319 0.2690758 0.1068651
+##  [8] 0.2411779 0.7547795 0.3041469
 ```
 Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées.
 
@@ -166,8 +166,8 @@ vec1
 ```
 
 ```
-##  [1] 0.75185474 0.49067464 0.77985264 0.05062303 0.49053552 0.48371253
-##  [7] 0.63543673 0.30530427 0.73041120 0.83300360
+##  [1] 0.8544415 0.3941523 0.6655439 0.1069739 0.7691560 0.6321975 0.1774071
+##  [8] 0.8201470 0.9176679 0.7544635
 ```
 
 ```r
@@ -175,8 +175,8 @@ vec1
 ```
 
 ```
-##  [1] 2.2555642 1.4720239 2.3395579 0.1518691 1.4716065 1.4511376 1.9063102
-##  [8] 0.9159128 2.1912336 2.4990108
+##  [1] 2.5633245 1.1824569 1.9966318 0.3209218 2.3074681 1.8965926 0.5322213
+##  [8] 2.4604409 2.7530038 2.2633904
 ```
 
 ---
@@ -188,7 +188,7 @@ La situation plus compliquée survient lorsque l'on multiplie des vecteurs et de
 
 ```r
 vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6),nr = 3, nc = 2)
+mat1 <- matrix(c(1:6), nr = 3, nc = 2)
 mat1
 ```
 
@@ -239,7 +239,6 @@ exp(10)
 ## [1] 22026.47
 ```
 
-
 ---
 
 # Opérations avancées
@@ -272,8 +271,8 @@ alea
 ```
 
 ```
-##  [1] 0.48581313 0.51709980 0.03844907 0.54166263 0.03931506 0.86098247
-##  [7] 0.49435463 0.20861038 0.97177835 0.56403416
+##  [1] 0.89029095 0.76598038 0.55277426 0.45673598 0.80244605 0.51259316
+##  [7] 0.74202873 0.05310249 0.69550988 0.60267649
 ```
 
 ```r
@@ -281,7 +280,7 @@ min(alea)
 ```
 
 ```
-## [1] 0.03844907
+## [1] 0.05310249
 ```
 
 ```r
@@ -289,7 +288,7 @@ max(alea)
 ```
 
 ```
-## [1] 0.9717783
+## [1] 0.8902909
 ```
 
 ---
@@ -343,8 +342,8 @@ mat
 
 ```
 ##           [,1]      [,2]
-## [1,] 0.6042398 0.3081153
-## [2,] 0.4237488 0.6328651
+## [1,] 0.4347471 0.5360362
+## [2,] 0.1925214 0.8689882
 ```
 
 ```r
@@ -352,7 +351,7 @@ rowSums(mat)
 ```
 
 ```
-## [1] 0.9123551 1.0566139
+## [1] 0.9707833 1.0615096
 ```
 
 ```r
@@ -360,7 +359,7 @@ colSums(mat)
 ```
 
 ```
-## [1] 1.0279886 0.9409804
+## [1] 0.6272684 1.4050244
 ```
 
 ---
@@ -375,7 +374,7 @@ apply(X = mat, MARGIN = 2, FUN = sum)
 ```
 
 ```
-## [1] 1.0279886 0.9409804
+## [1] 0.6272684 1.4050244
 ```
 
 ```r
@@ -383,7 +382,7 @@ apply(X = mat, MARGIN = 1, FUN = sum)
 ```
 
 ```
-## [1] 0.9123551 1.0566139
+## [1] 0.9707833 1.0615096
 ```
 
 ---
@@ -423,7 +422,7 @@ vec1 %*% mat1
 
 # Abondances relatives
 
-Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
+Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
 
 1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
 2. Calculer le nombre total de tiges pour chaque quadrat ;
@@ -435,7 +434,7 @@ Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de f
 
 
 ```r
-quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
+quadrats <- read.csv2(file="donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
 N_total <- apply(quadrats, 2, sum)
 N_moy <- apply(quadrats, 2, mean)
 N_sd <- apply(quadrats, 2, sd)
@@ -449,7 +448,7 @@ N_CV <- N_sd / N_moy
 
 ```r
 N_quadrats <- apply(quadrats, 1, sum)
-quadrats_rel = quadrats / N_quadrats
+quadrats_rel <- quadrats / N_quadrats
 head(quadrats_rel)
 ```
 
@@ -542,11 +541,11 @@ tableau
 
 ```
 ##             x          y
-## 1 -0.82231220  0.2428302
-## 2  1.48423014  0.1785455
-## 3  0.04697369  0.8564047
-## 4 -1.19851721 -1.0303588
-## 5  0.48172936 -1.6822227
+## 1  1.00973643  0.7076916
+## 2  1.71263865 -0.4847601
+## 3 -1.31853533  0.3571794
+## 4 -0.21647028  0.1459792
+## 5  0.05508215 -0.5965671
 ```
 
 ---
@@ -573,9 +572,9 @@ $$
 ```
 
 ```
-## [1] 0.3445874
-## [1] 0.1593737
-## [1] 0.04453116
+## [1] 0.4160768
+## [1] -0.6761409
+## [1] 0.4898848
 ```
 
 **Problème** - Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
@@ -595,11 +594,11 @@ for(i in 1:nrow(tableau)){
 ```
 
 ```
-## [1] 0.3445874
-## [1] 0.1593737
-## [1] 0.04453116
-## [1] -0.5540473
-## [1] 0.6750359
+## [1] 0.4160768
+## [1] -0.6761409
+## [1] 0.4898848
+## [1] 0.4482861
+## [1] 0.06068534
 ```
 
 **Problème** - Qu'est-ce qu'on fait si on veut appliquer ce calcul sur plusieurs tableaux ???
@@ -611,13 +610,13 @@ for(i in 1:nrow(tableau)){
 
 ## Et si on faisait une fonction...
 
-La fonction peut permettre de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques.
+La fonction permet de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques.
 
 ---
 
 # La construction d'une fonction
 
-## Comment construit-on une fonction ?
+## Comment construire une fonction ?
 
 On commence par écrire une version spécifique du code que l'on souhaite **généraliser**.
 
@@ -630,7 +629,7 @@ On commence par écrire une version spécifique du code que l'on souhaite **gén
 
 # La construction d'une fonction
 
-## Comment construit-on une fonction ?
+## Comment construire une fonction ?
 
 Ensuite, on définit ce code comme faisant parti d'une fonction.
 
@@ -661,7 +660,7 @@ Cette fonction a le défaut de n'être aucunement générale. Elle va toujours d
 
 ---
 
-# Comment construit-on une fonction ?
+# Comment construire une fonction ?
 
 À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
 
@@ -702,7 +701,7 @@ Avec cette fonction on peut faire le calcul qui nous intéresse avec différente
 
 # Comment rendre la fonction plus générale ?
 
-Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est en général rarement le cas :
+Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est rarement le cas :
 
 
 ```r
@@ -754,7 +753,7 @@ prodsum(vecA, vecB)
 ```
 
 ```
-## [1]  0.34458743  0.15937365  0.04453116 -0.55404730  0.67503586
+## [1]  0.41607680 -0.67614086  0.48988480  0.44828606  0.06068534
 ```
 
 ```r
@@ -762,7 +761,7 @@ prodsum(tableau[,1], tableau[,2])
 ```
 
 ```
-## [1]  0.34458743  0.15937365  0.04453116 -0.55404730  0.67503586
+## [1]  0.41607680 -0.67614086  0.48988480  0.44828606  0.06068534
 ```
 
 ---
@@ -790,7 +789,7 @@ prodsum(vec3, vec4)
 ```
 
 ```
-## [1]  0.34458743  0.15937365  0.04453116 -0.45732707
+## [1]  0.4160768 -0.6761409  0.4898848  0.1275405
 ```
 
 ---
@@ -799,7 +798,7 @@ prodsum(vec3, vec4)
 
 Le **recyclage** est une propriété des fonctions mathematiques de base du language R (e.g. `+`, `-`, `*` et `/`). Lorsque deux vecteurs sont de longueurs différentes, les valeurs du vecteur le plus court sont réutilisées, dans l'ordre, pour combler le nombre de valeurs manquantes entre les deux vecteurs. Cette propriété du langage R peut être très pratique mais aussi **générer beaucoup de problèmes**.
 
-Comme on le voit dans l'exemple, un message d'avertissement est envoyé si la longueur du plus petit vecteur n'est pas un multiple du vecteur le plus long. Par contre, si le vecteur le plus court est un multiple du vecteur le plus long, aucun message d'avertissement est envoyé et ce même si le résultat n'a pas de sense.
+Comme on le voit dans l'exemple, un message d'avertissement est envoyé si la longueur du plus petit vecteur n'est pas un multiple du vecteur le plus long. Par contre, si le vecteur le plus court est un multiple du vecteur le plus long, aucun message d'avertissement n'est envoyé et ce même si le résultat n'a pas de sense.
 
 Comment faire pour régler ce problème ?
 
@@ -860,12 +859,12 @@ prodsum(tableau, tableau2)
 ```
 
 ```
-##            x             y
-## 1 -7.7541010  0.1595639225
-## 2  0.2321193  0.1648235636
-## 3  0.0358265  0.4868368726
-## 4  1.4559708 -2.6130562315
-## 5  0.3166899  0.0003725766
+##             x         y
+## 1  0.11447934 0.4209701
+## 2  0.63563452 4.0581913
+## 3  0.24325559 0.1896481
+## 4 -0.25967075 0.1352183
+## 5  0.02946152 0.1213222
 ```
 
 ---
@@ -882,11 +881,11 @@ prodsum(tableau, tableau2)
 
 ```
 ##             x           y
-## 1 0.592440875  0.16258489
-## 2 0.093398067  0.15252006
-## 3 0.004653277  0.01437158
-## 4 0.627402170 -1.82241399
-## 5 0.352014485  0.04068224
+## 1  0.61615930  0.03431620
+## 2  0.95373963 -0.67447815
+## 3 -1.60011888  0.08471254
+## 4  0.17433216  0.14264923
+## 5  0.04319223 -9.04416182
 ```
 
 ---
@@ -930,13 +929,13 @@ test
 
 ```
 ## $moyenne
-## [1] 0.9794657
+## [1] 1.064566
 ## 
 ## $ecart_type
-## [1] 0.458112
+## [1] 0.4979353
 ## 
 ## $CV
-## [1] 0.4677162
+## [1] 0.4677353
 ```
 
 ---
@@ -957,7 +956,7 @@ test
 
 # Abondances relatives
 
-Toujours à partir du fichier [quadrats.csv](./donnees/quadrats.csv), calculer une fonction qui vous retournera les statistiques descriptives suivantes pour une série de données (une espèce en l'occurrence) :
+Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), calculer une fonction qui vous retournera les statistiques descriptives suivantes pour une série de données (une espèce en l'occurrence) :
 
 1. L'abondance moyenne
 2. L'abondance totale

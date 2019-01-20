@@ -20,19 +20,19 @@ On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, 
 
 ```{r}
 # Créer un tableau où on enregistre les résultats
-resultats = matrix(nr = 5, nc = 7)
+resultats <- matrix(nr = 5, nc = 7)
 
 # Lire le fichier (en assumant que vous êtes dans le bon dossier)
-arbres = read.table(file="./donnees/arbres.csv", header=TRUE,sep = ";")
+arbres <- read.table(file="donnees/arbres.csv", header=TRUE,sep = ";")
 
 # Délimiter une première zone
-sub_zoneA = subset(arbres, arbres$bory < 201)
+sub_zoneA <- subset(arbres, arbres$bory < 201)
 
 # Calculer le nombre de tiges
 table(arbres$esp)
 
 # Enregistrer le résultat dans le tableau
-resultats[1,] = table(arbres$esp)
+resultats[1,] <- table(arbres$esp)
 ```
 
 
@@ -105,7 +105,7 @@ La situation plus compliquée survient lorsque l'on multiplie des vecteurs et de
 
 ```{r}
 vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6),nr = 3, nc = 2)
+mat1 <- matrix(c(1:6), nr = 3, nc = 2)
 mat1
 vec1 * mat1
 
@@ -120,7 +120,6 @@ log(100)
 log10(100)
 exp(10)
 ```
-
 
 ---
 
@@ -198,7 +197,7 @@ vec1 %*% mat1
 
 # Abondances relatives
 
-Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
+Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
 
 1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
 2. Calculer le nombre total de tiges pour chaque quadrat ;
@@ -209,7 +208,7 @@ Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de f
 # Abondances relatives
 
 ```{r}
-quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
+quadrats <- read.csv2(file="donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
 N_total <- apply(quadrats, 2, sum)
 N_moy <- apply(quadrats, 2, mean)
 N_sd <- apply(quadrats, 2, sd)
@@ -222,6 +221,6 @@ N_CV <- N_sd / N_moy
 
 ```{r}
 N_quadrats <- apply(quadrats, 1, sum)
-quadrats_rel = quadrats / N_quadrats
+quadrats_rel <- quadrats / N_quadrats
 head(quadrats_rel)
 ```

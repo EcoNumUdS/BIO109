@@ -37,19 +37,19 @@ On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, 
 
 ```{r}
 # Créer un tableau où on enregistre les résultats
-resultats = matrix(nr = 5, nc = 7)
+resultats <- matrix(nr = 5, nc = 7)
 
 # Lire le fichier (en assumant que vous êtes dans le bon dossier)
-arbres = read.table(file="./donnees/arbres.csv", header=TRUE,sep = ";")
+arbres <- read.table(file="donnees/arbres.csv", header=TRUE,sep = ";")
 
 # Délimiter une première zone
-sub_zoneA = subset(arbres, arbres$bory < 201)
+sub_zoneA <- subset(arbres, arbres$bory < 201)
 
 # Calculer le nombre de tiges
 table(arbres$esp)
 
 # Enregistrer le résultat dans le tableau
-resultats[1,] = table(arbres$esp)
+resultats[1,] <- table(arbres$esp)
 ```
 
 
@@ -122,7 +122,7 @@ La situation plus compliquée survient lorsque l'on multiplie des vecteurs et de
 
 ```{r}
 vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6),nr = 3, nc = 2)
+mat1 <- matrix(c(1:6), nr = 3, nc = 2)
 mat1
 vec1 * mat1
 
@@ -137,7 +137,6 @@ log(100)
 log10(100)
 exp(10)
 ```
-
 
 ---
 
@@ -215,7 +214,7 @@ vec1 %*% mat1
 
 # Abondances relatives
 
-Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
+Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
 
 1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
 2. Calculer le nombre total de tiges pour chaque quadrat ;
@@ -226,7 +225,7 @@ Au moyen du fichier [quadrats.csv](./donnees/quadrats.csv), je vous demande de f
 # Abondances relatives
 
 ```{r}
-quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
+quadrats <- read.csv2(file="donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
 N_total <- apply(quadrats, 2, sum)
 N_moy <- apply(quadrats, 2, mean)
 N_sd <- apply(quadrats, 2, sd)
@@ -239,7 +238,7 @@ N_CV <- N_sd / N_moy
 
 ```{r}
 N_quadrats <- apply(quadrats, 1, sum)
-quadrats_rel = quadrats / N_quadrats
+quadrats_rel <- quadrats / N_quadrats
 head(quadrats_rel)
 ```
 
@@ -352,13 +351,13 @@ for(i in 1:nrow(tableau)){
 
 ## Et si on faisait une fonction...
 
-La fonction peut permettre de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques.
+La fonction permet de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques.
 
 ---
 
 # La construction d'une fonction
 
-## Comment construit-on une fonction ?
+## Comment construire une fonction ?
 
 On commence par écrire une version spécifique du code que l'on souhaite **généraliser**.
 
@@ -370,7 +369,7 @@ On commence par écrire une version spécifique du code que l'on souhaite **gén
 
 # La construction d'une fonction
 
-## Comment construit-on une fonction ?
+## Comment construire une fonction ?
 
 Ensuite, on définit ce code comme faisant parti d'une fonction.
 
@@ -395,7 +394,7 @@ Cette fonction a le défaut de n'être aucunement générale. Elle va toujours d
 
 ---
 
-# Comment construit-on une fonction ?
+# Comment construire une fonction ?
 
 À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
 
@@ -435,7 +434,7 @@ Avec cette fonction on peut faire le calcul qui nous intéresse avec différente
 
 # Comment rendre la fonction plus générale ?
 
-Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est en général rarement le cas :
+Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est rarement le cas :
 
 ```{r}
 a <- 1
@@ -489,7 +488,7 @@ prodsum(vec3, vec4)
 
 Le **recyclage** est une propriété des fonctions mathematiques de base du language R (e.g. `+`, `-`, `*` et `/`). Lorsque deux vecteurs sont de longueurs différentes, les valeurs du vecteur le plus court sont réutilisées, dans l'ordre, pour combler le nombre de valeurs manquantes entre les deux vecteurs. Cette propriété du langage R peut être très pratique mais aussi **générer beaucoup de problèmes**.
 
-Comme on le voit dans l'exemple, un message d'avertissement est envoyé si la longueur du plus petit vecteur n'est pas un multiple du vecteur le plus long. Par contre, si le vecteur le plus court est un multiple du vecteur le plus long, aucun message d'avertissement est envoyé et ce même si le résultat n'a pas de sense.
+Comme on le voit dans l'exemple, un message d'avertissement est envoyé si la longueur du plus petit vecteur n'est pas un multiple du vecteur le plus long. Par contre, si le vecteur le plus court est un multiple du vecteur le plus long, aucun message d'avertissement n'est envoyé et ce même si le résultat n'a pas de sense.
 
 Comment faire pour régler ce problème ?
 
@@ -601,7 +600,7 @@ test
 
 # Abondances relatives
 
-Toujours à partir du fichier [quadrats.csv](./donnees/quadrats.csv), calculer une fonction qui vous retournera les statistiques descriptives suivantes pour une série de données (une espèce en l'occurrence) :
+Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), calculer une fonction qui vous retournera les statistiques descriptives suivantes pour une série de données (une espèce en l'occurrence) :
 
 1. L'abondance moyenne
 2. L'abondance totale
