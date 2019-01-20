@@ -34,11 +34,11 @@ Ordonner un vecteur `X` composé de 5 lettres de Scrabble
 ## Solution 1: Bubble sorting
 
 ```
-WHILE is.sort = FALSE; DO
+WHILE is.sort = FALSE
   is.sort = TRUE
   FOR pos IN 1:4
     IF X[pos] > X[pos+1]
-      FLIP
+      INVERSE
       is.sort = FALSE
     END IF
   END FOR
@@ -50,9 +50,9 @@ END WHILE
 ## Solution 2: Stupid ranking
 
 ```
-WHILE is.sort = FALSE; DO
+WHILE is.sort = FALSE
   is.sort = TRUE
-  mélange X
+  MELANGE X
   FOR pos IN 1:4
     IF X[pos] > X[pos+1]
       is.sort = FALSE
@@ -162,6 +162,24 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
 
 ---
 
+# Répertoire de travail
+
+## Changer le répertoire de travail
+
+- Pour les utilisateurs R Studio : 
+
+RStudio -> session -> changer répertoire 
+
+- Pour les utilisateurs R GUI (Windows):
+
+file -> set working directory
+
+- Pour les utilisateurs R GUI (Mac):
+
+file -> set working directory
+
+---
+
 # Environnement de travail
 
 ## Obtenir le contenu du dossier dans le répertoire de travail
@@ -210,6 +228,27 @@ ls()
 
 ```
 ## character(0)
+```
+
+---
+
+# Le script 
+
+Un script est un fichier `.R` contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
+
+Un bon éditeur de script (e.g. RStudio ou R GUI) permet d'exécuter une ligne de commande à la fois, un bloc de commandes ou encore l'ensemble du script (avec crtl + enter ou fonction + R).
+
+Il est préférable d'utiliser uniquement le script et de l'enregistrer et de ne pas enregistrer le contenu de la console. Ainsi la reproductibilité est assurée. 
+
+---
+
+# Le script : fonction source
+
+Il est possible d'exécuter un script sans avoir à l'ouvrir. 
+
+
+```r
+source("MonScript.R")
 ```
 
 ---
@@ -741,6 +780,16 @@ df
 ## 3 3 13
 ```
 
+```r
+df$a
+```
+
+```
+## [1] 1 2 3
+```
+
+On peut indexer une colonne directement avec le symbole "$".
+
 Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
 
 
@@ -823,13 +872,13 @@ as.data.frame(mat)
 
 La lecture de fichiers est souvent l'étape la plus frustrante lorsque l'on travaille avec R.
 
-Pour ce faire, nous utiliserons les fichiers sous format `CSV` (*Comma Separated values*) qui sont des fichiers de texte brut dont chaque ligne dispose d'un séparateur de colonne.
+Pour ce faire, nous utiliserons les fichiers sous format `CSV` (*Comma Separated values*) ou `txt` qui sont des fichiers de texte brut dont chaque ligne dispose d'un séparateur de colonne.
 
 ---
 
 # Lire un fichier
 
-Si j'ouvre le fichier [arbres.csv](./donnees/arbres.csv) avec un bloc note, j'obtiens les 5 premières lignes suivantes:
+Si j'ouvre le fichier [arbres.csv](arbres.csv) avec un bloc note, j'obtiens les 5 premières lignes suivantes:
 
 ```
 id_bor;borx;bory;arbre;esp;multi;mort;dhp
@@ -859,18 +908,24 @@ Nous allons utiliser le fichier [arbres.csv](./donnees/arbres.csv) pour cet exem
 
 
 ```r
-arbres <- read.table(file = './donnees/arbres.csv', header = T, dec = ".", sep = ";")
+arbres <- read.table(file = "arbres.csv", header = T, dec = ".", sep = ";")
+```
+
+```
+## Warning in file(file, "rt"): impossible d'ouvrir le fichier 'arbres.csv' :
+## Aucun fichier ou dossier de ce type
+```
+
+```
+## Error in file(file, "rt"): impossible d'ouvrir la connexion
+```
+
+```r
 head(arbres)
 ```
 
 ```
-##   id_bor borx bory arbre  esp multi mort dhp
-## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
-## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
-## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
-## 4    0-0    0    0 34503 acpe  FAUX FAUX  73
-## 5    0-0    0    0 34504 acpe  FAUX VRAI  28
-## 6    0-0    0    0 34506 fagr  FAUX FAUX  26
+## Error in head(arbres): objet 'arbres' introuvable
 ```
 
 ---
@@ -911,7 +966,7 @@ La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que po
 
 ```r
 mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
-write.csv2(mat2, file = "mat.csv")
+write.table(mat2, file = "mat.csv")
 ```
 On privilégie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme séparateur par défaut (`write.csv()`, la virgule).
 
@@ -944,17 +999,16 @@ Puisque le fichier `.Rdata` est spécifique à R, il s'agit peut-être du format
 
 
 ```r
-load("./MaListe.Rdata")
+load("MaListe.Rdata")
 ls()
 ```
 
 ```
-##  [1] "a"                  "arbres"             "b"                 
-##  [4] "c"                  "collage"            "df"                
-##  [7] "df2"                "faux"               "MaListe"           
-## [10] "MaMatrice"          "mat"                "MesFacteurs"       
-## [13] "MonDeuxiemeVecteur" "MonPremierVecteur"  "test"              
-## [16] "vrai"
+##  [1] "a"                  "b"                  "c"                 
+##  [4] "collage"            "df"                 "df2"               
+##  [7] "faux"               "MaListe"            "MaMatrice"         
+## [10] "mat"                "MesFacteurs"        "MonDeuxiemeVecteur"
+## [13] "MonPremierVecteur"  "test"               "vrai"
 ```
 
 ---
@@ -966,7 +1020,7 @@ Faites attention, si le nom de l'objet contenu dans le fichier `.Rdata` est le m
 
 ```r
 MaListe <- list("Hello","World")
-load("./MaListe.Rdata")
+load("MaListe.Rdata")
 MaListe
 ```
 
@@ -992,10 +1046,7 @@ head(arbres, n = 3)
 ```
 
 ```
-##   id_bor borx bory arbre  esp multi mort dhp
-## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
-## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
-## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+## Error in head(arbres, n = 3): objet 'arbres' introuvable
 ```
 
 ```r
@@ -1003,10 +1054,7 @@ tail(arbres, n = 3)
 ```
 
 ```
-##        id_bor borx bory arbre  esp multi mort dhp
-## 17633 180-980  180  980 17271 piru  FAUX FAUX 125
-## 17634 180-980  180  980 17272 piru  FAUX FAUX 190
-## 17635 180-980  180  980 17273 beal  FAUX FAUX 210
+## Error in tail(arbres, n = 3): objet 'arbres' introuvable
 ```
 
 ---
@@ -1021,15 +1069,7 @@ str(arbres)
 ```
 
 ```
-## 'data.frame':	17635 obs. of  8 variables:
-##  $ id_bor: Factor w/ 499 levels "0-0","0-100",..: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ borx  : int  0 0 0 0 0 0 0 0 0 0 ...
-##  $ bory  : int  0 0 0 0 0 0 0 0 0 0 ...
-##  $ arbre : int  34501 34502 34502 34503 34504 34506 34507 34509 34510 34511 ...
-##  $ esp   : Factor w/ 7 levels "abba","acpe",..: 2 2 2 2 2 6 2 2 2 2 ...
-##  $ multi : Factor w/ 2 levels "FAUX","VRAI": 1 2 2 1 1 1 1 1 1 1 ...
-##  $ mort  : Factor w/ 2 levels "FAUX","VRAI": 1 1 1 1 2 1 1 1 1 1 ...
-##  $ dhp   : int  82 26 98 73 28 26 29 18 24 34 ...
+## Error in str(arbres): objet 'arbres' introuvable
 ```
 
 ---
@@ -1044,23 +1084,26 @@ summary(arbres)
 ```
 
 ```
-##      id_bor           borx             bory           arbre      
-##  80-80  :  227   Min.   :  0.00   Min.   :  0.0   Min.   :    1  
-##  100-20 :  224   1st Qu.: 60.00   1st Qu.:160.0   1st Qu.: 4358  
-##  100-60 :  204   Median : 80.00   Median :400.0   Median : 8777  
-##  80-260 :  196   Mean   : 88.99   Mean   :437.9   Mean   : 9074  
-##  80-240 :  189   3rd Qu.:120.00   3rd Qu.:700.0   3rd Qu.:13186  
-##  80-20  :  184   Max.   :180.00   Max.   :980.0   Max.   :64508  
-##  (Other):16411                                                   
-##    esp        multi         mort            dhp        
-##  abba:2596   FAUX:16920   FAUX:15564   Min.   :   0.0  
-##  acpe:1864   VRAI:  715   VRAI: 2071   1st Qu.: 105.0  
-##  acsa:3326                             Median : 165.0  
-##  beal:3995                             Mean   : 183.7  
-##  bepa:2080                             3rd Qu.: 254.0  
-##  fagr:2785                             Max.   :3015.0  
-##  piru: 989
+## Error in summary(arbres): objet 'arbres' introuvable
 ```
+
+---
+
+# Quelques commandes utiles
+
+`table()` permet de faire des tableaux croisés dynamiques
+
+
+```r
+summary(arbres)
+```
+
+```
+## Error in summary(arbres): objet 'arbres' introuvable
+```
+
+
+
 
 ---
 
@@ -1083,20 +1126,6 @@ summary(arbres)
 - Ouvrir le fichier `CSV` et le comparer au calcul fait aux moyennes d’Excel
 
 **Note:** vous pouvez explorer les données avec `summary` et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
-
----
-
-# Complément: le script
-
-Un script est un fichier `.R` contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
-
-## On peut exécuter un script avec `source()`:
-
-
-```r
-rm(list = ls())
-source("./MonScript.R")
-```
 
 --- .transition
 
@@ -1184,8 +1213,8 @@ tri
 ```
 
 ```
-##  [1] 89.280291  4.225745 99.980227 82.651516 91.638099 73.051350 22.661037
-##  [8] 18.291401 66.986896 84.631697
+##  [1] 38.95979 72.01729 95.17392 12.72020 23.85776 54.52689 16.40976
+##  [8] 97.76214 13.32012 34.82067
 ```
 
 ```r
@@ -1193,8 +1222,8 @@ sort(tri)
 ```
 
 ```
-##  [1]  4.225745 18.291401 22.661037 66.986896 73.051350 82.651516 84.631697
-##  [8] 89.280291 91.638099 99.980227
+##  [1] 12.72020 13.32012 16.40976 23.85776 34.82067 38.95979 54.52689
+##  [8] 72.01729 95.17392 97.76214
 ```
 
 ---
@@ -1207,8 +1236,8 @@ rang
 ```
 
 ```
-##  [1] 67.615803 81.794686  4.487874 58.071235 52.770108  1.630872 21.705966
-##  [8] 78.723987 86.841775  6.773825
+##  [1] 49.17508 90.43236 42.40685 87.34051 11.89631 77.29155 15.18237
+##  [8] 69.86486 16.75343 54.97486
 ```
 
 ```r
@@ -1216,7 +1245,7 @@ rank(rang)
 ```
 
 ```
-##  [1]  7  9  2  6  5  1  4  8 10  3
+##  [1]  5 10  4  9  1  8  2  7  3  6
 ```
 
 ---
@@ -1246,29 +1275,59 @@ unique(uq)
 
 Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction `subset()` est fort pratique pour réaliser cette opération.
 
-Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre:
+Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre de plus de 200 mm:
 
 
 ```r
-quadrats <- read.csv2(file="./donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE)
-sub_quadrats <- subset(quadrats, quadrats$acsa > 0)
+arbres <- read.txt(file="arbres.csv", header=TRUE, stringsAsFactors=FALSE, sep = ";")
+```
+
+```
+## Error in read.txt(file = "arbres.csv", header = TRUE, stringsAsFactors = FALSE, : impossible de trouver la fonction "read.txt"
+```
+
+```r
+sub_quadrats <- subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200 )
+```
+
+```
+## Error in subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200): objet 'arbres' introuvable
+```
+
+```r
 head(sub_quadrats, n=5)
 ```
 
 ```
-##       X abba acpe acsa beal bepa fagr piru
-## 1   0-0    1   55   11    7    0   92    0
-## 2 0-100    0    5    4    3    0    6    0
-## 3 0-120    2    7   12    4    1    7    0
-## 4 0-140    4    5    4    8    1    2    1
-## 5 0-160    2    2   11    8    1    6    1
+## Error in head(sub_quadrats, n = 5): objet 'sub_quadrats' introuvable
 ```
 
+Le "==" est utilisé pour sélection les individus qui sont des acsa et le symbole "&" pour combiner deux conditions.
+
+
+
 ---
+
 # Faire des tableaux sommaires (enfin !)
 
 Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
+
+```r
+n_sp <- table(arbres$esp)
+```
+
+```
+## Error in table(arbres$esp): objet 'arbres' introuvable
+```
+
+```r
+n_sp
+```
+
+```
+## Error in eval(expr, envir, enclos): objet 'n_sp' introuvable
+```
 
 ---
 # Exercice de fin de séance
