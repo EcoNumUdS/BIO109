@@ -166,17 +166,17 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
 
 ## Changer le répertoire de travail
 
-- Pour les utilisateurs R Studio : 
+Pour les utilisateurs R Studio : 
 
-RStudio -> session -> changer répertoire 
+> RStudio -> session -> changer répertoire 
 
-- Pour les utilisateurs R GUI (Windows):
+Pour les utilisateurs R GUI (Windows):
 
-file -> set working directory
+> file -> set working directory
 
-- Pour les utilisateurs R GUI (Mac):
+Pour les utilisateurs R GUI (Mac):
 
-file -> set working directory
+> file -> set working directory
 
 ---
 
@@ -788,10 +788,7 @@ df$a
 ## [1] 1 2 3
 ```
 
-On peut indexer une colonne directement avec le symbole "$".
-
-Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
-
+On peut indexer une colonne directement avec le symbole "$"
 
 ---
 
@@ -908,24 +905,18 @@ Nous allons utiliser le fichier [arbres.csv](./donnees/arbres.csv) pour cet exem
 
 
 ```r
-arbres <- read.table(file = "arbres.csv", header = T, dec = ".", sep = ";")
-```
-
-```
-## Warning in file(file, "rt"): impossible d'ouvrir le fichier 'arbres.csv' :
-## Aucun fichier ou dossier de ce type
-```
-
-```
-## Error in file(file, "rt"): impossible d'ouvrir la connexion
-```
-
-```r
+arbres <- read.table(file = "donnees/arbres.csv", header = T, dec = ".", sep = ";")
 head(arbres)
 ```
 
 ```
-## Error in head(arbres): objet 'arbres' introuvable
+##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+## 4    0-0    0    0 34503 acpe  FAUX FAUX  73
+## 5    0-0    0    0 34504 acpe  FAUX VRAI  28
+## 6    0-0    0    0 34506 fagr  FAUX FAUX  26
 ```
 
 ---
@@ -957,7 +948,7 @@ head(arbres)
 
 ---
 
-# Écrire des fichiers `CSV`
+# Écrire des fichiers `CSV` et `txt`
 
 Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et systèmes d'exploitation est d'écrire sous format `CSV`.
 
@@ -968,7 +959,6 @@ La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que po
 mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
 write.table(mat2, file = "mat.csv")
 ```
-On privilégie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme séparateur par défaut (`write.csv()`, la virgule).
 
 ---
 
@@ -1004,11 +994,12 @@ ls()
 ```
 
 ```
-##  [1] "a"                  "b"                  "c"                 
-##  [4] "collage"            "df"                 "df2"               
-##  [7] "faux"               "MaListe"            "MaMatrice"         
-## [10] "mat"                "MesFacteurs"        "MonDeuxiemeVecteur"
-## [13] "MonPremierVecteur"  "test"               "vrai"
+##  [1] "a"                  "arbres"             "b"                 
+##  [4] "c"                  "collage"            "df"                
+##  [7] "df2"                "faux"               "MaListe"           
+## [10] "MaMatrice"          "mat"                "MesFacteurs"       
+## [13] "MonDeuxiemeVecteur" "MonPremierVecteur"  "test"              
+## [16] "vrai"
 ```
 
 ---
@@ -1046,7 +1037,10 @@ head(arbres, n = 3)
 ```
 
 ```
-## Error in head(arbres, n = 3): objet 'arbres' introuvable
+##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
 ```
 
 ```r
@@ -1054,7 +1048,10 @@ tail(arbres, n = 3)
 ```
 
 ```
-## Error in tail(arbres, n = 3): objet 'arbres' introuvable
+##        id_bor borx bory arbre  esp multi mort dhp
+## 17633 180-980  180  980 17271 piru  FAUX FAUX 125
+## 17634 180-980  180  980 17272 piru  FAUX FAUX 190
+## 17635 180-980  180  980 17273 beal  FAUX FAUX 210
 ```
 
 ---
@@ -1069,7 +1066,15 @@ str(arbres)
 ```
 
 ```
-## Error in str(arbres): objet 'arbres' introuvable
+## 'data.frame':	17635 obs. of  8 variables:
+##  $ id_bor: Factor w/ 499 levels "0-0","0-100",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ borx  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ bory  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ arbre : int  34501 34502 34502 34503 34504 34506 34507 34509 34510 34511 ...
+##  $ esp   : Factor w/ 7 levels "abba","acpe",..: 2 2 2 2 2 6 2 2 2 2 ...
+##  $ multi : Factor w/ 2 levels "FAUX","VRAI": 1 2 2 1 1 1 1 1 1 1 ...
+##  $ mort  : Factor w/ 2 levels "FAUX","VRAI": 1 1 1 1 2 1 1 1 1 1 ...
+##  $ dhp   : int  82 26 98 73 28 26 29 18 24 34 ...
 ```
 
 ---
@@ -1084,33 +1089,48 @@ summary(arbres)
 ```
 
 ```
-## Error in summary(arbres): objet 'arbres' introuvable
+##      id_bor           borx             bory           arbre      
+##  80-80  :  227   Min.   :  0.00   Min.   :  0.0   Min.   :    1  
+##  100-20 :  224   1st Qu.: 60.00   1st Qu.:160.0   1st Qu.: 4358  
+##  100-60 :  204   Median : 80.00   Median :400.0   Median : 8777  
+##  80-260 :  196   Mean   : 88.99   Mean   :437.9   Mean   : 9074  
+##  80-240 :  189   3rd Qu.:120.00   3rd Qu.:700.0   3rd Qu.:13186  
+##  80-20  :  184   Max.   :180.00   Max.   :980.0   Max.   :64508  
+##  (Other):16411                                                   
+##    esp        multi         mort            dhp        
+##  abba:2596   FAUX:16920   FAUX:15564   Min.   :   0.0  
+##  acpe:1864   VRAI:  715   VRAI: 2071   1st Qu.: 105.0  
+##  acsa:3326                             Median : 165.0  
+##  beal:3995                             Mean   : 183.7  
+##  bepa:2080                             3rd Qu.: 254.0  
+##  fagr:2785                             Max.   :3015.0  
+##  piru: 989
 ```
 
 ---
 
 # Quelques commandes utiles
 
-`table()` permet de faire des tableaux croisés dynamiques
+Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
 
 ```r
-summary(arbres)
+n_sp <- table(arbres$esp)
+n_sp
 ```
 
 ```
-## Error in summary(arbres): objet 'arbres' introuvable
+## 
+## abba acpe acsa beal bepa fagr piru 
+## 2596 1864 3326 3995 2080 2785  989
 ```
-
-
-
 
 ---
 
 # Exercice de manipulation des données
 
-- Ouvrir le fichier [arbres.csv](./donnees/arbres.csv) au moyen de Excel ou d'un éditeur de texte
-- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadras
+- Ouvrir le fichier [quadrats.csv](./donnees/quadrats.csv) au moyen de Excel ou d'un éditeur de texte
+- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadrats
 - Ouvrir le même fichier au moyen de R
 - Vérifier que le fichier a le format approprié
 - Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadras
@@ -1213,8 +1233,8 @@ tri
 ```
 
 ```
-##  [1] 38.95979 72.01729 95.17392 12.72020 23.85776 54.52689 16.40976
-##  [8] 97.76214 13.32012 34.82067
+##  [1] 41.99711 92.05413 67.57702 53.46605 10.04097 45.17401 13.50329
+##  [8] 63.50121 81.20822 14.15999
 ```
 
 ```r
@@ -1222,8 +1242,8 @@ sort(tri)
 ```
 
 ```
-##  [1] 12.72020 13.32012 16.40976 23.85776 34.82067 38.95979 54.52689
-##  [8] 72.01729 95.17392 97.76214
+##  [1] 10.04097 13.50329 14.15999 41.99711 45.17401 53.46605 63.50121
+##  [8] 67.57702 81.20822 92.05413
 ```
 
 ---
@@ -1236,8 +1256,8 @@ rang
 ```
 
 ```
-##  [1] 49.17508 90.43236 42.40685 87.34051 11.89631 77.29155 15.18237
-##  [8] 69.86486 16.75343 54.97486
+##  [1] 62.52679 46.49392 14.68908 74.88183 22.75272 57.15113 98.30430
+##  [8] 99.07270 15.87171 72.10156
 ```
 
 ```r
@@ -1245,7 +1265,7 @@ rank(rang)
 ```
 
 ```
-##  [1]  5 10  4  9  1  8  2  7  3  6
+##  [1]  6  4  1  8  3  5  9 10  2  7
 ```
 
 ---
@@ -1275,59 +1295,22 @@ unique(uq)
 
 Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction `subset()` est fort pratique pour réaliser cette opération.
 
-Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre de plus de 200 mm:
+Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats possédant des érables à sucre de plus de 200 mm:
 
 
 ```r
-arbres <- read.txt(file="arbres.csv", header=TRUE, stringsAsFactors=FALSE, sep = ";")
-```
-
-```
-## Error in read.txt(file = "arbres.csv", header = TRUE, stringsAsFactors = FALSE, : impossible de trouver la fonction "read.txt"
-```
-
-```r
+arbres <- read.table(file="donnees/arbres.csv", header=TRUE, stringsAsFactors=FALSE, sep = ";")
 sub_quadrats <- subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200 )
+head(sub_quadrats, n=2)
 ```
 
 ```
-## Error in subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200): objet 'arbres' introuvable
+##    id_bor borx bory arbre  esp multi mort dhp
+## 14    0-0    0    0 34516 acsa  FAUX FAUX 371
+## 22    0-0    0    0 34524 acsa  FAUX FAUX 388
 ```
 
-```r
-head(sub_quadrats, n=5)
-```
-
-```
-## Error in head(sub_quadrats, n = 5): objet 'sub_quadrats' introuvable
-```
-
-Le "==" est utilisé pour sélection les individus qui sont des acsa et le symbole "&" pour combiner deux conditions.
-
-
-
----
-
-# Faire des tableaux sommaires (enfin !)
-
-Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction `table()` est recommandée.
-
-
-```r
-n_sp <- table(arbres$esp)
-```
-
-```
-## Error in table(arbres$esp): objet 'arbres' introuvable
-```
-
-```r
-n_sp
-```
-
-```
-## Error in eval(expr, envir, enclos): objet 'n_sp' introuvable
-```
+Le "==" est utilisé pour sélectionner les individus qui sont des acsa et le symbole "&" pour combiner deux conditions.
 
 ---
 # Exercice de fin de séance

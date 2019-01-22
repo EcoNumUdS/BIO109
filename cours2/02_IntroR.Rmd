@@ -140,17 +140,17 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
 
 ## Changer le répertoire de travail
 
-- Pour les utilisateurs R Studio : 
+Pour les utilisateurs R Studio : 
 
-RStudio -> session -> changer répertoire 
+> RStudio -> session -> changer répertoire 
 
-- Pour les utilisateurs R GUI (Windows):
+Pour les utilisateurs R GUI (Windows):
 
-file -> set working directory
+> file -> set working directory
 
-- Pour les utilisateurs R GUI (Mac):
+Pour les utilisateurs R GUI (Mac):
 
-file -> set working directory
+> file -> set working directory
 
 ---
 
@@ -540,10 +540,7 @@ df$a
 
 ```
 
-On peut indexer une colonne directement avec le symbole "$".
-
-Il n'est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.
-
+On peut indexer une colonne directement avec le symbole "$"
 
 ---
 
@@ -625,7 +622,7 @@ Nous allons utiliser le fichier [arbres.csv](./donnees/arbres.csv) pour cet exem
 ## On peut lire le fichier au moyen de la commande
 
 ```{r}
-arbres <- read.table(file = "arbres.csv", header = T, dec = ".", sep = ";")
+arbres <- read.table(file = "donnees/arbres.csv", header = T, dec = ".", sep = ";")
 head(arbres)
 ```
 
@@ -658,7 +655,7 @@ head(arbres)
 
 ---
 
-# Écrire des fichiers `CSV`
+# Écrire des fichiers `CSV` et `txt`
 
 Il y a une grande diversité de façons d'enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et systèmes d'exploitation est d'écrire sous format `CSV`.
 
@@ -668,7 +665,6 @@ La syntaxe pour écrire une `matrice` ou un `data.frame` est aussi simple que po
 mat2 <- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
 write.table(mat2, file = "mat.csv")
 ```
-On privilégie l'utilisation de la fonction `write.csv2()` qui utilise le point-virgule comme séparateur par défaut (`write.csv()`, la virgule).
 
 ---
 
@@ -749,21 +745,19 @@ summary(arbres)
 
 # Quelques commandes utiles
 
-`table()` permet de faire des tableaux croisés dynamiques
+Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction `table()` est recommandée.
 
 ```{r}
-summary(arbres)
+n_sp <- table(arbres$esp)
+n_sp
 ```
-
-
-
 
 ---
 
 # Exercice de manipulation des données
 
-- Ouvrir le fichier [arbres.csv](./donnees/arbres.csv) au moyen de Excel ou d'un éditeur de texte
-- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadras
+- Ouvrir le fichier [quadrats.csv](./donnees/quadrats.csv) au moyen de Excel ou d'un éditeur de texte
+- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadrats
 - Ouvrir le même fichier au moyen de R
 - Vérifier que le fichier a le format approprié
 - Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadras
@@ -845,29 +839,15 @@ unique(uq)
 
 Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction `subset()` est fort pratique pour réaliser cette opération.
 
-Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre de plus de 200 mm:
+Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les quadrats possédant des érables à sucre de plus de 200 mm:
 
 ```{r}
-arbres <- read.txt(file="arbres.csv", header=TRUE, stringsAsFactors=FALSE, sep = ";")
+arbres <- read.table(file="donnees/arbres.csv", header=TRUE, stringsAsFactors=FALSE, sep = ";")
 sub_quadrats <- subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200 )
-head(sub_quadrats, n=5)
+head(sub_quadrats, n=2)
 ```
 
-Le "==" est utilisé pour sélection les individus qui sont des acsa et le symbole "&" pour combiner deux conditions.
-
-
-
----
-
-# Faire des tableaux sommaires (enfin !)
-
-Très souvent, on souhaite réaliser un sommaire de nos données. La fonction `summary()` est fort utile, mais parfois on souhaite avoir d'autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction `table()` est recommandée.
-
-```{r}
-n_sp <- table(arbres$esp)
-n_sp
-
-```
+Le "==" est utilisé pour sélectionner les individus qui sont des acsa et le symbole "&" pour combiner deux conditions.
 
 ---
 # Exercice de fin de séance

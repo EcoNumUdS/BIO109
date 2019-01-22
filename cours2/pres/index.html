@@ -252,23 +252,23 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
   <article data-timings="">
     <h2>Changer le répertoire de travail</h2>
 
-<ul>
-<li>Pour les utilisateurs R Studio : </li>
-</ul>
+<p>Pour les utilisateurs R Studio : </p>
 
+<blockquote>
 <p>RStudio -&gt; session -&gt; changer répertoire </p>
+</blockquote>
 
-<ul>
-<li>Pour les utilisateurs R GUI (Windows):</li>
-</ul>
+<p>Pour les utilisateurs R GUI (Windows):</p>
 
+<blockquote>
 <p>file -&gt; set working directory</p>
+</blockquote>
 
-<ul>
-<li>Pour les utilisateurs R GUI (Mac):</li>
-</ul>
+<p>Pour les utilisateurs R GUI (Mac):</p>
 
+<blockquote>
 <p>file -&gt; set working directory</p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->
@@ -954,9 +954,7 @@ df
 <pre><code>## [1] 1 2 3
 </code></pre>
 
-<p>On peut indexer une colonne directement avec le symbole &quot;$&quot;.</p>
-
-<p>Il n&#39;est cependant pas un objet mathématique sur lequel on peut effectuer des opérations mathématiques comme les matrices.</p>
+<p>On peut indexer une colonne directement avec le symbole &quot;$&quot;</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1100,20 +1098,17 @@ as.data.frame(mat)
 
 <h2>On peut lire le fichier au moyen de la commande</h2>
 
-<pre><code class="r">arbres &lt;- read.table(file = &quot;arbres.csv&quot;, header = T, dec = &quot;.&quot;, sep = &quot;;&quot;)
+<pre><code class="r">arbres &lt;- read.table(file = &quot;donnees/arbres.csv&quot;, header = T, dec = &quot;.&quot;, sep = &quot;;&quot;)
+head(arbres)
 </code></pre>
 
-<pre><code>## Warning in file(file, &quot;rt&quot;): impossible d&#39;ouvrir le fichier &#39;arbres.csv&#39; :
-## Aucun fichier ou dossier de ce type
-</code></pre>
-
-<pre><code>## Error in file(file, &quot;rt&quot;): impossible d&#39;ouvrir la connexion
-</code></pre>
-
-<pre><code class="r">head(arbres)
-</code></pre>
-
-<pre><code>## Error in head(arbres): objet &#39;arbres&#39; introuvable
+<pre><code>##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+## 4    0-0    0    0 34503 acpe  FAUX FAUX  73
+## 5    0-0    0    0 34504 acpe  FAUX VRAI  28
+## 6    0-0    0    0 34506 fagr  FAUX FAUX  26
 </code></pre>
 
   </article>
@@ -1163,7 +1158,7 @@ as.data.frame(mat)
 <slide class="" id="slide-56" style="background:;">
   <!--  <a href="#slide-56"></a> -->
   <hgroup>
-    <h1>Écrire des fichiers <code>CSV</code></h1>
+    <h1>Écrire des fichiers <code>CSV</code> et <code>txt</code></h1>
   </hgroup>
   <article data-timings="">
     <p>Il y a une grande diversité de façons d&#39;enregistrer sur le disque des objets provenant de R. La façon la plus simple, versatile et qui permet les échanges entre différents logiciels et systèmes d&#39;exploitation est d&#39;écrire sous format <code>CSV</code>.</p>
@@ -1173,8 +1168,6 @@ as.data.frame(mat)
 <pre><code class="r">mat2 &lt;- matrix(runif(n = 10,min = 0,max = 1),nrow = 5,ncol = 10)
 write.table(mat2, file = &quot;mat.csv&quot;)
 </code></pre>
-
-<p>On privilégie l&#39;utilisation de la fonction <code>write.csv2()</code> qui utilise le point-virgule comme séparateur par défaut (<code>write.csv()</code>, la virgule).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -1213,11 +1206,12 @@ save(MaListe, file = &quot;MaListe.Rdata&quot;)
 ls()
 </code></pre>
 
-<pre><code>##  [1] &quot;a&quot;                  &quot;b&quot;                  &quot;c&quot;                 
-##  [4] &quot;collage&quot;            &quot;df&quot;                 &quot;df2&quot;               
-##  [7] &quot;faux&quot;               &quot;MaListe&quot;            &quot;MaMatrice&quot;         
-## [10] &quot;mat&quot;                &quot;MesFacteurs&quot;        &quot;MonDeuxiemeVecteur&quot;
-## [13] &quot;MonPremierVecteur&quot;  &quot;test&quot;               &quot;vrai&quot;
+<pre><code>##  [1] &quot;a&quot;                  &quot;arbres&quot;             &quot;b&quot;                 
+##  [4] &quot;c&quot;                  &quot;collage&quot;            &quot;df&quot;                
+##  [7] &quot;df2&quot;                &quot;faux&quot;               &quot;MaListe&quot;           
+## [10] &quot;MaMatrice&quot;          &quot;mat&quot;                &quot;MesFacteurs&quot;       
+## [13] &quot;MonDeuxiemeVecteur&quot; &quot;MonPremierVecteur&quot;  &quot;test&quot;              
+## [16] &quot;vrai&quot;
 </code></pre>
 
   </article>
@@ -1259,13 +1253,19 @@ MaListe
 <pre><code class="r">head(arbres, n = 3)
 </code></pre>
 
-<pre><code>## Error in head(arbres, n = 3): objet &#39;arbres&#39; introuvable
+<pre><code>##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
 </code></pre>
 
 <pre><code class="r">tail(arbres, n = 3)
 </code></pre>
 
-<pre><code>## Error in tail(arbres, n = 3): objet &#39;arbres&#39; introuvable
+<pre><code>##        id_bor borx bory arbre  esp multi mort dhp
+## 17633 180-980  180  980 17271 piru  FAUX FAUX 125
+## 17634 180-980  180  980 17272 piru  FAUX FAUX 190
+## 17635 180-980  180  980 17273 beal  FAUX FAUX 210
 </code></pre>
 
   </article>
@@ -1282,7 +1282,15 @@ MaListe
 <pre><code class="r">str(arbres)
 </code></pre>
 
-<pre><code>## Error in str(arbres): objet &#39;arbres&#39; introuvable
+<pre><code>## &#39;data.frame&#39;:    17635 obs. of  8 variables:
+##  $ id_bor: Factor w/ 499 levels &quot;0-0&quot;,&quot;0-100&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ borx  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ bory  : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ arbre : int  34501 34502 34502 34503 34504 34506 34507 34509 34510 34511 ...
+##  $ esp   : Factor w/ 7 levels &quot;abba&quot;,&quot;acpe&quot;,..: 2 2 2 2 2 6 2 2 2 2 ...
+##  $ multi : Factor w/ 2 levels &quot;FAUX&quot;,&quot;VRAI&quot;: 1 2 2 1 1 1 1 1 1 1 ...
+##  $ mort  : Factor w/ 2 levels &quot;FAUX&quot;,&quot;VRAI&quot;: 1 1 1 1 2 1 1 1 1 1 ...
+##  $ dhp   : int  82 26 98 73 28 26 29 18 24 34 ...
 </code></pre>
 
   </article>
@@ -1299,7 +1307,22 @@ MaListe
 <pre><code class="r">summary(arbres)
 </code></pre>
 
-<pre><code>## Error in summary(arbres): objet &#39;arbres&#39; introuvable
+<pre><code>##      id_bor           borx             bory           arbre      
+##  80-80  :  227   Min.   :  0.00   Min.   :  0.0   Min.   :    1  
+##  100-20 :  224   1st Qu.: 60.00   1st Qu.:160.0   1st Qu.: 4358  
+##  100-60 :  204   Median : 80.00   Median :400.0   Median : 8777  
+##  80-260 :  196   Mean   : 88.99   Mean   :437.9   Mean   : 9074  
+##  80-240 :  189   3rd Qu.:120.00   3rd Qu.:700.0   3rd Qu.:13186  
+##  80-20  :  184   Max.   :180.00   Max.   :980.0   Max.   :64508  
+##  (Other):16411                                                   
+##    esp        multi         mort            dhp        
+##  abba:2596   FAUX:16920   FAUX:15564   Min.   :   0.0  
+##  acpe:1864   VRAI:  715   VRAI: 2071   1st Qu.: 105.0  
+##  acsa:3326                             Median : 165.0  
+##  beal:3995                             Mean   : 183.7  
+##  bepa:2080                             3rd Qu.: 254.0  
+##  fagr:2785                             Max.   :3015.0  
+##  piru: 989
 </code></pre>
 
   </article>
@@ -1311,12 +1334,15 @@ MaListe
     <h1>Quelques commandes utiles</h1>
   </hgroup>
   <article data-timings="">
-    <p><code>table()</code> permet de faire des tableaux croisés dynamiques</p>
+    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <code>summary()</code> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction <code>table()</code> est recommandée.</p>
 
-<pre><code class="r">summary(arbres)
+<pre><code class="r">n_sp &lt;- table(arbres$esp)
+n_sp
 </code></pre>
 
-<pre><code>## Error in summary(arbres): objet &#39;arbres&#39; introuvable
+<pre><code>## 
+## abba acpe acsa beal bepa fagr piru 
+## 2596 1864 3326 3995 2080 2785  989
 </code></pre>
 
   </article>
@@ -1329,8 +1355,8 @@ MaListe
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Ouvrir le fichier <a href="./donnees/arbres.csv">arbres.csv</a> au moyen de Excel ou d&#39;un éditeur de texte</li>
-<li>Calculer l&#39;abondance moyenne pour chaque espèce sur l&#39;ensemble des quadras</li>
+<li>Ouvrir le fichier <a href="./donnees/quadrats.csv">quadrats.csv</a> au moyen de Excel ou d&#39;un éditeur de texte</li>
+<li>Calculer l&#39;abondance moyenne pour chaque espèce sur l&#39;ensemble des quadrats</li>
 <li>Ouvrir le même fichier au moyen de R</li>
 <li>Vérifier que le fichier a le format approprié</li>
 <li>Créer un vecteur <code>AbondanceMoyenne</code> d&#39;une longueur correspondant au nombre d&#39;espèces dans les données quadras</li>
@@ -1452,15 +1478,15 @@ expand.grid(v1,v2)
 tri
 </code></pre>
 
-<pre><code>##  [1] 38.95979 72.01729 95.17392 12.72020 23.85776 54.52689 16.40976
-##  [8] 97.76214 13.32012 34.82067
+<pre><code>##  [1] 41.99711 92.05413 67.57702 53.46605 10.04097 45.17401 13.50329
+##  [8] 63.50121 81.20822 14.15999
 </code></pre>
 
 <pre><code class="r">sort(tri)
 </code></pre>
 
-<pre><code>##  [1] 12.72020 13.32012 16.40976 23.85776 34.82067 38.95979 54.52689
-##  [8] 72.01729 95.17392 97.76214
+<pre><code>##  [1] 10.04097 13.50329 14.15999 41.99711 45.17401 53.46605 63.50121
+##  [8] 67.57702 81.20822 92.05413
 </code></pre>
 
   </article>
@@ -1476,14 +1502,14 @@ tri
 rang
 </code></pre>
 
-<pre><code>##  [1] 49.17508 90.43236 42.40685 87.34051 11.89631 77.29155 15.18237
-##  [8] 69.86486 16.75343 54.97486
+<pre><code>##  [1] 62.52679 46.49392 14.68908 74.88183 22.75272 57.15113 98.30430
+##  [8] 99.07270 15.87171 72.10156
 </code></pre>
 
 <pre><code class="r">rank(rang)
 </code></pre>
 
-<pre><code>##  [1]  5 10  4  9  1  8  2  7  3  6
+<pre><code>##  [1]  6  4  1  8  3  5  9 10  2  7
 </code></pre>
 
   </article>
@@ -1519,56 +1545,25 @@ uq
   <article data-timings="">
     <p>Parfois, on souhaite avoir seulement une partie des données contenues dans un objet. La fonction <code>subset()</code> est fort pratique pour réaliser cette opération.</p>
 
-<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadras possédants des érables à sucre de plus de 200 mm:</p>
+<p>Ici par exemple, dans l&#39;exemple de Sutton, on souhaite étudier seulement les quadrats possédant des érables à sucre de plus de 200 mm:</p>
 
-<pre><code class="r">arbres &lt;- read.txt(file=&quot;arbres.csv&quot;, header=TRUE, stringsAsFactors=FALSE, sep = &quot;;&quot;)
+<pre><code class="r">arbres &lt;- read.table(file=&quot;donnees/arbres.csv&quot;, header=TRUE, stringsAsFactors=FALSE, sep = &quot;;&quot;)
+sub_quadrats &lt;- subset(arbres, arbres$esp == &quot;acsa&quot; &amp; arbres$dhp &gt;= 200 )
+head(sub_quadrats, n=2)
 </code></pre>
 
-<pre><code>## Error in read.txt(file = &quot;arbres.csv&quot;, header = TRUE, stringsAsFactors = FALSE, : impossible de trouver la fonction &quot;read.txt&quot;
+<pre><code>##    id_bor borx bory arbre  esp multi mort dhp
+## 14    0-0    0    0 34516 acsa  FAUX FAUX 371
+## 22    0-0    0    0 34524 acsa  FAUX FAUX 388
 </code></pre>
 
-<pre><code class="r">sub_quadrats &lt;- subset(arbres, arbres$esp == &quot;acsa&quot; &amp; arbres$dhp &gt;= 200 )
-</code></pre>
-
-<pre><code>## Error in subset(arbres, arbres$esp == &quot;acsa&quot; &amp; arbres$dhp &gt;= 200): objet &#39;arbres&#39; introuvable
-</code></pre>
-
-<pre><code class="r">head(sub_quadrats, n=5)
-</code></pre>
-
-<pre><code>## Error in head(sub_quadrats, n = 5): objet &#39;sub_quadrats&#39; introuvable
-</code></pre>
-
-<p>Le &quot;==&quot; est utilisé pour sélection les individus qui sont des acsa et le symbole &quot;&amp;&quot; pour combiner deux conditions.</p>
+<p>Le &quot;==&quot; est utilisé pour sélectionner les individus qui sont des acsa et le symbole &quot;&amp;&quot; pour combiner deux conditions.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-74" style="background:;">
   <!--  <a href="#slide-74"></a> -->
-  <hgroup>
-    <h1>Faire des tableaux sommaires (enfin !)</h1>
-  </hgroup>
-  <article data-timings="">
-    <p>Très souvent, on souhaite réaliser un sommaire de nos données. La fonction <code>summary()</code> est fort utile, mais parfois on souhaite avoir d&#39;autres informations que la moyenne (p. ex. la variance). Dans ce cas, la fonction <code>table()</code> est recommandée.</p>
-
-<pre><code class="r">n_sp &lt;- table(arbres$esp)
-</code></pre>
-
-<pre><code>## Error in table(arbres$esp): objet &#39;arbres&#39; introuvable
-</code></pre>
-
-<pre><code class="r">n_sp
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): objet &#39;n_sp&#39; introuvable
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-75" style="background:;">
-  <!--  <a href="#slide-75"></a> -->
   <hgroup>
     <h1>Exercice de fin de séance</h1>
   </hgroup>
@@ -1923,7 +1918,7 @@ uq
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=56 title='Écrire des fichiers <code>CSV</code>'>
+        data-slide=56 title='Écrire des fichiers <code>CSV</code> et <code>txt</code>'>
          56
       </a>
     </li>
@@ -2031,14 +2026,8 @@ uq
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=74 title='Faire des tableaux sommaires (enfin !)'>
+        data-slide=74 title='Exercice de fin de séance'>
          74
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=75 title='Exercice de fin de séance'>
-         75
       </a>
     </li>
   </ul>
