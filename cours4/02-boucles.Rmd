@@ -1,4 +1,79 @@
 --- .transition
+# Retour sur les fonctions
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Commencer en créant travaillant localement
+
+```{r eval=FALSE}
+
+X <- quadrats$acsa
+
+# Abondance moyenne
+moy <- mean(X)
+# Abondance totale
+tot <- sum(X)
+# Coefficient de variation de l'abondance
+CV <- sd(X)/mean(X)
+# Densité maximale dans un quadrat
+max_ab <- max(X)
+# Densité minimale dans un quadrat
+min_ab <- min(X)
+
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Tout envelopper dans une fonction
+
+```{r eval=FALSE}
+
+ma_fonction <- function(X) {
+        
+    # Abondance moyenne
+    moy <- mean(X)
+    # Abondance totale
+    tot <- sum(X)
+    # Coefficient de variation de l'abondance
+    CV <- sd(X)/mean(X)
+    # Densité maximale dans un quadrat
+    max_ab <- max(X)
+    # Densité minimale dans un quadrat
+    min_ab <- min(X) 
+    # Retour extérieur
+    return(c(moy, tot, CV, max_ab, min_ab))
+}
+
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+On fait un essai sur un premier objet que l'on connait
+
+```{r eval=FALSE}
+
+ma_fonction(X)
+
+```
+
+---
+# Trucs pour essayer de programmer une fonction
+
+Ensuite on l'applique sur l'ensemble des données
+
+```{r eval=FALSE}
+
+apply(quadrats, 2, ma_fonction)
+
+```
+
+--- .transition
 # Les boucles
 
 ---

@@ -16,6 +16,77 @@ license     : by-nc-sa
 assets      :
   css: "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"
 --- .transition
+# Retour sur les fonctions
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Commencer en créant travaillant localement
+
+
+```r
+X <- quadrats$acsa
+
+# Abondance moyenne
+moy <- mean(X)
+# Abondance totale
+tot <- sum(X)
+# Coefficient de variation de l'abondance
+CV <- sd(X)/mean(X)
+# Densité maximale dans un quadrat
+max_ab <- max(X)
+# Densité minimale dans un quadrat
+min_ab <- min(X)
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Tout envelopper dans une fonction
+
+
+```r
+ma_fonction <- function(X) {
+        
+    # Abondance moyenne
+    moy <- mean(X)
+    # Abondance totale
+    tot <- sum(X)
+    # Coefficient de variation de l'abondance
+    CV <- sd(X)/mean(X)
+    # Densité maximale dans un quadrat
+    max_ab <- max(X)
+    # Densité minimale dans un quadrat
+    min_ab <- min(X) 
+    # Retour extérieur
+    return(c(moy, tot, CV, max_ab, min_ab))
+}
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+On fait un essai sur un premier objet que l'on connait
+
+
+```r
+ma_fonction(X)
+```
+
+---
+# Trucs pour essayer de programmer une fonction
+
+Ensuite on l'applique sur l'ensemble des données
+
+
+```r
+apply(quadrats, 2, ma_fonction)
+```
+
+--- .transition
 # Les boucles
 
 ---
@@ -63,7 +134,7 @@ plot(an,donnees[,1],type = "l", xlab = "Année",ylab = "Nombre d'individus", yli
 lines(an,donnees[,2], lty = 3)
 ```
 
-<img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="42%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="42%" style="display: block; margin: auto;" />
 
 ---
 # Mise en situation
@@ -366,11 +437,11 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.6443833
-## [1] 0.1475081
-## [1] 0.4194033
-## [1] 0.8542872
-## [1] 0.1922626
+## [1] 0.5560819
+## [1] 0.02164652
+## [1] 0.6234146
+## [1] 0.2592679
+## [1] 0.6130294
 ```
 
 ---
@@ -387,11 +458,11 @@ for(etape in 1:5) {
 ```
 
 ```
-## [1] 0.08651754
-## [1] 0.4383135
-## [1] 0.6458184
-## [1] 0.727037
-## [1] 0.9074013
+## [1] 0.7587965
+## [1] 0.1813692
+## [1] 0.3746143
+## [1] 0.02646729
+## [1] 0.5589503
 ```
 
 ---
@@ -500,10 +571,8 @@ while(combinaison != "pile-pile") {
 ```
 
 ```
-## [1] "face-pile"
 ## [1] "face-face"
 ## [1] "face-pile"
-## [1] "face-face"
 ## [1] "pile-pile"
 ```
 
@@ -533,7 +602,7 @@ mean(res)
 ```
 
 ```
-## [1] 6.595
+## [1] 6.716
 ```
 
 ---
@@ -544,7 +613,7 @@ mean(res)
 hist(res)
 ```
 
-<img src="assets/fig/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="50%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="50%" style="display: block; margin: auto;" />
 
 --- .transition
 # Exercice intermédiaire
@@ -604,7 +673,7 @@ for(i in 2:(n_steps+1)) {
 plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
 ```
 
-<img src="assets/fig/unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="50%" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-25-1.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="50%" style="display: block; margin: auto;" />
 
 --- .transition
 
@@ -728,17 +797,17 @@ cbind(X,res)
 
 
 ```
-##       X                    res         
-##  [1,] "0.0516675903927535" "plus petit"
-##  [2,] "0.444330098805949"  "plus grand"
-##  [3,] "0.281230132794008"  "plus petit"
-##  [4,] "0.781961031490937"  "plus grand"
-##  [5,] "0.0396641648840159" "plus petit"
-##  [6,] "0.0265654777176678" "plus petit"
-##  [7,] "0.618367671500891"  "plus grand"
-##  [8,] "0.0446461925748736" "plus petit"
-##  [9,] "0.0822725580073893" "plus petit"
-## [10,] "0.0846023659687489" "plus petit"
+##       X                   res         
+##  [1,] "0.75838748854585"  "plus grand"
+##  [2,] "0.819351149490103" "plus grand"
+##  [3,] "0.760597588028759" "plus grand"
+##  [4,] "0.779716530116275" "plus grand"
+##  [5,] "0.953859592555091" "plus grand"
+##  [6,] "0.574983340455219" "plus grand"
+##  [7,] "0.568764951778576" "plus grand"
+##  [8,] "0.942183101782575" "plus grand"
+##  [9,] "0.348372425185516" "plus grand"
+## [10,] "0.741628726944327" "plus grand"
 ```
 
 ---
@@ -778,17 +847,17 @@ cbind(X,res2)
 
 
 ```
-##       X                    res2 
-##  [1,] "0.0516675903927535" "non"
-##  [2,] "0.444330098805949"  "oui"
-##  [3,] "0.281230132794008"  "oui"
-##  [4,] "0.781961031490937"  "non"
-##  [5,] "0.0396641648840159" "non"
-##  [6,] "0.0265654777176678" "non"
-##  [7,] "0.618367671500891"  "non"
-##  [8,] "0.0446461925748736" "non"
-##  [9,] "0.0822725580073893" "non"
-## [10,] "0.0846023659687489" "non"
+##       X                   res2 
+##  [1,] "0.75838748854585"  "non"
+##  [2,] "0.819351149490103" "non"
+##  [3,] "0.760597588028759" "non"
+##  [4,] "0.779716530116275" "non"
+##  [5,] "0.953859592555091" "non"
+##  [6,] "0.574983340455219" "oui"
+##  [7,] "0.568764951778576" "oui"
+##  [8,] "0.942183101782575" "non"
+##  [9,] "0.348372425185516" "oui"
+## [10,] "0.741628726944327" "non"
 ```
 
 --- &twocol
@@ -811,17 +880,17 @@ cbind(X,res2)
 
 
 ```
-##       X                    res2 
-##  [1,] "0.0516675903927535" "non"
-##  [2,] "0.444330098805949"  "oui"
-##  [3,] "0.281230132794008"  "oui"
-##  [4,] "0.781961031490937"  "non"
-##  [5,] "0.0396641648840159" "non"
-##  [6,] "0.0265654777176678" "non"
-##  [7,] "0.618367671500891"  "non"
-##  [8,] "0.0446461925748736" "non"
-##  [9,] "0.0822725580073893" "non"
-## [10,] "0.0846023659687489" "non"
+##       X                   res2 
+##  [1,] "0.75838748854585"  "non"
+##  [2,] "0.819351149490103" "non"
+##  [3,] "0.760597588028759" "non"
+##  [4,] "0.779716530116275" "non"
+##  [5,] "0.953859592555091" "non"
+##  [6,] "0.574983340455219" "oui"
+##  [7,] "0.568764951778576" "oui"
+##  [8,] "0.942183101782575" "non"
+##  [9,] "0.348372425185516" "oui"
+## [10,] "0.741628726944327" "non"
 ```
 
 --- .transition
