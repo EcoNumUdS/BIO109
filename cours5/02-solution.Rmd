@@ -13,7 +13,7 @@ tri <- function(x){
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
 	while(ordre == "OUI") {
 		ordre = "NON"
-		# Boucle qui passe tous les éléments en paire
+		# Boucle qui passe tous les éléments en paires
 		for(i in 1:(taille-1)) {
 			if(x[i+1] < x[i]) {
 				# Inversion des deux lettres
