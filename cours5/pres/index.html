@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;3 - pique&quot; &quot;4 - coeur&quot; &quot;6 - coeur&quot;
+<pre><code>## [1] &quot;valet - trèfle&quot; &quot;5 - coeur&quot;      &quot;3 - pique&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 0 1 0 1 0 1 1 0 1 0
+<pre><code>##  [1] 1 0 0 1 1 1 1 1 0 1
 </code></pre>
 
     </div>
@@ -353,11 +353,11 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    0    0
-## [2,]    0    0    1
-## [3,]    0    0    0
+## [1,]    1    0    1
+## [2,]    0    0    0
+## [3,]    0    1    0
 ## [4,]    0    0    0
-## [5,]    0    1    0
+## [5,]    0    0    0
 ## [6,]    0    0    0
 </code></pre>
 
@@ -878,14 +878,14 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##       0       0       0
+##   0.004   0.000   0.000
 </code></pre>
 
 <pre><code class="r">system.time(tri(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.012   0.000   0.011
+##   0.012   0.000   0.009
 </code></pre>
 
   </article>
@@ -942,14 +942,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.072   0.000   0.072
+##   0.064   0.004   0.071
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.052   0.000   0.052
+##   0.048   0.000   0.048
 </code></pre>
 
     </div>
@@ -986,7 +986,7 @@ system.time(f1(X))
 ##    user  system elapsed 
 ##   0.000   0.000   0.001 
 ##    user  system elapsed 
-##   0.456   0.000   0.454
+##   0.484   0.000   0.488
 </code></pre>
 
     </div>
@@ -1182,9 +1182,9 @@ P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
 <li>Transformer les abondances en états de départ</li>
 <li>Préparer une fonction qui tire au hasard l&#39;état au temps t+1 en fonction de l&#39;état au temps t</li>
 <li>Préparer une fonction qui fait une simulation sur N pas de temps</li>
-<li>Utiliser la sortie de la fonction pour illustrer (2 figures):
-i) l&#39;abondance relative des 4 états sur l&#39;ensemble de la parcelle au cours du temps
-ii) la distribution des états après 100 ans (20 pas de temps)</li>
+<li>Utiliser la sortie de la fonction pour répondre à deux questions au moyen d&#39;une figure :
+i) est-ce que les espèces de conifères seront toujours présentes dans le futur ?
+ii) combien de temps sera nécessaire pour que la forêt atteigne l&#39;équilibre ?</li>
 </ul>
 
   </article>
@@ -1198,13 +1198,14 @@ ii) la distribution des états après 100 ans (20 pas de temps)</li>
   <article data-timings="">
     <ul>
 <li>Le travail se réalisera en équipe de 4</li>
-<li>Le travail doit être remis <strong>électroniquement</strong> au plus tard le 20 février 16:00 sur Moodle</li>
+<li>Le travail doit être remis <strong>électroniquement</strong> au plus tard le 19 février 16:00 sur Moodle</li>
 <li>Vous devez remettre:
 
 <ul>
 <li>Le pseudo-code pour la fonction principale qui réalise votre simulation</li>
-<li>Le script qui exécute votre code, de la lecture du fichier de départ jusqu&#39;à la production des figures</li>
+<li>Le script qui exécute votre code, de la lecture du fichier de départ jusqu&#39;à la production des figures. </li>
 </ul></li>
+<li>Attention à la reproductibilité !</li>
 </ul>
 
   </article>

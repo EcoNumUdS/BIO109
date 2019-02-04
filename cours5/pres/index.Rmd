@@ -738,18 +738,19 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Transformer les abondances en états de départ
 - Préparer une fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t
 - Préparer une fonction qui fait une simulation sur N pas de temps
-- Utiliser la sortie de la fonction pour illustrer (2 figures):
-	i) l'abondance relative des 4 états sur l'ensemble de la parcelle au cours du temps
-	ii) la distribution des états après 100 ans (20 pas de temps)
+- Utiliser la sortie de la fonction pour répondre à deux questions au moyen d'une figure :
+	i) est-ce que les espèces de conifères seront toujours présentes dans le futur ?
+	ii) combien de temps sera nécessaire pour que la forêt atteigne l'équilibre ?
 
 ---
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 20 février 16:00 sur Moodle
+- Le travail doit être remis **électroniquement** au plus tard le 19 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
-	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures
+	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures. 
+- Attention à la reproductibilité !
 
 ---
 # Critères d'évaluation

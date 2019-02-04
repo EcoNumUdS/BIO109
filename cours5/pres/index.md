@@ -121,7 +121,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "3 - pique" "4 - coeur" "6 - coeur"
+## [1] "valet - trèfle" "5 - coeur"      "3 - pique"
 ```
 
 ---
@@ -193,7 +193,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 0 1 0 1 0 1 1 0 1 0
+##  [1] 1 0 0 1 1 1 1 1 0 1
 ```
 
 --- &twocol
@@ -216,11 +216,11 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 
 ```
 ##      [,1] [,2] [,3]
-## [1,]    1    0    0
-## [2,]    0    0    1
-## [3,]    0    0    0
+## [1,]    1    0    1
+## [2,]    0    0    0
+## [3,]    0    1    0
 ## [4,]    0    0    0
-## [5,]    0    1    0
+## [5,]    0    0    0
 ## [6,]    0    0    0
 ```
 
@@ -592,7 +592,7 @@ system.time(sort(x))
 
 ```
 ##    user  system elapsed 
-##       0       0       0
+##   0.004   0.000   0.000
 ```
 
 ```r
@@ -601,7 +601,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   0.012   0.000   0.011
+##   0.012   0.000   0.009
 ```
 
 ---&twocol
@@ -658,7 +658,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.072   0.000   0.072
+##   0.064   0.004   0.071
 ```
 
 ```r
@@ -667,7 +667,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.052   0.000   0.052
+##   0.048   0.000   0.048
 ```
 
 ---&twocol
@@ -705,7 +705,7 @@ system.time(f1(X))
 ##    user  system elapsed 
 ##   0.000   0.000   0.001 
 ##    user  system elapsed 
-##   0.456   0.000   0.454
+##   0.484   0.000   0.488
 ```
 
 ---.transition
@@ -823,18 +823,19 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Transformer les abondances en états de départ
 - Préparer une fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t
 - Préparer une fonction qui fait une simulation sur N pas de temps
-- Utiliser la sortie de la fonction pour illustrer (2 figures):
-	i) l'abondance relative des 4 états sur l'ensemble de la parcelle au cours du temps
-	ii) la distribution des états après 100 ans (20 pas de temps)
+- Utiliser la sortie de la fonction pour répondre à deux questions au moyen d'une figure :
+	i) est-ce que les espèces de conifères seront toujours présentes dans le futur ?
+	ii) combien de temps sera nécessaire pour que la forêt atteigne l'équilibre ?
 
 ---
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 20 février 16:00 sur Moodle
+- Le travail doit être remis **électroniquement** au plus tard le 19 février 16:00 sur Moodle
 - Vous devez remettre:
 	- Le pseudo-code pour la fonction principale qui réalise votre simulation
-	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures
+	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures. 
+- Attention à la reproductibilité !
 
 ---
 # Critères d'évaluation
