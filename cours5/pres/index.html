@@ -230,7 +230,7 @@ tirage = function(n, cartes) {
 tirage(3, cartes)
 </code></pre>
 
-<pre><code>## [1] &quot;valet - trèfle&quot; &quot;5 - coeur&quot;      &quot;3 - pique&quot;
+<pre><code>## [1] &quot;9 - carreau&quot; &quot;9 - pique&quot;   &quot;5 - coeur&quot;
 </code></pre>
 
   </article>
@@ -329,7 +329,7 @@ tirage(3, cartes)
      <pre><code class="r">rbinom(n = 10, size = 1, prob = 0.5)
 </code></pre>
 
-<pre><code>##  [1] 1 0 0 1 1 1 1 1 0 1
+<pre><code>##  [1] 1 0 1 0 0 0 0 1 0 1
 </code></pre>
 
     </div>
@@ -353,11 +353,11 @@ tirage(3, cartes)
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
-## [1,]    1    0    1
-## [2,]    0    0    0
-## [3,]    0    1    0
+## [1,]    0    0    0
+## [2,]    0    0    1
+## [3,]    1    0    0
 ## [4,]    0    0    0
-## [5,]    0    0    0
+## [5,]    0    1    0
 ## [6,]    0    0    0
 </code></pre>
 
@@ -878,14 +878,14 @@ system.time(sort(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.004   0.000   0.000
+##       0       0       0
 </code></pre>
 
 <pre><code class="r">system.time(tri(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.012   0.000   0.009
+##   0.012   0.000   0.013
 </code></pre>
 
   </article>
@@ -942,14 +942,14 @@ system.time(f1(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.064   0.004   0.071
+##   0.068   0.004   0.071
 </code></pre>
 
 <pre><code class="r">system.time(f2(x))
 </code></pre>
 
 <pre><code>##    user  system elapsed 
-##   0.048   0.000   0.048
+##   0.040   0.004   0.043
 </code></pre>
 
     </div>
@@ -984,9 +984,9 @@ system.time(f1(X))
 <pre><code>##    user  system elapsed 
 ##       0       0       0 
 ##    user  system elapsed 
-##   0.000   0.000   0.001 
+##       0       0       0 
 ##    user  system elapsed 
-##   0.484   0.000   0.488
+##   0.472   0.000   0.472
 </code></pre>
 
     </div>
@@ -1122,9 +1122,9 @@ P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
   <article data-timings="">
     <p>\[
 \begin{bmatrix}
-0.9059 & 0.0932 & 0.0000 & 0.0009 \\  
-0.0004 & 0.8454 & 0.1452 & 0.0090 \\
-0.0000 & 0.0350 & 0.9594 & 0.0056 \\
+0.9125 & 0.0866 & 0.0000 & 0.0009 \\  
+0.0004 & 0.8652 & 0.1254 & 0.0090 \\
+0.0000 & 0.0350 & 0.9213 & 0.0437 \\
 0.0001 & 0.0020 & 0.0011 & 0.9968 \\
 \end{bmatrix}
 \]</p>
