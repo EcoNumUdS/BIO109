@@ -23,9 +23,16 @@
 <img src="assets/img/modele_vissault.png" height="500px"></img>
 </div>
 
----
-
+--- &twocol
 # Répartition des états
+
+*** =left
+
+<div style='text-align:center;'>
+<img src="assets/img/modele_vissault_v2.pdf" height="400px"></img>
+</div>
+
+*** =right
 
 <div style='text-align:center;'>
 <img src="assets/img/parcelle_SUT.png" height="500px"></img>
