@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1578398615 "syllabus.tex" "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf" "syllabus" 1578398615
+["pdflatex"] 1578399718 "syllabus.tex" "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf" "syllabus" 1578399718
   "/etc/texmf/web2c/texmf.cnf" 1540476421 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.aux" 1578398615 1050 fb275ec1b14816c2f87d9530864b5bf5 ""
+  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.aux" 1578399718 1050 fb275ec1b14816c2f87d9530864b5bf5 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -74,13 +74,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1540476430 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1540476445 3855300 036cfe53a4d3fc5d51b0d4196c75fbcc ""
-  "syllabus.aux" 1578398615 1050 fb275ec1b14816c2f87d9530864b5bf5 ""
-  "syllabus.out" 1578398615 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "syllabus.tex" 1578398598 6341 793719f1c594911ddda1e90ed0da08bd ""
+  "syllabus.aux" 1578399718 1050 fb275ec1b14816c2f87d9530864b5bf5 ""
+  "syllabus.out" 1578399718 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "syllabus.tex" 1578399717 6445 b00073d30510a3bcbcea047ec117ef53 ""
   (generated)
-  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.log"
-  "syllabus.out"
   "syllabus.pdf"
   "syllabus.log"
+  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.log"
   "syllabus.aux"
+  "syllabus.out"
   "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf"
