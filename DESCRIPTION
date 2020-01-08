@@ -1,3 +1,4 @@
 Title: Diapo cours BIO109 (UdS)
 Version: 0.2
 Imports: rmarkdown
+Remotes: yihui/xaringan
