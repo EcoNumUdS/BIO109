@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Séance 4: Algorithmique I</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dominique Gravel" />
+    <link href="assets/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="assets/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../bio109.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide, middle
+
+&lt;style type="text/css"&gt;
+  .title-slide {
+    background-image: url('assets/img/bg.jpg');
+    background-color: #23373B;
+    background-size: contain;
+    border: 0px;
+    background-position: 600px 0;
+    line-height: 1;
+  }
+&lt;/style&gt;
+
+# Séance 4
+
+&lt;hr width="65%" align="left" size="0.3" color="orange"&gt;&lt;/hr&gt;
+
+## Algorithmique I
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"&gt;&lt;/hr&gt;
+
+.instructors[
+  **BIO109** - Dominique Gravel
+]
+
+&lt;img src="assets/img/logo.png" width="8%" style="margin-top:20px;"&gt;&lt;/img&gt;
+
+
+---
+class: middle, center, inverse
+
+# Retour sur les fonctions
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Commencer en travaillant localement
+
+
+```r
+X &lt;- quadrats$acsa
+
+# Abondance moyenne
+moy &lt;- mean(X)
+# Abondance totale
+tot &lt;- sum(X)
+# Coefficient de variation de l'abondance
+CV &lt;- sd(X)/mean(X)
+# Densité maximale dans un quadrat
+max_ab &lt;- max(X)
+# Densité minimale dans un quadrat
+min_ab &lt;- min(X)
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Tout envelopper dans une fonction
+
+
+```r
+ma_fonction &lt;- function(X) {
+        
+    # Abondance moyenne
+    moy &lt;- mean(X)
+    # Abondance totale
+    tot &lt;- sum(X)
+    # Coefficient de variation de l'abondance
+    CV &lt;- sd(X)/mean(X)
+    # Densité maximale dans un quadrat
+    max_ab &lt;- max(X)
+    # Densité minimale dans un quadrat
+    min_ab &lt;- min(X) 
+    # Retour extérieur
+    return(c(moy, tot, CV, max_ab, min_ab))
+}
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+On fait un essai sur un premier objet que l'on connait
+
+
+```r
+ma_fonction(X)
+```
+
+---
+# Trucs pour essayer de programmer une fonction
+
+Ensuite on l'applique sur l'ensemble des données
+
+
+```r
+apply(quadrats, 2, ma_fonction)
+```
+
+---
+class: inverse, middle, center
+
+# Les boucles
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Mise en situation
+
+Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d'abondance à deux points d'échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans. Le taux de croissance est donné par l'équation suivante :
+
+$$
+\dfrac{N_{t+1} - N_t}{N_t}
+$$
+
+---
+
+# Mise en situation
+
+Les données ressemblent à ce qui suit:
+
+
+```r
+donnees &lt;- matrix(nr = 5, nc = 2)
+donnees[,1] &lt;- c(34,35,32,34,36)
+donnees[,2] &lt;- c(32,36,38,36,40)
+an &lt;- c(2010:2014)
+head(donnees)
+```
+
+```
+##      [,1] [,2]
+## [1,]   34   32
+## [2,]   35   36
+## [3,]   32   38
+## [4,]   34   36
+## [5,]   36   40
+```
+
+---
+
+# Mise en situation
+
+Les données ressemblent à ce qui suit:
+
+
+```r
+plot(an,donnees[,1],type = "l", xlab = "Année",ylab = "Nombre d'individus", ylim=c(32,40),cex=2)
+lines(an,donnees[,2], lty = 3)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="42%" style="display: block; margin: auto;" /&gt;
+
+---
+# Mise en situation
+
+Maintenant, on doit calculer le taux de croissance annuel pour chaque population. Commençons pour l'intervalle entre l'an 1 et l'an 2, sur le site 1 :
+
+
+```r
+lambda &lt;- matrix(nr = 4, nc = 2)
+lambda[1,1] &lt;- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
+```
+
+Ensuite, on fait l'an 2 :
+
+
+```r
+lambda[2,1] &lt;- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
+```
+
+---
+# Mise en situation
+
+Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable.
+
+Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
+
+---
+# Mise en situation
+
+La semaine dernière, nous avons vu comment généraliser une séquence d'opérations au moyen d'une fonction. Comment est-ce qu'on peut généraliser des opérations qui sont répétées très souvent ? C'est le principe de la boucle.
+
+---
+# Mise en situation
+
+La solution ressemblerait à
+
+
+```r
+n_sites &lt;- ncol(donnees)
+n_annees &lt;- nrow(donnees)
+lambda &lt;- matrix(nr = n_annees-1, nc = sites)
+for(i in 2:n_annees) {
+    for(j in 1:n_sites) {
+        lambda[i-1,j] &lt;- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
+    }   
+}
+```
+
+---
+# Définition
+
+Une boucle est une commande qui permet de répéter une série d'instructions sous des conditions définies de départ et de fin. C'est une commande de base de l'algorithmique.
+
+---
+# Anatomie de la boucle
+
+
+```r
+depart &lt;- 1
+fin &lt;- 5
+for(etape in depart:fin) {
+    print(etape)
+}
+```
+
+```
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+```
+
+L'exécution une fois d'un groupe de commandes dans un boucle s'appelle une itération.
+
+---
+# Quelques exemples simples
+
+On peut mettre toutes sortes de contraintes sur l'index de la boucle
+
+
+```r
+for(etape in c("Bonjour", "programmeurs", "en R")) {
+    print(etape)
+}
+```
+
+```
+## [1] "Bonjour"
+## [1] "programmeurs"
+## [1] "en R"
+```
+
+Dans cet exemple, notre séquence contient 3 éléments "Bonjour", "programmeurs", "en R". R va évaluer l'expression 3 fois. La variable index prendra successivement les valeurs de 1 à 3 pendant l'exécution de la boucle.
+
+---
+# Quelques exemples simples
+
+Par défaut R augmente toujours l'index de 1 unité
+
+
+```r
+for(etape in 1:5) {
+    print(etape*2)
+}
+```
+
+```
+## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+```
+
+---
+# Un premier exercice simple
+
+Transformez en celcius une séquence de température en fahrenheit qui va de -50 à 100, par bond de 1. Rappelez vous que la conversion est (F - 32) * 5/9.
+
+- Déterminez le point de départ de la séquence
+- Déterminez le point de fin de la séquence
+- Faites le calcul approprié
+
+---
+# Un premier exercice simple
+
+
+```r
+for(F in -50:100) {
+    cat("Pour F = ",F," on obtient C = ",(F - 32) *5/9, '\n')
+}
+```
+
+```
+## Pour F =  -50  on obtient C =  -45.55556 
+## Pour F =  -49  on obtient C =  -45 
+## Pour F =  -48  on obtient C =  -44.44444 
+## Pour F =  -47  on obtient C =  -43.88889 
+## Pour F =  -46  on obtient C =  -43.33333 
+## Pour F =  -45  on obtient C =  -42.77778 
+## Pour F =  -44  on obtient C =  -42.22222 
+## Pour F =  -43  on obtient C =  -41.66667 
+## Pour F =  -42  on obtient C =  -41.11111 
+## Pour F =  -41  on obtient C =  -40.55556 
+## Pour F =  -40  on obtient C =  -40 
+## Pour F =  -39  on obtient C =  -39.44444 
+## Pour F =  -38  on obtient C =  -38.88889 
+## Pour F =  -37  on obtient C =  -38.33333 
+## Pour F =  -36  on obtient C =  -37.77778 
+## Pour F =  -35  on obtient C =  -37.22222 
+## Pour F =  -34  on obtient C =  -36.66667 
+## Pour F =  -33  on obtient C =  -36.11111 
+## Pour F =  -32  on obtient C =  -35.55556 
+## Pour F =  -31  on obtient C =  -35 
+## Pour F =  -30  on obtient C =  -34.44444 
+## Pour F =  -29  on obtient C =  -33.88889 
+## Pour F =  -28  on obtient C =  -33.33333 
+## Pour F =  -27  on obtient C =  -32.77778 
+## Pour F =  -26  on obtient C =  -32.22222 
+## Pour F =  -25  on obtient C =  -31.66667 
+## Pour F =  -24  on obtient C =  -31.11111 
+## Pour F =  -23  on obtient C =  -30.55556 
+## Pour F =  -22  on obtient C =  -30 
+## Pour F =  -21  on obtient C =  -29.44444 
+## Pour F =  -20  on obtient C =  -28.88889 
+## Pour F =  -19  on obtient C =  -28.33333 
+## Pour F =  -18  on obtient C =  -27.77778 
+## Pour F =  -17  on obtient C =  -27.22222 
+## Pour F =  -16  on obtient C =  -26.66667 
+## Pour F =  -15  on obtient C =  -26.11111 
+## Pour F =  -14  on obtient C =  -25.55556 
+## Pour F =  -13  on obtient C =  -25 
+## Pour F =  -12  on obtient C =  -24.44444 
+## Pour F =  -11  on obtient C =  -23.88889 
+## Pour F =  -10  on obtient C =  -23.33333 
+## Pour F =  -9  on obtient C =  -22.77778 
+## Pour F =  -8  on obtient C =  -22.22222 
+## Pour F =  -7  on obtient C =  -21.66667 
+## Pour F =  -6  on obtient C =  -21.11111 
+## Pour F =  -5  on obtient C =  -20.55556 
+## Pour F =  -4  on obtient C =  -20 
+## Pour F =  -3  on obtient C =  -19.44444 
+## Pour F =  -2  on obtient C =  -18.88889 
+## Pour F =  -1  on obtient C =  -18.33333 
+## Pour F =  0  on obtient C =  -17.77778 
+## Pour F =  1  on obtient C =  -17.22222 
+## Pour F =  2  on obtient C =  -16.66667 
+## Pour F =  3  on obtient C =  -16.11111 
+## Pour F =  4  on obtient C =  -15.55556 
+## Pour F =  5  on obtient C =  -15 
+## Pour F =  6  on obtient C =  -14.44444 
+## Pour F =  7  on obtient C =  -13.88889 
+## Pour F =  8  on obtient C =  -13.33333 
+## Pour F =  9  on obtient C =  -12.77778 
+## Pour F =  10  on obtient C =  -12.22222 
+## Pour F =  11  on obtient C =  -11.66667 
+## Pour F =  12  on obtient C =  -11.11111 
+## Pour F =  13  on obtient C =  -10.55556 
+## Pour F =  14  on obtient C =  -10 
+## Pour F =  15  on obtient C =  -9.444444 
+## Pour F =  16  on obtient C =  -8.888889 
+## Pour F =  17  on obtient C =  -8.333333 
+## Pour F =  18  on obtient C =  -7.777778 
+## Pour F =  19  on obtient C =  -7.222222 
+## Pour F =  20  on obtient C =  -6.666667 
+## Pour F =  21  on obtient C =  -6.111111 
+## Pour F =  22  on obtient C =  -5.555556 
+## Pour F =  23  on obtient C =  -5 
+## Pour F =  24  on obtient C =  -4.444444 
+## Pour F =  25  on obtient C =  -3.888889 
+## Pour F =  26  on obtient C =  -3.333333 
+## Pour F =  27  on obtient C =  -2.777778 
+## Pour F =  28  on obtient C =  -2.222222 
+## Pour F =  29  on obtient C =  -1.666667 
+## Pour F =  30  on obtient C =  -1.111111 
+## Pour F =  31  on obtient C =  -0.5555556 
+## Pour F =  32  on obtient C =  0 
+## Pour F =  33  on obtient C =  0.5555556 
+## Pour F =  34  on obtient C =  1.111111 
+## Pour F =  35  on obtient C =  1.666667 
+## Pour F =  36  on obtient C =  2.222222 
+## Pour F =  37  on obtient C =  2.777778 
+## Pour F =  38  on obtient C =  3.333333 
+## Pour F =  39  on obtient C =  3.888889 
+## Pour F =  40  on obtient C =  4.444444 
+## Pour F =  41  on obtient C =  5 
+## Pour F =  42  on obtient C =  5.555556 
+## Pour F =  43  on obtient C =  6.111111 
+## Pour F =  44  on obtient C =  6.666667 
+## Pour F =  45  on obtient C =  7.222222 
+## Pour F =  46  on obtient C =  7.777778 
+## Pour F =  47  on obtient C =  8.333333 
+## Pour F =  48  on obtient C =  8.888889 
+## Pour F =  49  on obtient C =  9.444444 
+## Pour F =  50  on obtient C =  10 
+## Pour F =  51  on obtient C =  10.55556 
+## Pour F =  52  on obtient C =  11.11111 
+## Pour F =  53  on obtient C =  11.66667 
+## Pour F =  54  on obtient C =  12.22222 
+## Pour F =  55  on obtient C =  12.77778 
+## Pour F =  56  on obtient C =  13.33333 
+## Pour F =  57  on obtient C =  13.88889 
+## Pour F =  58  on obtient C =  14.44444 
+## Pour F =  59  on obtient C =  15 
+## Pour F =  60  on obtient C =  15.55556 
+## Pour F =  61  on obtient C =  16.11111 
+## Pour F =  62  on obtient C =  16.66667 
+## Pour F =  63  on obtient C =  17.22222 
+## Pour F =  64  on obtient C =  17.77778 
+## Pour F =  65  on obtient C =  18.33333 
+## Pour F =  66  on obtient C =  18.88889 
+## Pour F =  67  on obtient C =  19.44444 
+## Pour F =  68  on obtient C =  20 
+## Pour F =  69  on obtient C =  20.55556 
+## Pour F =  70  on obtient C =  21.11111 
+## Pour F =  71  on obtient C =  21.66667 
+## Pour F =  72  on obtient C =  22.22222 
+## Pour F =  73  on obtient C =  22.77778 
+## Pour F =  74  on obtient C =  23.33333 
+## Pour F =  75  on obtient C =  23.88889 
+## Pour F =  76  on obtient C =  24.44444 
+## Pour F =  77  on obtient C =  25 
+## Pour F =  78  on obtient C =  25.55556 
+## Pour F =  79  on obtient C =  26.11111 
+## Pour F =  80  on obtient C =  26.66667 
+## Pour F =  81  on obtient C =  27.22222 
+## Pour F =  82  on obtient C =  27.77778 
+## Pour F =  83  on obtient C =  28.33333 
+## Pour F =  84  on obtient C =  28.88889 
+## Pour F =  85  on obtient C =  29.44444 
+## Pour F =  86  on obtient C =  30 
+## Pour F =  87  on obtient C =  30.55556 
+## Pour F =  88  on obtient C =  31.11111 
+## Pour F =  89  on obtient C =  31.66667 
+## Pour F =  90  on obtient C =  32.22222 
+## Pour F =  91  on obtient C =  32.77778 
+## Pour F =  92  on obtient C =  33.33333 
+## Pour F =  93  on obtient C =  33.88889 
+## Pour F =  94  on obtient C =  34.44444 
+## Pour F =  95  on obtient C =  35 
+## Pour F =  96  on obtient C =  35.55556 
+## Pour F =  97  on obtient C =  36.11111 
+## Pour F =  98  on obtient C =  36.66667 
+## Pour F =  99  on obtient C =  37.22222 
+## Pour F =  100  on obtient C =  37.77778
+```
+
+---
+# Boucles et indexation
+
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisée directement comme index pour accéder à l'objet. Par exemple :
+
+
+```r
+test = runif(5, 0,1)
+for(etape in 1:5) {
+    print(test[etape])
+}
+```
+
+```
+## [1] 0.4285368
+## [1] 0.781007
+## [1] 0.8376879
+## [1] 0.09552923
+## [1] 0.1861229
+```
+
+---
+# Boucles et indexation
+
+De même, on peut réaliser des opérations mathématiques sur cette variable
+
+
+```r
+test = runif(500, 0,1)
+for(etape in 1:5) {
+    print(test[etape * 5])
+}
+```
+
+```
+## [1] 0.9120855
+## [1] 0.5691541
+## [1] 0.65961
+## [1] 0.454084
+## [1] 0.1879946
+```
+
+---
+# Compteur
+
+La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendent pour l'indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle.
+
+
+```r
+n = 1
+for(etape in -2:5) {
+    cat("etape = ",etape, " n = ",n, '\n')
+    n &lt;- n + 1
+}
+```
+
+```
+## etape =  -2  n =  1 
+## etape =  -1  n =  2 
+## etape =  0  n =  3 
+## etape =  1  n =  4 
+## etape =  2  n =  5 
+## etape =  3  n =  6 
+## etape =  4  n =  7 
+## etape =  5  n =  8
+```
+
+---
+# Exercice
+
+Enregistrez les résultats de votre conversion dans une matrice avec pour colonne 1 la valeur en Fahrenheit et la colonne 2 la valeur en celcius.
+
+---
+# Solution
+
+
+```r
+resultat = matrix(nr = 151, nc = 2)
+n = n + 1
+for(F in -50:100) {
+    resultat[n,1] = F
+    resultat[n,2] = (F-32)*5/9
+    n = n + 1
+}
+head(resultat)
+```
+
+---
+# Exercice
+
+On peut aussi utiliser le compteur pour réaliser des opérations mathématiques récursives. Par exemple, la factorielle n! est définie comme :
+
+$$
+n! = 1 \times 2 \times 3 \times 4 \times .... n
+$$
+
+Calculez la factorielle 10 au moyen d'une boucle.
+
+---
+# Solution
+
+
+```r
+n &lt;- 1
+for(etape in 1:10) n &lt;- n*etape
+n
+```
+
+```
+## [1] 3628800
+```
+
+---
+# On complexifie le problème ....
+
+Il est possible d'incruster une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes...
+
+
+```r
+ma_matrice &lt;- matrix(nr = 5, nc = 3)
+n &lt;- 1
+for(i in 1:5) {
+    for(j in 1:3) {
+        ma_matrice[i,j] &lt;- n
+        n &lt;- n + 1
+    }
+}
+ma_matrice
+```
+
+---
+# La boucle while
+
+La boucle de type *while*, pour 'pendant', répète une série d'intructions tant qu'une condition n'a pas été atteinte. C'est une version générale de la boucle *for*. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile.
+
+
+```r
+piece &lt;- c("pile","face")
+combinaison = "face-face"
+while(combinaison != "pile-pile") {
+    essai1 &lt;- sample(piece, 1)
+    essai2 &lt;- sample(piece, 1)
+    combinaison &lt;- paste(essai1, "-" , essai2, sep = "")
+    print(combinaison)
+}
+```
+
+```
+## [1] "face-pile"
+## [1] "pile-pile"
+```
+
+---
+# Exercice
+
+Calculez en moyenne combien de fois vous avez à tirer un dé à 6 faces pour obtenir la valeur 1.
+
+---
+# Solution
+
+
+```r
+de &lt;- c(1:6)
+n_test &lt;- 1000
+res &lt;- numeric(n_test)
+for(i in 1:n_test) {
+	n &lt;- 1
+	face &lt;- 0
+	while(face != 6) {
+		face &lt;- sample(de,1)
+		n &lt;- n + 1
+	}
+	res[i] &lt;- n
+}
+mean(res)
+```
+
+```
+## [1] 6.873
+```
+
+---
+# Solution
+
+
+```r
+hist(res)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-22-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center, inverse
+
+# Exercice intermédiaire
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+
+---
+# Croissance logistique
+
+La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps `\(t+1\)` se calcule ainsi :
+
+$$
+N_{t+1} = N_t + r \times N_t \times (1 - N_t/K)
+$$
+
+Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+
+---
+# Solution 1
+
+
+```r
+r &lt;- 0.3
+N &lt;- 220
+K &lt;- 200000
+step &lt;- 1
+while(N &lt; K/2) {
+    N &lt;- N + r * N * (1 - N/K)
+    step &lt;- step + 1
+}
+step
+```
+
+```
+## [1] 27
+```
+
+---
+# Solution 2
+
+
+```r
+r &lt;- 0.3
+K &lt;- 200000
+n_steps &lt;- 115
+N &lt;- numeric(n_steps+1)
+N[1] &lt;- 220
+
+for(i in 2:(n_steps+1)) {
+    N[i] &lt;- N[i-1] + r * N[i-1] * (1 - N[i-1]/K)
+}
+```
+
+---
+# Solution 2
+
+
+```r
+plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-25-1.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+class: middle, center, inverse
+
+# Expressions conditionnelles
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+
+---
+# Principe
+
+Très souvent en programmation on a à prendre des décisions du type **si la condition X est remplie, alors faire Y, sinon faire Z**. Nous avons déjà vu certains exemples depuis le début du cours.
+
+La structure de base d'une expression conditionnelle est la suivante:
+
+
+```r
+if(condition) {
+    instruction(1)
+    }
+else {
+    instruction(2)
+}
+```
+
+---
+# Arbre décisionnel
+
+Un exemple,
+
+
+```r
+test = function(jour) {
+    if(jour == "mardi") {
+        print("Je dois aller au cours BIO109")
+    }
+    else {
+        if(jour == "lundi") {
+        print("Ai-je fais mon travail pour le cours BIO109 ?")
+        }
+        else {
+            if(jour == "samedi") {
+                print("Je peux encore dormir un peu")
+            }
+            else {
+                print("Bof, j'ai encore du temps !")
+            }
+        }
+    }  
+}
+```
+
+---
+# Astuce
+
+L'indentation (l'utilisation d'espaces dans le code) est fort utile pour s'y retrouver lorsque les conditions deviennent nombreuses. Reprenons l'exemple précédent.
+
+---
+# Arbre décisionnel
+
+
+```r
+test = function(jour) {
+if(jour == "mardi") {
+print("Je dois aller au cours BIO109")
+}
+else {
+if(jour == "lundi") {
+print("Ai-je fais mon travail pour le cours BIO109 ?")
+}
+else {
+if(jour == "samedi") {
+print("Je peux encore dormir un peu")
+}
+else {
+print("Bof, j'ai encore du temps !")
+}
+}
+}  
+}
+```
+
+---
+# Opérateurs logiques
+
+Les classiques :
+
+- X est égal à Y : `X == Y`
+- X est supérieur à Y : `X &gt; Y`
+- X est inférieur à Y : `X &lt; Y`
+- X est supérieur ou égal à Y : `X &gt;= Y`
+- X est inférieur ou égal à Y : `X &lt;= Y`
+- X est différent de Y : `X != Y`
+
+---
+# Exercice
+
+1. Tirez au hasard 10 chiffres entre 0 et 1.
+2. Pour chacun de ces chiffres, déterminez s'il est plus petit ou plus grand que la valeur seuil de 0.3.
+3. Inscrivez votre résultat dans un autre objet.
+
+---
+
+# Solution
+
+.pull-left[
+
+
+```r
+X &lt;- runif(n = 10)
+res &lt;- numeric(10)
+for(i in 1:10) {
+    if(X[i] &lt; 0.3) {
+        res[i] &lt;- "plus petit"
+    }
+    else {
+        res[i] &lt;- "plus grand"
+    }
+}
+cbind(X,res)
+```
+]
+
+.pull-right[
+
+
+```
+##       X                     res         
+##  [1,] "0.161248049233109"   "plus petit"
+##  [2,] "0.45977247459814"    "plus grand"
+##  [3,] "0.195331829600036"   "plus petit"
+##  [4,] "0.566071645123884"   "plus grand"
+##  [5,] "0.109087784541771"   "plus petit"
+##  [6,] "0.516956262290478"   "plus grand"
+##  [7,] "0.670712307328358"   "plus grand"
+##  [8,] "0.00377750117331743" "plus petit"
+##  [9,] "0.372868652455509"   "plus grand"
+## [10,] "0.0696155179757625"  "plus petit"
+```
+]
+
+
+---
+# Opérateurs logiques
+
+On peut aussi combiner plusieurs conditions :
+
+- La condition A et la condition B : `A &amp; B`
+- La condition A ou la condition B : `A | B`
+
+---
+# Exercice
+
+Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6.
+
+---
+
+# Solution
+
+.pull-left[
+
+
+```r
+res2 &lt;- numeric(10)
+for(i in 1:10) {
+    if(X[i] &gt; 0.2 &amp; X[i] &lt; 0.6) {
+        res2[i] &lt;- "oui"
+    }
+    else {
+        res2[i] &lt;- "non"
+    }
+}
+cbind(X,res2)
+```
+]
+
+
+.pull-right[
+
+
+```
+##       X                     res2 
+##  [1,] "0.161248049233109"   "non"
+##  [2,] "0.45977247459814"    "oui"
+##  [3,] "0.195331829600036"   "non"
+##  [4,] "0.566071645123884"   "oui"
+##  [5,] "0.109087784541771"   "non"
+##  [6,] "0.516956262290478"   "oui"
+##  [7,] "0.670712307328358"   "non"
+##  [8,] "0.00377750117331743" "non"
+##  [9,] "0.372868652455509"   "oui"
+## [10,] "0.0696155179757625"  "non"
+```
+]
+
+---
+
+# Conditions sur des vecteurs
+
+R a la particularité d'être optimisé pour les objets sous forme de matrice ou de vecteur. Ainsi, vous pouvez évaluer des expressions conditionnelles sur un vecteur sans avoir à passer par une boucle. On peut reprendre l'exemple précédent, d'une façon beaucoup plus rapide :
+
+.pull-left[
+
+
+```r
+res2 &lt;- numeric(10)
+res2[X &gt; 0.2 &amp; X &lt; 0.6] &lt;- "oui"
+res2[X &lt; 0.2 | X &gt; 0.6] &lt;- "non"
+cbind(X,res2)
+```
+]
+
+
+.pull-right[
+    
+
+```
+##       X                     res2 
+##  [1,] "0.161248049233109"   "non"
+##  [2,] "0.45977247459814"    "oui"
+##  [3,] "0.195331829600036"   "non"
+##  [4,] "0.566071645123884"   "oui"
+##  [5,] "0.109087784541771"   "non"
+##  [6,] "0.516956262290478"   "oui"
+##  [7,] "0.670712307328358"   "non"
+##  [8,] "0.00377750117331743" "non"
+##  [9,] "0.372868652455509"   "oui"
+## [10,] "0.0696155179757625"  "non"
+```
+]
+
+
+---
+class: middle, inverse, center
+
+# Exercice final
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Le retour du scrabble ...
+
+Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser les fonctions `sort()` et `order()` de R.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "monokai",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

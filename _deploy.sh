@@ -13,8 +13,13 @@ rm -rf slides/*
 
 for dir in $(ls -d cours*); do
     mkdir -p ./slides/$dir
-    mv ./$dir/pres/* ./slides/$dir
+    mv ./$dir/* ./slides/$dir
 done
+
+mv ./macros.js ./slides/macros.js
+mv ./bio109.css ./slides/bio109.css
+
+# TODO: Move macro and .css
 
 cd slides
 git add --all *

@@ -36,12 +36,20 @@
 - [Présentation HTML](https://econumuds.github.io/BIO109/cours5)
 - [Présentation PDF](./cours5/pres/assets/pdf/S5-BIO109.pdf)
 
-# Utiliser `slidify`
+# Prise en main
 
-### Organisation
+### Compiler toutes les présentations
 
-Un fichier `.Rmd` par section du cours. Le makefile s'occupe de générer le
-diaporama dans le dossier `pres` qu'on ouvre avec un navigateur Internet.
+```bash
+bash _build.sh
+```
+
+### Compiler une seule présentation
+
+```bash
+cd cours1/
+Rscript -e "rmarkdown::render('index.Rmd')"
+```
 
 
 ### Utilisation du diaporama
