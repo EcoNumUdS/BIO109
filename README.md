@@ -13,28 +13,23 @@
 ## Séance 1: Introduction
 
 - [Présentation HTML](https://econumuds.github.io/BIO109/cours1)
-- [Présentation PDF](./cours1/pres/assets/pdf/S1-BIO109.pdf)
 
 
 ## Séance 2: Introduction au language R
 
 - [Présentation HTML](https://econumuds.github.io/BIO109/cours2)
-- [Présentation PDF](./cours2/pres/assets/pdf/S2-BIO109.pdf)
 
 ## Séance 3: Les fonctions
 
 - [Présentation HTML](https://econumuds.github.io/BIO109/cours3)
-- [Présentation PDF](./cours3/pres/assets/pdf/S3-BIO109.pdf)
 
 ## Séance 4: Algorithmique I
 
 - [Présentation HTML](https://econumuds.github.io/BIO109/cours4)
-- [Présentation PDF](./cours4/pres/assets/pdf/S4-BIO109.pdf)
 
 ## Séance 5: Algorithmique II
 
 - [Présentation HTML](https://econumuds.github.io/BIO109/cours5)
-- [Présentation PDF](./cours5/pres/assets/pdf/S5-BIO109.pdf)
 
 # Prise en main
 
