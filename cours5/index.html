@@ -56,10 +56,10 @@ class: middle, center, inverse
 tri &lt;- function(x){
 	# Calcul de la dimension du vecteur
 	taille = length(x)
-	ordre = "OUI"
+	ordre = "NON"
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
-	while(ordre == "OUI") {
-		ordre = "NON"
+	while(ordre == "NON") {
+		ordre = "OUI"
 		# Boucle qui passe tous les éléments en paires
 		for(i in 1:(taille-1)) {
 			if(x[i+1] &lt; x[i]) {
@@ -156,7 +156,7 @@ tirage(3, cartes)
 ```
 
 ```
-## [1] "5 - trèfle"  "7 - carreau" "8 - carreau"
+## [1] "2 - trèfle" "7 - trèfle" "as - coeur"
 ```
 
 ---
@@ -234,7 +234,7 @@ rbinom(n = 10, size = 1, prob = 0.5)
 ```
 
 ```
-##  [1] 0 1 1 1 0 0 0 1 0 0
+##  [1] 1 1 0 0 1 1 1 1 1 1
 ```
 ]
 
@@ -258,11 +258,11 @@ rmultinom(n = 3, size = 1, prob = rep(1/6, 6))
 ```
 ##      [,1] [,2] [,3]
 ## [1,]    0    0    0
-## [2,]    0    0    0
-## [3,]    0    0    0
-## [4,]    0    1    1
+## [2,]    0    1    0
+## [3,]    0    0    1
+## [4,]    1    0    0
 ## [5,]    0    0    0
-## [6,]    1    0    0
+## [6,]    0    0    0
 ```
 ]
 
@@ -646,7 +646,7 @@ system.time(sort(x))
 
 ```
 ##    user  system elapsed 
-##   0.004   0.000   0.001
+##   0.000   0.000   0.001
 ```
 
 ```r
@@ -655,7 +655,7 @@ system.time(tri(x))
 
 ```
 ##    user  system elapsed 
-##   0.016   0.000   0.018
+##   0.404   0.004   0.405
 ```
 
 ---
@@ -715,7 +715,7 @@ system.time(f1(x))
 
 ```
 ##    user  system elapsed 
-##   0.168   0.000   0.171
+##   0.076   0.000   0.075
 ```
 
 ```r
@@ -724,7 +724,7 @@ system.time(f2(x))
 
 ```
 ##    user  system elapsed 
-##   0.020   0.000   0.018
+##   0.012   0.000   0.012
 ```
 ]
 
@@ -762,11 +762,11 @@ system.time(f1(X))
 
 ```
 ##    user  system elapsed 
-##   0.004   0.000   0.001 
+##   0.000   0.000   0.001 
 ##    user  system elapsed 
 ##   0.000   0.000   0.001 
 ##    user  system elapsed 
-##   0.792   0.000   0.801
+##   0.632   0.000   0.631
 ```
 ]
 

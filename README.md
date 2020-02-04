@@ -42,7 +42,7 @@ bash _build.sh
 ### Compiler une seule présentation
 
 ```bash
-cd cours1/
+cd cours5/
 Rscript -e "rmarkdown::render('index.Rmd')"
 ```
 

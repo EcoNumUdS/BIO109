@@ -57,10 +57,10 @@ class: middle, center, inverse
 tri <- function(x){
 	# Calcul de la dimension du vecteur
 	taille = length(x)
-	ordre = "OUI"
+	ordre = "NON"
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
-	while(ordre == "OUI") {
-		ordre = "NON"
+	while(ordre == "NON") {
+		ordre = "OUI"
 		# Boucle qui passe tous les éléments en paires
 		for(i in 1:(taille-1)) {
 			if(x[i+1] < x[i]) {
