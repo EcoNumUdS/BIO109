@@ -17,7 +17,7 @@ jobs:
           for VARIABLE in `ls -d cours*`
           do
             chmod ugo+rwx $VARIABLE
-            docker run --rm -t -v `pwd`:/slides astefanutti/decktape https://econumuds.github.io/BIO500/$VARIABLE/ $VARIABLE/$VARIABLE.pdf
+            docker run --rm -t -v `pwd`:/slides astefanutti/decktape https://econumuds.github.io/BIO109/$VARIABLE/ $VARIABLE/$VARIABLE.pdf
           done
 
       - name: Deploy gh_pages
