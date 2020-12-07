@@ -4,7 +4,7 @@ author: "Dominique Gravel"
 date: "Hiver 2020"
 output:
   xaringan::moon_reader:
-    css: [default, ../bio109.css, "hygge"]
+    css: [default, ../assets/bio109.css, "hygge"]
     lib_dir: assets
     seal: false
     nature:
@@ -18,7 +18,7 @@ class: title-slide, middle
 
 <style type="text/css">
   .title-slide {
-    background-image: url('assets/img/bg.jpg');
+    background-image: url('../assets/img/bg.jpg');
     background-color: #23373B;
     background-size: contain;
     border: 0px;
@@ -39,7 +39,7 @@ class: title-slide, middle
   **BIO109** - Dominique Gravel
 ]
 
-<img src="assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
+<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
 
 
 ---
@@ -755,6 +755,10 @@ Faites attention, si le nom de l'objet contenu dans le fichier `.Rdata` est le m
 MaListe <- list("Hello","World")
 load("MaListe.Rdata")
 MaListe
+```
+
+```{r clean junk file, echo=FALSE}
+file.remove('MaListe.Rdata')
 ```
 
 ## Pour éviter cette erreur, il faut utiliser les fonctions `saveRDS()` et `readRDS()`.
