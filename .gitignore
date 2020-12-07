@@ -40,3 +40,10 @@ vignettes/*.pdf
 *.zip
 
 cours5/plot_SUT.R
+
+# compiled files (GitHub actions will do the job)
+index.html
+remark-css*
+header-attrs*
+index_files
+slides/*
