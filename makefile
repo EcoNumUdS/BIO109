@@ -27,5 +27,6 @@ install:
 
 clean:
 	rm $(HTML)
+	rm -r cours*/index_files
 
 .PHONY: all $(COURS) deploy install clean

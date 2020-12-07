@@ -757,6 +757,10 @@ load("MaListe.Rdata")
 MaListe
 ```
 
+```{r clean junk file, echo=FALSE}
+file.remove('MaListe.Rdata')
+```
+
 ## Pour éviter cette erreur, il faut utiliser les fonctions `saveRDS()` et `readRDS()`.
 
 ---
