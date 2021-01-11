@@ -44,6 +44,18 @@ class: title-slide, middle
 
 ---
 
+# INSTRUCTIONS COVID
+
+- En présence et sur Teams
+- Assistants en classe et sur le clavardage
+- Lire les présentations avant le cours
+- Lever la main pour des questions
+- Utilisation du clavardage (détailler votre question et fournir le code)
+- Faire les exercices
+- Ressources additionnelles : R Cheat Sheet et R pour les débutants
+
+---
+
 # Introduction
 
 <div style='text-align:center;'>
@@ -196,6 +208,7 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 6. Réaliser des simulations de Monte Carlo;
 
 ---
+
 # Contenu
 
 1. Introduction et bonnes pratiques de programmation
@@ -235,15 +248,13 @@ https://github.com/EcoNumUdS/BIO109.git
 
 L'évaluation porte sur la participation (20%) et sur un
 travail de session (80%). Un exercice simple sera présenté à la fin des
-séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sous
-forme de script <i>avant le début</i> de la séance suivante. Les exercices
-peuvent être réalisés en groupe, mais <b>chaque étudiant</b> devra remettre sa
-propre copie, personnalisée. <b>Les points sont attribués pour la
+séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous
+forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la
 participation.</b>
 
 L'évaluation finale portera sur la réalisation d'un projet de
 programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le <b>18 février 2020 à 23:59</b>. La
+dernier cours, soit au plus tard le <b>23 février 2021 à 23:59</b>. La
 pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
 partir de
 
@@ -364,9 +375,9 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 
 ---
 
-# La programmation en science
+# La programmation et les sciences des données
 
-<img src="assets/img/intro/geek_mode.jpg" align="center" width="80%"></img>
+<img src="assets/img/intro/covid.png" align="center" width="80%"></img>
 
 ---
 
@@ -380,7 +391,7 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 ]
 
 .pull-right[
-<img src="assets/img/intro/FunctionalResp.svg" width="100%"></img>
+<img src="assets/img/intro/geek_mode.jpg" width="100%"></img>
 ]
 
 
@@ -431,13 +442,6 @@ class: inverse, center, middle
 </div>
 
 ---
-class: inverse, center, middle
-
-# Et en écologie?
-<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
-
-
----
 class: inverse, middle, center
 
 # Le Pseudo-Code
@@ -454,6 +458,7 @@ class: inverse, middle, center
 
 > - *Un <b>algorithme</b> est une suite d'actions qui sont réalisées dans un ordre précis par l'ordinateur. C'est une séquence d'étapes dans la résolution d'un problème.*
 
+- Les principes de base seront les mêmes, d'un language de programmation à l'autre. 
 
 ---
 
@@ -508,6 +513,8 @@ On retrouve 3 familles d'opérations:
 2. Les opérations itératives (`FOR`, `WHILE`)
 3. Les opérations décisionnelles (`IF`, `IFELSE`)
 
+Les opérations répétées peuvent être organisées sous forme de <b> Fonctions </b>.
+
 ---
 
 # Avant-propos
@@ -519,83 +526,40 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 - `PRINT`: Le programme écrit un message à l'écran pour l'utilisateur
 - `BREAK`: Le programme stop son éxécution
 - `CONTINUE`: Le programme continue son éxécution
+- `DEFINE`: définition d'une constante, d'un paramètre
 
 ---
 
-# 1. Les opérations séquentielles
+# Assignation des objets
 
-## Exemple: Calculer l'aire d'un rectangle
-
-```
-PROGRAM REC_AIRE
-  READ hauteur
-  READ largeur
-  WRITE hauteur * largeur
-```
-
-Chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
-
----
-
-# 2. Les opérations itératives
-
-## Exemple avec `FOR`: Croissance exponentielle
+Lorsque l'on crée un objet, il est initialement vide et il faut lui attribuer une valeur. On peut créer un scalaire : 
 
 ```
-PROGRAM DEMO
-  FOR t IN 1:100
-    n_t = n_t * lambda
-  END FOR
+a <- 1
+b <- 2
 ```
 
-La population va croître pendant 100 pas de temps.
-
----
-
-# 2. Les opérations itératives
-
-## Exemple avec `WHILE`: Croissance avec capacité de support (K)
+Et faire des opérations mathématiques sur ces objets : 
 
 ```
-PROGRAM DEMO
-  WHILE n_t < K
-    n_t = n_t * lambda
-  END WHILE
+a * b
 ```
 
 ---
 
-# 3. Les opérations décisionnelles
+# Indexation des objets
 
-## Exemple avec `IF`: quelques tests sur $\lambda$
-
-```
-PROGRAM DEMO
-  IF lambda > 0
-    PRINT "La population est croissante"
-  ELSE lambda < 0
-    PRINT "La population est décroissante"
-  ENDIF
-```
-
-> - Et si le taux de croissance est nul?
-
----
-
-# 3. Les opérations décisionnelles
+Plus souvent, on travaille avec des tableaux de données :  
 
 ```
-PROGRAM DEMO
-  IF lambda > 0
-    PRINT "La population est croissante"
-  IF ELSE lambda < 0
-    PRINT "La population est décroissante"
-  ELSE
-    PRINT "Absence de croissance"
-  ENDIF
+mat <- matrix(c(1,2,3,4), nr = 2, nc = 2)
 ```
 
-Avec la clause `ELSE`, la croissance est nulle
+Cet objet a deux dimension, la première représentée par "i" et l'autre par "j". Sur R par exemple, on accède à la position définie par le couple i,j de la manière suivante : 
+
+```
+mat[i,j]
+```
 
 ---
 
@@ -663,6 +627,176 @@ lettreTab[2, 1]
 
 ---
 
+# 1. Les opérations séquentielles
+
+## Exemple: Calculer l'aire d'un rectangle
+
+```
+PROGRAM REC_AIRE
+  READ hauteur
+  READ largeur
+  WRITE hauteur * largeur
+```
+
+Chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
+
+---
+
+# Exercice : calculer l'aire d'un cercle d'un diamètre de 2 cm
+
+---
+
+# Exercice : calculer l'aire d'un cercle d'un diamètre de 2 cm
+
+```
+PROGRAM AIRE_CERCLE
+  DEFINE pi <- 3.1416
+  DEFINE d <- 2
+  CALCUL aire <- pi*(d/2)*(d/2)
+  WRITE aire
+```
+
+---
+
+# 2. Les opérations itératives
+
+La boucle est une séquence de base utilisée par tous les languages de programmation. Elle permet de répéter une opération un grand nombre de fois automatiquement. La boucle est définie par un point de départ, un point de d'arrivée et la séquence des opérations à réaliser à chaque itération de la boucle. 
+
+---
+
+# 2. Les opérations itératives
+
+## Exemple avec `FOR`: Croissance exponentielle
+
+```
+PROGRAM DEMO
+  FOR etape IN 1:100
+    n_t = n_t * lambda
+  END FOR
+```
+
+La population va croître pendant 100 pas de temps.
+
+---
+
+# Exercice : calculer la factorielle de 5
+
+rappel : 5! = 1 x 2 x 3 x 4 x 5
+
+---
+
+# Exercice : calculer la factorielle de 5
+
+```
+PROGRAM FACTORIELLE
+  DEFINE depart <- 1
+  DEFINE fin <- 5
+  x <- 1
+  FOR etape in depart:fin
+    x <- x*etape
+  WRITE x
+```
+
+---
+
+# 3. Les opérations décisionnelles
+
+Souvent un programme repose sur la réalisation d'une décision basée sur le résultat d'un calcul ou bien un paramètre défini par l'utilisateur. Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent se combiner pour faire une décision entre plus de deux choix.
+
+---
+
+# 3. Les opérations décisionnelles
+
+## Exemple avec `IF`: quelques tests sur $\lambda$
+
+```
+PROGRAM DEMO
+  IF lambda > 0
+    PRINT "La population est croissante"
+  ELSE lambda < 0
+    PRINT "La population est décroissante"
+  ENDIF
+```
+
+> - Et si le taux de croissance est nul?
+
+---
+
+# 3. Les opérations décisionnelles
+
+```
+PROGRAM DEMO
+  IF lambda > 0
+    PRINT "La population est croissante"
+  IF ELSE lambda < 0
+    PRINT "La population est décroissante"
+  ELSE
+    PRINT "Absence de croissance"
+  ENDIF
+```
+
+Avec la clause `ELSE`, la croissance est nulle
+
+---
+
+# Exercice : identifier un arbre
+
+Écrire le pseudo code qui permet de déterminer quelle est l'espèce parmi l'érable à sucre, le bouleau jaune, le sapin baumier et le mélèze laricin sachant si ces arbres gardent leurs feuilles en hiver, si ils ont des aiguilles et si ils ont des samarres. 
+
+---
+
+# Exercice : calculer la factorielle de 5
+
+```
+PROGRAM ESPECE
+  READ hiver
+  READ feuilles
+  READ graines
+
+  IF(hiver == non) 
+    IF(feuilles == aiguilles) espece <- meleze
+      IF(graines == samarres) espece <- erable
+        ELSE espece <- bouleau
+    ELSE espece <- sapin
+  WRITE espece
+```
+
+---
+
+# Les fonctions
+
+Elles permettent de répéter rapidement des opérations, sous des conditions définies lorsqu'on les appelle. Ces conditions sont nommées des "arguments". 
+
+```
+FONCTION AIRE_CERCLE(rayon, pi)
+  {
+    aire <- pi*rayon*rayon
+    RETURN aire
+  }
+  
+```
+
+---
+
+# Les fonctions
+
+Le résultat de la fonction changera si on change les arguments.
+
+
+```
+  AIRE_CERCLE(rayon = 2, pi = 3.1416)
+
+```
+
+Ne donnera pas le même résultat que 
+
+```
+  AIRE_CERCLE(rayon = 1, pi = 3.1416)
+
+```
+
+---
+
 # Les règles du `pseudo-code`
 
 ## A garder en mémoire
@@ -687,31 +821,31 @@ class: inverse, middle, center
 
 # Les 10 commandements de la programmation
 
-> <b>1.</b> Tu commenteras ton code pour que d'autres puissent le lire, le comprendre et le partager
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>2.</b> Il faut prendre soin de l'environnement et nettoyer ses déchets
+> <b>2.</b> Découper un script en blocs cohérents
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>3.</b> Ton script sera dur à avaler. Mieux vaut le découper
+> <b>3.</b> Une seule opération par ligne
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>4.</b> Plusieurs chiens s'appellent Fido, le tiens tu sauras le nommer
+> <b>4.</b> S'assurer qu'un bloc fonctionne avant de passer à l'étape suivante
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>5.</b> Des pas de bébés permettent aussi d'avancer
+> <b>5.</b> Nommer adéquatement ses variables 
 
 ---
 
@@ -723,25 +857,25 @@ class: inverse, middle, center
 
 # Les 10 commandements de la programmation
 
-> <b>7.</b> La vie est trop courte, ton code sera optimisé
+> <b>7.</b> La vie est trop courte, optimiser son code
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>8.</b> Et un jour tu disparaîtras, alors assure toi que ton code soit reproductible
+> <b>8.</b> S'assurer que le code soit reproductible par autrui
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>9.</b> En tout puissant que tu es, le tirage au sort tu pourras répéter
+> <b>9.</b> Contraindre les tirages au sort afin de le répéter
 
 ---
 
 # Les 10 commandements de la programmation
 
-> <b>10.</b> Et dans le passé tu souhaiteras voyager, utilise le contrôle de versions
+> <b>10.</b> Utiliser le contrôle de version afin de pouvoir revenir dans le passé
 
 ---
 
@@ -769,7 +903,7 @@ class: inverse, middle, center
 # Une situation qui peut arriver tous les jours
 
 1. On jette en face de vous 5 lettres d'un jeu de scrabble
-2. Un maniac vous demande d'écrire un programme permettant d'ordonner les 5 lettres
+2. Un maniaque vous demande d'écrire un programme permettant d'ordonner les 5 lettres
 
 Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code.
 
