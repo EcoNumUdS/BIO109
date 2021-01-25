@@ -636,4 +636,4 @@ Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), calculer une
 4. La densité maximale dans un quadrat
 5. La densité minimale dans un quadrat
 
-Ensuite, appliquez cette fonction sur l'ensemble des espèces au moyen de la fonction *apply()*
+Ensuite, appliquez cette fonction sur chacune des espèces (colonnes)
