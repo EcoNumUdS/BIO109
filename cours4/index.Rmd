@@ -292,7 +292,7 @@ for(etape in 1:5) {
 ---
 # Compteur
 
-La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendent pour l'indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle.
+La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendant pour l'indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle.
 
 ```{r}
 n = 1
@@ -344,7 +344,7 @@ n
 ---
 # On complexifie le problème ....
 
-Il est possible d'incruster une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes...
+Il est possible de nicher une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes...
 
 ```{r eval = FALSE}
 ma_matrice <- matrix(nr = 5, nc = 3)
