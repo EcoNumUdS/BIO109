@@ -312,7 +312,7 @@ Enregistrez les résultats de votre conversion dans une matrice avec pour colonn
 
 ```{r  eval=FALSE}
 resultat = matrix(nr = 151, nc = 2)
-n = n + 1
+n = 1
 for(F in -50:100) {
     resultat[n,1] = F
     resultat[n,2] = (F-32)*5/9
