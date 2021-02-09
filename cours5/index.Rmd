@@ -49,6 +49,32 @@ class: middle, center, inverse
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 
+---
+# Solution
+
+
+```{r}
+tri <- function(x){
+	# Calcul de la dimension du vecteur
+	taille = length(x)
+	ordre = "NON"
+	# Boucle qui tourne jusqu'à ce que tout soit en ordre
+	while(ordre == "NON") {
+		ordre = "OUI"
+		# Boucle qui passe tous les éléments en paires
+		for(i in 1:(taille-1)) {
+			if(x[i+1] < x[i]) {
+				# Inversion des deux lettres
+				x[c(i,i+1)] = x[c(i+1,i)]
+				# Comme un changement a été fait, l'ordre
+				# n'est pas encore garanti
+				ordre = "NON"
+			}
+		}
+	}
+	return(x)
+}
+```
 
 
 ---
@@ -455,84 +481,6 @@ tirage(p)
 ```
 
 ---
-# Exemple intégrateur
-
-Le modèle de lotterie est à la base de nombreuses théories en écologie. Le travail final de ce cours en sera d'ailleurs fortement inspiré.
-
-Imaginez une forêt où un nombre limité d'arbres peuvent atteindre la canopée. Ce nombre est constant dans le temps puisque, lorsque survient une petite perturbation qui crée une ouverture, un seul individu viendra remplacer l'arbre qui est mort.
-
----
-# Exemple intégrateur
-
-Le nom de "lotterie" vient de la façon dont s'effectue le recrutement. Imaginez que l'on place une trappe à graines au centre de l'ouverture et que l'on pige une semence au hasard dans cette trappe, pour la placer ensuite dans le sol. La probabilité de recrutement d'une espèce, $p_i$, est tout simplement égale à son abondance relative dans la forêt avoisinante, soit $N_i /K$, où $N_i$ est le nombre d'individus de l'espèce $i$ et $K$ est le nombre total d'individus dans la forêt.
-
-
----
-# Exemple intégrateur
-
-Le vecteur $N$ représente le nombre d'individu de chaque espèce. Les étapes de la simulation du modèle de lotterie sont les suivantes, à chaque pas de temps :
-
-- Identification de quel arbre meurt (on en pige un seul au hasard parmi les $K$ arbres)
-- Retrait d'un individu de cette espèce ($N_i-1$)
-- Calcul de l'abondance relative de chaque espèce ($N_i /K$).
-- Identification de l'espèce recrutée
-- Ajout d'un individu de cette espèce ($N_i+1$)
-
----
-# Solution
-
-```{r}
-nsteps <- 1000
-S <- 5
-K <- 100
-N <- matrix(nr = nsteps, nc = S)
-
-# Une fonction utile pour faire des tirages
-# Elle retourne la position de l'espèce pigée au hasard
-tirage  <- function(p) {
-    res <- rmultinom(n=1,size=1,prob=p)
-    return(which(res==1))
-}
-```
-
----
-# Solution
-
-```{r}
-# On démarre la simulation avec 20 individus par espèce
-N[1,] =rep(K/S, S)
-
-# La boucle principale
-for(step in 2:nsteps) {
-
-    # Calcul de l'abondance relative
-    p = N[step-1,] / K
-
-    # On tire l'identité de l'espèce qui meurt
-    ID_mort = tirage(p)
-
-    # On applique le changement
-    N[step,] = N[step-1,]
-    N[step,ID_mort] = N[step,ID_mort] - 1
-
-    # On tire l'identité de la recrue
-    ID_recrue = tirage(p)
-    N[step,ID_recrue] = N[step,ID_recrue] + 1
-}
-```
-
----
-# Solution
-
-```{r, echo=FALSE,out.width = '55%', dpi=300, fig.align="center"}
-# Illustration des résultats
-plot(c(1:nsteps), N[,1], type = "l", ylim = c(0,K),
-    xlab = "Temps", ylab = "Densité")
-for(i in 2:S) lines(c(1:nsteps), N[,i])
-```
-
-
----
 class: middle, center, inverse
 
 # Optimisation des scripts
@@ -758,9 +706,9 @@ Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspo
 
 $$
 \begin{bmatrix}
-0.9225 & 0.0766 & 0.0000 & 0.0009 \\  
-0.0004 & 0.8552 & 0.1354 & 0.0090 \\
-0.0000 & 0.0350 & 0.9243 & 0.0407 \\
+0.9059 & 0.0932 & 0.0000 & 0.0009 \\  
+0.0004 & 0.8454 & 0.1452 & 0.0090 \\
+0.0000 & 0.0350 & 0.9594 & 0.0056 \\
 0.0001 & 0.0020 & 0.0011 & 0.9968 \\
 \end{bmatrix}
 $$
@@ -771,14 +719,9 @@ Notez que l'intervalle de temps entre deux épisodes est 5 ans.
 Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
 
 ---
-# ATTENTION !
-
-Bien qu'il y ait de nombreuses similarités avec le modèle de lotterie, il ne s'agit pas du même modèle. Ainsi, les étapes de mortalité et de recrutement sont combinées dans une seule étape où sont remplacés automatiquement les états d'un pas de temps à l'autre et où les probabilités sont toujours les mêmes (elles ne changent pas avec l'abondance relative).
-
----
 # Question de recherche
 
-Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 100 ans ?
+Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
 
 ---
 # Données
@@ -792,20 +735,20 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Transformer les abondances en états de départ
 - Préparer une fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t
 - Préparer une fonction qui fait une simulation sur N pas de temps et enregistre la composition (proportion de chaque état sur l'ensemble de la placette) à chaque pas de temps
-- Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul
-- Utiliser la sortie de la fonction pour répondre à deux questions au moyen d'une figure :
-	i) est-ce que les espèces de conifères seront toujours présentes dans le futur ?
-	ii) combien de temps sera nécessaire pour que la composition de la forêt atteigne l'équilibre (soit constante) ?
+- Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
+- Utiliser la sortie de la fonction pour répondre aux question suivantes : 
+  i) est-ce que les espèces de conifères seront toujours présentes dans 25 ans ? 50 ans ? 75 ans?
+  ii) qu'est-ce qui arrive si la mortalité des feuillus augmente légèrement en raison du verglas, de sorte que la troisième ligne de la matrice de transition change pour {0.0000 0.0350 0.9450 0.0200} ?
 
 ---
 # Modalités
 
 - Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 18 février 23:59 sur Moodle
+- Le travail doit être remis **électroniquement** au plus tard le 25 février 23:59 sur Moodle
 - Vous devez remettre:
-	- Le pseudo-code pour la fonction principale qui réalise votre simulation (le pseudo code peut être inscrit sous forme de commentaire dans le script)
-	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production des figures. 
-- Attention à la reproductibilité !
+	- Le pseudo-code pour la fonction principale qui réalise votre simulation 
+	- Le script qui exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
+- Attention à la reproductibilité (relire attentivement le cours 1)!
 
 ---
 # Critères d'évaluation
