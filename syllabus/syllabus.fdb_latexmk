@@ -1,9 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1641832728 "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.tex" "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf" "syllabus" 1641832733
+["pdflatex"] 1641832728 "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.tex" "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf" "syllabus" 1641840124
   "/etc/texmf/web2c/texmf.cnf" 1591891684 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.aux" 1641832728 784 745c482f57c3db466a843b68b93d292d ""
   "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.out" 1641832728 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.tex" 1641832733 6451 0ff149496f25f02c754a41d6c9617b23 ""
+  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.tex" 1641840124 6451 0ff149496f25f02c754a41d6c9617b23 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1480098698 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1480098698 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -79,13 +79,13 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1606347943 2700761 ac0584cc9514ab21918550a6948c4ee2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1606347964 4128465 bc67d942d29732c54172e98098c519d3 ""
   (generated)
-  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.aux"
-  "syllabus.pdf"
-  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.log"
-  "syllabus.aux"
-  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf"
-  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf"
-  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.log"
-  "syllabus.log"
   "syllabus.out"
+  "syllabus.log"
+  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.aux"
+  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.log"
+  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf"
+  "syllabus.aux"
+  "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.log"
   "/home/local/USHERBROOKE/grad3002/Bureau/Documents/Teaching/BIO109/depot/syllabus/syllabus.out"
+  "syllabus.pdf"
+  "/home/grad3002/Dropbox/Documents/Teaching/BIO109/depot/syllabus/syllabus.pdf"

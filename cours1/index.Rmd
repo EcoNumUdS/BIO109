@@ -51,7 +51,7 @@ class: title-slide, middle
 - Assistants en classe et sur le clavardage
 - Lire les présentations avant le cours
 - Lever la main pour des questions
-- Utilisation du clavardage (détailler votre question et fournir le code)
+- Utilisation du clavardage Teams (détailler votre question et fournir le code)
 - Faire les exercices
 - Ressources additionnelles : R Cheat Sheet et R pour les débutants
 
@@ -167,24 +167,12 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 
 # Objectifs spécifiques
 
-1. Charger des données et exporter des résultats d'analyses au moyen du
-    logiciel R;
-2. Conceptualiser un problème au moyen de pseudo-code;
-3. Manipuler des données;
-4. Rédiger des fonctions;
-5. Programmer des algorithmes afin de réaliser des tâches complexes,
+1. Conceptualiser un problème au moyen de pseudo-code;
+2. Manipuler des données;
+3. Rédiger des fonctions;
+4. Programmer des algorithmes afin de réaliser des tâches complexes,
     incluant des boucles et des énoncés conditionnels;
-6. Réaliser des simulations de Monte Carlo;
-
----
-
-# Contenu
-
-1. Introduction et bonnes pratiques de programmation
-2. Interagir avec R
-3. Les fonctions
-4. Algorithmique I: boucles et conditions
-5. Alogithmique II: simulations de Monte Carlo
+5. Réaliser des simulations de Monte Carlo;
 
 ---
 
@@ -202,8 +190,7 @@ Les connaissances requises pour la programmation scientifique sont
 minimales, l'apprentissage porte davantage sur l'acquisition de
 compétences et le développement de capacités à la résolution de problèmes.
 
-
-Les séances seront constituées de courtes leçons magistrales sur des
+Les séances sont constituées de courtes leçons magistrales sur des
 notions de bases de programmation, entre-coupées d'exercices spécifiques
 destinés à pratiquer les éléments enseignés. Les séances se conclueront
 sur la réalisation d'un exercice intégrateur à compléter à la maison.
@@ -215,15 +202,11 @@ https://github.com/EcoNumUdS/BIO109.git
 
 # Évaluation
 
-L'évaluation porte sur la participation (20%) et sur un
-travail de session (80%). Un exercice simple sera présenté à la fin des
-séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous
-forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la
-participation.</b>
+L'évaluation porte sur la participation (20%) et sur un travail de session (80%). Un exercice simple sera présenté à la fin des séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la participation.</b> Les solutions seront présentées au cours suivant.
 
 L'évaluation finale portera sur la réalisation d'un projet de
 programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le <b>23 février 2021 à 23:59</b>. La
+dernier cours, soit au plus tard le <b>22 février 2022 à 23:59</b>. La
 pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
 partir de
 
@@ -301,16 +284,6 @@ $K =$ capacité de support de l'environnement
 
 ---
 
-# Progression de la puissance de calcul
-
-<div style='text-align:center;'>
-  <img src="assets/img/intro/moores.png" height="525px"></img>
-</div>
-
-<!-- Ces questions sont rendu possible en partie grâce à l'augmentation de la puissance de nos ordinateurs et l'accessibilité aux données -->
-
----
-
 # Utilisation en science au quotidien
 
 La programmation est outil indispensable au biologiste 2.0, elle permet:
@@ -335,10 +308,9 @@ La programmation est outil indispensable au biologiste 2.0, elle permet:
 
 
 .pull-right[
-## Augmentation du volume de données génomiques
-<img src="assets/img/intro/data_increase.jpg" width="100%"></img>
+## Capacité de calcul
+<img src="assets/img/intro/moores.png" width="100%"></img>
 <span style="font-size:small;text-transform:uppercase;text-align:right;">
-[Nature 2013](http://www.nature.com/nature/journal/v498/n7453/full/498255a.html)
 </span>
 ]
 
@@ -380,7 +352,7 @@ class: inverse, center, middle
 
 ---
 
-# 1. Les langages compilés
+# Les langages compilés
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/compile.png"  width="900px"></img>
@@ -388,7 +360,7 @@ class: inverse, center, middle
 
 ---
 
-# 2. Les langages interprétés
+# Les langages interprétés
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/interprete.png" width="900px"></img>
@@ -396,7 +368,7 @@ class: inverse, center, middle
 
 ---
 
-# La performance: un critère pour le choix d'un langage
+# Choix d'un langage : performance
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/performance.png" width="900px"></img>
@@ -404,7 +376,7 @@ class: inverse, center, middle
 
 ---
 
-# Un autre critère est le 'débugging'
+# Choix d'un langage: 'débugging'
 
 <div style='text-align:center;'>
   <img src="assets/img/intro/bug.jpg" width="600px"></img>
@@ -427,7 +399,9 @@ class: inverse, middle, center
 
 > - *Un <b>algorithme</b> est une suite d'actions qui sont réalisées dans un ordre précis par l'ordinateur. C'est une séquence d'étapes dans la résolution d'un problème.*
 
-- Les principes de base seront les mêmes, d'un language de programmation à l'autre. 
+- Les principes de base seront les mêmes, d'un langage de programmation à l'autre. 
+
+- Les éléments qui suivent résument les principales notions que vous aurez à maîtriser dans le cours. Il faut maîtriser ces notions *avant* de commencer la programmation sur R. 
 
 ---
 
@@ -448,7 +422,7 @@ PROGRAM DEMO
   END FOR
 ```
 
-Le programme `DEMO` fait croitre une population à un taux $\lambda$ et affiche à l'utilisateur si la population est éteinte ($n_t<1$) ou vivante ($n_t>1$).
+Le programme `DEMO` fait croitre une population à un taux $\lambda$ et affiche à l'utilisateur si la population est éteinte ( $n_t<1$ ) ou vivante ( $n_t>1$ ).
 
 ---
 
@@ -469,7 +443,7 @@ PROGRAM DEMO
   END FOR
 ```
 
-Le programme `DEMO` fait croitre une population à un taux $\lambda$ et affiche à l'utilisateur si la population est éteinte ($n_t<1$) ou vivante ($n_t>1$).
+Le programme `DEMO` fait croitre une population à un taux $\lambda$ et affiche à l'utilisateur si la population est éteinte ( $n_t<1$ ) ou vivante ( $n_t>1$ ).
 
 
 ---
@@ -490,12 +464,13 @@ Les opérations répétées peuvent être organisées sous forme de <b> Fonction
 
 Avant de décrire chacune des opérations d'un algorithme, certaines instructions sont communes:
 
-- `READ`: Le programme lit un fichier
-- `WRITE`: Le programme écrit un fichier
-- `PRINT`: Le programme écrit un message à l'écran pour l'utilisateur
-- `BREAK`: Le programme stop son éxécution
-- `CONTINUE`: Le programme continue son éxécution
+- `READ`: le programme lit un fichier
+- `WRITE`: le programme écrit un fichier
+- `PRINT`: le programme écrit un message à l'écran pour l'utilisateur
+- `BREAK`: le programme arrête son éxécution
+- `CONTINUE`: le programme continue son éxécution
 - `DEFINE`: définition d'une constante, d'un paramètre
+- `SET` : initialise un objet
 
 ---
 
@@ -504,8 +479,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 Lorsque l'on crée un objet, il est initialement vide et il faut lui attribuer une valeur. On peut créer un scalaire : 
 
 ```
-a <- 1
-b <- 2
+a = 1
+b = 2
 ```
 
 Et faire des opérations mathématiques sur ces objets : 
@@ -521,7 +496,7 @@ a * b
 Plus souvent, on travaille avec des tableaux de données :  
 
 ```
-mat <- matrix(c(1,2,3,4), nr = 2, nc = 2)
+mat = matrix(c(1,2,3,4), nr = 2, nc = 2)
 ```
 
 Cet objet a deux dimension, la première représentée par "i" et l'autre par "j". Sur R par exemple, on accède à la position définie par le couple i,j de la manière suivante : 
@@ -543,9 +518,9 @@ Les objets en programmation sont définis en fonction de leur dimensionalité.
 - **Dimension 2** : Matrice
 - **Dimension 3** : ...
 
-Bien qu'il n'y ai pas de limite à la dimension d'un objet en programmation,
+Bien qu'il n'y ait pas de limite à la dimension d'un objet en programmation,
 pour le cours nous nous limiterons à des objets en deux dimensions
-(c.à.d Matrice)
+(c.à.d matrice)
 
 ---
 
@@ -596,7 +571,7 @@ lettreTab[2, 1]
 
 ---
 
-# 1. Les opérations séquentielles
+# Les opérations séquentielles
 
 ## Exemple: Calculer l'aire d'un rectangle
 
@@ -611,70 +586,94 @@ Chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
 
 ---
 
-# Exercice : calculer l'aire d'un cercle d'un diamètre de 2 cm
-
----
-
-# Exercice : calculer l'aire d'un cercle d'un diamètre de 2 cm
+# Exercice
 
 ```
 PROGRAM AIRE_CERCLE
   DEFINE pi <- 3.1416
-  DEFINE d <- 2
-  CALCUL aire <- pi*(d/2)*(d/2)
+  DEFINE d <- {1, 2, 3, 4, 5}
+  DEFINE index <- 2
+  CALCUL aire <- pi*(d[index]/2)*(d[index]/2)
   WRITE aire
 ```
 
----
-
-# 2. Les opérations itératives
-
-La boucle est une séquence de base utilisée par tous les languages de programmation. Elle permet de répéter une opération un grand nombre de fois automatiquement. La boucle est définie par un point de départ, un point de d'arrivée et la séquence des opérations à réaliser à chaque itération de la boucle. 
+Quel est le résultat de ce calcul ?
 
 ---
 
-# 2. Les opérations itératives
+# Les opérations itératives
+
+La boucle est une séquence de base utilisée par tous les lanages de programmation. 
+
+Elle permet de répéter une opération un grand nombre de fois automatiquement. 
+
+La boucle est définie par un point de départ, un point de d'arrivée et la séquence des opérations à réaliser à chaque itération de la boucle. 
+
+Un indice permet de suivre la position dans la boucle.
+
+---
+
+# Les opérations itératives
 
 ## Exemple avec `FOR`: Croissance exponentielle
 
 ```
 PROGRAM DEMO
+  DEFINE lambda = 1
+  DEFINE n_t = 1
   FOR etape IN 1:100
     n_t = n_t * lambda
   END FOR
+  WRITE n_t
 ```
 
 La population va croître pendant 100 pas de temps.
 
 ---
 
-# Exercice : calculer la factorielle de 5
-
-rappel : 5! = 1 x 2 x 3 x 4 x 5
-
----
-
-# Exercice : calculer la factorielle de 5
+# Exercice
 
 ```
 PROGRAM FACTORIELLE
-  DEFINE depart <- 1
-  DEFINE fin <- 5
-  x <- 1
+  DEFINE depart = 1
+  DEFINE fin = 5
+  x = 1
   FOR etape in depart:fin
-    x <- x*etape
+    x = x*etape
   WRITE x
 ```
 
----
-
-# 3. Les opérations décisionnelles
-
-Souvent un programme repose sur la réalisation d'une décision basée sur le résultat d'un calcul ou bien un paramètre défini par l'utilisateur. Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent se combiner pour faire une décision entre plus de deux choix.
+Quelle valeur prendra x au terme de l'exécution du programme ? 
 
 ---
 
-# 3. Les opérations décisionnelles
+# Les opérations itératives et l'indexation
+
+## Exemple avec `FOR`: Croissance exponentielle
+
+```
+PROGRAM DEMO
+  SET resultat
+  DEFINE lambda = 1.1
+  FOR etape IN 1:100
+    resultat[etape] = resultat[etape-1] * lambda
+  END FOR
+  WRITE resultat
+```
+
+Quel sera le contenu de 'resultat' ?
+
+---
+
+# Les opérations décisionnelles
+
+Souvent un programme repose sur la réalisation d'une décision basée sur le résultat d'un calcul ou bien un paramètre défini par l'utilisateur. 
+
+Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent se combiner pour faire une décision entre plus de deux choix.
+
+---
+
+# Les opérations décisionnelles
 
 ## Exemple avec `IF`: quelques tests sur $\lambda$
 
@@ -687,11 +686,11 @@ PROGRAM DEMO
   ENDIF
 ```
 
-> - Et si le taux de croissance est nul?
+Et si le taux de croissance est nul?
 
 ---
 
-# 3. Les opérations décisionnelles
+# Les opérations décisionnelles
 
 ```
 PROGRAM DEMO
@@ -708,13 +707,13 @@ Avec la clause `ELSE`, la croissance est nulle
 
 ---
 
-# Exercice : identifier un arbre
+# Exemple : identifier un arbre
 
 Écrire le pseudo code qui permet de déterminer quelle est l'espèce parmi l'érable à sucre, le bouleau jaune, le sapin baumier et le mélèze laricin sachant si ces arbres gardent leurs feuilles en hiver, si ils ont des aiguilles et si ils ont des samarres. 
 
 ---
 
-# Exercice : calculer la factorielle de 5
+# Exemple : identifier un arbre
 
 ```
 PROGRAM ESPECE
@@ -723,12 +722,14 @@ PROGRAM ESPECE
   READ graines
 
   IF(hiver == non) 
-    IF(feuilles == aiguilles) espece <- meleze
-      IF(graines == samarres) espece <- erable
-        ELSE espece <- bouleau
-    ELSE espece <- sapin
+    IF(feuilles == aiguilles) espece = meleze
+      IF(graines == samarres) espece = erable
+        ELSE espece = bouleau
+    ELSE espece = sapin
   WRITE espece
 ```
+
+Notons l'utilisation du '==' pour tester s'il y a égalité.
 
 ---
 
@@ -739,7 +740,7 @@ Elles permettent de répéter rapidement des opérations, sous des conditions d�
 ```
 FONCTION AIRE_CERCLE(rayon, pi)
   {
-    aire <- pi*rayon*rayon
+    aire = pi*rayon*rayon
     RETURN aire
   }
   
@@ -771,10 +772,10 @@ Ne donnera pas le même résultat que
 ## A garder en mémoire
 
 1. N'écrivez qu'une seule instruction par ligne de pseudo-code.
-2. Écrivez en lettres majuscules le verbe de chaque opération principale.
+2. Écrivez en lettres majuscules le verbe de chaque opération principale (la fonction utilisée)
 3. Soyez explicite en nommant les opérations et les variables.
 4. Soyez le plus détaillé possible (c.à.d les plus petites étapes possibles)
-5. Utilisez des structures de langages de programmation connues (c.à.d `WHILE`, `FOR`, `IF` etc.)
+5. Utilisez des structures de langages de programmation connues (c.à.d `FOR`, `IF`, etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
 <b> Ces règles sont générales, peu importe le langage de programmation utilisé. </b>
@@ -796,11 +797,17 @@ class: inverse, middle, center
 
 # Les 10 commandements de la programmation
 
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
 > <b>2.</b> Découper un script en blocs cohérents
 
 ---
 
 # Les 10 commandements de la programmation
+
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+> <b>2.</b> Découper un script en blocs cohérents
 
 > <b>3.</b> Une seule opération par ligne
 
@@ -808,11 +815,25 @@ class: inverse, middle, center
 
 # Les 10 commandements de la programmation
 
-> <b>4.</b> S'assurer qu'un bloc fonctionne avant de passer à l'étape suivante
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+> <b>2.</b> Découper un script en blocs cohérents
+
+> <b>3.</b> Une seule opération par ligne
+
+> <b>4.</b> S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
 
 ---
 
 # Les 10 commandements de la programmation
+
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+> <b>2.</b> Découper un script en blocs cohérents
+
+> <b>3.</b> Une seule opération par ligne
+
+> <b>4.</b> S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
 
 > <b>5.</b> Nommer adéquatement ses variables 
 
@@ -820,17 +841,53 @@ class: inverse, middle, center
 
 # Les 10 commandements de la programmation
 
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+> <b>2.</b> Découper un script en blocs cohérents
+
+> <b>3.</b> Une seule opération par ligne
+
+> <b>4.</b> S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+> <b>5.</b> Nommer adéquatement ses variables 
+
 > <b>6.</b> Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
 
 ---
 
 # Les 10 commandements de la programmation
 
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+> <b>2.</b> Découper un script en blocs cohérents
+
+> <b>3.</b> Une seule opération par ligne
+
+> <b>4.</b> S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+> <b>5.</b> Nommer adéquatement ses variables 
+
+> <b>6.</b> Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
+
 > <b>7.</b> La vie est trop courte, optimiser son code
 
 ---
 
 # Les 10 commandements de la programmation
+
+> <b>1.</b> Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+> <b>2.</b> Découper un script en blocs cohérents
+
+> <b>3.</b> Une seule opération par ligne
+
+> <b>4.</b> S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+> <b>5.</b> Nommer adéquatement ses variables 
+
+> <b>6.</b> Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
+
+> <b>7.</b> La vie est trop courte, optimiser son code
 
 > <b>8.</b> S'assurer que le code soit reproductible par autrui
 
@@ -844,22 +901,9 @@ class: inverse, middle, center
 
 # Les 10 commandements de la programmation
 
+> <b>9.</b> Contraindre les tirages au sort afin de le répéter
+
 > <b>10.</b> Utiliser le contrôle de version afin de pouvoir revenir dans le passé
-
----
-
-# Google R Style Rules
-
-- Noms de `fichier`: se termine par .R
-- `Identifiants`: variable.nom (or VariableNom), FonctionNom
-- Longueur de `ligne`: maximum 80 caractères
-- `Indentation`: deux espaces, pas de tabulations
-- `Espacement`: placer des espaces autour des opérateurs binaires
-- `Accolades { }`: s'ouvre sur la même ligne, se ferme sur une ligne indépendente (sauf pour `else`)
-- `else` : Entourer `else` avec des accolades (`}else{`)
-- `Affectation`: utiliser `<-`, pas `=`
-- `Commentaire`: tous les commentaires sont précédés par `#` et suivit d'un espace
-- `Fonction`: doivent avoir une section de commentaires
 
 ---
 class: inverse, middle, center
@@ -872,8 +916,11 @@ class: inverse, middle, center
 # Une situation qui peut arriver tous les jours
 
 1. On jette en face de vous 5 lettres d'un jeu de scrabble
-2. Un maniaque vous demande d'écrire un programme permettant d'ordonner les 5 lettres
 
-Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Essayez de les décrire sous forme de pseudo-code.
+2. Un maniaque vous demande d'écrire un programme qui ordonne les 5 lettres
 
-<b>Note</b>: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Vous devez les écrire sous forme de pseudo-code.
+
+<b>Note 1 </b>: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
+
+<b>Note 2 </b>: vous pouvez assumer que l'ordinateur sait que 'A' vient avant 'B'.
