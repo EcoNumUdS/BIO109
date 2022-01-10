@@ -1,7 +1,7 @@
 ---
 title: "Séance 1: Introduction à la programmation scientifique"
 author: "Dominique Gravel"
-date: "Hiver 2020"
+date: "Hiver 2022"
 output:
   xaringan::moon_reader:
     css: [default, ../assets/bio109.css, "hygge"]
@@ -46,7 +46,8 @@ class: title-slide, middle
 
 # INSTRUCTIONS COVID
 
-- En présence et sur Teams
+- En présence lorsque possible
+- Matériel du cours : https://github.com/EcoNumUdS/BIO109
 - Assistants en classe et sur le clavardage
 - Lire les présentations avant le cours
 - Lever la main pour des questions
@@ -76,38 +77,6 @@ class: title-slide, middle
 
 <div style='text-align:center;'>
 <img src="assets/img/intro/megantic.jpg" height="500px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/ours.jpg" height="500px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/orignal.jpg" height="400px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/salamandre.jpg" height="400px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/cypripedium.jpg" height="400px"></img>
 </div>
 
 ---
