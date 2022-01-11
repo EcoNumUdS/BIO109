@@ -45,41 +45,6 @@ class: title-slide, middle
 ---
 class: middle, center, inverse
 
-# Solution du tri
-<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
-
-
----
-# Solution
-
-
-```{r}
-tri <- function(x){
-	# Calcul de la dimension du vecteur
-	taille = length(x)
-	ordre = "NON"
-	# Boucle qui tourne jusqu'à ce que tout soit en ordre
-	while(ordre == "NON") {
-		ordre = "OUI"
-		# Boucle qui passe tous les éléments en paires
-		for(i in 1:(taille-1)) {
-			if(x[i+1] < x[i]) {
-				# Inversion des deux lettres
-				x[c(i,i+1)] = x[c(i+1,i)]
-				# Comme un changement a été fait, l'ordre
-				# n'est pas encore garanti
-				ordre = "NON"
-			}
-		}
-	}
-	return(x)
-}
-```
-
-
----
-class: middle, center, inverse
-
 # Les jeux de hasard
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 

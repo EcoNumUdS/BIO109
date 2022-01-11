@@ -50,40 +50,6 @@ class: middle, center, inverse
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 ---
-# Exercice de fin de séance
-
-Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
-
-1. Charger les données "arbres"
-2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
-3. Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce
-4. Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes
-
-On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
-
----
-# Solution
-
-
-```{r}
-# Créer un tableau où on enregistre les résultats
-resultats <- matrix(nr = 5, nc = 7)
-
-# Lire le fichier (en assumant que vous êtes dans le bon dossier)
-arbres <- read.table(file="donnees/arbres.csv", header=TRUE,sep = ";")
-
-# Délimiter une première zone
-sub_zoneA <- subset(arbres, arbres$bory < 201)
-
-# Calculer le nombre de tiges
-table(sub_zoneA$esp)
-
-# Enregistrer le résultat dans le tableau
-resultats[1,] <- table(arbres$esp)
-```
-
-
----
 class: middle, center, inverse
 
 # Opérations mathématiques de base
