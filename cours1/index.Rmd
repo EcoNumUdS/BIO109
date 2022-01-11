@@ -603,7 +603,7 @@ Quel est le résultat de ce calcul ?
 
 # Les opérations itératives
 
-La boucle est une séquence de base utilisée par tous les lanages de programmation. 
+La boucle est une séquence de base utilisée par tous les langages de programmation. 
 
 Elle permet de répéter une opération un grand nombre de fois automatiquement. 
 
@@ -619,7 +619,7 @@ Un indice permet de suivre la position dans la boucle.
 
 ```
 PROGRAM DEMO
-  DEFINE lambda = 1
+  DEFINE lambda = 1.1
   DEFINE n_t = 1
   FOR etape IN 1:100
     n_t = n_t * lambda
@@ -679,9 +679,9 @@ Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent 
 
 ```
 PROGRAM DEMO
-  IF lambda > 0
+  IF lambda > 1
     PRINT "La population est croissante"
-  ELSE lambda < 0
+  ELSE lambda < 1
     PRINT "La population est décroissante"
   ENDIF
 ```
@@ -694,9 +694,9 @@ Et si le taux de croissance est nul?
 
 ```
 PROGRAM DEMO
-  IF lambda > 0
+  IF lambda > 1
     PRINT "La population est croissante"
-  IF ELSE lambda < 0
+  IF ELSE lambda < 1
     PRINT "La population est décroissante"
   ELSE
     PRINT "Absence de croissance"
