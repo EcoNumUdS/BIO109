@@ -50,6 +50,23 @@ class: middle, center, inverse
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 ---
+# Exercice de fin de séance
+
+Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+
+1. Charger les données "arbres"
+2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
+3. Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce
+4. Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes
+
+On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
+
+---
+# Solution
+
+
+
+---
 class: middle, center, inverse
 
 # Opérations mathématiques de base
@@ -63,7 +80,7 @@ class: middle, center, inverse
 Il peut souvent être pratique de générer des chiffres au hasard, sur lesquels on souhaite faire des tests. Nous verrons plusieurs exemples au cours 5, mais pour l'instant, prenez note de la fonction suivante:
 
 ```{r}
-alea <- runif(n = 10, min = 0, max = 1)
+alea = runif(n = 10, min = 0, max = 1)
 alea
 ```
 Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées.
@@ -108,7 +125,7 @@ R respecte la séquence des opérations, tel que démontré par l'exemple suivan
 Par défaut, le produit de vecteurs et de matrices est *scalaire* :
 
 ```{r}
-vec1 <- runif(10,0,1)
+vec1 = runif(10,0,1)
 vec1
 3*vec1
 ```
@@ -120,8 +137,8 @@ vec1
 La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices :
 
 ```{r}
-vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6), nr = 3, nc = 2)
+vec1 = c(10,20,30)
+mat1 = matrix(c(1:6), nr = 3, nc = 2)
 mat1
 vec1 * mat1
 
@@ -175,7 +192,7 @@ round(pi,4)
 Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées:
 
 ```{r}
-mat <- matrix(runif(4,0,1), nr = 2, nc = 2)
+mat = matrix(runif(4,0,1), nr = 2, nc = 2)
 mat
 rowSums(mat)
 colSums(mat)
@@ -199,8 +216,8 @@ apply(X = mat, MARGIN = 1, FUN = sum)
 Et finalement, bien que vous l'utiliserez peu dans le cours, il est toujours pratique de savoir que la particularité de R d'être un langage vectoriel permet de facilement faire des opérations sur les matrices :
 
 ```{r}
-vec1 <- c(10,20,30)
-mat1 <- matrix(c(1:6),nr = 3, nc = 2)
+vec1 = c(10,20,30)
+mat1 = matrix(c(1:6),nr = 3, nc = 2)
 vec1 * mat1
 vec1 %*% mat1
 ```
@@ -217,7 +234,7 @@ class: middle, center, inverse
 
 Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
 
-1. Calculer l'abondance totale pour chacune des espèces, leur abondance moyenne et le coefficient de variation de leur abondance ;
+1. Calculer l'abondance totale pour 'abba', son abondance moyenne et le coefficient de variation de son abondance ;
 2. Calculer le nombre total de tiges pour chaque quadrat ;
 3. Transformer l'abondance absolue en abondance relative ;
 
@@ -226,11 +243,11 @@ Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de fai
 # Abondances relatives
 
 ```{r}
-quadrats <- read.csv2(file="donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
-N_total <- apply(quadrats, 2, sum)
-N_moy <- apply(quadrats, 2, mean)
-N_sd <- apply(quadrats, 2, sd)
-N_CV <- N_sd / N_moy
+quadrats = read.csv2(file="donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
+N_total_abba = sum(quadrats$abba)
+N_moy_abba = mean(quadrats$abba)
+N_sd_abba = sd(quadrats$abba)
+N_CV_abba = N_sd_abba / N_moy_abba
 ```
 
 ---
@@ -238,9 +255,9 @@ N_CV <- N_sd / N_moy
 # Abondances relatives
 
 ```{r}
-N_quadrats <- apply(quadrats, 1, sum)
-quadrats_rel <- quadrats / N_quadrats
-head(quadrats_rel)
+N_quadrats = rowSums(quadrats)
+quadrats_rel_abba = quadrats$abba / N_quadrats
+head(quadrats_rel_abba)
 ```
 
 ---
@@ -260,10 +277,10 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 # Un simple exemple
 
 ```{r eval=FALSE}
-ma_fonction <- function(argument1, argument2) {
+ma_fonction = function(argument1, argument2) {
 
   # Ce que l'on veut que la fonction exécute
-  resultat <- argument1 * argument2
+  resultat = argument1 * argument2
 
   # Optionnel. Si l'on veut accéder au résultat de la fonction
   return(resultat)
@@ -304,7 +321,7 @@ On peut écrire ce calcul directement dans la console comme suit
 Si on souhaite faire la même opération pour toutes les pairs de chiffres dans le tableau suivant, comment fait-on ?
 
 ```{r}
-tableau <- data.frame(x=rnorm(5),y=rnorm(5))
+tableau = data.frame(x=rnorm(5),y=rnorm(5))
 tableau
 ```
 
@@ -340,7 +357,7 @@ $$
 
 ```{r}
 for(i in 1:nrow(tableau)){
-  res <- (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
+  res = (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
   print(res)
 }
 ```
@@ -377,8 +394,8 @@ On commence par écrire une version spécifique du code que l'on souhaite **gén
 Ensuite, on définit ce code comme faisant parti d'une fonction.
 
 ```{r}
-prodsum <- function(){
-  res <- (3*7)/(3+7)
+prodsum = function(){
+  res = (3*7)/(3+7)
   return(res)
 }
 ```
@@ -403,14 +420,14 @@ Cette fonction a le défaut de n'être aucunement générale. Elle va toujours d
 
 Une notion importante à avoir lorsqu'on construit une fonction est que tout ce qui se trouve à l'**intérieur** d'une fonction est *entièrement* indépendent de ce qui se trouve à l'**extérieur** d'une fonction.
 
-Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il a un sense uniquement à l'intérieur de la fonction.
+Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il existe uniquement à l'intérieur de la fonction.
 
 
 ---
 
 # Comment rendre la fonction plus générale ?
 
-On peut généraliser cette fonction, en implémentant directement la formule générale présentée précédemment:
+On peut généraliser cette fonction, en utilisant directement la formule générale présentée précédemment:
 
 $$
 \dfrac{x\times y}{x+y}
@@ -425,8 +442,8 @@ Pour ce faire, il faut ajouter des **arguments** à notre fonction.
 Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. Il faut donc s'assurer que les mêmes opérations soient réalisées sur ces arguments.
 
 ```{r}
-prodsum <- function(x,y){
-  res <- (x*y)/(x+y)
+prodsum = function(x,y){
+  res = (x*y)/(x+y)
   return(res)
 }
 ```
@@ -440,8 +457,8 @@ Avec cette fonction on peut faire le calcul qui nous intéresse avec différente
 Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est rarement le cas :
 
 ```{r}
-a <- 1
-b <- 2
+a = 1
+b = 2
 prodsum(x = a, y = b)
 ```
 
@@ -465,8 +482,8 @@ Comme on le constate, dans le language R, les arguments peuvent être définis d
 Le language de programmation R permet de faire aussi le calcul sur des vecteurs :
 
 ```{r}
-vecA <- tableau[,1]
-vecB <- tableau[,2]
+vecA = tableau[,1]
+vecB = tableau[,2]
 prodsum(vecA, vecB)
 
 prodsum(tableau[,1], tableau[,2])
@@ -479,9 +496,9 @@ prodsum(tableau[,1], tableau[,2])
 L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même nombre de chiffres, ils ont la même longueur. Que ce passe-t-il si les vecteurs n'ont pas la même longueur?
 
 ```{r}
-vec2 <- tableau[1:2,1]
-vec3 <- tableau[1:3,1]
-vec4 <- tableau[1:4,2]
+vec2 = tableau[1:2,1]
+vec3 = tableau[1:3,1]
+vec4 = tableau[1:4,2]
 prodsum(vec3, vec4)
 ```
 
@@ -502,11 +519,11 @@ Comment faire pour régler ce problème ?
 Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des conditions de sorties dans la fonction qui retournent un message d'erreur. Voici un exemple :
 
 ```{r}
-prodsum <- function(x, y){
+prodsum = function(x, y){
   if(length(x) != length(y)){
     stop("'x' est de taille différente de 'y'")
   }
-  res <- (x*y)/(x+y)
+  res = (x*y)/(x+y)
   return(res)
 }
 ```
@@ -533,7 +550,7 @@ Notez que le message d'erreur envoyé est composé par le programmeur. Par contr
 Le language de programmation R permet de faire aussi le calcul sur des matrices
 
 ```{r}
-tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
+tableau2 = data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
 prodsum(tableau, tableau2)
 ```
 
@@ -544,16 +561,16 @@ prodsum(tableau, tableau2)
 Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
 
 ```{r}
-ma_fonction <- function(x) {
+ma_fonction = function(x) {
 
   # Calcul de la moyenne
-  res1 <- mean(x)
+  res1 = mean(x)
 
   # Calcul de l'écart-type
-  res2 <- sd(x)
+  res2 = sd(x)
 
   # Calcul du coefficient de variation
-  res3 <- res2/res1
+  res3 = res2/res1
 
   # On regroupe les résultats dans une liste
   final = list(moyenne = res1, ecart_type = res2, CV = res3)
@@ -570,13 +587,14 @@ ma_fonction <- function(x) {
 Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
 
 ```{r}
-test <- ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
+test = ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
 test
 ```
 
 ---
 
-# Quelques règles utiles lorsqu'on construit une fonction
+# Quelques trucs utiles
+  - Prenez le temps d'écrire votre code pour un exemple avant de tout intégrer dans une fonction
   - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent de ce qui se trouve à l'extérieur de cette fonction ;
   - Donner une nom représentatif à la fonction, qui résume ce qu'elle fait ;
   - Tous les arguments de la fonction doivent être utilisés;
@@ -603,3 +621,5 @@ Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), calculer une
 5. La densité minimale dans un quadrat
 
 Ensuite, appliquez cette fonction sur chacune des espèces (colonnes)
+
+Rappel : identifiez bien dès le départ l'objet que vous passez comme argument de votre fonction.
