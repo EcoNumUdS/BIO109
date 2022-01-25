@@ -629,8 +629,8 @@ Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), calculer une
 1. L'abondance moyenne
 2. L'abondance totale
 3. Le coefficent de variation de l'abondance
-4. La densité maximale dans un quadrat
-5. La densité minimale dans un quadrat
+4. L'abondance maximale dans un quadrat
+5. L'abondance minimale dans un quadrat
 
 Ensuite, appliquez cette fonction sur chacune des espèces (colonnes)
 
