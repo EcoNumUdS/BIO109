@@ -80,6 +80,8 @@ Les données ressemblent à ce qui suit:
 ```{r, out.width = '42%', dpi=300, fig.align="center"}
 plot(an,donnees[,1],type = "l", xlab = "Année",ylab = "Nombre d'individus", ylim=c(32,40),cex=2)
 lines(an,donnees[,2], lty = 3)
+points(an,donnees[,1], pch = 19,cex=1.5)
+points(an,donnees[,2], pch = 19,cex=1.5)
 ```
 
 ---
@@ -103,17 +105,21 @@ lambda[2,1] <- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
 
 Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable.
 
-Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 10 points d'échantillonnage. Il faudra changer de technique....
+Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 25 points d'échantillonnage. Il faudra changer de technique....
 
 ---
 # Mise en situation
 
-La semaine dernière, nous avons vu comment généraliser une séquence d'opérations au moyen d'une fonction. Comment est-ce qu'on peut généraliser des opérations qui sont répétées très souvent ? C'est le principe de la boucle.
+La semaine dernière, nous avons vu comment généraliser une séquence d'opérations au moyen d'une fonction. Pratique ! 
+
+Mais nous devrions appliquer la fonction pour chacun des points d'échantillonnage. 25 appels de la fonction, avec 25 chances de se tromper...
+
+Comment est-ce qu'on peut généraliser des opérations qui sont répétées très souvent ? C'est le principe de la boucle.
 
 ---
 # Mise en situation
 
-La solution ressemblerait à
+La solution rapide ressemblerait à
 
 ```{r eval=FALSE}
 n_sites <- ncol(donnees)
@@ -142,31 +148,22 @@ for(etape in depart:fin) {
 }
 ```
 
+`etape` est un compteur de la position dans la boucle.
+
 L'exécution une fois d'un groupe de commandes dans un boucle s'appelle une itération.
 
 ---
 # Quelques exemples simples
 
-On peut mettre toutes sortes de contraintes sur l'index de la boucle
-
-```{r}
-for(etape in c("Bonjour", "programmeurs", "en R")) {
-    print(etape)
-}
-```
-
-Dans cet exemple, notre séquence contient 3 éléments "Bonjour", "programmeurs", "en R". R va évaluer l'expression 3 fois. La variable index prendra successivement les valeurs de 1 à 3 pendant l'exécution de la boucle.
-
----
-# Quelques exemples simples
-
-Par défaut R augmente toujours l'index de 1 unité
+Par défaut R augmente toujours le compteur de 1 unité
 
 ```{r}
 for(etape in 1:5) {
     print(etape*2)
 }
 ```
+
+`print` est une fonction simple qui permet d'écrire dans le terminal une information dans la console. Ici, le résultat du compteur multiplié par 2.
 
 ---
 # Un premier exercice simple
@@ -186,10 +183,12 @@ for(F in -50:100) {
 }
 ```
 
+`cat` est une commande similaire à `print` qui permet d'ajouter des séquences de caractères. 
+
 ---
 # Boucles et indexation
 
-Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. La variable de la boucle peut alors être utilisée directement comme index pour accéder à l'objet. Par exemple :
+Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. Le compteur de la boucle peut alors être utilisé directement comme indice pour accéder à de l'information dans l'objet. Par exemple :
 
 ```{r}
 test = runif(5, 0,1)
@@ -223,6 +222,8 @@ for(etape in -2:5) {
 }
 ```
 
+Dans cet exemple, on ne pourrait pas indexer à la position de départ (-2). On crée donc un objet `n` qui a une valeur de 1 au départ et qui augmente de 1 unité à chaque itération. On peut maintenant utiliser ce compteur pour indexer un objet (vecteur, matrice, liste etc...).
+
 ---
 # Exercice
 
@@ -231,7 +232,7 @@ Enregistrez les résultats de votre conversion dans une matrice avec pour colonn
 ---
 # Solution
 
-```{r  eval=FALSE}
+```{r  eval=TRUE}
 resultat = matrix(nr = 151, nc = 2)
 n = 1
 for(F in -50:100) {
@@ -243,35 +244,15 @@ head(resultat)
 ```
 
 ---
-# Exercice
-
-On peut aussi utiliser le compteur pour réaliser des opérations mathématiques récursives. Par exemple, la factorielle n! est définie comme :
-
-$$
-n! = 1 \times 2 \times 3 \times 4 \times .... n
-$$
-
-Calculez la factorielle 10 au moyen d'une boucle.
-
----
-# Solution
-
-```{r}
-n <- 1
-for(etape in 1:10) n <- n*etape
-n
-```
-
----
 # On complexifie le problème ....
 
 Il est possible de nicher une boucle dans une boucle. On réalise notamment cette opération pour faire des calculs sur des matrices, des listes...
 
-```{r eval = FALSE}
-ma_matrice <- matrix(nr = 5, nc = 3)
+```{r eval = TRUE}
+ma_matrice <- matrix(nr = 3, nc = 5)
 n <- 1
-for(i in 1:5) {
-    for(j in 1:3) {
+for(i in 1:3) {
+    for(j in 1:5) {
         ma_matrice[i,j] <- n
         n <- n + 1
     }
@@ -279,10 +260,12 @@ for(i in 1:5) {
 ma_matrice
 ```
 
+Notons qu'on remplit ici la matrice par rangée. On pourrait inverser les boucles pour y aller par colonne.
+
 ---
 # La boucle while
 
-La boucle de type *while*, pour 'pendant', répète une série d'intructions tant qu'une condition n'a pas été atteinte. C'est une version générale de la boucle *for*. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile.
+La boucle de type *while*, pour 'pendant que', répète une série d'intructions tant qu'une condition n'a pas été atteinte. C'est une version générale de la boucle *for*. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile.
 
 ```{r}
 piece <- c("pile","face")
@@ -295,13 +278,30 @@ while(combinaison != "pile-pile") {
 }
 ```
 
+La boucle va s'arrêter quand le résultat de la condition sera **FALSE**
+
 ---
 # Exercice
 
-Calculez en moyenne combien de fois vous avez à tirer un dé à 6 faces pour obtenir la valeur 1.
+Utilisez la boucle `while` pour calculez combien de fois vous avez à tirer un dé pour obtenir un 6.
 
 ---
 # Solution
+
+```{r}
+de <- c(1:6)
+n <- 1
+tirage <- 1 # Il faut initier le tirage
+set.seed(1) # Initier le générateur de nombre aléatoire
+while(tirage != 6) {
+	tirage <- sample(de,1) # tirage du dé
+	n <- n + 1 # mise à jour du compter pour tester le nombre de tirages
+    cat("Étape = ", n, "Valeur = ", tirage, '\n')
+}
+```
+
+---
+# Solution : on répète plusieurs fois
 
 ```{r}
 de <- c(1:6)
@@ -309,12 +309,12 @@ n_test <- 1000
 res <- numeric(n_test)
 for(i in 1:n_test) {
 	n <- 1
-	face <- 0
-	while(face != 6) {
-		face <- sample(de,1)
-		n <- n + 1
+	tirage <- 1 # Il faut initier le tirage
+	while(tirage != 6) {
+		tirage <- sample(de,1) # tirage du dé
+		n <- n + 1 # mise à jour du compter pour tester le nombre de tirages
 	}
-	res[i] <- n
+	res[i] <- n # Enregistrement du nombre de tirage
 }
 mean(res)
 ```
@@ -332,7 +332,6 @@ class: middle, center, inverse
 # Exercice intermédiaire
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
-
 ---
 # Croissance logistique
 
@@ -342,7 +341,7 @@ $$
 N_{t+1} = N_t + r \times N_t \times (1 - N_t/K)
 $$
 
-Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ($K$). Si on fixe le taux de croissance ($r$) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
+Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ( $K$ ). Si on fixe le taux de croissance ( $r$ ) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 ---
 # Solution 1
@@ -380,8 +379,23 @@ for(i in 2:(n_steps+1)) {
 ```{r, out.width = '50%', dpi=300, fig.align="center"}
 plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
 ```
+---
+# Qu'est-ce qui arrive avec $r = 2.75$ ?
 
 
+---
+# Qu'est-ce qui arrive avec $r = 2.75$ ?
+
+```{r, out.width = '40%', dpi=300, fig.align="center"}
+n_steps <- 115
+N <- numeric(n_steps+1)
+N[1] <- 220
+for(i in 2:(n_steps+1)) {
+    N[i] <- N[i-1] + 2.75 * N[i-1] * (1 - N[i-1]/200000)
+}
+plot(c(1900:2015), N, type = "l", xlab = "Année", ylab = "Population")
+
+```
 
 ---
 class: middle, center, inverse
@@ -399,10 +413,10 @@ La structure de base d'une expression conditionnelle est la suivante:
 
 ```{r eval = FALSE}
 if(condition) {
-    instruction(1)
+    # instruction 1
     }
 else {
-    instruction(2)
+    # instruction 2
 }
 ```
 
@@ -476,7 +490,7 @@ Les classiques :
 ---
 # Exercice
 
-1. Tirez au hasard 10 chiffres entre 0 et 1.
+1. Tirez au hasard 10 chiffres entre 0 et 1 avec `runif()`.
 2. Pour chacun de ces chiffres, déterminez s'il est plus petit ou plus grand que la valeur seuil de 0.3.
 3. Inscrivez votre résultat dans un autre objet.
 
@@ -595,6 +609,8 @@ res2[X < 0.2 | X > 0.6] <- "non"
 cbind(X,res2)
 ```
 ]
+
+Cette syntaxe est moins lisible et intuitive, vous n'avez pas à l'utiliser pour le cours. Il faut néanmoins pouvoir la reconnaitre et surtout savoir qu'elle est de 100 à 1000 plus rapide que la boucle `for`.
 
 
 ---
