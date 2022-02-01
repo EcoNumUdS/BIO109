@@ -44,6 +44,45 @@ class: title-slide, middle
 
 ---
 
+# Solutions de l'exercice de la séance 1
+
+Ordonner un vecteur `X` composé de 5 lettres de Scrabble
+
+.pull-left[
+## Solution 1: Bubble sorting
+
+```
+WHILE is.sort = FALSE
+  is.sort = TRUE
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      INVERSE
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
+```
+]
+
+.pull-right[
+
+## Solution 2: Stupid ranking
+
+```
+WHILE is.sort = FALSE
+  is.sort = TRUE
+  MELANGE X
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
+```
+]
+
+---
+
 # Contenu du cours
 
 1. Interagir avec R
