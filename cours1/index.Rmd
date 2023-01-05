@@ -1,7 +1,7 @@
 ---
 title: "Séance 1: Introduction à la programmation scientifique"
 author: "Dominique Gravel"
-date: "Hiver 2022"
+date: "Hiver 2023"
 output:
   xaringan::moon_reader:
     css: [default, ../assets/bio109.css, "hygge"]
@@ -36,24 +36,209 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;" alt="@Martin Sanchez"></hr>
 
 .instructors[
-  **BIO109** - Dominique Gravel
+  **BIO109** - Victor Cameron
 ]
 
-<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
+<img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 
 ---
 
-# INSTRUCTIONS COVID
+# Introduction
 
-- En présence lorsque possible
-- Matériel du cours : https://github.com/EcoNumUdS/BIO109
-- Assistants en classe et sur le clavardage
+<div style='text-align:center;'>
+<img src="assets/img/intro/darwin.jpg" height="500px"></img>
+</div>
+
+---
+
+# Introduction
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/jane_goodall.jpg" height="500px"></img>
+</div>
+
+---
+
+# Introduction
+<div style='text-align:center;'>
+<img src="assets/img/intro/biologist.jpg" height="500px"></img>
+</div>
+
+---
+
+# Introduction
+
+La programmation est un outil indispensable au biologiste 2.0, elle permet:
+
+- Tâches répétitives et/ou complexes (p.ex. Nettoyage des données, Simulations stochastiques)
+- Visualisation et exploration des données
+- Analyses statistiques avancées (p. ex. tests par permutations, statistiques bayésiennes)
+
+---
+
+# Enseignant
+
+## Victor Cameron
+- victor.cameron@usherbrooke.ca
+- D8-0012
+
+## Gabriel Bergeron (assistant)
+- gabriel.bergeron3@usherbrooke.ca
+- D8-0022
+
+## Benjamin Mercier (assistant)
+- benjamin.b.mercier@usherbrooke.ca
+- D8-0022
+
+Pour les questions d'intérêt général, vous pouvez utiliser le forum de discussion sur Moodle.
+
+---
+
+# Biodiversité Québec
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/inventaires.png" height="500px"></img>
+</div>
+
+---
+
+# Biodiversité Québec
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/portail.png" height="500px"></img>
+</div>
+
+---
+
+# Biodiversité Québec
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/indicateurs.png" height="500px"></img>
+</div>
+
+---
+
+# La programmation en science
+
+.pull-left[
+## Avantages
+
+- Gain de temps
+- Limiter les erreurs
+- Formaliser les opérations
+- Archiver, reproduire et partager
+- Tâches intensives (e.g. en génomique)
+]
+
+
+.pull-right[
+## Capacité de calcul
+<img src="assets/img/intro/moores.png" width="100%"></img>
+<span style="font-size:small;text-transform:uppercase;text-align:right;">
+</span>
+]
+
+---
+
+# La programmation et les sciences des données
+
+<img src="assets/img/intro/covid.png" align="center" width="80%"></img>
+
+---
+
+# La programmation en science
+
+.pull-left[
+## Inconvénients
+
+- L'erreur est avant tout humaine, avant d'être informatique
+- La courbe apprentissage peut être difficile
+]
+
+.pull-right[
+<img src="assets/img/intro/geek_mode.jpg" width="100%"></img>
+]
+
+---
+
+# Instructions
+
+- Présence en classe
+- Un ordinateur portable
+- Matériel du cours : https://github.com/EcoNumUdS/BIO109 et Moodle
+- 3h de cours - 6h de travail personnel
 - Lire les présentations avant le cours
-- Lever la main pour des questions
-- Utilisation du clavardage Teams (détailler votre question et fournir le code)
 - Faire les exercices
-- Ressources additionnelles : R Cheat Sheet et R pour les débutants
+- Ressources additionnelles : R Cheat Sheet, R pour les débutants, exercies supplémentaires et matériel sur Moodle.
+
+---
+
+# Objectif général
+
+Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.
+
+---
+
+# Objectifs spécifiques
+
+1. Conceptualiser un problème au moyen de pseudo-code;
+2. Manipuler des données;
+3. Rédiger des fonctions;
+4. Programmer des algorithmes afin de réaliser des tâches complexes,
+    incluant des boucles et des énoncés conditionnels;
+5. Réaliser des simulations de Monte Carlo;
+
+---
+
+# Ce que le cours n'est pas ...
+
+1. Des recettes
+2. Un catalogue de fonctions R
+3. Un cours de statistiques
+
+---
+
+# Approche
+
+Les connaissances requises pour la programmation scientifique sont
+minimales, l'apprentissage porte davantage sur l'acquisition de
+compétences et le développement de capacités à la résolution de problèmes.
+
+Les séances sont constituées de courtes leçons magistrales sur des
+notions de bases de programmation, entre-coupées d'exercices spécifiques
+destinés à pratiquer les éléments enseignés. Les séances se conclueront
+sur la réalisation d'un exercice intégrateur à compléter à la maison.
+
+L'ensemble du matériel du cours sera disponible sur un dépôt Git à l'adresse :
+https://github.com/EcoNumUdS/BIO109.git
+
+---
+
+# Évaluation
+
+L'évaluation porte sur la participation (18%) et sur un travail de session (82%). Un exercice simple sera présenté à la fin des séances 1-3 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la participation.</b> Les solutions seront présentées au cours suivant.
+
+- 3 exercies en classe (18%)
+- Évaluation terminale : réalisation d'un projet de programmation <b>en équipe de 2</b> (82%)
+  - Formatif : Pseudo-code à remettre avant la séance 5 (rétroaction retournée le 14 février)
+  - Sommatif : Pseudo-code bonifié (22%) + programme (60%) à remettre le <b>21 février à 23h59</b>
+
+Les évaluations sont à remettre sur Moodle.
+
+---
+
+# Évaluation terminale
+
+La pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
+partir de
+
+   1. le pseudo-code pour le projet de programmation,
+   2. le respect des bonnes pratiques de programmation
+   3. la réussite de l'exercice demandé.
+
+Les étudiants devront remettre le script nécessaire à la
+réalisation du projet.
 
 ---
 
@@ -156,185 +341,6 @@ round(cor(quadrats),6)
 ```{r,  fig.width= 6, fig.height= 6, fig.align='center'}
 plot(quadrats)
 ```
-
----
-
-# Objectif général
-
-Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.
-
----
-
-# Objectifs spécifiques
-
-1. Conceptualiser un problème au moyen de pseudo-code;
-2. Manipuler des données;
-3. Rédiger des fonctions;
-4. Programmer des algorithmes afin de réaliser des tâches complexes,
-    incluant des boucles et des énoncés conditionnels;
-5. Réaliser des simulations de Monte Carlo;
-
----
-
-# Ce que le cours n'est pas ...
-
-1. Des recettes
-2. Un catalogue de fonctions R
-3. Un cours de statistiques
-
----
-
-# Approche
-
-Les connaissances requises pour la programmation scientifique sont
-minimales, l'apprentissage porte davantage sur l'acquisition de
-compétences et le développement de capacités à la résolution de problèmes.
-
-Les séances sont constituées de courtes leçons magistrales sur des
-notions de bases de programmation, entre-coupées d'exercices spécifiques
-destinés à pratiquer les éléments enseignés. Les séances se conclueront
-sur la réalisation d'un exercice intégrateur à compléter à la maison.
-
-L'ensemble du matériel du cours sera disponible sur un dépôt Git à l'adresse :
-https://github.com/EcoNumUdS/BIO109.git
-
----
-
-# Évaluation
-
-L'évaluation porte sur la participation (20%) et sur un travail de session (80%). Un exercice simple sera présenté à la fin des séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la participation.</b> Les solutions seront présentées au cours suivant.
-
-L'évaluation finale portera sur la réalisation d'un projet de
-programmation <b>en équipe de 4</b> à remettre deux semaines après la fin du
-dernier cours, soit au plus tard le <b>22 février 2022 à 23:59</b>. La
-pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
-partir de
-
-   1. le pseudo-code pour le projet de programmation,
-   2. le respect des bonnes pratiques de programmation
-   3. la réussite de l'exercice demandé.
-
-Les étudiants devront remettre le script nécessaire à la
-réalisation du projet.
-
----
-class: inverse, center, middle
-
-# La place de la programmation en écologie
-<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
-
-
----
-
-# Hier
-
-La dynamique d'une population:
-
-$$
-\frac{dN}{dt} = rN(1-\frac{N}{K})
-$$
-
-Qui donne pour solution à l'équilibre:
-
-$$
-N^* = K
-$$
-
-$N =$ Taille d'une population
-
-$t =$ temps
-
-$r =$ taux de croissance
-
-$K =$ capacité de support de l'environnement
-
----
-
-# Aujourd'hui
-
-.pull-left[
-  <div style='text-align:center;'>
-  <img src="assets/img/intro/modele_vissault.png" width="100%"></img>
-  </div>
-]
-
-.pull-right[
-- R: Regénération
-- T: Forêts tempérées
-- M: Forêts mixes
-- B: Forêts boréale
-]
-
-
-
----
-
-# Aujourd'hui
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/map_vissault.png" height="550px"></img>
-</div>
-
----
-
-# Et demain, la modélisation de la biosphère?
-<div style='text-align:center;'>
-<img src="assets/img/intro/PurvesNature.jpg" height="400px"></img>
-</div>
-
----
-
-# Utilisation en science au quotidien
-
-La programmation est outil indispensable au biologiste 2.0, elle permet:
-
-- Tâches répétitives et/ou complexes (p.ex. Nettoyage des données, Simulations stochastiques)
-- Visualisation et exploration des données
-- Analyses statistiques avancées (p. ex. tests par permutations, statistiques bayésiennes)
-
----
-
-# La programmation en science
-
-.pull-left[
-## Avantages
-
-- Gain de temps
-- Limiter les erreurs
-- Formaliser les opérations
-- Archiver, reproduire et partager
-- Tâches intensives (e.g. en génomique)
-]
-
-
-.pull-right[
-## Capacité de calcul
-<img src="assets/img/intro/moores.png" width="100%"></img>
-<span style="font-size:small;text-transform:uppercase;text-align:right;">
-</span>
-]
-
----
-
-# La programmation et les sciences des données
-
-<img src="assets/img/intro/covid.png" align="center" width="80%"></img>
-
----
-
-# La programmation en science
-
-.pull-left[
-## Inconvénients
-
-- L'erreur est avant tout humaine, avant d'être informatique
-- La courbe apprentissage peut être difficile
-]
-
-.pull-right[
-<img src="assets/img/intro/geek_mode.jpg" width="100%"></img>
-]
-
 
 ---
 class: inverse, center, middle
@@ -904,6 +910,15 @@ class: inverse, middle, center
 > <b>9.</b> Contraindre les tirages au sort afin de le répéter
 
 > <b>10.</b> Utiliser le contrôle de version afin de pouvoir revenir dans le passé
+
+---
+class: inverse, middle, center
+
+# Installation de R et RStudio
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+À faire pour la <b>prochaine séance</b>. Le guide d'installation se trouve sur le site Moodle
+du cours sous la rubrique <b>Étape 1</b>. Le débuggage se fera au prochain cours
 
 ---
 class: inverse, middle, center

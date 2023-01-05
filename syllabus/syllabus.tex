@@ -1,5 +1,7 @@
 \documentclass[12]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{caption}
 \usepackage{authblk}
 \usepackage{geometry}
 \usepackage{amsmath}
@@ -18,21 +20,54 @@
 %\def\labelitemi{$\bullet$}
 
 
-\title{BIO-109 \\ Introduction à la programmation scientifique}
-\date {\printdate{2022-01-10}}
-\author {Dominique Gravel}
+\title{BIO109 : Introduction à la programmation scientifique}
+\date {Hiver 2023}
+\author {Victor Cameron}
 
 \affil {Département de biologie \\
 Université de Sherbrooke \\
-Local D8-3066 \\
-819-821-8000 \#66589}
-\affil {\url{dominique.gravel@usherbrooke.ca}}
+Local D8-0012 \\
+819-821-8000 \#61928}
+\affil {\url{victor.cameron@usherbrooke.ca}}
 
 \begin{document}
 
 	\maketitle
 
 	%-----------------------------
+	\section*{Renseignements généraux\footnote{Ce plan de cours est soumis au \textit{Règlement facultaire d'évaluation des apprentissages des étudiantes et des étudiants} de la faculté des sciences de l'Université de Sherbrooke et y est conforme.}} 
+        
+        \begin{center}
+        \begin{tabular}{ m{22em} m{24em} } 
+         \hline
+         \hline
+         \textbf{Nombre de crédits} & 1 \\ 
+         \hline
+         \textbf{Cours préalables} & Aucun \\
+         \hline
+         \textbf{Lieu du cours} & D7-2023 \\
+         \hline
+         \textbf{Jours et heures des cours} & 10, 17, 24 et 31 janvier et 7 février \\ & Tous les cours sont le mardi de 8h30 à 11h30 \\
+         \hline
+         \textbf{Session} & Hiver 2023 \\
+         \hline
+         \textbf{Date de début} & 10 janvier \\
+         \hline
+         \textbf{Date de fin} & 7 février \\
+         \hline
+         \textbf{Date de remise de l'évaluation finale} & 21 février à 23h59 \\
+         \hline
+         \textbf{Date limite de retrait} & 16 janvier \\
+         \hline
+         \textbf{Date limite d'abandon} & 30 janvier \\
+         \hline
+         \textbf{Assistants à l'enseignement} & Gabriel Bergeron \\ & Local D8-0022 \\ & \url{gabriel.bergeron3@usherbrooke.ca} \\ &
+         \\ & Benjamin Mercier \\ & Local D8-0022 \\ & \url{benjamin.b.mercier@usherbrooke.ca} \\
+         \hline
+         \hline
+        \end{tabular}
+        \end{center}
+	
 	\section*{Objectif général}
 
 	Les outils informatiques sont utilisés de façon croissante en écologie,
@@ -75,10 +110,12 @@ Local D8-3066 \\
 	%-----------------------------
 	\section*{Pré-requis}
 
+    Un ordinateur portable personnel est requis. \\
+
 	Ce cours obligatoire est offert aux étudiants en début de programme de
 	baccalauréat en biologie, concentration écologie. Aucun pré-requis n'est
 	exigé pour ce cours. Ce cours sera cependant un pré-requis au cours
-	BIO-109 sur les méthodes computationnelles en écologie, ainsi qu'au cours
+	BIO-500 sur les méthodes computationnelles en écologie, ainsi qu'au cours
 	BIO-300 en biométrie assistée par ordinateur. R est également utilisé
 	dans le cours ECL - 510.
 
@@ -97,70 +134,218 @@ Local D8-3066 \\
 	\url{https://github.com/EcoNumUdS/BIO109.git}
 
 	%-----------------------------
-	\section*{Contenu}
+	\section*{Déroulement du cours}
 
-	\subsection*{Cours 1: Introduction à la programmation scientifique}
-	\begin{itemize}
-	\renewcommand{\labelitemi}{$\bullet$}
-		\item Présentation du plan de cours
-		\item Historique et motivation au calcul scientifique
-		\item Le pseudo-code
-		\item Bonnes pratiques de programmation
-		\item Installation de R Studio
-	\end{itemize}
-
-	\subsection*{Cours 2: Les bases du langage R}
-	\renewcommand{\labelitemi}{$\bullet$}
-	\begin{itemize}
-		\item Interagir avec R
-		\item Lire et écrire des fichiers
-		\item Le script R
-		\item Manipulation des objets
-	\end{itemize}
-
-	\subsection*{Cours 3: Opérations et fonctions}
-	\renewcommand{\labelitemi}{$\bullet$}
-	\begin{itemize}
-		\item Opérations mathématiques
-		\item L'anatomie d'une fonction
-		\item Automatisation d'une série d'opérations
-	\end{itemize}
-
-	\subsection*{Cours 4: Algorithmique I}
-	\renewcommand{\labelitemi}{$\bullet$}
-	\begin{itemize}
-		\item Boucles
-		\item Opérateurs logiques
-	\end{itemize}
-
-	\subsection*{Cours 5: Algorithmique II}
-	\renewcommand{\labelitemi}{$\bullet$}
-	\begin{itemize}
-		\item Simulations de Monte Carlo
-		\item Optimisation des scripts
-	\end{itemize}
+	\begin{center}
+        \begin{tabular}{| p{0.1\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} | p{0.3\linewidth} | } 
+        \hline
+        Dates & Contenus & Activités pédagogiques & Activités d'évaluation \\ [0.5ex] 
+        \hline\hline
+        %------------ÉTAPE 0-----------------
+        %% Dates
+        \textbf{Étape 0} \linebreak 5 au 9 janvier & 
+        %% Contenus
+        Familiarisation avec l'environnement Moodle\hfill\hfill \linebreak\linebreak 
+        	- Lecture des guides d’aide disponibles sur la plateforme\hfill\hfill &
+        %% Stratégie pédagogique
+        - Exploration de la plateforme Moodle et du dépôt Git\hfill\hfill \linebreak
+        - Lecture du plan de cours\hfill\hfill \linebreak
+        - Participation au forum sur les attentes par rapport au cours\hfill\hfill & 
+        %% Activité d'évaluation
+         \\
+         \hline
+         %------------ÉTAPE 1-----------------
+         %% Dates
+         \textbf{Étape 1} \linebreak 10 au 16 janvier & 
+         %% Contenus
+        Introduction à la programmation scientifique\hfill\hfill \linebreak\linebreak
+            - Présentation du plan de cours\hfill \linebreak
+			- Historique et motivation au calcul scientifique\hfill\hfill \linebreak
+        	- Le pseudo-code\hfill\hfill \linebreak
+    		- Bonnes pratiques de programmation\hfill\hfill & 
+        %% Stratégie pédagogique
+        - \textbf{Séance 1} (10 janvier)\hfill\hfill \linebreak
+        - Participation au quiz : programme, expérience de programmation, perception d'utilité\hfill\hfill\hfill \linebreak
+        - Exercice : computation sur Excel vs. R\hfill\hfill\hfill \linebreak
+        - Exercice : pseudo-code\hfill\hfill\hfill \linebreak & 
+        %% Activité d'évaluation
+        \textbf{Évaluation 1} (individuelle) \linebreak
+        \textbf{Conception d'un pseudo-code}\hfill\hfill \linebreak
+        Conception d'un pseudo-code permettant de distinguer les étapes d'un programme. Remise sur Moodle avant la scéance 2\hfill\hfill \\
+        \hline
+        %------------ÉTAPE 2-----------------
+    	%% Dates
+        \textbf{Étape 2} \linebreak 17 au 23 janvier & 
+        %% Contenus
+        Les bases du langage R\hfill\hfill \linebreak\linebreak 
+            - Interagir avec R\hfill\hfill \linebreak
+            - Lire et écrire des fichiers\hfill\hfill \linebreak
+            - Le script R\hfill\hfill \linebreak
+            - Manipulation des objects\hfill\hfill &
+        %% Stratégie pédagogique
+        - \textbf{Séance 2} (17 janvier)\hfill\hfill \linebreak
+        - Lecture de la rubrique \textit{Les fichiers avec R} sous l'étape 2 de Moodle\hfill\hfill \linebreak
+        - Retour sur l'exercice du cours précédent\hfill\hfill \linebreak
+        - Exercice : interaction avec la ligne de commande\hfill\hfill \linebreak
+        - Exercice : création et indexation de vecteurs\hfill\hfill \linebreak
+        - Exercice : création et operation sur matrices\hfill\hfill \linebreak
+        - Exercice : manipulation des données avec Excel et R\hfill\hfill &
+        %% Activité d'évaluation
+        \textbf{Évaluation 2} (individuelle) \linebreak
+        \textbf{Conception d'un premier programme}\hfill\hfill \linebreak
+        Conception d'un script qui réalisera un ensemble d'étapes de la lacture
+        des données à l'enregistrement du tableau final. Remise sur Moodle
+        avant la séance 3\hfill\hfill\hfill \\
+        \hline
+        %------------ÉTAPE 3-----------------
+         %% Dates
+        \textbf{Étape 3} \linebreak 24 au 30 janvier & 
+        %% Contenus
+        Opérations et fonctions\hfill\hfill \linebreak\linebreak 
+            - Opérations mathématiques\hfill\hfill \linebreak
+            - L'anatomie d'une fonction\hfill\hfill \linebreak
+            - Automatisation d'une série d'opérations\hfill &
+        %% Stratégie pédagogique
+        - \textbf{Séance 3} (24 janvier)\hfill\hfill \linebreak 
+        - Retour sur l'exercice du cours précédent\hfill\hfill \linebreak
+        - Exercice : opérations mathématiques\hfill\hfill & 
+        %% Activité d'évaluation
+        \textbf{Évaluation 3} (individuelle) \linebreak
+        \textbf{Conception d'une fonction}\hfill\hfill \linebreak
+    Conception et utilisation d'une fonction automatisant une série d'actions à remettre avant la séance 4\hfill\hfill \\
+        \hline
+        %------------ÉTAPE 4-----------------
+         %% Dates
+        \textbf{Étape 4} \linebreak 31 janvier au 6 février & 
+        %% Contenus
+        Algorithmique I\hfill\hfill \linebreak\linebreak 
+            - Boucles\hfill\hfill \linebreak
+            - Opérateurs logiques\hfill\hfill &
+        %% Stratégie pédagogique
+        - \textbf{Séance 4} (31 janvier)\hfill\hfill \linebreak
+        - Exercices : Boucles for, boucles while\hfill\hfill \linebreak
+        - Exercice : opérateurs logiques\hfill\hfill & 
+        %% Activité d'évaluation
+        \\
+        \hline
+        %------------ÉTAPE 5-----------------
+         %% Dates
+        \textbf{Étape 5} \linebreak 31 janvier au 21 février & 
+        %% Contenus
+        Algorithmique II\hfill\hfill \linebreak\linebreak 
+            - Simulations de Monte Carlo\hfill\hfill \linebreak
+            - Optimisation des scripts\hfill\hfill \linebreak\linebreak
+        Programmation scientifique en fonction des techniques de bases et des bonnes pratiques &
+        %% Stratégie pédagogique
+        - Présentation des consignes du travail final (31 janvier)\hfill\hfill \linebreak
+        - Consultation de la grille d'évaluation pour l'évaluation terminale\hfill\hfill \linebreak
+        - \textbf{Séance 5} (7 février)\hfill\hfill \linebreak
+        - Exercice : programme qui pige au hasard\hfill\hfill \linebreak
+        - Exercice : échantillonnage d'une distribution\hfill\hfill \linebreak
+        - Exercice : Simuler un tirage de Bernouilli\hfill\hfill &
+        %% Activité d'évaluation
+        \textbf{Évaluation 4} (équipes de 2) \linebreak
+        \textbf{Conception d'un programme et d'un pseudo-code permettant d’évaluer la compétence du cours}\hfill\hfill \linebreak\linebreak
+        Formatif : À faire après la sécance 4. Remise avant la scéance 5 (7 février, 8h29)\hfill\hfill \linebreak\linebreak
+        Sommatif : Remise le 21 février sur Moodle du pseudo-code bonifié et du programme pour l'évaluation terminale \hfill\hfill  \\
+         \hline
+         \hline
+        \end{tabular}
+        \end{center}
 
 	%-----------------------------
 	\section*{Évaluation}
 
-	L'évaluation porte sur la participation aux exercices (20\%) et sur un
-	travail final (80\%). Un exercice simple sera présenté à la fin des
-	séances 1-4 et chaque étudiant devra remettre la solution de l'exercice sous
+	L'évaluation porte sur la participation aux exercices (18\%) et sur un
+	travail final (82\%). Un exercice simple sera présenté à la fin des
+	séances 1-3 et chaque étudiant devra remettre la solution de l'exercice sous
 	forme de script avant le début de la séance suivante. Les exercices
 	peuvent être réalisés en groupe, mais chaque étudiant devra remettre sa
 	propre copie, personnalisée. Les points sont attribués pour la
 	participation.
 
 	L'évaluation finale portera sur la réalisation d'un projet de
-	programmation en équipe de 4 à remettre deux semaines après la fin du
-	dernier cours, soit au plus tard le \textbf{22 février 2022 à 23:59}. La
+	programmation en équipe de 2 à remettre deux semaines après la fin du
+	dernier cours, soit au plus tard le \textbf{21 février 2022 à 23:59}. La
 	pénalité sera de 10\% par jour de retard. Le rapport final sera évalué à
 	partir de i) le pseudo-code pour le projet de programmation, ii) le
 	respect des bonnes pratiques de programmation et iii) la réussite de
 	l'exercice demandé. Les étudiants devront remettre le script nécessaire à
 	la réalisation du projet.
 
-	Les travaux devront tous être remis sur Moodle. Aucun travail ne sera accepté par courrier électronique.
+    \subsection*{Modalités de remise}
+
+	Les travaux devront tous être remis sur Moodle. Aucun travail ne sera
+	accepté par courrier électronique.
+
+	\subsection*{Modalités de correction et de notation pour l'évaluation terminale}
+
+	La note obtenue pour l’ensemble des travaux sera convertie en fonction des
+	cotes proposées par la Politique d’évaluation de l’Université de Sherbrooke.
+	La notation définitive sera exprimée en conformité avec le règlement de la
+	Faculté des sciences de l’Université de Sherbrooke, soit à partir du tableau
+	suivant :
+	
+	\begin{center}
+		\begin{table}[h]
+        \begin{tabular}{| p{0.2\linewidth} | p{0.2\linewidth} | p{0.2\linewidth} | p{0.2\linewidth} | p{0.2\linewidth} | } 
+        \hline
+		% Header ------------
+        \textbf{Excellent} \linebreak A+, A, A- &
+		\textbf{Très bien}\hfill\hfill \linebreak B+, B, B- & 
+		\textbf{Bien} \linebreak C+, C, C- & 
+		\textbf{Passable} \linebreak D+, D &
+		\textbf{Échec} \linebreak E \\ [0.5ex] 
+        \hline\hline
+		% Body ------------
+		% A+ : 91\% et plus \hfill\hfill \linebreak A : 88 à 90\% \hfill\hfill \linebreak A- : 85 à 87\% \hfill\hfill & 
+		% B+ : 82 à 84\% \hfill\hfill \linebreak B : 79 à 81\% \hfill\hfill \linebreak B- : 76 à 78\% \hfill\hfill & 
+		% C+ : 73 à 75\% \hfill\hfill \linebreak C : 70 à 72\% \hfill\hfill \linebreak C- : 67 à 69\% \hfill\hfill & 
+		% D+ : 64 à 66\% \hfill\hfill \linebreak D : 60 à 63\% \hfill\hfill & 
+		% E : 0 à 59\% \hfill \\ 
+		% \hline
+		% \hline
+		% Footer ------------
+        \multicolumn{2}{l}{W : échec par abandon\hfill\hfill \linebreak
+            AB* : abandon\hfill\hfill \linebreak} &
+        \multicolumn{2}{l}{
+            IN** : Incomplet\hfill\hfill \linebreak 
+            R : réussite\hfill\hfill} \\
+		% \hline
+		\hline
+		\end{tabular}
+		\caption*{* La mention AB est consignée seulement si l’étudiante ou l’étudiant abandonne le cours avant la date
+		limite d'abandon. Si la date limite d’abandon est dépassée, la mention au relevé de notes de l’étudiante
+		ou de l’étudiant sera W.\\
+		** La metion IN est utilisée au relevé de notes pour les activités
+		pédagogiques lorsque, pour des motifs acceptés par la faculté ou le
+		centre universitaire de formation, l’étudiante ou l’étudiant n’a pas
+		satisfait à toutes les exigences. Est remplacée par la note W (échec
+		par abandon) au relevé de notes du trimestre au cours duquel prend fin
+		le délai accordé si l’activité n’a pas été complétée.}
+		\end{table}
+	\end{center}
+
+    La note finale du cours sera remise au plus tard deux semaines après la
+	remise de l'évaluation finale.
+
+    \subsection*{Appréciation de la qualité de la langue}
+
+    En conformité avec l'article 17 du règlement facultaire d'évaluation
+    des apprentissages des étudiantes et des étudiants, la qualité du français
+    écrit dans l’évaluation peut être pis en compte. Tout travail non conforme
+    aux exigences quant à la qualité du français écrit et aux normes de
+    présentation  peut retourné à l'étudiante ou à l'étudiant et peut aussi
+    entrainer la perte de points pour une mauvaise qualité du français écrit.
+    La qualité du français peut compter jusqu'à 5\% des points alloués à
+    l'évaluation.
+
+	
+	
+    %-----------------------------
+	% \section*{Modalités de révision de notes}
+    
+    
 
 	%-----------------------------
 	\section*{Références}
