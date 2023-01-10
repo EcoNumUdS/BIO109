@@ -71,9 +71,10 @@ class: title-slide, middle
 
 La programmation est un outil indispensable au biologiste 2.0, elle permet:
 
-- Tâches répétitives et/ou complexes (p.ex. Nettoyage des données, Simulations stochastiques)
-- Visualisation et exploration des données
-- Analyses statistiques avancées (p. ex. tests par permutations, statistiques bayésiennes)
+- Tâches **répétitives et/ou complexes** (p.ex. nettoyer, explorer et traiter de larges quantités de données)
+- Faire des **analyses statistiques avancées** (p. ex. tests par permutations, statistiques bayésiennes)
+- Créer des visualisations et des outils interactifs pour **communiquer et sensibiliser** efficacement
+- Résoudre des **problèmes complexes** (p.ex. le suivi de la biodiversité, la modélisation de la dynamique des populations, la projection d'aires de distribution)
 
 ---
 
@@ -116,6 +117,22 @@ Pour les questions d'intérêt général, vous pouvez utiliser le forum de discu
 <div style='text-align:center;'>
 <img src="assets/img/intro/indicateurs.png" height="500px"></img>
 </div>
+
+---
+
+# La programmation en science
+
+## Retour sur le forum
+
+Attentes pour le cours
+- Interagir avec des larges quantités de données
+
+Utilisation de la programmation
+- Traiter de larges quantités de données
+- Application à d'autres fins que la recherche
+
+Apport de la programmation à la biologie
+- Aide et accélère le traitement des données à l'avantage de leur utilisation
 
 ---
 
@@ -187,7 +204,7 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 3. Rédiger des fonctions;
 4. Programmer des algorithmes afin de réaliser des tâches complexes,
     incluant des boucles et des énoncés conditionnels;
-5. Réaliser des simulations de Monte Carlo;
+5. Réaliser des simulations stochastiques.
 
 ---
 
@@ -203,7 +220,7 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 
 Les connaissances requises pour la programmation scientifique sont
 minimales, l'apprentissage porte davantage sur l'acquisition de
-compétences et le développement de capacités à la résolution de problèmes.
+**compétences** et le développement de **capacités à la résolution de problèmes**.
 
 Les séances sont constituées de courtes leçons magistrales sur des
 notions de bases de programmation, entre-coupées d'exercices spécifiques
@@ -917,8 +934,11 @@ class: inverse, middle, center
 # Installation de R et RStudio
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
-À faire pour la <b>prochaine séance</b>. Le guide d'installation se trouve sur le site Moodle
-du cours sous la rubrique <b>Étape 1</b>. Le débuggage se fera au prochain cours
+À faire pour la <b>prochaine séance</b>. 
+
+Le guide d'installation se trouve sur la page Moodle
+du cours sous la rubrique <b>Étape 1</b>. Le
+débuggage se fera au prochain cours.
 
 ---
 class: inverse, middle, center
@@ -936,6 +956,4 @@ class: inverse, middle, center
 
 Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Vous devez les écrire sous forme de pseudo-code.
 
-<b>Note 1 </b>: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
-
-<b>Note 2 </b>: vous pouvez assumer que l'ordinateur sait que 'A' vient avant 'B'.
+<b>Note </b>: vous pouvez assumer que l'ordinateur sait que 'A' vient avant 'B'.
