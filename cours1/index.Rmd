@@ -365,30 +365,6 @@ class: inverse, center, middle
 # Les langages de programmation
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
-
----
-
-# Deux grandes familles de langages
-
-1. Les langages compilés
-2. Les langages interprétés
-
----
-
-# Les langages compilés
-
-<div style='text-align:center;'>
-  <img src="assets/img/intro/compile.png"  width="900px"></img>
-</div>
-
----
-
-# Les langages interprétés
-
-<div style='text-align:center;'>
-  <img src="assets/img/intro/interprete.png" width="900px"></img>
-</div>
-
 ---
 
 # Choix d'un langage : performance
