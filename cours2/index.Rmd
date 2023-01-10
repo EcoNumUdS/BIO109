@@ -36,7 +36,7 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"></hr>
 
 .instructors[
-  **BIO109** - Dominique Gravel
+  **BIO109** - Victor Cameron
 ]
 
 <img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
@@ -52,34 +52,31 @@ Ordonner un vecteur `X` composé de 5 lettres de Scrabble
 ## Solution 1: Bubble sorting
 
 ```
-WHILE is.sort = FALSE
-  is.sort = TRUE
-  FOR pos IN 1:4
-    IF X[pos] > X[pos+1]
-      INVERSE
-      is.sort = FALSE
-    END IF
-  END FOR
-END WHILE  
-```
-]
+SET nombres
+SET min = 1
+SET max = 100
+SET i = 1
 
-.pull-right[
+WHILE i < 20
+  DERFINE r = generate_random_number()
+  IF r > min AND r < max
+    nombre[i] = r
+    i = i + 1
+  END IF
+END WHILE
 
-## Solution 2: Stupid ranking
+SET somme = 0
+FOR n IN nombres
+  somme = somme + n
+END FOR
 
+DEFINE longueur = length(nombres)
+DEFINE moyenne = somme / longueur
+
+WRITE moyenne
 ```
-WHILE is.sort = FALSE
-  is.sort = TRUE
-  MELANGE X
-  FOR pos IN 1:4
-    IF X[pos] > X[pos+1]
-      is.sort = FALSE
-    END IF
-  END FOR
-END WHILE  
-```
-]
+
+
 
 ---
 

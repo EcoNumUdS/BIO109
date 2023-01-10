@@ -382,6 +382,20 @@ class: inverse, center, middle
 </div>
 
 ---
+
+# Choix d'un langage : Statistiques et visualisation
+
+Pour ce cours, nous utiliserons R :
+
+- Langage de programmation open-source spécialisé en statistiques et en visualisation de données
+- De nombreuses bibliothèques et packages disponibles pour effectuer diverses analyses statistiques
+- Interface utilisateur RStudio pour faciliter l'utilisation de R
+- Grand nombre de ressources en ligne et communauté active d'utilisateurs de R
+- Création de sites Web et d'applications pour sensibiliser aux problèmes environnementaux et promouvoir des solutions durables.
+
+> Langage utilisé dans le cadre de : biométrie, statistiques, méthodes en écologie computationnelle
+
+---
 class: inverse, middle, center
 
 # Le Pseudo-Code
@@ -475,14 +489,14 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 
 # Assignation des objets
 
-Lorsque l'on crée un objet, il est initialement vide et il faut lui attribuer une valeur. On peut créer un scalaire : 
+Lorsque l'on crée un objet, il est initialement vide et il faut lui attribuer une valeur : 
 
 ```
 a = 1
 b = 2
 ```
 
-Et faire des opérations mathématiques sur ces objets : 
+On peut faire des opérations mathématiques sur ces objets : 
 
 ```
 a * b
@@ -907,7 +921,7 @@ class: inverse, middle, center
 ---
 class: inverse, middle, center
 
-# Installation de R et RStudio
+# Installation de R et de RStudio
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 À faire pour la <b>prochaine séance</b>. 
@@ -926,10 +940,10 @@ class: inverse, middle, center
 
 # Une situation qui peut arriver tous les jours
 
-1. On jette en face de vous 5 lettres d'un jeu de scrabble
+Écrivez un pseudo-code pour générer une liste de 20 nombres aléatoires compris entre 1 et 100, puis afficher la moyenne de ces nombres.
 
-2. Un maniaque vous demande d'écrire un programme qui ordonne les 5 lettres
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous générez les chiffres et lorsque vous en calculez la moyenne. Vous devez les écrire sous forme de pseudo-code.
 
-Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Vous devez les écrire sous forme de pseudo-code.
+<b>Note 1</b>: vous pouvez assumer que l'ordinateur peut produire un nombre alléatoire à l'aide de la commande `generate_random_number()`.
 
-<b>Note </b>: vous pouvez assumer que l'ordinateur sait que 'A' vient avant 'B'.
+<b>Note 2</b>: vous pouvez assumer que l'ordinateur peut déterminer la longueur d'un vecteur à l'aide de la commande `length()`.
