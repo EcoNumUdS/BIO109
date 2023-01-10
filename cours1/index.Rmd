@@ -620,7 +620,7 @@ La boucle est une séquence de base utilisée par tous les langages de programma
 
 Elle permet de répéter une opération un grand nombre de fois automatiquement. 
 
-La boucle est définie par un point de départ, un point de d'arrivée et la séquence des opérations à réaliser à chaque itération de la boucle. 
+La boucle est définie par un **point de départ**, un **point de d'arrivée** et la **séquence des opérations** à réaliser à chaque itération de la boucle. 
 
 Un indice permet de suivre la position dans la boucle.
 
@@ -924,11 +924,12 @@ class: inverse, middle, center
 # Installation de R et de RStudio
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
-À faire pour la <b>prochaine séance</b>. 
+À faire pour la <b>prochaine séance</b>
 
-Le guide d'installation se trouve sur la page Moodle
-du cours sous la rubrique <b>Étape 1</b>. Le
-débuggage se fera au prochain cours.
+- Le guide d'installation se trouve sur la page Moodle
+du cours sous la rubrique <b>Étape 1</b>
+<!-- - Le débuggage se fera au prochain cours. -->
+- Utiliser le forum pour les questions
 
 ---
 class: inverse, middle, center
@@ -942,8 +943,8 @@ class: inverse, middle, center
 
 Écrivez un pseudo-code pour générer une liste de 20 nombres aléatoires compris entre 1 et 100, puis afficher la moyenne de ces nombres.
 
-Prenez le temps de distinguer les étapes que vous réalisez lorsque vous générez les chiffres et lorsque vous en calculez la moyenne. Vous devez les écrire sous forme de pseudo-code.
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous générez les chiffres et lorsque vous en calculez la moyenne.
 
-<b>Note 1</b>: vous pouvez assumer que l'ordinateur peut produire un nombre alléatoire à l'aide de la commande `generate_random_number()`.
+<b>Note 1</b>: vous pouvez assumer que l'ordinateur peut produire un nombre alléatoire à l'aide de la fonction `RANDOM()`.
 
-<b>Note 2</b>: vous pouvez assumer que l'ordinateur peut déterminer la longueur d'un vecteur à l'aide de la commande `length()`.
+<b>Note 2</b>: vous pouvez assumer que l'ordinateur peut déterminer la longueur d'un vecteur à l'aide de la fonction `LENGTH()`.
