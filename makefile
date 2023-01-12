@@ -18,7 +18,7 @@ deploy:
 			cp ./$$dir/index.html ./slides/$$dir ; \
 			cp ./$$dir/index.pdf ./slides/$$dir ; \
 			cp -r ./$$dir/assets ./slides/$$dir ; \
-			if [ -d "./$$dir/donnees"]; then cp -r ./$$dir/donnees ./slides/$$dir; fi ; \
+			cp -r ./$$dir/donnees ./slides/$$dir; \
 			if [ -d "./$$dir/index_files" ]; then cp -r ./$$dir/index_files ./slides/$$dir; fi ; \
 	done
 	Rscript -e "rmarkdown::render('README.md', output_file = 'index.html', output_dir = 'slides')"
