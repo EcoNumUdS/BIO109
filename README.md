@@ -5,11 +5,11 @@
 
 (1 crédit; 15 heures)
 
-**Professeur:** Dominique Gravel
+**Enseignant:** Victor Cameron
 
 ## Plan de cours
 
-- [PDF du plan de cours](./syllabus/syllabus.pdf)
+- [PDF du plan de cours](https://github.com/EcoNumUdS/BIO109/raw/master/syllabus/syllabus.pdf)
 
 ## Séance 1: Introduction
 
@@ -72,8 +72,8 @@ Ce commande là va nous compiler les fichiers `html` que ne sont pas à jours av
 Pour compiler une seule présentation, il faut spécifier le nom du bloc du cours envisagé:
 
 ```bash
-# compiler première bloc du cours
-make -C bloc1
+# compiler premier cours
+make -C cours1
 ```
 
 ### Workflow
