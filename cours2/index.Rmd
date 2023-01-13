@@ -503,7 +503,7 @@ Mise en garde sans arrêter l'exécution
 
 ```{r, eval=FALSE}
 # Un vecteur
-x <- c("2", -3, "end", 0, 4, 0.2)
+x <- "end"
 
 # Une opération
 as.numeric(x)
@@ -513,7 +513,7 @@ La sortie dans la console :
 
 ```
 > as.numeric(x)
-[1]  2.0 -3.0   NA  0.0  4.0  0.2
+[1] NA
 Message d'avis :
 NAs introduits lors de la conversion automatique 
 ```
@@ -528,10 +528,10 @@ class: middle, center, inverse
 
 # Les types de valeurs
 
-- numérique
-- caractère
-- booléen
-- facteur
+- `numérique`
+- `caractère`
+- `booléen`
+- `facteur`
 
 ---
 # Assigner une valeur de type `numérique`
@@ -559,17 +559,6 @@ test
 
 **Important** - Les valeurs de type `caractère` doivent être placées entre guillemets. Cette nomenclature permet de différencier une valeur du nom d'un objet.
 
-
----
-# Assigner une valeur de type `caractère`
-
-## Finalement, des séries de caractères peuvent être collées entre elles pour créer des chaines de caractères.
-
-```{r}
-collage <- paste("a","b", sep="")
-collage
-```
-
 ---
 
 # Assigner une valeur de type `booléen`
@@ -590,7 +579,7 @@ vrai + faux
 R est d'abord un langage utilisé pour les statistiques, et par conséquent on y retrouve un type de données utilisé pour la réalisation de tests d'hypothèse, qui ne sont pas standard à tous les langages. Les facteurs sont des données de catégories comme des traitements expérimentaux.
 
 ```{r}
-MesFacteurs <- factor(c("trait1","trait2","trait3","trait2","trait3","trait3","trait1","trait2"))
+MesFacteurs <- factor(c("trait1","trait2","trait3","trait2","trait3","trait3"))
 MesFacteurs
 ```
 
@@ -669,6 +658,8 @@ MonPremierVecteur <- c(1,2,3,4,5)
 MonPremierVecteur
 ```
 
+`c` signifie combiner
+
 **Note** - D'autres méthodes seront présentées plus loin.
 
 ---
@@ -713,7 +704,54 @@ MonPremierVecteur[6]
 
 # Exercice  
 
-Au moyen du vecteur créé précédemment, calculer le produit des valeurs aux positions `2` et `4`.
+1. Au moyen du vecteur créé précédemment, calculer le produit des valeurs aux positions `2` et `4`.
+2. Sélectionner les valeurs du vecteur qui sont supérieures à `3`.
+
+---
+
+# Types d'objets: les `vecteurs`
+
+## On peut également accéder à plusieurs positions en même temps:
+
+```{r}
+MonPremierVecteur[c(1,3,5)]
+```
+
+## On peut utiliser une condition pour sélectionner des valeurs:
+
+```{r}
+vect <- c(2,4,6,8,10)
+vect[vect > 5]
+```
+
+---
+
+# Note sur les opérateurs logiques
+
+| Opérateur | Signification |
+|:---------:|:-------------:|
+| `==` | égal à |
+| != | différent de |
+| `>` | supérieur à |
+| `<` | inférieur à |
+| `>=` | supérieur ou égal à |
+| `<=` | inférieur ou égal à |
+
+**NOTE** : Pour plus de détails sur les opérateurs logiques, voir [operators](https://www.statmethods.net/management/operators.html)
+
+---
+
+# Note sur les opérateurs logiques
+
+## On peut combiner plusieurs conditions avec les opérateurs `&` et `|`
+
+```{r}
+vect <- c(2,4,6,8,10)
+# 'condition 1 et condition2'
+vect[vect > 5 & vect < 10]
+# 'condition1 ou condition2'
+vect[vect > 8 | vect < 4]
+```
 
 ---
 
@@ -729,7 +767,7 @@ length(MonPremierVecteur)
 
 # Types d'objets: les `matrices`
 
-L'extension naturelle d'un vecteur est une `matrice`, soit une collection de vecteurs.
+La `matrice` est un objet qui contient plusieurs vecteurs de même dimension.
 R est également optimisé pour réaliser des opérations mathématiques et de manipulation de données sur ce type d'objets.
 
 ## La commande de base pour créer une matrice est `matrix()`
@@ -767,16 +805,6 @@ MaMatrice[,1]
 ## On obtient la dimension de la matrice ainsi
 
 ```{r}
-dim(MaMatrice)
-```
-
----
-
-# Types d'objets: les `matrices`
-
-## Ou encore
-
-```{r}
 nrow(MaMatrice)
 ncol(MaMatrice)
 ```
@@ -807,33 +835,6 @@ Créez une matrice de 2 lignes et 5 colonnes remplies de chiffres tirés au hasa
 
 ---
 
-# Type d'objets: les `listes`
-
-R peut organiser également des collections d'objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques.
-
-## La création et l'indexation des listes sont très similaires à celle des vecteurs et matrices
-
-```{r}
-MaListe = list()
-MaListe[[1]] = c(1,2)
-MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
-```
-
-`MaListe[[1]]` permet d'obtenir l'objet contenu par le premier niveau de la liste.
-
----
-
-# Type d'objets: les `listes`
-
-## Et de même on peut nommer les items d'une liste
-
-```{r}
-names(MaListe) <- c("Element1","Element2")
-MaListe
-```
-
----
-
 # Type d'objets: les `data.frame`
 
 ## Le `data.frame` se décrit comme un tableau de données, avec les rangées `i` et les colonnes `j`, ainsi que des noms de colonnes.
@@ -852,6 +853,8 @@ On peut indexer une colonne directement avec le symbole "$"
 # Type d'objets: les `data.frame`
 
 ## Un `data.frame` peut avoir différents types de valeur pour chaque colonne
+
+Mais chaque colonne doit être du même type
 
 ```{r}
 df2 <- data.frame(a = c(1:3), traitement = factor(c("trait1","trait2","trait3")))
@@ -880,6 +883,33 @@ as.matrix(df2)
 ```{r}
 mat <- matrix(c(1:6), nrow = 3, ncol = 2)
 as.data.frame(mat)
+```
+
+---
+
+# Type d'objets: les `listes`
+
+R peut organiser également des collections d'objets sous forme de liste. Ces collections peuvent être très hétérogènes et rassembler par exemple, des vecteurs et matrices, mais aussi des objets plus complexes et hiérarchiques comme des résultats d'analyses statistiques.
+
+## La création et l'indexation des listes sont très similaires à celle des vecteurs et matrices
+
+```{r}
+MaListe = list()
+MaListe[[1]] = c(1,2)
+MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
+```
+
+`MaListe[[1]]` permet d'obtenir l'objet contenu par le premier niveau de la liste.
+
+---
+
+# Type d'objets: les `listes`
+
+## Et de même on peut nommer les items d'une liste
+
+```{r}
+names(MaListe) <- c("Element1","Element2")
+MaListe
 ```
 
 ---
@@ -933,6 +963,15 @@ Nous allons utiliser le fichier [arbres.csv](./donnees/arbres.csv) pour cet exem
 arbres <- read.table(file = "donnees/arbres.csv", header = T, dec = ".", sep = ";")
 head(arbres)
 ```
+
+---
+
+# Exercice : Ouvrir un fichier `.csv` dans R
+
+1. Créer un dossier dans votre répertoire de travail `cours2` et nommer le `donnees`.
+2. Télécharger le fichier [arbres.csv](./donnees/arbres.csv) et le sauver dans le dossier `donnees`.
+3. Ouvrir le fichier avec 
+`arbres <- read.table(file = "donnees/arbres.csv", header = T, dec = ".", sep = ";")`
 
 ---
 
@@ -1089,6 +1128,28 @@ n_sp
 ---
 class: middle, center, inverse
 
+# Ressources
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+---
+
+# Ressources dans R
+
+- `?` pour obtenir de l'aide sur une fonction
+
+```r
+?mean
+```
+
+
+# Ressources en ligne
+
+- [stackoverflow.com](stackoverflow.com)
+- [R for Data Science](https://r4ds.had.co.nz/)
+
+---
+class: middle, center, inverse
+
 # Manipulation des données
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
@@ -1103,19 +1164,11 @@ rep(c(1:3), times = 3)
 ```
 
 ---
-
-# Différents outils pour générer des données
-
-```{r}
-v1 <- c(1:3)
-v2 <- c("A","B","C")
-expand.grid(v1,v2)
-```
-
----
 # Combiner des objets
 
 ```{r}
+v1 <- c(1:3)
+v2 <- c("A", "B", "C")
 rbind(v1,v2)
 cbind(v1,v2)
 ```
@@ -1158,7 +1211,7 @@ Ici par exemple, dans l'exemple de Sutton, on souhaite étudier seulement les qu
 
 ```{r}
 arbres <- read.table(file="donnees/arbres.csv", header=TRUE, stringsAsFactors=FALSE, sep = ";")
-sub_quadrats <- subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200 )
+sub_quadrats <- subset(arbres, arbres$esp == "acsa" & arbres$dhp >= 200)
 head(sub_quadrats, n=2)
 ```
 
