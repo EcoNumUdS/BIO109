@@ -39,41 +39,234 @@ class: title-slide, middle
   **BIO109** - Victor Cameron
 ]
 
-<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
-
+<img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 ---
 
-# Solutions de l'exercice de la séance 1
+# Révision IF/IF ELSE/ELSE
 
-Ordonner un vecteur `X` composé de 5 lettres de Scrabble
+## Imprimer le résultat d'un test
 
 .pull-left[
-## Solution 1: Bubble sorting
+
+Avec `IF`/`IF ELSE`/`ELSE`
+```
+IF note >= 90
+  PRINT "Exceptionel"
+IF ELSE note >= 80
+  PRINT "Très bien"
+IF ELSE note >= 60
+  WRITE "Vous avez réussi"
+ELSE
+  WRITE "Vous avez échoué"
+END IF
+```
+]
+
+.pull-right[
+
+Avec `IF`
+```
+IF note >= 90
+  PRINT "Exceptionel"
+END IF
+
+IF note >= 80 
+  IF note < 90
+    PRINT "Très bien"
+  END IF
+END IF
+
+IF note >= 60
+  IF note < 80
+    WRITE "Vous avez réussi"
+  END IF
+END IF
+
+IF note < 60
+  WRITE "Vous avez échoué"
+END IF
+```
+]
+
+---
+
+# Révision IF/IF ELSE/ELSE
+
+## Pour note = 85
+
+.pull-left[
+
+Avec `IF`/`IF ELSE`/`ELSE`
+```
+IF note >= 90        <------- Évalué
+  PRINT "Exceptionel"
+IF ELSE note >= 80   <------- Évalué
+  PRINT "Très bien"
+IF ELSE note >= 60   <------- Non évalué
+  WRITE "Vous avez réussi"
+ELSE                 <------- Non évalué
+  WRITE "Vous avez échoué"
+END IF
+```
+]
+
+.pull-right[
+
+Avec `IF`
+```
+IF note >= 90              <-- Évalué
+  PRINT "Exceptionel"
+END IF
+
+IF note < 90                <-- Évalué
+  IF note >= 80             <-- Évalué
+    PRINT "Très bien"
+  END IF
+END IF
+
+IF note < 80                <-- Évalué
+  IF note >= 60             <-- Non valué
+    WRITE "Vous avez réussi"
+  END IF
+END IF
+
+IF note < 60               <-- Évalué
+  WRITE "Vous avez échoué"
+END IF
+```
+]
+
+---
+
+# Solution de l'exercice de la séance 1
+
+Calculer la moyenne d'un vecteur `nombres` composé de 20 nombres entre 1 et 100
+
+## Solution
+
+Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+Étape 2 : calculer la moyenne des nombres
+
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
 
 ```
-SET nombres
-SET min = 1
-SET max = 100
-SET i = 1
+DERFINE r = RANDOM()
+```
 
-WHILE i < 20
-  DERFINE r = generate_random_number()
-  IF r > min AND r < max
-    nombre[i] = r
-    i = i + 1
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+```
+PROGRAM DEVOIR
+  SET nombres
+  DEFINE i = 1
+
+DERFINE r = RANDOM()
+  IF r >= 1 
+    IF r <= 100
+      nombres[i] = r
+    END IF  
   END IF
-END WHILE
+```
 
-SET somme = 0
-FOR n IN nombres
-  somme = somme + n
-END FOR
+---
 
-DEFINE longueur = length(nombres)
-DEFINE moyenne = somme / longueur
+# Solution de l'exercice de la séance 1
 
-WRITE moyenne
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+```
+PROGRAM DEVOIR
+  SET nombres
+  DEFINE i = 1
+
+  FOR loop IN 1:1000
+    DERFINE r = RANDOM()
+    IF r >= 1 
+      IF r <= 100
+        nombres[i] = r
+        i = i + 1
+      END IF
+    END IF
+  END FOR
+```
+
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+```
+PROGRAM DEVOIR
+  SET nombres
+  DEFINE i = 1
+
+  FOR loop IN 1:1000
+    DERFINE r = RANDOM()
+    IF r >= 1 
+      IF r <= 100
+        nombres[i] = r
+        i = i + 1
+      END IF
+    END IF
+
+    IF LENGTH(nombre) == 20
+      BREAK
+    END IF
+  END FOR
+```
+
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+```
+PROGRAM DEVOIR
+  SET nombres
+  DEFINE i = 1
+
+  WHILE LENGTH(nombres) < 20           <--- Utiliser WHILE
+    DERFINE r = RANDOM()
+    IF r >= 1 
+      IF r <= 100
+        nombres[i] = r
+        i = i + 1
+      END IF
+    END IF
+  END WHILE
+```
+
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 2 : calculer la moyenne des nombres
+
+
+```
+PROGRAM DEVOIR (SUITE)
+  DEFINE somme = 0
+
+  FOR position IN 1:20
+    somme = somme + nombres[position]
+  END FOR
+
+  DEFINE longueur = LENGTH(nombres)
+  DEFINE moyenne = somme / longueur
+
+  WRITE moyenne
 ```
 
 
@@ -639,7 +832,7 @@ Pour ce faire, nous utiliserons les fichiers sous format `CSV` (*Comma Separated
 
 # Lire un fichier
 
-Si j'ouvre le fichier [arbres.csv](arbres.csv) avec un bloc note, j'obtiens les 5 premières lignes suivantes:
+Si j'ouvre le fichier [arbres.csv](./donnees/arbres.csv) avec un bloc note, j'obtiens les 5 premières lignes suivantes:
 
 ```
 id_bor;borx;bory;arbre;esp;multi;mort;dhp
