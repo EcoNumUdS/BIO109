@@ -294,6 +294,12 @@ R est un langage de programmation en source libre conçu pour l'analyse statisti
 5. Intégration du langage de programmation avec les outils de visualisation et de manipulation des données
 
 ---
+class: middle, center, inverse
+
+# Débuter avec R et RStudio
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+---
 
 # Utiliser R Studio
 
@@ -311,9 +317,9 @@ R est un langage de programmation en source libre conçu pour l'analyse statisti
 
 ---
 
-# Exercice : interaction avec la ligne de commande
+# Exercice : interaction avec la console
 
-Le plus simple est d'utiliser R comme une calculatrice.
+Vous pouvez obtenir une sortie de R en tapant des calculs dans la console.
 
 ## Que donne l'opération suivante ?
 
@@ -366,30 +372,29 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
 
 # Environnement de travail
 
-## Obtenir le contenu du dossier dans le répertoire de travail
+.pull-left[
+  ## Obtenir le contenu du dossier dans le répertoire de travail
+  ```{r}
+    dir()
+  ```
 
-```{r}
-dir()
-```
+  ## Obtenir la liste des objets en mémoire
+  ```{r}
+    ls()
+  ```
+]
 
-## Obtenir la liste des objets en mémoire
-
-```{r}
-ls()
-```
+.pull-right[
+  <div style='text-align:center;'>
+  <img src="assets/img/intro/RStudio.png" width="100%"></img>
+  </div>
+]
 
 ---
 
-# Environnement de travail
+# Le script 
 
-## Effacer un objet en mémoire:
-
-```{r}
-test <- 1
-ls()
-rm(test)
-ls()
-```
+C'est bien d'utiliser R comme une claculatrice glorifiée, mais on peut faire beaucoup plus !
 
 ---
 
@@ -397,21 +402,17 @@ ls()
 
 Un script est un fichier `.R` contenant une série d'instructions et de commentaires pour réaliser des opérations sur R. Le script est utilisé pour conserver l'historique des opérations et les répéter au besoin.
 
-Un bon éditeur de script (e.g. RStudio ou R GUI) permet d'exécuter une ligne de commande à la fois, un bloc de commandes ou encore l'ensemble du script (avec crtl + enter ou fonction + R).
-
-Il est préférable d'utiliser uniquement le script et de l'enregistrer et de ne pas enregistrer le contenu de la console. Ainsi la reproductibilité est assurée. 
+Il est préférable d'utiliser uniquement le script et de documenter les commandes utilisées. Ainsi la reproductibilité est assurée. 
 
 ---
 
-# Le script : fonction source
+# Le script : exercice
 
-Il est possible d'exécuter un script sans avoir à l'ouvrir. 
-
-```{r eval = FALSE}
-
-source("MonScript.R")
-
-```
+1. Sur votre ordinateur, créer un nouveau dossier nommé `cours2`
+2. Dans RStudio, définir ce dossier comme le répertoire de travail
+> RStudio -> session -> changer répertoire 
+3. Créer un nouveau script appelé `MonScript.R`
+> RStudio -> fichier -> nouveau fichier -> R script
 
 ---
 
@@ -435,9 +436,87 @@ a
 # Le concept d'objet
 
 - Notons que les opérateurs `<-` et `=` sont équivalents pour attribuer une valeur à un objet.
-- L'opérateur `<-` peut-être difficile à lire ou confondu avec le signe `-`.
 
 ## La recommandation est donc de limiter le signe `=` à des opérations mathématiques et d'utiliser `<-` pour l'assignation de valeurs.
+
+---
+
+# Le commentaire
+
+Un script peut contenir des commentaires
+
+```{r, eval=FALSE}
+# Une première opération
+3 + 5
+```
+
+
+---
+
+# Exercice 2
+
+Dans le script `MonScript.R`, ajouter et puis exécuter les lignes suivantes:
+
+```{r, eval=FALSE}
+# Une première opération
+3 + 5
+
+# Une deuxième opération
+x * 10
+```
+
+---
+
+# Les erreurs et avertissements
+
+## Error
+
+Arrêt de l'exécution
+
+```{r, eval=FALSE}
+# Une première opération
+3 + 5
+
+# Une deuxième opération
+x * 10
+```
+
+La sortie dans la console :
+
+```
+> # Une première opération
+> 3 + 5
+[1] 8
+> 
+> # Une deuxième opération
+> x * 10
+Erreur : objet 'x' introuvable
+```
+
+---
+
+# Les erreurs et avertissements
+
+## Warning
+
+Mise en garde sans arrêter l'exécution
+
+```{r, eval=FALSE}
+# Un vecteur
+x <- c("2", -3, "end", 0, 4, 0.2)
+
+# Une opération
+as.numeric(x)
+```
+
+La sortie dans la console :
+
+```
+> as.numeric(x)
+[1]  2.0 -3.0   NA  0.0  4.0  0.2
+Message d'avis :
+NAs introduits lors de la conversion automatique 
+```
 
 ---
 class: middle, center, inverse
@@ -445,6 +524,14 @@ class: middle, center, inverse
 # Les types de valeurs assignables à un objet
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
+---
+
+# Les types de valeurs
+
+- numérique
+- caractère
+- booléen
+- facteur
 
 ---
 # Assigner une valeur de type `numérique`
@@ -1078,6 +1165,19 @@ head(sub_quadrats, n=2)
 Le "==" est utilisé pour sélectionner les individus qui sont des acsa et le symbole "&" pour combiner deux conditions.
 
 ---
+
+# Fonction source
+
+Il est possible d'exécuter un script sans avoir à l'ouvrir. 
+
+```{r eval = FALSE}
+
+source("MonScript.R")
+
+```
+
+---
+
 # Exercice de fin de séance
 
 Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
