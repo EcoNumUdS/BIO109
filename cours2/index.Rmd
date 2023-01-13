@@ -295,14 +295,6 @@ R est un langage de programmation en source libre conçu pour l'analyse statisti
 
 ---
 
-# Interagir avec R sur la console
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/Rgui.png" height="500px"></img>
-</div>
-
----
-
 # Utiliser R Studio
 
 <div style='text-align:center;'>
@@ -311,7 +303,7 @@ R est un langage de programmation en source libre conçu pour l'analyse statisti
 
 ---
 
-# Exercice : installer et lancer R Studio
+# Exercice : lancer R Studio
 
 <div style='text-align:center;'>
 <img src="assets/img/intro/RStudio_logo.png" height="100px"></img>
@@ -368,17 +360,7 @@ Le problème étant que le backslash est utilisé pour marquer un espace dans le
 
 ## Changer le répertoire de travail
 
-Pour les utilisateurs R Studio : 
-
 > RStudio -> session -> changer répertoire 
-
-Pour les utilisateurs R GUI (Windows):
-
-> file -> set working directory
-
-Pour les utilisateurs R GUI (Mac):
-
-> file -> set working directory
 
 ---
 
