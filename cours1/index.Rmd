@@ -667,6 +667,7 @@ Quelle valeur prendra x au terme de l'exécution du programme ?
 ```
 PROGRAM DEMO
   SET resultat
+  resultat[0] = 1
   DEFINE lambda = 1.1
   FOR etape IN 1:100
     resultat[etape] = resultat[etape-1] * lambda
