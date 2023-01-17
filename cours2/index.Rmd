@@ -52,9 +52,9 @@ class: title-slide, middle
 Avec `IF`/`IF ELSE`/`ELSE`
 ```
 IF note >= 90
-  PRINT "Exceptionel"
+  WRITE "Exceptionel"
 IF ELSE note >= 80
-  PRINT "Très bien"
+  WRITE "Très bien"
 IF ELSE note >= 60
   WRITE "Vous avez réussi"
 ELSE
@@ -68,17 +68,17 @@ END IF
 Avec `IF`
 ```
 IF note >= 90
-  PRINT "Exceptionel"
+  WRITE "Exceptionel"
 END IF
 
-IF note >= 80 
-  IF note < 90
-    PRINT "Très bien"
+IF note < 90 
+  IF note >= 80
+    WRITE "Très bien"
   END IF
 END IF
 
-IF note >= 60
-  IF note < 80
+IF note < 80
+  IF note >= 60
     WRITE "Vous avez réussi"
   END IF
 END IF
@@ -100,9 +100,9 @@ END IF
 Avec `IF`/`IF ELSE`/`ELSE`
 ```
 IF note >= 90        <------- Évalué
-  PRINT "Exceptionel"
+  WRITE "Exceptionel"
 IF ELSE note >= 80   <------- Évalué
-  PRINT "Très bien"
+  WRITE "Très bien"
 IF ELSE note >= 60   <------- Non évalué
   WRITE "Vous avez réussi"
 ELSE                 <------- Non évalué
@@ -116,12 +116,12 @@ END IF
 Avec `IF`
 ```
 IF note >= 90              <-- Évalué
-  PRINT "Exceptionel"
+  WRITE "Exceptionel"
 END IF
 
 IF note < 90                <-- Évalué
   IF note >= 80             <-- Évalué
-    PRINT "Très bien"
+    WRITE "Très bien"
   END IF
 END IF
 
@@ -269,29 +269,29 @@ PROGRAM DEVOIR (SUITE)
   WRITE moyenne
 ```
 
+---
 
+# Rappel : les règles du `pseudo-code`
+
+## À garder en mémoire
+
+1. N'écrivez qu'une seule instruction par ligne de pseudo-code.
+2. Écrivez en lettres majuscules le verbe de chaque opération principale (la fonction utilisée)
+3. Soyez explicite en nommant les opérations et les variables.
+4. Soyez le plus détaillé possible (c.à.d les plus petites étapes possibles)
+5. Utilisez des structures de langages de programmation connues (c.à.d `FOR`, `IF`, etc.)
+6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
+
+<b> Ces règles sont générales, peu importe le langage de programmation utilisé. </b>
 
 ---
+
 
 # Contenu du cours
 
 1. Interagir avec R
 2. Lire et écrire des objets
 3. Manipuler des objets
-
----
-
-# 5 raisons pour utiliser R
-
-R est un langage de programmation en source libre conçu pour l'analyse statistique, l'analyse de données et la visualisation. R n'est cependant pas optimisé pour la performance, mais néanmoins il est fort utile pour l'apprentissage de la programmation en raison de sa convivialité (!) et de sa facilité de `débuggage` (!!)
-
-## Les arguments en faveur de R:
-
-1. Gratuit et ouvert
-2. Une façon de communiquer avec la communauté scientifique
-3. Diversité d'utilisateurs et de contributions
-4. En phase avec les développements les plus récents en écologie
-5. Intégration du langage de programmation avec les outils de visualisation et de manipulation des données
 
 ---
 class: middle, center, inverse
@@ -816,8 +816,8 @@ ncol(MaMatrice)
 ## Les noms de colonnes et de lignes peuvent être modifiés
 
 ```{r}
-colnames(MaMatrice) = c("A","B","C")
-rownames(MaMatrice) = c("X","Y")
+colnames(MaMatrice) <- c("A","B","C")
+rownames(MaMatrice) <- c("X","Y")
 MaMatrice
 ```
 
@@ -894,9 +894,9 @@ R peut organiser également des collections d'objets sous forme de liste. Ces co
 ## La création et l'indexation des listes sont très similaires à celle des vecteurs et matrices
 
 ```{r}
-MaListe = list()
-MaListe[[1]] = c(1,2)
-MaListe[[2]] = matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
+MaListe <- list()
+MaListe[[1]] <- c(1,2)
+MaListe[[2]] <- matrix(c("A","B","C","D"), nrow = 2, ncol = 2)
 ```
 
 `MaListe[[1]]` permet d'obtenir l'objet contenu par le premier niveau de la liste.
