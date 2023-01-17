@@ -36,7 +36,7 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"></hr>
 
 .instructors[
-  **BIO109** - Dominique Gravel
+  **BIO109** - Victor Cameron
 ]
 
 <img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
@@ -65,18 +65,7 @@ On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, 
 # Solution
 
 
-```{r}
-# Créer un tableau où on enregistre les résultats
-resultats = matrix(nr = 5, nc = 7)
-# Lire le fichier (en assumant que vous êtes dans le bon dossier)
-arbres = read.table(file="donnees/arbres.csv", header=TRUE,sep = ";")
-# Délimiter une première zone
-sub_zoneA = subset(arbres, arbres$bory < 201)
-# Calculer le nombre de tiges
-table(sub_zoneA$esp)
-# Enregistrer le résultat dans le tableau
-resultats[1,] = table(arbres$esp)
-```
+
 
 ---
 class: middle, center, inverse
