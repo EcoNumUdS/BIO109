@@ -39,7 +39,7 @@ class: title-slide, middle
   **BIO109** - Victor Cameron
 ]
 
-<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
+<img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 
 ---
@@ -64,7 +64,18 @@ On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, 
 ---
 # Solution
 
-
+```{r}
+# Créer un tableau où on enregistre les résultats
+resultats <- matrix(nr = 5, nc = 7)
+# Lire le fichier (en assumant que vous êtes dans le bon dossier)
+arbres <- read.table(file="donnees/arbres.csv", header=TRUE, sep = ";")
+# Délimiter une première zone
+sub_zoneA <- subset(arbres, arbres$bory < 201)
+# Calculer le nombre de tiges
+table(sub_zoneA$esp)
+# Enregistrer le résultat dans le tableau
+resultats[1,] <- table(arbres$esp)
+```
 
 
 ---
@@ -81,7 +92,7 @@ class: middle, center, inverse
 Il peut souvent être pratique de générer des chiffres au hasard, sur lesquels on souhaite faire des tests. Nous verrons plusieurs exemples au cours 5, mais pour l'instant, prenez note de la fonction suivante:
 
 ```{r}
-alea = runif(n = 10, min = 0, max = 1)
+alea <- runif(n = 10, min = 0, max = 1)
 alea
 ```
 Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées.
@@ -126,9 +137,9 @@ R respecte la séquence des opérations, tel que démontré par l'exemple suivan
 Par défaut, le produit de vecteurs et de matrices est *scalaire* :
 
 ```{r}
-vec1 = runif(10,0,1)
+vec1 <- runif(10, min = 0, max = 1)
 vec1
-3*vec1
+3 * vec1
 ```
 
 ---
@@ -138,8 +149,8 @@ vec1
 La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices :
 
 ```{r}
-vec1 = c(10,20,30)
-mat1 = matrix(c(1:6), nr = 3, nc = 2)
+vec1 <- c(10,20,30)
+mat1 <- matrix(c(1:6), nr = 3, nc = 2)
 mat1
 vec1 * mat1
 
@@ -169,7 +180,7 @@ sqrt(100)
 # Opérations avancées
 
 ```{r}
-alea = runif(10,0,1)
+alea <- runif(10, min = 0, max = 1)
 alea
 min(alea)
 max(alea)
@@ -193,7 +204,7 @@ round(pi,4)
 Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées:
 
 ```{r}
-mat = matrix(runif(4,0,1), nr = 2, nc = 2)
+mat <- matrix(runif(4,0,1), nr = 2, nc = 2)
 mat
 rowSums(mat)
 colSums(mat)
@@ -211,19 +222,6 @@ apply(X = mat, MARGIN = 1, FUN = sum)
 ```
 
 ---
-
-# Opérations sur des matrices
-
-Et finalement, bien que vous l'utiliserez peu dans le cours, il est toujours pratique de savoir que la particularité de R d'être un langage vectoriel permet de facilement faire des opérations sur les matrices :
-
-```{r}
-vec1 = c(10,20,30)
-mat1 = matrix(c(1:6),nr = 3, nc = 2)
-vec1 * mat1
-vec1 %*% mat1
-```
-
----
 class: middle, center, inverse
 
 # Exercice
@@ -235,20 +233,13 @@ class: middle, center, inverse
 
 Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
 
-1. Calculer l'abondance totale pour 'abba', son abondance moyenne et le coefficient de variation de son abondance ;
+1. Calculer l'abondance totale pour 'abba' et son abondance moyenne ;
 2. Calculer le nombre total de tiges pour chaque quadrat ;
-3. Transformer l'abondance absolue en abondance relative ;
+3. Calculer l'abondance relative pour 'abba' pour chaque quadrat. C-a-d le nombre de tiges de 'abba' divisé par le nombre total de tiges, pour chaque quadrat.
 
----
-
-# Abondances relatives
-
-```{r}
-quadrats = read.csv2(file="donnees/quadrats.csv", header=TRUE, stringsAsFactors=FALSE,row.names = 1)
-N_total_abba = sum(quadrats$abba)
-N_moy_abba = mean(quadrats$abba)
-N_sd_abba = sd(quadrats$abba)
-N_CV_abba = N_sd_abba / N_moy_abba
+```{r, echo=FALSE}
+quadrats <- read.table(file="donnees/quadrats.csv", header=TRUE, sep=";", dec=".")
+head(quadrats)
 ```
 
 ---
@@ -256,8 +247,26 @@ N_CV_abba = N_sd_abba / N_moy_abba
 # Abondances relatives
 
 ```{r}
-N_quadrats = rowSums(quadrats)
-quadrats_rel_abba = quadrats$abba / N_quadrats
+# 0. Charger les données
+quadrats <- read.table(file="donnees/quadrats.csv", header=TRUE, sep=";", dec=".")
+
+# 1.1 Calculer l'abondance totale pour 'abba'
+N_total_abba <- sum(quadrats$abba)
+
+# 1.2 Calculer l'abondance moyenne pour 'abba'
+N_moy_abba <- mean(quadrats$abba)
+```
+
+---
+
+# Abondances relatives
+
+```{r}
+# 2. Calculer le nombre total de tiges pour chaque quadrat
+N_quadrats <- rowSums(quadrats[,2:7])
+
+# 3. Calculer l'abondance relative pour 'abba' pour chaque quadrat
+quadrats_rel_abba <- quadrats$abba / N_quadrats
 head(quadrats_rel_abba)
 ```
 
@@ -322,7 +331,7 @@ On peut écrire ce calcul directement dans la console comme suit
 Si on souhaite faire la même opération pour toutes les pairs de chiffres dans le tableau suivant, comment fait-on ?
 
 ```{r}
-tableau = data.frame(x=rnorm(5),y=rnorm(5))
+tableau <- data.frame(x=rnorm(5),y=rnorm(5))
 tableau
 ```
 
@@ -358,7 +367,7 @@ $$
 
 ```{r}
 for(i in 1:nrow(tableau)){
-  res = (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
+  res <- (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
   print(res)
 }
 ```
@@ -395,8 +404,8 @@ On commence par écrire une version spécifique du code que l'on souhaite **gén
 Ensuite, on définit ce code comme faisant parti d'une fonction.
 
 ```{r}
-prodsum = function(){
-  res = (3*7)/(3+7)
+prodsum <- function(){
+  res <- (3*7)/(3+7)
   return(res)
 }
 ```
@@ -551,7 +560,7 @@ Notez que le message d'erreur envoyé est composé par le programmeur. Par contr
 Le language de programmation R permet de faire aussi le calcul sur des matrices
 
 ```{r}
-tableau2 = data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
+tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
 prodsum(tableau, tableau2)
 ```
 
@@ -565,16 +574,13 @@ Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'e
 ma_fonction = function(x) {
 
   # Calcul de la moyenne
-  res1 = mean(x)
+  res1 <- mean(x)
 
   # Calcul de l'écart-type
-  res2 = sd(x)
-
-  # Calcul du coefficient de variation
-  res3 = res2/res1
+  res2 <- sd(x)
 
   # On regroupe les résultats dans une liste
-  final = list(moyenne = res1, ecart_type = res2, CV = res3)
+  final <- list(moyenne = res1, ecart_type = res2)
 
   # Et on retourne le tout hors de la fonction
   return(final)
@@ -588,7 +594,7 @@ ma_fonction = function(x) {
 Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
 
 ```{r}
-test = ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
+test <- ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
 test
 ```
 
