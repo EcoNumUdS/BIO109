@@ -83,6 +83,17 @@ table(sub_zoneA$esp)
 resultats[1,] <- table(arbres$esp)
 ```
 
+---
+
+# Fonction source
+
+Il est possible d'exécuter un script sans avoir à l'ouvrir. 
+
+```{r eval = FALSE}
+
+source("MonScript.R")
+
+```
 
 ---
 class: middle, center, inverse
