@@ -55,6 +55,25 @@ class: middle, center, inverse
 
 Commencer en travaillant localement
 
+```{r eval=TRUE}
+quadrats = read.csv2(file="donnees/quadrats.csv", header=TRUE,
+    stringsAsFactors=FALSE,row.names = 1)
+X <- quadrats$acsa
+```
+
+---
+
+# Trucs pour essayer de programmer une fonction
+
+Tout envelopper dans une fonction
+
+```{r eval=TRUE}
+ma_fonction <- function(X) {
+  print(X)
+}
+```
+
+
 ---
 
 # Trucs pour essayer de programmer une fonction
