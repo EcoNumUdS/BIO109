@@ -36,7 +36,7 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"></hr>
 
 .instructors[
-  **BIO109** - Dominique Gravel
+  **BIO109** - Victor Cameron
 ]
 
 <img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
@@ -54,46 +54,6 @@ class: middle, center, inverse
 # Trucs pour essayer de programmer une fonction
 
 Commencer en travaillant localement
-
-```{r eval=TRUE}
-quadrats = read.csv2(file="donnees/quadrats.csv", header=TRUE, 
-stringsAsFactors=FALSE,row.names = 1)
-X <- quadrats$acsa
-# Abondance moyenne
-moy <- mean(X)
-# Abondance totale
-tot <- sum(X)
-# Coefficient de variation de l'abondance
-CV <- sd(X)/mean(X)
-# Densité maximale dans un quadrat
-max_ab <- max(X)
-# Densité minimale dans un quadrat
-min_ab <- min(X)
-```
-
----
-
-# Trucs pour essayer de programmer une fonction
-
-Tout envelopper dans une fonction
-
-```{r eval=TRUE}
-ma_fonction <- function(X) {
-        
-    # Abondance moyenne
-    moy <- mean(X)
-    # Abondance totale
-    tot <- sum(X)
-    # Coefficient de variation de l'abondance
-    CV <- sd(X)/mean(X)
-    # Densité maximale dans un quadrat
-    max_ab <- max(X)
-    # Densité minimale dans un quadrat
-    min_ab <- min(X) 
-    # Retour extérieur
-    return(c(moy, tot, CV, max_ab, min_ab))
-}
-```
 
 ---
 
@@ -692,6 +652,7 @@ cbind(X,res2)
 Cette syntaxe est moins lisible et intuitive, vous n'avez pas à l'utiliser pour le cours. Il faut néanmoins pouvoir la reconnaitre et surtout savoir qu'elle est de 100 à 1000 plus rapide que la boucle `for`.
 
 
+<!-- 
 ---
 class: middle, inverse, center
 
@@ -703,3 +664,147 @@ class: middle, inverse, center
 # Le retour du scrabble ...
 
 Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser les fonctions `sort()` et `order()` de R. 
+-->
+
+---
+class: middle, inverse, center
+
+# Travail final
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+---
+# Répartition des domaines bioclimatiques
+
+<div style='text-align:center;'>
+<img src="assets/img/bioclim.png" height="500px"></img>
+</div>
+
+---
+# La distribution des arbres à Sutton
+
+<div style='text-align:center;'>
+<img src="assets/img/grille.jpg" height="250px"></img>
+</div>
+
+---
+# Un modèle de communauté
+<div style='text-align:center;'>
+<img src="assets/img/modele_vissault.png" height="500px"></img>
+</div>
+
+---
+# Répartition des états
+
+.pull-left[
+<div style='text-align:center;'>
+<img src="assets/img/modele_vissault.png" width="100%"></img>
+</div>
+]
+
+.pull-right[
+<div style='text-align:center;'>
+<img src="assets/img/animation.gif" height="500px"></img>
+</div>
+]
+
+
+---
+# Les différents états
+
+- 'B' si présence de abba ou piru
+- 'T' si présence de acsa ou beal ou fagr
+- 'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
+- 'R' si aucun de ces critères n'est rempli
+
+---
+# La matrice de transition entre les différents états
+
+$$
+\begin{bmatrix}
+P(B_{t+1}|B_t) & P(M_{t+1}|B_t) & P(T_{t+1}|B_t) & P(R_{t+1}|B_t) \\
+P(B_{t+1}|M_t) & P(M_{t+1}|M_t) & P(T_{t+1}|M_t) & P(R_{t+1}|M_t) \\
+P(B_{t+1}|T_t) & P(M_{t+1}|T_t) & P(T_{t+1}|T_t) & P(R_{t+1}|T_t) \\  
+P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
+\end{bmatrix}
+$$
+
+Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspond à l'état au temps t+1. Une ligne de ce tableau correspond à un vecteur de probabilités d'une distribution multinomiale. Donc, la somme d'une rangée doit être égale à 1.
+
+---
+# La matrice de transition entre les différents états
+
+$$
+\begin{bmatrix}
+0.9059 & 0.0932 & 0.0000 & 0.0009 \\  
+0.0004 & 0.8454 & 0.1452 & 0.0090 \\
+0.0000 & 0.0350 & 0.9594 & 0.0056 \\
+0.0001 & 0.0020 & 0.0011 & 0.9968 \\
+\end{bmatrix}
+$$
+
+Notez que l'intervalle de temps entre deux épisodes est 5 ans.
+
+
+Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
+
+---
+# Question de recherche
+
+Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
+
+---
+# Données
+
+- Distribution initiale de la végétation dans le fichier [quadrats.txt](./donnees/quadrats.txt)
+- Matrice de transition entre les 4 états dans le fichier [matrice_transitions.txt](./donnees/matrice_transitions.txt)
+
+---
+# Scripts à remettre
+
+1. Transformer les abondances en états de départ
+2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition ETATS
+3. Fonction qui fait une simulation sur N pas de temps, pour une composition de départ ETATS0, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) à chaque pas de temps
+4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
+5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
+  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
+  > ii) à quelle vitesse se transformerait une forêt entière constituée d'un mélange de feuillus et de conifères au départ ?
+
+---
+# Modalités
+
+Le travail se réalisera en équipe de 2
+- Une première remise *formative* du pseudo-code se fera avant la séance 5 (7 février, 8:29)
+- Un membre par équipe, doit remettre
+  - Le pseudo-code pour chacune des fonctions, à l'exception du bloc qui tire au hasard l'état au temps t+1
+  - Inscrire `COMPUTE N_t1` 
+
+
+- Le travail terminal doit être remis **électroniquement** pour l'évaluation *sommative* au plus tard le 21 février 23:59 sur Moodle
+- **Vous tous** devez remettre:
+	- Le pseudo-code bonifié pour chacune des fonctions qui réalise votre simulation, incluant le tirage au hasard
+	- Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
+  - Moodle n'accepte qu'un seul fichier, vous pouver compression votre répertoire de travail et remettre le fichier zip
+- Attention à la reproductibilité (relire attentivement le cours 1)!
+
+---
+
+# Rappel
+
+On peut exécuter un script (par exemple pour charger une fonction) dans un autre script avec la commande `source`
+
+```{r eval=FALSE}
+source("ma_fonction.R")
+ma_fonction(x)
+
+```
+
+---
+# Critères d'évaluation
+
+- Respect des bonnes pratiques enseignées dans le cours (40%)
+- Exécution des différentes étapes du code (40%):
+	+ Transformation des données sous forme d'états
+	+ Programmation de la simulation sous forme d'une fonction ré-utilisable
+	+ Réalisation de la simulation stochastique (tirage des transitions)
+	+ Réalisation de la figure
+- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %). [les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse]
