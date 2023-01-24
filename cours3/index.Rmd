@@ -256,7 +256,7 @@ n_moy_abba
 
 ```{r}
 # 2. Calculer le nombre total de tiges pour chaque quadrat
-n_quadrats <- rowSums(quadrats[, 2:7])
+n_quadrats <- rowSums(quadrats[, 2:8])
 
 # 3. Calculer l'abondance relative pour 'abba' pour chaque quadrat
 quadrats_rel_abba <- quadrats$abba / n_quadrats
