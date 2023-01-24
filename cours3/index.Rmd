@@ -62,6 +62,12 @@ Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données in
 On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
 
 ---
+class: middle, center, inverse
+
+# Quiz
+
+---
+
 # Solution
 
 ```{r}
@@ -103,32 +109,12 @@ Ici la distribution utilisée est la distribution uniforme, toutes les autres di
 
 R peut faire toutes les opérations mathématiques de base d'une calculatrice :
 
-```{r}
-3 + 7
-3 - 7
-```
-
----
-
-# Opérateurs de base
-
-R peut faire toutes les opérations mathématiques de base d'une calculatrice:
-
-```{r}
-3 * 7
-3 / 7
-```
-
----
-
-# Opérateurs de base
-
-R respecte la séquence des opérations, tel que démontré par l'exemple suivant:
-
-```{r}
-3 + 7 / 2 * 5
-3 + (7 / 2) * 5
-```
+| Opérateur | Signification | Exemple |
+|:---------:|:-------------:|:-------:|
+| + | Addition | 3 + 7 |
+| - | Soustraction | 3 - 7 |
+| * | Multiplication | 3 * 7 |
+| / | Division | 3 / 7 |
 
 ---
 
@@ -153,27 +139,19 @@ vec1 <- c(10,20,30)
 mat1 <- matrix(c(1:6), nr = 3, nc = 2)
 mat1
 vec1 * mat1
-
 ```
 
 ---
 
 # Opérations avancées
 
-```{r}
-log(100)
-log10(100)
-exp(10)
-```
-
----
-
-# Opérations avancées
-
-```{r}
-10^2
-sqrt(100)
-```
+| Opérateur | Signification | Exemple |
+|:---------:|:-------------:|:-------:|
+| ^ | Puissance | 3 ^ 7 |
+| log | Logarithme | log(100) |
+| log10 | Logarithme à base 10 | log10(100) |
+| exp | Exponentielle | exp(10) |
+| sqrt | Racine carrée | sqrt(100) |
 
 ---
 
@@ -217,6 +195,8 @@ colSums(mat)
 Et de façon plus générale, on peut utiliser la fonction `apply()` qui est très pratique :
 
 ```{r}
+mat <- matrix(1:4, nr = 2, nc = 2)
+mat
 apply(X = mat, MARGIN = 2, FUN = sum)
 apply(X = mat, MARGIN = 1, FUN = sum)
 ```
@@ -251,10 +231,12 @@ head(quadrats)
 quadrats <- read.table(file="donnees/quadrats.csv", header=TRUE, sep=";", dec=".")
 
 # 1.1 Calculer l'abondance totale pour 'abba'
-N_total_abba <- sum(quadrats$abba)
+n_total_abba <- sum(quadrats$abba)
+n_total_abba
 
 # 1.2 Calculer l'abondance moyenne pour 'abba'
-N_moy_abba <- mean(quadrats$abba)
+n_moy_abba <- mean(quadrats$abba)
+n_moy_abba
 ```
 
 ---
@@ -263,10 +245,10 @@ N_moy_abba <- mean(quadrats$abba)
 
 ```{r}
 # 2. Calculer le nombre total de tiges pour chaque quadrat
-N_quadrats <- rowSums(quadrats[,2:7])
+n_quadrats <- rowSums(quadrats[, 2:7])
 
 # 3. Calculer l'abondance relative pour 'abba' pour chaque quadrat
-quadrats_rel_abba <- quadrats$abba / N_quadrats
+quadrats_rel_abba <- quadrats$abba / n_quadrats
 head(quadrats_rel_abba)
 ```
 
@@ -286,15 +268,34 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 
 # Un simple exemple
 
-```{r eval=FALSE}
-ma_fonction = function(argument1, argument2) {
+```{r}
+ma_fonction <- function(argument1, argument2) {
 
   # Ce que l'on veut que la fonction exécute
-  resultat = argument1 * argument2
+  resultat <- argument1 * argument2
 
-  # Optionnel. Si l'on veut accéder au résultat de la fonction
+  # Retourner le résultat de la fonction
   return(resultat)
 }
+```
+
+---
+
+# Un simple exemple
+
+```{r eval=FALSE}
+ma_fonction <- function(argument1, argument2) { <---- Nom de la fonction et arguments
+
+  # Ce que l'on veut que la fonction exécute
+  resultat <- argument1 * argument2             <---- Le corps de la fonction
+
+  # Retourner le résultat de la fonction
+  return(resultat)                              <---- La valeur retournée
+}
+```
+
+```{r}
+ma_fonction(2, 5)
 ```
 
 ---
@@ -307,6 +308,18 @@ ma_fonction = function(argument1, argument2) {
 4. Partager du code entre différentes analyses
 5. Partager votre code avec d'autres personnes
 6. Modifier les fonctionalités par défaut de R
+
+---
+
+# Pourquoi utiliser des fonctions ?
+
+Vous connaissez déjà des fonctions de R, comme `mean()` ou `sum()` !
+
+```{r}
+vecteur <- c(1, 2, 3, 4, 5)
+mean(vecteur)
+sum(vecteur)
+```
 
 ---
 
@@ -328,10 +341,10 @@ On peut écrire ce calcul directement dans la console comme suit
 
 # La construction d'une fonction
 
-Si on souhaite faire la même opération pour toutes les pairs de chiffres dans le tableau suivant, comment fait-on ?
+Si on souhaite faire la même opération pour toutes les paires de chiffres dans le tableau suivant, comment fait-on ?
 
 ```{r}
-tableau <- data.frame(x=rnorm(5),y=rnorm(5))
+tableau <- data.frame(x=rnorm(5), y=rnorm(5))
 tableau
 ```
 
@@ -403,6 +416,16 @@ On commence par écrire une version spécifique du code que l'on souhaite **gén
 
 Ensuite, on définit ce code comme faisant parti d'une fonction.
 
+.content-box-red[À vous de l'essayer !]
+
+---
+
+# La construction d'une fonction
+
+## Comment construire une fonction ?
+
+Ensuite, on définit ce code comme faisant parti d'une fonction.
+
 ```{r}
 prodsum <- function(){
   res <- (3*7)/(3+7)
@@ -424,17 +447,6 @@ Cette fonction a le défaut de n'être aucunement générale. Elle va toujours d
 
 ---
 
-# Comment construire une fonction ?
-
-À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
-
-Une notion importante à avoir lorsqu'on construit une fonction est que tout ce qui se trouve à l'**intérieur** d'une fonction est *entièrement* indépendent de ce qui se trouve à l'**extérieur** d'une fonction.
-
-Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il existe uniquement à l'intérieur de la fonction.
-
-
----
-
 # Comment rendre la fonction plus générale ?
 
 On peut généraliser cette fonction, en utilisant directement la formule générale présentée précédemment:
@@ -445,6 +457,8 @@ $$
 
 Pour ce faire, il faut ajouter des **arguments** à notre fonction.
 
+.content-box-red[À vous de l'essayer !]
+
 ---
 
 # Comment rendre la fonction plus générale ?
@@ -453,7 +467,7 @@ Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. I
 
 ```{r}
 prodsum = function(x,y){
-  res = (x*y)/(x+y)
+  res <- (x*y)/(x+y)
   return(res)
 }
 ```
@@ -462,13 +476,23 @@ Avec cette fonction on peut faire le calcul qui nous intéresse avec différente
 
 ---
 
+# Comment construire une fonction ?
+
+À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
+
+Une notion importante à avoir lorsqu'on construit une fonction est que tout ce qui se trouve à l'**intérieur** d'une fonction est *entièrement* indépendent de ce qui se trouve à l'**extérieur** d'une fonction.
+
+Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il existe uniquement à l'intérieur de la fonction.
+
+---
+
 # Comment rendre la fonction plus générale ?
 
 Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est rarement le cas :
 
 ```{r}
-a = 1
-b = 2
+a <- 1
+b <- 2
 prodsum(x = a, y = b)
 ```
 
@@ -477,7 +501,7 @@ prodsum(x = a, y = b)
 # Utilisons notre fonction avec des chiffres
 
 ```{r}
-prodsum(x = 3, y = 7)
+prodsum(3, 7)
 prodsum(y = 7, x = 3)
 ```
 
@@ -547,8 +571,8 @@ Les lignes de codes ajoutées mesure la longeur de `x` et `y` et lorsqu'ils sont
 La condition de sortie `stop("'x' est de taille différente de 'y'")` permet de corriger le problème mentionné dans la diapositive précédente :
 
 ```{r, error=TRUE}
-prodsum(vec2,vec4)
-prodsum(vec3,vec4)
+prodsum(vec2, vec4)
+prodsum(vec3, vec4)
 ```
 
 Notez que le message d'erreur envoyé est composé par le programmeur. Par contre, il est important que le message d'erreur soit court et précis.
@@ -560,7 +584,7 @@ Notez que le message d'erreur envoyé est composé par le programmeur. Par contr
 Le language de programmation R permet de faire aussi le calcul sur des matrices
 
 ```{r}
-tableau2 <- data.frame(x_2=rnorm(5)^2,y_2=rnorm(5)^2)
+tableau2 <- data.frame(x_2 = rnorm(5)^2, y_2 = rnorm(5)^2)
 prodsum(tableau, tableau2)
 ```
 
@@ -619,7 +643,7 @@ class: inverse, center, middle
 
 # Abondances relatives
 
-Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), calculer une fonction qui vous retournera les statistiques descriptives suivantes pour une série de données (une espèce en l'occurrence) :
+Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), programmez une fonction qui retournera les statistiques descriptives suivantes pour une espèce :
 
 1. L'abondance moyenne
 2. L'abondance totale
