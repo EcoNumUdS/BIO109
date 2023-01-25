@@ -745,21 +745,6 @@ cbind(X,res2)
 
 Cette syntaxe est moins lisible et intuitive, vous n'avez pas à l'utiliser pour le cours. Il faut néanmoins pouvoir la reconnaitre et surtout savoir qu'elle est de 100 à 1000 plus rapide que la boucle `for`.
 
-
-<!-- 
----
-class: middle, inverse, center
-
-# Exercice final
-<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
-
----
-
-# Le retour du scrabble ...
-
-Vous avez tiré au hasard les lettres X = {E, Z, F, C, D}. Écrivez une fonction qui va trier vos lettres automatiquement pour vous, sans utiliser les fonctions `sort()` et `order()` de R. 
--->
-
 ---
 class: middle, inverse, center
 
