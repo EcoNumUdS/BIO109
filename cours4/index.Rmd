@@ -39,7 +39,7 @@ class: title-slide, middle
   **BIO109** - Victor Cameron
 ]
 
-<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
+<img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 
 ---
@@ -101,19 +101,57 @@ apply(quadrats, 2, ma_fonction)
 ```
 
 ---
+class: middle, center, inverse
+
+# Les algorithmes
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+---
+
+# Définition
+
+"Ensemble de règles opératoires dont l'application permet de résoudre un problème énoncé au moyen d'un nombre fini d'opérations." <br>
+\- Larousse -
+
+Une recette de cuisine est un algorithme
+
+<div style='text-align:center;'>
+<img src="assets/img/biscuits.png" height="350px"></img>
+</div>
+
+---
 class: inverse, middle, center
 
 # Les boucles
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 ---
+
 # Mise en situation
 
-Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d'abondance à deux points d'échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans. Le taux de croissance est donné par l'équation suivante :
+.pull-left[
+Vous étudiez la démographie de la population de salamandres pourpres dans le ruisseau du massif des monts Sutton. Vos données sont très simples, vous avez une mesure d'abondance à deux points d'échantillonnage au long du ruisseau. Vous devez vérifier si la population est en croissance, stable ou en déclin sur une séquence de 5 ans.
+]
+
+.pull-right[
+<div style='text-align:center;'>
+<img src="assets/img/salamandre_pourpre.png" height="500px"></img>
+</div>
+]
+
+---
+
+# Mise en situation
+
+Le taux de croissance est donné par l'équation suivante :
 
 $$
 \dfrac{N_{t+1} - N_t}{N_t}
 $$
+
+où <br>
+$N_{t} =$ nombre d'individus à l'année $t$ et <br>
+$N_{t+1} =$ nombre d'individus à l'année suivante.
 
 ---
 
@@ -126,6 +164,8 @@ donnees <- matrix(nr = 5, nc = 2)
 donnees[,1] <- c(34,35,32,34,36)
 donnees[,2] <- c(32,36,38,36,40)
 an <- c(2010:2014)
+rownames(donnees) <- an
+colnames(donnees) <- c("Site1", "Site2")
 head(donnees)
 ```
 
@@ -148,7 +188,10 @@ points(an,donnees[,2], pch = 19,cex=1.5)
 Maintenant, on doit calculer le taux de croissance annuel pour chaque population. Commençons pour l'intervalle entre l'an 1 et l'an 2, sur le site 1 :
 
 ```{r}
+# 0. Sauvons les données dans une matrice "lambda"
 lambda <- matrix(nr = 4, nc = 2)
+
+# 1. Calculons le taux de croissance
 lambda[1,1] <- (donnees[2,1] - donnees[1,1]) / donnees[1,1]
 ```
 
@@ -163,7 +206,7 @@ lambda[2,1] <- (donnees[3,1] - donnees[2,1]) / donnees[2,1]
 
 Très rapidement, on réalise que c'est assez fastidieux de refaire cet exercice à la main, mais c'est faisable.
 
-Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 25 points d'échantillonnage. Il faudra changer de technique....
+Imaginez cependant que vous découvrez un jour qu'un passionné des salamandres a déjà fait une étude similaire sur ce site, et par miracle vous obtenez des séries temporelles de 50 ans réparties sur 25 points d'échantillonnage. Il faudra changer de technique...
 
 ---
 # Mise en situation
@@ -179,16 +222,30 @@ Comment est-ce qu'on peut généraliser des opérations qui sont répétées tr�
 
 La solution rapide ressemblerait à
 
-```{r eval=FALSE}
+```{r}
 n_sites <- ncol(donnees)
 n_annees <- nrow(donnees)
-lambda <- matrix(nr = n_annees-1, nc = sites)
-for(i in 2:n_annees) {
+lambda <- matrix(nr = n_annees-1, nc = n_sites)
+for(i in 1:(n_annees-1)) {
     for(j in 1:n_sites) {
-        lambda[i-1,j] <- (donnees[i,j] - donnees[i-1,j]) / donnees[i-1,j]
-    }   
+        lambda[i,j] <- (donnees[i+1,j] - donnees[i,j]) / donnees[i,j]
+    }
 }
 ```
+
+.pull-left[
+donnees
+```{r echo=FALSE}
+head(donnees)
+```
+]
+
+.pull-right[
+lambda
+```{r echo=FALSE}
+head(lambda)
+```
+]
 
 ---
 # Définition
@@ -208,7 +265,7 @@ for(etape in depart:fin) {
 
 `etape` est un compteur de la position dans la boucle.
 
-L'exécution une fois d'un groupe de commandes dans un boucle s'appelle une itération.
+L'exécution une fois d'un groupe de commandes dans un boucle s'appelle une **itération**.
 
 ---
 # Quelques exemples simples
@@ -231,12 +288,19 @@ Transformez en celcius une séquence de température en fahrenheit qui va de -50
 - Déterminez le point de départ de la séquence
 - Déterminez le point de fin de la séquence
 - Faites le calcul approprié
+- Imprimez le résultat
 
 ---
 # Un premier exercice simple
 
-```{r}
+```{r eval=FALSE}
 for(F in -50:100) {
+    cat("Pour F = ",F," on obtient C = ",(F - 32) *5/9, '\n')
+}
+```
+
+```{r echo=FALSE}
+for(F in -50:-45) {
     cat("Pour F = ",F," on obtient C = ",(F - 32) *5/9, '\n')
 }
 ```
@@ -249,9 +313,9 @@ for(F in -50:100) {
 Les boucles sont souvent utilisées pour accéder à des positions dans un objet de façon récursive. Le compteur de la boucle peut alors être utilisé directement comme indice pour accéder à de l'information dans l'objet. Par exemple :
 
 ```{r}
-test = runif(5, 0,1)
+vect5 <- runif(5, 0,1)
 for(etape in 1:5) {
-    print(test[etape])
+    print(vect5[etape])
 }
 ```
 
@@ -261,9 +325,9 @@ for(etape in 1:5) {
 De même, on peut réaliser des opérations mathématiques sur cette variable
 
 ```{r}
-test = runif(500, 0,1)
+vect500 <- runif(500, 0,1)
 for(etape in 1:5) {
-    print(test[etape * 5])
+    print(vect500[etape * 5])
 }
 ```
 
@@ -272,9 +336,17 @@ for(etape in 1:5) {
 
 La séquence ne commence pas toujours par 1, et donc parfois on doit avoir un compteur indépendant pour l'indexation. Il est donc pratique de calculer à quelle position on se situe dans la boucle.
 
-```{r}
+```{r eval=FALSE}
 n = 1
 for(etape in -2:5) {
+    cat("etape = ",etape, " n = ",n, '\n')
+    n <- n + 1
+}
+```
+
+```{r echo=FALSE}
+n = 1
+for(etape in -2:1) {
     cat("etape = ",etape, " n = ",n, '\n')
     n <- n + 1
 }
@@ -323,7 +395,7 @@ Notons qu'on remplit ici la matrice par rangée. On pourrait inverser les boucle
 ---
 # La boucle while
 
-La boucle de type *while*, pour 'pendant que', répète une série d'intructions tant qu'une condition n'a pas été atteinte. C'est une version générale de la boucle *for*. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile.
+La boucle de type *while*, pour 'pendant que', répète une série d'intructions tant qu'une condition n'a pas été atteinte. Par exemple, on peut tirer deux pièces de monnaie jusqu'à ce que l'on obtienne la combinaison pile-pile.
 
 ```{r}
 piece <- c("pile","face")
@@ -343,6 +415,10 @@ La boucle va s'arrêter quand le résultat de la condition sera **FALSE**
 
 Utilisez la boucle `while` pour calculez combien de fois vous avez à tirer un dé pour obtenir un 6.
 
+- Ça prend un dé de 6 faces
+- Ça prend un compteur
+- et une série de tirages
+
 ---
 # Solution
 
@@ -350,12 +426,11 @@ Utilisez la boucle `while` pour calculez combien de fois vous avez à tirer un d
 de <- c(1:6)
 n <- 1
 tirage <- 1 # Il faut initier le tirage
-set.seed(1) # Initier le générateur de nombre aléatoire
 while(tirage != 6) {
 	tirage <- sample(de,1) # tirage du dé
 	n <- n + 1 # mise à jour du compter pour tester le nombre de tirages
-    cat("Étape = ", n, "Valeur = ", tirage, '\n')
 }
+cat("Il a fallu", n, "étapes pour obtenir la valeur ", tirage, '\n')
 ```
 
 ---
@@ -393,7 +468,7 @@ class: middle, center, inverse
 ---
 # Croissance logistique
 
-La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ se calcule ainsi :
+La croissance d'une population sujette à la densité-dépendance, en temps discret, se calcul bien au moyen d'une boucle. La densité au temps $t+1$ (l'année suivante) se calcule ainsi :
 
 $$
 N_{t+1} = N_t + r \times N_t \times (1 - N_t/K)
@@ -401,6 +476,7 @@ $$
 
 Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ( $K$ ). Si on fixe le taux de croissance ( $r$ ) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
+> **Astuce** : On cherche à compter le nombre d'années nécessaires pour que $N$ atteingne la valeur de $K/2$.
 ---
 # Solution 1
 
@@ -484,7 +560,7 @@ else {
 Un exemple,
 
 ```{r eval = FALSE}
-test = function(jour) {
+todo <- function(jour) {
     if(jour == "mardi") {
         print("Je dois aller au cours BIO109")
     }
@@ -513,7 +589,7 @@ L'indentation (l'utilisation d'espaces dans le code) est fort utile pour s'y ret
 # Arbre décisionnel
 
 ```{r eval = FALSE}
-test = function(jour) {
+todo <- function(jour) {
 if(jour == "mardi") {
 print("Je dois aller au cours BIO109")
 }
@@ -538,12 +614,14 @@ print("Bof, j'ai encore du temps !")
 
 Les classiques :
 
-- X est égal à Y : `X == Y`
-- X est supérieur à Y : `X > Y`
-- X est inférieur à Y : `X < Y`
-- X est supérieur ou égal à Y : `X >= Y`
-- X est inférieur ou égal à Y : `X <= Y`
-- X est différent de Y : `X != Y`
+| Opérateur | Signification | Exemple |
+|:---------:|:-------------:| :------:|
+| == | égal à | X == Y |
+| != | différent de | X != Y |
+| > | supérieur à | X > Y |
+| < | inférieur à | X < Y |
+| >= | supérieur ou égal à | X >= Y |
+| <= | inférieur ou égal à | X <= Y |
 
 ---
 # Exercice
@@ -559,17 +637,17 @@ Les classiques :
 .pull-left[
 
 ```{r, eval=FALSE}
-X <- runif(n = 10)
+chiffres <- runif(n = 10)
 res <- numeric(10)
 for(i in 1:10) {
-    if(X[i] < 0.3) {
+    if(chiffres[i] < 0.3) {
         res[i] <- "plus petit"
     }
     else {
         res[i] <- "plus grand"
     }
 }
-cbind(X,res)
+cbind(chiffres,res)
 ```
 ]
 
@@ -608,38 +686,34 @@ Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le ch
 
 # Solution
 
-.pull-left[
-
 ```{r, eval=FALSE}
+
 res2 <- numeric(10)
 for(i in 1:10) {
-    if(X[i] > 0.2 & X[i] < 0.6) {
+    if(chiffres[i] > 0.2 & chiffres[i] < 0.6) {
         res2[i] <- "oui"
     }
     else {
         res2[i] <- "non"
     }
 }
-cbind(X,res2)
+cbind(chiffres, res2)
 ```
-]
 
-
-.pull-right[
 
 ```{r, echo=FALSE}
+chiffres <- runif(n = 10)
 res2 <- numeric(10)
 for(i in 1:10) {
-    if(X[i] > 0.2 & X[i] < 0.6) {
+    if(chiffres[i] > 0.2 & chiffres[i] < 0.6) {
         res2[i] <- "oui"
     }
     else {
         res2[i] <- "non"
     }
 }
-cbind(X,res2)
+cbind(chiffres,res2)
 ```
-]
 
 ---
 
@@ -661,6 +735,7 @@ cbind(X,res2)
 .pull-right[
     
 ```{r, echo=FALSE}
+X <- runif(n = 10)
 res2 <- numeric(10)
 res2[X > 0.2 & X < 0.6] <- "oui"
 res2[X < 0.2 | X > 0.6] <- "non"
