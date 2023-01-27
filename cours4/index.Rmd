@@ -874,7 +874,7 @@ Votre programme devra être remis dans un dossier `projet` qui contiendra les do
 4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
 5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
   > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
-  > ii) à quelle vitesse se transformerait une forêt entière constituée d'un mélange de feuillus et de conifères au départ ?
+  > ii) à quelle vitesse se transformerait une forêt entière constituée d'un mélange de feuillus et de conifères (M) au départ ?
 
 ---
 # Modalités
@@ -883,7 +883,7 @@ Votre programme devra être remis dans un dossier `projet` qui contiendra les do
 
 ### 7 février
 
-Un membre par équipe, doit remettre le pseudo-code pour chacune des fonctions, à l'exception de la commande qui tire au hasard l'état au temps t+1 (inscrire `COMPUTE etat_t1`)
+Un membre par équipe, doit remettre le pseudo-code pour les étapes 1 à 3. Inscrire `COMPUTE etat_t1` pour le tire au hasard de l'état au temps t+1. Faire le pseudo-code pour le reste de la fonction.
 
 ### 21 février
 
@@ -891,6 +891,56 @@ Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune
 - Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
 - Moodle n'accepte qu'un seul fichier, vous pouver compresser votre répertoire de travail et remettre le fichier zip
 - Attention à la reproductibilité (relire attentivement le cours 1)!
+
+---
+# Critères d'évaluation
+
+## Pseudo-code (22%)
+
+**Respect des bonnes pratiques enseignées**
+- Les instructions sont connues et adaptées à l'utilisation
+- Mise en forme correcte des instructions et variables
+- Les noms de variables sont explicites
+
+**La mise en forme adéquate d'un pseudo-code**
+- Une instruction par ligne
+- Le code est indenté de façon constante
+- Le pseudo-code est divisé en blocs rerpésentant des algorithmes
+
+**Justesse des processus de programmation utilisés**
+- Les opérations répétées utilisent des boucles
+- Les opérations logiques utilisent des déclarations conditionnelles
+
+---
+
+# Critères d'évaluation
+
+## Programme (60%)
+
+- Respect des bonnes pratiques enseignées dans le cours (40%)
+- Exécution des différentes étapes du code (40%):
+	+ Transformation des données sous forme d'états
+	+ Programmation de la simulation sous forme d'une fonction ré-utilisable
+	+ Réalisation de la simulation stochastique (tirage des transitions)
+	+ Réalisation de la figure
+- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %). [les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse]
+
+<!-- **Reproducibilité : Structure rigoureuse du programme**
+- Les scripts sont divisés en fonctions
+- Le code est généralisé et indépendant des données
+
+**Exécution : Fonctionnement adéquat du programme**
+- Le programme s'exécute sans intervention de l'utilisateur autre que l'appel `source()` pour lancer la simulation
+- Le programme s'exécute sans erreur ou messages d'alerte
+- Le programme prend en compte les arguments pour exécuter la simulation
+- Le programme produit les résulats attendus
+- La simulation s'exécute sur 10 et 100 pas de temps
+
+**Application correcte des pratiques de programmation**
+- Le code est bien structuré et facile à lire
+- Le code est bien commenté
+- Les variables et arguments sont nommés de façon explicite -->
+
 
 ---
 
@@ -903,13 +953,3 @@ source("ma_fonction.R")
 ma_fonction(x)
 ```
 
----
-# Critères d'évaluation
-
-- Respect des bonnes pratiques enseignées dans le cours (40%)
-- Exécution des différentes étapes du code (40%):
-	+ Transformation des données sous forme d'états
-	+ Programmation de la simulation sous forme d'une fonction ré-utilisable
-	+ Réalisation de la simulation stochastique (tirage des transitions)
-	+ Réalisation de la figure
-- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %). [les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse]
