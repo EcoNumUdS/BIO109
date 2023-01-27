@@ -113,7 +113,7 @@ class: middle, center, inverse
 "Ensemble de règles opératoires dont l'application permet de résoudre un problème énoncé au moyen d'un nombre fini d'opérations." <br>
 \- Larousse -
 
-Une recette de cuisine est un algorithme
+Une recette de cuisine est une sorte d'algorithme
 
 <div style='text-align:center;'>
 <img src="assets/img/biscuits.png" height="350px"></img>
@@ -293,6 +293,21 @@ Transformez en celcius une séquence de température en fahrenheit qui va de -50
 ---
 # Un premier exercice simple
 
+```
+PROGRAM CONVERSION
+SET C
+
+FOR F IN -50:100
+    C = (F - 32) * 5/9
+    PRINT C
+END FOR
+```
+
+Le pseudo-code est une façon de décrire un algorithme sans utiliser de syntaxe spécifique à un langage de programmation. C'est une description générale.
+
+---
+# Un premier exercice simple
+
 ```{r eval=FALSE}
 for(F in -50:100) {
     cat("Pour F = ",F," on obtient C = ",(F - 32) *5/9, '\n')
@@ -362,6 +377,26 @@ Enregistrez les résultats de votre conversion dans une matrice avec pour colonn
 ---
 # Solution
 
+```
+PROGRAM CONVERSION
+DEFINE resultat = matrice de 151 rangées et 2 colonnes
+DEFINE n = 1
+
+FOR F IN -50:100
+    resultat[n,1] = F
+    resultat[n,2] = (F-32)*5/9
+    n = n + 1
+END FOR
+```
+
+Le pseudo-code est général et ne fait pas référence à un langage de programmation en particulier.
+
+Certaines étapes peuvent être verbalisées.
+
+
+---
+# Solution
+
 ```{r  eval=TRUE}
 resultat = matrix(nr = 151, nc = 2)
 n = 1
@@ -422,6 +457,21 @@ Utilisez la boucle `while` pour calculez combien de fois vous avez à tirer un d
 ---
 # Solution
 
+```
+PROGRAM BOUCLE WHILE
+DEFINE de = 1:6
+DEFINE n = 1
+DEFINE tirage = 1
+
+WHILE tirage != 6
+    tirage = tirage du de
+    n = n + 1
+END WHILE
+```
+
+---
+# Solution
+
 ```{r}
 de <- c(1:6)
 n <- 1
@@ -477,6 +527,23 @@ $$
 Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ( $K$ ). Si on fixe le taux de croissance ( $r$ ) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
 > **Astuce** : On cherche à compter le nombre d'années nécessaires pour que $N$ atteingne la valeur de $K/2$.
+
+---
+# Solution 1
+
+```
+PROGRAM CROISSANCE CERFS
+DEFINE N = 220
+DEFINE K = 200000
+DEFINE r = 0.3
+DEFINE step = 1
+
+WHILE N < K/2
+    N = N + r * N * (1 - N/K)
+    step = step + 1
+END WHILE
+```
+
 ---
 # Solution 1
 
@@ -546,7 +613,7 @@ Très souvent en programmation on a à prendre des décisions du type **si la co
 La structure de base d'une expression conditionnelle est la suivante:
 
 ```{r eval = FALSE}
-if(condition) {
+if (condition) {
     # instruction 1
     }
 else {
@@ -635,6 +702,44 @@ Les classiques :
 # Solution
 
 .pull-left[
+## Exemple simpliste
+```
+PROGRAM SEUIL
+DEFINE chiffres = 10 chiffres entre 0 et 1
+
+FOR i IN 1 TO 10
+    IF chiffres < 0.3
+        SAVE "plus petit"
+    ELSE
+        SAVE "plus grand"
+    END IF
+END FOR
+```
+]
+
+.pull-right[
+## Exemple plus complet
+```
+PROGRAM SEUIL
+DEFINE chiffres = 10 chiffres entre 0 et 1
+DEFINE res = vecteur de longueur 10
+
+FOR i IN 1 TO 10
+    IF chiffres[i] < 0.3
+        res[i] = "plus petit"
+    ELSE
+        res[i] = "plus grand"
+    END IF
+END FOR
+```
+]
+
+
+---
+
+# Solution
+
+.pull-left[
 
 ```{r, eval=FALSE}
 chiffres <- runif(n = 10)
@@ -681,6 +786,24 @@ On peut aussi combiner plusieurs conditions :
 # Exercice
 
 Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6.
+
+---
+
+# Solution
+
+```
+PROGRAM DOUBLE SEUIL
+READ chiffres
+DEFINE res = vecteur de longueur 10
+
+FOR i IN 1 TO 10
+    IF chiffres[i] > 0.2 AND chiffres[i] < 0.6
+        res[i] = "oui"
+    ELSE
+        res[i] = "non"
+    END IF
+END FOR
+```
 
 ---
 
