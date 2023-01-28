@@ -925,7 +925,7 @@ La parcelle de Sutton peut être représentée par une matrice de composition :
 Les données sont dans le fichier `quadrats.txt` :
 
 ```{r, echo=FALSE}
-read.csv2("donnees/quadrats.txt") |> head()
+head(read.csv2("donnees/quadrats.txt"))
 ```
 
 
