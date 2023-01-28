@@ -917,15 +917,15 @@ La parcelle de Sutton peut être représentée par une matrice de composition :
 # Les différents états
 
 - 'B' si présence de abba ou piru
-- 'T' si présence de acsa ou beal ou fagr
-- 'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
+- 'T' si présence de acsa ou acpe ou beal ou fagr
+- 'M' si présence de (abba ou piru) et (acsa ou acpe ou beal ou fagr)
 - 'R' si aucun de ces critères n'est rempli
 
 
-Les données sont dans le fichier `quadrats.csv` :
+Les données sont dans le fichier `quadrats.txt` :
 
 ```{r, echo=FALSE}
-read.csv2("donnees/quadrats.csv") |> head()
+read.csv2("donnees/quadrats.txt") |> head()
 ```
 
 
@@ -965,7 +965,7 @@ Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occup
 ---
 # Question de recherche
 
-Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
+Quelle sera la distribution de la forêt mixte au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
 
 ---
 # Données
@@ -985,32 +985,34 @@ Le travail se réalisera en équipe de 2. Inscrire le nom des membres en comment
 **21 février** : Le travail terminal (pseudo code + programme) devra être remis sur Moodle avant le 21 février 23h59
    
 ---
-# Modalités
+# Modalités - Programme
 
-## Programme
-
-Votre programme devra être remis dans un dossier `projet` qui contiendra les données et les scripts suivants :
+Votre programme devra être remis dans un dossier `projet` qui contiendra les scripts suivants :
 
 1. Transformer les abondances ([quadrats.txt](./donnees/quadrats.txt)) en états de départ
-2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition ETATS
-3. Fonction qui fait une simulation sur N pas de temps, pour une matrice de composition de départ ETATS0, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) pour chaque pas de temps
+2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition `etats`
+3. Fonction qui fait une simulation sur N pas de temps, pour une matrice de composition de départ `etats_0`, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) pour chaque pas de temps
 4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
 5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
-  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
-  > ii) à quelle vitesse se transformerait une forêt entière constituée d'un mélange de feuillus et de conifères (M) au départ ?
 
 ---
-# Modalités
+# Modalités - Programme
 
-## Pseudo-code
+\5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
+  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
+  > ii) Quelle sera la composition dans 75 ans d'une forêt entièrement constituée d'un mélange de feuillus et de conifères (M) au départ ?
+  > iii) Présenter une figure qui représente la composition de la forêt tempérée au cours du temps (10, 25, 50, 75 ans)
+
+---
+# Modalités - Pseudo-code
 
 ### 7 février
 
-Un membre par équipe, doit remettre le pseudo-code pour les étapes 1 à 3. Inscrire `COMPUTE etat_t1` pour le tire au hasard de l'état au temps t+1. Faire le pseudo-code pour le reste de la fonction.
+Un membre par équipe, doit remettre le pseudo-code pour les étapes 1 à 3. Inscrire `DRAW etat_t1` pour le tire au hasard de l'état au temps t+1. Faire le pseudo-code pour le reste de la fonction.
 
 ### 21 février
 
-Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune des fonctions, **incluant** le tirage au hasard
+Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune des fonctions
 - Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
 - Moodle n'accepte qu'un seul fichier, vous pouver compresser votre répertoire de travail et remettre le fichier zip
 - Attention à la reproductibilité (relire attentivement le cours 1)!
@@ -1040,13 +1042,16 @@ Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune
 
 ## Programme (60%)
 
-- Respect des bonnes pratiques enseignées dans le cours (40%)
-- Exécution des différentes étapes du code (40%):
-	+ Transformation des données sous forme d'états
-	+ Programmation de la simulation sous forme d'une fonction ré-utilisable
-	+ Réalisation de la simulation stochastique (tirage des transitions)
-	+ Réalisation de la figure
-- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %). [les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse]
+**Respect des bonnes pratiques enseignées dans le cours (40%)**
+
+**Exécution des différentes étapes du code (40%)**
+- Transformation des données sous forme d'états
+- Programmation de la simulation sous forme d'une fonction ré-utilisable
+- Réalisation de la simulation stochastique (tirage des transitions)
+- Réalisation de la figure
+
+**Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %)** 
+- Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse
 
 <!-- **Reproducibilité : Structure rigoureuse du programme**
 - Les scripts sont divisés en fonctions
