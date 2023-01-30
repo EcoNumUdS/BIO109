@@ -36,7 +36,7 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"></hr>
 
 .instructors[
-  **BIO109** - Dominique Gravel
+  **BIO109** - Victor Cameron
 ]
 
 <img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
@@ -50,10 +50,11 @@ class: middle, center, inverse
 
 
 ---
+
 # Solution
 
 ```{r}
-tri = function(x){
+tri <- function(x){
 	# Calcul de la dimension du vecteur
 	taille = length(x)
 	ordre = "NON"
@@ -73,7 +74,9 @@ tri = function(x){
 	}
 	return(x)
 }
-```
+``` 
+
+
 
 
 ---
@@ -640,7 +643,7 @@ system.time(f1(X))
 ---
 class: middle, inverse, center
 
-# Exercice final
+# Travail final
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 ---
@@ -737,16 +740,22 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 3. Fonction qui fait une simulation sur N pas de temps, pour une composition de départ ETATS0, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) à chaque pas de temps
 4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
 5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
-  i) est-ce que les espèces de conifères seront toujours présentes dans 25 ans ? 50 ans ? 75 ans?
-  ii) à quelle vitesse se transformerait une forêt entière constituée de conifères au départ ? 
+  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
+  > ii) à quelle vitesse se transformerait une forêt entière constituée d'un mélange de feuillus et de conifères au départ ?
 
 ---
 # Modalités
 
-- Le travail se réalisera en équipe de 4
-- Le travail doit être remis **électroniquement** au plus tard le 22 février 23:59 sur Moodle
+Le travail se réalisera en équipe de 2
+- Une première remise *formative* du pseudo-code se fera avant la séance 5 (7 février, 8:29)
+- Vous devez remettre
+  - Le pseudo-code pour chacune des fonctions, à l'exception du bloc qui tire au hasard l'état au temps t+1
+  - Inscrire `COMPUTE N_t1` 
+
+
+- Le travail terminal doit être remis **électroniquement** pour l'évaluation *sommative* au plus tard le 21 février 23:59 sur Moodle
 - Vous devez remettre:
-	- Le pseudo-code pour la fonction principale qui réalise votre simulation 
+	- Le pseudo-code bonifié pour chacune des fonctions qui réalise votre simulation, incluant le tirage au hasard
 	- Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
   - Moodle n'accepte qu'un seul fichier, vous pouver compression votre répertoire de travail et remettre le fichier zip
 - Attention à la reproductibilité (relire attentivement le cours 1)!

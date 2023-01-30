@@ -1,0 +1,186 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+% \usepackage{longtable}
+% Note: It may be necessary to compile the document several times to get a multi-page table to line up properly
+\begin{longtable}{lllllll}
+  \hline
+  \multicolumn{1}{|c|}{} &
+    \multicolumn{1}{c|}{} &
+    \multicolumn{5}{c|}{Échelle descriptive} \\ \cline{3-7} 
+  \multicolumn{1}{|c|}{\multirow{-2}{*}{Critères}} &
+    \multicolumn{1}{c|}{\multirow{-2}{*}{Indicateurs}} &
+    \multicolumn{1}{c|}{Échec} &
+    \multicolumn{1}{c|}{Passable} &
+    \multicolumn{1}{c|}{Bien} &
+    \multicolumn{1}{c|}{Très bien} &
+    \multicolumn{1}{c|}{Excellent} \\ \hline
+  \endfirsthead
+  %
+  \endhead
+  %
+  \hline
+  \endfoot
+  %
+  \endlastfoot
+  %
+  Respect des bonnes pratiques de programmation &
+    La programmation de la simulation prend la forme d'une fonction ré-utilisable &
+    \multicolumn{1}{r}{} &
+     &
+     &
+     &
+     \\
+   &
+    Le programme est divisé en blocs conhérents reflétant la structure conceptuelle des opérations &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Respect des pratiques d'indentation &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Le nom des scripts permet facilement d'en comprendre la fonction &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Les tirages au sort sont contraints et permettent la reproducibilité &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Une seule opération par ligne &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Le nom donné aux variables permet facilement d'en comprendre la fonction &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Les commentaires permettent à un utilisateur externe de comprendre facilement la fonction du bout de code &
+    \multicolumn{1}{r}{} &
+     &
+     &
+     &
+     \\
+   &
+    INDEXATION DES JEUX DE DONNÉES + APPLICATION FONCTION À DES GROUPES &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Optimisation &
+     &
+     &
+     &
+     &
+    Vectorisation des opérations \\
+   &
+    L'organisation du ou des scripts en répertoire permet de facilement retrouver l'information requise &
+     &
+     &
+     &
+     &
+     \\
+  \rowcolor[HTML]{DAE8FC} 
+  Résultat.                                                         /40 &
+     &
+     &
+     &
+     &
+     &
+     \\
+   &
+    Transformation des données sous forme d'états &
+    \multicolumn{1}{r}{} &
+     &
+     &
+     &
+     \\
+   &
+    Réalisation de la simulation stochastique (tirage des transitions) &
+     &
+     &
+     &
+     &
+     \\
+  \multirow{-3}{*}{Rigueur de la structure du programme} &
+    Réalisation de la figure &
+     &
+     &
+     &
+     &
+     \\
+  \rowcolor[HTML]{DAE8FC} 
+  Résultat.                                                         /40 &
+     &
+     &
+     &
+     &
+     &
+     \\
+   &
+     &
+    \multicolumn{1}{r}{} &
+     &
+     &
+     &
+     \\
+   &
+    Le programme produit les résultats attendus &
+     &
+     &
+     &
+     &
+    \multicolumn{1}{l|}{} \\
+  \multirow{-3}{*}{Fonctionnement adéquat du programme} &
+    Le programme s'exécute de A à Z sans intervention &
+     &
+     &
+     &
+     &
+    \multicolumn{1}{l|}{} \\
+  \rowcolor[HTML]{DAE8FC} 
+  \multicolumn{1}{|l}{\cellcolor[HTML]{DAE8FC}Résultat.                                                         /20} &
+     &
+     &
+     &
+     &
+     &
+    \multicolumn{1}{l|}{\cellcolor[HTML]{DAE8FC}} \\ \hline
+  \multicolumn{1}{|l|}{} &
+    \multicolumn{6}{l|}{} \\
+  \multicolumn{1}{|l|}{\multirow{-2}{*}{Total                                                               /100}} &
+    \multicolumn{6}{l|}{} \\ \cline{1-1}
+  \multicolumn{1}{|l|}{} &
+    \multicolumn{6}{l|}{} \\
+  \multicolumn{1}{|l|}{NOTE FINALE                                                /80} &
+    \multicolumn{6}{l|}{} \\
+  \multicolumn{1}{|l|}{} &
+    \multicolumn{6}{l|}{\multirow{-5}{*}{Commentaires}} \\ \hline
+  \caption{Excellent : Réalisation remarquable qui surprend par sa qualité et son originalité. Cette production dépasse les exigences et les attentes.
+  Très bien : Correspond à un travail impeccable et minutieux, sans erreur.
+  Bien : Correspond à un travail moyen, incomplet, où subsistent plusieurs erreurs. Il est nécessaire d’améliorer plusieurs points du travail avant de prétendre à une meilleure appréciation​.
+  Passable et échec : Travaux nettement incomplets à plusieurs égards selon les critères d’évaluation. Des erreurs graves peuvent même signifier l’échec.​ }
+  \label{tab:my-table}\\
+  \end{longtable}
