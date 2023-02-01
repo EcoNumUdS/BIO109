@@ -39,45 +39,16 @@ class: title-slide, middle
   **BIO109** - Victor Cameron
 ]
 
-<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
-
-
----
-class: middle, center, inverse
-
-# Solution du tri
-<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+<img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 
 ---
 
-# Solution
+# Retour
 
-```{r}
-tri <- function(x){
-	# Calcul de la dimension du vecteur
-	taille = length(x)
-	ordre = "NON"
-	# Boucle qui tourne jusqu'à ce que tout soit en ordre
-	while(ordre == "NON") {
-		ordre = "OUI"
-		# Boucle qui passe tous les éléments en paires
-		for(i in 1:(taille-1)) {
-			if(x[i+1] < x[i]) {
-				# Inversion des deux lettres
-				x[c(i,i+1)] = x[c(i+1,i)]
-				# Comme un changement a été fait, l'ordre
-				# n'est pas encore garanti
-				ordre = "NON"
-			}
-		}
-	}
-	return(x)
-}
-``` 
-
-
-
+- Pige au hasard (à expliciter dans les slides)
+- fonction source()
+- Produire une figure
 
 ---
 class: middle, center, inverse
@@ -140,10 +111,10 @@ class: middle, center, inverse
 ## La fonction `sample()`
 
 ```{r}
-valeurs = c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
-couleurs = rep(c("pique", "trèfle", "carreau", "coeur"),each = 13)
-cartes = paste(valeurs,"-",couleurs)
-tirage = function(n, cartes) {
+valeurs <- c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
+couleurs <- rep(c("pique", "trèfle", "carreau", "coeur"), each = 13)
+cartes <- paste(valeurs, "-", couleurs)
+tirage <- function(n, cartes) {
     sample(x = cartes, size = n, replace = FALSE)
 }
 tirage(3, cartes)
@@ -152,7 +123,7 @@ tirage(3, cartes)
 ---
 # Exercice
 
-Vous trouverez les lettres du scrabble dans le fichier [lettres.txt](./donnees/lettres.txt). Vous pouvez les charger et programmer votre fonction qui vous pigera au hasard les 7 lettres pour ce jeux.
+Vous trouverez les lettres du scrabble dans le fichier [lettres.txt](./donnees/lettres.txt). Vous pouvez les charger et programmer votre fonction qui pigera au hasard les 7 lettres pour ce jeux.
 
 ---
 class: middle, center, inverse
@@ -179,8 +150,8 @@ Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on
 
 .pull-right[
 ```{r , out.width = '80%', dpi=300, fig.align="center"}
-hist(floor(runif(n = 10000, min = 1, 
-max = 50)))
+hist(floor(runif(n = 10000, min = 1,
+  max = 50)))
 ```
 ]
 
@@ -195,6 +166,9 @@ max = 50)))
 </div>
 ]
 
+```{r echo=FALSE}
+set.seed(2)
+```
 
 .pull-right[
 ```{r, out.width = '80%', dpi=300, fig.align="center"}
@@ -231,8 +205,8 @@ rbinom(n = 10, size = 1, prob = 0.5)
 
 .pull-right[
 ```{r}
-rmultinom(n = 3, size = 1, 
-prob = rep(1/6, 6))
+rmultinom(n = 3, size = 1,
+  prob = rep(1/6, 6))
 ```
 ]
 
@@ -251,62 +225,91 @@ prob = rep(1/6, 6))
 
 .pull-right[
 ```{r ,out.width = '60%', dpi=300, fig.align="center"}
-hist(rexp(n = 1000, rate = 1/6), xlab = 
-"Nombre d'essais avant de perdre")
+hist(rexp(n = 1000, rate = 1/6), xlab =
+  "Nombre d'essais avant de perdre")
 ```
 ]
 
 ---
-# Critères de classification des lois de probabilité
 
-- Type de variable : continue ou discrète
-- Valeurs extrêmes : bornées ou non ?
-- Forme de la distribution : centrée, biaisée
-- Moments: moyenne, variance, kurtosis, skewness
-
----
 # Exercice
 
-Une étude vous indique que la relation entre le nombre d'espèces de plantes et l'aire sur la placette de Sutton suit la relation suivante :
-
-$$
-S \sim N(\mu, \sigma)
-$$
-
-Où
-
-$$
-\mu = cA^z
-$$
-
-Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20, 20 000]$ correspondant à la dimension de la placette.
+Combien de fois obtient-on "pile" si on lance une pièce de monnaie 10 fois de suite ?
 
 ---
+
 # Solution
 
-.pull-left[
-```{r, eval=FALSE}
-A = 2*10^seq(1, 4, length.out = 15)
-c = 3
-z = 0.15
-S = rnorm(15, mean = c*A^z, sd = 1.5)
+On peut utiliser la loi binomiale pour simuler le nombre de fois où l'on obtient pile. On obtient alors un vecteur. On peut ensuite compter le nombre de 1 dans ce vecteur (le nombre de réussites).
 
-plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
-  log = "xy")
+```{r} 
+tirages <- rbinom(n = 10, size = 1, prob = 0.5)
+tirages
+sum(tirages)
 ```
-]
 
-.pull-right[
-```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
-A = 2*10^seq(1, 4, length.out = 15)
-c = 3
-z = 0.15
-S = rnorm(15, mean = c*A^z, sd = 1.5)
-plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
-  log = "xy")
+---
+
+# Exercice
+
+Quel est le résultat si on répète l'expérience 1000 fois ?
+
+1. Insérez le code dans une boucle `for` pour répéter l'expérience 1000 fois.
+2. Sauvez le résultat de chaque expérience dans un vecteur.
+3. Utilisez la fonction `hist()` pour visualiser le résultat.
+
+---
+
+# Solution
+
+```{r}
+resultats <- c()
+for (i in 1:1000) {
+  tirages <- rbinom(n = 10, size = 1, prob = 0.5)
+  resultats <- c(resultats, sum(tirages))
+}
 ```
-]
 
+```{r, out.height = '300px', dpi=300, fig.align="center"}
+hist(resultats, xlab = "Nombre de piles")
+```
+
+---
+
+# Exercice
+
+Qu'est-ce qui se passe si on ajoute `set.seed(123)` avant le tirage `rbinom` ?
+
+---
+
+# Solution
+
+```{r}
+resultats <- c()
+for (i in 1:1000) {
+  set.seed(123)
+  tirages <- rbinom(n = 10, size = 1, prob = 0.5)
+  resultats <- c(resultats, sum(tirages))
+}
+```
+
+```{r, out.height = '300px', dpi=300, fig.align="center"}
+summary(resultats, xlab = "Nombre de piles")
+```
+
+---
+
+# Reproduire un tirage aléatoire
+
+Les chiffres aléatoires sont générés aléatoirement... mais pas complètement !
+
+La fonction `set.seed()` permet de reproduire des tirages aléatoires. Si on utilise la même graine, on obtient les mêmes tirages. Particulièrement utile si l'on veut reproduire les résultats d'une simulation ou d'une analyse statistique à tout coup.
+
+<div style='text-align:center;'>
+<img src="assets/img/pseudo-random_generators.png" width="30%"></img>
+</div>
+
+.content-box-red[Attention, il s'agit d'une simplification]
 
 ---
 class: middle, center, inverse
@@ -340,84 +343,26 @@ class: middle, center, inverse
 
 Lorsque $p = 0.5$, on tire une pièce de monnaie. Mais qu'en est-il si la pièce est biasée, par exemple si la face est plus lourde et donc la probabilité d'obtenir pile est de $p = 0.55$ ?
 
-```{r}
+```{r, out.height = '250px', dpi=300, fig.align="center"}
 set.seed(1)
-p = 0.55
-alea = runif(n = 1, min = 0, max = 1)
-if(alea < p) res = "pile" else res = "face"
-res
+out <- numeric(10)
+for (i in 1:10) {
+   out[i] <- rbinom(n = 1, size = 1, prob = 0.55)
+}
+hist(out)
 ```
 
 ---
 # En d'autres mots...
 
-Si $U$ est une variable aléatoire distribuée selon la loi uniforme entre 0 et 1, alors la chance que $U < p$ est exactement de valeur $p$. Si on réalise $n$ tirage, alors l'espérance du nombre de succès est exactement $np$.
-
----
-
-# Un exemple vaut mille mots
-
-- Tirez au hasard 1000 chiffres de la loi uniforme bornée entre 0 et 1
-- Créez un vecteur 'res' rempli de 0 et de 1000 unités de longueur
-- Pour chaque valeur de la séquence, évaluez si le chiffre est plus petit que la valeur seuil de $p = 0.2$. Si la valeur est plus petite, inscrivez 1 dans le vecteur 'res' à la position correspondante
-- Combien de fois est-ce que la valeur est inférieure à $p$ ?
-- Essayez à nouveau et comparez.
-
----
-# Un exercice est encore plus efficace...
-
-Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
-
-- Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
-- À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;
-- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
-
-Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d'oiseau).
-
----
-# Solution
-
-.pull-left[
-
-```{r}
-nsteps = 20
-xy = matrix(0,nr = 21, nc = 2)
-xy[1,] = c(0,0)
-direction = 0
-set.seed(2)
-for(step in 2:(nsteps+1)) {
-    # Ḑe quel côté tourner ?
-    if(runif(1,0,1) < 0.5) {
-      # Tourne à droite
-      direction = direction + pi/2 
-    }
-    else {
-      # Tourne à gauche  
-      direction = direction - pi/2
-    }
-    # Calcul des nouvelles coordonnées
-    xy[step,1] = 
-      xy[step-1,1] + sin(direction)*250 
-    xy[step,2] = 
-      xy[step-1,2] + cos(direction)*250 
-}
-```
-]
-
-
-.pull-right[
-```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
-plot(xy[,1],xy[,2], type = "l", xlim = c(-2000,2000),ylim = c(-2000,2000),
-    xlab = "X", ylab = "Y")
-points(xy[,1],xy[,2],pch = 19)
-```
-]
-
+Si un événement aléatoire se répète suffisamment de fois, alors la fréquence de l'événement se rapproche de la probabilité de l'événement.
 
 ---
 # La loi multinomiale
 
-La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
+La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. 
+
+Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
 
 La loi multinomiale est une généralisation de la loi binomiale qui permet d'avoir plus de 2 résultats possibles
 
@@ -437,12 +382,12 @@ La loi multinomiale est une généralisation de la loi binomiale qui permet d'av
 # Exemple
 
 ```{r}
-etats = c("A", "B", "C", "D", "E")
-p = c(0.1, 0.5, 0.2, 0.05, 0.15)
+etats <- c("gauche", "ligne droite", "doite")
+p <- c(0.25, 0.5, 0.25)
 sum(p)
 
 # On utilise cumsum pour calculer la probabilité cumulative
-cump = cumsum(p)
+cump <- cumsum(p)
 cump
 ```
 
@@ -450,13 +395,13 @@ cump
 # Exemple
 
 ```{r}
-alea = runif(1,0,1)
+alea <- runif(1, 0 , 1)
 alea
-n_etats = 5; i = 1; plus_petit = FALSE
+n_etats = 3; i <- 1; plus_petit <- FALSE
 while(plus_petit == FALSE) {
     if(alea < cump[i]) {
-        decision = etats[i]
-        plus_petit = TRUE
+        decision <- etats[i]
+        plus_petit <- TRUE
     }
     else {
         i = i + 1
@@ -470,13 +415,51 @@ decision
 ## Profitons de la fonction `rmultinom()` qui simplifie les opérations
 
 ```{r}
-tirage = function(p) {
-    etats = c("A", "B", "C", "D", "E")
-    res = rmultinom(n=1,size=1,prob=p)
+tirage <- function(etats, p) {
+    res <- rmultinom(n=1, size=1, prob=p)
     etats[which(res==1)]
 }
-tirage(p)
+
+etats <- c("A", "B", "C", "D", "E")
+p <- c(0.1, 0.2, 0.3, 0.2, 0.2)
+
+tirage(etats, p)
 ```
+
+---
+class: middle, center, inverse
+
+# La fonction source
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+---
+
+# La fonction source
+
+La fonction `source()` permet d'exécuter le code contenu dans un fichier externe. 
+
+---
+
+# Exercice
+
+1. Créez un fichier `exemple_source.R` contenant le code suivant :
+
+```{r, eval=FALSE}
+# ================================
+# Exemple de code
+# ================================
+# 1. Créer des données
+x <- 1:10
+print(x)
+
+y <- x^2
+print(y)
+
+# 2. Tracer la courbe
+plot(x, y)
+```
+
+\2. Créez un fichier `appel_source.R` qui appelle le fichier `exemple_source.R` et faites l'addition de x et y.
 
 ---
 class: middle, center, inverse
@@ -512,21 +495,21 @@ La fonction `system.time()` est un minimum pour tester la performance d'un code.
 # Notre fonction de tri
 
 ```{r}
-tri = function(x){
+tri <- function(x){
 	# Calcul de la dimension du vecteur
-	taille = length(x)
-	ordre = "NON"
+	taille <- length(x)
+	ordre <- "NON"
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
 	while(ordre == "NON") {
-		ordre = "OUI"
+		ordre <- "OUI"
 		# Boucle qui passe tous les éléments en paires
 		for(i in 1:(taille-1)) {
 			if(x[i+1] < x[i]) {
 				# Inversion des deux lettres
-				x[c(i,i+1)] = x[c(i+1,i)]
+				x[c(i,i+1)] <- x[c(i+1,i)]
 				# Comme un changement a été fait, l'ordre
 				# n'est pas encore garanti
-				ordre = "NON"
+				ordre <- "NON"
 			}
 		}
 	}
@@ -539,10 +522,10 @@ tri = function(x){
 # Comparée à la fonction sort
 
 ```{r}
-x = runif(1000)
+x <- runif(1000)
+identical(sort(x), tri(x))
 system.time(sort(x))
 system.time(tri(x))
-
 ```
 
 ---
@@ -552,13 +535,13 @@ Certaines opérations peuvent dépendre de la taille de l'objet (ci-dessous, `re
 
 .pull-left[
 ```{r eval=FALSE}
-n = 2*10^seq(1,3,0.1)
-res = numeric(length(n))
+n <- 2*10^seq(1, 3, 0.1)
+res <- numeric(length(n))
 for(i in 1:length(res)) {
-	x = runif(n[i])
-	res[i] = system.time(tri(x))[3]
+	x <- runif(n[i])
+	res[i] <- system.time(tri(x))[3]
 }
-plot(n,res, type = "l", xlab = "Taille",
+plot(n, res, type = "l", xlab = "Taille",
 	ylab = "Temps")
 ```
 ]
@@ -568,12 +551,12 @@ plot(n,res, type = "l", xlab = "Taille",
 
 ```{r echo=FALSE, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
 n = 2*10^seq(1,3,0.1)
-res = numeric(length(n))
+res <- numeric(length(n))
 for(i in 1:length(res)) {
-	x = runif(n[i])
-	res[i] = system.time(tri(x))[3]
+	x <- runif(n[i])
+	res[i] <- system.time(tri(x))[3]
 }
-plot(n,res, type = "l", xlab = "Taille", ylab = "Temps")
+plot(n, res, type = "l", xlab = "Taille", ylab = "Temps")
 ```
 
 ]
@@ -586,14 +569,21 @@ L'utilisation d'opérations vectorielles plutôt que les boucles augmente l'effi
 
 .pull-left[
 ```{r}
-f1 = function(x) {
-	taille = length(x)
-	x2 = numeric(taille)
-	for(i in 1:taille) if(x[i] < 0.5) x2[i] = 1
+# Fonction avec boucle
+f1 <- function(x) {
+	taille <- length(x)
+	x2 <- numeric(taille)
+	for(i in 1:taille) {
+    if(x[i] < 0.5) {
+      x2[i] <- 1
+    }
+  }
 }
-f2 = function(x) {
-	x2 = x*0
-	x2[x<0.5] = 1
+
+# Fonction vectorisée
+f2 <- function(x) {
+	x2 <- x * 0
+	x2[x < 0.5] <- 1
 }
 ```
 ]
@@ -601,7 +591,7 @@ f2 = function(x) {
 
 .pull-right[
 ```{r}
-x = runif(1000000)
+x <- runif(1000000)
 system.time(f1(x))
 system.time(f2(x))
 ```
@@ -615,15 +605,16 @@ Certaines fonctions sur R (voir Visser et al. 2015) sont optimisées. L'exemple 
 
 .pull-left[
 ```{r}
-f1 = function(x) {
-	res = numeric(ncol(x))
+f1 <- function(x) {
+	res <- numeric(ncol(x))
 	for(j in 1:ncol(x)) {
 		for(i in 1:nrow(x)){
-			res[x] = res[j] + x[i,j]
+			res[x] <- res[j] + x[i,j]
 		}
 	}
 }
-X = matrix(runif(100*100),nr=100,nc=100)
+X <- matrix(runif(100 * 100),
+  nr=100, nc=100)
 ```
 
 ]
@@ -638,8 +629,6 @@ system.time(f1(X))
 ```
 ]
 
-
-
 ---
 class: middle, inverse, center
 
@@ -653,6 +642,8 @@ class: middle, inverse, center
 <img src="assets/img/bioclim.png" height="500px"></img>
 </div>
 
+Forêt tempérée -> forêt mixte -> forêt boréale -> rien
+
 ---
 # La distribution des arbres à Sutton
 
@@ -663,7 +654,7 @@ class: middle, inverse, center
 ---
 # Un modèle de communauté
 <div style='text-align:center;'>
-<img src="assets/img/modele_vissault.png" height="500px"></img>
+<img src="assets/img/modele_vissault_v2.png" height="500px"></img>
 </div>
 
 ---
@@ -671,13 +662,14 @@ class: middle, inverse, center
 
 .pull-left[
 <div style='text-align:center;'>
-<img src="assets/img/modele_vissault.png" width="100%"></img>
+<img src="assets/img/modele_vissault_v2.png" width="100%"></img>
 </div>
 ]
 
 .pull-right[
+La parcelle de Sutton peut être représentée par une matrice de composition :
 <div style='text-align:center;'>
-<img src="assets/img/animation.gif" height="500px"></img>
+<img src="assets/img/animation.gif" height="400px"></img>
 </div>
 ]
 
@@ -686,9 +678,17 @@ class: middle, inverse, center
 # Les différents états
 
 - 'B' si présence de abba ou piru
-- 'T' si présence de acsa ou beal ou fagr
-- 'M' si présence de (abba ou piru) et (acsa ou beal ou fagr)
+- 'T' si présence de acsa ou acpe ou beal ou fagr
+- 'M' si présence de (abba ou piru) et (acsa ou acpe ou beal ou fagr)
 - 'R' si aucun de ces critères n'est rempli
+
+
+Les données sont dans le fichier `quadrats.txt` :
+
+```{r, echo=FALSE}
+head(read.csv2("donnees/quadrats.txt"))
+```
+
 
 ---
 # La matrice de transition entre les différents états
@@ -703,6 +703,8 @@ P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
 $$
 
 Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspond à l'état au temps t+1. Une ligne de ce tableau correspond à un vecteur de probabilités d'une distribution multinomiale. Donc, la somme d'une rangée doit être égale à 1.
+
+Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
 
 ---
 # La matrice de transition entre les différents états
@@ -724,7 +726,7 @@ Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occup
 ---
 # Question de recherche
 
-Quelle sera la distribution de la forêt tempérée au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
+Quelle sera la distribution de la forêt mixte au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
 
 ---
 # Données
@@ -733,52 +735,109 @@ Quelle sera la distribution de la forêt tempérée au sein de la Réserve écol
 - Matrice de transition entre les 4 états dans le fichier [matrice_transitions.txt](./donnees/matrice_transitions.txt)
 
 ---
-# Scripts à remettre
-
-1. Transformer les abondances en états de départ
-2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition ETATS
-3. Fonction qui fait une simulation sur N pas de temps, pour une composition de départ ETATS0, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) à chaque pas de temps
-4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
-5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
-  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
-  > ii) à quelle vitesse se transformerait une forêt entière constituée d'un mélange de feuillus et de conifères au départ ?
-
----
 # Modalités
 
-Le travail se réalisera en équipe de 2
-- Une première remise *formative* du pseudo-code se fera avant la séance 5 (7 février, 8:29)
-- Vous devez remettre
-  - Le pseudo-code pour chacune des fonctions, à l'exception du bloc qui tire au hasard l'état au temps t+1
-  - Inscrire `COMPUTE N_t1` 
+## Remise
 
+Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux (eg. `# auteurs: Victor Cameron, Benjamin Mercier`)
 
-- Le travail terminal doit être remis **électroniquement** pour l'évaluation *sommative* au plus tard le 21 février 23:59 sur Moodle
-- Vous devez remettre:
-	- Le pseudo-code bonifié pour chacune des fonctions qui réalise votre simulation, incluant le tirage au hasard
-	- Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
-  - Moodle n'accepte qu'un seul fichier, vous pouver compression votre répertoire de travail et remettre le fichier zip
+**7 février** : Un membre par équipe peut remettre une première version du pseudo-code sur Moodle avant la séance 5 pour une correction formative (qui n'est pas notée !)
+
+**21 février** : Le travail terminal (pseudo code + programme) devra être remis sur Moodle avant le 21 février 23h59
+   
+---
+# Modalités - Programme
+
+Votre programme devra être remis dans un dossier `projet` qui contiendra les scripts suivants :
+
+1. Transformer les abondances ([quadrats.txt](./donnees/quadrats.txt)) en états de départ
+2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition `etats`
+3. Fonction qui fait une simulation sur N pas de temps, pour une matrice de composition de départ `etats_0`, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) pour chaque pas de temps
+4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
+5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
+
+---
+# Modalités - Programme
+
+\5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
+  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ? <br>
+  > ii) Quelle sera la composition dans 75 ans d'une forêt entièrement constituée d'un mélange de feuillus et de conifères (M) au départ ? <br>
+  > iii) Présenter une figure qui représente la composition de la forêt tempérée au cours du temps (10, 25, 50, 75 ans) <br>
+
+---
+# Modalités - Pseudo-code
+
+### 7 février
+
+Un membre par équipe, doit remettre le pseudo-code pour les étapes 1 à 3. Inscrire `DRAW etat_t1` pour le tire au hasard de l'état au temps t+1. Faire le pseudo-code pour le reste de la fonction.
+
+### 21 février
+
+Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune des fonctions
+- Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
+- Moodle n'accepte qu'un seul fichier, vous pouver compresser votre répertoire de travail et remettre le fichier zip
 - Attention à la reproductibilité (relire attentivement le cours 1)!
+
+---
+# Critères d'évaluation
+
+## Pseudo-code (22%)
+
+**Respect des bonnes pratiques enseignées**
+- Les instructions sont connues et adaptées à l'utilisation
+- Mise en forme correcte des instructions et variables
+- Les noms de variables sont explicites
+
+**La mise en forme adéquate d'un pseudo-code**
+- Une instruction par ligne
+- Le code est indenté de façon constante
+- Le pseudo-code est divisé en blocs rerpésentant des algorithmes
+
+**Justesse des processus de programmation utilisés**
+- Les opérations répétées utilisent des boucles
+- Les opérations logiques utilisent des déclarations conditionnelles
+
+---
+
+# Critères d'évaluation
+
+## Programme (60%)
+
+**Respect des bonnes pratiques enseignées dans le cours (40%)**
+
+**Exécution des différentes étapes du code (40%)**
+- Transformation des données sous forme d'états
+- Programmation de la simulation sous forme d'une fonction ré-utilisable
+- Réalisation de la simulation stochastique (tirage des transitions)
+- Réalisation de la figure
+
+**Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %)** 
+- Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse
+
+<!-- **Reproducibilité : Structure rigoureuse du programme**
+- Les scripts sont divisés en fonctions
+- Le code est généralisé et indépendant des données
+
+**Exécution : Fonctionnement adéquat du programme**
+- Le programme s'exécute sans intervention de l'utilisateur autre que l'appel `source()` pour lancer la simulation
+- Le programme s'exécute sans erreur ou messages d'alerte
+- Le programme prend en compte les arguments pour exécuter la simulation
+- Le programme produit les résulats attendus
+- La simulation s'exécute sur 10 et 100 pas de temps
+
+**Application correcte des pratiques de programmation**
+- Le code est bien structuré et facile à lire
+- Le code est bien commenté
+- Les variables et arguments sont nommés de façon explicite -->
+
 
 ---
 
 # Rappel
 
-On peut exécuter un script (par exemple pour charger une fonction) dans un autre script avec la commande `source`
+On peut exécuter un script (par exemple pour charger une fonction) dans un autre script avec la commande `source()`
 
 ```{r eval=FALSE}
 source("ma_fonction.R")
 ma_fonction(x)
-
 ```
-
----
-# Critères d'évaluation
-
-- Respect des bonnes pratiques enseignées dans le cours (40%)
-- Exécution des différentes étapes du code (40%):
-	+ Transformation des données sous forme d'états
-	+ Programmation de la simulation sous forme d'une fonction ré-utilisable
-	+ Réalisation de la simulation stochastique (tirage des transitions)
-	+ Réalisation de la figure
-- Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %). [les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse]
