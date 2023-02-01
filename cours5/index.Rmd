@@ -240,7 +240,7 @@ Combien de fois obtient-on "pile" si on lance une pièce de monnaie 10 fois de s
 
 # Solution
 
-On peut utiliser la loi binomiale pour simuler le nombre de fois où l'on obtient pile. On obtient alors un vecteur de 10 nombres aléatoires. On peut ensuite compter le nombre de 1 dans ce vecteur.
+On peut utiliser la loi binomiale pour simuler le nombre de fois où l'on obtient pile. On obtient alors un vecteur. On peut ensuite compter le nombre de 1 dans ce vecteur (le nombre de réussites).
 
 ```{r} 
 tirages <- rbinom(n = 10, size = 1, prob = 0.5)
@@ -343,88 +343,26 @@ class: middle, center, inverse
 
 Lorsque $p = 0.5$, on tire une pièce de monnaie. Mais qu'en est-il si la pièce est biasée, par exemple si la face est plus lourde et donc la probabilité d'obtenir pile est de $p = 0.55$ ?
 
-```{r}
+```{r, out.height = '250px', dpi=300, fig.align="center"}
 set.seed(1)
-p <- 0.55
-alea <- runif(n = 1, min = 0, max = 1)
-if(alea < p) {
-  res <- "pile"
-} else {
-  res <- "face"
+out <- numeric(10)
+for (i in 1:10) {
+   out[i] <- rbinom(n = 1, size = 1, prob = 0.55)
 }
-res
+hist(out)
 ```
 
 ---
 # En d'autres mots...
 
-Si $U$ est une variable aléatoire distribuée selon la loi uniforme entre 0 et 1, alors la chance que $U < p$ est exactement de valeur $p$. Si on réalise $n$ tirage, alors l'espérance du nombre de succès est exactement $np$.
-
----
-
-# Un exemple vaut mille mots
-
-- Tirez au hasard 1000 chiffres de la loi uniforme bornée entre 0 et 1
-- Créez un vecteur 'res' rempli de 0 et de 1000 unités de longueur
-- Pour chaque valeur de la séquence, évaluez si le chiffre est plus petit que la valeur seuil de $p = 0.2$. Si la valeur est plus petite, inscrivez 1 dans le vecteur 'res' à la position correspondante
-- Combien de fois est-ce que la valeur est inférieure à $p$ ?
-- Essayez à nouveau et comparez.
-
----
-# Un exercice est encore plus efficace...
-
-Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
-
-- Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
-- À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;
-- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
-
-Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d'oiseau).
-
----
-# Solution
-
-.pull-left[
-
-```{r}
-nsteps = 20
-xy = matrix(0,nr = 21, nc = 2)
-xy[1,] = c(0,0)
-direction = 0
-set.seed(2)
-for(step in 2:(nsteps+1)) {
-    # Ḑe quel côté tourner ?
-    if(runif(1,0,1) < 0.5) {
-      # Tourne à droite
-      direction = direction + pi/2 
-    }
-    else {
-      # Tourne à gauche  
-      direction = direction - pi/2
-    }
-    # Calcul des nouvelles coordonnées
-    xy[step,1] = 
-      xy[step-1,1] + sin(direction)*250 
-    xy[step,2] = 
-      xy[step-1,2] + cos(direction)*250 
-}
-```
-]
-
-
-.pull-right[
-```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
-plot(xy[,1],xy[,2], type = "l", xlim = c(-2000,2000),ylim = c(-2000,2000),
-    xlab = "X", ylab = "Y")
-points(xy[,1],xy[,2],pch = 19)
-```
-]
-
+Si un événement aléatoire se répète suffisamment de fois, alors la fréquence de l'événement se rapproche de la probabilité de l'événement.
 
 ---
 # La loi multinomiale
 
-La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
+La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. 
+
+Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
 
 La loi multinomiale est une généralisation de la loi binomiale qui permet d'avoir plus de 2 résultats possibles
 
@@ -444,12 +382,12 @@ La loi multinomiale est une généralisation de la loi binomiale qui permet d'av
 # Exemple
 
 ```{r}
-etats = c("A", "B", "C", "D", "E")
-p = c(0.1, 0.5, 0.2, 0.05, 0.15)
+etats <- c("gauche", "ligne droite", "doite")
+p <- c(0.25, 0.5, 0.25)
 sum(p)
 
 # On utilise cumsum pour calculer la probabilité cumulative
-cump = cumsum(p)
+cump <- cumsum(p)
 cump
 ```
 
@@ -457,13 +395,13 @@ cump
 # Exemple
 
 ```{r}
-alea = runif(1,0,1)
+alea <- runif(1, 0 , 1)
 alea
-n_etats = 5; i = 1; plus_petit = FALSE
+n_etats = 3; i <- 1; plus_petit <- FALSE
 while(plus_petit == FALSE) {
     if(alea < cump[i]) {
-        decision = etats[i]
-        plus_petit = TRUE
+        decision <- etats[i]
+        plus_petit <- TRUE
     }
     else {
         i = i + 1
@@ -477,13 +415,51 @@ decision
 ## Profitons de la fonction `rmultinom()` qui simplifie les opérations
 
 ```{r}
-tirage = function(p) {
-    etats = c("A", "B", "C", "D", "E")
-    res = rmultinom(n=1,size=1,prob=p)
+tirage <- function(etats, p) {
+    res <- rmultinom(n=1, size=1, prob=p)
     etats[which(res==1)]
 }
-tirage(p)
+
+etats <- c("A", "B", "C", "D", "E")
+p <- c(0.1, 0.2, 0.3, 0.2, 0.2)
+
+tirage(etats, p)
 ```
+
+---
+class: middle, center, inverse
+
+# La fonction source
+<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
+
+---
+
+# La fonction source
+
+La fonction `source()` permet d'exécuter le code contenu dans un fichier externe. 
+
+---
+
+# Exercice
+
+1. Créez un fichier `exemple_source.R` contenant le code suivant :
+
+```{r, eval=FALSE}
+# ================================
+# Exemple de code
+# ================================
+# 1. Créer des données
+x <- 1:10
+print(x)
+
+y <- x^2
+print(y)
+
+# 2. Tracer la courbe
+plot(x, y)
+```
+
+\2. Créez un fichier `appel_source.R` qui appelle le fichier `exemple_source.R` et faites l'addition de x et y.
 
 ---
 class: middle, center, inverse
