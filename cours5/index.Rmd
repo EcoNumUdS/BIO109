@@ -495,21 +495,21 @@ La fonction `system.time()` est un minimum pour tester la performance d'un code.
 # Notre fonction de tri
 
 ```{r}
-tri = function(x){
+tri <- function(x){
 	# Calcul de la dimension du vecteur
-	taille = length(x)
-	ordre = "NON"
+	taille <- length(x)
+	ordre <- "NON"
 	# Boucle qui tourne jusqu'à ce que tout soit en ordre
 	while(ordre == "NON") {
-		ordre = "OUI"
+		ordre <- "OUI"
 		# Boucle qui passe tous les éléments en paires
 		for(i in 1:(taille-1)) {
 			if(x[i+1] < x[i]) {
 				# Inversion des deux lettres
-				x[c(i,i+1)] = x[c(i+1,i)]
+				x[c(i,i+1)] <- x[c(i+1,i)]
 				# Comme un changement a été fait, l'ordre
 				# n'est pas encore garanti
-				ordre = "NON"
+				ordre <- "NON"
 			}
 		}
 	}
@@ -569,6 +569,7 @@ L'utilisation d'opérations vectorielles plutôt que les boucles augmente l'effi
 
 .pull-left[
 ```{r}
+# Fonction avec boucle
 f1 <- function(x) {
 	taille <- length(x)
 	x2 <- numeric(taille)
@@ -578,6 +579,8 @@ f1 <- function(x) {
     }
   }
 }
+
+# Fonction vectorisée
 f2 <- function(x) {
 	x2 <- x * 0
 	x2[x < 0.5] <- 1
