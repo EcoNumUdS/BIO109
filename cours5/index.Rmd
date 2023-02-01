@@ -39,7 +39,7 @@ class: title-slide, middle
   **BIO109** - Victor Cameron
 ]
 
-<img src="../assets/img/logo.png" width="8%" style="margin-top:20px;"></img>
+<img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 
 ---
@@ -111,10 +111,10 @@ class: middle, center, inverse
 ## La fonction `sample()`
 
 ```{r}
-valeurs = c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
-couleurs = rep(c("pique", "trèfle", "carreau", "coeur"),each = 13)
-cartes = paste(valeurs,"-",couleurs)
-tirage = function(n, cartes) {
+valeurs <- c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
+couleurs <- rep(c("pique", "trèfle", "carreau", "coeur"), each = 13)
+cartes <- paste(valeurs, "-", couleurs)
+tirage <- function(n, cartes) {
     sample(x = cartes, size = n, replace = FALSE)
 }
 tirage(3, cartes)
@@ -123,7 +123,7 @@ tirage(3, cartes)
 ---
 # Exercice
 
-Vous trouverez les lettres du scrabble dans le fichier [lettres.txt](./donnees/lettres.txt). Vous pouvez les charger et programmer votre fonction qui vous pigera au hasard les 7 lettres pour ce jeux.
+Vous trouverez les lettres du scrabble dans le fichier [lettres.txt](./donnees/lettres.txt). Vous pouvez les charger et programmer votre fonction qui pigera au hasard les 7 lettres pour ce jeux.
 
 ---
 class: middle, center, inverse
@@ -150,8 +150,8 @@ Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on
 
 .pull-right[
 ```{r , out.width = '80%', dpi=300, fig.align="center"}
-hist(floor(runif(n = 10000, min = 1, 
-max = 50)))
+hist(floor(runif(n = 10000, min = 1,
+  max = 50)))
 ```
 ]
 
@@ -166,6 +166,9 @@ max = 50)))
 </div>
 ]
 
+```{r echo=FALSE}
+set.seed(2)
+```
 
 .pull-right[
 ```{r, out.width = '80%', dpi=300, fig.align="center"}
@@ -202,8 +205,8 @@ rbinom(n = 10, size = 1, prob = 0.5)
 
 .pull-right[
 ```{r}
-rmultinom(n = 3, size = 1, 
-prob = rep(1/6, 6))
+rmultinom(n = 3, size = 1,
+  prob = rep(1/6, 6))
 ```
 ]
 
@@ -222,62 +225,10 @@ prob = rep(1/6, 6))
 
 .pull-right[
 ```{r ,out.width = '60%', dpi=300, fig.align="center"}
-hist(rexp(n = 1000, rate = 1/6), xlab = 
-"Nombre d'essais avant de perdre")
+hist(rexp(n = 1000, rate = 1/6), xlab =
+  "Nombre d'essais avant de perdre")
 ```
 ]
-
----
-# Critères de classification des lois de probabilité
-
-- Type de variable : continue ou discrète
-- Valeurs extrêmes : bornées ou non ?
-- Forme de la distribution : centrée, biaisée
-- Moments: moyenne, variance, kurtosis, skewness
-
----
-# Exercice
-
-Une étude vous indique que la relation entre le nombre d'espèces de plantes et l'aire sur la placette de Sutton suit la relation suivante :
-
-$$
-S \sim N(\mu, \sigma)
-$$
-
-Où
-
-$$
-\mu = cA^z
-$$
-
-Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20, 20 000]$ correspondant à la dimension de la placette.
-
----
-# Solution
-
-.pull-left[
-```{r, eval=FALSE}
-A = 2*10^seq(1, 4, length.out = 15)
-c = 3
-z = 0.15
-S = rnorm(15, mean = c*A^z, sd = 1.5)
-
-plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
-  log = "xy")
-```
-]
-
-.pull-right[
-```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
-A = 2*10^seq(1, 4, length.out = 15)
-c = 3
-z = 0.15
-S = rnorm(15, mean = c*A^z, sd = 1.5)
-plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
-  log = "xy")
-```
-]
-
 
 ---
 class: middle, center, inverse
