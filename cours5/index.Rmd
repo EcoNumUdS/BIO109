@@ -44,11 +44,12 @@ class: title-slide, middle
 
 ---
 
-# Retour
+# Aujourd'hui
 
-- Pige au hasard (à expliciter dans les slides)
-- fonction source()
+- Pige au hasard 
 - Produire une figure
+- Fonction `source()` pour charger un script
+- Fonction `system.time()` pour mesurer le temps d'exécution
 
 ---
 class: middle, center, inverse
