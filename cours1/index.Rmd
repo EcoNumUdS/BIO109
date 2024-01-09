@@ -947,14 +947,13 @@ series = [1, 9, NA, 21, 3, NA, 7]
 ```
 PROGRAM MOYENNE
   serie = [1, 9, NA, 21, 3, NA, 7]
-  n = 0
+  n = 7
   somme = 0
-  FOR i IN 1:7
+  FOR i IN 1:n
     IF serie[i] == NA 
       somme = somme 
     ELSE 
       somme = somme + serie[i]
-      n = n + 1
     END IF
   END FOR
   moyenne = somme / n
@@ -968,14 +967,13 @@ PROGRAM MOYENNE
 ```
 PROGRAM MOYENNE
   serie = [1, 9, NA, 21, 3, NA, 7]
-  n = 0
+  n = 7
   somme = 0
-  FOR i IN 1:7 <------------- Opération itérative
+  FOR i IN 1:n <------------- Opération itérative
     IF serie[i] == NA <------ Opération décisionnelle
       somme = somme  <------- Si NA
     ELSE <------------------- Si pas NA
       somme = somme + serie[i]
-      n = n + 1
     END IF
   END FOR
   moyenne = somme/n <-------- Le programme calcule la moyenne

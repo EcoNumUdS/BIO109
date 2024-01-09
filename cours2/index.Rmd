@@ -156,63 +156,12 @@ Calculer la moyenne d'un vecteur `nombres` composé de 20 nombres entre 1 et 100
 ## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
 
 ```
-DERFINE r = RANDOM()
-```
-
----
-
-# Solution de l'exercice de la séance 1
-
-## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
-
-```
 PROGRAM DEVOIR
   SET nombres
-  DEFINE i = 1
-
-DERFINE r = RANDOM()
-  IF r >= 1 
-    IF r <= 100
-      nombres[i] = r
-    END IF  
-  END IF
-```
-
----
-
-# Solution de l'exercice de la séance 1
-
-## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
-
-```
-PROGRAM DEVOIR
-  SET nombres
-  DEFINE i = 1
+  i = 1
 
   FOR loop IN 1:1000
-    DERFINE r = RANDOM()
-    IF r >= 1 
-      IF r <= 100
-        nombres[i] = r
-        i = i + 1
-      END IF
-    END IF
-  END FOR
-```
-
----
-
-# Solution de l'exercice de la séance 1
-
-## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
-
-```
-PROGRAM DEVOIR
-  SET nombres
-  DEFINE i = 1
-
-  FOR loop IN 1:1000
-    DERFINE r = RANDOM()
+    r = RANDOM()
     IF r >= 1 
       IF r <= 100
         nombres[i] = r
@@ -235,15 +184,65 @@ PROGRAM DEVOIR
 ```
 PROGRAM DEVOIR
   SET nombres
-  DEFINE i = 1
+  i = 1
 
-  WHILE LENGTH(nombres) < 20           <--- Utiliser WHILE
-    DERFINE r = RANDOM()
+  FOR loop IN 1:1000 <--------- Définir un grand nombre d'itérations
+    r = RANDOM()
     IF r >= 1 
       IF r <= 100
         nombres[i] = r
         i = i + 1
       END IF
+    END IF
+
+    IF LENGTH(nombre) == 20 <-- Vérifier si le vecteur est complet
+      BREAK
+    END IF
+  END FOR
+```
+
+Ça fonctionne, mais c'est pas très élégant... Voyons comment faire mieux.
+
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+```
+PROGRAM DEVOIR
+  SET nombres
+  i = 1
+
+  WHILE LENGTH(nombres) < 20           <--- Utiliser WHILE
+    r = RANDOM()
+    IF r >= 1 
+      IF r <= 100
+        nombres[i] = r
+        i = i + 1
+      END IF
+    END IF
+  END WHILE
+```
+
+Est-ce qu'on peut optimiser ?
+
+---
+
+# Solution de l'exercice de la séance 1
+
+## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
+
+```
+PROGRAM DEVOIR
+  SET nombres
+  i = 1
+
+  WHILE LENGTH(nombres) < 20           <--- Utiliser WHILE
+    r = RANDOM()
+    IF r >= 1 AND r <= 100             <--- Utiliser AND pour coupler les conditions
+      nombres[i] = r
+      i = i + 1
     END IF
   END WHILE
 ```
@@ -257,16 +256,16 @@ PROGRAM DEVOIR
 
 ```
 PROGRAM DEVOIR (SUITE)
-  DEFINE somme = 0
+  somme = 0
 
   FOR position IN 1:20
     somme = somme + nombres[position]
   END FOR
 
-  DEFINE longueur = LENGTH(nombres)
-  DEFINE moyenne = somme / longueur
+  longueur = LENGTH(nombres)
+  moyenne = somme / longueur
 
-  WRITE moyenne
+  PRINT moyenne
 ```
 
 ---
