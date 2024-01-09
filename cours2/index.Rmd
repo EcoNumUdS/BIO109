@@ -36,7 +36,7 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"></hr>
 
 .instructors[
-  **BIO109** - Victor Cameron
+  **BIO109** - Dominique Gravel
 ]
 
 <img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>

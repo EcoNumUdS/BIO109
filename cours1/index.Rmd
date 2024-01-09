@@ -36,7 +36,7 @@ class: title-slide, middle
 <hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;" alt="@Martin Sanchez"></hr>
 
 .instructors[
-  **BIO109** - Victor Cameron
+  **BIO109** - Dominique Gravel
 ]
 
 <img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
@@ -80,17 +80,14 @@ La programmation est un outil indispensable au biologiste 2.0, elle permet:
 
 # Enseignant
 
-## Victor Cameron
-- victor.cameron@usherbrooke.ca
+## Dominique Gravel
+- dominique.gravel@usherbrooke.ca
 - D8-0012
 
-## Gabriel Bergeron (assistant)
-- gabriel.bergeron3@usherbrooke.ca
-- D8-0022
+## Victor Cameron (remplaçant)
 
-## Benjamin Mercier (assistant)
-- benjamin.b.mercier@usherbrooke.ca
-- D8-0022
+## À déterminer (assistant)
+- Contact à venir
 
 Pour les questions d'intérêt général, vous pouvez utiliser le forum de discussion sur Moodle.
 
@@ -117,22 +114,6 @@ Pour les questions d'intérêt général, vous pouvez utiliser le forum de discu
 <div style='text-align:center;'>
 <img src="assets/img/intro/indicateurs.png" height="500px"></img>
 </div>
-
----
-
-# La programmation en science
-
-## Retour sur le forum
-
-Attentes pour le cours
-- Interagir avec des larges quantités de données
-
-Utilisation de la programmation
-- Traiter de larges quantités de données
-- Application à d'autres fins que la recherche
-
-Apport de la programmation à la biologie
-- Aide et accélère le traitement des données à l'avantage de leur utilisation
 
 ---
 
@@ -238,8 +219,7 @@ L'évaluation porte sur la participation (18%) et sur un travail de session (82%
 
 - 3 exercies en classe (18%)
 - Évaluation terminale : réalisation d'un projet de programmation <b>en équipe de 2</b> (82%)
-  - Formatif : Pseudo-code à remettre avant la séance 5 (rétroaction retournée le 14 février)
-  - Sommatif : Pseudo-code bonifié (22%) + programme (60%) à remettre le <b>21 février à 23h59</b>
+  - Pseudo-code (22%) + programme (60%) à remettre le <b>20 février à 23h59</b>
 
 Les évaluations sont à remettre sur Moodle.
 
@@ -256,108 +236,6 @@ partir de
 
 Les étudiants devront remettre le script nécessaire à la
 réalisation du projet.
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/bioclim.png" height="500px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/mont_vertes.png" height="500px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/megantic.jpg" height="500px"></img>
-</div>
-
----
-
-# Introduction
-
-<div style='text-align:center;'>
-<img src="assets/img/intro/grille.jpg" height="250px"></img>
-</div>
-
----
-
-# Projet de session
-
-## Question de recherche
-
-À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
-
----
-
-# Le type de données
-
-```{r}
-arbres <- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
-head(arbres)
-```
-
----
-
-# Exercice 1
-
-Ouvrir le fichier [arbres](./donnees/arbres.xlsx) avec Excel et calculer le nombre d'individus de chaque espèce pour le quadrat 1.
-
----
-
-# Exercice 1: solution sur R
-
-```{r}
-arbres <- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
-quadrats <- table(arbres$id_bor,arbres$esp)
-head(quadrats)
-```
-
-```{r, echo=FALSE}
-write.table(quadrats, file="./donnees/quadrats.txt",sep=";",quote=TRUE)
-```
----
-
-# Exercice 2
-
-Ouvrir le fichier [quadrats](./donnees/quadrats.xlsx) avec Excel et calculer la corrélation entre toutes les paires d'espèces.
-
-Petit truc: sur Excel, la fonction pour calculer une corrélation est:
-
-```bash
-=COEFFICIENT.CORRELATION(données_1; données_2)
-```
-
----
-
-# Exercice 2: solution sur R
-
-```{r,eval=FALSE}
-quadrats <- read.table(file = './donnees/quadrats.txt', header = TRUE, sep= ";")
-cor(quadrats)
-```
-
-```{r,eval=TRUE,echo=FALSE}
-quadrats <- read.table(file = './donnees/quadrats.txt', header = TRUE, sep= ";")
-round(cor(quadrats),6)
-```
-
----
-
-# Exercice 2: visualisation sur R
-
-```{r,  fig.width= 6, fig.height= 6, fig.align='center'}
-plot(quadrats)
-```
 
 ---
 class: inverse, center, middle
@@ -420,6 +298,46 @@ class: inverse, middle, center
 
 # Le `Pseudo-Code`
 
+**ATTENTION !!**
+
+Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à décrire les étapes d'un algorithme.
+
+Il est important de bien comprendre la différence entre les deux. 
+
+---
+
+# Le `Pseudo-Code`
+
+## Exemple
+
+```
+PROGRAM HELLOWORLD
+  FOR t IN 1:100
+    PRINT "Hello World"
+  END FOR
+```
+
+Le programme `HELLOWORLD` imprime à l'écran le message "Hello World" 100 fois.
+
+---
+
+# Le `Pseudo-Code`
+
+## Exemple
+
+```
+PROGRAM HELLOWORLD
+  FOR t IN 1:100 <------------- Opération itérative
+    PRINT "Hello World" <------ Le programme affiche le message à l'écran
+  END FOR <------------------- Fin de la boucle
+```
+
+Le programme `HELLOWORLD` imprime à l'écran le message "Hello World" 100 fois.
+
+---
+
+# Le `Pseudo-Code`
+
 ## Exemple
 
 ```
@@ -475,7 +393,7 @@ Les opérations répétées peuvent être organisées sous forme de <b> Fonction
 
 # Avant-propos
 
-Avant de décrire chacune des opérations d'un algorithme, certaines instructions sont communes:
+Avant de décrire chacune des opérations d'un algorithme, certaines instructions sont à connaitre pour écrire du pseudo-code :
 
 - `READ`: le programme lit un fichier
 - `WRITE`: le programme écrit un fichier
@@ -509,7 +427,8 @@ a * b
 Plus souvent, on travaille avec des tableaux de données :  
 
 ```
-mat = matrix(c(1,2,3,4), nr = 2, nc = 2)
+mat = [1 2 3
+       4 5 6]
 ```
 
 Cet objet a deux dimension, la première représentée par "i" et l'autre par "j". Sur R par exemple, on accède à la position définie par le couple i,j de la manière suivante : 
@@ -544,10 +463,10 @@ Ces objets ne contiennent qu'une seule information
 ## Exemple
 
 ```
-bobo = "toi"
-coco = 2
-dodo = -3
-fofo = 456457.678
+a = "toi"
+b = 2
+c = -3
+d = 456457.678
 ```
 
 ---
@@ -631,6 +550,18 @@ Un indice permet de suivre la position dans la boucle.
 ## Exemple avec `FOR`: Croissance exponentielle
 
 ```
+FOR etape IN 1:100
+  PRINT etape
+END FOR
+```
+
+---
+
+# Les opérations itératives
+
+## Exemple avec `FOR`: Croissance exponentielle
+
+```
 PROGRAM DEMO
   DEFINE lambda = 1.1
   DEFINE n_t = 1
@@ -648,15 +579,37 @@ La population va croître pendant 100 pas de temps.
 
 ```
 PROGRAM FACTORIELLE
-  DEFINE depart = 1
-  DEFINE fin = 5
+  depart = 1
+  fin = 5
   x = 1
   FOR etape in depart:fin
-    x = x*etape
+    x = x * etape
+  END FOR
   WRITE x
 ```
 
 Quelle valeur prendra x au terme de l'exécution du programme ? 
+
+---
+
+# Exercice
+
+```
+PROGRAM FACTORIELLE
+  depart = 1
+  fin = 5
+  x = 1
+  FOR etape in depart:fin
+    x = x * etape
+  END FOR
+  WRITE x
+```
+
+Quelle valeur prendra x au terme de l'exécution du programme ? 
+
+- Entre 1 et 20
+- Entre 20 et 100
+- Entre 100 et 1000
 
 ---
 
@@ -667,15 +620,58 @@ Quelle valeur prendra x au terme de l'exécution du programme ?
 ```
 PROGRAM DEMO
   SET resultat
-  resultat[0] = 1
-  DEFINE lambda = 1.1
-  FOR etape IN 1:100
+  resultat[1] = 1
+  lambda = 1.1
+  FOR etape IN 2:10
     resultat[etape] = resultat[etape-1] * lambda
   END FOR
   WRITE resultat
 ```
 
 Quel sera le contenu de 'resultat' ?
+
+---
+
+# Les opérations itératives et l'indexation
+
+## Exemple avec `FOR`: Croissance exponentielle
+
+.pull-left[
+```
+PROGRAM DEMO
+  SET resultat
+  resultat[1] = 1
+  lambda = 1.1
+  FOR etape IN 2:10
+    resultat[etape] = resultat[etape-1] * lambda
+  END FOR
+  WRITE resultat
+```
+
+Quel sera le contenu de 'resultat' ?
+]
+
+.pull-right[
+**Valeur**
+
+```
+resultat = 1
+```
+
+**Vecteur**
+  
+```
+resultat = [1 1.1 1.21 1.331 1.46 1.61 1.77 1.95 1.36]
+```
+
+**Matrice**
+
+```
+resultat = [1 1.1 1.21
+            1.331 1.46 1.61
+            1.77 1.95 1.36]
+```
+]
 
 ---
 
@@ -723,7 +719,13 @@ Avec la clause `ELSE`, la croissance est nulle
 
 # Exemple : identifier un arbre
 
-Écrire le pseudo code qui permet de déterminer quelle est l'espèce parmi l'érable à sucre, le bouleau jaune, le sapin baumier et le mélèze laricin sachant si ces arbres gardent leurs feuilles en hiver, si ils ont des aiguilles et si ils ont des samarres. 
+Écrire le pseudo-code qui permet d'identifier l'arbre avec le plus petit DHP parmi les trois suivants :
+
+```
+dhp1
+dhp2
+dhp3
+```
 
 ---
 
@@ -731,19 +733,26 @@ Avec la clause `ELSE`, la croissance est nulle
 
 ```
 PROGRAM ESPECE
-  READ hiver
-  READ feuilles
-  READ graines
+  READ dhp1
+  READ dhp2
+  READ dhp3
 
-  IF(hiver == non) 
-    IF(feuilles == aiguilles) espece = meleze
-      IF(graines == samarres) espece = erable
-        ELSE espece = bouleau
-    ELSE espece = sapin
-  WRITE espece
+  IF dhp1 < dhp2 
+    IF dhp1 < dhp3 
+      resultat = dhp1
+    ELSE 
+      resultat = dhp3
+    END IF
+  END IF
+
+  IF dhp2 > dhp3
+      resultat = dhp3
+  ELSE 
+    resultat = dhp2
+  END IF
+    
+  WRITE resultat
 ```
-
-Notons l'utilisation du '==' pour tester s'il y a égalité.
 
 ---
 
@@ -783,7 +792,7 @@ Ne donnera pas le même résultat que
 
 # Les règles du `pseudo-code`
 
-## A garder en mémoire
+## À garder en mémoire
 
 1. N'écrivez qu'une seule instruction par ligne de pseudo-code.
 2. Écrivez en lettres majuscules le verbe de chaque opération principale (la fonction utilisée)
@@ -792,7 +801,7 @@ Ne donnera pas le même résultat que
 5. Utilisez des structures de langages de programmation connues (c.à.d `FOR`, `IF`, etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
-<b> Ces règles sont générales, peu importe le langage de programmation utilisé. </b>
+<b> Le pseudo-code doit demeurer général, peu importe le langage de programmation utilisé. </b>
 
 ---
 class: inverse, middle, center
@@ -920,6 +929,70 @@ class: inverse, middle, center
 > <b>10.</b> Utiliser le contrôle de version afin de pouvoir revenir dans le passé
 
 ---
+
+# Exercice
+
+Calculez la moyenne de la série de valeurs (vecteur) suivante
+
+```
+series = [1, 9, NA, 21, 3, NA, 7]
+```
+
+**ATTENTION !!** Il y a des valeurs manquantes (`NA`) dans la série de chiffres. Il faut les exclure du calcul de la moyenne.
+
+---
+
+# Exercice
+
+```
+PROGRAM MOYENNE
+  serie = [1, 9, NA, 21, 3, NA, 7]
+  n = 0
+  somme = 0
+  FOR i IN 1:7
+    IF serie[i] == NA 
+      somme = somme 
+    ELSE 
+      somme = somme + serie[i]
+      n = n + 1
+    END IF
+  END FOR
+  moyenne = somme / n
+  WRITE moyenne 
+```
+
+---
+
+# Exercice
+
+```
+PROGRAM MOYENNE
+  serie = [1, 9, NA, 21, 3, NA, 7]
+  n = 0
+  somme = 0
+  FOR i IN 1:7 <------------- Opération itérative
+    IF serie[i] == NA <------ Opération décisionnelle
+      somme = somme  <------- Si NA
+    ELSE <------------------- Si pas NA
+      somme = somme + serie[i]
+      n = n + 1
+    END IF
+  END FOR
+  moyenne = somme/n <-------- Le programme calcule la moyenne
+  WRITE moyenne <------------ Le programme affiche la moyenne
+```
+
+---
+
+# Exercice
+
+**ATTENTION !!**
+
+Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à décrire les étapes d'un algorithme.
+
+Il est important de bien comprendre la différence entre les deux. 
+
+---
 class: inverse, middle, center
 
 # Installation de R et de RStudio
@@ -927,10 +1000,8 @@ class: inverse, middle, center
 
 À faire pour la <b>prochaine séance</b>
 
-- Le guide d'installation se trouve sur la page Moodle
-du cours sous la rubrique <b>Étape 1</b>
 <!-- - Le débuggage se fera au prochain cours. -->
-- Utiliser le forum pour les questions
+- Guide d'installation : [https://rstudio-education.github.io/hopr/starting.html](https://rstudio-education.github.io/hopr/starting.html)
 
 ---
 class: inverse, middle, center

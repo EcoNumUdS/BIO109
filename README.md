@@ -5,7 +5,7 @@
 
 (1 crédit; 15 heures)
 
-**Enseignant:** Victor Cameron
+**Enseignant:** Dominique Gravel
 
 ## Plan de cours
 
