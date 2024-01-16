@@ -43,102 +43,6 @@ class: title-slide, middle
 
 ---
 
-# Révision IF/IF ELSE/ELSE
-
-## Imprimer le résultat d'un test
-
-.pull-left[
-
-Avec `IF`/`IF ELSE`/`ELSE`
-```
-IF note >= 90
-  WRITE "Exceptionel"
-IF ELSE note >= 80
-  WRITE "Très bien"
-IF ELSE note >= 60
-  WRITE "Vous avez réussi"
-ELSE
-  WRITE "Vous avez échoué"
-END IF
-```
-]
-
-.pull-right[
-
-Avec `IF`
-```
-IF note >= 90
-  WRITE "Exceptionel"
-END IF
-
-IF note < 90 
-  IF note >= 80
-    WRITE "Très bien"
-  END IF
-END IF
-
-IF note < 80
-  IF note >= 60
-    WRITE "Vous avez réussi"
-  END IF
-END IF
-
-IF note < 60
-  WRITE "Vous avez échoué"
-END IF
-```
-]
-
----
-
-# Révision IF/IF ELSE/ELSE
-
-## Pour note = 85
-
-.pull-left[
-
-Avec `IF`/`IF ELSE`/`ELSE`
-```
-IF note >= 90        <------- Évalué
-  WRITE "Exceptionel"
-IF ELSE note >= 80   <------- Évalué
-  WRITE "Très bien"
-IF ELSE note >= 60   <------- Non évalué
-  WRITE "Vous avez réussi"
-ELSE                 <------- Non évalué
-  WRITE "Vous avez échoué"
-END IF
-```
-]
-
-.pull-right[
-
-Avec `IF`
-```
-IF note >= 90              <-- Évalué
-  WRITE "Exceptionel"
-END IF
-
-IF note < 90                <-- Évalué
-  IF note >= 80             <-- Évalué
-    WRITE "Très bien"
-  END IF
-END IF
-
-IF note < 80                <-- Évalué
-  IF note >= 60             <-- Non valué
-    WRITE "Vous avez réussi"
-  END IF
-END IF
-
-IF note < 60               <-- Évalué
-  WRITE "Vous avez échoué"
-END IF
-```
-]
-
----
-
 # Solution de l'exercice de la séance 1
 
 Calculer la moyenne d'un vecteur `nombres` composé de 20 nombres entre 1 et 100
@@ -160,91 +64,18 @@ PROGRAM DEVOIR
   SET nombres
   i = 1
 
-  FOR loop IN 1:1000
-    r = RANDOM()
-    IF r >= 1 
-      IF r <= 100
-        nombres[i] = r
-        i = i + 1
+  FOR i IN 1:20     <--------- Correspond au nombre de tirages
+    r = RANDOM()    <--------- Tirage d'une valeur aléatoire 
+    WHILE r < 1     <--------- Si le chiffre est plus petit que 1 
+      IF r > 100    <--------- Et qu'il est plus grand que 100
+        r = RANDOM() 
       END IF
-    END IF
+    END WHILE
 
-    IF LENGTH(nombre) == 20
-      BREAK
-    END IF
-  END FOR
-```
+    nombres[i] = r  <--------- Enregistre la valeur
+    i = i + 1       <--------- Augmente le compteur
 
----
-
-# Solution de l'exercice de la séance 1
-
-## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
-
-```
-PROGRAM DEVOIR
-  SET nombres
-  i = 1
-
-  FOR loop IN 1:1000 <--------- Définir un grand nombre d'itérations
-    r = RANDOM()
-    IF r >= 1 
-      IF r <= 100
-        nombres[i] = r
-        i = i + 1
-      END IF
-    END IF
-
-    IF LENGTH(nombre) == 20 <-- Vérifier si le vecteur est complet
-      BREAK
-    END IF
-  END FOR
-```
-
-Ça fonctionne, mais c'est pas très élégant... Voyons comment faire mieux.
-
----
-
-# Solution de l'exercice de la séance 1
-
-## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
-
-```
-PROGRAM DEVOIR
-  SET nombres
-  i = 1
-
-  WHILE LENGTH(nombres) < 20           <--- Utiliser WHILE
-    r = RANDOM()
-    IF r >= 1 
-      IF r <= 100
-        nombres[i] = r
-        i = i + 1
-      END IF
-    END IF
-  END WHILE
-```
-
-Est-ce qu'on peut optimiser ?
-
----
-
-# Solution de l'exercice de la séance 1
-
-## Étape 1 : générer un vecteur de 20 nombres aléatoires entre 1 et 100
-
-```
-PROGRAM DEVOIR
-  SET nombres
-  i = 1
-
-  WHILE LENGTH(nombres) < 20           <--- Utiliser WHILE
-    r = RANDOM()
-    IF r >= 1 AND r <= 100             <--- Utiliser AND pour coupler les conditions
-      nombres[i] = r
-      i = i + 1
-    END IF
-  END WHILE
+  END FOR   
 ```
 
 ---
@@ -258,12 +89,12 @@ PROGRAM DEVOIR
 PROGRAM DEVOIR (SUITE)
   somme = 0
 
-  FOR position IN 1:20
-    somme = somme + nombres[position]
+  FOR position IN 1:20 
+    somme = somme + nombres[position]   <--------- Somme cumulative
   END FOR
 
-  longueur = LENGTH(nombres)
-  moyenne = somme / longueur
+  longueur = LENGTH(nombres)            <--------- Longueur du vecteur
+  moyenne = somme / longueur            <--------- Calcul de la moyenne
 
   PRINT moyenne
 ```
@@ -716,42 +547,6 @@ MonPremierVecteur[6]
 MonPremierVecteur[c(1,3,5)]
 ```
 
-## On peut utiliser une condition pour sélectionner des valeurs:
-
-```{r}
-vect <- c(2,4,6,8,10)
-vect[vect > 5]
-```
-
----
-
-# Note sur les opérateurs logiques
-
-| Opérateur | Signification |
-|:---------:|:-------------:|
-| `==` | égal à |
-| != | différent de |
-| `>` | supérieur à |
-| `<` | inférieur à |
-| `>=` | supérieur ou égal à |
-| `<=` | inférieur ou égal à |
-
-**NOTE** : Pour plus de détails sur les opérateurs logiques, voir [operators](https://www.statmethods.net/management/operators.html)
-
----
-
-# Note sur les opérateurs logiques
-
-## On peut combiner plusieurs conditions avec les opérateurs `&` et `|`
-
-```{r}
-vect <- c(2,4,6,8,10)
-# 'condition 1 et condition2'
-vect[vect > 5 & vect < 10]
-# 'condition1 ou condition2'
-vect[vect > 8 | vect < 4]
-```
-
 ---
 
 # Types d'objets: les `vecteurs`
@@ -853,36 +648,12 @@ On peut indexer une colonne directement avec le symbole "$"
 
 ## Un `data.frame` peut avoir différents types de valeur pour chaque colonne
 
-Mais chaque colonne doit être du même type
-
 ```{r}
 df2 <- data.frame(a = c(1:3), traitement = factor(c("trait1","trait2","trait3")))
 df2
 ```
 
 Cette capacité à entreposer plusieurs types de valeur est ce qui distingue un `data.frame` d'une matrice.
-
----
-
-# Type d'objets: les `data.frame`
-
-## On peut néanmoins transformer un `data.frame` en matrice
-
-```{r}
-as.matrix(df)
-as.matrix(df2)
-```
-
----
-
-# Type d'objets: `data.frame`
-
-## Ou inversement, transformer une matrice en `data.frame`
-
-```{r}
-mat <- matrix(c(1:6), nrow = 3, ncol = 2)
-as.data.frame(mat)
-```
 
 ---
 
@@ -1106,21 +877,11 @@ n_sp
 
 # Exercice de manipulation des données
 
-- Ouvrir le fichier [quadrats.csv](./donnees/quadrats.csv) au moyen de Excel ou d'un éditeur de texte
-- Calculer l'abondance moyenne pour chaque espèce sur l'ensemble des quadrats
-- Ouvrir le même fichier au moyen de R
+- Télécharger le fichier [quadrats.csv](./donnees/quadrats.csv) 
+- Lire le fichier au moyen de R
 - Vérifier que le fichier a le format approprié
 - Créer un vecteur `AbondanceMoyenne` d'une longueur correspondant au nombre d'espèces dans les données quadras
-
----
-
-# Exercice de manipulation des données (suite)
-
 - Calculer l'abondance moyenne de chaque espèce au moyen de la fonction 'mean' et l'inscrire dans chaque position de `AbondanceMoyenne`
-- Convertir AbondanceMoyenne en `data.frame`
-- Attribuer les noms des espèces pour chaque entrée de `AbondanceMoyenne`
-- Enregistrer `AbondanceMoyenne` sous forme de fichier `CSV` (séparateur point-virgule)
-- Ouvrir le fichier `CSV` et le comparer au calcul fait aux moyennes d’Excel
 
 **Note:** vous pouvez explorer les données avec `summary` et pour les avancés. Les plus avancés peuvent explorer la commande `apply`...
 
@@ -1134,14 +895,9 @@ class: middle, center, inverse
 
 # Ressources dans R
 
-- `?` pour obtenir de l'aide sur une fonction
+`?` pour obtenir de l'aide sur une fonction
 
-```r
-?mean
-```
-
-
-# Ressources en ligne
+## Ressources en ligne :
 
 - [stackoverflow.com](stackoverflow.com)
 - [R for Data Science](https://r4ds.had.co.nz/)
@@ -1193,7 +949,7 @@ rank(rang)
 
 ---
 
-# Fonctions utiles: échantillonner les valeurs uniques
+# Fonctions utiles: valeurs uniques
 
 ```{r}
 uq <- c(1,2,5,7,4,3,2,1,10,5,8)
