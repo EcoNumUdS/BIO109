@@ -62,28 +62,6 @@ Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données in
 On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
 
 ---
-class: middle, center, inverse
-
-# Quiz
-
----
-
-# Solution
-
-```{r}
-# Créer un tableau où on enregistre les résultats
-resultats <- matrix(nr = 5, nc = 7)
-# Lire le fichier (en assumant que vous êtes dans le bon dossier)
-arbres <- read.table(file="donnees/arbres.csv", header=TRUE, sep = ";")
-# Délimiter une première zone
-sub_zoneA <- subset(arbres, arbres$bory < 201)
-# Calculer le nombre de tiges
-table(sub_zoneA$esp)
-# Enregistrer le résultat dans le tableau
-resultats[1,] <- table(arbres$esp)
-```
-
----
 
 # Fonction source
 
@@ -277,7 +255,7 @@ Une fonction contient une série de commandes (i.e. lignes de code) qui sont ex�
 
 ---
 
-# Un simple exemple
+# Anatomie de la fonction
 
 ```{r}
 ma_fonction <- function(argument1, argument2) {
@@ -292,7 +270,7 @@ ma_fonction <- function(argument1, argument2) {
 
 ---
 
-# Un simple exemple
+# Anatomie de la fonction
 
 ```{r eval=FALSE}
 ma_fonction <- function(argument1, argument2) { <---- Nom de la fonction et arguments
