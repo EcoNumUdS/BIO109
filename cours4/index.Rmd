@@ -50,79 +50,6 @@ class: middle, center, inverse
 
 
 ---
-
-# Trucs pour essayer de programmer une fonction
-
-Commencer en travaillant localement
-
-```{r eval=TRUE}
-quadrats <- read.csv2(file = "donnees/quadrats.csv", header = TRUE,
-    stringsAsFactors = FALSE, row.names = 1)
-acsa_abondance <- quadrats$acsa
-# Abondance moyenne
-moy <- mean(acsa_abondance)
-# Abondance totale
-tot <- sum(acsa_abondance)
-# Coefficient de variation de l'abondance
-CV <- sd(acsa_abondance)/mean(acsa_abondance)
-# Densité maximale dans un quadrat
-max_ab <- max(acsa_abondance)
-# Densité minimale dans un quadrat
-min_ab <- min(acsa_abondance)
-```
-
----
-
-# Trucs pour essayer de programmer une fonction
-
-Tout envelopper dans une fonction
-
-```{r eval=TRUE}
-ma_fonction <- function(abondance) {
-
-     # Abondance moyenne
-     moy <- mean(abondance)
-     # Abondance totale
-     tot <- sum(abondance)
-     # Coefficient de variation de l'abondance
-     CV <- sd(abondance)/mean(abondance)
-     # Densité maximale dans un quadrat
-     max_ab <- max(abondance)
-     # Densité minimale dans un quadrat
-     min_ab <- min(abondance)
-     # Retour extérieur
-     return(c(moy, tot, CV, max_ab, min_ab))
- }
-```
-
-
----
-
-# Trucs pour essayer de programmer une fonction
-
-On fait un essai sur un premier objet que l'on connait
-
-```{r eval=TRUE}
-ma_fonction(acsa_abondance)
-```
-
-Ensuite on fait un test sur un second objet
-
-```{r eval=TRUE}
-ma_fonction(quadrats$abba)
-```
-
----
-
-# Trucs pour essayer de programmer une fonction
-
-Finalement on peut l'appliquer sur l'ensemble des données
-
-```{r eval=FALSE}
-apply(quadrats, 2, ma_fonction)
-```
-
----
 class: middle, center, inverse
 
 # Les algorithmes
@@ -399,26 +326,6 @@ Enregistrez les résultats de votre conversion dans une matrice avec pour colonn
 ---
 # Solution
 
-```
-PROGRAM CONVERSION
-DEFINE resultat = matrice de 151 rangées et 2 colonnes
-DEFINE n = 1
-
-FOR F IN -50:100
-    resultat[n,1] = F
-    resultat[n,2] = (F-32)*5/9
-    n = n + 1
-END FOR
-```
-
-Le pseudo-code est général et ne fait pas référence à un langage de programmation en particulier.
-
-Certaines étapes peuvent être verbalisées.
-
-
----
-# Solution
-
 ```{r  eval=TRUE}
 resultat = matrix(nr = 151, nc = 2)
 n = 1
@@ -486,7 +393,7 @@ DEFINE n = 1
 DEFINE tirage = 1
 
 WHILE tirage != 6
-    tirage = tirage du de
+    tirage = tirage du dé
     n = n + 1
 END WHILE
 ```
@@ -502,7 +409,7 @@ while(tirage != 6) {
 	tirage <- sample(de,1) # tirage du dé
 	n <- n + 1 # mise à jour du compter pour tester le nombre de tirages
 }
-cat("Il a fallu", n, "étapes pour obtenir la valeur ", tirage, '\n')
+cat(n, "tirages pour obtenir un 6 ", '\n')
 ```
 
 ---
@@ -548,7 +455,7 @@ $$
 
 Henri Meunier a importé environ 220 cerfs sur l'île d'Anticosti au début du 20ème siècle et on compte aujourd'hui environ 200 000 bêtes, ce qui correspond à la capacité de support du milieu ( $K$ ). Si on fixe le taux de croissance ( $r$ ) à 0.3, combien de temps fut nécessaire à la population pour atteindre 50% de la capacité de support ?
 
-> **Astuce** : On cherche à compter le nombre d'années nécessaires pour que $N$ atteingne la valeur de $K/2$.
+> **Astuce** : On cherche à compter le nombre d'années nécessaires pour que $N$ atteigne la valeur de $K/2$.
 
 ---
 # Solution 1
@@ -713,49 +620,12 @@ Les classiques :
 | <= | inférieur ou égal à | X <= Y |
 
 ---
+
 # Exercice
 
 1. Tirez au hasard 10 chiffres entre 0 et 1 avec `runif()`.
 2. Pour chacun de ces chiffres, déterminez s'il est plus petit ou plus grand que la valeur seuil de 0.3.
 3. Inscrivez votre résultat dans un autre objet.
-
----
-
-# Solution
-
-.pull-left[
-## Exemple simpliste
-```
-PROGRAM SEUIL
-DEFINE chiffres = 10 chiffres entre 0 et 1
-
-FOR i IN 1 TO 10
-    IF chiffres < 0.3
-        SAVE "plus petit"
-    ELSE
-        SAVE "plus grand"
-    END IF
-END FOR
-```
-]
-
-.pull-right[
-## Exemple plus complet
-```
-PROGRAM SEUIL
-DEFINE chiffres = 10 chiffres entre 0 et 1
-DEFINE res = vecteur de longueur 10
-
-FOR i IN 1 TO 10
-    IF chiffres[i] < 0.3
-        res[i] = "plus petit"
-    ELSE
-        res[i] = "plus grand"
-    END IF
-END FOR
-```
-]
-
 
 ---
 
@@ -808,24 +678,6 @@ On peut aussi combiner plusieurs conditions :
 # Exercice
 
 Reprenez la même séquence de chiffres, mais cette fois-ci déterminez si le chiffre est situé entre les valeurs de 0.2 et 0.6.
-
----
-
-# Solution
-
-```
-PROGRAM DOUBLE SEUIL
-READ chiffres
-DEFINE res = vecteur de longueur 10
-
-FOR i IN 1 TO 10
-    IF chiffres[i] > 0.2 AND chiffres[i] < 0.6
-        res[i] = "oui"
-    ELSE
-        res[i] = "non"
-    END IF
-END FOR
-```
 
 ---
 
@@ -891,215 +743,40 @@ cbind(X,res2)
 Cette syntaxe est moins lisible et intuitive, vous n'avez pas à l'utiliser pour le cours. Il faut néanmoins pouvoir la reconnaitre et surtout savoir qu'elle est de 100 à 1000 plus rapide que la boucle `for`.
 
 ---
-class: middle, inverse, center
+class: inverse, middle, center
 
-# Travail final
+# Exercice de la semaine
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 ---
-# Répartition des domaines bioclimatiques
 
-<div style='text-align:center;'>
-<img src="assets/img/bioclim.png" height="500px"></img>
-</div>
+# Une situation qui peut arriver tous les jours
 
-Forêt tempérée -> forêt mixte -> forêt boréale -> rien
+1. On jette en face de vous 5 lettres d'un jeu de scrabble
 
----
-# La distribution des arbres à Sutton
+2. Un maniaque vous demande d'écrire un programme qui ordonne les 5 lettres
 
-<div style='text-align:center;'>
-<img src="assets/img/grille.jpg" height="250px"></img>
-</div>
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Vous devez les écrire sous forme de pseudo-code.
 
 ---
-# Un modèle de communauté
-<div style='text-align:center;'>
-<img src="assets/img/modele_vissault_v2.png" height="500px"></img>
-</div>
 
----
-# Répartition des états
+# Pseudo-code
 
-.pull-left[
-<div style='text-align:center;'>
-<img src="assets/img/modele_vissault_v2.png" width="100%"></img>
-</div>
-]
+Ordonner un vecteur `X` composé de 5 lettres de Scrabble
 
-.pull-right[
-La parcelle de Sutton peut être représentée par une matrice de composition :
-<div style='text-align:center;'>
-<img src="assets/img/animation.gif" height="400px"></img>
-</div>
-]
-
-
----
-# Les différents états
-
-- 'B' si présence de abba ou piru
-- 'T' si présence de acsa ou acpe ou beal ou fagr
-- 'M' si présence de (abba ou piru) et (acsa ou acpe ou beal ou fagr)
-- 'R' si aucun de ces critères n'est rempli
-
-
-Les données sont dans le fichier `quadrats.txt` :
-
-```{r, echo=FALSE}
-head(read.csv2("donnees/quadrats.txt"))
 ```
 
+DEFINE is.sort = FALSE
+READ X
 
----
-# La matrice de transition entre les différents états
-
-$$
-\begin{bmatrix}
-P(B_{t+1}|B_t) & P(M_{t+1}|B_t) & P(T_{t+1}|B_t) & P(R_{t+1}|B_t) \\
-P(B_{t+1}|M_t) & P(M_{t+1}|M_t) & P(T_{t+1}|M_t) & P(R_{t+1}|M_t) \\
-P(B_{t+1}|T_t) & P(M_{t+1}|T_t) & P(T_{t+1}|T_t) & P(R_{t+1}|T_t) \\  
-P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
-\end{bmatrix}
-$$
-
-Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspond à l'état au temps t+1. Une ligne de ce tableau correspond à un vecteur de probabilités d'une distribution multinomiale. Donc, la somme d'une rangée doit être égale à 1.
-
-Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
-
----
-# La matrice de transition entre les différents états
-
-$$
-\begin{bmatrix}
-0.9059 & 0.0932 & 0.0000 & 0.0009 \\  
-0.0004 & 0.8454 & 0.1452 & 0.0090 \\
-0.0000 & 0.0350 & 0.9594 & 0.0056 \\
-0.0001 & 0.0020 & 0.0011 & 0.9968 \\
-\end{bmatrix}
-$$
-
-Notez que l'intervalle de temps entre deux épisodes est 5 ans.
-
-
-Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
-
----
-# Question de recherche
-
-Quelle sera la distribution de la forêt mixte au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
-
----
-# Données
-
-- Distribution initiale de la végétation dans le fichier [quadrats.txt](./donnees/quadrats.txt)
-- Matrice de transition entre les 4 états dans le fichier [matrice_transitions.txt](./donnees/matrice_transitions.txt)
-
----
-# Modalités
-
-## Remise
-
-Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux (eg. `# auteurs: Victor Cameron, Benjamin Mercier`)
-
-**7 février** : Un membre par équipe peut remettre une première version du pseudo-code sur Moodle avant la séance 5 pour une correction formative (qui n'est pas notée !)
-
-**21 février** : Le travail terminal (pseudo code + programme) devra être remis sur Moodle avant le 21 février 23h59
-   
----
-# Modalités - Programme
-
-Votre programme devra être remis dans un dossier `projet` qui contiendra les scripts suivants :
-
-1. Transformer les abondances ([quadrats.txt](./donnees/quadrats.txt)) en états de départ
-2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition `etats`
-3. Fonction qui fait une simulation sur N pas de temps, pour une matrice de composition de départ `etats_0`, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) pour chaque pas de temps
-4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
-5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
-
----
-# Modalités - Programme
-
-\5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
-  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ?
-  > ii) Quelle sera la composition dans 75 ans d'une forêt entièrement constituée d'un mélange de feuillus et de conifères (M) au départ ?
-  > iii) Présenter une figure qui représente la composition de la forêt tempérée au cours du temps (10, 25, 50, 75 ans)
-
----
-# Modalités - Pseudo-code
-
-### 7 février
-
-Un membre par équipe, doit remettre le pseudo-code pour les étapes 1 à 3. Inscrire `DRAW etat_t1` pour le tire au hasard de l'état au temps t+1. Faire le pseudo-code pour le reste de la fonction.
-
-### 21 février
-
-Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune des fonctions
-- Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
-- Moodle n'accepte qu'un seul fichier, vous pouver compresser votre répertoire de travail et remettre le fichier zip
-- Attention à la reproductibilité (relire attentivement le cours 1)!
-
----
-# Critères d'évaluation
-
-## Pseudo-code (22%)
-
-**Respect des bonnes pratiques enseignées**
-- Les instructions sont connues et adaptées à l'utilisation
-- Mise en forme correcte des instructions et variables
-- Les noms de variables sont explicites
-
-**La mise en forme adéquate d'un pseudo-code**
-- Une instruction par ligne
-- Le code est indenté de façon constante
-- Le pseudo-code est divisé en blocs rerpésentant des algorithmes
-
-**Justesse des processus de programmation utilisés**
-- Les opérations répétées utilisent des boucles
-- Les opérations logiques utilisent des déclarations conditionnelles
-
----
-
-# Critères d'évaluation
-
-## Programme (60%)
-
-**Respect des bonnes pratiques enseignées dans le cours (40%)**
-
-**Exécution des différentes étapes du code (40%)**
-- Transformation des données sous forme d'états
-- Programmation de la simulation sous forme d'une fonction ré-utilisable
-- Réalisation de la simulation stochastique (tirage des transitions)
-- Réalisation de la figure
-
-**Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %)** 
-- Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse
-
-<!-- **Reproducibilité : Structure rigoureuse du programme**
-- Les scripts sont divisés en fonctions
-- Le code est généralisé et indépendant des données
-
-**Exécution : Fonctionnement adéquat du programme**
-- Le programme s'exécute sans intervention de l'utilisateur autre que l'appel `source()` pour lancer la simulation
-- Le programme s'exécute sans erreur ou messages d'alerte
-- Le programme prend en compte les arguments pour exécuter la simulation
-- Le programme produit les résulats attendus
-- La simulation s'exécute sur 10 et 100 pas de temps
-
-**Application correcte des pratiques de programmation**
-- Le code est bien structuré et facile à lire
-- Le code est bien commenté
-- Les variables et arguments sont nommés de façon explicite -->
-
-
----
-
-# Rappel
-
-On peut exécuter un script (par exemple pour charger une fonction) dans un autre script avec la commande `source()`
-
-```{r eval=FALSE}
-source("ma_fonction.R")
-ma_fonction(x)
+WHILE is.sort = FALSE
+  is.sort = TRUE
+  FOR pos IN 1:4
+    IF X[pos] > X[pos+1]
+      INVERSE
+      is.sort = FALSE
+    END IF
+  END FOR
+END WHILE  
 ```
 
