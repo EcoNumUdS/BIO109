@@ -329,14 +329,18 @@ Le pseudo-code est une façon de décrire un algorithme sans utiliser de syntaxe
 # Un premier exercice simple
 
 ```{r eval=FALSE}
+C = NULL
 for(F in -50:100) {
-    cat("Pour F = ",F," on obtient C = ",(F - 32) *5/9, '\n')
+    C = (F - 32) *5/9
+    cat("Pour F = ",F," on obtient C = ",C, '\n')
 }
 ```
 
 ```{r echo=FALSE}
-for(F in -50:-45) {
-    cat("Pour F = ",F," on obtient C = ",(F - 32) *5/9, '\n')
+C = NULL
+for(F in -50:100) {
+    C = (F - 32) *5/9
+    cat("Pour F = ",F," on obtient C = ",C, '\n')
 }
 ```
 
