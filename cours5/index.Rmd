@@ -313,6 +313,49 @@ La fonction `set.seed()` permet de reproduire des tirages aléatoires. Si on uti
 .content-box-red[Attention, il s'agit d'une simplification]
 
 ---
+# Exercice
+
+Une étude vous indique que la relation entre le nombre d'espèces de plantes et l'aire sur la placette de Sutton suit la relation suivante :
+
+$$
+S \sim N(\mu, \sigma)
+$$
+
+Où
+
+$$
+\mu = cA^z
+$$
+
+Vous trouvez dans la littérature des valeurs de paramètres de $c = 3$, $z = 0.15$ et $\sigma = 1.5$. Illustrez des valeurs attendues sur ce modèle pour l'interval de $A = [20, 20 000]$ correspondant à la dimension de la placette.
+
+---
+# Solution
+
+.pull-left[
+```{r, eval=FALSE}
+A = 2*10^seq(1, 4, length.out = 15)
+c = 3
+z = 0.15
+S = rnorm(15, mean = c*A^z, sd = 1.5)
+
+plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
+  log = "xy")
+```
+]
+
+.pull-right[
+```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
+A = 2*10^seq(1, 4, length.out = 15)
+c = 3
+z = 0.15
+S = rnorm(15, mean = c*A^z, sd = 1.5)
+plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
+  log = "xy")
+```
+]
+
+---
 class: middle, center, inverse
 
 # Application 3: prise de décision
@@ -353,114 +396,57 @@ for (i in 1:10) {
 hist(out)
 ```
 
----
-# En d'autres mots...
-
-Si un événement aléatoire se répète suffisamment de fois, alors la fréquence de l'événement se rapproche de la probabilité de l'événement.
 
 ---
-# La loi multinomiale
+# Un exercice est encore plus efficace...
 
-La situation se complique lorsqu'il y a plus que 2 résultats possibles à notre épreuve aléatoire. 
+Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
 
-Par exemple, le conducteur peut tourner à gauche avec une probabilité de 0.25, poursuivre en ligne droite avec une probabilité de 0.5 ou encore tourner à droite avec une probabilité de 0.25.
+- Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
+- À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;
+- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
 
-La loi multinomiale est une généralisation de la loi binomiale qui permet d'avoir plus de 2 résultats possibles
-
----
-# La loi multinomiale
-
-- La somme des probabilités d'observer chacun des événements doit être obligatoirement de 1.
-
-- Dans ce contexte, la décision est prise en comparant la valeur aléatoire à la distribution cumulative, pour chacun des événements possibles.
-
-**Prenons la séquence de probabilités $p = \{0.25, 0.5, 0.25 \}$.**
-
-- La distribution cumulative des événements est de $\{0.25, 0.75, 1\}$.
-- La décision est prise en tirant un chiffre au hasard et en trouvant où il se situe dans cet intervalle.
+Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d'oiseau).
 
 ---
-# Exemple
+# Solution
+
+.pull-left[
 
 ```{r}
-etats <- c("gauche", "ligne droite", "doite")
-p <- c(0.25, 0.5, 0.25)
-sum(p)
-
-# On utilise cumsum pour calculer la probabilité cumulative
-cump <- cumsum(p)
-cump
-```
-
----
-# Exemple
-
-```{r}
-alea <- runif(1, 0 , 1)
-alea
-n_etats = 3; i <- 1; plus_petit <- FALSE
-while(plus_petit == FALSE) {
-    if(alea < cump[i]) {
-        decision <- etats[i]
-        plus_petit <- TRUE
+nsteps = 20
+xy = matrix(0,nr = 21, nc = 2)
+xy[1,] = c(0,0)
+direction = 0
+set.seed(2)
+for(step in 2:(nsteps+1)) {
+    # Ḑe quel côté tourner ?
+    if(runif(1,0,1) < 0.5) {
+      # Tourne à droite
+      direction = direction + pi/2 
     }
     else {
-        i = i + 1
+      # Tourne à gauche  
+      direction = direction - pi/2
     }
+    # Calcul des nouvelles coordonnées
+    xy[step,1] = 
+      xy[step-1,1] + sin(direction)*250 
+    xy[step,2] = 
+      xy[step-1,2] + cos(direction)*250 
 }
-decision
 ```
+]
 
----
-# Une façon plus rapide d'y arriver ....
-## Profitons de la fonction `rmultinom()` qui simplifie les opérations
 
-```{r}
-tirage <- function(etats, p) {
-    res <- rmultinom(n=1, size=1, prob=p)
-    etats[which(res==1)]
-}
-
-etats <- c("A", "B", "C", "D", "E")
-p <- c(0.1, 0.2, 0.3, 0.2, 0.2)
-
-tirage(etats, p)
+.pull-right[
+```{r, echo=FALSE,out.width = '100%', dpi=300, fig.align="center"}
+plot(xy[,1],xy[,2], type = "l", xlim = c(-2000,2000),ylim = c(-2000,2000),
+    xlab = "X", ylab = "Y")
+points(xy[,1],xy[,2],pch = 19)
 ```
+]
 
----
-class: middle, center, inverse
-
-# La fonction source
-<hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
-
----
-
-# La fonction source
-
-La fonction `source()` permet d'exécuter le code contenu dans un fichier externe. 
-
----
-
-# Exercice
-
-1. Créez un fichier `exemple_source.R` contenant le code suivant :
-
-```{r, eval=FALSE}
-# ================================
-# Exemple de code
-# ================================
-# 1. Créer des données
-x <- 1:10
-print(x)
-
-y <- x^2
-print(y)
-
-# 2. Tracer la courbe
-plot(x, y)
-```
-
-\2. Créez un fichier `appel_source.R` qui appelle le fichier `exemple_source.R` et faites l'addition de x et y.
 
 ---
 class: middle, center, inverse
@@ -637,203 +623,137 @@ class: middle, inverse, center
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
 ---
-# Répartition des domaines bioclimatiques
+# Mise en contexte
 
 <div style='text-align:center;'>
-<img src="assets/img/bioclim.png" height="500px"></img>
-</div>
-
-Forêt tempérée -> forêt mixte -> forêt boréale -> rien
-
----
-# La distribution des arbres à Sutton
-
-<div style='text-align:center;'>
-<img src="assets/img/grille.jpg" height="250px"></img>
+<img src="assets/img/gosford.jpg" height="500px"></img>
 </div>
 
 ---
-# Un modèle de communauté
+# La Grive de Bicknell
+
 <div style='text-align:center;'>
-<img src="assets/img/modele_vissault_v2.png" height="500px"></img>
+<img src="assets/img/bicknell.jpg" height="500px"></img>
 </div>
 
 ---
-# Répartition des états
+# Modèle de Levins spatialement explicite 
 
-.pull-left[
 <div style='text-align:center;'>
-<img src="assets/img/modele_vissault_v2.png" width="100%"></img>
+<img src="assets/img/reseau.png" height="500px"></img>
 </div>
-]
 
-.pull-right[
-La parcelle de Sutton peut être représentée par une matrice de composition :
+---
+# La théorie des métapopulations 
+
+*Une métapopulation est un ensemble de populations locales connectées par la dispersion. La persistence est maintenue lorsque la colonisation excède les extinctions. Une métapopulation peut s’éteindre même si des habitats favorables sont disponibles dans la région.*
+
+---
+# Le modèle de Levins spatialement implicite
+
+Dans une très grande région, la dynamique de la prévalence $p$ est décrite par : 
+
+$\frac{dp}{dt} = cp(1-p) - ep$
+
+Où $c$ est le taux de colonisation et $e$ est le taux d'extinction. L'équilibre est : 
+
+$p^* = 1 - e/c$
+
+---
+# Modèle de Levins spatialement explicite 
+
 <div style='text-align:center;'>
-<img src="assets/img/animation.gif" height="400px"></img>
+<img src="assets/img/reseau.png" height="500px"></img>
 </div>
-]
-
 
 ---
-# Les différents états
+# Modèle de Levins spatialement explicite 
 
-- 'B' si présence de abba ou piru
-- 'T' si présence de acsa ou acpe ou beal ou fagr
-- 'M' si présence de (abba ou piru) et (acsa ou acpe ou beal ou fagr)
-- 'R' si aucun de ces critères n'est rempli
+À chaque pas de temps $t$ et pour chaque sommet $x$: 
 
+- Si un sommet $x$ n'est pas occupé par la grive et que l'habitat est disponible, la probabilité de colonisation du sommet $x$ est $1 - (1-c)^{n_x}$, où $n_x$ est le nombre de sommets connectés à $x$ qui sont occupés 
 
-Les données sont dans le fichier `quadrats.txt` :
-
-```{r, echo=FALSE}
-head(read.csv2("donnees/quadrats.txt"))
-```
-
+- Si un sommet $x$ est occupé par la grive, la probabilité d'extinction est $e/S_x$, où $S_x$ est la superficie du sommet $x$
 
 ---
-# La matrice de transition entre les différents états
+# Consignes
 
-$$
-\begin{bmatrix}
-P(B_{t+1}|B_t) & P(M_{t+1}|B_t) & P(T_{t+1}|B_t) & P(R_{t+1}|B_t) \\
-P(B_{t+1}|M_t) & P(M_{t+1}|M_t) & P(T_{t+1}|M_t) & P(R_{t+1}|M_t) \\
-P(B_{t+1}|T_t) & P(M_{t+1}|T_t) & P(T_{t+1}|T_t) & P(R_{t+1}|T_t) \\  
-P(B_{t+1}|R_t) & P(M_{t+1}|R_t) & P(T_{t+1}|R_t) & P(R_{t+1}|R_t) \\
-\end{bmatrix}
-$$
+1. Écrire un modèle de simulation stochastique sous forme de fonction ayant pour arguments la matrice de connectivité, la superficie des sommets, la disponibilité des sommets (oui/non) et la durée de simulation
 
-Se lit ainsi: la rangée correspond à l'état au temps t et la colonne correspond à l'état au temps t+1. Une ligne de ce tableau correspond à un vecteur de probabilités d'une distribution multinomiale. Donc, la somme d'une rangée doit être égale à 1.
+2. Étudier le modèle à l'équilibre lorsque tous les sommets sont disponibles : calculer la fraction moyenne du paysage qui est occupé par la grive
 
-Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
+3. Utiliser le modèle pour étudier quel est le sommet qui a le plus grand intérêt pour la conservation (lequel doit absolument être protégé)
 
----
-# La matrice de transition entre les différents états
-
-$$
-\begin{bmatrix}
-0.9059 & 0.0932 & 0.0000 & 0.0009 \\  
-0.0004 & 0.8454 & 0.1452 & 0.0090 \\
-0.0000 & 0.0350 & 0.9594 & 0.0056 \\
-0.0001 & 0.0020 & 0.0011 & 0.9968 \\
-\end{bmatrix}
-$$
-
-Notez que l'intervalle de temps entre deux épisodes est 5 ans.
-
-
-Une entrée $P(B_{t+1} | T_t)$ se lit comme "la probabilité qu'un quadrat occupé par l'état T au temps t soit occupé par l'état B au temps t+1".
-
----
-# Question de recherche
-
-Quelle sera la distribution de la forêt mixte au sein de la Réserve écologique des Montagnes vertes dans 75 ans ?
 
 ---
 # Données
 
-- Distribution initiale de la végétation dans le fichier [quadrats.txt](./donnees/quadrats.txt)
-- Matrice de transition entre les 4 états dans le fichier [matrice_transitions.txt](./donnees/matrice_transitions.txt)
+Probabilité de **colonisation** $c = $
+
+Probabilité d'**extinction** $e = $
+
+Utilisez la matrice de [connectivité](./donnees/connectivite.txt) et le vecteur de [superficie](./donnees/superficie.txt) des sommets
 
 ---
 # Modalités
 
 ## Remise
 
-Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux (eg. `# auteurs: Victor Cameron, Benjamin Mercier`)
+Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux (eg. `# auteurs: Claire-Cécile-Juhasz, Zacharie Scalzo`)
 
-**7 février** : Un membre par équipe peut remettre une première version du pseudo-code sur Moodle avant la séance 5 pour une correction formative (qui n'est pas notée !)
+**13 février** : Séance de dépannage au D7-2007
 
-**21 février** : Le travail terminal (pseudo code + programme) devra être remis sur Moodle avant le 21 février 23h59
+**20 février** : Le travail final (pseudo code + programme) devra être remis sur Moodle avant le 20 février 23h59
    
 ---
-# Modalités - Programme
+# Modalités
 
 Votre programme devra être remis dans un dossier `projet` qui contiendra les scripts suivants :
 
-1. Transformer les abondances ([quadrats.txt](./donnees/quadrats.txt)) en états de départ
-2. Fonction qui tire au hasard l'état au temps t+1 en fonction de l'état au temps t pour une cellule de coordonnées $[x,y]$ dans la matrice de composition `etats`
-3. Fonction qui fait une simulation sur N pas de temps, pour une matrice de composition de départ `etats_0`, et retourne la composition (proportion de chaque état sur l'ensemble de la placette) pour chaque pas de temps
-4. Exécuter la fonction sur 10 et 100 pas de temps et évaluer le temps de calcul avec system.time()
-5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
+1. Le pseudo-code pour la fonction principale 
+
+2. Lecture de la matrice de connectivité et du vecteur de superficies
+
+3. Fonction qui réalise une simulation du modèle de Levins spatialement explicite
+
+4. Exécution du modèle sur 250 pas de temps et calcul de la prévalence à l'équilibre 
+
+5. Simulation de retrait des sommets (un par un) afin d'évaluer l'importance de chacun des sommets pour la conservation 
+
 
 ---
-# Modalités - Programme
-
-\5. Utiliser la sortie de la fonction pour répondre aux question suivantes : 
-  > i) qu'advient-il de la forêt mixte dans 25 ans ? 50 ans ? 75 ans ? <br>
-  > ii) Quelle sera la composition dans 75 ans d'une forêt entièrement constituée d'un mélange de feuillus et de conifères (M) au départ ? <br>
-  > iii) Présenter une figure qui représente la composition de la forêt tempérée au cours du temps (10, 25, 50, 75 ans) <br>
-
----
-# Modalités - Pseudo-code
-
-### 7 février
-
-Un membre par équipe, doit remettre le pseudo-code pour les étapes 1 à 3. Inscrire `DRAW etat_t1` pour le tire au hasard de l'état au temps t+1. Faire le pseudo-code pour le reste de la fonction.
-
-### 21 février
-
-Un membre par équipe, doit remettre le programme et le pseudo-code pour chacune des fonctions
-- Découpage en scripts séparés pour les différentes étapes. L'analyse (étapes 4-5) dans un seul script. Ce script exécute votre code, de la lecture du fichier de départ jusqu'à la production de la figure finale. 
-- Moodle n'accepte qu'un seul fichier, vous pouver compresser votre répertoire de travail et remettre le fichier zip
-- Attention à la reproductibilité (relire attentivement le cours 1)!
-
----
-# Critères d'évaluation
-
-## Pseudo-code (22%)
+# Critères d'évaluation : pseudo-code
 
 **Respect des bonnes pratiques enseignées**
-- Les instructions sont connues et adaptées à l'utilisation
-- Mise en forme correcte des instructions et variables
+- Utilisation des éléments de base de la programmation (indexation, boucles, fonctions, énoncés conditionnels)
+- Mise en forme des instructions et variables
 - Les noms de variables sont explicites
 
 **La mise en forme adéquate d'un pseudo-code**
 - Une instruction par ligne
-- Le code est indenté de façon constante
-- Le pseudo-code est divisé en blocs rerpésentant des algorithmes
+- Le code est indenté
+- Le pseudo-code est divisé en blocs d'instructions cohérentes
 
 **Justesse des processus de programmation utilisés**
 - Les opérations répétées utilisent des boucles
 - Les opérations logiques utilisent des déclarations conditionnelles
 
+
 ---
-
-# Critères d'évaluation
-
-## Programme (60%)
+# Critères d'évaluation : scripts
 
 **Respect des bonnes pratiques enseignées dans le cours (40%)**
 
 **Exécution des différentes étapes du code (40%)**
-- Transformation des données sous forme d'états
-- Programmation de la simulation sous forme d'une fonction ré-utilisable
+- Lecture des données d'entrée
+- Utilisation d'une fonction pour l'exécution de la simulation du modèle de Levins
 - Réalisation de la simulation stochastique (tirage des transitions)
-- Réalisation de la figure
+- Exécution de l'analyse
 
 **Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %)** 
 - Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse
 
-<!-- **Reproducibilité : Structure rigoureuse du programme**
-- Les scripts sont divisés en fonctions
-- Le code est généralisé et indépendant des données
-
-**Exécution : Fonctionnement adéquat du programme**
-- Le programme s'exécute sans intervention de l'utilisateur autre que l'appel `source()` pour lancer la simulation
-- Le programme s'exécute sans erreur ou messages d'alerte
-- Le programme prend en compte les arguments pour exécuter la simulation
-- Le programme produit les résulats attendus
-- La simulation s'exécute sur 10 et 100 pas de temps
-
-**Application correcte des pratiques de programmation**
-- Le code est bien structuré et facile à lire
-- Le code est bien commenté
-- Les variables et arguments sont nommés de façon explicite -->
-
-
 ---
-
 # Rappel
 
 On peut exécuter un script (par exemple pour charger une fonction) dans un autre script avec la commande `source()`
