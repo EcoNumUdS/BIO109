@@ -688,9 +688,9 @@ $p^* = 1 - e/c$
 ---
 # Données
 
-Probabilité de **colonisation** $c = $
+Probabilité de **colonisation** $c = 0.025 $
 
-Probabilité d'**extinction** $e = $
+Probabilité d'**extinction** $e = 0.8$
 
 Utilisez la matrice de [connectivité](./donnees/connectivite.txt) et le vecteur de [superficie](./donnees/superficie.txt) des sommets
 
