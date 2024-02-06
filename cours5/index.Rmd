@@ -414,6 +414,17 @@ res
 ```
 
 ---
+
+# Un exemple vaut mille mots
+
+- Tirez au hasard 1000 chiffres de la loi uniforme bornée entre 0 et 1
+- Créez un vecteur 'res' rempli de 0 et de 1000 unités de longueur
+- Pour chaque valeur de la séquence, évaluez si le chiffre est plus petit que la valeur seuil de $p = 0.2$. Si la valeur est plus petite, inscrivez 1 dans le vecteur 'res' à la position correspondante
+- Combien de fois est-ce que la valeur est inférieure à $p$ ?
+- Essayez à nouveau et comparez.
+
+
+---
 # Un exercice est encore plus efficace...
 
 Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
