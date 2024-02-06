@@ -42,14 +42,32 @@ class: title-slide, middle
 <img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
 
+
 ---
+# Solution
 
-# Aujourd'hui
-
-- Pige au hasard 
-- Produire une figure
-- Fonction `source()` pour charger un script
-- Fonction `system.time()` pour mesurer le temps d'exécution
+```{r}
+tri = function(x){
+	# Calcul de la dimension du vecteur
+	taille = length(x)
+	ordre = "NON"
+	# Boucle qui tourne jusqu'à ce que tout soit en ordre
+	while(ordre == "NON") {
+		ordre = "OUI"
+		# Boucle qui passe tous les éléments en paires
+		for(i in 1:(taille-1)) {
+			if(x[i+1] < x[i]) {
+				# Inversion des deux lettres
+				x[c(i,i+1)] = x[c(i+1,i)]
+				# Comme un changement a été fait, l'ordre
+				# n'est pas encore garanti
+				ordre = "NON"
+			}
+		}
+	}
+	return(x)
+}
+```
 
 ---
 class: middle, center, inverse
