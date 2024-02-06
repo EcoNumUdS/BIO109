@@ -405,15 +405,13 @@ class: middle, center, inverse
 
 Lorsque $p = 0.5$, on tire une pièce de monnaie. Mais qu'en est-il si la pièce est biasée, par exemple si la face est plus lourde et donc la probabilité d'obtenir pile est de $p = 0.55$ ?
 
-```{r, out.height = '250px', dpi=300, fig.align="center"}
+```{r}
 set.seed(1)
-out <- numeric(10)
-for (i in 1:10) {
-   out[i] <- rbinom(n = 1, size = 1, prob = 0.55)
-}
-hist(out)
+p = 0.55
+alea = runif(n = 1, min = 0, max = 1)
+if(alea < p) res = "pile" else res = "face"
+res
 ```
-
 
 ---
 # Un exercice est encore plus efficace...
