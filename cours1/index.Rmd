@@ -1,7 +1,7 @@
 ---
 title: "Séance 1: Introduction à la programmation scientifique"
 author: "Dominique Gravel"
-date: "Hiver 2023"
+date: "Hiver 2025"
 output:
   xaringan::moon_reader:
     css: [default, ../assets/bio109.css, "hygge"]
@@ -41,13 +41,20 @@ class: title-slide, middle
 
 <img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"></img>
 
+---
+
+# Introduction
+
+<div style='text-align:center;'>
+<img src="assets/img/intro/bioclim.png" height="500px"></img>
+</div>
 
 ---
 
 # Introduction
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/darwin.jpg" height="500px"></img>
+<img src="assets/img/intro/mont_vertes.png" height="500px"></img>
 </div>
 
 ---
@@ -55,66 +62,33 @@ class: title-slide, middle
 # Introduction
 
 <div style='text-align:center;'>
-<img src="assets/img/intro/jane_goodall.jpg" height="500px"></img>
-</div>
-
----
-
-# Introduction
-<div style='text-align:center;'>
-<img src="assets/img/intro/biologist.jpg" height="500px"></img>
+<img src="assets/img/intro/megantic.jpg" height="500px"></img>
 </div>
 
 ---
 
 # Introduction
 
-La programmation est un outil indispensable au biologiste 2.0, elle permet:
-
-- Tâches **répétitives et/ou complexes** (p.ex. nettoyer, explorer et traiter de larges quantités de données)
-- Faire des **analyses statistiques avancées** (p. ex. tests par permutations, statistiques bayésiennes)
-- Créer des visualisations et des outils interactifs pour **communiquer et sensibiliser** efficacement
-- Résoudre des **problèmes complexes** (p.ex. le suivi de la biodiversité, la modélisation de la dynamique des populations, la projection d'aires de distribution)
-
----
-
-# Enseignant
-
-## Dominique Gravel
-- dominique.gravel@usherbrooke.ca
-- D8-0012
-
-## Victor Cameron (remplaçant)
-
-## À déterminer (assistant)
-- Contact à venir
-
-Pour les questions d'intérêt général, vous pouvez utiliser le forum de discussion sur Moodle.
-
----
-
-# Biodiversité Québec
-
 <div style='text-align:center;'>
-<img src="assets/img/intro/inventaires.png" height="500px"></img>
+<img src="assets/img/intro/grille.jpg" height="250px"></img>
 </div>
 
 ---
 
-# Biodiversité Québec
+# Projet de session
 
-<div style='text-align:center;'>
-<img src="assets/img/intro/portail.png" height="500px"></img>
-</div>
+## Question de recherche
+
+À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
 
 ---
 
-# Biodiversité Québec
+# Le type de données
 
-<div style='text-align:center;'>
-<img src="assets/img/intro/indicateurs.png" height="500px"></img>
-</div>
-
+```{r}
+arbres <- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
+head(arbres)
+```
 ---
 
 # La programmation en science
@@ -160,15 +134,22 @@ Pour les questions d'intérêt général, vous pouvez utiliser le forum de discu
 
 ---
 
-# Instructions
+# L'archétype de la biologie
 
-- Présence en classe
-- Un ordinateur portable
-- Matériel du cours : https://github.com/EcoNumUdS/BIO109 et Moodle
-- 3h de cours - 6h de travail personnel
-- Lire les présentations avant le cours
-- Faire les exercices
-- Ressources additionnelles : R Cheat Sheet, R pour les débutants, exercies supplémentaires et matériel sur Moodle.
+<div style='text-align:center;'>
+<img src="assets/img/intro/darwin.jpg" height="500px"></img>
+</div>
+
+---
+
+# La biologie 2.0
+
+La programmation est un outil indispensable au travail quotidien, elle permet:
+
+- Tâches **répétitives et/ou complexes** (p.ex. nettoyer, explorer et traiter de larges quantités de données)
+- Faire des **analyses statistiques avancées** (p. ex. tests par permutations, statistiques bayésiennes)
+- Créer des visualisations et des outils interactifs pour **communiquer et sensibiliser** efficacement
+- Résoudre des **problèmes complexes** (p.ex. le suivi de la biodiversité, la modélisation de la dynamique des populations, la projection d'aires de distribution)
 
 ---
 
@@ -185,7 +166,7 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 3. Rédiger des fonctions;
 4. Programmer des algorithmes afin de réaliser des tâches complexes,
     incluant des boucles et des énoncés conditionnels;
-5. Réaliser des simulations stochastiques.
+5. Réaliser des simulations de Monte Carlo;
 
 ---
 
@@ -201,7 +182,7 @@ Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème 
 
 Les connaissances requises pour la programmation scientifique sont
 minimales, l'apprentissage porte davantage sur l'acquisition de
-**compétences** et le développement de **capacités à la résolution de problèmes**.
+compétences et le développement de capacités à la résolution de problèmes.
 
 Les séances sont constituées de courtes leçons magistrales sur des
 notions de bases de programmation, entre-coupées d'exercices spécifiques
@@ -213,19 +194,31 @@ https://github.com/EcoNumUdS/BIO109.git
 
 ---
 
+# Instructions
+
+- Présence en classe
+- Un ordinateur portable
+- Matériel du cours : https://github.com/EcoNumUdS/BIO109 et Moodle
+- 3h de cours - 6h de travail personnel
+- Lire les présentations avant le cours
+- Faire les exercices
+- Ressources additionnelles : R Cheat Sheet, R pour les débutants, exercies supplémentaires et matériel sur Moodle.
+
+---
+
 # Évaluation
 
-L'évaluation porte sur la participation (18%) et sur un travail de session (82%). Un exercice simple sera présenté à la fin des séances 1-3 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la participation.</b> Les solutions seront présentées au cours suivant.
+L'évaluation porte sur la participation (20%) et sur un travail de session (80%). Un exercice simple sera présenté à la fin des séances 1-4 et <b>chaque étudiant</b> devra remettre la solution de l'exercice sur Moodle sous forme de script <i>avant le début</i> de la séance suivante. <b>Les points sont attribués pour la participation.</b> Les solutions seront présentées au cours suivant.
 
-- 3 exercies en classe (18%)
-- Évaluation terminale : réalisation d'un projet de programmation <b>en équipe de 2</b> (82%)
-  - Pseudo-code (22%) + programme (60%) à remettre le <b>20 février à 23h59</b>
+- 4 exercies en classe (20%)
+- Évaluation terminale : réalisation d'un projet de programmation <b>en équipe de 2</b> (80%)
+  - Pseudo-code (20%) + programme (60%) à remettre le <b>18 février à 23h59</b>
 
 Les évaluations sont à remettre sur Moodle.
 
 ---
 
-# Évaluation terminale
+# Évaluation finale
 
 La pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
 partir de
@@ -379,15 +372,17 @@ Le programme `DEMO` fait croitre une population à un taux $\lambda$ et affiche 
 
 ---
 
-# Les structures de base d'un algorithme
+# Les concepts de base en programmation
 
-On retrouve 3 familles d'opérations:
+1. Le stockage de l'information 
 
-1. Les opérations séquentielles
-2. Les opérations itératives (`FOR`, `WHILE`)
-3. Les opérations décisionnelles (`IF`, `IFELSE`)
+2. Les opérations
 
-Les opérations répétées peuvent être organisées sous forme de <b> Fonctions </b>.
+  - Séquentielles
+  - Itératives (`FOR`, `WHILE`)
+  - Décisionnelles (`IF`, `IFELSE`)
+
+3. Les fonctions
 
 ---
 
@@ -410,8 +405,8 @@ Avant de décrire chacune des opérations d'un algorithme, certaines instruction
 Lorsque l'on crée un objet, il est initialement vide et il faut lui attribuer une valeur : 
 
 ```
-a = 1
-b = 2
+a <- 1
+b <- 2
 ```
 
 On peut faire des opérations mathématiques sur ces objets : 
@@ -431,7 +426,7 @@ mat = [1 2 3
        4 5 6]
 ```
 
-Cet objet a deux dimension, la première représentée par "i" et l'autre par "j". Sur R par exemple, on accède à la position définie par le couple i,j de la manière suivante : 
+Cet objet a deux dimensions, la première représentée par "i" et l'autre par "j". Sur R par exemple, on accède à la position définie par le couple i,j de la manière suivante : 
 
 ```
 mat[i,j]
@@ -550,18 +545,6 @@ Un indice permet de suivre la position dans la boucle.
 ## Exemple avec `FOR`: Croissance exponentielle
 
 ```
-FOR etape IN 1:100
-  PRINT etape
-END FOR
-```
-
----
-
-# Les opérations itératives
-
-## Exemple avec `FOR`: Croissance exponentielle
-
-```
 PROGRAM DEMO
   DEFINE lambda = 1.1
   DEFINE n_t = 1
@@ -592,94 +575,11 @@ Quelle valeur prendra x au terme de l'exécution du programme ?
 
 ---
 
-# Exercice
-
-```
-PROGRAM FACTORIELLE
-  depart = 1
-  fin = 5
-  x = 1
-  FOR etape in depart:fin
-    x = x * etape
-  END FOR
-  WRITE x
-```
-
-Quelle valeur prendra x au terme de l'exécution du programme ? 
-
-- Entre 1 et 20
-- Entre 20 et 100
-- Entre 100 et 1000
-
----
-
-# Les opérations itératives et l'indexation
-
-## Exemple avec `FOR`: Croissance exponentielle
-
-```
-PROGRAM DEMO
-  SET resultat
-  resultat[1] = 1
-  lambda = 1.1
-  FOR etape IN 2:10
-    resultat[etape] = resultat[etape-1] * lambda
-  END FOR
-  WRITE resultat
-```
-
-Quel sera le contenu de 'resultat' ?
-
----
-
-# Les opérations itératives et l'indexation
-
-## Exemple avec `FOR`: Croissance exponentielle
-
-.pull-left[
-```
-PROGRAM DEMO
-  SET resultat
-  resultat[1] = 1
-  lambda = 1.1
-  FOR etape IN 2:10
-    resultat[etape] = resultat[etape-1] * lambda
-  END FOR
-  WRITE resultat
-```
-
-Quel sera le contenu de 'resultat' ?
-]
-
-.pull-right[
-**Valeur**
-
-```
-resultat = 1
-```
-
-**Vecteur**
-  
-```
-resultat = [1 1.1 1.21 1.331 1.46 1.61 1.77 1.95 1.36]
-```
-
-**Matrice**
-
-```
-resultat = [1 1.1 1.21
-            1.331 1.46 1.61
-            1.77 1.95 1.36]
-```
-]
-
----
-
 # Les opérations décisionnelles
 
 Souvent un programme repose sur la réalisation d'une décision basée sur le résultat d'un calcul ou bien un paramètre défini par l'utilisateur. 
 
-Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent se combiner pour faire une décision entre plus de deux choix.
+Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent se combiner.
 
 ---
 
@@ -696,24 +596,7 @@ PROGRAM DEMO
   ENDIF
 ```
 
-Et si le taux de croissance est nul?
-
----
-
-# Les opérations décisionnelles
-
-```
-PROGRAM DEMO
-  IF lambda > 1
-    PRINT "La population est croissante"
-  IF ELSE lambda < 1
-    PRINT "La population est décroissante"
-  ELSE
-    PRINT "Absence de croissance"
-  ENDIF
-```
-
-Avec la clause `ELSE`, la croissance est nulle
+Note : on a un problème si lamba = 1 ....
 
 ---
 
@@ -801,7 +684,7 @@ Ne donnera pas le même résultat que
 5. Utilisez des structures de langages de programmation connues (c.à.d `FOR`, `IF`, etc.)
 6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
 
-<b> Le pseudo-code doit demeurer général, peu importe le langage de programmation utilisé. </b>
+<b> Le pseudo-code est général, peu importe le langage de programmation utilisé. </b>
 
 ---
 class: inverse, middle, center
@@ -930,7 +813,7 @@ class: inverse, middle, center
 
 ---
 
-# Exercice
+# Exemple bonus
 
 Calculez la moyenne de la série de valeurs (vecteur) suivante
 
@@ -942,7 +825,7 @@ series = [1, 9, NA, 21, 3, NA, 7]
 
 ---
 
-# Exercice
+# Exemple bonus
 
 ```
 PROGRAM MOYENNE
@@ -962,7 +845,7 @@ PROGRAM MOYENNE
 
 ---
 
-# Exercice
+# Exemple bonus
 
 ```
 PROGRAM MOYENNE
@@ -982,7 +865,7 @@ PROGRAM MOYENNE
 
 ---
 
-# Exercice
+# Exemple bonus
 
 **ATTENTION !!**
 
@@ -991,6 +874,7 @@ Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à dé
 Il est important de bien comprendre la différence entre les deux. 
 
 ---
+
 class: inverse, middle, center
 
 # Installation de R et de RStudio
@@ -1002,6 +886,7 @@ class: inverse, middle, center
 - Guide d'installation : [https://rstudio-education.github.io/hopr/starting.html](https://rstudio-education.github.io/hopr/starting.html)
 
 ---
+
 class: inverse, middle, center
 
 # Exercice de la semaine
@@ -1011,10 +896,12 @@ class: inverse, middle, center
 
 # Une situation qui peut arriver tous les jours
 
-Écrivez un pseudo-code pour générer une liste de 20 nombres aléatoires compris entre 1 et 100, puis afficher la moyenne de ces nombres.
+1. On jette en face de vous 5 lettres d'un jeu de scrabble
 
-Prenez le temps de distinguer les étapes que vous réalisez lorsque vous générez les chiffres et lorsque vous en calculez la moyenne.
+2. Un maniaque vous demande d'écrire un programme qui ordonne les 5 lettres
 
-<b>Note 1</b>: vous pouvez assumer que l'ordinateur peut produire un nombre alléatoire à l'aide de la fonction `RANDOM()`.
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Vous devez les écrire sous forme de pseudo-code.
 
-<b>Note 2</b>: vous pouvez assumer que l'ordinateur peut déterminer la longueur d'un vecteur à l'aide de la fonction `LENGTH()`.
+<b>Note 1 </b>: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
+
+<b>Note 2 </b>: vous pouvez assumer que l'ordinateur sait que 'A' vient avant 'B'.
