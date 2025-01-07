@@ -335,6 +335,8 @@ Le programme `HELLOWORLD` imprime à l'écran le message "Hello World" 100 fois.
 
 ```
 PROGRAM DEMO
+  DEFINE lambda = 1.1
+  SET n_t = 1
   FOR t IN 1:100
     n_t = n_t * lambda
     PRINT n_t
@@ -356,6 +358,8 @@ Le programme `DEMO` fait croitre une population à un taux $\lambda$ et affiche 
 
 ```
 PROGRAM DEMO
+  DEFINE lambda = 1.1 <-------- lambda est une constante 
+  SET n_t = 1  <--------------- n_t est une variable 
   FOR t IN 1:100 <------------- Opération itérative
     n_t = n_t * lambda
     PRINT n_t <---------------- Le programme affiche la valeur à l'écran
@@ -547,7 +551,7 @@ Un indice permet de suivre la position dans la boucle.
 ```
 PROGRAM DEMO
   DEFINE lambda = 1.1
-  DEFINE n_t = 1
+  SET n_t = 1
   FOR etape IN 1:100
     n_t = n_t * lambda
   END FOR
@@ -562,9 +566,9 @@ La population va croître pendant 100 pas de temps.
 
 ```
 PROGRAM FACTORIELLE
-  depart = 1
-  fin = 5
-  x = 1
+  DEFINE depart = 1
+  DEFINE fin = 5
+  SET x = 1
   FOR etape in depart:fin
     x = x * etape
   END FOR
@@ -589,6 +593,7 @@ Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent 
 
 ```
 PROGRAM DEMO
+  READ lambda
   IF lambda > 1
     PRINT "La population est croissante"
   ELSE lambda < 1
@@ -597,45 +602,6 @@ PROGRAM DEMO
 ```
 
 Note : on a un problème si lamba = 1 ....
-
----
-
-# Exemple : identifier un arbre
-
-Écrire le pseudo-code qui permet d'identifier l'arbre avec le plus petit DHP parmi les trois suivants :
-
-```
-dhp1
-dhp2
-dhp3
-```
-
----
-
-# Exemple : identifier un arbre
-
-```
-PROGRAM ESPECE
-  READ dhp1
-  READ dhp2
-  READ dhp3
-
-  IF dhp1 < dhp2 
-    IF dhp1 < dhp3 
-      resultat = dhp1
-    ELSE 
-      resultat = dhp3
-    END IF
-  END IF
-
-  IF dhp2 > dhp3
-      resultat = dhp3
-  ELSE 
-    resultat = dhp2
-  END IF
-    
-  WRITE resultat
-```
 
 ---
 
@@ -673,6 +639,69 @@ Ne donnera pas le même résultat que
 
 ---
 
+
+# Exemple bonus
+
+Calculez la moyenne de la série de valeurs (vecteur) suivante
+
+```
+series = [1, 9, NA, 21, 3, NA, 7]
+```
+
+**ATTENTION !!** Il y a des valeurs manquantes (`NA`) dans la série de chiffres. Il faut les exclure du calcul de la moyenne.
+
+---
+
+# Exemple bonus
+
+```
+PROGRAM MOYENNE
+  serie = [1, 9, NA, 21, 3, NA, 7]
+  n = 7
+  somme = 0
+  FOR i IN 1:n
+    IF serie[i] == NA 
+      somme = somme 
+    ELSE 
+      somme = somme + serie[i]
+    END IF
+  END FOR
+  moyenne = somme / n
+  WRITE moyenne 
+```
+
+---
+
+# Exemple bonus
+
+```
+PROGRAM MOYENNE
+  serie = [1, 9, NA, 21, 3, NA, 7]
+  n = 7
+  somme = 0
+  FOR i IN 1:n <------------- Opération itérative
+    IF serie[i] == NA <------ Opération décisionnelle
+      somme = somme  <------- Si NA
+    ELSE <------------------- Si pas NA
+      somme = somme + serie[i]
+    END IF
+  END FOR
+  moyenne = somme/n <-------- Le programme calcule la moyenne
+  WRITE moyenne <------------ Le programme affiche la moyenne
+```
+
+---
+
+# Exemple bonus
+
+**ATTENTION !!**
+
+Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à décrire les étapes d'un algorithme.
+
+Il est important de bien comprendre la différence entre les deux. 
+
+---
+
 # Les règles du `pseudo-code`
 
 ## À garder en mémoire
@@ -691,7 +720,6 @@ class: inverse, middle, center
 
 # Les bonnes pratiques en programmation scientifique
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
-
 
 ---
 
@@ -810,68 +838,6 @@ class: inverse, middle, center
 > <b>9.</b> Contraindre les tirages au sort afin de le répéter
 
 > <b>10.</b> Utiliser le contrôle de version afin de pouvoir revenir dans le passé
-
----
-
-# Exemple bonus
-
-Calculez la moyenne de la série de valeurs (vecteur) suivante
-
-```
-series = [1, 9, NA, 21, 3, NA, 7]
-```
-
-**ATTENTION !!** Il y a des valeurs manquantes (`NA`) dans la série de chiffres. Il faut les exclure du calcul de la moyenne.
-
----
-
-# Exemple bonus
-
-```
-PROGRAM MOYENNE
-  serie = [1, 9, NA, 21, 3, NA, 7]
-  n = 7
-  somme = 0
-  FOR i IN 1:n
-    IF serie[i] == NA 
-      somme = somme 
-    ELSE 
-      somme = somme + serie[i]
-    END IF
-  END FOR
-  moyenne = somme / n
-  WRITE moyenne 
-```
-
----
-
-# Exemple bonus
-
-```
-PROGRAM MOYENNE
-  serie = [1, 9, NA, 21, 3, NA, 7]
-  n = 7
-  somme = 0
-  FOR i IN 1:n <------------- Opération itérative
-    IF serie[i] == NA <------ Opération décisionnelle
-      somme = somme  <------- Si NA
-    ELSE <------------------- Si pas NA
-      somme = somme + serie[i]
-    END IF
-  END FOR
-  moyenne = somme/n <-------- Le programme calcule la moyenne
-  WRITE moyenne <------------ Le programme affiche la moyenne
-```
-
----
-
-# Exemple bonus
-
-**ATTENTION !!**
-
-Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à décrire les étapes d'un algorithme.
-
-Il est important de bien comprendre la différence entre les deux. 
 
 ---
 
