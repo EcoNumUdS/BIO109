@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Séance 3: Écrire des fonctions avec R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dominique Gravel" />
+    <link href="assets/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="assets/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/bio109.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide, middle
+
+&lt;style type="text/css"&gt;
+  .title-slide {
+    background-image: url('../assets/img/bg.jpg');
+    background-color: #23373B;
+    background-size: contain;
+    border: 0px;
+    background-position: 600px 0;
+    line-height: 1;
+  }
+&lt;/style&gt;
+
+# Séance 3
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" &gt;&lt;/hr&gt;
+
+## Écrire des fonctions avec R
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"&gt;&lt;/hr&gt;
+
+.instructors[
+  **BIO109** - Dominique Gravel
+]
+
+&lt;img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"&gt;&lt;/img&gt;
+
+
+---
+class: middle, center, inverse
+
+# Retour sur l'exercice
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Exercice de fin de séance
+
+Le fichier [quadrats.csv](./donnees/quadrats.csv) est un sommaire de données individuelles, où la présence de chaque espèce est mesurée. Ces données se trouvent dans [arbres.csv](./donnees/arbres.csv). Dans le cadre de ce projet, on s'intéresse à la distribution de l'érable à sucre et des autres espèces tout au long du gradient d'élévation de la parcelle. Pour cet exercice, on vous demande de:
+
+1. Charger les données "arbres"
+2. Délimiter cinq zones au sein du gradient d'élévation : 0-200m, 201-400m, 401-600m, 601-800m, 801-1000m
+3. Pour chacune de ces zones, calculer le nombre de tiges de chaque espèce
+4. Enregistrer les résultats dans un tableau avec 5 rangées et S colonnes
+
+On vous demande de rédiger un script qui réalisera l'ensemble de ces étapes, de la lecture des données à l'enregistrement du tableau final.
+
+---
+
+# Fonction source
+
+Il est possible d'exécuter un script sans avoir à l'ouvrir. 
+
+
+``` r
+source("MonScript.R")
+```
+
+---
+class: middle, center, inverse
+
+# Opérations mathématiques de base
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Astuce: générer des nombres aléatoires
+
+Il peut souvent être pratique de générer des chiffres au hasard, sur lesquels on souhaite faire des tests. Nous verrons plusieurs exemples au cours 5, mais pour l'instant, prenez note de la fonction suivante:
+
+
+``` r
+alea &lt;- runif(n = 10, min = 0, max = 1)
+alea
+```
+
+```
+##  [1] 0.7616910 0.1385022 0.9493431 0.4900516 0.4021153 0.3517020 0.5829426
+##  [8] 0.4505520 0.5156163 0.6232458
+```
+Ici la distribution utilisée est la distribution uniforme, toutes les autres distributions en sont dérivées.
+
+---
+
+# Opérateurs de base
+
+R peut faire toutes les opérations mathématiques de base d'une calculatrice :
+
+| Opérateur | Signification | Exemple |
+|:---------:|:-------------:|:-------:|
+| + | Addition | 3 + 7 |
+| - | Soustraction | 3 - 7 |
+| * | Multiplication | 3 * 7 |
+| / | Division | 3 / 7 |
+
+---
+
+# Opérations sur des vecteurs et matrices
+
+Par défaut, le produit de vecteurs et de matrices est *scalaire* :
+
+
+``` r
+vec1 &lt;- runif(10, min = 0, max = 1)
+vec1
+```
+
+```
+##  [1] 0.9711914 0.2422786 0.1062159 0.4811513 0.5287588 0.4906658 0.3297237
+##  [8] 0.6375553 0.4990061 0.1182369
+```
+
+``` r
+3 * vec1
+```
+
+```
+##  [1] 2.9135743 0.7268358 0.3186477 1.4434539 1.5862765 1.4719973 0.9891710
+##  [8] 1.9126659 1.4970183 0.3547107
+```
+
+---
+
+# Opérations sur des vecteurs et matrices
+
+La situation plus compliquée survient lorsque l'on multiplie des vecteurs et des matrices :
+
+
+``` r
+vec1 &lt;- c(10,20,30)
+mat1 &lt;- matrix(c(1:6), nr = 3, nc = 2)
+mat1
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+```
+
+``` r
+vec1 * mat1
+```
+
+```
+##      [,1] [,2]
+## [1,]   10   40
+## [2,]   40  100
+## [3,]   90  180
+```
+
+---
+
+# Opérations avancées
+
+| Opérateur | Signification | Exemple |
+|:---------:|:-------------:|:-------:|
+| ^ | Puissance | 3 ^ 7 |
+| log | Logarithme | log(100) |
+| log10 | Logarithme à base 10 | log10(100) |
+| exp | Exponentielle | exp(10) |
+| sqrt | Racine carrée | sqrt(100) |
+
+---
+
+# Opérations avancées
+
+
+``` r
+alea &lt;- runif(10, min = 0, max = 1)
+alea
+```
+
+```
+##  [1] 0.42181183 0.07716756 0.76521911 0.44068059 0.60684097 0.51161447
+##  [7] 0.27818559 0.39481856 0.51757825 0.41224300
+```
+
+``` r
+min(alea)
+```
+
+```
+## [1] 0.07716756
+```
+
+``` r
+max(alea)
+```
+
+```
+## [1] 0.7652191
+```
+
+---
+
+# Arrondir
+
+
+``` r
+pi
+```
+
+```
+## [1] 3.141593
+```
+
+``` r
+floor(pi)
+```
+
+```
+## [1] 3
+```
+
+``` r
+ceiling(pi)
+```
+
+```
+## [1] 4
+```
+
+``` r
+round(pi,4)
+```
+
+```
+## [1] 3.1416
+```
+
+---
+
+# Opérations sur des matrices
+
+Parfois, on souhaite calculer des propriétés sur des colonnes et des rangées:
+
+
+``` r
+mat &lt;- matrix(runif(4,0,1), nr = 2, nc = 2)
+mat
+```
+
+```
+##           [,1]      [,2]
+## [1,] 0.8714612 0.8088702
+## [2,] 0.2372570 0.6431339
+```
+
+``` r
+rowSums(mat)
+```
+
+```
+## [1] 1.6803314 0.8803909
+```
+
+``` r
+colSums(mat)
+```
+
+```
+## [1] 1.108718 1.452004
+```
+
+---
+
+# Opérations sur des matrices
+
+Et de façon plus générale, on peut utiliser la fonction `apply()` qui est très pratique :
+
+
+``` r
+mat &lt;- matrix(1:4, nr = 2, nc = 2)
+mat
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4
+```
+
+``` r
+apply(X = mat, MARGIN = 2, FUN = sum)
+```
+
+```
+## [1] 3 7
+```
+
+``` r
+apply(X = mat, MARGIN = 1, FUN = sum)
+```
+
+```
+## [1] 4 6
+```
+
+---
+class: middle, center, inverse
+
+# Exercice
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Abondances relatives
+
+Au moyen du fichier [quadrats.csv](donnees/quadrats.csv), je vous demande de faire les opérations suivantes:
+
+1. Calculer l'abondance totale pour 'abba' et son abondance moyenne ;
+2. Calculer le nombre total de tiges pour chaque quadrat ;
+3. Calculer l'abondance relative pour 'abba' pour chaque quadrat. C-a-d le nombre de tiges de 'abba' divisé par le nombre total de tiges, pour chaque quadrat.
+
+
+```
+##       X abba acpe acsa beal bepa fagr piru
+## 1   0-0    1   55   11    7    0   92    0
+## 2 0-100    0    5    4    3    0    6    0
+## 3 0-120    2    7   12    4    1    7    0
+## 4 0-140    4    5    4    8    1    2    1
+## 5 0-160    2    2   11    8    1    6    1
+## 6 0-180    5    3    9    7    0    3    1
+```
+
+---
+
+# Abondances relatives
+
+
+``` r
+# 0. Charger les données
+quadrats &lt;- read.table(file="donnees/quadrats.csv", header=TRUE, sep=";", dec=".")
+
+# 1.1 Calculer l'abondance totale pour 'abba'
+n_total_abba &lt;- sum(quadrats$abba)
+n_total_abba
+```
+
+```
+## [1] 2596
+```
+
+``` r
+# 1.2 Calculer l'abondance moyenne pour 'abba'
+n_moy_abba &lt;- mean(quadrats$abba)
+n_moy_abba
+```
+
+```
+## [1] 5.202405
+```
+
+---
+
+# Abondances relatives
+
+
+``` r
+# 2. Calculer le nombre total de tiges pour chaque quadrat
+n_quadrats &lt;- rowSums(quadrats[, 2:8])
+
+# 3. Calculer l'abondance relative pour 'abba' pour chaque quadrat
+quadrats_rel_abba &lt;- quadrats$abba / n_quadrats
+head(quadrats_rel_abba)
+```
+
+```
+## [1] 0.006024096 0.000000000 0.060606061 0.160000000 0.064516129 0.178571429
+```
+
+---
+class: middle, center, inverse
+
+# Les fonctions
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Qu'est-ce qu'une fonction ?
+
+Une fonction contient une série de commandes (i.e. lignes de code) qui sont exécutées lorsque la fonction est appelée.
+
+---
+
+# Anatomie de la fonction
+
+
+``` r
+ma_fonction &lt;- function(argument1, argument2) {
+
+  # Ce que l'on veut que la fonction exécute
+  resultat &lt;- argument1 * argument2
+
+  # Retourner le résultat de la fonction
+  return(resultat)
+}
+```
+
+---
+
+# Anatomie de la fonction
+
+
+``` r
+ma_fonction &lt;- function(argument1, argument2) { &lt;---- Nom de la fonction et arguments
+
+  # Ce que l'on veut que la fonction exécute
+  resultat &lt;- argument1 * argument2             &lt;---- Le corps de la fonction
+
+  # Retourner le résultat de la fonction
+  return(resultat)                              &lt;---- La valeur retournée
+}
+```
+
+
+``` r
+ma_fonction(2, 5)
+```
+
+```
+## [1] 10
+```
+
+---
+
+# Pourquoi utiliser des fonctions ?
+
+1. Répéter une même tâche mais en changeant ses paramètres
+2. Rendre votre code plus lisible
+3. Rendre votre code plus facile à modifier et à maintenir
+4. Partager du code entre différentes analyses
+5. Partager votre code avec d'autres personnes
+6. Modifier les fonctionalités par défaut de R
+
+---
+
+# Pourquoi utiliser des fonctions ?
+
+Vous connaissez déjà des fonctions de R, comme `mean()` ou `sum()` !
+
+
+``` r
+vecteur &lt;- c(1, 2, 3, 4, 5)
+mean(vecteur)
+```
+
+```
+## [1] 3
+```
+
+``` r
+sum(vecteur)
+```
+
+```
+## [1] 15
+```
+
+---
+
+# La construction d'une fonction
+
+Imaginons que l'on souhaite multiplier deux chiffres (disons, 3 et 7) et les diviser par leur somme.
+
+$$
+\dfrac{3\times7}{3+7}
+$$
+
+On peut écrire ce calcul directement dans la console comme suit
+
+
+``` r
+(3*7)/(3+7)
+```
+
+```
+## [1] 2.1
+```
+
+---
+
+# La construction d'une fonction
+
+Si on souhaite faire la même opération pour toutes les paires de chiffres dans le tableau suivant, comment fait-on ?
+
+
+``` r
+tableau &lt;- data.frame(x=rnorm(5), y=rnorm(5))
+tableau
+```
+
+```
+##            x          y
+## 1 -0.3994397 -1.4594323
+## 2 -0.7516622 -1.1688351
+## 3 -0.5249829 -0.3921242
+## 4  0.2528230 -2.9785863
+## 5 -1.2123452 -0.7984608
+```
+
+---
+
+# La construction d'une fonction
+
+À noter qu'en ayant différents chiffres, la formule vue dans la diapositive précédente devient un peu plus générale :
+
+$$
+\dfrac{x\times y}{x+y}
+$$
+
+---
+
+# La construction d'une fonction
+
+## L'approche longue, pas efficace, mais qui marche...
+
+
+``` r
+(tableau[1,1]*tableau[1,2])/(tableau[1,1]+tableau[1,2])
+(tableau[2,1]*tableau[2,2])/(tableau[2,1]+tableau[2,2])
+(tableau[3,1]*tableau[3,2])/(tableau[3,1]+tableau[3,2])
+```
+
+```
+## [1] -0.3136069
+## [1] -0.4574696
+## [1] -0.2244651
+```
+
+**Problème** - Ce n'est vraiment pas pratique si on a beaucoup de données ou si le format du tableau change.
+
+---
+
+# La construction d'une fonction
+
+## Une boucle peut sauver du temps...
+
+
+``` r
+for(i in 1:nrow(tableau)){
+  res &lt;- (tableau[i,1]*tableau[i,2])/(tableau[i,1]+tableau[i,2])
+  print(res)
+}
+```
+
+```
+## [1] -0.3136069
+## [1] -0.4574696
+## [1] -0.2244651
+## [1] 0.2762731
+## [1] -0.481404
+```
+
+**Problème** - Qu'est-ce qu'on fait si on veut appliquer ce calcul sur plusieurs tableaux ???
+*C'est possible, mais ça peut être un peu plus compliqué !*
+
+---
+
+# La construction d'une fonction
+
+## Et si on faisait une fonction...
+
+La fonction permet de résoudre certains problèmes car elle permet d'appliquer une série de commandes (i.e. lignes de codes) à différents types de données. En d'autre mots, la fonction généralise des commandes spécifiques.
+
+---
+
+# La construction d'une fonction
+
+## Comment construire une fonction ?
+
+On commence par écrire une version spécifique du code que l'on souhaite **généraliser**.
+
+
+``` r
+(3*7)/(3+7)
+```
+
+---
+
+# La construction d'une fonction
+
+## Comment construire une fonction ?
+
+Ensuite, on définit ce code comme faisant parti d'une fonction.
+
+.content-box-red[À vous de l'essayer !]
+
+---
+
+# La construction d'une fonction
+
+## Comment construire une fonction ?
+
+Ensuite, on définit ce code comme faisant parti d'une fonction.
+
+
+``` r
+prodsum &lt;- function(){
+  res &lt;- (3*7)/(3+7)
+  return(res)
+}
+```
+
+*Yééé, on a écrit notre première fonction !! :-)*
+
+
+``` r
+prodsum()
+```
+
+```
+## [1] 2.1
+```
+
+---
+
+# Petit problème
+
+Cette fonction a le défaut de n'être aucunement générale. Elle va toujours donner le même résultat. *:-(*
+
+---
+
+# Comment rendre la fonction plus générale ?
+
+On peut généraliser cette fonction, en utilisant directement la formule générale présentée précédemment:
+
+$$
+\dfrac{x\times y}{x+y}
+$$
+
+Pour ce faire, il faut ajouter des **arguments** à notre fonction.
+
+.content-box-red[À vous de l'essayer !]
+
+---
+
+# Comment rendre la fonction plus générale ?
+
+Les **arguments** peuvent varier selon ce que l'utilisateur souhaite calculer. Il faut donc s'assurer que les mêmes opérations soient réalisées sur ces arguments.
+
+
+``` r
+prodsum = function(x,y){
+  res &lt;- (x*y)/(x+y)
+  return(res)
+}
+```
+
+Avec cette fonction on peut faire le calcul qui nous intéresse avec différentes séries de chiffres.
+
+---
+
+# Comment construire une fonction ?
+
+À noter qu'en utilisant la commande `return()`, on s'assure de renvoyer ce qui se trouve dans l'objet `res` à l'utilisateur.
+
+Une notion importante à avoir lorsqu'on construit une fonction est que tout ce qui se trouve à l'**intérieur** d'une fonction est *entièrement* indépendent de ce qui se trouve à l'**extérieur** d'une fonction.
+
+Par exemple, l'objet `res` à l'extérieur de la fonction **n'existe pas**. Il existe uniquement à l'intérieur de la fonction.
+
+---
+
+# Comment rendre la fonction plus générale ?
+
+Autre charactéristique importante des arguments d'une fonction: les objets passés en argument n'ont pas besoin d'avoir le même nom que les arguments. En fait, c'est rarement le cas :
+
+
+``` r
+a &lt;- 1
+b &lt;- 2
+prodsum(x = a, y = b)
+```
+
+```
+## [1] 0.6666667
+```
+
+---
+
+# Utilisons notre fonction avec des chiffres
+
+
+``` r
+prodsum(3, 7)
+```
+
+```
+## [1] 2.1
+```
+
+``` r
+prodsum(y = 7, x = 3)
+```
+
+```
+## [1] 2.1
+```
+
+Comme on le constate, dans le language R, les arguments peuvent être définis de deux façons.
+- En suivant l'ordre des arguments
+- En utilisant le noms des arguments
+
+---
+
+# Utilisons notre fonction avec des vecteurs
+
+Le language de programmation R permet de faire aussi le calcul sur des vecteurs :
+
+
+``` r
+vecA = tableau[,1]
+vecB = tableau[,2]
+prodsum(vecA, vecB)
+```
+
+```
+## [1] -0.3136069 -0.4574696 -0.2244651  0.2762731 -0.4814040
+```
+
+``` r
+prodsum(tableau[,1], tableau[,2])
+```
+
+```
+## [1] -0.3136069 -0.4574696 -0.2244651  0.2762731 -0.4814040
+```
+
+---
+
+# Utilisons notre fonction avec des vecteurs
+
+L'exemple précédent fonctionne bien car `vecA` et `vecB` contiennent le même nombre de chiffres, ils ont la même longueur. Que ce passe-t-il si les vecteurs n'ont pas la même longueur?
+
+
+``` r
+vec2 = tableau[1:2,1]
+vec3 = tableau[1:3,1]
+vec4 = tableau[1:4,2]
+prodsum(vec3, vec4)
+```
+
+```
+## Warning in x * y: longer object length is not a multiple of shorter object
+## length
+```
+
+```
+## Warning in x + y: longer object length is not a multiple of shorter object
+## length
+```
+
+```
+## [1] -0.3136069 -0.4574696 -0.2244651 -0.3522073
+```
+
+---
+
+# La construction d'une fonction
+
+Le **recyclage** est une propriété des fonctions mathematiques de base du language R (e.g. `+`, `-`, `*` et `/`). Lorsque deux vecteurs sont de longueurs différentes, les valeurs du vecteur le plus court sont réutilisées, dans l'ordre, pour combler le nombre de valeurs manquantes entre les deux vecteurs. Cette propriété du langage R peut être très pratique mais aussi **générer beaucoup de problèmes**.
+
+Comme on le voit dans l'exemple, un message d'avertissement est envoyé si la longueur du plus petit vecteur n'est pas un multiple du vecteur le plus long. Par contre, si le vecteur le plus court est un multiple du vecteur le plus long, aucun message d'avertissement n'est envoyé et ce même si le résultat n'a pas de sense.
+
+Comment faire pour régler ce problème ?
+
+---
+
+# Ajouter des trappes dans une fonction
+
+Pour régler le problème subtile présenté dans la diapositive précédente, on peut ajouter des conditions de sorties dans la fonction qui retournent un message d'erreur. Voici un exemple :
+
+
+``` r
+prodsum = function(x, y){
+  if(length(x) != length(y)){
+    stop("'x' est de taille différente de 'y'")
+  }
+  res = (x*y)/(x+y)
+  return(res)
+}
+```
+
+Les lignes de codes ajoutées mesure la longeur de `x` et `y` et lorsqu'ils sont d'une longueur différente, un message d'erreur est envoyé et le reste du code dans la fonction n'est pas évalué.
+
+---
+
+# Ajouter des trappes dans une fonction
+
+La condition de sortie `stop("'x' est de taille différente de 'y'")` permet de corriger le problème mentionné dans la diapositive précédente :
+
+
+``` r
+prodsum(vec2, vec4)
+```
+
+```
+## Error in prodsum(vec2, vec4): 'x' est de taille différente de 'y'
+```
+
+``` r
+prodsum(vec3, vec4)
+```
+
+```
+## Error in prodsum(vec3, vec4): 'x' est de taille différente de 'y'
+```
+
+Notez que le message d'erreur envoyé est composé par le programmeur. Par contre, il est important que le message d'erreur soit court et précis.
+
+---
+
+# Utilisons notre fonction avec des tableaux
+
+Le language de programmation R permet de faire aussi le calcul sur des matrices
+
+
+``` r
+tableau2 &lt;- data.frame(x_2 = rnorm(5)^2, y_2 = rnorm(5)^2)
+prodsum(tableau, tableau2)
+```
+
+```
+##             x          y
+## 1 -2.15313777  0.4139710
+## 2 -9.35841186  0.4272637
+## 3  0.08279179  0.1529266
+## 4  0.05294235  1.1880235
+## 5 -2.42204697 -0.9445046
+```
+
+---
+
+# La sortie
+
+Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
+
+
+``` r
+ma_fonction = function(x) {
+
+  # Calcul de la moyenne
+  res1 &lt;- mean(x)
+
+  # Calcul de l'écart-type
+  res2 &lt;- sd(x)
+
+  # On regroupe les résultats dans une liste
+  final &lt;- list(moyenne = res1, ecart_type = res2)
+
+  # Et on retourne le tout hors de la fonction
+  return(final)
+}
+```
+
+---
+
+# La sortie
+
+Une fonction peut réaliser plusieurs opérations avec les mêmes éléments d'entrée et on peut souhaiter retourner ces arguments dans une liste :
+
+
+``` r
+test &lt;- ma_fonction(rnorm(n = 100, mean = 1, sd = 0.5))
+test
+```
+
+```
+## $moyenne
+## [1] 1.081768
+## 
+## $ecart_type
+## [1] 0.4706057
+```
+
+---
+
+# Quelques trucs utiles
+  - Prenez le temps d'écrire votre code pour un exemple avant de tout intégrer dans une fonction
+  - Tout ce qui se trouve à l'intérieur d'une fonction est **entièrement** indépendent de ce qui se trouve à l'extérieur de cette fonction ;
+  - Donner une nom représentatif à la fonction, qui résume ce qu'elle fait ;
+  - Tous les arguments de la fonction doivent être utilisés;
+  - Les arguments doivent aussi avoir des noms représentatifs ;
+  - Commentez les étapes du code ;
+  - Prenez le temps de décrire les arguments sous forme de commentaires en début de fonction ;
+
+---
+class: inverse, center, middle
+
+# Exercice de fin de séance
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Abondances relatives
+
+Toujours à partir du fichier [quadrats.csv](donnees/quadrats.csv), programmez une fonction qui retournera les statistiques descriptives suivantes pour une espèce :
+
+1. L'abondance moyenne
+2. L'abondance totale
+3. Le coefficent de variation de l'abondance
+4. L'abondance maximale dans un quadrat
+5. L'abondance minimale dans un quadrat
+
+Ensuite, appliquez cette fonction sur chacune des espèces (colonnes)
+
+Rappel : identifiez bien dès le départ l'objet que vous passez comme argument de votre fonction.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "monokai",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
