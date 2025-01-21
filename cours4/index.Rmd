@@ -52,68 +52,6 @@ class: middle, center, inverse
 
 # Trucs pour essayer de programmer une fonction
 
-Commencer en travaillant localement
-
-```{r eval=TRUE}
-quadrats <- read.csv2(file = "donnees/quadrats.csv", header = TRUE,
-    stringsAsFactors = FALSE, row.names = 1)
-acsa_abondance <- quadrats$acsa
-# Abondance moyenne
-moy <- mean(acsa_abondance)
-# Abondance totale
-tot <- sum(acsa_abondance)
-# Coefficient de variation de l'abondance
-CV <- sd(acsa_abondance)/mean(acsa_abondance)
-# Densité maximale dans un quadrat
-max_ab <- max(acsa_abondance)
-# Densité minimale dans un quadrat
-min_ab <- min(acsa_abondance)
-```
-
----
-
-# Trucs pour essayer de programmer une fonction
-
-Tout envelopper dans une fonction
-
-```{r eval=TRUE}
-ma_fonction <- function(abondance) {
-
-     # Abondance moyenne
-     moy <- mean(abondance)
-     # Abondance totale
-     tot <- sum(abondance)
-     # Coefficient de variation de l'abondance
-     CV <- sd(abondance)/mean(abondance)
-     # Densité maximale dans un quadrat
-     max_ab <- max(abondance)
-     # Densité minimale dans un quadrat
-     min_ab <- min(abondance)
-     # Retour extérieur
-     return(c(moy, tot, CV, max_ab, min_ab))
- }
-```
-
----
-
-# Trucs pour essayer de programmer une fonction
-
-On fait un essai sur un premier objet que l'on connait
-
-```{r eval=TRUE}
-ma_fonction(acsa_abondance)
-```
-
-Ensuite on fait un test sur un second objet
-
-```{r eval=TRUE}
-ma_fonction(quadrats$abba)
-```
-
----
-
-# Trucs pour essayer de programmer une fonction
-
 Finalement on peut l'appliquer sur l'ensemble des données
 
 ```{r eval=FALSE}
