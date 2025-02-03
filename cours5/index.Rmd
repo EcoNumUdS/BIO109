@@ -622,104 +622,26 @@ class: middle, inverse, center
 # Travail final
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
----
-# Mise en contexte
-
-<div style='text-align:center;'>
-<img src="assets/img/gosford.jpg" height="500px"></img>
-</div>
-
----
-# La Grive de Bicknell
-
-<div style='text-align:center;'>
-<img src="assets/img/bicknell.jpg" height="500px"></img>
-</div>
-
----
-# Modèle de Levins spatialement explicite 
-
-<div style='text-align:center;'>
-<img src="assets/img/reseau.png" height="500px"></img>
-</div>
-
----
-# La théorie des métapopulations 
-
-*Une métapopulation est un ensemble de populations locales connectées par la dispersion. La persistence est maintenue lorsque la colonisation excède les extinctions. Une métapopulation peut s’éteindre même si des habitats favorables sont disponibles dans la région.*
-
----
-# Le modèle de Levins spatialement implicite
-
-Dans une très grande région, la dynamique de la prévalence $p$ est décrite par : 
-
-$\frac{dp}{dt} = cp(1-p) - ep$
-
-Où $c$ est le taux de colonisation et $e$ est le taux d'extinction. L'équilibre est : 
-
-$p^* = 1 - e/c$
-
----
-# Modèle de Levins spatialement explicite 
-
-<div style='text-align:center;'>
-<img src="assets/img/reseau.png" height="500px"></img>
-</div>
-
----
-# Modèle de Levins spatialement explicite 
-
-À chaque pas de temps $t$ et pour chaque sommet $x$: 
-
-- Si un sommet $x$ n'est pas occupé par la grive et que l'habitat est disponible, la probabilité de colonisation du sommet $x$ est $1 - (1-c)^{n_x}$, où $n_x$ est le nombre de sommets connectés à $x$ qui sont occupés 
-
-- Si un sommet $x$ est occupé par la grive, la probabilité d'extinction est $e/S_x$, où $S_x$ est la superficie du sommet $x$
-
----
-# Consignes
-
-1. Écrire un modèle de simulation stochastique sous forme de fonction ayant pour arguments la matrice de connectivité, la superficie des sommets, la disponibilité des sommets (oui/non) et la durée de simulation
-
-2. Étudier le modèle à l'équilibre lorsque tous les sommets sont disponibles : calculer la fraction moyenne du paysage qui est occupé par la grive
-
-3. Utiliser le modèle pour étudier quel est le sommet qui a le plus grand intérêt pour la conservation (lequel doit absolument être protégé)
-
-
----
-# Données
-
-Probabilité de **colonisation** $c = 0.025 $
-
-Probabilité d'**extinction** $e = 0.8$
-
-Utilisez la matrice de [connectivité](./donnees/connectivite.txt) et le vecteur de [superficie](./donnees/superficie.txt) des sommets
 
 ---
 # Modalités
 
 ## Remise
 
-Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux (eg. `# auteurs: Claire-Cécile-Juhasz, Zacharie Scalzo`)
+Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux
 
-**13 février** : Séance de dépannage au D7-2007
+**11 février** : Séance de dépannage au D7-2007
 
-**20 février** : Le travail final (pseudo code + programme) devra être remis sur Moodle avant le 20 février 23h59
+**18 février** : Le travail final (pseudo code + programme) devra être remis sur Moodle avant le 18 février 23h59
    
 ---
 # Modalités
 
 Votre programme devra être remis dans un dossier `projet` qui contiendra les scripts suivants :
 
-1. Le pseudo-code pour la fonction principale 
+1.
 
-2. Lecture de la matrice de connectivité et du vecteur de superficies
-
-3. Fonction qui réalise une simulation du modèle de Levins spatialement explicite
-
-4. Exécution du modèle sur 250 pas de temps et calcul de la prévalence à l'équilibre 
-
-5. Simulation de retrait des sommets (un par un) afin d'évaluer l'importance de chacun des sommets pour la conservation 
-
+2.
 
 ---
 # Critères d'évaluation : pseudo-code
@@ -746,7 +668,7 @@ Votre programme devra être remis dans un dossier `projet` qui contiendra les sc
 
 **Exécution des différentes étapes du code (40%)**
 - Lecture des données d'entrée
-- Utilisation d'une fonction pour l'exécution de la simulation du modèle de Levins
+- Utilisation d'une fonction pour l'exécution de la simulation du modèle
 - Réalisation de la simulation stochastique (tirage des transitions)
 - Exécution de l'analyse
 
