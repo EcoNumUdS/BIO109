@@ -622,6 +622,156 @@ class: middle, inverse, center
 # Travail final
 <hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"></hr>
 
+---
+# Répartition des domaines bioclimatiques
+
+<div style='text-align:center;'>
+<img src="assets/img/bioclim.png" height="500px"></img>
+</div>
+
+---
+# Écotone tempéré-boréal
+
+<div style='text-align:center;'>
+<img src="assets/img/megantic.jpg" height="500px"></img>
+</div>
+
+---
+# La distribution des arbres à Sutton
+
+<div style='text-align:center;'>
+<img src="assets/img/grille.jpg" height="250px"></img>
+</div>
+
+---
+# La Grive de Bicknell
+
+<div style='text-align:center;'>
+<img src="assets/img/bicknell.jpg" height="500px"></img>
+</div>
+
+---
+# Projet de session
+
+## Question de recherche
+
+À quelle vitesse se réalisera la migration de l'érable à sucre au sein de la sapinière de montagne du massif des Montagnes vertes ?
+
+---
+# Le type de données
+
+```{r}
+arbres <- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
+head(arbres)
+```
+
+---
+# Objectif
+
+Programmer un modèle de simulation stochastique qui permet de reproduire la dynamique de la végétation à la transition entre forêt tempérée et boréale
+
+---
+# Le modèle de lotterie
+
+## En mots 
+
+- Pour chaque année de 2025 à 2100
+
+- Pour chaque arbre dans le fichier `arbres.csv`
+
+- On évalue si l'arbre survie (avec probabilité $\mu$) ou meurt et est remplacé ($1-\mu$)
+
+- Si l'arbre meurt, on remplace son identité (l'espèce) en réalisant une lotterie parmi les semences qui se trouvent au pied de l'arbre
+
+- On calcul l'abondance relative de chaque espèce par quadrat et sur l'ensemble de la parcelle à chaque pas de temps
+
+Note : seules les colonnes `id_bor` et `esp` sont pertinentes pour le travail, les autres informations ne sont pas utilisées dans la simulation.
+
+---
+# Le modèle de lotterie
+
+## La probabilité de remplacement
+
+$p_{i,x,t+1} = (1-m)\frac{\alpha_i N_{i,x,t}}{\sum \alpha_j N_{j,x,t}} + m\frac{\alpha_i R_{i,t}}{\sum \alpha_j R_{j,t}}$
+
+Où : 
+
+- $i$ et $j$ sont des espèces
+- $x$ est un quadrat
+- $t$ est une année
+- $\alpha_i$ est un coefficient de recrutement
+- $m$ est le paramètre de dispersion 
+- $N_{i,x,t}$ est l'abondance dans le quadrat $x$ au temps $t$
+- $R_{i,t}$ est l'abondance relative sur la parcelle au temps $t$
+
+---
+#  Faire un tirage parmi plusieurs options
+
+On pige l'espèce au hasard en utilisant `sample()` ou bien `rmultinom()` en utilisant un vecteur de probabilités $p$
+
+```{r}
+esp <- c("A", "B", "C")
+p <- c(0.2, 0.5, 0.3)
+rmultinom(n=1,size=1,prob=p)
+```
+Note 1 : On peut faire la même chose avec `sample(x = esp, size = 1, prob = p)`
+
+Note 2 : Le vecteur de probabilités doit toujours avoir une somme de 1
+
+---
+# Étapes
+
+1. Lecture du fichier `arbres.csv`
+
+2. Fonction qui calcul l'abondance par quadrat au temps $t$
+
+3. Fonction qui calcul l'abondance relative pour l'ensemble de la parcelle au temps $t$
+
+4. Fonction qui réalise le tirage de l'identité de l'espèce à recruter
+
+5. Fonction qui exécute la simulation sur 75 ans (mortalité, remplacement, calcul d'abondance)
+
+6. Illustration de l'abondance relative des différentes espèces au fil du temps au moyen de la fonction plot
+
+---
+# Paramètres
+
+## Vecteur des coefficients de recrutement
+
+$\alpha = \{ 0.9, 1.05, 1.2, 1.15, 1.1, 1, 0.95 \}$
+
+## Probabilité de mortalité 
+
+$u = 0.01$
+
+## Probabilité de dispersion 
+
+$m = 0.1$
+
+---
+# Rappel
+
+On peut exécuter un script dans un autre script avec la commande `source()`
+
+Exemple : on crée un script `main.R` avec les instructions suivantes : 
+
+```{r eval=FALSE}
+# Script main.R
+
+# Lecture des fichiers 
+source("lecture_donnees.R")
+
+# Charger les fonctions
+source("fonctions.R")
+
+# Exécuter la simulation
+resultats <- simulation(debut = 2025, fin = 2100, u = 0.01, m = 0.1)
+
+# Faire la figure
+ma_figure(resultats)
+```
+
+Ensuite on exécute l'ensemble avec `source("main.R")`
 
 ---
 # Modalités
@@ -637,11 +787,9 @@ Le travail se réalisera en équipe de 2. Inscrire le nom des membres en comment
 ---
 # Modalités
 
-Votre programme devra être remis dans un dossier `projet` qui contiendra les scripts suivants :
+- Votre programme devra être remis dans un dossier `projet` qui contiendra vos scripts
 
-1.
-
-2.
+- Le tout doit être reproductible sur un autre ordinateur sans avoir à intervenir. Assumez que le fichier de données `arbres.csv` se situe dans le même répertoire que vos scripts téléchargés à partir de Moodle
 
 ---
 # Critères d'évaluation : pseudo-code
@@ -660,27 +808,18 @@ Votre programme devra être remis dans un dossier `projet` qui contiendra les sc
 - Les opérations répétées utilisent des boucles
 - Les opérations logiques utilisent des déclarations conditionnelles
 
-
 ---
 # Critères d'évaluation : scripts
 
 **Respect des bonnes pratiques enseignées dans le cours (40%)**
+- Revoir les 10 instructions de la séance 1
 
 **Exécution des différentes étapes du code (40%)**
 - Lecture des données d'entrée
 - Utilisation d'une fonction pour l'exécution de la simulation du modèle
-- Réalisation de la simulation stochastique (tirage des transitions)
-- Exécution de l'analyse
+- Réalisation de la simulation stochastique
+- Exécution de la figure finale
 
 **Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %)** 
-- Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source` pour exécuter votre script d'analyse
+- Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source(main.R)` pour exécuter votre script d'analyse
 
----
-# Rappel
-
-On peut exécuter un script (par exemple pour charger une fonction) dans un autre script avec la commande `source()`
-
-```{r eval=FALSE}
-source("ma_fonction.R")
-ma_fonction(x)
-```

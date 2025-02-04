@@ -1,9 +1,0 @@
-"x"
-"sutton" 68
-"orford" 58
-"hereford" 8
-"stoke" 159
-"ham" 7
-"megantic" 60
-"gosford" 61
-"caribou" 49
