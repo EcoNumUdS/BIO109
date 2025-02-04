@@ -738,11 +738,9 @@ On pige l'espèce au hasard en utilisant `sample()` ou bien `rmultinom()` en uti
 ```{r}
 esp <- c("A", "B", "C")
 p <- c(0.2, 0.5, 0.3)
-esp[which(rmultinom(n=1,size=1,prob=p)==1)]
+sample(x = esp, size = 1, prob = p)
 ```
-Note 1 : On peut faire la même chose avec `sample(x = esp, size = 1, prob = p)`
-
-Note 2 : Le vecteur de probabilités doit toujours avoir une somme de 1
+Note : Le vecteur de probabilités doit toujours avoir une somme de 1
 
 ---
 # Étapes
