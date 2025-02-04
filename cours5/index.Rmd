@@ -762,7 +762,7 @@ Note : Le vecteur de probabilités doit toujours avoir une somme de 1
 
 ## Vecteur des coefficients de recrutement
 
-$\alpha = \{ 0.9, 1.05, 1.2, 1.15, 1.1, 1, 0.95 \}$
+$\alpha = \{ 1, 1.01, 1.04, 1.03, 1, 1.02, 1) \}$
 
 ## Probabilité de mortalité 
 
