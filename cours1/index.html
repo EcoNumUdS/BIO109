@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Séance 1: Introduction à la programmation scientifique</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dominique Gravel" />
+    <link href="assets/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="assets/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/bio109.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide, middle
+
+&lt;style type="text/css"&gt;
+  .title-slide {
+    background-image: url('../assets/img/bg.jpg');
+    background-color: #23373B;
+    background-size: contain;
+    border: 0px;
+    background-position: 600px 0;
+    line-height: 1;
+  }
+&lt;/style&gt;
+
+# Séance 1
+
+&lt;hr width="65%" align="left" size="0.3" color="orange"&gt;&lt;/hr&gt;
+
+## Introduction à la programmation scientifique
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;" alt="@Martin Sanchez"&gt;&lt;/hr&gt;
+
+.instructors[
+  **BIO109** - Dominique Gravel
+]
+
+&lt;img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"&gt;&lt;/img&gt;
+
+---
+
+# Introduction
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/intro/bioclim.png" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# Introduction
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/intro/mont_vertes.png" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# Introduction
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/intro/megantic.jpg" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# Introduction
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/intro/grille.jpg" height="250px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# Projet de session
+
+## Question de recherche
+
+À quelle vitesse se réalisera la migration de l'érable à sucre, et des espèces associées, au sein de la sapinière de montagne du massif des Montagnes vertes ?
+
+---
+
+# Le type de données
+
+
+``` r
+arbres &lt;- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
+head(arbres)
+```
+
+```
+##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+## 4    0-0    0    0 34503 acpe  FAUX FAUX  73
+## 5    0-0    0    0 34504 acpe  FAUX VRAI  28
+## 6    0-0    0    0 34506 fagr  FAUX FAUX  26
+```
+---
+
+# La programmation en science
+
+.pull-left[
+## Avantages
+
+- Gain de temps
+- Limiter les erreurs
+- Formaliser les opérations
+- Archiver, reproduire et partager
+- Tâches intensives (e.g. en génomique)
+]
+
+
+.pull-right[
+## Capacité de calcul
+&lt;img src="assets/img/intro/moores.png" width="100%"&gt;&lt;/img&gt;
+&lt;span style="font-size:small;text-transform:uppercase;text-align:right;"&gt;
+&lt;/span&gt;
+]
+
+---
+
+# La programmation et les sciences des données
+
+&lt;img src="assets/img/intro/covid.png" align="center" width="80%"&gt;&lt;/img&gt;
+
+---
+
+# La programmation en science
+
+.pull-left[
+## Inconvénients
+
+- L'erreur est avant tout humaine, avant d'être informatique
+- La courbe apprentissage peut être difficile
+]
+
+.pull-right[
+&lt;img src="assets/img/intro/geek_mode.jpg" width="100%"&gt;&lt;/img&gt;
+]
+
+---
+
+# L'archétype de la biologie
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/intro/darwin.jpg" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# La biologie 2.0
+
+La programmation est un outil indispensable au travail quotidien, elle permet:
+
+- Tâches **répétitives et/ou complexes** (p.ex. nettoyer, explorer et traiter de larges quantités de données)
+- Faire des **analyses statistiques avancées** (p. ex. tests par permutations, statistiques bayésiennes)
+- Créer des visualisations et des outils interactifs pour **communiquer et sensibiliser** efficacement
+- Résoudre des **problèmes complexes** (p.ex. le suivi de la biodiversité, la modélisation de la dynamique des populations, la projection d'aires de distribution)
+
+---
+
+# Objectif général
+
+Au terme de ce cours, l'étudiant sera en mesure de conceptualiser un problème qui requiert de la programmation scientifique et de réaliser des tâches courantes de programmation.
+
+---
+
+# Objectifs spécifiques
+
+1. Conceptualiser un problème au moyen de pseudo-code;
+2. Manipuler des données;
+3. Rédiger des fonctions;
+4. Programmer des algorithmes afin de réaliser des tâches complexes,
+    incluant des boucles et des énoncés conditionnels;
+5. Réaliser des simulations de Monte Carlo;
+
+---
+
+# Ce que le cours n'est pas ...
+
+1. Des recettes
+2. Un catalogue de fonctions R
+3. Un cours de statistiques
+
+---
+
+# Approche
+
+Les connaissances requises pour la programmation scientifique sont
+minimales, l'apprentissage porte davantage sur l'acquisition de
+compétences et le développement de capacités à la résolution de problèmes.
+
+Les séances sont constituées de courtes leçons magistrales sur des
+notions de bases de programmation, entre-coupées d'exercices spécifiques
+destinés à pratiquer les éléments enseignés. Les séances se conclueront
+sur la réalisation d'un exercice intégrateur à compléter à la maison.
+
+L'ensemble du matériel du cours sera disponible sur un dépôt Git à l'adresse :
+https://github.com/EcoNumUdS/BIO109.git
+
+---
+
+# Instructions
+
+- Présence en classe
+- Un ordinateur portable
+- Matériel du cours : https://github.com/EcoNumUdS/BIO109 et Moodle
+- 3h de cours - 6h de travail personnel
+- Lire les présentations avant le cours
+- Faire les exercices
+- Ressources additionnelles : R Cheat Sheet, R pour les débutants, exercies supplémentaires et matériel sur Moodle.
+
+---
+
+# Évaluation
+
+L'évaluation porte sur la participation (20%) et sur un travail de session (80%). Un exercice simple sera présenté à la fin des séances 1-4 et &lt;b&gt;chaque étudiant&lt;/b&gt; devra remettre la solution de l'exercice sur Moodle sous forme de script &lt;i&gt;avant le début&lt;/i&gt; de la séance suivante. &lt;b&gt;Les points sont attribués pour la participation.&lt;/b&gt; Les solutions seront présentées au cours suivant.
+
+- 4 exercies en classe (20%)
+- Évaluation terminale : réalisation d'un projet de programmation &lt;b&gt;en équipe de 2&lt;/b&gt; (80%)
+  - Pseudo-code (20%) + programme (60%) à remettre le &lt;b&gt;18 février à 23h59&lt;/b&gt;
+
+Les évaluations sont à remettre sur Moodle.
+
+---
+
+# Évaluation finale
+
+La pénalité sera de 10% par jour de retard. Le rapport final sera évalué à
+partir de
+
+   1. le pseudo-code pour le projet de programmation,
+   2. le respect des bonnes pratiques de programmation
+   3. la réussite de l'exercice demandé.
+
+Les étudiants devront remettre le script nécessaire à la
+réalisation du projet.
+
+---
+class: inverse, center, middle
+
+# Les langages de programmation
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Choix d'un langage : performance
+
+&lt;div style='text-align:center;'&gt;
+  &lt;img src="assets/img/intro/performance.png" width="900px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# Choix d'un langage: 'débugging'
+
+&lt;div style='text-align:center;'&gt;
+  &lt;img src="assets/img/intro/bug.jpg" width="600px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+
+# Choix d'un langage : Statistiques et visualisation
+
+Pour ce cours, nous utiliserons R :
+
+- Langage de programmation open-source spécialisé en statistiques et en visualisation de données
+- De nombreuses bibliothèques et packages disponibles pour effectuer diverses analyses statistiques
+- Interface utilisateur RStudio pour faciliter l'utilisation de R
+- Grand nombre de ressources en ligne et communauté active d'utilisateurs de R
+- Création de sites Web et d'applications pour sensibiliser aux problèmes environnementaux et promouvoir des solutions durables.
+
+&gt; Langage utilisé dans le cadre de : biométrie, statistiques, méthodes en écologie computationnelle
+
+---
+class: inverse, middle, center
+
+# Le Pseudo-Code
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Le `Pseudo-Code` et ses **algorithmes**
+
+
+## Définitions
+
+- *En programmation, le `pseudo-code` est une façon de formuler un &lt;b&gt;algorithme&lt;/b&gt; sans référence à un langage de programmation en particulier.*
+
+&gt; - *Un &lt;b&gt;algorithme&lt;/b&gt; est une suite d'actions qui sont réalisées dans un ordre précis par l'ordinateur. C'est une séquence d'étapes dans la résolution d'un problème.*
+
+- Les principes de base seront les mêmes, d'un langage de programmation à l'autre. 
+
+- Les éléments qui suivent résument les principales notions que vous aurez à maîtriser dans le cours. Il faut maîtriser ces notions *avant* de commencer la programmation sur R. 
+
+---
+
+# Le `Pseudo-Code`
+
+**ATTENTION !!**
+
+Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à décrire les étapes d'un algorithme.
+
+Il est important de bien comprendre la différence entre les deux. 
+
+---
+
+# Le `Pseudo-Code`
+
+## Exemple
+
+```
+PROGRAM HELLOWORLD
+  FOR t IN 1:100
+    PRINT "Hello World"
+  END FOR
+```
+
+Le programme `HELLOWORLD` imprime à l'écran le message "Hello World" 100 fois.
+
+---
+
+# Le `Pseudo-Code`
+
+## Exemple
+
+```
+PROGRAM HELLOWORLD
+  FOR t IN 1:100 &lt;------------- Opération itérative
+    PRINT "Hello World" &lt;------ Le programme affiche le message à l'écran
+  END FOR &lt;------------------- Fin de la boucle
+```
+
+Le programme `HELLOWORLD` imprime à l'écran le message "Hello World" 100 fois.
+
+---
+
+# Le `Pseudo-Code`
+
+## Exemple
+
+```
+PROGRAM DEMO
+  DEFINE lambda = 1.1
+  SET n_t = 1
+  FOR t IN 1:100
+    n_t = n_t * lambda
+    PRINT n_t
+    IF n_t &lt; 1
+      BREAK
+    ELSE
+      CONTINUE
+    END IF
+  END FOR
+```
+
+Le programme `DEMO` fait croitre une population à un taux `\(\lambda\)` et affiche à l'utilisateur si la population est éteinte ( `\(n_t&lt;1\)` ) ou vivante ( `\(n_t&gt;1\)` ).
+
+---
+
+# Le `Pseudo-Code`
+
+## Exemple
+
+```
+PROGRAM DEMO
+  DEFINE lambda = 1.1 &lt;-------- lambda est une constante 
+  SET n_t = 1  &lt;--------------- n_t est une variable 
+  FOR t IN 1:100 &lt;------------- Opération itérative
+    n_t = n_t * lambda
+    PRINT n_t &lt;---------------- Le programme affiche la valeur à l'écran
+    IF n_t &lt; 1 &lt;--------------- Opération décisionnelle
+      BREAK &lt;------------------ Le programme arrête son éxécution
+    ELSE
+      CONTINUE &lt;--------------- Le programme continue son éxécution
+    END IF
+  END FOR
+```
+
+Le programme `DEMO` fait croitre une population à un taux `\(\lambda\)` et affiche à l'utilisateur si la population est éteinte ( `\(n_t&lt;1\)` ) ou vivante ( `\(n_t&gt;1\)` ).
+
+
+---
+
+# Les concepts de base en programmation
+
+1. Le stockage de l'information 
+
+2. Les opérations
+
+  - Séquentielles
+  - Itératives (`FOR`, `WHILE`)
+  - Décisionnelles (`IF`, `IFELSE`)
+
+3. Les fonctions
+
+---
+
+# Avant-propos
+
+Avant de décrire chacune des opérations d'un algorithme, certaines instructions sont à connaitre pour écrire du pseudo-code :
+
+- `READ`: le programme lit un fichier
+- `WRITE`: le programme écrit un fichier
+- `PRINT`: le programme écrit un message à l'écran pour l'utilisateur
+- `BREAK`: le programme arrête son éxécution
+- `CONTINUE`: le programme continue son éxécution
+- `DEFINE`: définition d'une constante, d'un paramètre
+- `SET` : initialise un objet
+
+---
+
+# Assignation des objets
+
+Lorsque l'on crée un objet, il est initialement vide et il faut lui attribuer une valeur : 
+
+```
+a &lt;- 1
+b &lt;- 2
+```
+
+On peut faire des opérations mathématiques sur ces objets : 
+
+```
+a * b
+```
+
+---
+
+# Indexation des objets
+
+Plus souvent, on travaille avec des tableaux de données :  
+
+```
+mat = [1 2 3
+       4 5 6]
+```
+
+Cet objet a deux dimensions, la première représentée par "i" et l'autre par "j". Sur R par exemple, on accède à la position définie par le couple i,j de la manière suivante : 
+
+```
+mat[i,j]
+```
+
+---
+
+# Les types d'objets
+
+Les objets en programmation sont définis en fonction de leur dimensionalité.
+
+## Dimensionalité
+
+- **Dimension 0** : Valeur unique
+- **Dimension 1** : Vecteur
+- **Dimension 2** : Matrice
+- **Dimension 3** : ...
+
+Bien qu'il n'y ait pas de limite à la dimension d'un objet en programmation,
+pour le cours nous nous limiterons à des objets en deux dimensions
+(c.à.d matrice)
+
+---
+
+# Dimension 0
+
+Ces objets ne contiennent qu'une seule information
+
+## Exemple
+
+```
+a = "toi"
+b = 2
+c = -3
+d = 456457.678
+```
+
+---
+
+# Dimension 1
+
+Ces objets contiennent un série d'information. Chaque valeur
+a une position dans le vecteur, laquelle peut être accédée.
+
+## Exemple
+
+```
+lettre = ["A" "R" "C" "D" "A"]
+lettre[3]
+# "C"
+```
+
+---
+
+# Dimension 2
+
+Ayant deux dimensions, ces objets présentent les données sous forme de matrices et ont des lignes et des colonnes. Pour accéder à une valeur dans une matrice il faut donner la position de la &lt;b&gt;ligne&lt;/b&gt; en premier suivit de la position de la &lt;b&gt;colonne&lt;/b&gt;.
+
+## Exemple
+
+```
+lettreTab = ["A" "R" "C"
+             "D" "A" "T"
+             "R" "A" "Q"]
+
+lettreTab[2, 1]
+# "D"
+```
+
+---
+
+# Les opérations séquentielles
+
+## Exemple: Calculer l'aire d'un rectangle
+
+```
+PROGRAM REC_AIRE
+  READ hauteur
+  READ largeur
+  WRITE hauteur * largeur
+```
+
+Chaque opération est effectuée l'une après l'autre dans un ordre déterminé.
+
+---
+
+# Exercice
+
+```
+PROGRAM AIRE_CERCLE
+  DEFINE pi &lt;- 3.1416
+  DEFINE d &lt;- {1, 2, 3, 4, 5}
+  DEFINE index &lt;- 2
+  CALCUL aire &lt;- pi*(d[index]/2)*(d[index]/2)
+  WRITE aire
+```
+
+Quel est le résultat de ce calcul ?
+
+---
+
+# Les opérations itératives
+
+La boucle est une séquence de base utilisée par tous les langages de programmation. 
+
+Elle permet de répéter une opération un grand nombre de fois automatiquement. 
+
+La boucle est définie par un **point de départ**, un **point de d'arrivée** et la **séquence des opérations** à réaliser à chaque itération de la boucle. 
+
+Un indice permet de suivre la position dans la boucle.
+
+---
+
+# Les opérations itératives
+
+## Exemple avec `FOR`: Croissance exponentielle
+
+```
+PROGRAM DEMO
+  DEFINE lambda = 1.1
+  SET n_t = 1
+  FOR etape IN 1:100
+    n_t = n_t * lambda
+  END FOR
+  WRITE n_t
+```
+
+La population va croître pendant 100 pas de temps.
+
+---
+
+# Exercice
+
+```
+PROGRAM FACTORIELLE
+  DEFINE depart = 1
+  DEFINE fin = 5
+  SET x = 1
+  FOR etape in depart:fin
+    x = x * etape
+  END FOR
+  WRITE x
+```
+
+Quelle valeur prendra x au terme de l'exécution du programme ? 
+
+---
+
+# Les opérations décisionnelles
+
+Souvent un programme repose sur la réalisation d'une décision basée sur le résultat d'un calcul ou bien un paramètre défini par l'utilisateur. 
+
+Les décisions sont binaires (oui/non, vrai/faux), mais plusieurs choix peuvent se combiner.
+
+---
+
+# Les opérations décisionnelles
+
+## Exemple avec `IF`: quelques tests sur `\(\lambda\)`
+
+```
+PROGRAM DEMO
+  READ lambda
+  IF lambda &gt; 1
+    PRINT "La population est croissante"
+  ELSE lambda &lt; 1
+    PRINT "La population est décroissante"
+  ENDIF
+```
+
+Note : on a un problème si lamba = 1 ....
+
+---
+
+# Les fonctions
+
+Elles permettent de répéter rapidement des opérations, sous des conditions définies lorsqu'on les appelle. Ces conditions sont nommées des "arguments". 
+
+```
+FONCTION AIRE_CERCLE(rayon, pi)
+  {
+    aire = pi*rayon*rayon
+    RETURN aire
+  }
+  
+```
+
+---
+
+# Les fonctions
+
+Le résultat de la fonction changera si on change les arguments.
+
+
+```
+  AIRE_CERCLE(rayon = 2, pi = 3.1416)
+
+```
+
+Ne donnera pas le même résultat que 
+
+```
+  AIRE_CERCLE(rayon = 1, pi = 3.1416)
+
+```
+
+---
+
+
+# Exemple bonus
+
+Calculez la moyenne de la série de valeurs (vecteur) suivante
+
+```
+series = [1, 9, NA, 21, 3, NA, 7]
+```
+
+**ATTENTION !!** Il y a des valeurs manquantes (`NA`) dans la série de chiffres. Il faut les exclure du calcul de la moyenne.
+
+---
+
+# Exemple bonus
+
+```
+PROGRAM MOYENNE
+  serie = [1, 9, NA, 21, 3, NA, 7]
+  n = 7
+  somme = 0
+  FOR i IN 1:n
+    IF serie[i] == NA 
+      somme = somme 
+    ELSE 
+      somme = somme + serie[i]
+    END IF
+  END FOR
+  moyenne = somme / n
+  WRITE moyenne 
+```
+
+---
+
+# Exemple bonus
+
+```
+PROGRAM MOYENNE
+  SET serie = [1, 9, NA, 21, 3, NA, 7]
+  SET n = 0
+  SET somme = 0
+  FOR i IN 1:7 &lt;------------- Opération itérative
+    IF serie[i] == NA &lt;------ Opération décisionnelle
+      somme = somme  &lt;------- Si NA
+    ELSE &lt;------------------- Si pas NA
+      somme = somme + serie[i]
+      n = n + 1
+    END IF
+  END FOR
+  moyenne = somme/n &lt;-------- Le programme calcule la moyenne
+  WRITE moyenne &lt;------------ Le programme affiche la moyenne
+```
+
+---
+
+# Exemple bonus
+
+**ATTENTION !!**
+
+Le pseudo-code n'est pas du code. Il ne peut pas être exécuté. Il sert à décrire les étapes d'un algorithme.
+
+Il est important de bien comprendre la différence entre les deux. 
+
+---
+
+# Les règles du `pseudo-code`
+
+## À garder en mémoire
+
+1. N'écrivez qu'une seule instruction par ligne de pseudo-code.
+2. Écrivez en lettres majuscules le verbe de chaque opération principale (la fonction utilisée)
+3. Soyez explicite en nommant les opérations et les variables.
+4. Soyez le plus détaillé possible (c.à.d les plus petites étapes possibles)
+5. Utilisez des structures de langages de programmation connues (c.à.d `FOR`, `IF`, etc.)
+6. Délimitez les étapes en formant des blocs d'instructions par l'utilisation de l'indentation.
+
+&lt;b&gt; Le pseudo-code est général, peu importe le langage de programmation utilisé. &lt;/b&gt;
+
+---
+class: inverse, middle, center
+
+# Les bonnes pratiques en programmation scientifique
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+&gt; &lt;b&gt;3.&lt;/b&gt; Une seule opération par ligne
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+&gt; &lt;b&gt;3.&lt;/b&gt; Une seule opération par ligne
+
+&gt; &lt;b&gt;4.&lt;/b&gt; S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+&gt; &lt;b&gt;3.&lt;/b&gt; Une seule opération par ligne
+
+&gt; &lt;b&gt;4.&lt;/b&gt; S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+&gt; &lt;b&gt;5.&lt;/b&gt; Nommer adéquatement ses variables 
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+&gt; &lt;b&gt;3.&lt;/b&gt; Une seule opération par ligne
+
+&gt; &lt;b&gt;4.&lt;/b&gt; S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+&gt; &lt;b&gt;5.&lt;/b&gt; Nommer adéquatement ses variables 
+
+&gt; &lt;b&gt;6.&lt;/b&gt; Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+&gt; &lt;b&gt;3.&lt;/b&gt; Une seule opération par ligne
+
+&gt; &lt;b&gt;4.&lt;/b&gt; S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+&gt; &lt;b&gt;5.&lt;/b&gt; Nommer adéquatement ses variables 
+
+&gt; &lt;b&gt;6.&lt;/b&gt; Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
+
+&gt; &lt;b&gt;7.&lt;/b&gt; La vie est trop courte, optimiser son code
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;1.&lt;/b&gt; Commenter le code pour que d'autres puissent le lire, le comprendre et le partager
+
+&gt; &lt;b&gt;2.&lt;/b&gt; Découper un script en blocs cohérents
+
+&gt; &lt;b&gt;3.&lt;/b&gt; Une seule opération par ligne
+
+&gt; &lt;b&gt;4.&lt;/b&gt; S'assurer qu'une instruction fonctionne avant de passer à l'étape suivante
+
+&gt; &lt;b&gt;5.&lt;/b&gt; Nommer adéquatement ses variables 
+
+&gt; &lt;b&gt;6.&lt;/b&gt; Un bon programmeur est paresseux. Les opérations répétées doivent être définies sous forme de fonctions
+
+&gt; &lt;b&gt;7.&lt;/b&gt; La vie est trop courte, optimiser son code
+
+&gt; &lt;b&gt;8.&lt;/b&gt; S'assurer que le code soit reproductible par autrui
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;9.&lt;/b&gt; Contraindre les tirages au sort afin de le répéter
+
+---
+
+# Les 10 commandements de la programmation
+
+&gt; &lt;b&gt;9.&lt;/b&gt; Contraindre les tirages au sort afin de le répéter
+
+&gt; &lt;b&gt;10.&lt;/b&gt; Utiliser le contrôle de version afin de pouvoir revenir dans le passé
+
+---
+
+class: inverse, middle, center
+
+# Installation de R et de RStudio
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+À faire pour la &lt;b&gt;prochaine séance&lt;/b&gt;
+
+&lt;!-- - Le débuggage se fera au prochain cours. --&gt;
+- Guide d'installation : [https://rstudio-education.github.io/hopr/starting.html](https://rstudio-education.github.io/hopr/starting.html)
+
+---
+
+class: inverse, middle, center
+
+# Exercice de la semaine
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+
+# Une situation qui peut arriver tous les jours
+
+1. On jette en face de vous 5 lettres d'un jeu de scrabble
+
+2. Un maniaque vous demande d'écrire un programme qui ordonne les 5 lettres
+
+Prenez le temps de distinguer les étapes que vous réalisez lorsque vous triez les lettres. Vous devez les écrire sous forme de pseudo-code.
+
+&lt;b&gt;Note 1 &lt;/b&gt;: cet exercice reviendra au cours 4, où vous programmerez cette fonction.
+
+&lt;b&gt;Note 2 &lt;/b&gt;: vous pouvez assumer que l'ordinateur sait que 'A' vient avant 'B'.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "monokai",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

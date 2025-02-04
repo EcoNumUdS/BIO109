@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Séance 5: Algorithmique II</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dominique Gravel" />
+    <link href="assets/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="assets/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/bio109.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide, middle
+
+&lt;style type="text/css"&gt;
+  .title-slide {
+    background-image: url('../assets/img/bg.jpg');
+    background-color: #23373B;
+    background-size: contain;
+    border: 0px;
+    background-position: 600px 0;
+    line-height: 1;
+  }
+&lt;/style&gt;
+
+# Séance 5
+
+&lt;hr width="65%" align="left" size="0.3" color="orange"&gt;&lt;/hr&gt;
+
+## Algorithmique II
+
+&lt;hr width="65%" align="left" size="0.3" color="orange" style="margin-bottom:40px;"&gt;&lt;/hr&gt;
+
+.instructors[
+  **BIO109** - Dominique Gravel
+]
+
+&lt;img src="../assets/img/logo.png" width="24%" style="margin-top:20px;"&gt;&lt;/img&gt;
+
+
+---
+# Solution
+
+
+``` r
+tri = function(x){
+	# Calcul de la dimension du vecteur
+	taille = length(x)
+	ordre = "NON"
+	# Boucle qui tourne jusqu'à ce que tout soit en ordre
+	while(ordre == "NON") {
+		ordre = "OUI"
+		# Boucle qui passe tous les éléments en paires
+		for(i in 1:(taille-1)) {
+			if(x[i+1] &lt; x[i]) {
+				# Inversion des deux lettres
+				x[c(i,i+1)] = x[c(i+1,i)]
+				# Comme un changement a été fait, l'ordre
+				# n'est pas encore garanti
+				ordre = "NON"
+			}
+		}
+	}
+	return(x)
+}
+```
+
+---
+class: middle, center, inverse
+
+# Les jeux de hasard
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Les jeux de hasard
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/hasard.jpg" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Le hasard et l'écologie
+## Les populations structurées par la taille
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/leslie.GIF" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Le hasard et l'écologie
+## Écologie du paysage
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/feu.jpg" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Le hasard et l'écologie
+## Mouvement des individus
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/movement.jpg" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Le hasard et l'écologie
+## Statistiques
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/gotelli.jpg" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+class: middle, center, inverse
+
+# Application 1: échantillonner un vecteur
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Exemple : tirer une carte au hasard
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/cartes.jpg" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Exemple : votre jeu de cartes sur R
+## La fonction `sample()`
+
+
+``` r
+valeurs &lt;- c("2", "3", "4", "5", "6", "7", "8", "9", "10", "valet", "reine", "roi", "as")
+couleurs &lt;- rep(c("pique", "trèfle", "carreau", "coeur"), each = 13)
+cartes &lt;- paste(valeurs, "-", couleurs)
+tirage &lt;- function(n, cartes) {
+    sample(x = cartes, size = n, replace = FALSE)
+}
+tirage(3, cartes)
+```
+
+```
+## [1] "5 - coeur"   "4 - carreau" "4 - coeur"
+```
+
+---
+# Exercice
+
+Vous trouverez les lettres du scrabble dans le fichier [lettres.txt](./donnees/lettres.txt). Vous pouvez les charger et programmer votre fonction qui pigera au hasard les 7 lettres pour ce jeux.
+
+---
+class: middle, center, inverse
+
+# Application 2: échantillonner une loi de probabilité
+
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Principe
+
+Plutôt que de tirer un élément d'une série de chiffres ou de caractères, on peut échantillonner une loi de probabilité dont les propriétés sont connues. Fort heureusement, la plupart de ces lois de probabilité sont déjà programmées. Certaines sont intuitives et déjà utilisées dans des jeux de hasard.
+
+---
+# La lotto 6/49
+
+## La loi uniforme
+
+.pull-left[
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/649.jpg" width="50%"&gt;&lt;/img&gt;
+&lt;/div&gt;
+]
+
+.pull-right[
+
+``` r
+hist(floor(runif(n = 10000, min = 1,
+  max = 50)))
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+# Le jeu de la courte paille
+## La loi normale
+
+.pull-left[
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/paille.jpg" height="450px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+]
+
+
+
+.pull-right[
+
+``` r
+hist(rnorm(n = 30, mean = 10, sd = 1))
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Une pièce de monnaie
+## La loi binomiale
+
+.pull-left[
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/piece.jpg" width="100%"&gt;&lt;/img&gt;
+&lt;/div&gt;
+]
+
+.pull-right[
+
+``` r
+rbinom(n = 10, size = 1, prob = 0.5)
+```
+
+```
+##  [1] 1 1 1 0 1 0 0 0 0 0
+```
+]
+
+---
+
+# Les dés
+## La loi multinomiale
+
+.pull-left[
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/des.png" width="100%"&gt;&lt;/img&gt;
+&lt;/div&gt;
+]
+
+.pull-right[
+
+``` r
+rmultinom(n = 3, size = 1,
+  prob = rep(1/6, 6))
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    0    0    0
+## [2,]    0    0    0
+## [3,]    0    1    0
+## [4,]    0    0    1
+## [5,]    0    0    0
+## [6,]    1    0    0
+```
+]
+
+
+---
+
+# La roulette russe
+## La loi exponentielle
+
+.pull-left[
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/roulette.jpg" width="80%"&gt;&lt;/img&gt;
+&lt;/div&gt;
+]
+
+
+.pull-right[
+
+``` r
+hist(rexp(n = 1000, rate = 1/6), xlab =
+  "Nombre d'essais avant de perdre")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Exercice
+
+Combien de fois obtient-on "pile" si on lance une pièce de monnaie 10 fois de suite ?
+
+---
+
+# Solution
+
+On peut utiliser la loi binomiale pour simuler le nombre de fois où l'on obtient pile. On obtient alors un vecteur. On peut ensuite compter le nombre de 1 dans ce vecteur (le nombre de réussites).
+
+
+``` r
+tirages &lt;- rbinom(n = 10, size = 1, prob = 0.5)
+tirages
+```
+
+```
+##  [1] 1 0 1 0 0 1 1 0 1 0
+```
+
+``` r
+sum(tirages)
+```
+
+```
+## [1] 5
+```
+
+---
+
+# Exercice
+
+Quel est le résultat si on répète l'expérience 1000 fois ?
+
+1. Insérez le code dans une boucle `for` pour répéter l'expérience 1000 fois.
+2. Sauvez le résultat de chaque expérience dans un vecteur.
+3. Utilisez la fonction `hist()` pour visualiser le résultat.
+
+---
+
+# Solution
+
+
+``` r
+resultats &lt;- c()
+for (i in 1:1000) {
+  tirages &lt;- rbinom(n = 10, size = 1, prob = 0.5)
+  resultats &lt;- c(resultats, sum(tirages))
+}
+```
+
+
+``` r
+hist(resultats, xlab = "Nombre de piles")
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-11-1.png" height="300px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Exercice
+
+Qu'est-ce qui se passe si on ajoute `set.seed(123)` avant le tirage `rbinom` ?
+
+---
+
+# Solution
+
+
+``` r
+resultats &lt;- c()
+for (i in 1:1000) {
+  set.seed(123)
+  tirages &lt;- rbinom(n = 10, size = 1, prob = 0.5)
+  resultats &lt;- c(resultats, sum(tirages))
+}
+```
+
+
+``` r
+summary(resultats, xlab = "Nombre de piles")
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       6       6       6       6       6       6
+```
+
+---
+
+# Reproduire un tirage aléatoire
+
+Les chiffres aléatoires sont générés aléatoirement... mais pas complètement !
+
+La fonction `set.seed()` permet de reproduire des tirages aléatoires. Si on utilise la même graine, on obtient les mêmes tirages. Particulièrement utile si l'on veut reproduire les résultats d'une simulation ou d'une analyse statistique à tout coup.
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/pseudo-random_generators.png" width="30%"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+.content-box-red[Attention, il s'agit d'une simplification]
+
+---
+# Exercice
+
+Une étude vous indique que la relation entre le nombre d'espèces de plantes et l'aire sur la placette de Sutton suit la relation suivante :
+
+$$
+S \sim N(\mu, \sigma)
+$$
+
+Où
+
+$$
+\mu = cA^z
+$$
+
+Vous trouvez dans la littérature des valeurs de paramètres de `\(c = 3\)`, `\(z = 0.15\)` et `\(\sigma = 1.5\)`. Illustrez des valeurs attendues sur ce modèle pour l'interval de `\(A = [20, 20 000]\)` correspondant à la dimension de la placette.
+
+---
+# Solution
+
+.pull-left[
+
+``` r
+A = 2*10^seq(1, 4, length.out = 15)
+c = 3
+z = 0.15
+S = rnorm(15, mean = c*A^z, sd = 1.5)
+
+plot(A, S, xlab = "Aire (m2)", ylab = "Richesse",
+  log = "xy")
+```
+]
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-15-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: middle, center, inverse
+
+# Application 3: prise de décision
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Principe
+## L'épreuve de Bernoulli
+
+- Une épreuve de Bernoulli est une expérience aléatoire (un tirage) avec deux issues : succès ou échec;
+- Les épreuves sont indépendantes: l'issue d'une seconde épreuve ne dépend pas de la première;
+- La probabilité de succès est représentée par le paramètre `p`, alors que la probabilité d'un échec est représentée par `1-p`;
+
+---
+# Principe
+## L'épreuve de Bernoulli
+
+**Exemple des jeux de hasard:** la pièce de monnaie
+
+**Exemples en écologie:**
+
+- la mortalité;
+- la détermination du sexe;
+- l'occurrence d'un incendie forestier;
+- la contamination par un virus après le contact entre une personne infectée et une personne susceptible;
+
+---
+# Simuler un tirage de Bernoulli
+
+Lorsque `\(p = 0.5\)`, on tire une pièce de monnaie. Mais qu'en est-il si la pièce est biasée, par exemple si la face est plus lourde et donc la probabilité d'obtenir pile est de `\(p = 0.55\)` ?
+
+
+``` r
+set.seed(1)
+p = 0.55
+alea = runif(n = 1, min = 0, max = 1)
+if(alea &lt; p) res = "pile" else res = "face"
+res
+```
+
+```
+## [1] "pile"
+```
+
+---
+
+# Un exemple vaut mille mots
+
+- Tirez au hasard 1000 chiffres de la loi uniforme bornée entre 0 et 1
+- Créez un vecteur 'res' rempli de 0 et de 1000 unités de longueur
+- Pour chaque valeur de la séquence, évaluez si le chiffre est plus petit que la valeur seuil de `\(p = 0.2\)`. Si la valeur est plus petite, inscrivez 1 dans le vecteur 'res' à la position correspondante
+- Combien de fois est-ce que la valeur est inférieure à `\(p\)` ?
+- Essayez à nouveau et comparez.
+
+
+---
+# Un exercice est encore plus efficace...
+
+Vous observez une personne ivre à la sortie d'un bar prendre sa voiture. Vous appelez la police pour l'avertir. Estimez la distance parcourue par ce conducteur en 10 minutes, sachant que :
+
+- Le quartier où vous vous trouvez est un plan cartésien parfait (une grille régulière) composé de blocs de 250 m;
+- À chaque intersection, votre conducteur ivre tourne à gauche ou à droite avec une probabilité de 0.5;
+- Il faut environ 30 secondes à votre conducteur pour parcourir la distance entre deux arrêts.
+
+Calculez la distance parcourue en X et en Y, puis reprenez votre calcul une centaine de fois pour estimer la distance moyenne parcourue (à vol d'oiseau).
+
+---
+# Solution
+
+.pull-left[
+
+
+``` r
+nsteps = 20
+xy = matrix(0,nr = 21, nc = 2)
+xy[1,] = c(0,0)
+direction = 0
+set.seed(2)
+for(step in 2:(nsteps+1)) {
+    # Ḑe quel côté tourner ?
+    if(runif(1,0,1) &lt; 0.5) {
+      # Tourne à droite
+      direction = direction + pi/2 
+    }
+    else {
+      # Tourne à gauche  
+      direction = direction - pi/2
+    }
+    # Calcul des nouvelles coordonnées
+    xy[step,1] = 
+      xy[step-1,1] + sin(direction)*250 
+    xy[step,2] = 
+      xy[step-1,2] + cos(direction)*250 
+}
+```
+]
+
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+class: middle, center, inverse
+
+# Optimisation des scripts
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Optimisation
+
+R est un langage de programmation et peut donc faire à peu près tout ce que l'on fera avec d'autres langages de programmation. Mais il a d'abord et surtout été développé pour l'analyse statistique de données. Par conséquent, il peut être assez lent pour réaliser certaines opérations.
+
+**L'optimisation de code peut être réalisée de différentes façons:**
+
+- Trouver les portions de code qui prennent le plus de temps ;
+- Profiter de la structure de R (vectorielle) afin d'accéléer le calcul ;
+- Écrire ses propres fonctions en C pour les portions les plus exigeantes ;
+
+---
+# Référence
+
+L'optimisation est un sujet avancé que nous ne couvrirons pas en détails dans le cours. Il est recommandé cependant d'aller consulter l'excellente référence sur le sujet :
+
+&gt; Visser, M.D., McMahon, S.M., Merow, C., Dixon, P.M., Record, S., Jongejans., E. 2015. Speeding up ecological and evolutionary computations in R; Essentials of high performance computing for biologists. PLoS Computational Biology 11: e1004140.
+
+---
+# Calculer le temps écoulé
+
+La fonction `system.time()` est un minimum pour tester la performance d'un code. Par exemple, on peut comparer la performance de notre fonction de tri à celle qui est native sur R.
+
+---
+
+# Notre fonction de tri
+
+
+``` r
+tri &lt;- function(x){
+	# Calcul de la dimension du vecteur
+	taille &lt;- length(x)
+	ordre &lt;- "NON"
+	# Boucle qui tourne jusqu'à ce que tout soit en ordre
+	while(ordre == "NON") {
+		ordre &lt;- "OUI"
+		# Boucle qui passe tous les éléments en paires
+		for(i in 1:(taille-1)) {
+			if(x[i+1] &lt; x[i]) {
+				# Inversion des deux lettres
+				x[c(i,i+1)] &lt;- x[c(i+1,i)]
+				# Comme un changement a été fait, l'ordre
+				# n'est pas encore garanti
+				ordre &lt;- "NON"
+			}
+		}
+	}
+	return(x)
+}
+```
+
+---
+
+# Comparée à la fonction sort
+
+
+``` r
+x &lt;- runif(1000)
+identical(sort(x), tri(x))
+```
+
+```
+## [1] TRUE
+```
+
+``` r
+system.time(sort(x))
+```
+
+```
+##    user  system elapsed 
+##       0       0       0
+```
+
+``` r
+system.time(tri(x))
+```
+
+```
+##    user  system elapsed 
+##   0.285   0.000   0.285
+```
+
+---
+# Calculer le temps écoulé
+
+Certaines opérations peuvent dépendre de la taille de l'objet (ci-dessous, `res`)
+
+.pull-left[
+
+``` r
+n &lt;- 2*10^seq(1, 3, 0.1)
+res &lt;- numeric(length(n))
+for(i in 1:length(res)) {
+	x &lt;- runif(n[i])
+	res[i] &lt;- system.time(tri(x))[3]
+}
+plot(n, res, type = "l", xlab = "Taille",
+	ylab = "Temps")
+```
+]
+
+
+.pull-right[
+
+&lt;img src="index_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+# Vectorisation
+
+L'utilisation d'opérations vectorielles plutôt que les boucles augmente l'efficacité du code.
+
+.pull-left[
+
+``` r
+# Fonction avec boucle
+f1 &lt;- function(x) {
+	taille &lt;- length(x)
+	x2 &lt;- numeric(taille)
+	for(i in 1:taille) {
+    if(x[i] &lt; 0.5) {
+      x2[i] &lt;- 1
+    }
+  }
+}
+
+# Fonction vectorisée
+f2 &lt;- function(x) {
+	x2 &lt;- x * 0
+	x2[x &lt; 0.5] &lt;- 1
+}
+```
+]
+
+
+.pull-right[
+
+``` r
+x &lt;- runif(1000000)
+system.time(f1(x))
+```
+
+```
+##    user  system elapsed 
+##   0.066   0.000   0.067
+```
+
+``` r
+system.time(f2(x))
+```
+
+```
+##    user  system elapsed 
+##   0.007   0.000   0.007
+```
+]
+
+
+---
+# Utilisation de fonctions natives
+
+Certaines fonctions sur R (voir Visser et al. 2015) sont optimisées. L'exemple suivant montre la puissance de la fonction `rowSums()`.
+
+.pull-left[
+
+``` r
+f1 &lt;- function(x) {
+	res &lt;- numeric(ncol(x))
+	for(j in 1:ncol(x)) {
+		for(i in 1:nrow(x)){
+			res[x] &lt;- res[j] + x[i,j]
+		}
+	}
+}
+X &lt;- matrix(runif(100 * 100),
+  nr=100, nc=100)
+```
+
+]
+
+
+.pull-right[
+
+
+``` r
+system.time(rowSums(X))
+system.time(apply(X,2,sum))
+system.time(f1(X))
+```
+
+```
+##    user  system elapsed 
+##   0.001   0.000   0.000 
+##    user  system elapsed 
+##   0.000   0.000   0.001 
+##    user  system elapsed 
+##   0.261   0.000   0.260
+```
+]
+
+---
+class: middle, inverse, center
+
+# Travail final
+&lt;hr width="65%" size="0.3" color="orange" style="margin-top:-20px;"&gt;&lt;/hr&gt;
+
+---
+# Répartition des domaines bioclimatiques
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/bioclim.png" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Écotone tempéré-boréal
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/megantic.jpg" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# La distribution des arbres à Sutton
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/grille.jpg" height="250px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# La Grive de Bicknell
+
+&lt;div style='text-align:center;'&gt;
+&lt;img src="assets/img/bicknell.jpg" height="500px"&gt;&lt;/img&gt;
+&lt;/div&gt;
+
+---
+# Projet de session
+
+## Question de recherche
+
+À quelle vitesse se réalisera la migration de l'érable à sucre au sein de la sapinière de montagne du massif des Montagnes vertes ?
+
+---
+# Le type de données
+
+
+``` r
+arbres &lt;- read.table(file = './donnees/arbres.txt', header = TRUE, sep=";")
+head(arbres)
+```
+
+```
+##   id_bor borx bory arbre  esp multi mort dhp
+## 1    0-0    0    0 34501 acpe  FAUX FAUX  82
+## 2    0-0    0    0 34502 acpe  VRAI FAUX  26
+## 3    0-0    0    0 34502 acpe  VRAI FAUX  98
+## 4    0-0    0    0 34503 acpe  FAUX FAUX  73
+## 5    0-0    0    0 34504 acpe  FAUX VRAI  28
+## 6    0-0    0    0 34506 fagr  FAUX FAUX  26
+```
+
+---
+# Objectif
+
+Programmer un modèle de simulation stochastique qui permet de reproduire la dynamique de la végétation à la transition entre forêt tempérée et boréale
+
+---
+# Le modèle de lotterie
+
+## En mots 
+
+- Pour chaque année de 2025 à 2100
+
+- Pour chaque arbre dans le fichier `arbres.csv`
+
+- On évalue si l'arbre survie (avec probabilité `\(\mu\)`) ou meurt et est remplacé (`\(1-\mu\)`)
+
+- Si l'arbre meurt, on remplace son identité (l'espèce) en réalisant une lotterie parmi les semences qui se trouvent au pied de l'arbre
+
+- On calcul l'abondance relative de chaque espèce par quadrat et sur l'ensemble de la parcelle à chaque pas de temps
+
+Note : seules les colonnes `id_bor` et `esp` sont pertinentes pour le travail, les autres informations ne sont pas utilisées dans la simulation.
+
+---
+# Le modèle de lotterie
+
+## La probabilité de remplacement
+
+`\(p_{i,x,t+1} = (1-m)\frac{\alpha_i N_{i,x,t}}{\sum \alpha_j N_{j,x,t}} + m\frac{\alpha_i R_{i,t}}{\sum \alpha_j R_{j,t}}\)`
+
+Où : 
+
+- `\(i\)` et `\(j\)` sont des espèces
+- `\(x\)` est un quadrat
+- `\(t\)` est une année
+- `\(\alpha_i\)` est un coefficient de recrutement
+- `\(m\)` est le paramètre de dispersion 
+- `\(N_{i,x,t}\)` est l'abondance dans le quadrat `\(x\)` au temps `\(t\)`
+- `\(R_{i,t}\)` est l'abondance relative sur la parcelle au temps `\(t\)`
+
+---
+#  Faire un tirage parmi plusieurs options
+
+On pige l'espèce au hasard en utilisant `sample()` ou bien `rmultinom()` en utilisant un vecteur de probabilités `\(p\)`
+
+
+``` r
+esp &lt;- c("A", "B", "C")
+p &lt;- c(0.2, 0.5, 0.3)
+sample(x = esp, size = 1, prob = p)
+```
+
+```
+## [1] "B"
+```
+Note : Le vecteur de probabilités doit toujours avoir une somme de 1
+
+---
+# Étapes
+
+1. Lecture du fichier `arbres.csv`
+
+2. Fonction qui calcul l'abondance par quadrat au temps `\(t\)`
+
+3. Fonction qui calcul l'abondance relative pour l'ensemble de la parcelle au temps `\(t\)`
+
+4. Fonction qui réalise le tirage de l'identité de l'espèce à recruter
+
+5. Fonction qui exécute la simulation sur 75 ans (mortalité, remplacement, calcul d'abondance)
+
+6. Illustration de l'abondance relative des différentes espèces au fil du temps au moyen de la fonction plot
+
+---
+# Paramètres
+
+## Vecteur des coefficients de recrutement
+
+`\(\alpha = \{ 1, 1.01, 1.04, 1.03, 1, 1.02, 1) \}\)`
+
+## Probabilité de mortalité 
+
+`\(u = 0.01\)`
+
+## Probabilité de dispersion 
+
+`\(m = 0.1\)`
+
+---
+# Rappel
+
+On peut exécuter un script dans un autre script avec la commande `source()`
+
+Exemple : on crée un script `main.R` avec les instructions suivantes : 
+
+
+``` r
+# Script main.R
+
+# Lecture des fichiers 
+source("lecture_donnees.R")
+
+# Charger les fonctions
+source("fonctions.R")
+
+# Exécuter la simulation
+resultats &lt;- simulation(debut = 2025, fin = 2100, u = 0.01, m = 0.1)
+
+# Faire la figure
+ma_figure(resultats)
+```
+
+Ensuite on exécute l'ensemble avec `source("main.R")`
+
+---
+# Modalités
+
+## Remise
+
+Le travail se réalisera en équipe de 2. Inscrire le nom des membres en commentaire sur les travaux
+
+**11 février** : Séance de dépannage au D7-2007
+
+**18 février** : Le travail final (pseudo code + programme) devra être remis sur Moodle avant le 18 février 23h59
+   
+---
+# Modalités
+
+- Votre programme devra être remis dans un dossier `projet` qui contiendra vos scripts
+
+- Le tout doit être reproductible sur un autre ordinateur sans avoir à intervenir. Assumez que le fichier de données `arbres.csv` se situe dans le même répertoire que vos scripts téléchargés à partir de Moodle
+
+---
+# Critères d'évaluation : pseudo-code
+
+**Respect des bonnes pratiques enseignées**
+- Utilisation des éléments de base de la programmation (indexation, boucles, fonctions, énoncés conditionnels)
+- Mise en forme des instructions et variables
+- Les noms de variables sont explicites
+
+**La mise en forme adéquate d'un pseudo-code**
+- Une instruction par ligne
+- Le code est indenté
+- Le pseudo-code est divisé en blocs d'instructions cohérentes
+
+**Justesse des processus de programmation utilisés**
+- Les opérations répétées utilisent des boucles
+- Les opérations logiques utilisent des déclarations conditionnelles
+
+---
+# Critères d'évaluation : scripts
+
+**Respect des bonnes pratiques enseignées dans le cours (40%)**
+- Revoir les 10 instructions de la séance 1
+
+**Exécution des différentes étapes du code (40%)**
+- Lecture des données d'entrée
+- Utilisation d'une fonction pour l'exécution de la simulation du modèle
+- Réalisation de la simulation stochastique
+- Exécution de la figure finale
+
+**Capacité d'exécuter le code de A à Z, soit de la lecture du fichier de données jusqu'à la figure, sans intervenir (20 %)** 
+- Les données d'entrées seront dans le répertoire de travail d'où sera exécuté le code - nous utiliserons la fonction `source(main.R)` pour exécuter votre script d'analyse
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="../macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "monokai",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
